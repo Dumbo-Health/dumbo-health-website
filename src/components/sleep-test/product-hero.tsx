@@ -22,7 +22,7 @@ export function ProductHero() {
             className="relative aspect-square overflow-hidden rounded-2xl bg-white"
           >
             <Image
-              src="/images/products/sleep-test-kit.png"
+              src="/images/products/hst-box.png"
               alt="At-home sleep test diagnostic kit"
               fill
               className="object-cover"

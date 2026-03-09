@@ -38,8 +38,8 @@ export function SolutionsHero() {
             className="relative aspect-[4/3] overflow-hidden rounded-3xl"
           >
             <Image
-              src="/images/hero/hero-couple.jpg"
-              alt="Woman sleeping peacefully"
+              src="/images/people/girl-laying-in-bed.png"
+              alt="Person resting peacefully"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 600px"

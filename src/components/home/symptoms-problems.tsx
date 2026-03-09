@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const problems = [
   {
     word:      "Sickness",
-    label:     "Constantly Sick",
+    label:     "Constantly sick",
     slug:      "constantly-sick",
     copy:      "Poor sleep breaks down your immune defenses, leaving you vulnerable to illness after illness.",
     idleBg:    "rgba(120,191,188,0.14)",
@@ -22,7 +22,7 @@ const problems = [
   },
   {
     word:      "Tension",
-    label:     "High Blood Pressure",
+    label:     "High blood pressure",
     slug:      "high-blood-pressure",
     copy:      "Every apnea episode spikes your blood pressure. Night after night, this adds up.",
     idleBg:    "rgba(255,131,97,0.12)",
@@ -35,7 +35,7 @@ const problems = [
   },
   {
     word:      "Cravings",
-    label:     "Hard to Lose Weight",
+    label:     "Hard to lose weight",
     slug:      "hard-to-lose-weight",
     copy:      "Sleep apnea disrupts the hormones that control hunger, making weight loss feel impossible.",
     idleBg:    "rgba(255,214,173,0.35)",
@@ -48,7 +48,7 @@ const problems = [
   },
   {
     word:      "Stamina",
-    label:     "Low Sex Drive",
+    label:     "Low sex drive",
     slug:      "low-sex-drive",
     copy:      "Chronic sleep disruption lowers testosterone and drains the energy that intimacy needs.",
     idleBg:    "rgba(3,31,61,0.07)",
@@ -61,9 +61,9 @@ const problems = [
   },
   {
     word:      "Anxiety",
-    label:     "Anxiety & Stress",
+    label:     "Anxiety & stress",
     slug:      "anxiety-stress",
-    copy:      "Without restorative sleep, your brain can't regulate cortisol — keeping you on edge.",
+    copy:      "Without restorative sleep, your brain can't regulate cortisol, keeping you on edge.",
     idleBg:    "rgba(120,191,188,0.14)",
     idleColor: "#78BFBC",
     icon: (
@@ -74,7 +74,7 @@ const problems = [
   },
   {
     word:      "Snoring",
-    label:     "Loud Snoring",
+    label:     "Loud snoring",
     slug:      "loud-snoring",
     copy:      "Loud snoring is often the first sign your airway is being obstructed during sleep.",
     idleBg:    "rgba(255,131,97,0.12)",
@@ -87,9 +87,9 @@ const problems = [
   },
   {
     word:      "Fog",
-    label:     "Can't Focus",
+    label:     "Can't focus",
     slug:      "cant-focus",
-    copy:      "Fragmented sleep impairs memory, attention, and decision-making — all day, every day.",
+    copy:      "Fragmented sleep impairs memory, attention, and decision-making. All day, every day.",
     idleBg:    "rgba(255,214,173,0.35)",
     idleColor: "#E07040",
     icon: (
@@ -100,7 +100,7 @@ const problems = [
   },
   {
     word:      "Fatigue",
-    label:     "Always Tired",
+    label:     "Always tired",
     slug:      "always-tired",
     copy:      "No amount of rest feels like enough when sleep apnea keeps waking your brain all night.",
     idleBg:    "rgba(3,31,61,0.07)",
@@ -180,18 +180,18 @@ export function SymptomsProblems() {
           "radial-gradient(ellipse 65% 40% at 50% 0%, rgba(255,131,97,0.06) 0%, transparent 68%)",
       }}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div style={{ padding: "0 5%" }}>
 
         {/* ── Headline ── */}
-        <div className="mb-14 text-center md:mb-16">
+        <div className="mb-14 text-center md:mb-18">
           <p className="mb-5 font-mono text-xs uppercase tracking-widest text-teal">
             Does this sound like you?
           </p>
 
-          {/* Wrap in a single layout group so the headline reflows smoothly */}
           <motion.h2
             layout
-            className="flex flex-wrap items-end justify-center gap-x-3 font-heading text-[28px] font-medium leading-[1.1] text-midnight sm:text-[36px] md:text-[52px]"
+            className="flex flex-wrap items-end justify-center gap-x-4 font-heading font-medium leading-[1.08] text-midnight"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
           >
             <span>Could your</span>
             <SlotWord idx={idx} />
@@ -200,66 +200,78 @@ export function SymptomsProblems() {
         </div>
 
         {/* ── Cards ── */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {problems.map((p, i) => {
             const isActive = i === idx;
             return (
               <motion.div
                 key={p.slug}
-                animate={isActive ? { y: -6, scale: 1.015 } : { y: 0, scale: 1 }}
+                animate={isActive ? { y: -8, scale: 1.02 } : { y: 0, scale: 1 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link
                   href={`/problems/${p.slug}`}
-                  className={`group relative flex h-full flex-col gap-2.5 overflow-hidden rounded-2xl border p-4 transition-colors duration-400 md:gap-3 md:p-5 ${
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border transition-colors duration-400 ${
                     isActive
-                      ? "border-peach/30 bg-white shadow-lg shadow-peach/10"
-                      : "border-sunlight bg-white hover:border-peach/20 hover:shadow-md hover:shadow-midnight/5"
+                      ? "border-peach/30 bg-white shadow-xl shadow-peach/12"
+                      : "border-sunlight bg-white hover:border-peach/20 hover:shadow-lg hover:shadow-midnight/5"
                   }`}
+                  style={{ gap: "14px", padding: "24px" }}
                 >
                   {/* Active gradient wash */}
                   {isActive && (
                     <div
                       className="pointer-events-none absolute inset-0 rounded-2xl"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(255,131,97,0.05) 0%, transparent 60%)",
-                      }}
+                      style={{ background: "linear-gradient(135deg, rgba(255,131,97,0.06) 0%, transparent 60%)" }}
                     />
                   )}
 
                   {/* Icon */}
                   <div
-                    className="relative z-10 flex h-8 w-8 items-center justify-center rounded-xl transition-all duration-300 md:h-9 md:w-9"
-                    style={
-                      isActive
+                    className="relative z-10 flex shrink-0 items-center justify-center rounded-xl transition-all duration-300"
+                    style={{
+                      width: 44, height: 44,
+                      ...(isActive
                         ? { backgroundColor: "#FF8361", color: "#fff" }
-                        : { backgroundColor: p.idleBg, color: p.idleColor }
-                    }
+                        : { backgroundColor: p.idleBg, color: p.idleColor }),
+                    }}
                   >
-                    {p.icon}
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      {/* re-render the same icon path at 22px */}
+                      {p.icon.props.children}
+                    </svg>
                   </div>
 
                   {/* Label */}
                   <p
-                    className="relative z-10 font-heading text-[13px] font-medium leading-snug transition-colors duration-300 md:text-[15px]"
-                    style={{ color: isActive ? "#FF8361" : "#031F3D" }}
+                    className="relative z-10 font-heading font-medium leading-snug transition-colors duration-300"
+                    style={{
+                      fontSize: "clamp(0.95rem, 1.2vw, 1.15rem)",
+                      color: isActive ? "#FF8361" : "#031F3D",
+                    }}
                   >
                     {p.label}
                   </p>
 
-                  {/* Copy — desktop only */}
-                  <p className="relative z-10 hidden font-body text-xs leading-relaxed text-midnight/45 md:block">
+                  {/* Copy */}
+                  <p
+                    className="relative z-10 font-body leading-relaxed"
+                    style={{
+                      fontSize: "clamp(0.8rem, 0.9vw, 0.95rem)",
+                      color: "rgba(3,31,61,0.5)",
+                    }}
+                  >
                     {p.copy}
                   </p>
 
-                  {/* Arrow — desktop only */}
+                  {/* Arrow */}
                   <div
-                    className="relative z-10 mt-auto hidden items-center gap-1 font-mono text-[10px] uppercase tracking-wider transition-colors duration-300 md:flex"
+                    className="relative z-10 mt-auto flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors duration-300"
                     style={{ color: isActive ? "#FF8361" : "rgba(3,31,61,0.25)" }}
                   >
                     Learn more
                     <svg
-                      className="h-2.5 w-2.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                      className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5"
                       fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

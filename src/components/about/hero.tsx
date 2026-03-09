@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button";
 import { APP_URL } from "@/lib/constants";
 
 const aboutImages = [
-  { src: "/images/hero/hero-main.jpg", alt: "Peaceful sleep" },
-  { src: "/images/misc/team-office.jpg", alt: "Modern medical office" },
-  { src: "/images/hero/hero-couple.jpg", alt: "Couple resting" },
-  { src: "/images/misc/caring-hands.jpg", alt: "Caring medical support" },
-  { src: "/images/misc/benefits-wellness.jpg", alt: "Wellness lifestyle" },
-  { src: "/images/hero/hero-device.jpg", alt: "Sleep technology" },
-  { src: "/images/misc/happy-morning.jpg", alt: "Bright morning" },
-  { src: "/images/products/sleep-test-kit.png", alt: "Sleep test kit" },
+  { src: "/images/people/girl-in-bed.png",        alt: "Person resting peacefully" },
+  { src: "/images/misc/team-office.jpg",           alt: "Modern medical office" },
+  { src: "/images/people/couple-in-bed.png",       alt: "Couple resting" },
+  { src: "/images/people/woman-blue-pajamas.png",  alt: "Woman ready for a good night" },
+  { src: "/images/people/man-on-beach.png",        alt: "Man feeling great" },
+  { src: "/images/hero/hero-device.jpg",           alt: "Sleep technology" },
+  { src: "/images/people/man-waking-up.png",       alt: "Man waking up refreshed" },
+  { src: "/images/products/hst-box.png",    alt: "Sleep test kit" },
 ];
 
 export function AboutHero() {

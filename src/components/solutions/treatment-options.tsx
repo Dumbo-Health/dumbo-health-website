@@ -10,14 +10,14 @@ const options = [
     title: "CPAP Machine",
     description:
       "The right CPAP machine, with all the parts and refills shipped on your schedule.",
-    image: "/images/products/cpap-device.jpg",
+    image: "/images/products/cpap-machine.png",
     imageAlt: "CPAP Machine",
   },
   {
     title: "Oral Device",
     description: "A custom crafted oral device delivered to your door.",
-    image: "/images/misc/caring-hands.jpg",
-    imageAlt: "MouthGuard",
+    image: "/images/products/oral-appliance.jpg",
+    imageAlt: "Oral device for sleep apnea",
   },
   {
     title: "Telehealth Experts",

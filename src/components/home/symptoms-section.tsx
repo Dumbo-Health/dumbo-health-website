@@ -137,7 +137,7 @@ export function SymptomsSection() {
           >
             <div className="relative aspect-[2/1] md:aspect-[2/1]">
               <Image
-                src="/images/products/sleep-test-kit.png"
+                src="/images/products/hst-box.png"
                 alt="At-home sleep test, simple, comfortable, one night"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

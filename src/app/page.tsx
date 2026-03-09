@@ -8,8 +8,6 @@ import { BenefitsGrid } from "@/components/shared/benefits-grid";
 import { Testimonials } from "@/components/shared/testimonials";
 import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
 import { FAQSection } from "@/components/shared/faq-section";
-import { BottomCTA } from "@/components/shared/bottom-cta";
-import { VideoSection } from "@/components/shared/video-section";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { organizationSchema, faqSchema } from "@/lib/schemas";
@@ -71,8 +69,6 @@ export default function HomePage() {
         <SolutionsGrid />
         <BenefitsGrid />
         <Testimonials />
-        <BottomCTA />
-        <VideoSection />
         <ServiceAreaBanner />
         <FAQSection />
       </main>

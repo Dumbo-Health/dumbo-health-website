@@ -245,15 +245,15 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-sunlight/60 bg-daylight/95 backdrop-blur supports-[backdrop-filter]:bg-daylight/80">
-      <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" style={{ height: "72px" }}>
+      <nav className="flex items-center justify-between" style={{ height: "72px", padding: "0 5%" }}>
 
         {/* Logo */}
         <Link href="/" className="shrink-0 transition-opacity duration-200 hover:opacity-80">
           <Image
             src="/logos/wordmark-midnight.svg"
             alt="Dumbo Health"
-            width={160}
-            height={32}
+            width={200}
+            height={40}
             priority
           />
         </Link>
@@ -284,7 +284,7 @@ export function Navbar() {
           <Button
             asChild
             variant="outline"
-            className="hidden h-10 rounded-lg border-midnight/20 bg-transparent px-5 font-mono text-sm tracking-wider text-midnight transition-all duration-200 ease-out hover:border-midnight hover:bg-midnight hover:text-white sm:inline-flex"
+            className="hidden h-10 rounded-lg border-midnight/20 bg-transparent px-[5vw] font-mono text-sm tracking-wider text-midnight transition-all duration-200 ease-out hover:border-midnight hover:bg-midnight hover:text-white sm:inline-flex"
           >
             <a href={`${APP_URL}/login`}>Login</a>
           </Button>

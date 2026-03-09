@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import { APP_URL, SHOPIFY } from "@/lib/constants";
 
 const marqueeImages = [
-  { src: "/images/hero/hero-couple.jpg",        alt: "Couple sleeping peacefully" },
-  { src: "/images/hero/hero-main.jpg",           alt: "Person sleeping peacefully" },
-  { src: "/images/misc/happy-morning.jpg",       alt: "Waking up refreshed" },
-  { src: "/images/misc/benefits-wellness.jpg",   alt: "Feeling well rested" },
-  { src: "/images/misc/caring-hands.jpg",        alt: "Caring support" },
-  { src: "/images/hero/hero-device.jpg",         alt: "Sleep test device" },
+  { src: "/images/people/couple-in-bed.png",        alt: "Couple resting peacefully" },
+  { src: "/images/people/man-waking-up.png",        alt: "Man waking up refreshed" },
+  { src: "/images/people/woman-blue-pajamas.png",   alt: "Woman ready for a good night" },
+  { src: "/images/people/man-drinking-coffee.png",  alt: "Man enjoying his morning" },
+  { src: "/images/people/man-on-beach.png",         alt: "Man feeling great outdoors" },
+  { src: "/images/hero/hero-device.jpg",            alt: "Sleep test device" },
 ];
 
 export function HomeHero() {
@@ -23,7 +23,7 @@ export function HomeHero() {
           className="font-heading text-[44px] font-medium leading-[1.08] text-midnight sm:text-[56px] lg:text-[68px] lg:leading-[1.05]"
           style={{ animation: "fade-in 0.7s ease-out both" }}
         >
-          Affordable Sleep Apnea Care Made Easy
+          Affordable sleep apnea care made easy
         </h1>
 
         <p
@@ -40,11 +40,6 @@ export function HomeHero() {
         className="relative mt-12 md:mt-16"
         style={{ animation: "fade-in 0.7s 0.25s ease-out both" }}
       >
-        {/* Left fade */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-daylight to-transparent" />
-        {/* Right fade */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-daylight to-transparent" />
-
         {/* Scrolling strip */}
         <div className="overflow-hidden">
           <div

@@ -26,8 +26,8 @@ export function StorySection() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-sunlight mt-8">
               <Image
-                src="/images/misc/caring-hands.jpg"
-                alt="Caring medical support"
+                src="/images/people/man-smiling-in-bed-1.png"
+                alt="Person resting comfortably"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 50vw, 25vw"

@@ -8,7 +8,7 @@ import { SHOPIFY } from "@/lib/constants";
 const steps = [
   {
     number: "01",
-    title: "Order Your Test",
+    title: "Order your test",
     copy: "Ships to your door for $149. No insurance, no referral, no clinic visit needed.",
     iconColor: "#78BFBC",
     iconBg: "rgba(120,191,188,0.15)",
@@ -22,7 +22,7 @@ const steps = [
   },
   {
     number: "02",
-    title: "Sleep With It Once",
+    title: "Sleep with it once",
     copy: "Wear the small device one night. It records everything automatically, then dispose of it.",
     iconColor: "#FF8361",
     iconBg: "rgba(255,131,97,0.15)",
@@ -34,7 +34,7 @@ const steps = [
   },
   {
     number: "03",
-    title: "Data Goes to Our Doctors",
+    title: "Data goes to our doctors",
     copy: "Your sleep data auto-uploads directly to our certified sleep doctors for review.",
     iconColor: "#78BFBC",
     iconBg: "rgba(120,191,188,0.15)",
@@ -48,7 +48,7 @@ const steps = [
   },
   {
     number: "04",
-    title: "Results in Under 48h",
+    title: "Results in under 48 hours",
     copy: "A Dumbo Health doctor walks you through your diagnosis in a virtual visit.",
     iconColor: "#FF8361",
     iconBg: "rgba(255,131,97,0.15)",
@@ -63,7 +63,7 @@ const steps = [
   {
     number: "05",
     title: "Get Treated. Today.",
-    copy: "Treatment is prescribed and shipped directly to you. No DME, no referrals, no waiting.",
+    copy: "Treatment is prescribed and shipped directly to you. No referrals, no waiting rooms, no hassle.",
     iconColor: "#78BFBC",
     iconBg: "rgba(120,191,188,0.15)",
     icon: (
@@ -87,7 +87,7 @@ export function HowItWorks() {
 
   return (
     <section ref={sectionRef} className="overflow-hidden bg-midnight py-20 md:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div style={{ padding: "0 5%" }}>
 
         {/* ── Header ── */}
         <motion.div
@@ -99,14 +99,20 @@ export function HowItWorks() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-teal">
             How It Works
           </p>
-          <h2 className="font-heading text-4xl font-medium leading-tight text-daylight md:text-[52px]">
+          <h2
+            className="font-heading font-medium leading-tight text-daylight"
+            style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)" }}
+          >
             From test to treatment.
           </h2>
-          <p className="mt-2 font-heading text-4xl font-medium leading-tight text-daylight md:text-[52px]">
+          <p
+            className="font-heading font-medium leading-tight text-daylight"
+            style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", marginTop: "0.1em" }}
+          >
             Not in months.{" "}
             <span style={{ color: "#FF8361" }}>In 48 hours.</span>
           </p>
-          <p className="mx-auto mt-5 max-w-xl font-body text-base leading-relaxed md:text-lg" style={{ color: "rgba(252,246,237,0.5)" }}>
+          <p className="mx-auto mt-6 max-w-xl font-body text-lg leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
             Most people wait months for a sleep apnea diagnosis, see multiple providers,
             and spend thousands. We changed all of that.
           </p>
@@ -124,10 +130,10 @@ export function HowItWorks() {
             className="rounded-2xl border p-6"
             style={{ borderColor: "rgba(255,255,255,0.08)", backgroundColor: "rgba(255,255,255,0.04)" }}
           >
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
+            <p className="mb-5 font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
               The traditional path
             </p>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {oldWay.map((label) => (
                 <div key={label} className="flex items-center gap-3">
                   <div
@@ -138,7 +144,7 @@ export function HowItWorks() {
                       <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                   </div>
-                  <span className="font-body text-sm" style={{ color: "rgba(252,246,237,0.4)" }}>{label}</span>
+                  <span className="font-body text-base" style={{ color: "rgba(252,246,237,0.4)" }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -158,10 +164,10 @@ export function HowItWorks() {
               boxShadow: "0 0 48px rgba(255,131,97,0.07)",
             }}
           >
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>
+            <p className="mb-5 font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>
               With Dumbo Health
             </p>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {dumboWay.map((label) => (
                 <div key={label} className="flex items-center gap-3">
                   <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: "rgba(255,131,97,0.2)" }}>
@@ -169,7 +175,7 @@ export function HowItWorks() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <span className="font-body text-sm font-medium text-daylight">{label}</span>
+                  <span className="font-body text-base font-medium text-daylight">{label}</span>
                 </div>
               ))}
             </div>
@@ -225,7 +231,7 @@ export function HowItWorks() {
                   transition={{ duration: 0.65, delay: 0.3 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div
-                    className="relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-full border-2"
+                    className="relative z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full border-2"
                     style={{ backgroundColor: step.iconBg, borderColor: step.iconColor + "70", color: step.iconColor }}
                   >
                     {step.icon}
@@ -233,10 +239,10 @@ export function HowItWorks() {
                   <p className="mb-2 font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
                     {step.number}
                   </p>
-                  <p className="mb-2.5 font-heading text-[15px] font-medium leading-snug text-daylight">
+                  <p className="mb-3 font-heading text-[17px] font-medium leading-snug text-daylight">
                     {step.title}
                   </p>
-                  <p className="font-body text-xs leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
                     {step.copy}
                   </p>
                 </motion.div>
@@ -324,7 +330,7 @@ export function HowItWorks() {
             href={SHOPIFY.buyUrl}
             className="inline-flex h-12 items-center rounded-[12px] bg-peach px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0"
           >
-            Start your sleep test — $149
+            Start your sleep test for $149
           </a>
           <p className="mt-3 font-body text-xs text-daylight/30">
             Ships to your door. One night. Results in 48 hours.

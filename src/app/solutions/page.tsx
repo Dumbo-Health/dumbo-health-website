@@ -45,7 +45,7 @@ export default function SolutionsPage() {
           title="At-Home Diagnostic Kit"
           body="Our FDA-approved at-home sleep test is simple, accurate, and non-invasive. Just one night of wear, and your data is reviewed by a licensed sleep specialist via telehealth, all for $149."
           cta={{ label: "Take the First Step", href: "/get-your-at-home-sleep-apnea-test" }}
-          image="/images/products/sleep-test-kit.png"
+          image="/images/products/hst-box.png"
           imageAlt="Watch Pat One device"
         />
 
@@ -71,8 +71,8 @@ export default function SolutionsPage() {
           title="Personalized Sleep Dashboard"
           body="Your Dumbo Health dashboard syncs your treatment, reminders, and sleep insights. Stay motivated, supported, and in control."
           cta={{ label: "Get Started", href: "https://app.dumbo.health/" }}
-          image="/images/misc/happy-morning.jpg"
-          imageAlt="Phone showing the Dumbo app"
+          image="/images/people/man-drinking-coffee.png"
+          imageAlt="Person enjoying their morning after better sleep"
         />
 
         {/* Step 5 */}
@@ -81,7 +81,7 @@ export default function SolutionsPage() {
           label="Everything you need. Nothing extra"
           title="Resupply and Maintenance"
           body="From masks and filters to tubing and chargers, you can get everything you need to keep your therapy running smoothly."
-          image="/images/products/cpap-device.jpg"
+          image="/images/products/cpap-machine.png"
           imageAlt="Resupply Kit"
           reverse
         />

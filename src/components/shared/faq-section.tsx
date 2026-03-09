@@ -17,20 +17,30 @@ export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
   const displayFaqs = faqs.slice(0, limit);
 
   return (
-    <section className="bg-daylight py-16 md:py-24">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-daylight py-20 md:py-28">
+      <div style={{ padding: "0 5%" }}>
         <div className="text-center">
-          <h2 className="font-heading text-3xl font-medium text-midnight md:text-[40px]">
-            FAQs
+          <p className="mb-5 font-mono text-xs uppercase tracking-widest text-teal">
+            FAQ
+          </p>
+          <h2
+            className="font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+          >
+            Got questions?
           </h2>
-          <p className="mx-auto mt-3 max-w-lg font-body text-midnight/60">
+          <p
+            className="mx-auto mt-4 font-body text-lg leading-relaxed"
+            style={{ color: "rgba(3,31,61,0.55)", maxWidth: "52ch" }}
+          >
             From testing and treatment to pricing and support, here is
             everything you need to know about getting started with
             Dumbo Health.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="mt-10 w-full">
+        <div className="mx-auto mt-12 max-w-3xl">
+        <Accordion type="single" collapsible className="w-full">
           {displayFaqs.map((faq, i) => (
             <AccordionItem
               key={i}
@@ -54,27 +64,28 @@ export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
 
         {showCta && (
           <div className="mt-10 text-center">
-            <p className="mb-4 font-body text-midnight/50">
+            <p className="mb-4 font-body" style={{ color: "rgba(3,31,61,0.45)" }}>
               Still have questions?
             </p>
             <div className="flex items-center justify-center gap-4">
               <Button
                 variant="outline"
                 asChild
-                className="h-12 rounded-lg border-midnight/12 bg-white px-7 font-body text-base font-bold uppercase tracking-wider text-midnight shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-peach/30 hover:bg-white hover:shadow-md hover:shadow-peach/10 active:translate-y-0 active:shadow-sm"
+                className="h-12 rounded-[12px] border-midnight/20 bg-white px-7 font-body text-sm font-bold uppercase tracking-wider text-midnight shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-peach/30 hover:bg-white hover:shadow-md active:translate-y-0"
               >
                 <Link href="/faqs">Visit FAQs</Link>
               </Button>
               <Button
                 variant="ghost"
                 asChild
-                className="h-12 rounded-lg border-midnight/12 bg-white px-7 font-body text-base font-bold uppercase tracking-wider text-midnight shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-peach/30 hover:bg-white hover:shadow-md hover:shadow-peach/10 active:translate-y-0 active:shadow-sm"
+                className="h-12 rounded-[12px] px-7 font-body text-sm font-bold uppercase tracking-wider text-midnight transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:text-white active:translate-y-0"
               >
                 <Link href="/contact">Contact us</Link>
               </Button>
             </div>
           </div>
         )}
+        </div>
       </div>
     </section>
   );

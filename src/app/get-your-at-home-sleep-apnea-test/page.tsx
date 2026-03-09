@@ -156,7 +156,7 @@ export default function LandingPage() {
               <div className="relative">
                 <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-3xl">
                   <Image
-                    src="/images/products/sleep-test-kit.png"
+                    src="/images/products/hst-box.png"
                     alt="Dumbo Health At-Home Sleep Test Kit"
                     fill
                     className="object-cover"
@@ -346,7 +346,7 @@ export default function LandingPage() {
               </div>
               <div className="relative mx-auto aspect-square max-w-sm overflow-hidden rounded-3xl">
                 <Image
-                  src="/images/products/sleep-test-kit.png"
+                  src="/images/products/hst-box.png"
                   alt="WatchPAT ONE sleep monitoring device"
                   fill
                   className="object-cover"
@@ -571,7 +571,7 @@ export default function LandingPage() {
               </div>
               <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-3xl">
                 <Image
-                  src="/images/misc/tired-person.jpg"
+                  src="/images/people/girl-laying-in-bed.png"
                   alt="Person struggling with sleep"
                   fill
                   className="object-cover"

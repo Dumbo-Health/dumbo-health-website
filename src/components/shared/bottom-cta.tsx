@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { APP_URL } from "@/lib/constants";
 
 const carouselImages = [
-  "/images/misc/benefits-wellness.jpg",
-  "/images/misc/happy-morning.jpg",
-  "/images/misc/caring-hands.jpg",
+  "/images/people/man-on-beach.png",
+  "/images/people/man-waking-up.png",
+  "/images/people/woman-blue-pajamas.png",
 ];
 
 export function BottomCTA() {
