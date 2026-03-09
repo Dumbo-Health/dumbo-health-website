@@ -42,20 +42,20 @@ export const scientificCommittee: TeamMember[] = [
 export const medicalTeam: TeamMember[] = [
   {
     name: "Dr. Zachary Adams, MD, MBA",
-    title: "Sleep Medicine Physician",
+    title: "Sleep medicine physician",
     bio: "Fellow of the American Academy of Sleep Medicine. A leader and trusted consultant in virtual sleep care.",
-    image: "/images/team/doctor-3.jpg",
+    image: "/images/team/medical/zachary-adams.avif",
   },
   {
     name: "Dr. Harrison Gimbel, MD, MS",
-    title: "Sleep Medicine Physician",
+    title: "Sleep medicine physician",
     bio: "An experienced clinician with a strong commitment to expanding patient access to healthcare via telemedicine solutions.",
-    image: "/images/team/doctor-1.jpg",
+    image: "/images/team/medical/harrison-gimbel.avif",
   },
   {
-    name: "Kandace Desadier, APRN, FNP-BC",
+    name: "Kandace DeSadier, APRN, FNP-BC",
     title: "Nurse practitioner",
     bio: "An experienced nurse practitioner focused on helping people get clear sleep answers and move into the right treatment.",
-    image: "/images/team/doctor-2.jpg",
+    image: "/images/team/medical/kandace-desadier.avif",
   },
 ];
