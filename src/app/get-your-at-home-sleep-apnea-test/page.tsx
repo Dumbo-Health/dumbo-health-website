@@ -73,8 +73,8 @@ export default function LandingPage() {
         }}
       >
         <div
-          className="flex items-center justify-between py-3"
-          style={{ padding: "12px 5%" }}
+          className="flex items-center justify-between"
+          style={{ paddingTop: "12px", paddingBottom: "12px", paddingLeft: "5%", paddingRight: "5%" }}
         >
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -100,7 +100,7 @@ export default function LandingPage() {
       </main>
 
       {/* Minimal footer */}
-      <footer style={{ backgroundColor: "#031F3D", padding: "32px 5%" }}>
+      <footer style={{ backgroundColor: "#031F3D", paddingTop: "40px", paddingBottom: "40px", paddingLeft: "5%", paddingRight: "5%" }}>
         <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
           <Image
             src="/logos/wordmark-white.svg"
