@@ -918,23 +918,100 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ BOTTOM CTA ═══ */}
-      <section style={{ backgroundColor: "#FF8361", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
-        <FadeUp className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading font-medium text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ backgroundColor: "#FF8361", paddingTop: "130px", paddingBottom: "130px", paddingLeft: "5%", paddingRight: "5%" }}
+      >
+        {/* ── Isotype tile pattern ── */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "url('/logos/isotype-white.svg')",
+            backgroundSize: "72px 65px",
+            backgroundRepeat: "repeat",
+            opacity: 0.09,
+          }}
+        />
+
+        {/* ── Radial vignette: center lit, edges recede ── */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 60% 75% at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 55%, rgba(0,0,0,0.18) 100%)",
+          }}
+        />
+
+        {/* ── Floating photo cards (desktop only) ── */}
+
+        {/* Top-left — tall portrait, slightly off-screen, tilted left */}
+        <div
+          className="pointer-events-none absolute hidden lg:block"
+          style={{ top: "-10px", left: "-24px", transform: "rotate(-5deg)", transformOrigin: "bottom right" }}
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl"
+            style={{ width: "186px", height: "234px", boxShadow: "0 12px 40px rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.15)" }}
+          >
+            <Image src="/images/people/man-smiling-in-bed-2.png" alt="" fill className="object-cover object-center" sizes="186px" />
+          </div>
+        </div>
+
+        {/* Bottom-right — taller card, tilted right */}
+        <div
+          className="pointer-events-none absolute hidden lg:block"
+          style={{ bottom: "-10px", right: "-20px", transform: "rotate(4deg)", transformOrigin: "top left" }}
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl"
+            style={{ width: "200px", height: "250px", boxShadow: "0 12px 40px rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.15)" }}
+          >
+            <Image src="/images/people/girl-in-bed.png" alt="" fill className="object-cover object-center" sizes="200px" />
+          </div>
+        </div>
+
+        {/* Top-right — smaller, peeking in */}
+        <div
+          className="pointer-events-none absolute hidden xl:block"
+          style={{ top: "30px", right: "200px", transform: "rotate(3deg)", transformOrigin: "bottom left" }}
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl"
+            style={{ width: "148px", height: "186px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
+          >
+            <Image src="/images/people/woman-blue-pajamas.png" alt="" fill className="object-cover object-top" sizes="148px" />
+          </div>
+        </div>
+
+        {/* Bottom-left — small, partially cropped */}
+        <div
+          className="pointer-events-none absolute hidden xl:block"
+          style={{ bottom: "20px", left: "180px", transform: "rotate(-3deg)", transformOrigin: "top right" }}
+        >
+          <div
+            className="relative overflow-hidden rounded-2xl"
+            style={{ width: "148px", height: "186px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
+          >
+            <Image src="/images/people/man-with-pillows.png" alt="" fill className="object-cover object-top" sizes="148px" />
+          </div>
+        </div>
+
+        {/* ── Content ── */}
+        <FadeUp className="relative z-10 mx-auto max-w-2xl text-center">
+          <h2 className="font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             Ready to find out how you sleep?
           </h2>
-          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(255,255,255,0.8)", maxWidth: "44ch" }}>
+          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44ch" }}>
             One night. One device. A clear answer. Better sleep starts here.
           </p>
           <button
             type="button"
             data-shopify-checkout="sleep-test"
             className="mt-8 inline-flex h-14 items-center rounded-[12px] px-10 font-body text-base font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
-            style={{ backgroundColor: "#fff", color: "#FF8361", boxShadow: "0 4px 20px rgba(255,255,255,0.2)" }}
+            style={{ backgroundColor: "#fff", color: "#FF8361", boxShadow: "0 6px 28px rgba(0,0,0,0.15)" }}
           >
             Order your test · $149
           </button>
-          <p className="mt-4 font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mt-4 font-body text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
             Free shipping &middot; Prescription included &middot; HIPAA compliant
           </p>
         </FadeUp>
