@@ -972,10 +972,10 @@ export function SleepTestLanding() {
 
         {/* ── Floating photo cards (desktop only) ── */}
 
-        {/* Top-left — tall portrait, slightly off-screen, tilted left */}
+        {/* Top-left — pulled ~48px in from edge, tilted left */}
         <div
           className="pointer-events-none absolute hidden lg:block"
-          style={{ top: "-10px", left: "-24px", transform: "rotate(-5deg)", transformOrigin: "bottom right" }}
+          style={{ top: "20px", left: "48px", transform: "rotate(-5deg)", transformOrigin: "bottom right" }}
         >
           <div
             className="relative overflow-hidden rounded-2xl"
@@ -985,10 +985,10 @@ export function SleepTestLanding() {
           </div>
         </div>
 
-        {/* Bottom-right — taller card, tilted right */}
+        {/* Bottom-right — pulled ~48px in from edge, tilted right */}
         <div
           className="pointer-events-none absolute hidden lg:block"
-          style={{ bottom: "-10px", right: "-20px", transform: "rotate(4deg)", transformOrigin: "top left" }}
+          style={{ bottom: "20px", right: "48px", transform: "rotate(4deg)", transformOrigin: "top left" }}
         >
           <div
             className="relative overflow-hidden rounded-2xl"
@@ -998,38 +998,38 @@ export function SleepTestLanding() {
           </div>
         </div>
 
-        {/* Top-right — smaller, peeking in */}
+        {/* Top-right (xl) — frames right side, slightly inset */}
         <div
           className="pointer-events-none absolute hidden xl:block"
-          style={{ top: "30px", right: "200px", transform: "rotate(3deg)", transformOrigin: "bottom left" }}
+          style={{ top: "40px", right: "56px", transform: "rotate(3deg)", transformOrigin: "bottom left" }}
         >
           <div
             className="relative overflow-hidden rounded-2xl"
-            style={{ width: "148px", height: "186px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
+            style={{ width: "160px", height: "200px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
           >
-            <Image src="/images/people/woman-blue-pajamas.png" alt="" fill className="object-cover object-top" sizes="148px" />
+            <Image src="/images/people/woman-blue-pajamas.png" alt="" fill className="object-cover object-top" sizes="160px" />
           </div>
         </div>
 
-        {/* Bottom-left — small, partially cropped */}
+        {/* Bottom-left (xl) — frames left side, slightly inset */}
         <div
           className="pointer-events-none absolute hidden xl:block"
-          style={{ bottom: "20px", left: "180px", transform: "rotate(-3deg)", transformOrigin: "top right" }}
+          style={{ bottom: "40px", left: "56px", transform: "rotate(-3deg)", transformOrigin: "top right" }}
         >
           <div
             className="relative overflow-hidden rounded-2xl"
-            style={{ width: "148px", height: "186px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
+            style={{ width: "160px", height: "200px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
           >
-            <Image src="/images/people/man-with-pillows.png" alt="" fill className="object-cover object-top" sizes="148px" />
+            <Image src="/images/people/man-with-pillows.png" alt="" fill className="object-cover object-top" sizes="160px" />
           </div>
         </div>
 
         {/* ── Content ── */}
         <FadeUp className="relative z-10 mx-auto max-w-2xl text-center">
-          <h2 className="font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+          <h2 className="font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}>
             Ready to find out how you sleep?
           </h2>
-          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44ch" }}>
+          <p className="mx-auto mt-5 font-body" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44ch", fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
             One night. One device. A clear answer. Better sleep starts here.
           </p>
           <button
