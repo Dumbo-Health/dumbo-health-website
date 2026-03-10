@@ -922,22 +922,23 @@ export function SleepTestLanding() {
         className="relative overflow-hidden"
         style={{ backgroundColor: "#FF8361", paddingTop: "130px", paddingBottom: "130px", paddingLeft: "5%", paddingRight: "5%" }}
       >
-        {/* ── Brand pattern ── */}
+        {/* ── Brand pattern — scaled to fill, no tile ── */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage: "url('/images/brand-pattern.png')",
-            backgroundSize: "880px auto",
-            backgroundRepeat: "repeat",
-            opacity: 0.18,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            opacity: 0.22,
           }}
         />
 
-        {/* ── Radial gradient: solid peach center for legibility, fades to reveal pattern at edges ── */}
+        {/* ── Radial gradient: semi-solid center for legibility, fades fast so pattern shows at edges ── */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 55% 70% at 50% 50%, #FF8361 30%, rgba(255,131,97,0.85) 55%, rgba(255,131,97,0.3) 80%, transparent 100%)",
+            background: "radial-gradient(ellipse 50% 65% at 50% 50%, rgba(255,131,97,0.88) 0%, rgba(255,131,97,0.55) 45%, rgba(255,131,97,0.12) 75%, transparent 100%)",
           }}
         />
 
