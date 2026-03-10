@@ -99,7 +99,7 @@ export function Footer() {
     <footer className="relative bg-midnight pt-16 text-white">
       <WaveDecoration />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div style={{ paddingLeft: "5%", paddingRight: "5%" }}>
         {/* Top section: logo + columns */}
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Logo + phone */}
