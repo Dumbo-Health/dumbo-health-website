@@ -64,30 +64,6 @@ const FOOTER_COLUMNS = [
   },
 ] as const;
 
-function WaveDecoration() {
-  return (
-    <div className="absolute -top-px left-0 right-0 overflow-hidden leading-[0]">
-      <svg
-        className="relative block w-full"
-        viewBox="0 0 1440 60"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 60V30C120 10 240 0 360 10C480 20 600 40 720 45C840 50 960 40 1080 25C1200 10 1320 5 1380 5L1440 5V60H0Z"
-          fill="#031F3D"
-        />
-        <path
-          d="M0 60V40C120 25 240 15 360 20C480 25 600 45 720 50C840 55 960 45 1080 35C1200 25 1320 20 1380 18L1440 17V60H0Z"
-          fill="#031F3D"
-          opacity="0.5"
-        />
-      </svg>
-    </div>
-  );
-}
-
 const SOCIAL_LINKS = [
   { href: SOCIAL.facebook, icon: FacebookIcon, label: "Facebook" },
   { href: SOCIAL.instagram, icon: InstagramIcon, label: "Instagram" },
@@ -96,90 +72,104 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-midnight pt-16 text-white">
-      <WaveDecoration />
-
-      <div style={{ paddingLeft: "5%", paddingRight: "5%" }}>
-        {/* Top section: logo + columns */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          {/* Logo + phone */}
-          <div>
-            <Image
-              src="/logos/wordmark-daylight.svg"
-              alt="Dumbo Health"
-              width={180}
-              height={36}
-            />
-            <a
-              href={CONTACT.phoneTel}
-              className="mt-4 block font-body text-sm text-white/60 transition-colors hover:text-white"
-            >
-              {CONTACT.phone}
-            </a>
-          </div>
-
-          {/* Link columns */}
-          {FOOTER_COLUMNS.map((column) => (
-            <div key={column.title}>
-              <p className="mb-3 font-body text-sm font-bold">{column.title}</p>
-              <ul className="space-y-2">
-                {column.links.map((link) =>
-                  "external" in link && link.external ? (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-body text-sm text-white/70 transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ) : (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="font-body text-sm text-white/70 transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          ))}
+    <footer
+      className="text-white"
+      style={{ backgroundColor: "#031F3D", paddingTop: "64px", paddingBottom: "40px", paddingLeft: "5%", paddingRight: "5%" }}
+    >
+      {/* Top section: logo + columns */}
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+        {/* Logo + phone */}
+        <div>
+          <Image
+            src="/logos/wordmark-daylight.svg"
+            alt="Dumbo Health"
+            width={180}
+            height={36}
+          />
+          <a
+            href={CONTACT.phoneTel}
+            className="mt-4 block font-body text-sm transition-colors hover:text-white"
+            style={{ color: "rgba(255,255,255,0.55)" }}
+          >
+            {CONTACT.phone}
+          </a>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-10 border-t border-white/10 py-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="font-body text-sm text-white/50">
-              &copy; 2025 Dumbo Health. All rights reserved.
-            </p>
-            <div className="flex items-center gap-4">
-              <Link href="/privacy-policy" className="font-body text-sm text-white/50 transition-colors hover:text-white">
-                Privacy Policy
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link href="/terms-of-use" className="font-body text-sm text-white/50 transition-colors hover:text-white">
-                Terms of Use
-              </Link>
-            </div>
-            <div className="flex gap-4">
-              {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/50 transition-colors hover:text-white"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
+        {/* Link columns */}
+        {FOOTER_COLUMNS.map((column) => (
+          <div key={column.title}>
+            <p className="mb-3 font-body text-sm font-bold text-white">{column.title}</p>
+            <ul className="space-y-2">
+              {column.links.map((link) =>
+                "external" in link && link.external ? (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-sm transition-colors hover:text-white"
+                      style={{ color: "rgba(255,255,255,0.6)" }}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="font-body text-sm transition-colors hover:text-white"
+                      style={{ color: "rgba(255,255,255,0.6)" }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom bar */}
+      <div
+        className="mt-10 py-6"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+      >
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+            &copy; {new Date().getFullYear()} Dumbo Health. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy-policy"
+              className="font-body text-sm transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.45)" }}
+            >
+              Privacy Policy
+            </Link>
+            <span style={{ color: "rgba(255,255,255,0.25)" }}>|</span>
+            <Link
+              href="/terms-of-use"
+              className="font-body text-sm transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.45)" }}
+            >
+              Terms of Use
+            </Link>
+          </div>
+          <div className="flex gap-4">
+            {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-white"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+                aria-label={label}
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
