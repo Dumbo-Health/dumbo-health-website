@@ -319,7 +319,7 @@ function BuyBox() {
                     {[
                       "The device is single-use and disposable after one night of testing",
                       "Unopened, unused kits can be returned within 60 days of purchase",
-                      "To request a return, email us at hello@dumbohealth.com",
+                      "To request a return, email us at contact@dumbo.health",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -513,133 +513,109 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ WHO IT'S FOR ═══ */}
-      <section style={{ backgroundColor: "#031F3D", paddingTop: "96px", paddingBottom: "96px", paddingLeft: "5%", paddingRight: "5%" }}>
+      <section style={{ backgroundColor: "#F5E6D1", paddingTop: "96px", paddingBottom: "96px", paddingLeft: "5%", paddingRight: "5%" }}>
 
         <FadeUp className="text-center">
           <SectionLabel>Am I a good fit?</SectionLabel>
           <h2
-            className="mt-3 font-heading font-medium text-white"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
+            className="mt-3 font-heading font-medium"
+            style={{ color: "#031F3D", fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
           >
             This test might be exactly what you need.
           </h2>
-          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(255,255,255,0.45)", maxWidth: "52ch" }}>
+          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(3,31,61,0.55)", maxWidth: "52ch" }}>
             Most people with these signs have never been tested. One night can change that.
           </p>
         </FadeUp>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-[3fr_2fr]">
+        {/* ── Good fit ── */}
+        <FadeUp delay={0.08} className="mt-12">
+          <div className="overflow-hidden rounded-3xl lg:grid lg:grid-cols-[1fr_280px]" style={{ backgroundColor: "#FCF6ED", border: "1px solid rgba(3,31,61,0.06)" }}>
+            <div className="flex flex-col p-8 md:p-10">
+              <span
+                className="inline-flex w-fit items-center rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest"
+                style={{ backgroundColor: "rgba(255,131,97,0.12)", color: "#FF8361" }}
+              >
+                This sounds like you
+              </span>
 
-          {/* ── Good fit — dominant card ── */}
-          <FadeUp delay={0.08}>
-            <div className="h-full overflow-hidden rounded-3xl lg:grid lg:grid-cols-[1fr_280px]" style={{ backgroundColor: "#FCF6ED" }}>
-
-              {/* Content */}
-              <div className="flex flex-col p-8 md:p-10">
-                <span
-                  className="inline-flex w-fit items-center rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest"
-                  style={{ backgroundColor: "rgba(255,131,97,0.12)", color: "#FF8361" }}
-                >
-                  This sounds like you
-                </span>
-
-                <ul className="mt-7 flex-1 space-y-6">
-                  {[
-                    { icon: "🔊", text: "You snore loudly, or your partner says you stop breathing at night" },
-                    { icon: "😩", text: "You wake up tired no matter how many hours you slept" },
-                    { icon: "🧠", text: "You feel foggy, unfocused, or run-down during the day" },
-                    { icon: "🏠", text: "You want clear answers without a clinic visit or sleep lab" },
-                    { icon: "👨‍⚕️", text: "Your doctor has suggested you get a sleep study" },
-                  ].map((item) => (
-                    <li key={item.text} className="flex items-start gap-4">
-                      <span className="text-2xl leading-none" style={{ marginTop: "2px" }}>{item.icon}</span>
-                      <span
-                        className="font-body font-medium leading-snug"
-                        style={{ color: "#031F3D", fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}
-                      >
-                        {item.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8">
-                  <button
-                    type="button"
-                    data-shopify-checkout="sleep-test"
-                    className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
-                    style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.25)" }}
-                  >
-                    Order your test — $149
-                  </button>
-                </div>
-              </div>
-
-              {/* Photo panel */}
-              <div className="relative hidden overflow-hidden lg:block" style={{ minHeight: "480px" }}>
-                <Image
-                  src="/images/people/man-waking-up.png"
-                  alt="Person waking up well-rested"
-                  fill
-                  className="object-cover object-top"
-                  sizes="280px"
-                />
-              </div>
-            </div>
-          </FadeUp>
-
-          {/* ── Not recommended — secondary card ── */}
-          <FadeUp delay={0.18}>
-            <div
-              className="flex h-full flex-col rounded-3xl p-8"
-              style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>
-                Not the right fit if
-              </p>
-
-              <ul className="mt-5 flex-1 space-y-5">
+              <ul className="mt-8 space-y-7">
                 {[
-                  "You use supplemental oxygen",
-                  "You have a complex heart or breathing condition",
-                  "You suspect a sleep disorder other than sleep apnea",
-                  "You are under 18 years old",
+                  { icon: "/images/icons/icon-sad.png", text: "You snore loudly, or your partner says you stop breathing at night" },
+                  { icon: "/images/icons/icon-clock.png", text: "You wake up tired no matter how many hours you slept" },
+                  { icon: "/images/icons/icon-heart.png", text: "You feel foggy, unfocused, or run-down during the day" },
+                  { icon: "/images/icons/icon-laptop.png", text: "You want clear answers without a clinic visit or sleep lab" },
+                  { icon: "/images/icons/icon-shield.png", text: "Your doctor has suggested you get a sleep study" },
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <svg
-                      className="mt-1 h-4 w-4 shrink-0"
-                      style={{ color: "rgba(255,131,97,0.5)" }}
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                  <li key={item.text} className="flex items-start gap-5">
+                    <div className="shrink-0" style={{ marginTop: "2px" }}>
+                      <Image src={item.icon} alt="" width={28} height={28} className="object-contain" />
+                    </div>
+                    <span
+                      className="font-body font-medium leading-snug"
+                      style={{ color: "#031F3D", fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span className="font-body text-base" style={{ color: "rgba(255,255,255,0.55)" }}>
-                      {item}
+                      {item.text}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div
-                className="mt-8 rounded-2xl p-5"
-                style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
-              >
-                <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>
-                  Not sure if this is right for you? Reach out at{" "}
-                  <a
-                    href="mailto:hello@dumbohealth.com"
-                    className="underline transition-opacity hover:opacity-70"
-                    style={{ color: "rgba(255,255,255,0.65)" }}
-                  >
-                    hello@dumbohealth.com
-                  </a>{" "}
-                  and we will point you in the right direction.
-                </p>
+              <div className="mt-10">
+                <button
+                  type="button"
+                  data-shopify-checkout="sleep-test"
+                  className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                  style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.25)" }}
+                >
+                  Order your test — $149
+                </button>
               </div>
             </div>
-          </FadeUp>
 
-        </div>
+            {/* Photo panel */}
+            <div className="relative hidden overflow-hidden lg:block" style={{ minHeight: "480px" }}>
+              <Image
+                src="/images/people/man-waking-up.png"
+                alt="Person waking up well-rested"
+                fill
+                className="object-cover object-top"
+                sizes="280px"
+              />
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* ── Not the right fit — secondary, readable but not the protagonist ── */}
+        <FadeUp delay={0.18} className="mt-8">
+          <div className="rounded-2xl px-8 py-6" style={{ backgroundColor: "rgba(3,31,61,0.04)" }}>
+            <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(3,31,61,0.35)" }}>
+              Might not be the right fit
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
+              {[
+                "You use supplemental oxygen",
+                "You have a complex heart or breathing condition",
+                "You suspect a sleep disorder other than sleep apnea",
+                "You are under 18 years old",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 font-body text-sm" style={{ color: "rgba(3,31,61,0.5)" }}>
+                  <svg className="h-3 w-3 shrink-0" style={{ color: "rgba(3,31,61,0.3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 font-body text-sm" style={{ color: "rgba(3,31,61,0.4)" }}>
+              Not sure?{" "}
+              <a href="mailto:contact@dumbo.health" className="underline transition-opacity hover:opacity-70" style={{ color: "rgba(3,31,61,0.55)" }}>
+                contact@dumbo.health
+              </a>
+            </p>
+          </div>
+        </FadeUp>
+
       </section>
 
       {/* ═══ WHAT HAPPENS AFTER CHECKOUT ═══ */}
