@@ -42,7 +42,16 @@ export function BottomCTA() {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          opacity: 0.12,
+          opacity: 0.28,
+        }}
+      />
+
+      {/* Radial vignette: solid teal at center, fades to transparent at edges */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(120,191,188,0.92) 0%, rgba(120,191,188,0.6) 40%, rgba(120,191,188,0.15) 70%, transparent 100%)",
         }}
       />
 
