@@ -594,35 +594,6 @@ export function SleepTestLanding() {
           </div>
         </FadeUp>
 
-        {/* ── Not the right fit — secondary, readable but not the protagonist ── */}
-        <FadeUp delay={0.18} className="mt-8">
-          <div className="rounded-2xl px-8 py-6" style={{ backgroundColor: "rgba(3,31,61,0.04)" }}>
-            <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(3,31,61,0.35)" }}>
-              Might not be the right fit
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
-              {[
-                "You use supplemental oxygen",
-                "You have a complex heart or breathing condition",
-                "You suspect a sleep disorder other than sleep apnea",
-                "You are under 18 years old",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 font-body text-sm" style={{ color: "rgba(3,31,61,0.5)" }}>
-                  <svg className="h-3 w-3 shrink-0" style={{ color: "rgba(3,31,61,0.3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 font-body text-sm" style={{ color: "rgba(3,31,61,0.4)" }}>
-              Not sure?{" "}
-              <a href="mailto:contact@dumbo.health" className="underline transition-opacity hover:opacity-70" style={{ color: "rgba(3,31,61,0.55)" }}>
-                contact@dumbo.health
-              </a>
-            </p>
-          </div>
-        </FadeUp>
 
       </section>
 
