@@ -530,36 +530,40 @@ export function SleepTestLanding() {
 
         {/* ── Good fit ── */}
         <FadeUp delay={0.08} className="mt-12">
-          <div className="overflow-hidden rounded-3xl lg:grid lg:grid-cols-[1fr_280px]" style={{ backgroundColor: "#FCF6ED", border: "1px solid rgba(3,31,61,0.06)" }}>
-            <div className="flex flex-col p-8 md:p-10">
-              <span
-                className="inline-flex w-fit items-center rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest"
-                style={{ backgroundColor: "rgba(255,131,97,0.12)", color: "#FF8361" }}
-              >
-                This sounds like you
-              </span>
+          <div className="overflow-hidden rounded-3xl lg:grid lg:grid-cols-2" style={{ backgroundColor: "#FCF6ED", border: "1px solid rgba(3,31,61,0.06)" }}>
 
-              <ul className="mt-8 space-y-7">
-                {[
-                  { icon: "/images/icons/icon-sad.png", text: "You snore loudly, or your partner says you stop breathing at night" },
-                  { icon: "/images/icons/icon-clock.png", text: "You wake up tired no matter how many hours you slept" },
-                  { icon: "/images/icons/icon-heart.png", text: "You feel foggy, unfocused, or run-down during the day" },
-                  { icon: "/images/icons/icon-laptop.png", text: "You want clear answers without a clinic visit or sleep lab" },
-                  { icon: "/images/icons/icon-shield.png", text: "Your doctor has suggested you get a sleep study" },
-                ].map((item) => (
-                  <li key={item.text} className="flex items-start gap-5">
-                    <div className="shrink-0" style={{ marginTop: "2px" }}>
-                      <Image src={item.icon} alt="" width={28} height={28} className="object-contain" />
-                    </div>
-                    <span
-                      className="font-body font-medium leading-snug"
-                      style={{ color: "#031F3D", fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}
-                    >
-                      {item.text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            {/* Content */}
+            <div className="flex flex-col justify-between p-8 md:p-10">
+              <div>
+                <span
+                  className="inline-flex w-fit items-center rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest"
+                  style={{ backgroundColor: "rgba(255,131,97,0.12)", color: "#FF8361" }}
+                >
+                  This sounds like you
+                </span>
+
+                <ul className="mt-8 space-y-7">
+                  {[
+                    { icon: "/images/icons/icon-sad.png", text: "You snore loudly, or your partner says you stop breathing at night" },
+                    { icon: "/images/icons/icon-clock.png", text: "You wake up tired no matter how many hours you slept" },
+                    { icon: "/images/icons/icon-heart.png", text: "You feel foggy, unfocused, or run-down during the day" },
+                    { icon: "/images/icons/icon-laptop.png", text: "You want clear answers without a clinic visit or sleep lab" },
+                    { icon: "/images/icons/icon-shield.png", text: "Your doctor has suggested you get a sleep study" },
+                  ].map((item) => (
+                    <li key={item.text} className="flex items-start gap-5">
+                      <div className="shrink-0" style={{ marginTop: "2px" }}>
+                        <Image src={item.icon} alt="" width={28} height={28} className="object-contain" />
+                      </div>
+                      <span
+                        className="font-body font-medium leading-snug"
+                        style={{ color: "#031F3D", fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}
+                      >
+                        {item.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="mt-10">
                 <button
@@ -573,14 +577,18 @@ export function SleepTestLanding() {
               </div>
             </div>
 
-            {/* Photo panel */}
-            <div className="relative hidden overflow-hidden lg:block" style={{ minHeight: "480px" }}>
+            {/* Photo panel — full image, no crop */}
+            <div
+              className="hidden lg:flex items-end justify-center overflow-hidden rounded-r-3xl"
+              style={{ backgroundColor: "#F5E6D1", minHeight: "400px" }}
+            >
               <Image
                 src="/images/people/man-waking-up.png"
                 alt="Person waking up well-rested"
-                fill
-                className="object-cover object-top"
-                sizes="280px"
+                width={786}
+                height={515}
+                className="w-full object-contain object-bottom"
+                sizes="50vw"
               />
             </div>
           </div>
