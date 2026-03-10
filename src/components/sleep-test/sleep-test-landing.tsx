@@ -176,7 +176,7 @@ function BuyBox() {
       {/* Short bullets */}
       <ul className="mt-5 space-y-2.5">
         {[
-          "FDA-cleared device — ships next business day",
+          "FDA-cleared device, ships next business day",
           "Wear it one night, no wires or sleep lab",
           "Board-certified doctor reviews your data",
           "Results and prescription ready in days",
@@ -197,7 +197,7 @@ function BuyBox() {
         className="mt-6 flex h-14 w-full items-center justify-center rounded-[12px] font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
         style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 18px rgba(255,131,97,0.3)" }}
       >
-        Order your test — $149
+        Order your test · $149
       </button>
 
       {/* Micro-trust */}
@@ -218,7 +218,7 @@ function BuyBox() {
       {/* In-stock status */}
       <div className="flex items-center gap-2">
         <span className="h-2 w-2 rounded-full bg-emerald-500" />
-        <span className="font-body text-sm text-emerald-700">In stock — ships next business day</span>
+        <span className="font-body text-sm text-emerald-700">In stock. Ships next business day.</span>
       </div>
 
       {/* Product details + Shipping & Returns accordions */}
@@ -264,7 +264,7 @@ function BuyBox() {
                   </ul>
                 </div>
                 <p>
-                  You will receive a clear summary of your results, including your AHI score (breathing pauses per hour). If you meet the criteria for obstructive sleep apnea, a prescription for PAP therapy may be recommended.
+                  You will receive a clear summary of your results, including your AHI score (breathing pauses per hour). If you meet the criteria for obstructive sleep apnea, a prescription for PAP therapy (a pressurized air device that keeps your airway open during sleep) may be recommended.
                 </p>
                 <div>
                   <p className="font-bold mb-2" style={{ color: "#031F3D" }}>Who this test is for</p>
@@ -357,15 +357,39 @@ export function SleepTestLanding() {
       <section style={{ backgroundColor: "#fff", borderTop: "1px solid rgba(245,230,209,0.6)", borderBottom: "1px solid rgba(245,230,209,0.6)" }}>
         <div className="flex flex-wrap items-stretch justify-center divide-x divide-midnight/5" style={{ paddingLeft: "5%", paddingRight: "5%" }}>
           {[
-            { icon: "🔒", label: "HIPAA compliant", caption: "Your health data stays private" },
-            { icon: "✓", label: "FDA-cleared device", caption: "Same technology as sleep clinics" },
-            { icon: "👨‍⚕️", label: "Board-certified doctors", caption: "Real physicians review every result" },
-            { icon: "📦", label: "Free shipping", caption: "Arrives in 1 to 3 business days" },
-            { icon: "💰", label: "$149 flat price", caption: "No hidden fees or surprise bills" },
-            { icon: "💬", label: "Dedicated support", caption: "Our team is here if you need us" },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+              label: "HIPAA compliant",
+              caption: "Your health data stays private",
+            },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>,
+              label: "FDA-cleared device",
+              caption: "Clinically validated for sleep apnea",
+            },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>,
+              label: "Board-certified doctors",
+              caption: "Real physicians review every result",
+            },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M5 8h14M5 8a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v1a2 2 0 01-2 2M5 8v11a2 2 0 002 2h10a2 2 0 002-2V8"/></svg>,
+              label: "Free shipping",
+              caption: "Arrives in one to three business days",
+            },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>,
+              label: "$149 flat price",
+              caption: "No hidden fees, ever",
+            },
+            {
+              icon: <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>,
+              label: "Dedicated support",
+              caption: "Our team is here whenever you need us",
+            },
           ].map((t) => (
             <div key={t.label} className="flex flex-1 flex-col items-center gap-1 px-4 py-5 text-center" style={{ minWidth: "120px" }}>
-              <span className="text-lg">{t.icon}</span>
+              <span style={{ color: "#78BFBC" }}>{t.icon}</span>
               <p className="font-mono text-xs font-medium uppercase tracking-wide" style={{ color: "#031F3D" }}>{t.label}</p>
               <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.45)" }}>{t.caption}</p>
             </div>
@@ -440,23 +464,23 @@ export function SleepTestLanding() {
                 Seven signals. One night.
               </h2>
               <p className="mt-3 font-body text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
-                The same clinical-grade data used in sleep labs — captured from your finger at home.
+                The same clinical-grade data used in sleep labs, captured from your finger at home.
               </p>
             </FadeUp>
             <div className="mt-8 grid grid-cols-2 gap-3">
               {[
-                { icon: "🫁", label: "Breathing patterns" },
-                { icon: "🩸", label: "Blood oxygen (SpO2)" },
-                { icon: "❤️", label: "Heart rate" },
-                { icon: "🔊", label: "Snoring intensity" },
-                { icon: "🛌", label: "Sleep position" },
-                { icon: "🌙", label: "Sleep stages" },
-                { icon: "💪", label: "Chest wall effort" },
-              ].map((m, i) => (
-                <FadeUp key={m.label} delay={i * 0.06}>
+                "Breathing patterns",
+                "Blood oxygen (SpO2)",
+                "Heart rate",
+                "Snoring intensity",
+                "Sleep position",
+                "Sleep stages",
+                "Chest wall effort",
+              ].map((label, i) => (
+                <FadeUp key={label} delay={i * 0.06}>
                   <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
-                    <span className="text-xl">{m.icon}</span>
-                    <span className="font-body text-sm font-medium text-white">{m.label}</span>
+                    <div className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: "#78BFBC" }} />
+                    <span className="font-body text-sm font-medium text-white">{label}</span>
                   </div>
                 </FadeUp>
               ))}
@@ -483,17 +507,17 @@ export function SleepTestLanding() {
             </p>
             <ul className="mt-8 space-y-4">
               {[
-                { icon: "📦", title: "WatchPAT ONE device", desc: "Disposable finger device — FDA-cleared, single-use" },
-                { icon: "📋", title: "Setup guide", desc: "Step-by-step instructions included in the kit" },
-                { icon: "🗑️", title: "Single-use device", desc: "Disposable after one night — no returns needed" },
-                { icon: "👨‍⚕️", title: "Physician review", desc: "A board-certified sleep doctor reviews every result" },
-                { icon: "📄", title: "Your full sleep report", desc: "Clear, plain-language results with your data" },
-                { icon: "💊", title: "Prescription if diagnosed", desc: "Included at no extra cost if you have sleep apnea" },
+                { title: "WatchPAT ONE device", desc: "FDA-cleared disposable finger device, single-use" },
+                { title: "Setup guide", desc: "Step-by-step instructions included in the kit" },
+                { title: "Single-use design", desc: "Disposable after one night. No returns needed." },
+                { title: "Physician review", desc: "A board-certified sleep doctor reviews every result" },
+                { title: "Your full sleep report", desc: "Clear, plain-language results with your data" },
+                { title: "Prescription if diagnosed", desc: "Included at no extra cost if you have sleep apnea" },
               ].map((item, i) => (
                 <FadeUp key={item.title} delay={i * 0.06}>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xl" style={{ backgroundColor: "#FCF6ED" }}>
-                      {item.icon}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-mono text-sm font-bold" style={{ backgroundColor: "#FCF6ED", color: "#FF8361" }}>
+                      {String(i + 1).padStart(2, "0")}
                     </div>
                     <div>
                       <p className="font-body font-bold" style={{ color: "#031F3D" }}>{item.title}</p>
@@ -572,7 +596,7 @@ export function SleepTestLanding() {
                   className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
                   style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.25)" }}
                 >
-                  Order your test — $149
+                  Order your test · $149
                 </button>
               </div>
             </div>
@@ -598,56 +622,179 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ WHAT HAPPENS AFTER CHECKOUT ═══ */}
-      <section style={{ backgroundColor: "#031F3D", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
-        <FadeUp className="text-center">
-          <SectionLabel>No surprises</SectionLabel>
-          <h2 className="mt-2 font-heading font-medium text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-            What happens after checkout
-          </h2>
-          <p className="mx-auto mt-3 font-body text-lg" style={{ color: "rgba(255,255,255,0.45)", maxWidth: "48ch" }}>
-            Here is exactly what to expect from order to results.
-          </p>
-        </FadeUp>
+      <section style={{ backgroundColor: "#031F3D", paddingTop: "100px", paddingBottom: "100px", paddingLeft: "5%", paddingRight: "5%" }}>
+        <div className="mx-auto" style={{ maxWidth: "860px" }}>
 
-        <div className="relative mt-14">
-          {/* Vertical line on desktop */}
-          <div className="absolute bottom-0 left-[50%] top-0 hidden w-px md:block" style={{ backgroundColor: "rgba(255,255,255,0.07)" }} />
+          {/* Header */}
+          <FadeUp className="mb-16">
+            <SectionLabel>No surprises</SectionLabel>
+            <h2 className="mt-3 font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+              What happens after checkout
+            </h2>
+            <p className="mt-3 font-heading font-medium" style={{ color: "#78BFBC", fontSize: "clamp(1rem, 1.8vw, 1.25rem)" }}>
+              From order to diagnosis in under a week.
+            </p>
+          </FadeUp>
 
-          <div className="space-y-6">
-            {[
-              { day: "Day 1", title: "You place your order", desc: "Fill out a quick health form at checkout. Takes less than 3 minutes.", side: "left" },
-              { day: "Day 1–2", title: "Kit ships to your door", desc: "Your WatchPAT ONE device ships next business day with everything inside.", side: "right" },
-              { day: "Night 3–5", title: "Wear it while you sleep", desc: "Put the device on your finger before bed. The app guides you through setup in seconds.", side: "left" },
-              { day: "Morning after", title: "Dispose of the device", desc: "The test is single-use. Discard it after one night.", side: "right" },
-              { day: "Within days", title: "Doctor reviews your data", desc: "A board-certified sleep physician reads your results and prepares your report.", side: "left" },
-              { day: "Final step", title: "You get your results and care plan", desc: "Clear report, diagnosis, and next steps emailed to you. Prescription included if you have sleep apnea.", side: "right" },
-            ].map((step, i) => (
-              <FadeUp key={step.title} delay={i * 0.07}>
-                <div className={`flex items-start gap-6 md:w-[46%] ${step.side === "right" ? "md:ml-auto md:flex-row-reverse" : ""}`}>
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold" style={{ backgroundColor: "rgba(255,131,97,0.15)", color: "#FF8361" }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className={step.side === "right" ? "text-right" : ""}>
-                    <p className="font-mono text-xs" style={{ color: "#78BFBC" }}>{step.day}</p>
-                    <p className="mt-0.5 font-heading text-lg font-medium text-white">{step.title}</p>
-                    <p className="mt-1 font-body text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{step.desc}</p>
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
+          {/* Timeline */}
+          <div className="relative">
+            {/* Continuous vertical spine — desktop only, positioned at right edge of label column */}
+            <div
+              className="absolute top-3 bottom-3 hidden md:block"
+              style={{ left: "224px", width: "1px", backgroundColor: "rgba(120,191,188,0.18)" }}
+            />
+
+            <div className="space-y-10 md:space-y-11">
+              {[
+                {
+                  day: "Day 1",
+                  title: "You place your order",
+                  desc: "Fill out a quick health form at checkout. Takes less than 3 minutes.",
+                },
+                {
+                  day: "Day 1–2",
+                  title: "Kit ships to your door",
+                  desc: "Your WatchPAT ONE device ships next business day with everything inside.",
+                },
+                {
+                  day: "Night 3–5",
+                  title: "Wear it while you sleep",
+                  desc: "Put the device on your finger before bed. The app guides you through setup in seconds.",
+                },
+                {
+                  day: "Morning after",
+                  title: "Dispose of the device",
+                  desc: "The test is single-use. Discard it after one night. Nothing to mail back.",
+                },
+                {
+                  day: "Within days",
+                  title: "Doctor reviews your data",
+                  desc: "A board-certified sleep physician reads your results and prepares your full report.",
+                },
+                {
+                  day: "Final step",
+                  title: "Your results and care plan arrive",
+                  desc: "Clear report, diagnosis, and next steps emailed directly to you. Prescription included at no extra cost if you have sleep apnea.",
+                  isLast: true,
+                },
+              ].map((step, i) => {
+                const isLast = !!(step as { isLast?: boolean }).isLast;
+                return (
+                  <FadeUp key={step.title} delay={i * 0.08}>
+
+                    {/* ── Mobile layout ── */}
+                    <div className="md:hidden">
+                      <p
+                        className="font-heading font-medium leading-tight"
+                        style={{ color: isLast ? "#FF8361" : "#78BFBC", fontSize: "1.6rem" }}
+                      >
+                        {step.day}
+                      </p>
+                      <h3
+                        className="mt-1 font-heading font-medium text-white"
+                        style={{ fontSize: isLast ? "1.3rem" : "1.15rem" }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 font-body text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+                        {step.desc}
+                      </p>
+                      {isLast && (
+                        <button
+                          type="button"
+                          data-shopify-checkout="sleep-test"
+                          className="mt-6 inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                          style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.3)" }}
+                        >
+                          Start your order · $149
+                        </button>
+                      )}
+                    </div>
+
+                    {/* ── Desktop layout ── */}
+                    <div className="hidden md:flex items-start">
+
+                      {/* Time label column — sized to longest label "Morning after", never wraps */}
+                      <div
+                        className="shrink-0 text-right"
+                        style={{ width: "224px", paddingRight: "28px" }}
+                      >
+                        <span
+                          className="font-heading font-medium"
+                          style={{
+                            display: "block",
+                            whiteSpace: "nowrap",
+                            lineHeight: "1",
+                            paddingTop: "3px",
+                            color: isLast ? "#FF8361" : "#78BFBC",
+                            fontSize: "clamp(1.1rem, 1.5vw, 1.35rem)",
+                          }}
+                        >
+                          {step.day}
+                        </span>
+                      </div>
+
+                      {/* Dot pinned on the spine */}
+                      <div className="relative shrink-0" style={{ width: "0px" }}>
+                        <div
+                          className="absolute rounded-full"
+                          style={{
+                            width: "11px",
+                            height: "11px",
+                            left: "-5.5px",
+                            top: "3px",
+                            backgroundColor: isLast ? "#FF8361" : "#78BFBC",
+                            boxShadow: isLast
+                              ? "0 0 0 5px rgba(255,131,97,0.14)"
+                              : "0 0 0 4px rgba(120,191,188,0.12)",
+                          }}
+                        />
+                      </div>
+
+                      {/* Step content */}
+                      <div
+                        className="flex-1"
+                        style={
+                          isLast
+                            ? {
+                                marginLeft: "28px",
+                                padding: "24px 28px",
+                                backgroundColor: "rgba(255,131,97,0.07)",
+                                border: "1px solid rgba(255,131,97,0.18)",
+                                borderRadius: "16px",
+                              }
+                            : { paddingLeft: "28px" }
+                        }
+                      >
+                        <h3
+                          className="font-heading font-medium text-white"
+                          style={{ fontSize: isLast ? "clamp(1.3rem, 2.2vw, 1.7rem)" : "clamp(1.1rem, 2vw, 1.4rem)" }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="mt-2 font-body text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+                          {step.desc}
+                        </p>
+                        {isLast && (
+                          <button
+                            type="button"
+                            data-shopify-checkout="sleep-test"
+                            className="mt-6 inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                            style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.3)" }}
+                          >
+                            Start your order · $149
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                  </FadeUp>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <FadeUp delay={0.1} className="mt-14 text-center">
-          <button
-            type="button"
-            data-shopify-checkout="sleep-test"
-            className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-midnight transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
-            style={{ backgroundColor: "#FCF6ED" }}
-          >
-            Start your order — $149
-          </button>
-        </FadeUp>
+        </div>
       </section>
 
       {/* ═══ STATS ═══ */}
@@ -655,7 +802,7 @@ export function SleepTestLanding() {
         <FadeUp className="text-center">
           <SectionLabel>Backed by data</SectionLabel>
           <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-            Clinically trusted, proven at scale
+            Trusted by patients and doctors alike
           </h2>
         </FadeUp>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -738,7 +885,7 @@ export function SleepTestLanding() {
               },
               {
                 q: "Do I ever need a sleep lab?",
-                a: "Almost never. Fewer than 1 in 100 people need a full polysomnography lab test. Most people get a complete diagnosis from the home test.",
+                a: "Almost never. Fewer than one in 100 people need a full in-lab sleep study. Most people get a complete diagnosis from the home test.",
               },
               {
                 q: "How does the testing process work?",
@@ -750,7 +897,7 @@ export function SleepTestLanding() {
               },
               {
                 q: "What makes Dumbo Health different?",
-                a: "Board-certified sleep specialists read every result. We use FDA-cleared technology. One flat price covers the device, physician review, and your prescription if diagnosed — no hidden fees.",
+                a: "Board-certified sleep specialists read every result. We use FDA-cleared technology. One flat price covers the device, physician review, and your prescription if diagnosed. No hidden fees.",
               },
               {
                 q: "Why is testing important?",
@@ -785,7 +932,7 @@ export function SleepTestLanding() {
             className="mt-8 inline-flex h-14 items-center rounded-[12px] px-10 font-body text-base font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
             style={{ backgroundColor: "#fff", color: "#FF8361", boxShadow: "0 4px 20px rgba(255,255,255,0.2)" }}
           >
-            Order your test — $149
+            Order your test · $149
           </button>
           <p className="mt-4 font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
             Free shipping &middot; Prescription included &middot; HIPAA compliant
