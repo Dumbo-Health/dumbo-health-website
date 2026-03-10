@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Unused WebGL components — not imported anywhere
+    "src/components/webgl/**",
   ]),
 ]);
 
