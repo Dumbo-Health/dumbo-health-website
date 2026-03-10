@@ -221,6 +221,123 @@ function BuyBox() {
         <span className="h-2 w-2 rounded-full bg-emerald-500" />
         <span className="font-body text-sm text-emerald-700">In stock — ships next business day</span>
       </div>
+
+      {/* Product details + Shipping & Returns accordions */}
+      <div className="mt-4" style={{ borderTop: "1px solid rgba(3,31,61,0.07)" }}>
+        <Accordion type="single" collapsible>
+
+          <AccordionItem value="product-details" style={{ borderColor: "rgba(3,31,61,0.07)" }}>
+            <AccordionTrigger
+              className="font-body text-sm font-bold hover:no-underline"
+              style={{ color: "#031F3D" }}
+            >
+              Product details
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-4 font-body text-sm leading-relaxed" style={{ color: "rgba(3,31,61,0.65)" }}>
+                <p>
+                  Our at-home sleep test lets you check for sleep apnea from the comfort of your own bed. It is a simple, one-night test designed to measure key signals related to obstructive sleep apnea (OSA). You wear small sensors on your finger, wrist, and chest that work together with a smartphone app to track how your body breathes and rests during sleep.
+                </p>
+                <p>
+                  After just one night, our medical team reviews your results and determines whether sleep apnea may be affecting your rest. This is a convenient alternative to an overnight sleep lab and works well for most people who want clear answers without a clinic visit.
+                </p>
+                <div>
+                  <p className="font-bold mb-1" style={{ color: "#031F3D" }}>How it works</p>
+                  <p>To get started, you will complete a short health questionnaire. This confirms the test is right for you. If your results show signs of sleep apnea, our team will guide you through next steps and talk through treatment options that fit your life. The test is single use and intended for adults 18 and older.</p>
+                </div>
+                <div>
+                  <p className="font-bold mb-2" style={{ color: "#031F3D" }}>What the test measures</p>
+                  <ul className="space-y-1.5">
+                    {[
+                      "Breathing patterns during sleep",
+                      "Oxygen levels and heart rate",
+                      "Snoring and body position",
+                      "Movement and sleep activity",
+                      "Chest motion related to breathing",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <p>
+                  You will receive a clear summary of your results, including your AHI score (breathing pauses per hour). If you meet the criteria for obstructive sleep apnea, a prescription for PAP therapy may be recommended.
+                </p>
+                <div>
+                  <p className="font-bold mb-2" style={{ color: "#031F3D" }}>Who this test is for</p>
+                  <ul className="space-y-1.5">
+                    {[
+                      "You snore regularly or wake up short of breath",
+                      "You feel tired despite a full night of sleep",
+                      "You suspect sleep apnea and want to avoid an overnight lab study",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="shipping-returns" style={{ borderColor: "rgba(3,31,61,0.07)" }}>
+            <AccordionTrigger
+              className="font-body text-sm font-bold hover:no-underline"
+              style={{ color: "#031F3D" }}
+            >
+              Shipping &amp; returns
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-4 font-body text-sm leading-relaxed" style={{ color: "rgba(3,31,61,0.65)" }}>
+                <div>
+                  <p className="font-bold mb-2" style={{ color: "#031F3D" }}>Shipping</p>
+                  <ul className="space-y-1.5">
+                    {[
+                      "Free standard shipping on all orders",
+                      "Ships next business day after your order is placed",
+                      "Arrives in 2 to 5 business days",
+                      "Pre-paid return envelope included in the kit",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-bold mb-2" style={{ color: "#031F3D" }}>Returns</p>
+                  <ul className="space-y-1.5">
+                    {[
+                      "Unopened tests can be returned within 60 days of purchase",
+                      "Opened or used devices cannot be returned for hygiene reasons",
+                      "To start a return, email us at hello@dumbohealth.com",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+        </Accordion>
+      </div>
     </div>
   );
 }
