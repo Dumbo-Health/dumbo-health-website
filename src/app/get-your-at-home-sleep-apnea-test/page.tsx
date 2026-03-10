@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SleepTestLanding } from "@/components/sleep-test/sleep-test-landing";
 
-const SHOPIFY_BUY_URL =
-  "https://checkout.dumbo.health/cart/add?id=8933198397592&quantity=1";
 
 export const metadata: Metadata = {
   title: "At Home Sleep Apnea Test | One Night Results",
@@ -85,13 +83,14 @@ export default function LandingPage() {
               priority
             />
           </Link>
-          <a
-            href={SHOPIFY_BUY_URL}
+          <button
+            type="button"
+            data-shopify-checkout="sleep-test"
             className="inline-flex h-10 items-center rounded-[12px] px-6 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
             style={{ backgroundColor: "#FF8361" }}
           >
             Get your test
-          </a>
+          </button>
         </div>
       </header>
 

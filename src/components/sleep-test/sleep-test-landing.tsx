@@ -12,8 +12,6 @@ import {
 import { scientificCommittee } from "@/content/team";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-const SHOPIFY_BUY_URL =
-  "https://checkout.dumbo.health/cart/add?id=8933198397592&quantity=1";
 
 // ── Reusable fade-up animation wrapper ────────────────────────────────────
 function FadeUp({
@@ -193,13 +191,14 @@ function BuyBox() {
       </ul>
 
       {/* CTA */}
-      <a
-        href={SHOPIFY_BUY_URL}
+      <button
+        type="button"
+        data-shopify-checkout="sleep-test"
         className="mt-6 flex h-14 w-full items-center justify-center rounded-[12px] font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
         style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 18px rgba(255,131,97,0.3)" }}
       >
         Order your test — $149
-      </a>
+      </button>
 
       {/* Micro-trust */}
       <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1">
@@ -421,13 +420,14 @@ export function SleepTestLanding() {
         </div>
 
         <FadeUp delay={0.1} className="mt-12 text-center">
-          <a
-            href={SHOPIFY_BUY_URL}
+          <button
+            type="button"
+            data-shopify-checkout="sleep-test"
             className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
             style={{ backgroundColor: "#FF8361", boxShadow: "0 4px 14px rgba(255,131,97,0.2)" }}
           >
             Order your test
-          </a>
+          </button>
         </FadeUp>
       </section>
 
@@ -615,13 +615,14 @@ export function SleepTestLanding() {
         </div>
 
         <FadeUp delay={0.1} className="mt-14 text-center">
-          <a
-            href={SHOPIFY_BUY_URL}
+          <button
+            type="button"
+            data-shopify-checkout="sleep-test"
             className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-base font-bold uppercase tracking-wider text-midnight transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
             style={{ backgroundColor: "#FCF6ED" }}
           >
             Start your order — $149
-          </a>
+          </button>
         </FadeUp>
       </section>
 
@@ -754,13 +755,14 @@ export function SleepTestLanding() {
           <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(255,255,255,0.8)", maxWidth: "44ch" }}>
             One night. One device. A clear answer. Better sleep starts here.
           </p>
-          <a
-            href={SHOPIFY_BUY_URL}
+          <button
+            type="button"
+            data-shopify-checkout="sleep-test"
             className="mt-8 inline-flex h-14 items-center rounded-[12px] px-10 font-body text-base font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
             style={{ backgroundColor: "#fff", color: "#FF8361", boxShadow: "0 4px 20px rgba(255,255,255,0.2)" }}
           >
             Order your test — $149
-          </a>
+          </button>
           <p className="mt-4 font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
             Free shipping &middot; Prescription included &middot; HIPAA compliant
           </p>
