@@ -154,7 +154,7 @@ function BuyBox() {
 
       {/* Product name */}
       <h1
-        className="mt-2 font-heading font-medium leading-tight"
+        className="mt-2 font-heading font-medium leading-tight text-balance"
         style={{ color: "#031F3D", fontSize: "clamp(1.7rem, 3vw, 2.4rem)" }}
       >
         Sleep in your own bed.<br />
@@ -401,7 +401,7 @@ export function SleepTestLanding() {
       <section style={{ backgroundColor: "#F5E6D1", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
         <FadeUp className="text-center">
           <SectionLabel>Simple process</SectionLabel>
-          <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+          <h2 className="mt-2 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
             How it works
           </h2>
         </FadeUp>
@@ -460,10 +460,10 @@ export function SleepTestLanding() {
           <div>
             <FadeUp>
               <SectionLabel>What the device captures</SectionLabel>
-              <h2 className="mt-2 font-heading font-medium text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+              <h2 className="mt-2 font-heading font-medium text-white text-balance" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Seven signals. One night.
               </h2>
-              <p className="mt-3 font-body text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="mt-3 font-body text-lg text-pretty" style={{ color: "rgba(255,255,255,0.5)" }}>
                 The same clinical-grade data used in sleep labs, captured from your finger at home.
               </p>
             </FadeUp>
@@ -499,10 +499,10 @@ export function SleepTestLanding() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeUp>
             <SectionLabel>What you get</SectionLabel>
-            <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="mt-2 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Everything in the box
             </h2>
-            <p className="mt-3 font-body text-lg" style={{ color: "rgba(3,31,61,0.55)" }}>
+            <p className="mt-3 font-body text-lg text-pretty" style={{ color: "rgba(3,31,61,0.55)" }}>
               One price. Everything you need to get a clear answer.
             </p>
             <ul className="mt-8 space-y-4">
@@ -542,12 +542,12 @@ export function SleepTestLanding() {
         <FadeUp className="text-center">
           <SectionLabel>Am I a good fit?</SectionLabel>
           <h2
-            className="mt-3 font-heading font-medium"
+            className="mt-3 font-heading font-medium text-balance"
             style={{ color: "#031F3D", fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
           >
             This test might be exactly what you need.
           </h2>
-          <p className="mx-auto mt-4 font-body text-lg" style={{ color: "rgba(3,31,61,0.55)", maxWidth: "52ch" }}>
+          <p className="mx-auto mt-4 font-body text-lg text-pretty" style={{ color: "rgba(3,31,61,0.55)", maxWidth: "52ch" }}>
             Most people with these signs have never been tested. One night can change that.
           </p>
         </FadeUp>
@@ -628,10 +628,10 @@ export function SleepTestLanding() {
           {/* Header */}
           <FadeUp className="mb-16">
             <SectionLabel>No surprises</SectionLabel>
-            <h2 className="mt-3 font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+            <h2 className="mt-3 font-heading font-medium text-white text-balance" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               What happens after checkout
             </h2>
-            <p className="mt-3 font-heading font-medium" style={{ color: "#78BFBC", fontSize: "clamp(1rem, 1.8vw, 1.25rem)" }}>
+            <p className="mt-3 font-heading font-medium text-pretty" style={{ color: "#78BFBC", fontSize: "clamp(1rem, 1.8vw, 1.25rem)" }}>
               From order to diagnosis in under a week.
             </p>
           </FadeUp>
@@ -801,7 +801,7 @@ export function SleepTestLanding() {
       <section style={{ backgroundColor: "#F5E6D1", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
         <FadeUp className="text-center">
           <SectionLabel>Backed by data</SectionLabel>
-          <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+          <h2 className="mt-2 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
             Trusted by patients and doctors alike
           </h2>
         </FadeUp>
@@ -826,10 +826,10 @@ export function SleepTestLanding() {
       <section style={{ backgroundColor: "#fff", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
         <FadeUp className="text-center">
           <SectionLabel>Expert-led care</SectionLabel>
-          <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+          <h2 className="mt-2 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
             Our scientific committee
           </h2>
-          <p className="mx-auto mt-3 font-body" style={{ color: "rgba(3,31,61,0.55)", maxWidth: "50ch" }}>
+          <p className="mx-auto mt-3 font-body text-pretty" style={{ color: "rgba(3,31,61,0.55)", maxWidth: "50ch" }}>
             Board-certified sleep specialists who guide our clinical standards.
           </p>
         </FadeUp>
@@ -876,7 +876,7 @@ export function SleepTestLanding() {
           <div>
             <FadeUp>
               <SectionLabel>Common questions</SectionLabel>
-              <h2 className="mt-3 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(2.4rem, 4.5vw, 3.6rem)" }}>
+              <h2 className="mt-3 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(2.4rem, 4.5vw, 3.6rem)" }}>
                 Got questions?
               </h2>
             </FadeUp>
@@ -1026,10 +1026,10 @@ export function SleepTestLanding() {
 
         {/* ── Content ── */}
         <FadeUp className="relative z-10 mx-auto max-w-2xl text-center">
-          <h2 className="font-heading font-medium text-white" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}>
+          <h2 className="font-heading font-medium text-white text-balance" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}>
             Ready to find out how you sleep?
           </h2>
-          <p className="mx-auto mt-5 font-body" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44ch", fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
+          <p className="mx-auto mt-5 font-body text-pretty" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44ch", fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}>
             One night. One device. A clear answer. Better sleep starts here.
           </p>
           <button
