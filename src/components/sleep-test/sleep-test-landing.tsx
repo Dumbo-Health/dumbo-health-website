@@ -303,7 +303,6 @@ function BuyBox() {
                       "Free standard shipping on all orders",
                       "Ships next business day after your order is placed",
                       "Arrives in 2 to 5 business days",
-                      "Pre-paid return envelope included in the kit",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -318,9 +317,9 @@ function BuyBox() {
                   <p className="font-bold mb-2" style={{ color: "#031F3D" }}>Returns</p>
                   <ul className="space-y-1.5">
                     {[
-                      "Unopened tests can be returned within 60 days of purchase",
-                      "Opened or used devices cannot be returned for hygiene reasons",
-                      "To start a return, email us at hello@dumbohealth.com",
+                      "The device is single-use and disposable after one night of testing",
+                      "Unopened, unused kits can be returned within 60 days of purchase",
+                      "To request a return, email us at hello@dumbohealth.com",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <svg className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: "#78BFBC" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -400,7 +399,7 @@ export function SleepTestLanding() {
             {
               n: "03",
               title: "Get results and next steps",
-              desc: "Drop it in the pre-paid return envelope. A board-certified doctor reviews your data and sends you a clear report within days.",
+              desc: "A board-certified doctor reviews your data and sends you a clear report within days.",
               img: "/images/products/hst-results.png",
             },
           ].map((s, i) => (
@@ -486,7 +485,7 @@ export function SleepTestLanding() {
               {[
                 { icon: "📦", title: "WatchPAT ONE device", desc: "Disposable finger device — FDA-cleared, single-use" },
                 { icon: "📋", title: "Setup guide", desc: "Step-by-step instructions included in the kit" },
-                { icon: "✉️", title: "Pre-paid return envelope", desc: "Drop it in any mailbox after one night" },
+                { icon: "🗑️", title: "Single-use device", desc: "Disposable after one night — no returns needed" },
                 { icon: "👨‍⚕️", title: "Physician review", desc: "A board-certified sleep doctor reviews every result" },
                 { icon: "📄", title: "Your full sleep report", desc: "Clear, plain-language results with your data" },
                 { icon: "💊", title: "Prescription if diagnosed", desc: "Included at no extra cost if you have sleep apnea" },
@@ -594,7 +593,7 @@ export function SleepTestLanding() {
               { day: "Day 1", title: "You place your order", desc: "Fill out a quick health form at checkout. Takes less than 3 minutes.", side: "left" },
               { day: "Day 1–2", title: "Kit ships to your door", desc: "Your WatchPAT ONE device ships next business day with everything inside.", side: "right" },
               { day: "Night 3–5", title: "Wear it while you sleep", desc: "Put the device on your finger before bed. The app guides you through setup in seconds.", side: "left" },
-              { day: "Morning after", title: "Return in the pre-paid envelope", desc: "Drop it in any mailbox. No post office trip needed.", side: "right" },
+              { day: "Morning after", title: "Dispose of the device", desc: "The test is single-use. Discard it after one night.", side: "right" },
               { day: "Within days", title: "Doctor reviews your data", desc: "A board-certified sleep physician reads your results and prepares your report.", side: "left" },
               { day: "Final step", title: "You get your results and care plan", desc: "Clear report, diagnosis, and next steps emailed to you. Prescription included if you have sleep apnea.", side: "right" },
             ].map((step, i) => (
@@ -718,7 +717,7 @@ export function SleepTestLanding() {
               },
               {
                 q: "How does the testing process work?",
-                a: "After completing a short health form, your kit ships next business day. Pair the WatchPAT ONE device with your phone, wear it on your finger overnight, then drop it in the pre-paid return envelope. A physician reviews your data and sends results within days.",
+                a: "After completing a short health form, your kit ships next business day. Pair the WatchPAT ONE device with your phone, wear it on your finger overnight. The device is single-use and disposable after one night. A physician reviews your data and sends results within days.",
               },
               {
                 q: "What is a home sleep test?",
