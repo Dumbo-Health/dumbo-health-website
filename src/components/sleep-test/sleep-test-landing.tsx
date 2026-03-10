@@ -869,51 +869,79 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section style={{ backgroundColor: "#F5E6D1", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
-        <FadeUp>
-          <SectionLabel>Common questions</SectionLabel>
-          <h2 className="mt-2 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-            Got questions?
-          </h2>
-        </FadeUp>
-        <div className="mt-8" style={{ maxWidth: "720px" }}>
-          <Accordion type="single" collapsible>
-            {[
-              {
-                q: "Can this home sleep test really diagnose sleep apnea?",
-                a: "Yes. It is FDA-cleared and built to measure the signals needed to diagnose obstructive sleep apnea. The same technology has been used in tens of thousands of tests with strong clinical accuracy.",
-              },
-              {
-                q: "Do I ever need a sleep lab?",
-                a: "Almost never. Fewer than one in 100 people need a full in-lab sleep study. Most people get a complete diagnosis from the home test.",
-              },
-              {
-                q: "How does the testing process work?",
-                a: "After completing a short health form, your kit ships next business day. Pair the WatchPAT ONE device with your phone, wear it on your finger overnight. The device is single-use and disposable after one night. A physician reviews your data and sends results within days.",
-              },
-              {
-                q: "What is a home sleep test?",
-                a: "A small disposable device worn on your finger overnight. It tracks breathing, blood oxygen (SpO2), heart rate, snoring, and sleep stages using a light sensor. Data uploads automatically through the companion app.",
-              },
-              {
-                q: "What makes Dumbo Health different?",
-                a: "Board-certified sleep specialists read every result. We use FDA-cleared technology. One flat price covers the device, physician review, and your prescription if diagnosed. No hidden fees.",
-              },
-              {
-                q: "Why is testing important?",
-                a: "When your throat narrows during sleep, your oxygen drops. This stresses your heart, brain, and organs. Untreated sleep apnea is linked to high blood pressure, diabetes, stroke, and chronic fatigue. An accurate diagnosis is the first step toward real treatment.",
-              },
-            ].map((faq, i) => (
-              <AccordionItem key={faq.q} value={`faq-${i}`} style={{ borderColor: "rgba(3,31,61,0.1)" }}>
-                <AccordionTrigger className="text-left font-heading text-base font-medium hover:no-underline" style={{ color: "#031F3D" }}>
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="font-body leading-relaxed" style={{ color: "rgba(3,31,61,0.6)" }}>
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+      <section style={{ backgroundColor: "#F5E6D1", paddingTop: "96px", paddingBottom: "96px", paddingLeft: "5%", paddingRight: "5%" }}>
+        <div className="grid items-start gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
+
+          {/* ── Left: heading + accordion ── */}
+          <div>
+            <FadeUp>
+              <SectionLabel>Common questions</SectionLabel>
+              <h2 className="mt-3 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(2.4rem, 4.5vw, 3.6rem)" }}>
+                Got questions?
+              </h2>
+            </FadeUp>
+            <div className="mt-10">
+              <Accordion type="single" collapsible>
+                {[
+                  {
+                    q: "Can this home sleep test really diagnose sleep apnea?",
+                    a: "Yes. It is FDA-cleared and built to measure the signals needed to diagnose obstructive sleep apnea. The same technology has been used in tens of thousands of tests with strong clinical accuracy.",
+                  },
+                  {
+                    q: "Do I ever need a sleep lab?",
+                    a: "Almost never. Fewer than one in 100 people need a full in-lab sleep study. Most people get a complete diagnosis from the home test.",
+                  },
+                  {
+                    q: "How does the testing process work?",
+                    a: "After completing a short health form, your kit ships next business day. Pair the WatchPAT ONE device with your phone, wear it on your finger overnight. The device is single-use and disposable after one night. A physician reviews your data and sends results within days.",
+                  },
+                  {
+                    q: "What is a home sleep test?",
+                    a: "A small disposable device worn on your finger overnight. It tracks breathing, blood oxygen (SpO2), heart rate, snoring, and sleep stages using a light sensor. Data uploads automatically through the companion app.",
+                  },
+                  {
+                    q: "What makes Dumbo Health different?",
+                    a: "Board-certified sleep specialists read every result. We use FDA-cleared technology. One flat price covers the device, physician review, and your prescription if diagnosed. No hidden fees.",
+                  },
+                  {
+                    q: "Why is testing important?",
+                    a: "When your throat narrows during sleep, your oxygen drops. This stresses your heart, brain, and organs. Untreated sleep apnea is linked to high blood pressure, diabetes, stroke, and chronic fatigue. An accurate diagnosis is the first step toward real treatment.",
+                  },
+                ].map((faq, i) => (
+                  <AccordionItem key={faq.q} value={`faq-${i}`} style={{ borderColor: "rgba(3,31,61,0.12)" }}>
+                    <AccordionTrigger
+                      className="text-left font-heading font-medium hover:no-underline"
+                      style={{ color: "#031F3D", fontSize: "clamp(1.05rem, 1.6vw, 1.2rem)", paddingTop: "20px", paddingBottom: "20px" }}
+                    >
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent
+                      className="font-body leading-relaxed"
+                      style={{ color: "rgba(3,31,61,0.65)", fontSize: "clamp(0.95rem, 1.3vw, 1.05rem)" }}
+                    >
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+
+          {/* ── Right: photo ── */}
+          <FadeUp delay={0.12} className="hidden lg:block">
+            <div className="sticky top-28">
+              <div className="relative overflow-hidden rounded-3xl" style={{ aspectRatio: "3 / 4" }}>
+                <Image
+                  src="/images/people/man-drinking-coffee.png"
+                  alt="Waking up refreshed after better sleep"
+                  fill
+                  className="object-cover object-center"
+                  sizes="40vw"
+                />
+              </div>
+            </div>
+          </FadeUp>
+
         </div>
       </section>
 
