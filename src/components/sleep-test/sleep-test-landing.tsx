@@ -922,22 +922,22 @@ export function SleepTestLanding() {
         className="relative overflow-hidden"
         style={{ backgroundColor: "#FF8361", paddingTop: "130px", paddingBottom: "130px", paddingLeft: "5%", paddingRight: "5%" }}
       >
-        {/* ── Isotype tile pattern ── */}
+        {/* ── Brand pattern ── */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: "url('/logos/isotype-white.svg')",
-            backgroundSize: "72px 65px",
+            backgroundImage: "url('/images/brand-pattern.png')",
+            backgroundSize: "880px auto",
             backgroundRepeat: "repeat",
-            opacity: 0.09,
+            opacity: 0.18,
           }}
         />
 
-        {/* ── Radial vignette: center lit, edges recede ── */}
+        {/* ── Radial gradient: solid peach center for legibility, fades to reveal pattern at edges ── */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 60% 75% at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 55%, rgba(0,0,0,0.18) 100%)",
+            background: "radial-gradient(ellipse 55% 70% at 50% 50%, #FF8361 30%, rgba(255,131,97,0.85) 55%, rgba(255,131,97,0.3) 80%, transparent 100%)",
           }}
         />
 
