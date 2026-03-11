@@ -22,7 +22,7 @@ export function FAQsContent() {
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 rounded-full font-mono text-tag transition-colors ${
+            className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
               activeCategory === null
                 ? "bg-midnight text-white"
                 : "bg-sunlight text-midnight hover:bg-light-peach"
@@ -34,7 +34,7 @@ export function FAQsContent() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full font-mono text-tag transition-colors ${
+              className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
                 activeCategory === cat.id
                   ? "bg-midnight text-white"
                   : "bg-sunlight text-midnight hover:bg-light-peach"
@@ -48,10 +48,10 @@ export function FAQsContent() {
         <Accordion type="single" collapsible className="w-full">
           {filteredFaqs.map((faq, i) => (
             <AccordionItem key={`${faq.category}-${i}`} value={`faq-${faq.category}-${i}`}>
-              <AccordionTrigger className="text-left font-body text-body-lg text-midnight">
+              <AccordionTrigger className="text-left font-body text-lg font-medium text-midnight">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="font-body text-body text-midnight/70">
+              <AccordionContent className="font-body text-base text-midnight/70">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

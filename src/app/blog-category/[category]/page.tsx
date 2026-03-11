@@ -45,15 +45,18 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
       <main>
       <section className="bg-daylight py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-2xl md:text-4xl lg:text-hero text-midnight text-center mb-4">
+          <h1
+            className="font-heading font-medium text-midnight text-center mb-4"
+            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+          >
             {label}
           </h1>
-          <p className="font-body text-body-lg text-midnight/70 text-center mb-12">
+          <p className="font-body text-midnight/70 text-center mb-12 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "44ch" }}>
             Browse all {label.toLowerCase()} articles.
           </p>
           <CategoryFilter />
           <div className="text-center py-16">
-            <p className="font-body text-body text-midnight/50">
+            <p className="font-body text-base text-midnight/50">
               Blog posts for this category will be loaded from the CMS.
             </p>
           </div>

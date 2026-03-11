@@ -41,7 +41,10 @@ export function ComparisonTable() {
           <p className="font-mono text-xs uppercase tracking-widest text-teal">
             The difference
           </p>
-          <h2 className="mt-2 font-heading text-3xl font-medium text-midnight md:text-[40px]">
+          <h2
+            className="mt-2 font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             Traditional vs Dumbo Health
           </h2>
         </div>

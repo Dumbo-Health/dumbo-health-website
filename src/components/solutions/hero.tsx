@@ -1,52 +1,76 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
 
 export function SolutionsHero() {
   return (
-    <section className="relative overflow-hidden bg-midnight py-16 md:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+    <section
+      className="relative overflow-hidden bg-midnight py-28 md:py-40 lg:py-52"
+      style={{ isolation: "isolate" }}
+    >
+      {/* Brand pattern — side strips only.
+          filter: invert(1) turns the cream background near-black (screens to nothing)
+          and the slightly-darker icons become slightly lighter (screens to subtle glow).
+          Result: pure midnight center, icon texture only on the edges. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "url('/images/brand-pattern.png')",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          filter: "invert(1) brightness(1.3)",
+          mixBlendMode: "screen",
+          opacity: 0.55,
+          WebkitMaskImage:
+            "linear-gradient(to right, black 0%, black 10%, transparent 27%, transparent 73%, black 90%, black 100%)",
+          maskImage:
+            "linear-gradient(to right, black 0%, black 10%, transparent 27%, transparent 73%, black 90%, black 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-5xl px-[5%] text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="font-mono text-xs uppercase tracking-widest text-teal"
+        >
+          Complete sleep apnea care
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="mt-5 font-heading font-medium leading-[1.08] text-white text-balance"
+          style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+        >
+          Everything sleep apnea care should be.{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg, #FF8361 0%, #FFD6AD 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
           >
-            <h1 className="font-heading text-4xl font-medium leading-tight text-white md:text-5xl lg:text-hero">
-              Sleep Apnea Care, Start to Finish
-            </h1>
-            <p className="mt-4 max-w-lg font-body text-body-lg text-white/70">
-              Dumbo Health guides you from diagnosis to treatment with support at every step.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button asChild size="lg" className="h-12 rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl active:translate-y-0 active:shadow-md">
-                <Link href={APP_URL}>Start Your Sleep Apnea Journey</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-12 rounded-lg border-white/20 bg-transparent px-7 font-body text-base font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:shadow-md active:translate-y-0 active:shadow-sm">
-                <a href="#step-1">Learn More</a>
-              </Button>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative aspect-[4/3] overflow-hidden rounded-3xl"
-          >
-            <Image
-              src="/images/people/girl-laying-in-bed.png"
-              alt="Person resting peacefully"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 600px"
-              priority
-            />
-          </motion.div>
-        </div>
+            In one place.
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.22 }}
+          className="mx-auto mt-7 max-w-2xl font-body text-balance"
+          style={{
+            fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
+            color: "rgba(255,255,255,0.62)",
+          }}
+        >
+          Diagnosis, treatment, daily support, and resupply. All under one roof, built around you.
+        </motion.p>
       </div>
     </section>
   );

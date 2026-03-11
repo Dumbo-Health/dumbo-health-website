@@ -12,8 +12,8 @@ export function StatsGrid() {
       {stats.map((stat) => (
         <Card key={stat.value} className="border-0 shadow-sm text-center">
           <CardContent className="p-8">
-            <p className="font-heading text-hero text-peach mb-2">{stat.value}</p>
-            <p className="font-body text-body text-midnight/70">{stat.label}</p>
+            <p className="font-heading font-medium text-peach mb-2" style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}>{stat.value}</p>
+            <p className="font-body text-base text-midnight/70">{stat.label}</p>
           </CardContent>
         </Card>
       ))}

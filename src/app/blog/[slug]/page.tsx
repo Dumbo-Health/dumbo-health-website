@@ -43,12 +43,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               &larr; Back to Blog
             </Link>
           </div>
-          <h1 className="font-heading text-2xl md:text-4xl text-midnight mb-4">
+          <h1
+            className="font-heading font-medium text-midnight mb-4"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             {title}
           </h1>
           <div className="flex items-center gap-4 mb-8">
             <span className="font-body text-sm text-midnight/60">Dumbo Health Team</span>
-            <span className="font-mono text-tag text-midnight/40">2026</span>
+            <span className="font-mono text-xs text-midnight/40">2026</span>
           </div>
           <div className="aspect-video bg-sunlight rounded-lg mb-8" />
           <div className="prose prose-lg max-w-none font-body text-midnight/80">

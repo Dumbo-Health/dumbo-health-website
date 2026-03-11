@@ -25,10 +25,13 @@ export default function StrugglingWithCostPage() {
       <main>
       <section className="bg-daylight py-16 sm:py-24 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-2xl md:text-4xl lg:text-hero text-midnight mb-6">
+          <h1
+            className="font-heading font-medium text-midnight mb-6"
+            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+          >
             Struggling with the Cost of Sleep Apnea Treatment?
           </h1>
-          <p className="font-body text-body-lg text-midnight/70 mb-8">
+          <p className="font-body text-midnight/70 mb-8 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
             Affordable, expert sleep care made simple with no hidden costs, no confusing steps, and one predictable monthly price.
           </p>
           <Button size="lg" asChild>
@@ -47,7 +50,7 @@ export default function StrugglingWithCostPage() {
 
       <section className="bg-daylight py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-h2 text-midnight mb-8">
+          <h2 className="font-heading font-medium text-midnight mb-8" style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}>
             Why More People Are Switching to Dumbo Health
           </h2>
           <Button size="lg" asChild>
@@ -61,7 +64,7 @@ export default function StrugglingWithCostPage() {
 
       <section className="bg-sunlight py-16 sm:py-24 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-h2 text-midnight mb-8">
+          <h2 className="font-heading font-medium text-midnight mb-8" style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}>
             Dumbo Health makes sleep apnea treatment more accessible.
           </h2>
         </div>

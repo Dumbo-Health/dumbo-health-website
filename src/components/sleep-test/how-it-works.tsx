@@ -34,13 +34,16 @@ export function HowItWorks() {
     <section className="bg-daylight py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-medium text-midnight md:text-h2">
+          <h2
+            className="font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             Dumbo health at home test
           </h2>
-          <p className="mt-2 font-heading text-xl text-midnight/80">
+          <p className="mt-2 font-heading text-xl font-medium text-midnight/80">
             How it works
           </p>
-          <p className="mt-2 font-body text-body text-midnight/60">
+          <p className="mt-2 font-body text-base text-midnight/60" style={{ maxWidth: "52ch", margin: "0.5rem auto 0" }}>
             Trusted care that guides you from your first step to better sleep
           </p>
         </div>

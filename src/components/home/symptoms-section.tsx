@@ -95,7 +95,10 @@ export function SymptomsSection() {
           <p className="font-mono text-xs uppercase tracking-widest text-teal">
             Sound familiar?
           </p>
-          <h2 className="mt-2 font-heading text-3xl font-medium text-midnight md:text-[40px] md:leading-[1.1]">
+          <h2
+            className="mt-2 font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)", lineHeight: 1.1 }}
+          >
             Get your{" "}
             <span className="relative inline-block">
               <span
@@ -122,7 +125,7 @@ export function SymptomsSection() {
             </span>{" "}
             back.
           </h2>
-          <p className="mx-auto mt-3 max-w-lg font-body text-sm text-midnight/50 md:text-base">
+          <p className="mx-auto mt-3 font-body text-midnight/50" style={{ fontSize: "1.0625rem", maxWidth: "44ch" }}>
             Sleep apnea shows up in ways you wouldn&apos;t expect. Tap a
             symptom and see what better sleep can do.
           </p>

@@ -105,7 +105,7 @@ export function ServiceAreaBanner() {
           </div>
 
           {/* Map + form */}
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-20 items-start">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-start">
 
             {/* Map */}
             <motion.div
@@ -120,7 +120,7 @@ export function ServiceAreaBanner() {
                 <div className="flex items-center gap-2.5">
                   <div className="h-3 w-3 rounded-full" style={{ backgroundColor: "#FF8361" }} />
                   <span className="font-body text-sm font-medium" style={{ color: "#031F3D" }}>
-                    Out-of-pocket — live now
+                    Out-of-pocket, live now
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
@@ -243,7 +243,7 @@ export function ServiceAreaBanner() {
       <section style={{ backgroundColor: "#031F3D" }} className="py-24 md:py-32">
         <div ref={oopRef} style={{ padding: "0 5%" }}>
 
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20 items-start">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16 items-start">
 
             {/* Left: header */}
             <div>
@@ -294,10 +294,10 @@ export function ServiceAreaBanner() {
                 >
                   <span className="font-mono text-xs shrink-0 mt-1" style={{ color: "#FF8361" }}>{r.n}</span>
                   <div>
-                    <h3 className="font-heading text-xl font-medium" style={{ color: "#FCF6ED" }}>
+                    <h3 className="font-heading font-medium" style={{ color: "#FCF6ED", fontSize: "clamp(1.5rem, 2vw, 1.75rem)" }}>
                       {r.title}
                     </h3>
-                    <p className="mt-2 font-body text-base leading-relaxed" style={{ color: "rgba(252,246,237,0.55)" }}>
+                    <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(252,246,237,0.55)", fontSize: "1.125rem", maxWidth: "48ch" }}>
                       {r.copy}
                     </p>
                   </div>

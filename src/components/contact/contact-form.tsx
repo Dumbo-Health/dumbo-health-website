@@ -40,7 +40,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="bg-teal/10 rounded-xl p-8 text-center">
-        <p className="font-body text-body-lg text-midnight">
+        <p className="font-body text-midnight" style={{ fontSize: "1.125rem" }}>
           Thank you! Your submission has been received!
         </p>
       </div>

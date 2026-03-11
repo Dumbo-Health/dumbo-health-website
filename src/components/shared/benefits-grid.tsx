@@ -112,14 +112,14 @@ function BenefitItem({
         <Icon />
       </div>
       <h3
-        className="font-heading text-2xl font-medium leading-snug"
-        style={{ color: "#031F3D" }}
+        className="font-heading font-medium leading-snug"
+        style={{ color: "#031F3D", fontSize: "clamp(1.5rem, 2.2vw, 2rem)", textWrap: "balance" }}
       >
         {title}
       </h3>
       <p
-        className="mt-2 font-body text-base leading-relaxed"
-        style={{ color: "rgba(3,31,61,0.56)" }}
+        className="mt-2 font-body leading-relaxed"
+        style={{ color: "rgba(3,31,61,0.56)", fontSize: "1.125rem", textWrap: "pretty" }}
       >
         {copy}
       </p>
@@ -315,10 +315,10 @@ export function BenefitsGrid() {
           className="flex flex-col justify-between py-8"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <div style={{ maxWidth: "220px", marginLeft: "auto", paddingRight: "12px" }}>
+          <div style={{ maxWidth: "280px", marginLeft: "auto", paddingRight: "12px" }}>
             <BenefitItem benefit={BENEFITS[0]} delay={0.15} inView={inView} align="left" />
           </div>
-          <div style={{ maxWidth: "220px", marginLeft: "auto", paddingRight: "12px" }}>
+          <div style={{ maxWidth: "280px", marginLeft: "auto", paddingRight: "12px" }}>
             <BenefitItem benefit={BENEFITS[2]} delay={0.28} inView={inView} align="left" />
           </div>
         </div>
@@ -333,10 +333,10 @@ export function BenefitsGrid() {
           className="flex flex-col justify-between py-8"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <div style={{ maxWidth: "220px", marginRight: "auto", paddingLeft: "12px" }}>
+          <div style={{ maxWidth: "280px", marginRight: "auto", paddingLeft: "12px" }}>
             <BenefitItem benefit={BENEFITS[1]} delay={0.22} inView={inView} align="right" />
           </div>
-          <div style={{ maxWidth: "220px", marginRight: "auto", paddingLeft: "12px" }}>
+          <div style={{ maxWidth: "280px", marginRight: "auto", paddingLeft: "12px" }}>
             <BenefitItem benefit={BENEFITS[3]} delay={0.35} inView={inView} align="right" />
           </div>
         </div>

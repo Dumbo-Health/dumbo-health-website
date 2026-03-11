@@ -37,13 +37,16 @@ export function TreatmentStep({
             transition={{ duration: 0.6 }}
             className={reverse ? "lg:col-start-2" : ""}
           >
-            <p className="font-mono text-tag uppercase tracking-widest text-teal">
+            <p className="font-mono text-xs uppercase tracking-widest text-teal">
               {label}
             </p>
-            <h2 className="mt-2 font-heading text-3xl font-medium text-midnight md:text-h2">
+            <h2
+              className="mt-2 font-heading font-medium text-midnight"
+              style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+            >
               {title}
             </h2>
-            <p className="mt-4 max-w-lg font-body text-body-lg text-midnight/70">
+            <p className="mt-4 font-body text-midnight/70" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
               {body}
             </p>
             {cta && (

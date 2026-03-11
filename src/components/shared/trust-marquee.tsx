@@ -10,7 +10,7 @@ export function TrustMarquee() {
             className="flex items-center gap-2 text-sm font-medium text-midnight/70"
           >
             <span className="size-1.5 rounded-full bg-teal" />
-            <span className="font-mono text-tag uppercase tracking-wider">
+            <span className="font-mono text-xs uppercase tracking-wider">
               {item.label}
             </span>
           </div>

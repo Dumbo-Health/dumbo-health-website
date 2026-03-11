@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SolutionsHero } from "@/components/solutions/hero";
-import { TrustMarquee } from "@/components/shared/trust-marquee";
-import { TreatmentStep } from "@/components/solutions/treatment-step";
-import { TreatmentOptions } from "@/components/solutions/treatment-options";
+import { FunnelSelector } from "@/components/solutions/funnel-selector";
+import { JourneySteps } from "@/components/solutions/journey-steps";
+import { DiagnosedCards } from "@/components/solutions/diagnosed-cards";
+import { AppShowcase } from "@/components/solutions/app-showcase";
+import { ResupplySection } from "@/components/solutions/resupply-section";
 import { Testimonials } from "@/components/shared/testimonials";
 import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
 import { FAQSection } from "@/components/shared/faq-section";
@@ -35,112 +37,32 @@ export default function SolutionsPage() {
     <>
       <Navbar />
       <main>
+        {/* 1. Hero — sets the frame, earns the click */}
         <SolutionsHero />
-        <TrustMarquee />
 
-        {/* Step 1 */}
-        <TreatmentStep
-          id="step-1"
-          label="No sleep lab. No stress."
-          title="At-Home Diagnostic Kit"
-          body="Our FDA-approved at-home sleep test is simple, accurate, and non-invasive. Just one night of wear, and your data is reviewed by a licensed sleep specialist via telehealth, all for $149."
-          cta={{ label: "Take the First Step", href: "/get-your-at-home-sleep-apnea-test" }}
-          image="/images/products/hst-box.png"
-          imageAlt="Watch Pat One device"
-        />
+        {/* 2. Funnel selector — routes each visitor to their section */}
+        <FunnelSelector />
 
-        {/* Step 2 */}
-        <TreatmentOptions />
+        {/* 3. Full journey — for those starting from zero */}
+        <JourneySteps />
 
-        {/* Step 3 */}
-        <TreatmentStep
-          id="step-3"
-          label="Talk to a sleep specialist"
-          title="Telehealth Sleep Experts"
-          body="Our licensed sleep specialists are ready to guide your diagnosis and care. No waiting rooms. Just expert help, when you need it."
-          cta={{ label: "Meet the experts", href: "/about-us#experts" }}
-          image="/images/team/doctor-1.jpg"
-          imageAlt="Telehealth consultation"
-          reverse
-        />
+        {/* 4. Already diagnosed — two direct entry points */}
+        <DiagnosedCards />
 
-        {/* Step 4 */}
-        <TreatmentStep
-          id="step-4"
-          label="Track your sleep progress"
-          title="Personalized Sleep Dashboard"
-          body="Your Dumbo Health dashboard syncs your treatment, reminders, and sleep insights. Stay motivated, supported, and in control."
-          cta={{ label: "Get Started", href: "https://app.dumbo.health/" }}
-          image="/images/people/man-drinking-coffee.png"
-          imageAlt="Person enjoying their morning after better sleep"
-        />
+        {/* 5. App showcase — CPAP dashboard & AI companion */}
+        <AppShowcase />
 
-        {/* Step 5 */}
-        <TreatmentStep
-          id="step-5"
-          label="Everything you need. Nothing extra"
-          title="Resupply and Maintenance"
-          body="From masks and filters to tubing and chargers, you can get everything you need to keep your therapy running smoothly."
-          image="/images/products/cpap-machine.png"
-          imageAlt="Resupply Kit"
-          reverse
-        />
+        {/* 6. Resupply — for those who just want smarter supply delivery */}
+        <ResupplySection />
 
-        {/* Step 6 */}
-        <TreatmentStep
-          id="step-6"
-          label="Real people. Real support"
-          title="Supportive Community"
-          body="Join an exclusive community of people improving their sleep, just like you. Share wins, ask questions, and get encouragement from real humans."
-          cta={{ label: "Get started", href: "https://app.dumbo.health/" }}
-          image="/images/misc/team-office.jpg"
-          imageAlt="Your Community"
-        />
-
-        {/* Treatment Summary */}
-        <section className="bg-peach py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-medium text-white md:text-h2">
-              Treating sleep apnea has never been easier
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-body text-body-lg text-white/90">
-              Dumbo Health brings expert care, personalized tools and real support into your daily life.
-            </p>
-          </div>
-        </section>
-
-        {/* Insurance Coverage Coming Soon */}
-        <section className="bg-teal py-16 sm:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-3xl font-medium text-white md:text-h2">
-              Insurance Coverage Coming Soon
-            </h2>
-            <p className="mt-4 font-body text-body-lg text-white/90">
-              We&apos;re working hard to make Dumbo Health available through insurance. Stay tuned for updates on insurance partnerships and coverage options.
-            </p>
-          </div>
-        </section>
-
+        {/* Social proof */}
         <Testimonials />
 
-        {/* CTA Banner */}
-        <section className="bg-peach py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-            <p className="mx-auto max-w-2xl font-body text-body-lg text-white/90">
-              Wake up to a better life with sleep apnea treatment tailored to you from diagnosis to delivery.
-            </p>
-            <a
-              href="https://app.dumbo.health/"
-              className="mt-8 inline-flex items-center h-12 rounded-lg bg-white px-8 font-body text-base font-bold uppercase tracking-wider text-peach shadow-md shadow-white/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-daylight hover:shadow-xl active:translate-y-0 active:shadow-md"
-            >
-              Start now
-            </a>
-          </div>
-        </section>
+        {/* 7. Closing CTA — round-trip promise restated */}
+        <BottomCTA />
 
         <ServiceAreaBanner />
         <FAQSection />
-        <BottomCTA />
       </main>
       <Footer />
     </>

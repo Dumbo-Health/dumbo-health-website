@@ -30,10 +30,13 @@ export function ComparisonChecklist() {
     <section className="bg-sunlight py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-medium text-midnight md:text-h2">
+          <h2
+            className="font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             Better sleep starts at home
           </h2>
-          <p className="mt-2 font-body text-body-lg text-midnight/70">
+          <p className="mt-2 font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
             Sleep in your own bed and wake up with clearer answers.
           </p>
         </div>
@@ -52,7 +55,7 @@ export function ComparisonChecklist() {
             </h3>
             <ul className="mt-6 space-y-3">
               {atHome.map((item) => (
-                <li key={item} className="flex items-start gap-3 font-body text-body text-midnight/80">
+                <li key={item} className="flex items-start gap-3 font-body text-base text-midnight/80">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal/10 text-xs text-teal">
                     &#10003;
                   </span>
@@ -69,7 +72,7 @@ export function ComparisonChecklist() {
             </h3>
             <ul className="mt-6 space-y-3">
               {inLab.map((item) => (
-                <li key={item} className="flex items-start gap-3 font-body text-body text-midnight/50">
+                <li key={item} className="flex items-start gap-3 font-body text-base text-midnight/50">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-50 text-xs text-red-400">
                     &#10007;
                   </span>

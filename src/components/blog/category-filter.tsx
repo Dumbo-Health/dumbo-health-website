@@ -22,7 +22,7 @@ export function CategoryFilter() {
           <Link
             key={cat.label}
             href={cat.href}
-            className={`px-4 py-2 rounded-full font-mono text-tag transition-colors ${
+            className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
               isActive
                 ? "bg-midnight text-white"
                 : "bg-sunlight text-midnight hover:bg-light-peach"

@@ -43,10 +43,13 @@ export default function FAQsPage() {
       <main>
       <section className="bg-daylight py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-2xl md:text-4xl lg:text-hero text-midnight mb-6">
+          <h1
+            className="font-heading font-medium text-midnight mb-6"
+            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+          >
             FAQs
           </h1>
-          <p className="font-body text-body-lg text-midnight/70">
+          <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
             From testing and treatment to pricing and support, here&apos;s everything you need to know about starting your sleep journey with Dumbo Health.
           </p>
         </div>
@@ -56,7 +59,10 @@ export default function FAQsPage() {
 
       <section className="bg-sunlight py-16 sm:py-24 text-center">
         <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-h2 text-midnight mb-6">
+          <h2
+            className="font-heading font-medium text-midnight mb-6"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             Still have questions?
           </h2>
           <Button size="lg" asChild>

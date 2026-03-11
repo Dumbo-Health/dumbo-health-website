@@ -33,10 +33,13 @@ export function TreatmentOptions() {
     <section id="step-2" className="bg-sunlight py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-tag uppercase tracking-widest text-teal">
+          <p className="font-mono text-xs uppercase tracking-widest text-teal">
             Patient first personalized care
           </p>
-          <h2 className="mt-2 font-heading text-3xl font-medium text-midnight md:text-h2">
+          <h2
+            className="mt-2 font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
             Sleep Apnea treatment options
           </h2>
         </div>
@@ -73,7 +76,7 @@ export function TreatmentOptions() {
                 <h3 className="font-heading text-xl font-medium text-midnight">
                   {opt.title}
                 </h3>
-                <p className="mt-2 font-body text-body text-midnight/70">
+                <p className="mt-2 font-body text-base text-midnight/70">
                   {opt.description}
                 </p>
                 <Button asChild size="lg" className="mt-4 w-full rounded-[12px] bg-peach text-white hover:bg-peach/90 font-body font-bold">

@@ -23,7 +23,10 @@ export function WhySwitch() {
   return (
     <section className="bg-daylight py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-heading text-h2 text-midnight text-center mb-4">
+        <h2
+          className="font-heading font-medium text-midnight text-center mb-4"
+          style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+        >
           Most people pay too much for sleep apnea treatment
         </h2>
         <div className="overflow-x-auto mt-12">

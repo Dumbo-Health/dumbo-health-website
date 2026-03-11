@@ -32,7 +32,7 @@ export function ProductTabs() {
           </TabsList>
 
           <div className="mt-8 max-w-3xl">
-            <TabsContent value="overview" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="overview" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>
                 Our at home sleep test lets you check for sleep apnea from the comfort of your own bed. It is a simple, one night test designed to measure key signals related to obstructive sleep apnea, or OSA. You wear small sensors on your finger, wrist, and chest that work together with a smartphone app to track how your body breathes and rests during sleep.
               </p>
@@ -41,14 +41,14 @@ export function ProductTabs() {
               </p>
             </TabsContent>
 
-            <TabsContent value="how-it-works" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="how-it-works" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>
                 To get started, you will complete a short health questionnaire. This information helps confirm the test is appropriate for you. If your results show signs of sleep apnea, our team will guide you through next steps and talk through treatment options that fit your life.
               </p>
               <p>The test is single use and intended for adults 18 and older.</p>
             </TabsContent>
 
-            <TabsContent value="measures" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="measures" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <ul className="space-y-2 list-none">
                 <li className="flex items-center gap-2"><span className="text-teal">&#10003;</span> Breathing patterns during sleep</li>
                 <li className="flex items-center gap-2"><span className="text-teal">&#10003;</span> Oxygen levels and heart rate</li>
@@ -61,7 +61,7 @@ export function ProductTabs() {
               </p>
             </TabsContent>
 
-            <TabsContent value="who" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="who" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>An at home sleep test may be a good fit if you:</p>
               <ul className="space-y-2 list-none">
                 <li className="flex items-center gap-2"><span className="text-teal">&#10003;</span> Snore regularly or wake up short of breath</li>
@@ -70,7 +70,7 @@ export function ProductTabs() {
               </ul>
             </TabsContent>
 
-            <TabsContent value="shipping" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="shipping" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>
                 All home sleep tests ship from our warehouse in Philadelphia. We currently ship to Texas, Florida, Maryland, and Virginia.
               </p>
@@ -79,7 +79,7 @@ export function ProductTabs() {
               <p>Additional express shipping options are available for 1 day delivery.</p>
             </TabsContent>
 
-            <TabsContent value="medical" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="medical" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>
                 Before we ship your test, you&apos;ll complete a short medical questionnaire. Our medical team reviews this information to make sure the test is appropriate for you.
               </p>
@@ -88,7 +88,7 @@ export function ProductTabs() {
               </p>
             </TabsContent>
 
-            <TabsContent value="after" className="space-y-4 font-body text-body text-midnight/80 leading-relaxed">
+            <TabsContent value="after" className="space-y-4 font-body text-[1.0625rem] text-midnight/80 leading-relaxed">
               <p>
                 Your order will arrive in a single package that includes the WatchPAT ONE device, batteries, and a clear instructional brochure.
               </p>

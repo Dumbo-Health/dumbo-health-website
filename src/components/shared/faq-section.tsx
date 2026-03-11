@@ -25,7 +25,7 @@ export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
           </p>
           <h2
             className="font-heading font-medium text-midnight"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            style={{ fontSize: "clamp(2.4rem, 4vw, 4rem)" }}
           >
             Got questions?
           </h2>
@@ -47,7 +47,7 @@ export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
               value={`faq-${i}`}
               className="border-sunlight"
             >
-              <AccordionTrigger className="text-left font-heading text-base font-medium text-midnight hover:no-underline">
+              <AccordionTrigger className="text-left font-heading text-lg font-medium text-midnight hover:no-underline py-6">
                 <span className="flex items-center gap-4">
                   <span className="font-mono text-sm font-bold text-peach">
                     {String(i + 1).padStart(2, "0")}
@@ -55,7 +55,7 @@ export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
                   {faq.question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="pl-10 font-body text-midnight/60 leading-relaxed">
+              <AccordionContent className="pl-10 font-body text-[1rem] text-midnight/60 leading-relaxed pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

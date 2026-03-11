@@ -27,57 +27,16 @@ const POINTS = [
 ];
 
 const COMPARISON_ROWS = [
-  {
-    label: "Diagnostic process",
-    traditional: "Lab-based, long waits",
-    dumbo: "Fast, easy at-home testing",
-  },
-  {
-    label: "Convenience",
-    traditional: "In-person appointments",
-    dumbo: "100% online and accessible",
-  },
-  {
-    label: "Price transparency",
-    traditional: "Hidden fees, unclear pricing",
-    dumbo: "Clear, all-inclusive pricing",
-  },
-  {
-    label: "Device acquisition",
-    traditional: "High upfront cost",
-    dumbo: "No upfront cost on plans",
-  },
-  {
-    label: "Accessories",
-    traditional: "Additional, frequent fees",
-    dumbo: "Always included",
-  },
-  {
-    label: "Device maintenance",
-    traditional: "Additional fees",
-    dumbo: "Included in subscription",
-  },
-  {
-    label: "Telehealth access",
-    traditional: "Limited or extra costs",
-    dumbo: "Unlimited and always included",
-  },
-  {
-    label: "Insurance complexity",
-    traditional: "Frequent paperwork and denials",
-    dumbo: "Zero paperwork needed",
-  },
-  {
-    label: "Care continuity",
-    traditional: "Multiple providers",
-    dumbo: "One dedicated, accessible team",
-  },
-  {
-    label: "Time to treatment",
-    traditional: "Weeks to months",
-    dumbo: "Start now",
-    highlight: true,
-  },
+  { label: "Diagnostic process",  traditional: "Lab-based, long waits",          dumbo: "Fast, easy at-home testing" },
+  { label: "Convenience",         traditional: "In-person appointments",          dumbo: "100% online and accessible" },
+  { label: "Price transparency",  traditional: "Hidden fees, unclear pricing",    dumbo: "Clear, all-inclusive pricing" },
+  { label: "Device acquisition",  traditional: "High upfront cost",               dumbo: "No upfront cost on plans" },
+  { label: "Accessories",         traditional: "Additional, frequent fees",       dumbo: "Always included" },
+  { label: "Device maintenance",  traditional: "Additional fees",                 dumbo: "Included in subscription" },
+  { label: "Telehealth access",   traditional: "Limited or extra costs",          dumbo: "Unlimited and always included" },
+  { label: "Insurance complexity",traditional: "Frequent paperwork and denials",  dumbo: "Zero paperwork needed" },
+  { label: "Care continuity",     traditional: "Multiple providers",              dumbo: "One dedicated, accessible team" },
+  { label: "Time to treatment",   traditional: "Weeks to months",                 dumbo: "Start now", highlight: true },
 ];
 
 export function CashPayArgument() {
@@ -86,7 +45,7 @@ export function CashPayArgument() {
       className="relative overflow-hidden py-24 md:py-32"
       style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
     >
-      {/* Lifeline — teal wave across the section */}
+      {/* Lifeline */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/uploads/Vector-1.png"
@@ -116,20 +75,16 @@ export function CashPayArgument() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
             className="font-heading font-medium leading-tight text-balance"
-            style={{
-              color: "#FCF6ED",
-              fontSize: "clamp(2.4rem, 4vw, 3.5rem)",
-              maxWidth: "22ch",
-            }}
+            style={{ color: "#FCF6ED", fontSize: "clamp(2.4rem, 4vw, 3.5rem)", maxWidth: "22ch" }}
           >
             Waiting on insurance could cost you more than you think.
           </motion.h2>
         </div>
 
-        {/* Three points + comparison table */}
-        <div className="grid gap-16 lg:grid-cols-[1fr_2fr] lg:gap-16 items-start">
+        {/* Two-column layout — stacks on mobile */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16 items-start">
 
-          {/* Left: frosted glass numbered points + CTA */}
+          {/* Left: numbered points + CTA */}
           <div className="flex flex-col gap-4">
             {POINTS.map((p, i) => (
               <motion.div
@@ -138,28 +93,22 @@ export function CashPayArgument() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.55, ease: EASE, delay: 0.1 + i * 0.1 }}
-                className="rounded-2xl p-7 backdrop-blur-sm"
+                className="rounded-2xl p-7"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(255,255,255,0.09)",
                 }}
               >
-                <span
-                  className="font-mono text-xs uppercase tracking-widest"
-                  style={{ color: "#FF8361" }}
-                >
+                <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>
                   {p.n}
                 </span>
                 <h3
                   className="mt-3 font-heading font-medium"
-                  style={{ color: "#FCF6ED", fontSize: "clamp(1.25rem, 1.8vw, 1.4rem)" }}
+                  style={{ color: "#FCF6ED", fontSize: "clamp(1.15rem, 1.8vw, 1.4rem)" }}
                 >
                   {p.title}
                 </h3>
-                <p
-                  className="mt-2 font-body leading-relaxed"
-                  style={{ color: "rgba(252,246,237,0.6)", fontSize: "1rem" }}
-                >
+                <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(252,246,237,0.6)", fontSize: "1rem" }}>
                   {p.body}
                 </p>
               </motion.div>
@@ -182,140 +131,103 @@ export function CashPayArgument() {
             </motion.div>
           </div>
 
-          {/* Right: comparison table — frosted glass container */}
+          {/* Right: comparison table */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: EASE, delay: 0.2 }}
-            className="overflow-hidden rounded-2xl backdrop-blur-sm"
-            style={{
-              backgroundColor: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
+            className="min-w-0 w-full"
           >
-            {/* Column headers */}
-            <div className="grid grid-cols-[1fr_1fr_1fr]">
-              <div className="px-6 py-6" />
-
-              {/* Traditional column header */}
-              <div
-                className="px-6 py-6 text-center"
-                style={{
-                  borderLeft: "1px solid rgba(255,255,255,0.08)",
-                  backgroundColor: "rgba(255,255,255,0.03)",
-                }}
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-widest"
-                  style={{ color: "rgba(252,246,237,0.5)" }}
-                >
-                  Traditional
-                </p>
-                <p
-                  className="font-body text-sm mt-1"
-                  style={{ color: "rgba(252,246,237,0.3)" }}
-                >
-                  Insurance-based
-                </p>
-              </div>
-
-              {/* Dumbo column header */}
-              <div
-                className="px-6 py-6 text-center"
-                style={{
-                  borderLeft: "1px solid rgba(255,131,97,0.25)",
-                  backgroundColor: "rgba(255,131,97,0.2)",
-                }}
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-widest font-bold"
-                  style={{ color: "#FF8361" }}
-                >
-                  Dumbo Health
-                </p>
-                <p
-                  className="font-body text-sm mt-1"
-                  style={{ color: "rgba(255,131,97,0.75)" }}
-                >
-                  Cash pay
-                </p>
-              </div>
-            </div>
-
-            {/* Rows */}
-            {COMPARISON_ROWS.map((row) => (
-              <div
-                key={row.label}
-                className="grid grid-cols-[1fr_1fr_1fr]"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
-              >
-                {/* Row label */}
-                <div className="px-6 py-5 flex items-center">
-                  <p
-                    className="font-body text-base font-medium"
-                    style={{ color: "rgba(252,246,237,0.55)" }}
-                  >
-                    {row.label}
-                  </p>
-                </div>
-
-                {/* Traditional value */}
-                <div
-                  className="px-5 py-5 flex items-center gap-3"
-                  style={{
-                    borderLeft: "1px solid rgba(255,255,255,0.07)",
-                    backgroundColor: "rgba(255,255,255,0.02)",
-                  }}
-                >
-                  <X
-                    className="h-4 w-4 shrink-0"
-                    style={{ color: "rgba(252,246,237,0.22)" }}
-                  />
-                  <p
-                    className="font-body text-base leading-snug"
-                    style={{ color: "rgba(252,246,237,0.38)" }}
-                  >
-                    {row.traditional}
-                  </p>
-                </div>
-
-                {/* Dumbo value */}
-                <div
-                  className="px-5 py-5 flex items-center gap-3"
-                  style={{
-                    borderLeft: "1px solid rgba(255,131,97,0.18)",
-                    backgroundColor: "rgba(255,131,97,0.11)",
-                  }}
-                >
-                  <Check
-                    className="h-4 w-4 shrink-0"
-                    style={{ color: "#78BFBC" }}
-                  />
-                  <p
-                    className="font-body text-base font-semibold leading-snug"
-                    style={{
-                      color: row.highlight ? "#FF8361" : "#FFFFFF",
-                    }}
-                  >
-                    {row.dumbo}
-                  </p>
-                </div>
-              </div>
-            ))}
-
-            {/* Footer note */}
-            <div
-              className="px-5 py-4"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+            {/* Swipe hint — hidden on large screens where table fits */}
+            <p
+              className="lg:hidden font-mono text-[10px] uppercase tracking-widest text-center mb-3"
+              style={{ color: "rgba(252,246,237,0.3)" }}
             >
-              <p
-                className="font-body text-xs"
-                style={{ color: "rgba(252,246,237,0.22)" }}
-              >
-                Note: plan features vary by tier. Insurance support will roll out state by state.
-              </p>
-            </div>
+              ← Swipe to compare →
+            </p>
+
+            {/* Scroll wrapper */}
+            <div className="w-full overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+              {/* Min-width content — forces scroll on narrow screens */}
+              <div style={{ minWidth: "520px" }}>
+
+                {/* Frosted glass layer */}
+                <div style={{ backgroundColor: "rgba(255,255,255,0.04)" }}>
+
+                  {/* Column headers */}
+                  <div className="grid grid-cols-[160px_1fr_1fr]">
+                    <div className="px-5 py-5" />
+                    <div
+                      className="px-5 py-5 text-center"
+                      style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", backgroundColor: "rgba(255,255,255,0.03)" }}
+                    >
+                      <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.5)" }}>
+                        Traditional
+                      </p>
+                      <p className="font-body text-sm mt-1" style={{ color: "rgba(252,246,237,0.3)" }}>
+                        Insurance-based
+                      </p>
+                    </div>
+                    <div
+                      className="px-5 py-5 text-center"
+                      style={{ borderLeft: "1px solid rgba(255,131,97,0.25)", backgroundColor: "rgba(255,131,97,0.2)" }}
+                    >
+                      <p className="font-mono text-xs uppercase tracking-widest font-bold" style={{ color: "#FF8361" }}>
+                        Dumbo Health
+                      </p>
+                      <p className="font-body text-sm mt-1" style={{ color: "rgba(255,131,97,0.75)" }}>
+                        Cash pay
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Rows */}
+                  {COMPARISON_ROWS.map((row) => (
+                    <div
+                      key={row.label}
+                      className="grid grid-cols-[160px_1fr_1fr]"
+                      style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+                    >
+                      <div className="px-5 py-4 flex items-center">
+                        <p className="font-body text-sm font-medium" style={{ color: "rgba(252,246,237,0.55)" }}>
+                          {row.label}
+                        </p>
+                      </div>
+                      <div
+                        className="px-4 py-4 flex items-center gap-2.5"
+                        style={{ borderLeft: "1px solid rgba(255,255,255,0.07)", backgroundColor: "rgba(255,255,255,0.02)" }}
+                      >
+                        <X className="h-4 w-4 shrink-0" style={{ color: "rgba(252,246,237,0.22)" }} />
+                        <p className="font-body text-sm leading-snug" style={{ color: "rgba(252,246,237,0.38)" }}>
+                          {row.traditional}
+                        </p>
+                      </div>
+                      <div
+                        className="px-4 py-4 flex items-center gap-2.5"
+                        style={{ borderLeft: "1px solid rgba(255,131,97,0.18)", backgroundColor: "rgba(255,131,97,0.11)" }}
+                      >
+                        <Check className="h-4 w-4 shrink-0" style={{ color: "#78BFBC" }} />
+                        <p
+                          className="font-body text-sm font-semibold leading-snug"
+                          style={{ color: row.highlight ? "#FF8361" : "#FFFFFF" }}
+                        >
+                          {row.dumbo}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Footer note */}
+                  <div className="px-5 py-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <p className="font-body text-xs" style={{ color: "rgba(252,246,237,0.22)" }}>
+                      Note: plan features vary by tier. Insurance support will roll out state by state.
+                    </p>
+                  </div>
+
+                </div>{/* end frosted glass */}
+              </div>{/* end min-width */}
+            </div>{/* end scroll wrapper */}
           </motion.div>
 
         </div>

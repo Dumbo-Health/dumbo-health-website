@@ -30,11 +30,11 @@ export function PostCard({ post }: PostCardProps) {
         />
       </div>
       <CardContent className="p-6">
-        <Badge variant="secondary" className="font-mono text-tag mb-3">
+        <Badge variant="secondary" className="font-mono text-xs mb-3">
           {post.category}
         </Badge>
         <Link href={`/blog/${post.slug}`}>
-          <h3 className="font-heading text-lg text-midnight mb-2 line-clamp-2 group-hover:text-peach transition-colors">
+          <h3 className="font-heading text-xl font-medium text-midnight mb-2 line-clamp-2 group-hover:text-peach transition-colors">
             {post.title}
           </h3>
         </Link>
@@ -43,7 +43,7 @@ export function PostCard({ post }: PostCardProps) {
         </p>
         <div className="flex items-center justify-between">
           <span className="font-body text-sm text-midnight/50">{post.author}</span>
-          <span className="font-mono text-tag text-midnight/40">{post.date}</span>
+          <span className="font-mono text-xs text-midnight/40">{post.date}</span>
         </div>
       </CardContent>
     </Card>

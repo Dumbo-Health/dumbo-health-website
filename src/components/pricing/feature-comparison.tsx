@@ -19,7 +19,7 @@ function FeatureValue({ value }: { value: string }) {
   );
 }
 
-const COL = "grid-cols-[2fr_1fr_1fr_1fr]";
+const COL = "grid-cols-[180px_1fr_1fr_1fr]";
 
 export function FeatureComparison() {
   const [expanded, setExpanded] = useState(false);
@@ -49,11 +49,17 @@ export function FeatureComparison() {
           </p>
         </div>
 
-        {/* Table */}
+        {/* Swipe hint — mobile only */}
+        <p className="sm:hidden font-mono text-[10px] uppercase tracking-widest text-center mb-3" style={{ color: "rgba(3,31,61,0.35)" }}>
+          ← Swipe to compare →
+        </p>
+
+        {/* Table — scrollable on mobile */}
         <div
-          className="rounded-2xl overflow-hidden"
+          className="rounded-2xl overflow-x-auto"
           style={{ border: "1px solid rgba(245,230,209,1)" }}
         >
+        <div style={{ minWidth: "560px" }}>
           {/* Column headers */}
           <div className={`grid ${COL} bg-white`} style={{ borderBottom: "1px solid rgba(245,230,209,1)" }}>
             <div className="py-4 px-5">
@@ -130,7 +136,8 @@ export function FeatureComparison() {
               </div>
             </div>
           ))}
-        </div>
+        </div>{/* end min-width wrapper */}
+        </div>{/* end overflow-x-auto */}
 
         {/* Footer note */}
         <p

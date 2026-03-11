@@ -62,7 +62,7 @@ const problems = [
   {
     word:      "Anxiety",
     label:     "Anxiety & stress",
-    slug:      "anxiety-stress",
+    slug:      "anxiety-and-stress",
     copy:      "Without restorative sleep, your brain can't regulate cortisol, keeping you on edge.",
     idleBg:    "rgba(120,191,188,0.14)",
     idleColor: "#78BFBC",
@@ -210,7 +210,7 @@ export function SymptomsProblems() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link
-                  href={`/problems/${p.slug}`}
+                  href={`/${p.slug}`}
                   className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border transition-colors duration-400 ${
                     isActive
                       ? "border-peach/30 bg-white shadow-xl shadow-peach/12"

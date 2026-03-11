@@ -93,10 +93,13 @@ function NewsletterSignup() {
   return (
     <section className="bg-sunlight py-16 sm:py-24">
       <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="font-heading text-3xl font-medium text-midnight md:text-h2">
+        <h2
+          className="font-heading font-medium text-midnight"
+          style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+        >
           Sign up for our newsletter
         </h2>
-        <p className="mt-4 font-body text-body-lg text-midnight/70">
+        <p className="mt-4 font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
           Tips, stories, and updates to help you sleep better and live brighter, straight to your inbox.
         </p>
         <form className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-2">
@@ -105,7 +108,7 @@ function NewsletterSignup() {
             name="email"
             placeholder="your@email.com"
             required
-            className="flex-1 rounded-full border border-sunlight bg-white px-6 py-3 font-body text-body text-midnight placeholder:text-midnight/40 focus:outline-none focus:ring-2 focus:ring-peach"
+            className="flex-1 rounded-full border border-sunlight bg-white px-6 py-3 font-body text-base text-midnight placeholder:text-midnight/40 focus:outline-none focus:ring-2 focus:ring-peach"
           />
           <button
             type="submit"
@@ -127,13 +130,19 @@ export default function BlogPage() {
       <section className="bg-daylight py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="font-heading text-2xl md:text-4xl lg:text-hero text-midnight mb-4">
+            <h1
+              className="font-heading font-medium text-midnight mb-4"
+              style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+            >
               The Sleep Journal
             </h1>
-            <p className="font-heading text-h3 text-midnight/70 mb-4">
+            <p
+              className="font-heading font-medium text-midnight/70 mb-4"
+              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
+            >
               Your guide to better sleep, health and everyday energy.
             </p>
-            <p className="font-body text-body-lg text-midnight/70 max-w-2xl mx-auto">
+            <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
               From expert tips and real stories to the latest in sleep wellness and apnea care, everything you need to breathe easier and wake up brighter, right here.
             </p>
           </div>

@@ -40,8 +40,8 @@ export function ContactCards() {
         <Card key={card.heading} className="border-sunlight">
           <CardContent className="p-6">
             <card.icon className="h-8 w-8 text-peach mb-4" />
-            <h3 className="font-heading text-xl text-midnight mb-2">{card.heading}</h3>
-            <p className="font-body text-body text-midnight/70 mb-4">{card.body}</p>
+            <h3 className="font-heading text-xl font-medium text-midnight mb-2">{card.heading}</h3>
+            <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>{card.body}</p>
             <Button variant="outline" size="sm" asChild>
               <a href={card.href}>{card.cta}</a>
             </Button>

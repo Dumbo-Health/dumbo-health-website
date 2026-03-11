@@ -140,8 +140,8 @@ function StepCard({
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
-            className="mt-4 font-heading text-4xl font-medium leading-tight md:text-5xl"
-            style={{ color: "#031F3D" }}
+            className="mt-4 font-heading font-medium leading-tight"
+            style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
           >
             {step.headline}
           </motion.h3>
@@ -257,8 +257,8 @@ export function SolutionsGrid() {
             Dumbo Health Solutions
           </p>
           <h2
-            className="mt-3 font-heading text-4xl font-medium leading-tight md:text-5xl"
-            style={{ color: "#031F3D" }}
+            className="mt-3 font-heading font-medium leading-tight"
+            style={{ color: "#031F3D", fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
           >
             Everything you need,{" "}
             <br className="hidden sm:block" />

@@ -40,7 +40,7 @@ export function ProductHero() {
             <h1 className="font-heading text-3xl font-medium text-midnight md:text-4xl lg:text-5xl">
               At-Home Sleep Study
             </h1>
-            <p className="mt-2 font-body text-body-lg text-midnight/70">
+            <p className="mt-2 font-body text-midnight/70" style={{ fontSize: "1.125rem" }}>
               Designed for a 5 star experience
             </p>
 
@@ -49,7 +49,7 @@ export function ProductHero() {
               <span className="font-heading text-4xl font-medium text-midnight">
                 $149
               </span>
-              <span className="font-body text-body-lg text-midnight/40 line-through">
+              <span className="font-body text-lg text-midnight/40 line-through">
                 $350
               </span>
               <Badge className="bg-peach text-white border-0 font-body font-bold">
@@ -60,7 +60,7 @@ export function ProductHero() {
             {/* Status */}
             <div className="mt-4 flex items-center gap-2">
               <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
-              <span className="font-mono text-tag text-green-700">
+              <span className="font-mono text-xs text-green-700">
                 IN STOCK
               </span>
               <span className="font-body text-sm text-midnight/60">
@@ -69,7 +69,7 @@ export function ProductHero() {
             </div>
 
             {/* Product Details */}
-            <ul className="mt-6 space-y-2 font-body text-body text-midnight/80">
+            <ul className="mt-6 space-y-2 font-body text-base text-midnight/80">
               <li className="flex items-center gap-2">
                 <span className="text-teal">&#10003;</span> Disposable device
               </li>
