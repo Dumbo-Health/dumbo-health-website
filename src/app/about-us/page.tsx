@@ -3,18 +3,18 @@ import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { AboutHero } from "@/components/about/hero";
+import { FounderStory } from "@/components/about/founder-story";
+import { MissionVision } from "@/components/about/mission-vision";
+import { WhatWereBuilding } from "@/components/about/what-were-building";
 import { ValuesSection } from "@/components/about/values-section";
-import { StorySection } from "@/components/about/story-section";
-import { TeamCard } from "@/components/about/team-card";
-import { AboutMarquee } from "@/components/about/marquee";
-import { CTASection } from "@/components/shared/cta-section";
-import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
-import { VideoEmbed } from "@/components/shared/video-embed";
-import { scientificCommittee, medicalTeam } from "@/content/team";
+import { TeamSection } from "@/components/about/team-section";
+import { Availability } from "@/components/about/availability";
+import { BottomCTA } from "@/components/shared/bottom-cta";
 
 export const metadata: Metadata = createMetadata({
-  title: "About Dumbo Health - Telehealth Sleep Apnea Experts",
-  description: "Meet the team behind Dumbo Health. Our mission is to make better sleep easy, accessible, and backed by science. World-class scientific committee and medical team.",
+  title: "About Dumbo Health — We Built the Company We Wish Had Existed",
+  description:
+    "Meet the founders and medical team behind Dumbo Health. A mission-driven company making sleep apnea treatment simple, affordable, and stigma-free — starting with the founders who lived it.",
   path: "/about-us",
 });
 
@@ -23,50 +23,29 @@ export default function AboutUsPage() {
     <>
       <Navbar />
       <main>
-      <AboutHero />
-      <AboutMarquee />
-      <ValuesSection />
-      <StorySection />
+        {/* 1. Hero — the declaration */}
+        <AboutHero />
 
-      <section id="experts" className="bg-sunlight py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-h2 text-midnight text-center mb-12">
-            Dumbo Health&apos;s Scientific Committee
-          </h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {scientificCommittee.map((member) => (
-              <TeamCard key={member.name} member={member} />
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* 2. Founder story — Mo and Nico, the emotional core */}
+        <FounderStory />
 
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-h2 text-midnight text-center mb-12">
-            Dumbo Health&apos;s Medical Team
-          </h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {medicalTeam.map((member) => (
-              <TeamCard key={member.name} member={member} />
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* 3. Mission and vision — stated plainly */}
+        <MissionVision />
 
-      <section className="bg-sunlight py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-h2 text-midnight mb-2">Press</h2>
-          <h3 className="font-heading text-h3 text-midnight/70 mb-8">
-            Joining the Conversation for Healthier Nights
-          </h3>
-          <p className="font-body text-body text-midnight/50">No items found.</p>
-        </div>
-      </section>
+        {/* 4. What we're building — today, who we serve, where we're going */}
+        <WhatWereBuilding />
 
-      <VideoEmbed />
-      <CTASection />
-      <ServiceAreaBanner />
+        {/* 5. Values — shown through behavior */}
+        <ValuesSection />
+
+        {/* 6 & 7. Scientific committee + medical team */}
+        <TeamSection />
+
+        {/* 8. Where we're available */}
+        <Availability />
+
+        {/* 9. Closing CTA */}
+        <BottomCTA />
       </main>
       <Footer />
     </>

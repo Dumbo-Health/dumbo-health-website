@@ -132,6 +132,14 @@ export function FeatureComparison() {
           ))}
         </div>
 
+        {/* Footer note */}
+        <p
+          className="font-body text-sm mt-4 text-center"
+          style={{ color: "rgba(3,31,61,0.45)" }}
+        >
+          All plans include free shipping and a setup call with a specialist.
+        </p>
+
         {/* Toggle button */}
         <div className="text-center mt-8">
           <Button

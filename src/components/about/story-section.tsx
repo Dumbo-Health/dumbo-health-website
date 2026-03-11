@@ -6,11 +6,19 @@ export function StorySection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div>
-            <h2 className="font-heading text-h2 text-midnight mb-2">Our Story</h2>
-            <h3 className="font-heading text-h3 text-midnight/70 mb-6">
+            <h2
+              className="font-heading font-medium text-midnight mb-2"
+              style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+            >
+              Our Story
+            </h2>
+            <h3
+              className="font-heading font-medium text-midnight/70 mb-6"
+              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
+            >
               Better sleep should be easy. We&apos;re building it that way.
             </h3>
-            <p className="font-body text-body-lg text-midnight/70">
+            <p className="font-body text-midnight/70" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
               We started Dumbo Health to make sleep care simpler, more human, and within reach. Too many people struggle with sleep apnea without answers, support, or access. We&apos;re here to change that with affordable solutions, real doctors, and a care experience that actually fits your life.
             </p>
           </div>

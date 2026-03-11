@@ -8,7 +8,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const BEATS = [
   {
     n: "01",
-    icon: "/images/icon-cpap.png",
+    icon: "/images/icon-moon.png",
     title: "What is CPAP?",
     body: "A CPAP machine delivers a gentle, steady stream of air through a mask while you sleep. It keeps your airway open so you can breathe normally through the night.",
   },
@@ -20,7 +20,7 @@ const BEATS = [
   },
   {
     n: "03",
-    icon: "/images/icon-path.png",
+    icon: "/images/icon-arrows.png",
     title: "Why how you get it matters.",
     body: "Most people get a CPAP through insurance, a sleep lab, and a DME supplier. A process that takes months and leaves you managing it alone. Dumbo is built differently: faster, clearer, and with support at every step.",
   },

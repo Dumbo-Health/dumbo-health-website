@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, Plus } from "lucide-react";
 import type { Plan } from "@/content/plans";
@@ -9,19 +12,17 @@ interface PlanCardProps {
 export function PlanCard({ plan }: PlanCardProps) {
   const isPopular = plan.recommended;
 
-  return (
+  const card = (
     <div
-      className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${
-        isPopular
-          ? "shadow-xl shadow-midnight/12 -translate-y-1"
-          : "shadow-sm hover:shadow-md hover:-translate-y-0.5"
+      className={`relative flex flex-col rounded-2xl overflow-hidden h-full ${
+        isPopular ? "-translate-y-2" : ""
       }`}
       style={{
         backgroundColor: "#FFFFFF",
         border: isPopular
-          ? "1.5px solid rgba(120,191,188,0.35)"
+          ? "1.5px solid rgba(255,131,97,0.35)"
           : "1px solid rgba(245,230,209,1)",
-        borderTop: isPopular ? "4px solid #78BFBC" : undefined,
+        borderTop: isPopular ? "4px solid #FF8361" : undefined,
       }}
     >
       {/* Card header */}
@@ -38,8 +39,8 @@ export function PlanCard({ plan }: PlanCardProps) {
             <span
               className="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full"
               style={{
-                backgroundColor: "rgba(120,191,188,0.15)",
-                color: "#78BFBC",
+                backgroundColor: "rgba(255,131,97,0.12)",
+                color: "#FF8361",
               }}
             >
               Most popular
@@ -47,7 +48,7 @@ export function PlanCard({ plan }: PlanCardProps) {
           )}
         </div>
 
-        {/* Price — the main event */}
+        {/* Price */}
         <div className="flex items-baseline gap-1.5">
           <span
             className="font-heading font-medium text-midnight leading-none"
@@ -63,15 +64,15 @@ export function PlanCard({ plan }: PlanCardProps) {
           </span>
         </div>
 
-        {/* Savings — small, accessory */}
+        {/* Savings — accessory */}
         <p
           className="mt-2 font-mono text-[11px] uppercase tracking-widest"
-          style={{ color: "#78BFBC" }}
+          style={{ color: isPopular ? "#FF8361" : "#78BFBC" }}
         >
           {plan.savings}
         </p>
 
-        {/* Human summary */}
+        {/* Summary */}
         <p
           className="mt-3 font-body leading-snug"
           style={{
@@ -90,7 +91,7 @@ export function PlanCard({ plan }: PlanCardProps) {
         style={{
           height: "1px",
           backgroundColor: isPopular
-            ? "rgba(120,191,188,0.2)"
+            ? "rgba(255,131,97,0.18)"
             : "rgba(245,230,209,1)",
         }}
       />
@@ -102,7 +103,7 @@ export function PlanCard({ plan }: PlanCardProps) {
             <li key={feature} className="flex items-start gap-3">
               <Check
                 className="h-4 w-4 shrink-0 mt-0.5"
-                style={{ color: "#78BFBC" }}
+                style={{ color: isPopular ? "#FF8361" : "#78BFBC" }}
               />
               <span
                 className="font-body leading-snug"
@@ -140,12 +141,15 @@ export function PlanCard({ plan }: PlanCardProps) {
         <Button
           className={`w-full h-12 rounded-[12px] font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 ${
             isPopular
-              ? "bg-midnight text-white hover:bg-midnight/85"
+              ? "text-white hover:opacity-90"
               : "bg-transparent text-midnight hover:bg-midnight hover:text-white"
           }`}
           style={
             isPopular
-              ? { boxShadow: "0 4px 20px rgba(3,31,61,0.18)" }
+              ? {
+                  backgroundColor: "#FF8361",
+                  boxShadow: "0 4px 20px rgba(255,131,97,0.35)",
+                }
               : { border: "2px solid rgba(3,31,61,0.2)" }
           }
           asChild
@@ -154,5 +158,24 @@ export function PlanCard({ plan }: PlanCardProps) {
         </Button>
       </div>
     </div>
+  );
+
+  if (!isPopular) return card;
+
+  // Popular card: animated peach glow
+  return (
+    <motion.div
+      className="rounded-2xl"
+      animate={{
+        boxShadow: [
+          "0 8px 40px rgba(255,131,97,0.20), 0 2px 8px rgba(255,131,97,0.10)",
+          "0 12px 70px rgba(255,131,97,0.42), 0 4px 16px rgba(255,131,97,0.22)",
+          "0 8px 40px rgba(255,131,97,0.20), 0 2px 8px rgba(255,131,97,0.10)",
+        ],
+      }}
+      transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {card}
+    </motion.div>
   );
 }

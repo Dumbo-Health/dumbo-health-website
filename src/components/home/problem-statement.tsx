@@ -90,7 +90,7 @@ export function ProblemStatement() {
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <div className="mb-8 flex justify-center">
           <Image
-            src="/icons/icon-sad.png"
+            src="/images/icon-sad-face.png"
             alt=""
             width={48}
             height={48}
@@ -98,7 +98,10 @@ export function ProblemStatement() {
           />
         </div>
 
-        <h2 className="text-balance font-heading text-4xl font-medium leading-tight text-daylight md:text-5xl md:leading-tight">
+        <h2
+          className="text-balance font-heading font-medium leading-tight text-daylight"
+          style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+        >
           Sleep apnea doesn&apos;t just steal your sleep. It drains your energy, focus, and joy.
         </h2>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,18 +11,21 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const FEATURES = [
   {
     tag: "Smart resupply",
+    icon: "/images/icon-growing.png",
     title: "Supplies that know when to ship.",
     body: "Your CPAP sends us data. We read when parts are worn. Filters, tubing, masks, they ship before you run out, not on a fixed schedule. You never over-order. You never go without.",
     highlight: true,
   },
   {
     tag: "AI companion",
+    icon: "/images/icon-computer.png",
     title: "24/7 support that knows your sleep.",
     body: "Not a chatbot. Not a FAQ page. An AI that knows how you slept last night, can answer questions about your therapy, and escalates to a real person when you need it.",
     highlight: false,
   },
   {
     tag: "CPAP dashboard",
+    icon: "/images/icon-lines.png",
     title: "Your data, completely yours.",
     body: "Track every night, see your progress, and download reports to share with any provider. Your sleep data doesn't belong to a machine. It belongs to you.",
     highlight: false,
@@ -82,6 +86,19 @@ export function AppDifferentiators() {
                   : "1px solid rgba(252,246,237,0.08)",
               }}
             >
+              <div className="mb-5">
+                <Image
+                  src={f.icon}
+                  alt=""
+                  width={36}
+                  height={36}
+                  style={
+                    f.highlight
+                      ? { filter: "brightness(0) saturate(100%) invert(60%) sepia(60%) saturate(600%) hue-rotate(330deg) brightness(105%)", opacity: 0.85 }
+                      : { filter: "brightness(0) invert(1)", opacity: 0.5 }
+                  }
+                />
+              </div>
               <p
                 className="font-mono text-[11px] uppercase tracking-widest mb-4"
                 style={{ color: f.highlight ? "#FF8361" : "#78BFBC" }}
