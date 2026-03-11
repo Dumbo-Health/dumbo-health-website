@@ -10,7 +10,7 @@ const problems = [
   {
     word:      "Sickness",
     label:     "Constantly sick",
-    slug:      "constantly-sick",
+    slug:      "constantly-getting-sick",
     copy:      "Poor sleep breaks down your immune defenses, leaving you vulnerable to illness after illness.",
     idleBg:    "rgba(120,191,188,0.14)",
     idleColor: "#78BFBC",
