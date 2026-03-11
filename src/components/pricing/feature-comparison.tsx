@@ -1,31 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { featureComparison } from "@/content/plans";
 
 function FeatureValue({ value }: { value: string }) {
   if (value === "Included" || value === "Included (free)" || value === "No usage minimums") {
-    return <Check className="h-5 w-5 text-teal mx-auto" />;
+    return <Check className="h-5 w-5 mx-auto" style={{ color: "#78BFBC" }} />;
   }
   if (value === "Not included" || value === "Not required") {
-    return <X className="h-5 w-5 text-midnight/20 mx-auto" />;
+    return <X className="h-5 w-5 mx-auto" style={{ color: "rgba(3,31,61,0.18)" }} />;
   }
   return (
-    <span className="font-body text-sm text-midnight/70 leading-snug">
+    <span className="font-body text-sm leading-snug" style={{ color: "rgba(3,31,61,0.65)" }}>
       {value}
     </span>
   );
 }
+
+const COL = "grid-cols-[2fr_1fr_1fr_1fr]";
 
 export function FeatureComparison() {
   const [expanded, setExpanded] = useState(false);
@@ -34,14 +28,21 @@ export function FeatureComparison() {
     : featureComparison.slice(0, 6);
 
   return (
-    <section className="bg-daylight py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <section id="compare" className="py-16 sm:py-24" style={{ backgroundColor: "#FCF6ED" }}>
+      <div className="mx-auto max-w-5xl px-[5%]">
+
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-h2 text-midnight mb-4">
-            Compare Features
+          <h2
+            className="font-heading font-medium text-midnight mb-4"
+            style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
+          >
+            Compare features
           </h2>
-          <p className="font-body text-body-lg text-midnight/70 max-w-2xl mx-auto leading-relaxed">
+          <p
+            className="font-body mx-auto leading-relaxed"
+            style={{ fontSize: "1.125rem", color: "rgba(3,31,61,0.65)", maxWidth: "52ch" }}
+          >
             Whether you&apos;re starting CPAP for the first time or continuing
             treatment, our plans give you the right equipment, support, and care
             at every stage.
@@ -49,58 +50,86 @@ export function FeatureComparison() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto rounded-xl border border-sunlight bg-white shadow-sm">
-          <Table>
-            <TableHeader>
-              <TableRow className="border-b border-sunlight">
-                <TableHead className="font-body font-bold text-midnight w-[30%] py-4 px-5">
-                  Feature
-                </TableHead>
-                <TableHead className="font-body font-bold text-midnight text-center py-4 w-[23%]">
-                  Essentials
-                </TableHead>
-                <TableHead className="font-body font-bold text-midnight text-center py-4 w-[23%] bg-peach/5">
-                  <span className="flex flex-col items-center gap-0.5">
-                    Premium
-                    <span className="text-xs font-mono text-peach font-normal">
-                      Popular
-                    </span>
-                  </span>
-                </TableHead>
-                <TableHead className="font-body font-bold text-midnight text-center py-4 w-[23%]">
-                  Elite
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {visibleFeatures.map((feature, i) => (
-                <TableRow
-                  key={feature.name}
-                  className={`border-b border-sunlight/60 ${
-                    i % 2 === 0 ? "bg-white" : "bg-daylight/40"
-                  }`}
-                >
-                  <TableCell className="font-body text-sm text-midnight font-medium py-4 px-5">
-                    {feature.name}
-                    {feature.note && (
-                      <p className="text-xs text-midnight/40 mt-1 leading-relaxed">
-                        {feature.note}
-                      </p>
-                    )}
-                  </TableCell>
-                  <TableCell className="text-center py-4">
-                    <FeatureValue value={feature.essentials} />
-                  </TableCell>
-                  <TableCell className="text-center py-4 bg-peach/5">
-                    <FeatureValue value={feature.premium} />
-                  </TableCell>
-                  <TableCell className="text-center py-4">
-                    <FeatureValue value={feature.elite} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ border: "1px solid rgba(245,230,209,1)" }}
+        >
+          {/* Column headers */}
+          <div className={`grid ${COL} bg-white`} style={{ borderBottom: "1px solid rgba(245,230,209,1)" }}>
+            <div className="py-4 px-5">
+              <span className="font-body font-bold text-sm text-midnight">Feature</span>
+            </div>
+            <div className="py-4 px-3 text-center" style={{ borderLeft: "1px solid rgba(245,230,209,1)" }}>
+              <span className="font-body font-bold text-sm text-midnight">Essentials</span>
+            </div>
+            <div
+              className="py-4 px-3 text-center"
+              style={{
+                borderLeft: "1px solid rgba(245,230,209,1)",
+                backgroundColor: "rgba(120,191,188,0.06)",
+                borderTop: "3px solid #78BFBC",
+              }}
+            >
+              <span className="font-body font-bold text-sm text-midnight block">Premium</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "#78BFBC" }}>
+                Popular
+              </span>
+            </div>
+            <div className="py-4 px-3 text-center" style={{ borderLeft: "1px solid rgba(245,230,209,1)" }}>
+              <span className="font-body font-bold text-sm text-midnight">Elite</span>
+            </div>
+          </div>
+
+          {/* Rows */}
+          {visibleFeatures.map((feature, i) => (
+            <div
+              key={feature.name}
+              className={`grid ${COL}`}
+              style={{
+                borderBottom: i < visibleFeatures.length - 1 ? "1px solid rgba(245,230,209,0.8)" : undefined,
+                backgroundColor: i % 2 === 0 ? "#FFFFFF" : "rgba(252,246,237,0.5)",
+              }}
+            >
+              {/* Feature name */}
+              <div className="py-4 px-5 flex flex-col justify-center">
+                <span className="font-body text-sm font-medium text-midnight leading-snug">
+                  {feature.name}
+                </span>
+                {feature.note && (
+                  <p className="font-body text-xs mt-1 leading-relaxed" style={{ color: "rgba(3,31,61,0.38)" }}>
+                    {feature.note}
+                  </p>
+                )}
+              </div>
+
+              {/* Essentials */}
+              <div
+                className="py-4 px-3 flex items-center justify-center text-center"
+                style={{ borderLeft: "1px solid rgba(245,230,209,1)" }}
+              >
+                <FeatureValue value={feature.essentials} />
+              </div>
+
+              {/* Premium */}
+              <div
+                className="py-4 px-3 flex items-center justify-center text-center"
+                style={{
+                  borderLeft: "1px solid rgba(245,230,209,1)",
+                  backgroundColor: "rgba(120,191,188,0.06)",
+                }}
+              >
+                <FeatureValue value={feature.premium} />
+              </div>
+
+              {/* Elite */}
+              <div
+                className="py-4 px-3 flex items-center justify-center text-center"
+                style={{ borderLeft: "1px solid rgba(245,230,209,1)" }}
+              >
+                <FeatureValue value={feature.elite} />
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Toggle button */}
@@ -123,6 +152,7 @@ export function FeatureComparison() {
             )}
           </Button>
         </div>
+
       </div>
     </section>
   );
