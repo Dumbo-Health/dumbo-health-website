@@ -2,51 +2,24 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SHOPIFY, APP_URL } from "@/lib/constants";
 
-// ─── Animation helpers ────────────────────────────────────────────────────────
-
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 // ─── Section 1: The Hook ──────────────────────────────────────────────────────
 
 function TheHook() {
   return (
-    <section
-      style={{ backgroundColor: "#FCF6ED", paddingTop: "96px", paddingBottom: "96px" }}
-    >
+    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
       <div className="mx-auto max-w-4xl px-[5%] text-center">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-body uppercase tracking-widest mb-6"
+          className="font-mono uppercase tracking-widest mb-6"
           style={{ fontSize: "0.75rem", color: "#78BFBC" }}
         >
           Sleep Apnea — A Guide
@@ -54,7 +27,7 @@ function TheHook() {
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="font-heading font-medium text-midnight text-balance"
           style={{ fontSize: "clamp(2.8rem, 6vw, 4.8rem)", lineHeight: 1.08 }}
         >
@@ -66,7 +39,7 @@ function TheHook() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, delay: 0.25, ease: EASE }}
           className="font-body text-midnight mx-auto mt-7 text-balance"
           style={{
             fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
@@ -89,7 +62,7 @@ function TheHook() {
             className="flex flex-col items-center gap-2"
             style={{ color: "rgba(3,31,61,0.3)" }}
           >
-            <span className="font-body text-xs uppercase tracking-widest">
+            <span className="font-mono text-xs uppercase tracking-widest">
               Keep reading
             </span>
             <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
@@ -112,14 +85,19 @@ function TheHook() {
 
 function WhatIsSleepApnea() {
   return (
-    <section style={{ backgroundColor: "#F5E6D1", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
       <div className="mx-auto max-w-6xl px-[5%]">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
           {/* Text */}
           <div>
-            <FadeIn>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <p
-                className="font-body uppercase tracking-widest mb-4"
+                className="font-mono uppercase tracking-widest mb-4"
                 style={{ fontSize: "0.75rem", color: "#78BFBC" }}
               >
                 Act 1 — Understanding the condition
@@ -130,9 +108,14 @@ function WhatIsSleepApnea() {
               >
                 What&apos;s actually happening when you sleep
               </h2>
-            </FadeIn>
+            </motion.div>
 
-            <FadeIn delay={0.1}>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <p
                 className="font-body mt-6 text-midnight"
                 style={{
@@ -148,10 +131,15 @@ function WhatIsSleepApnea() {
                 breathing again. You never remember these moments. But they can
                 happen dozens of times every hour, all night long.
               </p>
-            </FadeIn>
+            </motion.div>
 
             {/* Pull quote */}
-            <FadeIn delay={0.15}>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <blockquote
                 className="font-heading font-medium my-8 pl-5 text-balance"
                 style={{
@@ -164,9 +152,14 @@ function WhatIsSleepApnea() {
                 Your body isn&apos;t failing to sleep. It&apos;s constantly
                 being pulled out of it.
               </blockquote>
-            </FadeIn>
+            </motion.div>
 
-            <FadeIn delay={0.2}>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <h3
                 className="font-heading font-medium text-midnight mt-8 mb-3"
                 style={{ fontSize: "1.2rem" }}
@@ -188,9 +181,14 @@ function WhatIsSleepApnea() {
                 shallow, broken rest — never reaching the deep stages where
                 your body actually recovers.
               </p>
-            </FadeIn>
+            </motion.div>
 
-            <FadeIn delay={0.25}>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.25, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <h3
                 className="font-heading font-medium text-midnight mt-8 mb-3"
                 style={{ fontSize: "1.2rem" }}
@@ -213,11 +211,17 @@ function WhatIsSleepApnea() {
                 middle-aged man who snores? That&apos;s a fraction of the
                 picture.
               </p>
-            </FadeIn>
+            </motion.div>
           </div>
 
           {/* Visual — image */}
-          <FadeIn delay={0.2} className="lg:sticky lg:top-24">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:sticky lg:top-24"
+          >
             <div
               className="relative overflow-hidden rounded-2xl"
               style={{ aspectRatio: "4/5" }}
@@ -230,7 +234,7 @@ function WhatIsSleepApnea() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-          </FadeIn>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -264,11 +268,16 @@ function WhyItMatters() {
   ];
 
   return (
-    <section style={{ backgroundColor: "#FCF6ED", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
       <div className="mx-auto max-w-3xl px-[5%] text-center">
-        <FadeIn>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <p
-            className="font-body uppercase tracking-widest mb-4"
+            className="font-mono uppercase tracking-widest mb-4"
             style={{ fontSize: "0.75rem", color: "#78BFBC" }}
           >
             The ripple effect
@@ -279,9 +288,14 @@ function WhyItMatters() {
           >
             This is what&apos;s been running your life
           </h2>
-        </FadeIn>
+        </motion.div>
 
-        <FadeIn delay={0.1}>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <p
             className="font-body mt-6 mx-auto text-balance"
             style={{
@@ -294,10 +308,15 @@ function WhyItMatters() {
             It&apos;s not laziness. It&apos;s not aging. It&apos;s a breathing
             problem — and it&apos;s been quietly affecting everything.
           </p>
-        </FadeIn>
+        </motion.div>
 
         {/* Teal callout */}
-        <FadeIn delay={0.15}>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <p
             className="font-heading font-medium my-10 text-balance"
             style={{
@@ -309,11 +328,17 @@ function WhyItMatters() {
             &ldquo;I thought I was just a bad sleeper. Turns out I wasn&apos;t
             sleeping at all.&rdquo;
           </p>
-        </FadeIn>
+        </motion.div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 text-left">
           {items.map((item, i) => (
-            <FadeIn key={item.label} delay={0.1 + i * 0.07}>
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1 + i * 0.07, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <div
                 className="flex gap-4 rounded-2xl p-6"
                 style={{ backgroundColor: "#F5E6D1" }}
@@ -340,7 +365,7 @@ function WhyItMatters() {
                   </p>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -373,11 +398,17 @@ function HowItFound() {
   ];
 
   return (
-    <section style={{ backgroundColor: "#FCF6ED", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
       <div className="mx-auto max-w-6xl px-[5%]">
-        <FadeIn className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-16"
+        >
           <p
-            className="font-body uppercase tracking-widest mb-4"
+            className="font-mono uppercase tracking-widest mb-4"
             style={{ fontSize: "0.75rem", color: "#78BFBC" }}
           >
             Act 2 — Finding out
@@ -400,11 +431,17 @@ function HowItFound() {
             The good news: sleep apnea is one of the most treatable conditions
             there is. And finding out takes one night.
           </p>
-        </FadeIn>
+        </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           {steps.map((step, i) => (
-            <FadeIn key={step.n} delay={i * 0.1}>
+            <motion.div
+              key={step.n}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <div
                 className="flex flex-col gap-5 rounded-2xl p-8 h-full"
                 style={{ backgroundColor: "#F5E6D1" }}
@@ -437,18 +474,23 @@ function HowItFound() {
                   {step.body}
                 </p>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
 
-        <FadeIn delay={0.35}>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.35, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <p
             className="font-body text-center mt-10"
             style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.45)" }}
           >
             No sleep clinic &middot; No waiting room &middot; No overnight away from home
           </p>
-        </FadeIn>
+        </motion.div>
       </div>
     </section>
   );
@@ -485,12 +527,18 @@ function TreatmentDumboSurfaces() {
   ];
 
   return (
-    <section style={{ backgroundColor: "#F5E6D1", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
       <div className="mx-auto max-w-6xl px-[5%]">
         {/* Transition line — Dumbo Health surfaces here */}
-        <FadeIn className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-16"
+        >
           <p
-            className="font-body uppercase tracking-widest mb-4"
+            className="font-mono uppercase tracking-widest mb-4"
             style={{ fontSize: "0.75rem", color: "#78BFBC" }}
           >
             Treatment
@@ -518,11 +566,17 @@ function TreatmentDumboSurfaces() {
             option below — we handle the prescription, the delivery, and the
             follow-up.
           </p>
-        </FadeIn>
+        </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-3">
           {treatments.map((t, i) => (
-            <FadeIn key={t.name} delay={i * 0.1}>
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
+              viewport={{ once: true, margin: "-80px" }}
+            >
               <div
                 className="flex flex-col gap-4 rounded-2xl p-8 h-full"
                 style={{ backgroundColor: "#FFD6AD" }}
@@ -552,7 +606,7 @@ function TreatmentDumboSurfaces() {
                   style={{ borderTop: "1px solid rgba(3,31,61,0.1)" }}
                 >
                   <p
-                    className="font-body text-xs uppercase tracking-widest mb-2"
+                    className="font-mono text-xs uppercase tracking-widest mb-2"
                     style={{ color: "#FF8361" }}
                   >
                     How Dumbo Health delivers this
@@ -565,7 +619,7 @@ function TreatmentDumboSurfaces() {
                   </p>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -577,9 +631,15 @@ function TreatmentDumboSurfaces() {
 
 function ConversionFork() {
   return (
-    <section style={{ backgroundColor: "#FF8361", paddingTop: "96px", paddingBottom: "96px" }}>
+    <section className="py-24" style={{ backgroundColor: "#FF8361" }}>
       <div className="mx-auto max-w-5xl px-[5%]">
-        <FadeIn className="text-center mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-14"
+        >
           <h2
             className="font-heading font-medium text-white text-balance"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
@@ -597,17 +657,22 @@ function ConversionFork() {
           >
             Pick the step that&apos;s right for you. Both paths lead to the same place: better sleep.
           </p>
-        </FadeIn>
+        </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Primary — undiagnosed */}
-          <FadeIn delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
+            viewport={{ once: true, margin: "-80px" }}
+          >
             <div
               className="flex flex-col gap-5 rounded-2xl p-10"
               style={{ backgroundColor: "#fff" }}
             >
               <p
-                className="font-body text-xs uppercase tracking-widest"
+                className="font-mono text-xs uppercase tracking-widest"
                 style={{ color: "#FF8361" }}
               >
                 I haven&apos;t been diagnosed yet
@@ -629,13 +694,11 @@ function ConversionFork() {
               </p>
               <Link
                 href={SHOPIFY.buyUrl}
-                className="mt-auto inline-flex h-13 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                className="mt-auto inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
                 style={{
                   backgroundColor: "#031F3D",
                   color: "#fff",
                   boxShadow: "0 4px 20px rgba(3,31,61,0.18)",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem",
                 }}
               >
                 Order your sleep test — $149
@@ -647,16 +710,21 @@ function ConversionFork() {
                 FDA-cleared &middot; Ships next business day &middot; No insurance required
               </p>
             </div>
-          </FadeIn>
+          </motion.div>
 
           {/* Secondary — diagnosed */}
-          <FadeIn delay={0.18}>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.18, ease: EASE }}
+            viewport={{ once: true, margin: "-80px" }}
+          >
             <div
               className="flex flex-col gap-5 rounded-2xl p-10"
               style={{ backgroundColor: "#F5E6D1" }}
             >
               <p
-                className="font-body text-xs uppercase tracking-widest"
+                className="font-mono text-xs uppercase tracking-widest"
                 style={{ color: "#78BFBC" }}
               >
                 I&apos;ve already been diagnosed
@@ -677,13 +745,11 @@ function ConversionFork() {
               </p>
               <Link
                 href={APP_URL}
-                className="mt-auto inline-flex h-13 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+                className="mt-auto inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
                 style={{
                   backgroundColor: "transparent",
                   color: "#031F3D",
                   border: "1.5px solid rgba(3,31,61,0.3)",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem",
                 }}
               >
                 Start treatment with Dumbo Health
@@ -695,11 +761,16 @@ function ConversionFork() {
                 Telehealth care &middot; All 50 states &middot; Insurance-friendly
               </p>
             </div>
-          </FadeIn>
+          </motion.div>
         </div>
 
         {/* Trust signal */}
-        <FadeIn delay={0.3}>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.3, ease: EASE }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <div className="mt-12 text-center">
             <p
               className="font-body mx-auto text-balance"
@@ -719,10 +790,10 @@ function ConversionFork() {
               className="font-body mt-3 text-sm"
               style={{ color: "rgba(255,255,255,0.55)" }}
             >
-              Maria S., 41 &mdash; Miami, FL
+              Maria S., 41, Miami, FL
             </p>
           </div>
-        </FadeIn>
+        </motion.div>
       </div>
     </section>
   );
