@@ -1,3 +1,5 @@
+export const revalidate = 300;
+
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
