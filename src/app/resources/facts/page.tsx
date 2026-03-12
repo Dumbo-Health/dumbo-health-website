@@ -9,11 +9,33 @@ import { SHOPIFY, APP_URL } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+// ─── Gradient bleed transitions ───────────────────────────────────────────────
+
+function Bleed({ from, to }: { from: string; to: string }) {
+  return (
+    <div
+      aria-hidden
+      style={{
+        height: "48px",
+        background: `linear-gradient(to bottom, ${from}, ${to})`,
+        marginTop: "-1px",
+        marginBottom: "-1px",
+      }}
+    />
+  );
+}
+
 // ─── Section 1: The Hook ──────────────────────────────────────────────────────
 
 function TheHook() {
   return (
-    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
+    <section
+      className="pt-32 pb-24"
+      style={{
+        background:
+          "radial-gradient(ellipse 80% 56% at 50% 0%, rgba(255,131,97,0.07) 0%, #FCF6ED 68%)",
+      }}
+    >
       <div className="mx-auto max-w-4xl px-[5%] text-center">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -24,23 +46,43 @@ function TheHook() {
         >
           Sleep Apnea — A Guide
         </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+
+        {/* H1 split entry — punchline lands last */}
+        <h1
           className="font-heading font-medium text-midnight text-balance"
           style={{ fontSize: "clamp(2.8rem, 6vw, 4.8rem)", lineHeight: 1.08 }}
         >
-          You&apos;re exhausted. You sleep.
-          <br />
-          And somehow you&apos;re{" "}
-          <span style={{ color: "#FF8361" }}>still tired.</span>
-        </motion.h1>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+          >
+            You&apos;re exhausted. You sleep.
+          </motion.span>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.22, ease: EASE }}
+          >
+            And somehow you&apos;re{" "}
+            <motion.span
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.46, ease: EASE }}
+              style={{ color: "#FF8361", display: "inline-block" }}
+            >
+              still tired.
+            </motion.span>
+          </motion.span>
+        </h1>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.25, ease: EASE }}
-          className="font-body text-midnight mx-auto mt-7 text-balance"
+          transition={{ duration: 0.65, delay: 0.35, ease: EASE }}
+          className="font-body mx-auto mt-7 text-balance"
           style={{
             fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
             maxWidth: "52ch",
@@ -51,12 +93,13 @@ function TheHook() {
           reason. And it&apos;s not you. This guide will walk you through
           exactly what&apos;s going on and what to do about it.
         </motion.p>
-        {/* Scroll cue */}
+
+        {/* Scroll cue — bouncing arrow */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="mt-12 flex justify-center"
+          className="mt-14 flex justify-center"
         >
           <div
             className="flex flex-col items-center gap-2"
@@ -65,15 +108,20 @@ function TheHook() {
             <span className="font-mono text-xs uppercase tracking-widest">
               Keep reading
             </span>
-            <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-              <path
-                d="M8 4v16M2 14l6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+                <path
+                  d="M8 4v16M2 14l6 6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -117,7 +165,7 @@ function WhatIsSleepApnea() {
               viewport={{ once: true, margin: "-80px" }}
             >
               <p
-                className="font-body mt-6 text-midnight"
+                className="font-body mt-6"
                 style={{
                   fontSize: "1.0625rem",
                   lineHeight: 1.75,
@@ -141,9 +189,9 @@ function WhatIsSleepApnea() {
               viewport={{ once: true, margin: "-80px" }}
             >
               <blockquote
-                className="font-heading font-medium my-8 pl-5 text-balance"
+                className="font-heading font-medium my-10 pl-6 text-balance"
                 style={{
-                  borderLeft: "3px solid #FF8361",
+                  borderLeft: "4px solid #FF8361",
                   fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
                   color: "#031F3D",
                   lineHeight: 1.3,
@@ -162,12 +210,12 @@ function WhatIsSleepApnea() {
             >
               <h3
                 className="font-heading font-medium text-midnight mt-8 mb-3"
-                style={{ fontSize: "1.2rem" }}
+                style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
               >
                 Why your body doesn&apos;t just wake you up
               </h3>
               <p
-                className="font-body text-midnight"
+                className="font-body"
                 style={{
                   fontSize: "1.0625rem",
                   lineHeight: 1.75,
@@ -191,12 +239,12 @@ function WhatIsSleepApnea() {
             >
               <h3
                 className="font-heading font-medium text-midnight mt-8 mb-3"
-                style={{ fontSize: "1.2rem" }}
+                style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
               >
                 Who it affects
               </h3>
               <p
-                className="font-body text-midnight"
+                className="font-body"
                 style={{
                   fontSize: "1.0625rem",
                   lineHeight: 1.75,
@@ -214,7 +262,7 @@ function WhatIsSleepApnea() {
             </motion.div>
           </div>
 
-          {/* Visual — image */}
+          {/* Visual — image with shadow */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -224,7 +272,10 @@ function WhatIsSleepApnea() {
           >
             <div
               className="relative overflow-hidden rounded-2xl"
-              style={{ aspectRatio: "4/5" }}
+              style={{
+                aspectRatio: "4/5",
+                boxShadow: "0 24px 64px rgba(3,31,61,0.12)",
+              }}
             >
               <Image
                 src="/images/people/man-smiling-in-bed-1.png"
@@ -310,38 +361,52 @@ function WhyItMatters() {
           </p>
         </motion.div>
 
-        {/* Teal callout */}
+        {/* Teal callout — emotional peak, needs to stop the reader */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
           viewport={{ once: true, margin: "-80px" }}
         >
-          <p
-            className="font-heading font-medium my-10 text-balance"
+          <div
+            className="my-10 rounded-2xl p-8 text-left"
             style={{
-              fontSize: "clamp(1.3rem, 2.2vw, 1.6rem)",
-              color: "#78BFBC",
-              lineHeight: 1.3,
+              backgroundColor: "rgba(120,191,188,0.1)",
+              borderLeft: "4px solid #78BFBC",
             }}
           >
-            &ldquo;I thought I was just a bad sleeper. Turns out I wasn&apos;t
-            sleeping at all.&rdquo;
-          </p>
+            <p
+              className="font-heading font-medium text-balance"
+              style={{
+                fontSize: "clamp(1.3rem, 2.2vw, 1.65rem)",
+                color: "#031F3D",
+                lineHeight: 1.35,
+              }}
+            >
+              &ldquo;I thought I was just a bad sleeper. Turns out I wasn&apos;t
+              sleeping at all.&rdquo;
+            </p>
+          </div>
         </motion.div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 text-left">
+        {/* Effect cards — white on Daylight, with hover */}
+        <div className="mt-4 grid gap-6 sm:grid-cols-2 text-left">
           {items.map((item, i) => (
             <motion.div
               key={item.label}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.65, delay: 0.1 + i * 0.07, ease: EASE }}
               viewport={{ once: true, margin: "-80px" }}
             >
               <div
-                className="flex gap-4 rounded-2xl p-6"
-                style={{ backgroundColor: "#F5E6D1" }}
+                className="flex gap-4 rounded-2xl p-6 h-full"
+                style={{
+                  backgroundColor: "#fff",
+                  boxShadow: "0 2px 16px rgba(3,31,61,0.06)",
+                  border: "1px solid rgba(3,31,61,0.05)",
+                }}
               >
                 <Image
                   src={item.icon}
@@ -398,7 +463,7 @@ function HowItFound() {
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
+    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
       <div className="mx-auto max-w-6xl px-[5%]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -433,23 +498,29 @@ function HowItFound() {
           </p>
         </motion.div>
 
+        {/* Step cards — white on Sunlight, peach-tinted ghost numbers */}
         <div className="grid gap-8 lg:grid-cols-3">
           {steps.map((step, i) => (
             <motion.div
               key={step.n}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
               viewport={{ once: true, margin: "-80px" }}
             >
               <div
                 className="flex flex-col gap-5 rounded-2xl p-8 h-full"
-                style={{ backgroundColor: "#F5E6D1" }}
+                style={{
+                  backgroundColor: "#fff",
+                  boxShadow: "0 2px 16px rgba(3,31,61,0.06)",
+                  border: "1px solid rgba(3,31,61,0.05)",
+                }}
               >
                 <div className="flex items-center gap-4">
                   <span
                     className="font-heading font-medium"
-                    style={{ fontSize: "2.5rem", color: "rgba(3,31,61,0.12)", lineHeight: 1 }}
+                    style={{ fontSize: "2.5rem", color: "rgba(255,131,97,0.22)", lineHeight: 1 }}
                   >
                     {step.n}
                   </span>
@@ -463,7 +534,7 @@ function HowItFound() {
                 </div>
                 <h3
                   className="font-heading font-medium text-midnight"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
                 >
                   {step.title}
                 </h3>
@@ -486,7 +557,7 @@ function HowItFound() {
         >
           <p
             className="font-body text-center mt-10"
-            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.45)" }}
+            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.4)" }}
           >
             No sleep clinic &middot; No waiting room &middot; No overnight away from home
           </p>
@@ -529,7 +600,6 @@ function TreatmentDumboSurfaces() {
   return (
     <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
       <div className="mx-auto max-w-6xl px-[5%]">
-        {/* Transition line — Dumbo Health surfaces here */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -574,6 +644,7 @@ function TreatmentDumboSurfaces() {
               key={t.name}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
               transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
               viewport={{ once: true, margin: "-80px" }}
             >
@@ -590,7 +661,7 @@ function TreatmentDumboSurfaces() {
                 />
                 <h3
                   className="font-heading font-medium text-midnight"
-                  style={{ fontSize: "1.2rem" }}
+                  style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
                 >
                   {t.name}
                 </h3>
@@ -600,10 +671,10 @@ function TreatmentDumboSurfaces() {
                 >
                   {t.description}
                 </p>
-                {/* Dumbo Health layer */}
+                {/* Dumbo Health layer — clearer demarcation */}
                 <div
-                  className="mt-auto pt-4"
-                  style={{ borderTop: "1px solid rgba(3,31,61,0.1)" }}
+                  className="mt-auto pt-5"
+                  style={{ borderTop: "1px solid rgba(3,31,61,0.15)" }}
                 >
                   <p
                     className="font-mono text-xs uppercase tracking-widest mb-2"
@@ -631,7 +702,12 @@ function TreatmentDumboSurfaces() {
 
 function ConversionFork() {
   return (
-    <section className="py-24" style={{ backgroundColor: "#FF8361" }}>
+    <section
+      className="py-24"
+      style={{
+        background: "linear-gradient(135deg, #FF8361 0%, #e8693f 100%)",
+      }}
+    >
       <div className="mx-auto max-w-5xl px-[5%]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -660,16 +736,20 @@ function ConversionFork() {
         </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Primary — undiagnosed */}
+          {/* Primary — undiagnosed — dominant shadow */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4 }}
             transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
             viewport={{ once: true, margin: "-80px" }}
           >
             <div
-              className="flex flex-col gap-5 rounded-2xl p-10"
-              style={{ backgroundColor: "#fff" }}
+              className="flex flex-col gap-5 rounded-2xl p-10 h-full"
+              style={{
+                backgroundColor: "#fff",
+                boxShadow: "0 8px 48px rgba(3,31,61,0.18)",
+              }}
             >
               <p
                 className="font-mono text-xs uppercase tracking-widest"
@@ -716,11 +796,12 @@ function ConversionFork() {
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4 }}
             transition={{ duration: 0.65, delay: 0.18, ease: EASE }}
             viewport={{ once: true, margin: "-80px" }}
           >
             <div
-              className="flex flex-col gap-5 rounded-2xl p-10"
+              className="flex flex-col gap-5 rounded-2xl p-10 h-full"
               style={{ backgroundColor: "#F5E6D1" }}
             >
               <p
@@ -764,14 +845,17 @@ function ConversionFork() {
           </motion.div>
         </div>
 
-        {/* Trust signal */}
+        {/* Trust signal — separated */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.3, ease: EASE }}
           viewport={{ once: true, margin: "-80px" }}
         >
-          <div className="mt-12 text-center">
+          <div
+            className="mt-16 pt-10 text-center"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
+          >
             <p
               className="font-body mx-auto text-balance"
               style={{
@@ -801,16 +885,20 @@ function ConversionFork() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function LearnPage() {
+export default function FactsPage() {
   return (
     <>
       <Navbar />
       <main>
         <TheHook />
+        <Bleed from="#FCF6ED" to="#F5E6D1" />
         <WhatIsSleepApnea />
+        <Bleed from="#F5E6D1" to="#FCF6ED" />
         <WhyItMatters />
+        <Bleed from="#FCF6ED" to="#F5E6D1" />
         <HowItFound />
         <TreatmentDumboSurfaces />
+        <Bleed from="#F5E6D1" to="#FF8361" />
         <ConversionFork />
       </main>
       <Footer />
