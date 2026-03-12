@@ -1,4 +1,4 @@
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
@@ -11,17 +11,6 @@ import { getBlogPosts, getBlogCategories } from "@/lib/supabase";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
-}
-
-export const dynamicParams = true;
-
-export function generateStaticParams() {
-  return [
-    { category: "cpap" },
-    { category: "sleep-apnea" },
-    { category: "sleep-disorders" },
-    { category: "sleep-tracking" },
-  ];
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
