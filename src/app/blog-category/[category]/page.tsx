@@ -13,9 +13,15 @@ interface CategoryPageProps {
   params: Promise<{ category: string }>;
 }
 
-export async function generateStaticParams() {
-  const categories = await getBlogCategories();
-  return categories.map((cat) => ({ category: cat.slug }));
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  return [
+    { category: "cpap" },
+    { category: "sleep-apnea" },
+    { category: "sleep-disorders" },
+    { category: "sleep-tracking" },
+  ];
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
