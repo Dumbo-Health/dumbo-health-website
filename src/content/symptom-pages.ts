@@ -72,7 +72,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "We ship your CPAP with everything you need, set you up with a specialist, and stay with you every step of the way through our app.",
       },
     ],
-    ctaLine: "Most people start feeling better within two weeks of treatment.",
+    ctaLine: "Two weeks to a morning you recognize.",
   },
   {
     slug: "cant-focus",
@@ -92,7 +92,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     whyBullets: [
       "Deep sleep is when your brain processes and stores information.",
       "Each apnea event pulls you out before that work is done.",
-      "Months of disrupted sleep has measurable effects on cognitive performance.",
+      "Months of disrupted sleep have real effects on how your brain performs.",
     ],
     whyImage: "/images/Could this be sleep apnea photos/Cant focus.png",
     whyImageAlt: "Person struggling to concentrate",
@@ -111,11 +111,11 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
       },
       {
         n: "03",
-        title: "Treatment that runs in the background.",
-        body: "Modern CPAP therapy is quiet and simple. Our team helps you get set up and comfortable so it becomes second nature fast.",
+        title: "Treatment that fits into your life.",
+        body: "Modern CPAP therapy is quiet and simple. Our team helps you get comfortable so it becomes second nature fast.",
       },
     ],
-    ctaLine: "Patients often report sharper thinking within the first few weeks.",
+    ctaLine: "Your brain isn't broken. It's just tired.",
   },
   {
     slug: "loud-snoring",
@@ -158,7 +158,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "CPAP therapy virtually eliminates snoring for most people. Your partner will notice the difference on night one.",
       },
     ],
-    ctaLine: "Start finding out what's behind the snoring tonight.",
+    ctaLine: "Tonight could be the turning point.",
   },
   {
     slug: "anxiety-and-stress",
@@ -178,7 +178,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     whyBullets: [
       "Sleep apnea activates your fight-or-flight response repeatedly through the night.",
       "Cortisol levels stay elevated when deep sleep is disrupted.",
-      "A dysregulated nervous system makes everything harder to manage.",
+      "When your nervous system is overloaded, everything feels harder to manage.",
     ],
     whyImage: "/images/Could this be sleep apnea photos/Anxiety and stress.png",
     whyImageAlt: "Person looking stressed and overwhelmed",
@@ -201,7 +201,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "We make starting CPAP therapy as low-friction as possible, so you can focus on feeling better, not figuring out equipment.",
       },
     ],
-    ctaLine: "Many patients report feeling calmer within weeks of starting treatment.",
+    ctaLine: "Calmer days start with one night.",
   },
   {
     slug: "low-sex-drive",
@@ -244,7 +244,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "We help you get comfortable with CPAP therapy and stay with you through the adjustment period. Better sleep is the foundation everything else builds on.",
       },
     ],
-    ctaLine: "Start with one night of data. It could change everything.",
+    ctaLine: "One night of data. A lot can shift.",
   },
   {
     slug: "hard-to-lose-weight",
@@ -262,8 +262,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     whyBody:
       "Sleep deprivation caused by sleep apnea raises ghrelin, the hormone that makes you hungry, while lowering leptin, the hormone that makes you feel full. At the same time, cortisol rises and promotes fat storage, particularly around the abdomen. Your body is working against your best efforts. It's not a character flaw. It's chemistry.",
     whyBullets: [
-      "Ghrelin rises and leptin drops, making you hungrier and less satisfied.",
-      "Elevated cortisol promotes fat storage, especially belly fat.",
+      "Your hunger hormones get thrown off, making you eat more and feel less full.",
+      "Stress hormones rise overnight, promoting fat storage around the belly.",
       "Low energy from poor sleep makes exercise harder to sustain.",
     ],
     whyImage: "/images/Could this be sleep apnea photos/Hard to loose weight.png",
@@ -287,7 +287,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "We ship everything you need and help you through setup, so your CPAP becomes part of your routine before you know it.",
       },
     ],
-    ctaLine: "Better sleep is often the missing piece of any health transformation.",
+    ctaLine: "The missing piece isn't willpower.",
   },
   {
     slug: "high-blood-pressure",
@@ -307,12 +307,12 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     whyBullets: [
       "Oxygen drops during each apnea event, triggering an adrenaline surge.",
       "Repeated spikes in blood pressure strain the cardiovascular system.",
-      "Sleep apnea is a recognized contributing cause of resistant hypertension.",
+      "Sleep apnea is a recognized cause of blood pressure that's hard to control with medication.",
     ],
     whyImage: "/images/Could this be sleep apnea photos/Blood pressure.png",
     whyImageAlt: "Person concerned about blood pressure",
     goodNewsPivot:
-      "Treating sleep apnea is clinically shown to help reduce blood pressure.",
+      "Treating sleep apnea can make a real difference to your blood pressure.",
     goodNewsSteps: [
       {
         n: "01",
@@ -330,7 +330,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "We monitor your CPAP data and stay in touch through the app. Your care team is a message away, not a six-week wait.",
       },
     ],
-    ctaLine: "Sleep apnea treatment is one of the most effective tools for managing blood pressure.",
+    ctaLine: "Better numbers start with better sleep.",
   },
   {
     slug: "constantly-getting-sick",
@@ -350,7 +350,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     whyBullets: [
       "Immune-repairing proteins are mostly produced during deep sleep.",
       "Sleep apnea cuts that window short, night after night.",
-      "Chronic sleep disruption weakens both your defense and recovery systems.",
+      "Over time, poor sleep leaves your body less able to fight off illness and recover.",
     ],
     whyImage: "/images/Could this be sleep apnea photos/Constantly sick.png",
     whyImageAlt: "Person feeling run down and unwell",
@@ -373,6 +373,6 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
         body: "Our CPAP subscription includes everything from equipment to telehealth check-ins, so your care never drops off.",
       },
     ],
-    ctaLine: "Better sleep is one of the most powerful investments in your long-term health.",
+    ctaLine: "Your immune system rebuilds at night.",
   },
 ];

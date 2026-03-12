@@ -107,11 +107,11 @@ export function Footer() {
                 {CONTACT.phone}
               </a>
               <a
-                href="mailto:hello@dumbohealth.com"
+                href="mailto:contact@dumbo.health"
                 className="font-body text-sm transition-colors hover:text-white"
                 style={{ color: "rgba(255,255,255,0.55)" }}
               >
-                hello@dumbohealth.com
+                contact@dumbo.health
               </a>
             </div>
 

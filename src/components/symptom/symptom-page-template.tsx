@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TrustMarquee } from "@/components/shared/trust-marquee";
-import { APP_URL, SHOPIFY } from "@/lib/constants";
+import { SHOPIFY } from "@/lib/constants";
 import type { SymptomPage } from "@/content/symptom-pages";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -15,9 +13,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 function SymptomHero({ page }: { page: SymptomPage }) {
   return (
-    <>
-      <TrustMarquee />
-      <section
+    <section
         className="relative overflow-hidden py-24 md:py-32"
         style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
       >
@@ -68,27 +64,18 @@ function SymptomHero({ page }: { page: SymptomPage }) {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
-            className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
+            className="mt-10 flex justify-center"
           >
             <Button
               asChild
               className="h-12 rounded-[12px] bg-peach px-8 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
               style={{ boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}
             >
-              <a href={SHOPIFY.buyUrl}>Start your sleep test — $149</a>
-            </Button>
-            <Button
-              asChild
-              variant="ghost"
-              className="h-12 px-8 font-body text-sm font-medium rounded-[12px] transition-all"
-              style={{ color: "rgba(252,246,237,0.5)", border: "1px solid rgba(252,246,237,0.12)" }}
-            >
-              <Link href="/pricing">See our plans</Link>
+              <a href={SHOPIFY.buyUrl}>Start your sleep test · $149</a>
             </Button>
           </motion.div>
         </div>
       </section>
-    </>
   );
 }
 
@@ -96,11 +83,29 @@ function SymptomHero({ page }: { page: SymptomPage }) {
 
 function WhyThisHappens({ page }: { page: SymptomPage }) {
   return (
-    <section className="py-20 md:py-28" style={{ backgroundColor: "#FCF6ED" }}>
+    <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-[5%]">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
-          {/* Left: text */}
+          {/* Left: image — visual anchor, portrait crop for presence */}
+          <motion.div
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="relative overflow-hidden rounded-3xl"
+            style={{ aspectRatio: "3/4" }}
+          >
+            <Image
+              src={page.whyImage}
+              alt={page.whyImageAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </motion.div>
+
+          {/* Right: headline + numbered statement cards */}
           <div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -118,68 +123,49 @@ function WhyThisHappens({ page }: { page: SymptomPage }) {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
               className="font-heading font-medium text-midnight leading-tight text-balance"
-              style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}
+              style={{ fontSize: "clamp(2.2rem, 3.5vw, 3rem)" }}
             >
               {page.whyHeadline}
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, ease: EASE, delay: 0.16 }}
-              className="mt-5 font-body leading-relaxed"
-              style={{ fontSize: "1.0625rem", color: "rgba(3,31,61,0.65)" }}
-            >
-              {page.whyBody}
-            </motion.p>
 
-            <motion.ul
-              className="mt-7 flex flex-col gap-3"
+            {/* Numbered statement cards */}
+            <motion.div
+              className="mt-8 flex flex-col gap-5"
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
-              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.13 } } }}
             >
               {page.whyBullets.map((bullet, i) => (
-                <motion.li
+                <motion.div
                   key={i}
                   variants={{
-                    hidden: { opacity: 0, x: -12 },
-                    show: { opacity: 1, x: 0, transition: { duration: 0.45, ease: EASE } },
+                    hidden: { opacity: 0, x: 20 },
+                    show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: EASE } },
                   }}
-                  className="flex items-start gap-3"
+                  className="flex gap-5 rounded-2xl p-6"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.72)",
+                    border: "1px solid rgba(3,31,61,0.07)",
+                    boxShadow: "0 2px 16px rgba(3,31,61,0.05)",
+                  }}
                 >
                   <span
-                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                    style={{ backgroundColor: `${page.accentColor}20`, border: `1px solid ${page.accentColor}40` }}
+                    className="font-mono text-sm font-medium shrink-0 pt-0.5"
+                    style={{ color: page.accentColor, letterSpacing: "0.05em" }}
                   >
-                    <Check className="h-3 w-3" style={{ color: page.accentColor }} />
+                    0{i + 1}
                   </span>
-                  <p className="font-body leading-snug" style={{ fontSize: "1rem", color: "rgba(3,31,61,0.7)" }}>
+                  <p
+                    className="font-body leading-relaxed text-midnight"
+                    style={{ fontSize: "1.125rem" }}
+                  >
                     {bullet}
                   </p>
-                </motion.li>
+                </motion.div>
               ))}
-            </motion.ul>
+            </motion.div>
           </div>
-
-          {/* Right: photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
-            className="relative aspect-[4/3] overflow-hidden rounded-3xl"
-            style={{ border: "1px solid rgba(3,31,61,0.07)" }}
-          >
-            <Image
-              src={page.whyImage}
-              alt={page.whyImageAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </motion.div>
 
         </div>
       </div>
@@ -191,20 +177,7 @@ function WhyThisHappens({ page }: { page: SymptomPage }) {
 
 function TheGoodNews({ page }: { page: SymptomPage }) {
   return (
-    <section
-      className="relative overflow-hidden py-20 md:py-28"
-      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
-    >
-      {/* Dot grid texture */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: `radial-gradient(circle, rgba(252,246,237,0.06) 1px, transparent 1px)`,
-          backgroundSize: "28px 28px",
-          zIndex: -1,
-        }}
-      />
-
+    <section className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14 max-w-2xl">
           <motion.p
@@ -223,7 +196,7 @@ function TheGoodNews({ page }: { page: SymptomPage }) {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
             className="font-heading font-medium leading-tight text-balance"
-            style={{ color: "#FCF6ED", fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}
+            style={{ color: "#031F3D", fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}
           >
             {page.goodNewsPivot}
           </motion.h2>
@@ -245,8 +218,9 @@ function TheGoodNews({ page }: { page: SymptomPage }) {
               }}
               className="rounded-2xl p-8"
               style={{
-                backgroundColor: "rgba(252,246,237,0.05)",
-                border: "1px solid rgba(252,246,237,0.08)",
+                backgroundColor: "rgba(255,255,255,0.75)",
+                border: "1px solid rgba(3,31,61,0.07)",
+                boxShadow: "0 2px 16px rgba(3,31,61,0.05)",
               }}
             >
               <span
@@ -257,13 +231,13 @@ function TheGoodNews({ page }: { page: SymptomPage }) {
               </span>
               <h3
                 className="mt-4 font-heading font-medium leading-tight"
-                style={{ color: "#FCF6ED", fontSize: "clamp(1.2rem, 1.8vw, 1.45rem)" }}
+                style={{ color: "#031F3D", fontSize: "clamp(1.2rem, 1.8vw, 1.45rem)" }}
               >
                 {step.title}
               </h3>
               <p
                 className="mt-3 font-body leading-relaxed"
-                style={{ color: "rgba(252,246,237,0.55)", fontSize: "1rem" }}
+                style={{ color: "rgba(3,31,61,0.62)", fontSize: "1rem" }}
               >
                 {step.body}
               </p>
@@ -277,80 +251,174 @@ function TheGoodNews({ page }: { page: SymptomPage }) {
 
 // ─── CTA Section ──────────────────────────────────────────────────────────────
 
+const CTA_PHOTOS = [
+  { src: "/images/people/woman-blue-pajamas.png", alt: "Person waking up refreshed" },
+  { src: "/images/people/man-waking-up.png",       alt: "Man waking up after better sleep" },
+  { src: "/images/people/man-drinking-coffee.png", alt: "Patient enjoying their morning" },
+];
+
 function SymptomCTA({ page }: { page: SymptomPage }) {
   return (
     <section
-      className="py-20 md:py-28"
-      style={{ backgroundColor: "#FF8361" }}
+      className="relative overflow-hidden py-24 md:py-32"
+      style={{ backgroundColor: "#FCF6ED" }}
     >
-      <div className="mx-auto max-w-3xl px-[5%] text-center">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: EASE }}
-          className="font-mono text-xs uppercase tracking-widest mb-5"
-          style={{ color: "rgba(3,31,61,0.5)" }}
-        >
-          Take the first step
-        </motion.p>
+      {/* Subtle peach dot texture */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,131,97,0.12) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
-          className="font-heading font-medium leading-tight text-balance"
-          style={{ color: "#031F3D", fontSize: "clamp(2rem, 4vw, 3rem)" }}
-        >
-          {page.ctaLine}
-        </motion.h2>
+      <div className="relative mx-auto max-w-7xl px-[5%]">
+        <div className="grid items-center gap-16 lg:grid-cols-[1fr_440px]">
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.16 }}
-          className="mt-4 font-body leading-relaxed"
-          style={{ fontSize: "1.0625rem", color: "rgba(3,31,61,0.65)", maxWidth: "42ch", margin: "1rem auto 0" }}
-        >
-          One overnight test at home. A doctor reviews your results in days. If it&apos;s sleep apnea, treatment can start immediately.
-        </motion.p>
+          {/* ── Left: text ── */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, ease: EASE }}
+              className="font-mono text-xs uppercase tracking-widest mb-5"
+              style={{ color: "#FF8361" }}
+            >
+              Take the first step
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.26 }}
-          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
-        >
-          <Button
-            asChild
-            className="h-13 rounded-[12px] bg-midnight px-8 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
-            style={{ boxShadow: "0 4px 24px rgba(3,31,61,0.25)", height: "52px" }}
-          >
-            <a href={SHOPIFY.buyUrl}>Start your sleep test — $149</a>
-          </Button>
-          <Button
-            asChild
-            variant="ghost"
-            className="h-13 px-8 font-body text-sm font-medium rounded-[12px] transition-all"
-            style={{ color: "rgba(3,31,61,0.6)", border: "1px solid rgba(3,31,61,0.15)", height: "52px" }}
-          >
-            <Link href={APP_URL}>Open the app</Link>
-          </Button>
-        </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
+              className="font-heading font-medium leading-tight"
+              style={{ color: "#031F3D", fontSize: "clamp(2.6rem, 5vw, 4rem)", maxWidth: "16ch" }}
+            >
+              {page.ctaLine}
+            </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: EASE, delay: 0.36 }}
-          className="mt-6 font-body text-sm"
-          style={{ color: "rgba(3,31,61,0.45)" }}
-        >
-          FDA-cleared device. Ships next business day. Results reviewed by a licensed physician.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.16 }}
+              className="mt-5 font-body leading-relaxed"
+              style={{ fontSize: "1.125rem", color: "rgba(3,31,61,0.65)", maxWidth: "44ch" }}
+            >
+              One overnight test at home. A doctor reviews your results in days. If it&apos;s sleep apnea, treatment can start immediately.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.26 }}
+              className="mt-9"
+            >
+              <Button
+                asChild
+                className="h-14 rounded-[12px] px-10 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                style={{ backgroundColor: "#FF8361", boxShadow: "0 6px 28px rgba(255,131,97,0.35)" }}
+              >
+                <a href={SHOPIFY.buyUrl}>Start your sleep test · $149</a>
+              </Button>
+
+              <p
+                className="mt-4 font-body text-sm"
+                style={{ color: "rgba(3,31,61,0.45)" }}
+              >
+                FDA-cleared device · Ships next business day · Results reviewed by a licensed physician
+              </p>
+            </motion.div>
+
+            {/* Doctor trust signal */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.38 }}
+              className="mt-8 rounded-2xl p-5"
+              style={{
+                backgroundColor: "rgba(255,131,97,0.08)",
+                borderLeft: "3px solid rgba(255,131,97,0.4)",
+              }}
+            >
+              <p
+                className="font-body italic leading-relaxed"
+                style={{ fontSize: "1rem", color: "rgba(3,31,61,0.75)" }}
+              >
+                &ldquo;The most common thing I hear after treatment starts? &lsquo;I had no idea I could feel this good.&rsquo;&rdquo;
+              </p>
+              <p
+                className="mt-2 font-mono text-xs uppercase tracking-wider"
+                style={{ color: "rgba(3,31,61,0.5)" }}
+              >
+                Dr. Zachary Adams · Dumbo Health Medical Team
+              </p>
+            </motion.div>
+          </div>
+
+          {/* ── Right: floating photo stack ── */}
+          <div className="relative hidden lg:block" style={{ height: "540px" }}>
+
+            {/* Card 1 — back, top-right, bleeds above */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, rotate: 4 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+              className="absolute overflow-hidden rounded-2xl"
+              style={{
+                width: "230px",
+                height: "290px",
+                right: "0px",
+                top: "-30px",
+                boxShadow: "0 20px 56px rgba(3,31,61,0.22)",
+              }}
+            >
+              <Image src={CTA_PHOTOS[1].src} alt={CTA_PHOTOS[1].alt} fill className="object-cover" sizes="230px" />
+            </motion.div>
+
+            {/* Card 2 — front-center, largest, slight counter-rotation */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, rotate: -3 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.22 }}
+              className="absolute overflow-hidden rounded-2xl"
+              style={{
+                width: "290px",
+                height: "370px",
+                left: "20px",
+                top: "90px",
+                boxShadow: "0 28px 72px rgba(3,31,61,0.28)",
+              }}
+            >
+              <Image src={CTA_PHOTOS[0].src} alt={CTA_PHOTOS[0].alt} fill className="object-cover" sizes="290px" />
+            </motion.div>
+
+            {/* Card 3 — bottom-right, bleeds below */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, rotate: 1 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.34 }}
+              className="absolute overflow-hidden rounded-2xl"
+              style={{
+                width: "210px",
+                height: "260px",
+                right: "10px",
+                bottom: "-30px",
+                boxShadow: "0 16px 48px rgba(3,31,61,0.2)",
+              }}
+            >
+              <Image src={CTA_PHOTOS[2].src} alt={CTA_PHOTOS[2].alt} fill className="object-cover" sizes="210px" />
+            </motion.div>
+
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -362,8 +430,11 @@ export function SymptomPageTemplate({ page }: { page: SymptomPage }) {
   return (
     <>
       <SymptomHero page={page} />
-      <WhyThisHappens page={page} />
-      <TheGoodNews page={page} />
+      <TrustMarquee />
+      <div style={{ background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 100%)" }}>
+        <WhyThisHappens page={page} />
+        <TheGoodNews page={page} />
+      </div>
       <SymptomCTA page={page} />
     </>
   );
