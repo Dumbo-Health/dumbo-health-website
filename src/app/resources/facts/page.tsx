@@ -9,19 +9,94 @@ import { SHOPIFY, APP_URL } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-// ─── Gradient bleed transitions ───────────────────────────────────────────────
+// ─── Inline SVG icons (brand line style, 20×20 viewport) ─────────────────────
 
-function Bleed({ from, to }: { from: string; to: string }) {
+function IconFace() {
   return (
-    <div
-      aria-hidden
-      style={{
-        height: "48px",
-        background: `linear-gradient(to bottom, ${from}, ${to})`,
-        marginTop: "-1px",
-        marginBottom: "-1px",
-      }}
-    />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+      <line x1="9" y1="9" x2="9.01" y2="9" />
+      <line x1="15" y1="9" x2="15.01" y2="9" />
+    </svg>
+  );
+}
+
+function IconEye() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function IconHeart() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
+
+function IconBolt() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function IconBag() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
+    </svg>
+  );
+}
+
+function IconMoon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  );
+}
+
+function IconDoc() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <polyline points="9 15 11 17 15 13" />
+    </svg>
+  );
+}
+
+function IconWind() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2" />
+    </svg>
+  );
+}
+
+function IconShield() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+
+function IconPerson() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3" />
+      <path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0z" />
+    </svg>
   );
 }
 
@@ -30,13 +105,14 @@ function Bleed({ from, to }: { from: string; to: string }) {
 function TheHook() {
   return (
     <section
-      className="pt-32 pb-24"
+      className="pt-28 pb-24 md:pt-36 md:pb-32"
       style={{
-        background:
-          "radial-gradient(ellipse 80% 56% at 50% 0%, rgba(255,131,97,0.07) 0%, #FCF6ED 68%)",
+        backgroundImage:
+          "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,131,97,0.07) 0%, transparent 65%)",
+        backgroundColor: "#FCF6ED",
       }}
     >
-      <div className="mx-auto max-w-4xl px-[5%] text-center">
+      <div style={{ padding: "0 5%" }} className="text-center">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,10 +123,13 @@ function TheHook() {
           Sleep Apnea — A Guide
         </motion.p>
 
-        {/* H1 split entry — punchline lands last */}
         <h1
-          className="font-heading font-medium text-midnight text-balance"
-          style={{ fontSize: "clamp(2.8rem, 6vw, 4.8rem)", lineHeight: 1.08 }}
+          className="font-heading font-medium text-midnight text-balance mx-auto"
+          style={{
+            fontSize: "clamp(2.8rem, 6vw, 4.8rem)",
+            lineHeight: 1.08,
+            maxWidth: "880px",
+          }}
         >
           <motion.span
             className="block"
@@ -84,9 +163,10 @@ function TheHook() {
           transition={{ duration: 0.65, delay: 0.35, ease: EASE }}
           className="font-body mx-auto mt-7 text-balance"
           style={{
-            fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
+            fontSize: "clamp(1.05rem, 1.8vw, 1.2rem)",
             maxWidth: "52ch",
-            color: "rgba(3,31,61,0.65)",
+            color: "rgba(3,31,61,0.58)",
+            lineHeight: 1.72,
           }}
         >
           If you wake up more drained than when you went to bed, there&apos;s a
@@ -94,7 +174,6 @@ function TheHook() {
           exactly what&apos;s going on and what to do about it.
         </motion.p>
 
-        {/* Scroll cue — bouncing arrow */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -103,7 +182,7 @@ function TheHook() {
         >
           <div
             className="flex flex-col items-center gap-2"
-            style={{ color: "rgba(3,31,61,0.3)" }}
+            style={{ color: "rgba(3,31,61,0.28)" }}
           >
             <span className="font-mono text-xs uppercase tracking-widest">
               Keep reading
@@ -133,10 +212,10 @@ function TheHook() {
 
 function WhatIsSleepApnea() {
   return (
-    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
-      <div className="mx-auto max-w-6xl px-[5%]">
+    <section className="py-20 md:py-28" style={{ backgroundColor: "#F5E6D1" }}>
+      <div style={{ padding: "0 5%" }}>
         <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
-          {/* Text */}
+          {/* Text column */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 28 }}
@@ -152,7 +231,7 @@ function WhatIsSleepApnea() {
               </p>
               <h2
                 className="font-heading font-medium text-midnight text-balance"
-                style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
+                style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1 }}
               >
                 What&apos;s actually happening when you sleep
               </h2>
@@ -168,9 +247,8 @@ function WhatIsSleepApnea() {
                 className="font-body mt-6"
                 style={{
                   fontSize: "1.0625rem",
-                  lineHeight: 1.75,
-                  color: "rgba(3,31,61,0.75)",
-                  maxWidth: "60ch",
+                  lineHeight: 1.78,
+                  color: "rgba(3,31,61,0.62)",
                 }}
               >
                 Sleep apnea is a condition where your airway partially or
@@ -181,7 +259,6 @@ function WhatIsSleepApnea() {
               </p>
             </motion.div>
 
-            {/* Pull quote */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -192,9 +269,9 @@ function WhatIsSleepApnea() {
                 className="font-heading font-medium my-10 pl-6 text-balance"
                 style={{
                   borderLeft: "4px solid #FF8361",
-                  fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
+                  fontSize: "clamp(1.2rem, 2vw, 1.45rem)",
                   color: "#031F3D",
-                  lineHeight: 1.3,
+                  lineHeight: 1.35,
                 }}
               >
                 Your body isn&apos;t failing to sleep. It&apos;s constantly
@@ -218,9 +295,8 @@ function WhatIsSleepApnea() {
                 className="font-body"
                 style={{
                   fontSize: "1.0625rem",
-                  lineHeight: 1.75,
-                  color: "rgba(3,31,61,0.75)",
-                  maxWidth: "60ch",
+                  lineHeight: 1.78,
+                  color: "rgba(3,31,61,0.62)",
                 }}
               >
                 These micro-arousals are too brief to register as being awake.
@@ -247,22 +323,20 @@ function WhatIsSleepApnea() {
                 className="font-body"
                 style={{
                   fontSize: "1.0625rem",
-                  lineHeight: 1.75,
-                  color: "rgba(3,31,61,0.75)",
-                  maxWidth: "60ch",
+                  lineHeight: 1.78,
+                  color: "rgba(3,31,61,0.62)",
                 }}
               >
-                More people than you&apos;d think. It&apos;s estimated that
-                over 30 million Americans have sleep apnea — and most
-                don&apos;t know it. It affects men and women, people at every
-                weight, and every age group. The image of the overweight,
-                middle-aged man who snores? That&apos;s a fraction of the
-                picture.
+                More people than you&apos;d think. Over 30 million Americans
+                have sleep apnea — and most don&apos;t know it. It affects men
+                and women, people at every weight, and every age group. The
+                image of the overweight, middle-aged man who snores? That&apos;s
+                a fraction of the picture.
               </p>
             </motion.div>
           </div>
 
-          {/* Visual — image with shadow */}
+          {/* Image column — sticky on desktop */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -279,7 +353,7 @@ function WhatIsSleepApnea() {
             >
               <Image
                 src="/images/people/man-smiling-in-bed-1.png"
-                alt="Person resting"
+                alt="Person resting well"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -297,141 +371,145 @@ function WhatIsSleepApnea() {
 function WhyItMatters() {
   const items = [
     {
-      icon: "/images/icon-sad-face.png",
+      Icon: IconFace,
+      iconColor: "#FF8361",
+      iconBg: "rgba(255,131,97,0.12)",
       label: "Mood and patience",
       text: "The irritability, the short fuse, the low tolerance. Sleep deprivation compresses your emotional range.",
     },
     {
-      icon: "/images/icon-growing.png",
+      Icon: IconEye,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       label: "Focus and memory",
       text: "Your brain consolidates learning during deep sleep. Without it, retention and concentration drop measurably.",
     },
     {
-      icon: "/images/icon-heart.png",
+      Icon: IconHeart,
+      iconColor: "#FF8361",
+      iconBg: "rgba(255,131,97,0.12)",
       label: "Heart and metabolism",
       text: "Repeated oxygen drops overnight put sustained stress on your cardiovascular system and hormone regulation.",
     },
     {
-      icon: "/images/icon-sun.png",
+      Icon: IconBolt,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       label: "Energy and motivation",
       text: "The afternoon wall. The coffee dependency. The feeling that getting through the day is an effort rather than a given.",
     },
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: "#FCF6ED" }}>
-      <div className="mx-auto max-w-3xl px-[5%] text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: EASE }}
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          <p
-            className="font-mono uppercase tracking-widest mb-4"
-            style={{ fontSize: "0.75rem", color: "#78BFBC" }}
-          >
-            The ripple effect
-          </p>
-          <h2
-            className="font-heading font-medium text-midnight text-balance"
-            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
-          >
-            This is what&apos;s been running your life
-          </h2>
-        </motion.div>
+    <section className="py-20 md:py-28" style={{ backgroundColor: "#FCF6ED" }}>
+      <div style={{ padding: "0 5%" }}>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-20">
 
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          <p
-            className="font-body mt-6 mx-auto text-balance"
-            style={{
-              fontSize: "1.0625rem",
-              lineHeight: 1.75,
-              color: "rgba(3,31,61,0.65)",
-              maxWidth: "52ch",
-            }}
-          >
-            It&apos;s not laziness. It&apos;s not aging. It&apos;s a breathing
-            problem — and it&apos;s been quietly affecting everything.
-          </p>
-        </motion.div>
-
-        {/* Teal callout — emotional peak, needs to stop the reader */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          <div
-            className="my-10 rounded-2xl p-8 text-left"
-            style={{
-              backgroundColor: "rgba(120,191,188,0.1)",
-              borderLeft: "4px solid #78BFBC",
-            }}
+          {/* Left — narrative */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: EASE }}
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:sticky lg:top-24"
           >
             <p
-              className="font-heading font-medium text-balance"
+              className="font-mono uppercase tracking-widest mb-4"
+              style={{ fontSize: "0.75rem", color: "#78BFBC" }}
+            >
+              The ripple effect
+            </p>
+            <h2
+              className="font-heading font-medium text-midnight text-balance"
+              style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1 }}
+            >
+              This is what&apos;s been running your life
+            </h2>
+            <p
+              className="font-body mt-5"
               style={{
-                fontSize: "clamp(1.3rem, 2.2vw, 1.65rem)",
-                color: "#031F3D",
-                lineHeight: 1.35,
+                fontSize: "1.0625rem",
+                lineHeight: 1.78,
+                color: "rgba(3,31,61,0.62)",
+                maxWidth: "48ch",
               }}
             >
-              &ldquo;I thought I was just a bad sleeper. Turns out I wasn&apos;t
-              sleeping at all.&rdquo;
+              It&apos;s not laziness. It&apos;s not aging. It&apos;s a breathing
+              problem — and it&apos;s been quietly affecting everything.
             </p>
-          </div>
-        </motion.div>
 
-        {/* Effect cards — white on Daylight, with hover */}
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 text-left">
-          {items.map((item, i) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.65, delay: 0.1 + i * 0.07, ease: EASE }}
-              viewport={{ once: true, margin: "-80px" }}
+            {/* Teal callout — emotional peak */}
+            <div
+              className="mt-8 rounded-2xl p-7"
+              style={{
+                backgroundColor: "rgba(120,191,188,0.1)",
+                borderLeft: "4px solid #78BFBC",
+              }}
             >
-              <div
-                className="flex gap-4 rounded-2xl p-6 h-full"
+              <p
+                className="font-heading font-medium text-balance"
                 style={{
-                  backgroundColor: "#fff",
-                  boxShadow: "0 2px 16px rgba(3,31,61,0.06)",
-                  border: "1px solid rgba(3,31,61,0.05)",
+                  fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
+                  color: "#031F3D",
+                  lineHeight: 1.35,
                 }}
               >
-                <Image
-                  src={item.icon}
-                  alt={item.label}
-                  width={32}
-                  height={32}
-                  className="shrink-0 mt-0.5 opacity-80"
-                />
-                <div>
+                &ldquo;I thought I was just a bad sleeper. Turns out I
+                wasn&apos;t sleeping at all.&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right — effect cards */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {items.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.65, delay: i * 0.08, ease: EASE }}
+                viewport={{ once: true, margin: "-80px" }}
+              >
+                <div
+                  className="flex flex-col gap-4 rounded-2xl p-6 h-full"
+                  style={{
+                    backgroundColor: "#fff",
+                    boxShadow: "0 2px 16px rgba(3,31,61,0.06)",
+                    border: "1px solid rgba(3,31,61,0.05)",
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-center rounded-xl shrink-0"
+                    style={{
+                      width: 44,
+                      height: 44,
+                      backgroundColor: item.iconBg,
+                      color: item.iconColor,
+                    }}
+                  >
+                    <item.Icon />
+                  </div>
                   <p
-                    className="font-body font-bold text-midnight mb-1"
-                    style={{ fontSize: "0.9375rem" }}
+                    className="font-heading font-medium text-midnight"
+                    style={{ fontSize: "1rem", lineHeight: 1.3 }}
                   >
                     {item.label}
                   </p>
                   <p
                     className="font-body"
-                    style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.65 }}
+                    style={{
+                      fontSize: "0.9375rem",
+                      color: "rgba(3,31,61,0.55)",
+                      lineHeight: 1.68,
+                    }}
                   >
                     {item.text}
                   </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -444,33 +522,39 @@ function HowItFound() {
   const steps = [
     {
       n: "01",
-      icon: "/images/icons/icon-laptop.png",
+      Icon: IconBag,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       title: "Order your test online",
       body: "No referral needed. No waiting room. Select a test, complete a short intake, and it ships to your door the next business day.",
     },
     {
       n: "02",
-      icon: "/images/icons/icon-scan.png",
+      Icon: IconMoon,
+      iconColor: "#FF8361",
+      iconBg: "rgba(255,131,97,0.12)",
       title: "Wear a small device one night",
       body: "A compact sensor clips to your finger and chest. Sleep in your own bed, in your normal routine. The device does the rest.",
     },
     {
       n: "03",
-      icon: "/images/icons/icon-shield.png",
+      Icon: IconDoc,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       title: "Doctor-reviewed results in days",
       body: "A licensed sleep physician reviews your data and sends a detailed report. If sleep apnea is present, your prescription is included.",
     },
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
-      <div className="mx-auto max-w-6xl px-[5%]">
+    <section className="py-20 md:py-28" style={{ backgroundColor: "#F5E6D1" }}>
+      <div style={{ padding: "0 5%" }}>
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: EASE }}
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <p
             className="font-mono uppercase tracking-widest mb-4"
@@ -479,27 +563,26 @@ function HowItFound() {
             Act 2 — Finding out
           </p>
           <h2
-            className="font-heading font-medium text-midnight text-balance"
-            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
+            className="font-heading font-medium text-midnight text-balance mx-auto"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1, maxWidth: "600px" }}
           >
             Getting diagnosed is easier than you think
           </h2>
           <p
-            className="font-body mt-5 mx-auto text-balance"
+            className="font-body mt-5 mx-auto"
             style={{
               fontSize: "1.0625rem",
-              lineHeight: 1.75,
-              color: "rgba(3,31,61,0.65)",
-              maxWidth: "52ch",
+              lineHeight: 1.78,
+              color: "rgba(3,31,61,0.58)",
+              maxWidth: "50ch",
             }}
           >
-            The good news: sleep apnea is one of the most treatable conditions
-            there is. And finding out takes one night.
+            Sleep apnea is one of the most treatable conditions there is. And
+            finding out takes one night.
           </p>
         </motion.div>
 
-        {/* Step cards — white on Sunlight, peach-tinted ghost numbers */}
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {steps.map((step, i) => (
             <motion.div
               key={step.n}
@@ -524,23 +607,31 @@ function HowItFound() {
                   >
                     {step.n}
                   </span>
-                  <Image
-                    src={step.icon}
-                    alt={step.title}
-                    width={36}
-                    height={36}
-                    className="opacity-70"
-                  />
+                  <div
+                    className="flex items-center justify-center rounded-xl"
+                    style={{
+                      width: 44,
+                      height: 44,
+                      backgroundColor: step.iconBg,
+                      color: step.iconColor,
+                    }}
+                  >
+                    <step.Icon />
+                  </div>
                 </div>
                 <h3
                   className="font-heading font-medium text-midnight"
-                  style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
+                  style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.25rem)" }}
                 >
                   {step.title}
                 </h3>
                 <p
                   className="font-body"
-                  style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.7 }}
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: "rgba(3,31,61,0.55)",
+                    lineHeight: 1.72,
+                  }}
                 >
                   {step.body}
                 </p>
@@ -557,7 +648,7 @@ function HowItFound() {
         >
           <p
             className="font-body text-center mt-10"
-            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.4)" }}
+            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.38)" }}
           >
             No sleep clinic &middot; No waiting room &middot; No overnight away from home
           </p>
@@ -567,12 +658,14 @@ function HowItFound() {
   );
 }
 
-// ─── Section 5: Treatment + Dumbo Health Surfaces ────────────────────────────
+// ─── Section 5: Treatment + Dumbo Health ─────────────────────────────────────
 
 function TreatmentDumboSurfaces() {
   const treatments = [
     {
-      icon: "/images/icon-cpap.png",
+      Icon: IconWind,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       name: "CPAP therapy",
       description:
         "A continuous airflow device that gently keeps your airway open while you sleep. The most effective treatment for moderate-to-severe sleep apnea.",
@@ -580,7 +673,9 @@ function TreatmentDumboSurfaces() {
         "We ship your CPAP with same-week setup support, ongoing telehealth check-ins, and automatic resupply so you never run out of supplies.",
     },
     {
-      icon: "/images/icon-moon.png",
+      Icon: IconShield,
+      iconColor: "#FF8361",
+      iconBg: "rgba(255,131,97,0.12)",
       name: "Dental appliance",
       description:
         "A custom-fitted mouthguard that repositions your jaw during sleep to prevent airway collapse. Effective for mild-to-moderate apnea, and travel-friendly.",
@@ -588,7 +683,9 @@ function TreatmentDumboSurfaces() {
         "We coordinate your fitting with a network of trained dentists and manage the prescription side so you don't have to navigate it alone.",
     },
     {
-      icon: "/images/icon-path.png",
+      Icon: IconPerson,
+      iconColor: "#78BFBC",
+      iconBg: "rgba(120,191,188,0.15)",
       name: "Positional therapy",
       description:
         "For some people, sleep apnea only occurs when lying on the back. Positional devices or techniques can dramatically reduce events without equipment.",
@@ -598,14 +695,14 @@ function TreatmentDumboSurfaces() {
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: "#F5E6D1" }}>
-      <div className="mx-auto max-w-6xl px-[5%]">
+    <section className="py-20 md:py-28" style={{ backgroundColor: "#F5E6D1" }}>
+      <div style={{ padding: "0 5%" }}>
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: EASE }}
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <p
             className="font-mono uppercase tracking-widest mb-4"
@@ -614,22 +711,21 @@ function TreatmentDumboSurfaces() {
             Treatment
           </p>
           <h2
-            className="font-heading font-medium text-midnight text-balance"
-            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
+            className="font-heading font-medium text-midnight text-balance mx-auto"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1, maxWidth: "680px" }}
           >
-            There are proven ways to treat sleep apnea.
-            <br />
+            There are proven ways to treat sleep apnea.{" "}
             <span style={{ color: "#FF8361" }}>
               We&apos;ve made all of them easier to access.
             </span>
           </h2>
           <p
-            className="font-body mt-5 mx-auto text-balance"
+            className="font-body mt-5 mx-auto"
             style={{
               fontSize: "1.0625rem",
-              lineHeight: 1.75,
-              color: "rgba(3,31,61,0.65)",
-              maxWidth: "56ch",
+              lineHeight: 1.78,
+              color: "rgba(3,31,61,0.58)",
+              maxWidth: "52ch",
             }}
           >
             At Dumbo Health, this is exactly what we built for. Every treatment
@@ -652,29 +748,36 @@ function TreatmentDumboSurfaces() {
                 className="flex flex-col gap-4 rounded-2xl p-8 h-full"
                 style={{ backgroundColor: "#FFD6AD" }}
               >
-                <Image
-                  src={t.icon}
-                  alt={t.name}
-                  width={40}
-                  height={40}
-                  className="opacity-80"
-                />
+                <div
+                  className="flex items-center justify-center rounded-xl shrink-0"
+                  style={{
+                    width: 48,
+                    height: 48,
+                    backgroundColor: t.iconBg,
+                    color: t.iconColor,
+                  }}
+                >
+                  <t.Icon />
+                </div>
                 <h3
                   className="font-heading font-medium text-midnight"
-                  style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.3rem)" }}
+                  style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.25rem)" }}
                 >
                   {t.name}
                 </h3>
                 <p
                   className="font-body"
-                  style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.7)", lineHeight: 1.7 }}
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: "rgba(3,31,61,0.62)",
+                    lineHeight: 1.72,
+                  }}
                 >
                   {t.description}
                 </p>
-                {/* Dumbo Health layer — clearer demarcation */}
                 <div
                   className="mt-auto pt-5"
-                  style={{ borderTop: "1px solid rgba(3,31,61,0.15)" }}
+                  style={{ borderTop: "1px solid rgba(3,31,61,0.14)" }}
                 >
                   <p
                     className="font-mono text-xs uppercase tracking-widest mb-2"
@@ -684,7 +787,11 @@ function TreatmentDumboSurfaces() {
                   </p>
                   <p
                     className="font-body"
-                    style={{ fontSize: "0.875rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.65 }}
+                    style={{
+                      fontSize: "0.875rem",
+                      color: "rgba(3,31,61,0.58)",
+                      lineHeight: 1.68,
+                    }}
                   >
                     {t.dumbo}
                   </p>
@@ -699,16 +806,12 @@ function TreatmentDumboSurfaces() {
 }
 
 // ─── Section 6: Conversion Fork ──────────────────────────────────────────────
+// Midnight background — mirrors HowItWorks dark section, creates strong visual close
 
 function ConversionFork() {
   return (
-    <section
-      className="py-24"
-      style={{
-        background: "linear-gradient(135deg, #FF8361 0%, #e8693f 100%)",
-      }}
-    >
-      <div className="mx-auto max-w-5xl px-[5%]">
+    <section className="py-20 md:py-32 overflow-hidden" style={{ backgroundColor: "#031F3D" }}>
+      <div style={{ padding: "0 5%" }}>
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -716,27 +819,33 @@ function ConversionFork() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-14"
         >
+          <p
+            className="font-mono uppercase tracking-widest mb-4"
+            style={{ fontSize: "0.75rem", color: "#78BFBC" }}
+          >
+            Act 3 — Your next step
+          </p>
           <h2
-            className="font-heading font-medium text-white text-balance"
-            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.12 }}
+            className="font-heading font-medium text-white text-balance mx-auto"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1, maxWidth: "640px" }}
           >
             Ready to find out?
           </h2>
           <p
-            className="font-body mt-4 mx-auto text-balance"
+            className="font-body mt-4 mx-auto"
             style={{
               fontSize: "1.0625rem",
-              color: "rgba(255,255,255,0.8)",
-              maxWidth: "48ch",
-              lineHeight: 1.7,
+              color: "rgba(252,246,237,0.55)",
+              maxWidth: "46ch",
+              lineHeight: 1.72,
             }}
           >
             Pick the step that&apos;s right for you. Both paths lead to the same place: better sleep.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Primary — undiagnosed — dominant shadow */}
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8" style={{ maxWidth: "880px", margin: "0 auto" }}>
+          {/* Primary — undiagnosed */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -748,7 +857,7 @@ function ConversionFork() {
               className="flex flex-col gap-5 rounded-2xl p-10 h-full"
               style={{
                 backgroundColor: "#fff",
-                boxShadow: "0 8px 48px rgba(3,31,61,0.18)",
+                boxShadow: "0 8px 48px rgba(0,0,0,0.28)",
               }}
             >
               <p
@@ -759,14 +868,18 @@ function ConversionFork() {
               </p>
               <h3
                 className="font-heading font-medium text-midnight"
-                style={{ fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", lineHeight: 1.15 }}
+                style={{ fontSize: "clamp(1.4rem, 2.5vw, 1.85rem)", lineHeight: 1.15 }}
               >
                 Take a home sleep test.
                 <br />Results in days.
               </h3>
               <p
                 className="font-body"
-                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.7 }}
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "rgba(3,31,61,0.58)",
+                  lineHeight: 1.72,
+                }}
               >
                 One night in your own bed. A small sensor. Doctor-reviewed
                 results and a prescription if sleep apnea is found — all for
@@ -776,16 +889,16 @@ function ConversionFork() {
                 href={SHOPIFY.buyUrl}
                 className="mt-auto inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
                 style={{
-                  backgroundColor: "#031F3D",
+                  backgroundColor: "#FF8361",
                   color: "#fff",
-                  boxShadow: "0 4px 20px rgba(3,31,61,0.18)",
+                  boxShadow: "0 4px 20px rgba(255,131,97,0.35)",
                 }}
               >
                 Order your sleep test — $149
               </Link>
               <p
                 className="font-body text-xs text-center"
-                style={{ color: "rgba(3,31,61,0.35)" }}
+                style={{ color: "rgba(3,31,61,0.32)" }}
               >
                 FDA-cleared &middot; Ships next business day &middot; No insurance required
               </p>
@@ -802,7 +915,10 @@ function ConversionFork() {
           >
             <div
               className="flex flex-col gap-5 rounded-2xl p-10 h-full"
-              style={{ backgroundColor: "#F5E6D1" }}
+              style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
             >
               <p
                 className="font-mono text-xs uppercase tracking-widest"
@@ -811,14 +927,22 @@ function ConversionFork() {
                 I&apos;ve already been diagnosed
               </p>
               <h3
-                className="font-heading font-medium text-midnight"
-                style={{ fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", lineHeight: 1.15 }}
+                className="font-heading font-medium"
+                style={{
+                  fontSize: "clamp(1.4rem, 2.5vw, 1.85rem)",
+                  lineHeight: 1.15,
+                  color: "#FCF6ED",
+                }}
               >
                 Start your CPAP or appliance journey.
               </h3>
               <p
                 className="font-body"
-                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.7 }}
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "rgba(252,246,237,0.55)",
+                  lineHeight: 1.72,
+                }}
               >
                 Bring your prescription and we handle the rest — equipment
                 selection, setup support, ongoing telehealth care, and
@@ -826,18 +950,18 @@ function ConversionFork() {
               </p>
               <Link
                 href={APP_URL}
-                className="mt-auto inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+                className="mt-auto inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   backgroundColor: "transparent",
-                  color: "#031F3D",
-                  border: "1.5px solid rgba(3,31,61,0.3)",
+                  color: "#FCF6ED",
+                  border: "1.5px solid rgba(252,246,237,0.25)",
                 }}
               >
                 Start treatment with Dumbo Health
               </Link>
               <p
                 className="font-body text-xs text-center"
-                style={{ color: "rgba(3,31,61,0.35)" }}
+                style={{ color: "rgba(252,246,237,0.3)" }}
               >
                 Telehealth care &middot; All 50 states &middot; Insurance-friendly
               </p>
@@ -845,7 +969,7 @@ function ConversionFork() {
           </motion.div>
         </div>
 
-        {/* Trust signal — separated */}
+        {/* Testimonial */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -854,15 +978,15 @@ function ConversionFork() {
         >
           <div
             className="mt-16 pt-10 text-center"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
+            style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           >
             <p
               className="font-body mx-auto text-balance"
               style={{
                 fontSize: "1rem",
-                color: "rgba(255,255,255,0.85)",
-                maxWidth: "52ch",
-                lineHeight: 1.7,
+                color: "rgba(252,246,237,0.65)",
+                maxWidth: "50ch",
+                lineHeight: 1.75,
                 fontStyle: "italic",
               }}
             >
@@ -871,8 +995,8 @@ function ConversionFork() {
               better I could feel.&rdquo;
             </p>
             <p
-              className="font-body mt-3 text-sm"
-              style={{ color: "rgba(255,255,255,0.55)" }}
+              className="font-mono text-xs mt-4 uppercase tracking-widest"
+              style={{ color: "rgba(252,246,237,0.3)" }}
             >
               Maria S., 41, Miami, FL
             </p>
@@ -891,14 +1015,10 @@ export default function FactsPage() {
       <Navbar />
       <main>
         <TheHook />
-        <Bleed from="#FCF6ED" to="#F5E6D1" />
         <WhatIsSleepApnea />
-        <Bleed from="#F5E6D1" to="#FCF6ED" />
         <WhyItMatters />
-        <Bleed from="#FCF6ED" to="#F5E6D1" />
         <HowItFound />
         <TreatmentDumboSurfaces />
-        <Bleed from="#F5E6D1" to="#FF8361" />
         <ConversionFork />
       </main>
       <Footer />
