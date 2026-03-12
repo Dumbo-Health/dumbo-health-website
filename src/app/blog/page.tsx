@@ -6,88 +6,13 @@ import { PostGrid } from "@/components/blog/post-grid";
 import { CategoryFilter } from "@/components/blog/category-filter";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
-import type { BlogPost } from "@/components/blog/post-card";
+import { getBlogPosts } from "@/lib/supabase";
 
 export const metadata: Metadata = createMetadata({
   title: "The Sleep Journal: Sleep Apnea Tips & Guides | Dumbo Health",
   description: "Your guide to better sleep, health and everyday energy. Expert tips, real stories, and the latest in sleep wellness and apnea care.",
   path: "/blog",
 });
-
-const samplePosts: BlogPost[] = [
-  {
-    title: "Is CPAP covered by insurance?",
-    slug: "is-cpap-covered-by-insurance",
-    category: "CPAP",
-    author: "Kaila Caldwell",
-    date: "Feb 3, 2026",
-    excerpt: "In most cases, yes, but that doesn't mean it's affordable. Many patients start CPAP therapy thinking their insurer will handle most of the costs, only to discover complicated rules, compliance requirements, and unexpected bills along the way.",
-  },
-  {
-    title: "Sleep apnea OTC treatments: Real help or just hype?",
-    slug: "sleep-apnea-otc-treatments-real-help-or-just-hype",
-    category: "Sleep Apnea",
-    author: "Kaila Caldwell",
-    date: "Feb 21, 2026",
-    excerpt: "From melatonin to micro-CPAP, learn which OTC products ease snoring, and why none can actually treat sleep apnea without medical guidance",
-  },
-  {
-    title: "Can sleep apnea be treated without CPAP? Yes, here's how",
-    slug: "can-sleep-apnea-be-treated-without-cpap-yes-heres-how",
-    category: "CPAP",
-    author: "Kaila Caldwell",
-    date: "Feb 21, 2026",
-    excerpt: "Learn about proven sleep apnea treatments without CPAP including oral appliances, surgery, and simple changes that help you sleep better.",
-  },
-  {
-    title: "What equipment do you need for a home sleep study?",
-    slug: "what-equipment-do-you-need-for-a-home-sleep-study",
-    category: "Sleep Tracking",
-    author: "Nicky Charles Peters",
-    date: "Feb 21, 2026",
-    excerpt: "Learn which devices make home sleep studies possible, from airflow sensors to oximeters.",
-  },
-  {
-    title: "Oral appliance for sleep apnea",
-    slug: "oral-appliance-for-sleep-apnea-how-it-works-who-it-helps-what-to-expect",
-    category: "Sleep Apnea",
-    author: "Kaila Caldwell",
-    date: "Feb 3, 2026",
-    excerpt: "Understand how custom oral appliances open the airway, who qualifies, side effects, costs, and how Dumbo Health supports you at home.",
-  },
-  {
-    title: "Only getting 4 hours of sleep a night",
-    slug: "only-getting-4-hours-of-sleep-a-night-side-effects-consequences",
-    category: "Sleep Disorders",
-    author: "Nicky Charles Peters",
-    date: "Feb 3, 2026",
-    excerpt: "These one-off sleepless nights may just throw off your routine or make you tired the next day, but if you find yourself frequently only sleeping 4 hours a night, there may be a more serious underlying issue.",
-  },
-  {
-    title: "CPAP vs APAP vs BiPAP: What's the difference?",
-    slug: "cpap-vs-apap-vs-bipap-whats-the-difference-and-which-is-better",
-    category: "CPAP",
-    author: "Kaila Caldwell",
-    date: "Feb 3, 2026",
-    excerpt: "CPAP, APAP, BiPAP — it can sound like alphabet soup.",
-  },
-  {
-    title: "9 Most common sleep apnea symptoms",
-    slug: "9-most-common-sleep-apnea-symptoms-to-look-out-for",
-    category: "Sleep Apnea",
-    author: "Nicky Charles Peters",
-    date: "Feb 3, 2026",
-    excerpt: "Patients who suffer from sleep apnea can experience a wide range of symptoms.",
-  },
-  {
-    title: "What is a CPAP machine?",
-    slug: "what-is-a-cpap-machine",
-    category: "CPAP",
-    author: "Kaila Caldwell",
-    date: "Nov 4, 2025",
-    excerpt: "Everything you need to know about CPAP machines, how they work, and why they're the gold standard for sleep apnea treatment.",
-  },
-];
 
 function NewsletterSignup() {
   return (
@@ -122,7 +47,9 @@ function NewsletterSignup() {
   );
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getBlogPosts();
+
   return (
     <>
       <Navbar />
@@ -147,7 +74,7 @@ export default function BlogPage() {
             </p>
           </div>
           <CategoryFilter />
-          <PostGrid posts={samplePosts} />
+          <PostGrid posts={posts} />
         </div>
       </section>
       <NewsletterSignup />

@@ -7,13 +7,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqs, faqCategories } from "@/content/faqs";
+import type { Faq, FaqCategory } from "@/lib/supabase";
 
-export function FAQsContent() {
+interface FAQsContentProps {
+  faqs: Faq[];
+  categories: FaqCategory[];
+}
+
+export function FAQsContent({ faqs, categories }: FAQsContentProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredFaqs = activeCategory
-    ? faqs.filter((f) => f.category === activeCategory)
+    ? faqs.filter((f) => f.category_slug === activeCategory)
     : faqs;
 
   return (
@@ -30,12 +35,12 @@ export function FAQsContent() {
           >
             All
           </button>
-          {faqCategories.map((cat) => (
+          {categories.map((cat) => (
             <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              key={cat.slug}
+              onClick={() => setActiveCategory(cat.slug)}
               className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
-                activeCategory === cat.id
+                activeCategory === cat.slug
                   ? "bg-midnight text-white"
                   : "bg-sunlight text-midnight hover:bg-light-peach"
               }`}
@@ -46,8 +51,8 @@ export function FAQsContent() {
         </div>
 
         <Accordion type="single" collapsible className="w-full">
-          {filteredFaqs.map((faq, i) => (
-            <AccordionItem key={`${faq.category}-${i}`} value={`faq-${faq.category}-${i}`}>
+          {filteredFaqs.map((faq) => (
+            <AccordionItem key={faq.id} value={faq.id}>
               <AccordionTrigger className="text-left font-body text-lg font-medium text-midnight">
                 {faq.question}
               </AccordionTrigger>

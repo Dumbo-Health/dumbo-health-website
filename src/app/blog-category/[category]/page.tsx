@@ -3,19 +3,17 @@ import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CategoryFilter } from "@/components/blog/category-filter";
+import { PostGrid } from "@/components/blog/post-grid";
 import { BottomCTA } from "@/components/shared/bottom-cta";
+import { getBlogPosts, getBlogCategories } from "@/lib/supabase";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
 }
 
 export async function generateStaticParams() {
-  return [
-    { category: "sleep-tracking" },
-    { category: "sleep-apnea" },
-    { category: "sleep-disorders" },
-    { category: "cpap" },
-  ];
+  const categories = await getBlogCategories();
+  return categories.map((cat) => ({ category: cat.slug }));
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
@@ -34,10 +32,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const { category } = await params;
-  const label = category
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
+  const [posts, categories] = await Promise.all([
+    getBlogPosts(category),
+    getBlogCategories(),
+  ]);
+  const label = categories.find((c) => c.slug === category)?.label
+    ?? category.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
   return (
     <>
@@ -55,11 +55,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
             Browse all {label.toLowerCase()} articles.
           </p>
           <CategoryFilter />
-          <div className="text-center py-16">
-            <p className="font-body text-base text-midnight/50">
-              Blog posts for this category will be loaded from the CMS.
-            </p>
-          </div>
+          <PostGrid posts={posts} />
         </div>
       </section>
       <BottomCTA />

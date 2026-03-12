@@ -5,40 +5,33 @@ import { Footer } from "@/components/layout/footer";
 import { FAQsContent } from "./faqs-content";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { faqs } from "@/content/faqs";
-import { SITE_URL } from "@/lib/constants";
+import { getFaqs, getFaqCategories } from "@/lib/supabase";
 
 export const metadata: Metadata = createMetadata({
   title: "Sleep Apnea FAQs: Testing, Treatment & Insurance | Dumbo Health",
-  description: "Get answers to 71 frequently asked questions about sleep apnea testing, CPAP treatment, insurance, prescriptions, and more. Expert answers from Dumbo Health.",
+  description: "Get answers to frequently asked questions about sleep apnea testing, CPAP treatment, insurance, prescriptions, and more. Expert answers from Dumbo Health.",
   path: "/faqs",
 });
 
-function FAQSchema() {
+export default async function FAQsPage() {
+  const [faqs, categories] = await Promise.all([getFaqs(), getFaqCategories()]);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
 
-export default function FAQsPage() {
   return (
     <>
-      <FAQSchema />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Navbar />
       <main>
       <section className="bg-daylight py-16 sm:py-24">
@@ -55,7 +48,7 @@ export default function FAQsPage() {
         </div>
       </section>
 
-      <FAQsContent />
+      <FAQsContent faqs={faqs} categories={categories} />
 
       <section className="bg-sunlight py-16 sm:py-24 text-center">
         <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
