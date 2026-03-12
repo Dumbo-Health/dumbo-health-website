@@ -1,9 +1,15 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+let _client: SupabaseClient | null = null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+function getClient(): SupabaseClient {
+  if (_client) return _client;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) throw new Error("Supabase env vars are not set");
+  _client = createClient(url, key);
+  return _client;
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -122,7 +128,7 @@ export interface Faq {
 
 /** Returns all published blog posts, newest first */
 export async function getBlogPosts(categorySlug?: string) {
-  let query = supabase
+  let query = getClient()
     .from("blog_posts")
     .select("*, blog_authors(name, slug, profile_picture), blog_categories(slug, label)")
     .eq("archived", false)
@@ -140,7 +146,7 @@ export async function getBlogPosts(categorySlug?: string) {
 
 /** Returns a single published blog post by slug */
 export async function getBlogPostBySlug(slug: string) {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("blog_posts")
     .select("*, blog_authors(name, slug, profile_picture, short_bio, role), blog_categories(slug, label)")
     .eq("slug", slug)
@@ -153,7 +159,7 @@ export async function getBlogPostBySlug(slug: string) {
 
 /** Returns all blog categories ordered by display_order */
 export async function getBlogCategories() {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("blog_categories")
     .select("*")
     .order("display_order", { ascending: true });
@@ -164,7 +170,7 @@ export async function getBlogCategories() {
 
 /** Returns all published FAQs, optionally filtered by category slug */
 export async function getFaqs(categorySlug?: string) {
-  let query = supabase
+  let query = getClient()
     .from("faqs")
     .select("*, faq_categories(slug, label)")
     .eq("archived", false)
@@ -182,7 +188,7 @@ export async function getFaqs(categorySlug?: string) {
 
 /** Returns all FAQ categories ordered by display_order */
 export async function getFaqCategories() {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("faq_categories")
     .select("*")
     .order("display_order", { ascending: true });
@@ -193,7 +199,7 @@ export async function getFaqCategories() {
 
 /** Returns all medical team members ordered by display_order */
 export async function getMedicalTeam() {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("medical_team")
     .select("*")
     .eq("archived", false)
@@ -205,7 +211,7 @@ export async function getMedicalTeam() {
 
 /** Returns all scientific committee members ordered by display_order */
 export async function getScientificCommittee() {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("scientific_committee")
     .select("*")
     .eq("archived", false)
@@ -217,7 +223,7 @@ export async function getScientificCommittee() {
 
 /** Returns an author by slug */
 export async function getAuthorBySlug(slug: string) {
-  const { data, error } = await supabase
+  const { data, error } = await getClient()
     .from("blog_authors")
     .select("*, blog_posts(id, title, slug, short_description, main_image, published_at, category_slug)")
     .eq("slug", slug)
