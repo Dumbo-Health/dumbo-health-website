@@ -42,9 +42,10 @@ const FOOTER_COLUMNS = [
   {
     title: "Resources",
     links: [
-      { label: "Contact", href: "/contact" },
+      { label: "Sleep Apnea Facts", href: "/resources/facts" },
       { label: "Blog", href: "/blog" },
       { label: "FAQs", href: "/faqs" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
