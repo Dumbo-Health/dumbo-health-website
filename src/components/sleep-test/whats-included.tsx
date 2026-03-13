@@ -60,7 +60,7 @@ export function WhatsIncluded() {
     <section
       id="product"
       className="relative py-20 md:py-24"
-      style={{ backgroundColor: "#F5E6D1" }}
+      style={{ background: "linear-gradient(to bottom, #FFD6AD 0%, #FFD6AD 70%, #FCF6ED 100%)" }}
     >
       <div style={{ padding: "0 5%" }}>
 
@@ -98,7 +98,7 @@ export function WhatsIncluded() {
         >
           {/* Carousel — fixed width */}
           <motion.div
-            className="shrink-0 lg:w-[340px]"
+            className="shrink-0 lg:w-[460px]"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -190,18 +190,6 @@ export function WhatsIncluded() {
               $149 · one-time · free shipping · vs. $1,500+ sleep lab
             </p>
 
-            {/* CTA */}
-            <a
-              href={SHOPIFY.buyUrl}
-              className="mt-4 flex w-full items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
-              style={{
-                backgroundColor: "#FF8361",
-                boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
-                height: "52px",
-              }}
-            >
-              Order my sleep test
-            </a>
           </motion.div>
 
           {/* Inclusion cards — 2-column grid */}
@@ -261,6 +249,30 @@ export function WhatsIncluded() {
             ))}
           </motion.div>
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
+          className="mt-12 text-center"
+        >
+          <a
+            href={SHOPIFY.buyUrl}
+            data-shopify-checkout="sleep-test"
+            className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+            style={{
+              backgroundColor: "#FF8361",
+              boxShadow: "0 4px 24px rgba(255,131,97,0.3)",
+              height: "52px",
+              paddingLeft: "2.5rem",
+              paddingRight: "2.5rem",
+            }}
+          >
+            Order my sleep test, $149
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -57,10 +57,12 @@ async function downloadImage(url) {
 }
 
 function slugFromUrl(url) {
-  // Take the last path segment as the filename, strip query strings
+  // Take the last path segment as the filename, strip query strings, sanitize spaces
   const path = new URL(url).pathname;
   const segments = path.split("/").filter(Boolean);
-  return segments[segments.length - 1] || "image";
+  const raw = decodeURIComponent(segments[segments.length - 1] || "image");
+  // Replace spaces and special chars that break Supabase storage keys
+  return raw.replace(/\s+/g, "-").replace(/[^\w.\-]/g, "_");
 }
 
 async function uploadToSupabase(buffer, contentType, storagePath) {

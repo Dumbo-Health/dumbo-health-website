@@ -33,7 +33,9 @@ export function HowItWorksLanding() {
     <section
       id="how-it-works"
       className="relative py-20 md:py-24"
-      style={{ backgroundColor: "#FCF6ED" }}
+      style={{
+        background: "linear-gradient(to bottom, #FCF6ED 0%, #FCF6ED 70%, #F5E6D1 100%)",
+      }}
     >
       <div style={{ padding: "0 5%" }}>
         {/* Header */}
@@ -146,6 +148,7 @@ export function HowItWorksLanding() {
         >
           <a
             href={SHOPIFY.buyUrl}
+                data-shopify-checkout="sleep-test"
             className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
             style={{
               backgroundColor: "#FF8361",
@@ -155,7 +158,7 @@ export function HowItWorksLanding() {
               paddingRight: "2.25rem",
             }}
           >
-            Order my sleep test — $149
+            Order my sleep test, $149
           </a>
         </motion.div>
       </div>

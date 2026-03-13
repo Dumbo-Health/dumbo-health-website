@@ -2,15 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SHOPIFY } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function LandingHero() {
   return (
     <section
-      className="relative overflow-hidden bg-daylight"
-      style={{ isolation: "isolate" }}
+      className="relative overflow-hidden"
+      style={{
+        background: "linear-gradient(to bottom, #FCF6ED 0%, #FCF6ED 70%, #F5E6D1 100%)",
+        isolation: "isolate",
+      }}
     >
       {/* Brand pattern — top-right */}
       <div
@@ -56,7 +58,7 @@ export function LandingHero() {
       {/* ── Layout: copy left, image right — image is out of flow ── */}
       <div
         className="relative mx-auto"
-        style={{ padding: "0 5%", zIndex: 1 }}
+        style={{ padding: "0 5%", zIndex: 1, maxWidth: "1280px" }}
       >
         <div className="flex min-h-[600px] items-center lg:min-h-[640px]">
 
@@ -109,8 +111,13 @@ export function LandingHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
             >
-              <a
-                href={SHOPIFY.buyUrl}
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("product")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   backgroundColor: "#FF8361",
@@ -120,8 +127,8 @@ export function LandingHero() {
                   paddingRight: "2rem",
                 }}
               >
-                Order my sleep test
-              </a>
+                See what&apos;s included
+              </button>
               <button
                 type="button"
                 onClick={() =>

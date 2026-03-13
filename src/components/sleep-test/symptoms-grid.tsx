@@ -42,7 +42,9 @@ export function SymptomsGrid() {
   return (
     <section
       className="relative py-20 md:py-24"
-      style={{ backgroundColor: "#F5E6D1" }}
+      style={{
+        background: "linear-gradient(to bottom, #F5E6D1 0%, #F5E6D1 70%, #FCF6ED 100%)",
+      }}
     >
       <div style={{ padding: "0 5%" }}>
         {/* Header */}

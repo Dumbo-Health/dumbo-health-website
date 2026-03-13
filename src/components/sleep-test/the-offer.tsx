@@ -175,6 +175,7 @@ export function TheOffer() {
         >
           <a
             href={SHOPIFY.buyUrl}
+                data-shopify-checkout="sleep-test"
             className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
             style={{
               backgroundColor: "#FF8361",

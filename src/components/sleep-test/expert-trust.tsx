@@ -45,7 +45,9 @@ export function ExpertTrust() {
   return (
     <section
       className="relative py-20 md:py-24"
-      style={{ backgroundColor: "#F5E6D1" }}
+      style={{
+        background: "linear-gradient(to bottom, #FCF6ED 0%, #FCF6ED 70%, #FFD6AD 100%)",
+      }}
     >
       <div style={{ padding: "0 5%" }}>
 
