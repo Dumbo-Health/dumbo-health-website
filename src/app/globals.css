@@ -233,6 +233,10 @@
   }
 }
 
+/* ─── Utility: hide scrollbar ────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ─── Article prose styles ────────────────────────────────────────────────── */
 .article-prose {
   font-family: 'Aeonik', ui-sans-serif, system-ui, sans-serif;
@@ -347,4 +351,20 @@
   background: none;
   padding: 0;
   color: inherit;
+}
+
+/* Mobile prose: slightly tighter for small screens */
+@media (max-width: 640px) {
+  .article-prose {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .article-prose h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  .article-prose h3 {
+    font-size: 1.1875rem;
+    margin-top: 1.75rem;
+  }
 }

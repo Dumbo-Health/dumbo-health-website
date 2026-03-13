@@ -91,10 +91,10 @@ export function BlogIndexClient({ posts, initialCategory = "all" }: BlogIndexCli
               </button>
             ))}
           </div>
-          {/* Mobile: horizontal scroll */}
+          {/* Mobile: horizontal scroll (no scrollbar) */}
           <div
-            className="sm:hidden flex gap-2"
-            style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px" }}
+            className="sm:hidden flex gap-2 no-scrollbar"
+            style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}
           >
             {CATEGORIES.map((cat) => (
               <button

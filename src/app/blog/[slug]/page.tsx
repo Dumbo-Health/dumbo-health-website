@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Title */}
             <h1
               className="font-heading font-medium text-midnight mb-6"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.18 }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.18 }}
             >
               {post.title}
             </h1>
@@ -232,6 +232,45 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 {/* Social share */}
                 <SocialShare title={post.title} slug={post.slug} />
+
+                {/* Mobile CTA banner (sidebar equivalent on small screens) */}
+                <div
+                  className="lg:hidden mt-10 rounded-2xl p-6"
+                  style={{ background: "#031F3D" }}
+                >
+                  <p
+                    className="font-mono uppercase tracking-widest mb-1"
+                    style={{ fontSize: "0.6875rem", color: "rgba(252,246,237,0.5)" }}
+                  >
+                    Struggling with sleep?
+                  </p>
+                  <h3
+                    className="font-heading font-medium mb-3"
+                    style={{ fontSize: "1.1875rem", color: "#FCF6ED", lineHeight: 1.3 }}
+                  >
+                    Find out if sleep apnea is the reason.
+                  </h3>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link
+                      href="https://app.dumbo.health/"
+                      className="flex-1 text-center rounded-xl py-3 font-body font-bold text-sm uppercase tracking-wide transition-all duration-200"
+                      style={{ background: "#FF8361", color: "#fff" }}
+                    >
+                      Take the sleep quiz
+                    </Link>
+                    <Link
+                      href="/sleep-test"
+                      className="flex-1 text-center rounded-xl py-3 font-body text-sm transition-all duration-200"
+                      style={{
+                        background: "rgba(252,246,237,0.08)",
+                        color: "rgba(252,246,237,0.75)",
+                        border: "1px solid rgba(252,246,237,0.12)",
+                      }}
+                    >
+                      Buy sleep test
+                    </Link>
+                  </div>
+                </div>
 
                 {/* Author bio */}
                 {author?.short_bio && (

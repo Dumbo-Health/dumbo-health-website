@@ -66,12 +66,12 @@ export default async function BlogPage() {
             </p>
             <h1
               className="font-heading font-medium text-midnight mb-4"
-              style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
+              style={{ fontSize: "clamp(1.875rem, 6vw, 4.5rem)", lineHeight: 1.2 }}
             >
-              Your guide to better sleep,<br className="hidden sm:block" /> health and everyday energy.
+              Your guide to better sleep, health and everyday energy.
             </h1>
-            <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
-              From expert tips and real stories to the latest in sleep wellness and apnea care, everything you need to breathe easier and wake up brighter.
+            <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)", maxWidth: "48ch" }}>
+              Expert tips, real stories, and the latest in sleep wellness — everything you need to breathe easier and wake up brighter.
             </p>
           </div>
         </section>
