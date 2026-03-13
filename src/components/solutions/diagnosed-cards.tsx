@@ -62,7 +62,7 @@ export function DiagnosedCards() {
               size="lg"
               className="mt-8 h-12 w-full rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto"
             >
-              <Link href="/pricing">Get your CPAP</Link>
+              <Link href="/cpap">Get your CPAP</Link>
             </Button>
           </motion.div>
 
@@ -101,7 +101,7 @@ export function DiagnosedCards() {
               size="lg"
               className="mt-8 h-12 w-full rounded-lg bg-midnight px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-midnight/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight/85 hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto"
             >
-              <Link href="/pricing">Transfer my CPAP</Link>
+              <Link href="/cpap">Transfer my CPAP</Link>
             </Button>
           </motion.div>
         </motion.div>

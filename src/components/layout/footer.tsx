@@ -36,7 +36,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "About Us", href: "/about-us" },
       { label: "Solutions", href: "/solutions" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "CPAP Therapy", href: "/cpap" },
     ],
   },
   {

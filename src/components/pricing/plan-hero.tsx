@@ -35,7 +35,7 @@ export function PlanHero() {
           className="font-mono text-xs uppercase tracking-widest"
           style={{ color: "#78BFBC" }}
         >
-          Pricing
+          CPAP therapy
         </motion.p>
 
         <motion.h1
@@ -45,7 +45,7 @@ export function PlanHero() {
           className="mt-5 font-heading font-medium leading-[1.08] text-midnight text-balance"
           style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
         >
-          CPAP therapy the way it{" "}
+          Start CPAP without guessing, overpaying,{" "}
           <span
             style={{
               background: "linear-gradient(90deg, #031F3D 0%, #FF8361 100%)",
@@ -54,7 +54,7 @@ export function PlanHero() {
               backgroundClip: "text",
             }}
           >
-            should have always worked.
+            or going it alone.
           </span>
         </motion.h1>
 
@@ -69,9 +69,8 @@ export function PlanHero() {
             maxWidth: "52ch",
           }}
         >
-          No upfront machine cost. No insurance maze. No being left alone with a
-          device you don&apos;t understand. Everything included, starting at $59
-          a month.
+          Dumbo handles the equipment, the setup, the supplies, and the support.
+          Starting at $59/month, about $2 a day.
         </motion.p>
 
         <motion.div
@@ -83,19 +82,45 @@ export function PlanHero() {
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-lg bg-midnight px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-midnight/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight/85 hover:shadow-xl active:translate-y-0"
+            className="h-12 rounded-[12px] font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+            style={{
+              backgroundColor: "#FF8361",
+              boxShadow: "0 4px 20px rgba(255,131,97,0.35)",
+            }}
           >
-            <Link href="#plans">See the plans</Link>
+            <Link href="#plans">Start now</Link>
           </Button>
           <Button
             asChild
             variant="ghost"
             size="lg"
-            className="h-12 px-8 font-body text-base font-medium rounded-lg transition-all hover:bg-midnight/8"
+            className="h-12 px-8 font-body text-base font-medium rounded-lg transition-all"
             style={{ color: "rgba(3,31,61,0.5)" }}
           >
-            <Link href="#compare">Compare all features</Link>
+            <Link href="#how-it-works">See how it works</Link>
           </Button>
+        </motion.div>
+
+        {/* Trust pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.52 }}
+          className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+        >
+          {[
+            "Built for first-time CPAP users",
+            "Cancel anytime",
+            "HSA/FSA eligible via Truemed",
+          ].map((pill) => (
+            <span
+              key={pill}
+              className="font-mono text-[11px] uppercase tracking-widest"
+              style={{ color: "rgba(3,31,61,0.38)" }}
+            >
+              {pill}
+            </span>
+          ))}
         </motion.div>
       </div>
     </section>

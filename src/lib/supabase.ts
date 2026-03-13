@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { calculateReadingTime } from "./reading-time";
 
 let _client: SupabaseClient | null = null;
 
@@ -89,6 +90,7 @@ export interface BlogPost {
   scientific_committee_slug: string | null;
   content: string | null;
   ai_summary: string | null;
+  reading_time?: number; // minutes, computed from content
   archived: boolean;
   draft: boolean;
   created_at: string | null;
@@ -141,7 +143,10 @@ export async function getBlogPosts(categorySlug?: string) {
 
   const { data, error } = await query;
   if (error) throw error;
-  return data as BlogPost[];
+  return (data as BlogPost[]).map((post) => ({
+    ...post,
+    reading_time: calculateReadingTime(post.content),
+  }));
 }
 
 /** Returns a single published blog post by slug */
@@ -154,7 +159,31 @@ export async function getBlogPostBySlug(slug: string) {
     .single();
 
   if (error) throw error;
-  return data as BlogPost;
+  const post = data as BlogPost;
+  return { ...post, reading_time: calculateReadingTime(post.content) };
+}
+
+/** Returns up to 3 related posts (same category, excluding current slug) */
+export async function getRelatedPosts(categorySlug: string | null, excludeSlug: string): Promise<BlogPost[]> {
+  let query = getClient()
+    .from("blog_posts")
+    .select("*, blog_authors(name, slug, profile_picture), blog_categories(slug, label)")
+    .eq("archived", false)
+    .eq("draft", false)
+    .neq("slug", excludeSlug)
+    .order("published_at", { ascending: false })
+    .limit(3);
+
+  if (categorySlug) {
+    query = query.eq("category_slug", categorySlug);
+  }
+
+  const { data, error } = await query;
+  if (error) return [];
+  return (data as BlogPost[]).map((post) => ({
+    ...post,
+    reading_time: calculateReadingTime(post.content),
+  }));
 }
 
 /** Returns all blog categories ordered by display_order */

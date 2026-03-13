@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { scientificCommittee } from "@/content/team";
+import { CashPayArgument } from "@/components/pricing/cash-pay-argument";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -454,16 +455,19 @@ export function SleepTestLanding() {
         </FadeUp>
       </section>
 
-      {/* ═══ WHAT IT MEASURES (dark) ═══ */}
-      <section style={{ backgroundColor: "#031F3D", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
+      {/* ═══ CASH PAY VS. INSURANCE ═══ */}
+      <CashPayArgument />
+
+      {/* ═══ WHAT IT MEASURES ═══ */}
+      <section style={{ background: "linear-gradient(to bottom, #FFD6AD, #F5E6D1)", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <FadeUp>
               <SectionLabel>What the device captures</SectionLabel>
-              <h2 className="mt-2 font-heading font-medium text-white text-balance" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+              <h2 className="mt-2 font-heading font-medium text-balance" style={{ color: "#031F3D", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Seven signals. One night.
               </h2>
-              <p className="mt-3 font-body text-lg text-pretty" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="mt-3 font-body text-lg text-pretty" style={{ color: "rgba(3,31,61,0.55)" }}>
                 The same clinical-grade data used in sleep labs, captured from your finger at home.
               </p>
             </FadeUp>
@@ -478,16 +482,16 @@ export function SleepTestLanding() {
                 "Chest wall effort",
               ].map((label, i) => (
                 <FadeUp key={label} delay={i * 0.06}>
-                  <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
+                  <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(3,31,61,0.05)" }}>
                     <div className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: "#78BFBC" }} />
-                    <span className="font-body text-sm font-medium text-white">{label}</span>
+                    <span className="font-body text-sm font-medium" style={{ color: "#031F3D" }}>{label}</span>
                   </div>
                 </FadeUp>
               ))}
             </div>
           </div>
           <FadeUp delay={0.1}>
-            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl" style={{ backgroundColor: "rgba(255,255,255,0.04)" }}>
+            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl" style={{ backgroundColor: "rgba(3,31,61,0.04)" }}>
               <Image src="/images/products/hst-points.png" alt="WatchPAT ONE device with measurement callouts" fill className="object-contain p-8" sizes="(max-width: 768px) 100vw, 40vw" />
             </div>
           </FadeUp>
@@ -495,7 +499,7 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ WHAT'S INCLUDED ═══ */}
-      <section style={{ backgroundColor: "#fff", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
+      <section style={{ backgroundColor: "#F5E6D1", paddingTop: "80px", paddingBottom: "80px", paddingLeft: "5%", paddingRight: "5%" }}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeUp>
             <SectionLabel>What you get</SectionLabel>
@@ -537,7 +541,7 @@ export function SleepTestLanding() {
       </section>
 
       {/* ═══ WHO IT'S FOR ═══ */}
-      <section style={{ backgroundColor: "#F5E6D1", paddingTop: "96px", paddingBottom: "96px", paddingLeft: "5%", paddingRight: "5%" }}>
+      <section style={{ background: "linear-gradient(to bottom, #F5E6D1, #FFD6AD)", paddingTop: "96px", paddingBottom: "96px", paddingLeft: "5%", paddingRight: "5%" }}>
 
         <FadeUp className="text-center">
           <SectionLabel>Am I a good fit?</SectionLabel>

@@ -104,7 +104,7 @@ export function AboutHero() {
               className="h-12 px-8 font-body text-base font-medium rounded-lg transition-all hover:bg-midnight/8"
               style={{ color: "rgba(3,31,61,0.5)" }}
             >
-              <Link href="/pricing">See our plans</Link>
+              <Link href="/cpap">See our plans</Link>
             </Button>
           </motion.div>
         </div>

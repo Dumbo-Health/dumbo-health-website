@@ -49,7 +49,7 @@ export function PlanCard({ plan }: PlanCardProps) {
         </div>
 
         {/* Price */}
-        <div className="flex items-baseline gap-1.5">
+        <div className="flex items-baseline gap-1.5 flex-wrap">
           <span
             className="font-heading font-medium text-midnight leading-none"
             style={{ fontSize: "clamp(2.8rem, 4vw, 3.4rem)" }}
@@ -61,6 +61,12 @@ export function PlanCard({ plan }: PlanCardProps) {
             style={{ color: "rgba(3,31,61,0.4)" }}
           >
             /mo
+          </span>
+          <span
+            className="font-mono text-xs uppercase tracking-widest"
+            style={{ color: "#78BFBC" }}
+          >
+            {plan.perDay}/day
           </span>
         </div>
 

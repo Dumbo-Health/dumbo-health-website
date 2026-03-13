@@ -17,7 +17,9 @@ import { APP_URL } from "@/lib/constants";
 const mobileLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "Sleep test", href: "/at-home-sleep-test" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "CPAP Therapy", href: "/cpap" },
+  { label: "CPAP Care", href: "/cpap-care" },
+  { label: "CPAP Resupply", href: "/resupply" },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about-us" },
   { label: "FAQs", href: "/faqs" },

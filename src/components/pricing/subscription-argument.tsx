@@ -8,20 +8,20 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const BENEFITS = [
   {
-    title: "Your machine upgrades automatically.",
-    body: "You're never stuck on old hardware. As better technology ships, it ships to you. No repurchasing, no migration headaches.",
+    title: "The equipment you need to get started.",
+    body: "CPAP machine, mask fitted to your face, and everything needed to sleep your first night. No sourcing, no guessing, no trips to a supplier.",
   },
   {
-    title: "Supplies arrive when you actually need them.",
-    body: "Your CPAP sends us usage data. We ship parts when they're worn, not on a fixed calendar. You only pay for what you actually need.",
+    title: "Ongoing replacement supplies, automatically.",
+    body: "Your CPAP sends us usage data. We ship filters, tubing, and mask parts when they're worn, not on a fixed calendar you have to manage.",
   },
   {
-    title: "You're never doing this alone.",
-    body: "A doctor, a coach, and an AI companion are watching your data and proactively helping. Someone is always paying attention to your sleep.",
+    title: "Therapy monitoring to catch problems early.",
+    body: "We watch your sleep data every night. Leaky mask, pressure issue, low usage, we flag it before it becomes a reason to quit.",
   },
   {
-    title: "If something breaks, it's covered.",
-    body: "Accidents happen. On Premium and Elite plans, device issues are covered. No out-of-pocket replacement costs, no unpleasant surprises.",
+    title: "Support that doesn't disappear after delivery.",
+    body: "Most suppliers focus on getting a box to your door. We focus on what happens after. A care team, a doctor, and an AI companion. All watching your sleep.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function SubscriptionArgument() {
               className="font-mono text-xs uppercase tracking-widest mb-4"
               style={{ color: "#78BFBC" }}
             >
-              Why subscribe?
+              A simpler way to start CPAP
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export function SubscriptionArgument() {
               className="font-heading font-medium leading-tight text-balance"
               style={{ color: "#031F3D", fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
             >
-              Yes, you can buy a CPAP on Amazon. Here&apos;s what you won&apos;t get.
+              Everything handled for you, month to month.
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -64,17 +64,37 @@ export function SubscriptionArgument() {
               A CPAP machine is a purchase. Dumbo is a care relationship. The
               difference is everything that happens after the box arrives.
             </motion.p>
-            <motion.p
+
+            {/* DME contrast pills */}
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, ease: EASE, delay: 0.26 }}
-              className="mt-4 font-body leading-relaxed"
-              style={{ color: "rgba(3,31,61,0.45)", fontSize: "1rem", maxWidth: "46ch" }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.26 }}
+              className="mt-6 flex flex-col gap-2"
             >
-              Think of it as the difference between buying a treadmill and joining
-              a gym with a personal trainer.
-            </motion.p>
+              {[
+                "No insurance paperwork",
+                "No confusing rentals",
+                "No disappearing support",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2.5">
+                  <span
+                    className="font-mono text-xs"
+                    style={{ color: "#78BFBC" }}
+                  >
+                    ✓
+                  </span>
+                  <span
+                    className="font-body"
+                    style={{ fontSize: "1rem", color: "rgba(3,31,61,0.65)" }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}

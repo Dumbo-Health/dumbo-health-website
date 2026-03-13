@@ -4,8 +4,7 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { PostGrid } from "@/components/blog/post-grid";
-import { CategoryFilter } from "@/components/blog/category-filter";
+import { BlogIndexClient } from "@/components/blog/blog-index-client";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
 import { getBlogPosts } from "@/lib/supabase";
@@ -56,32 +55,35 @@ export default async function BlogPage() {
     <>
       <Navbar />
       <main>
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+        {/* Hero header */}
+        <section className="bg-daylight pt-16 sm:pt-24 pb-10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <p
+              className="font-mono uppercase tracking-widest mb-3"
+              style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.45)" }}
+            >
+              The Sleep Journal
+            </p>
             <h1
               className="font-heading font-medium text-midnight mb-4"
               style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
             >
-              The Sleep Journal
+              Your guide to better sleep,<br className="hidden sm:block" /> health and everyday energy.
             </h1>
-            <p
-              className="font-heading font-medium text-midnight/70 mb-4"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
-            >
-              Your guide to better sleep, health and everyday energy.
-            </p>
             <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
-              From expert tips and real stories to the latest in sleep wellness and apnea care, everything you need to breathe easier and wake up brighter, right here.
+              From expert tips and real stories to the latest in sleep wellness and apnea care, everything you need to breathe easier and wake up brighter.
             </p>
           </div>
-          <CategoryFilter />
-          <PostGrid posts={posts} />
+        </section>
+
+        {/* Client-side filtered blog with sticky filter + posts */}
+        <div className="bg-daylight">
+          <BlogIndexClient posts={posts} />
         </div>
-      </section>
-      <NewsletterSignup />
-      <BottomCTA />
-      <ServiceAreaBanner />
+
+        <NewsletterSignup />
+        <BottomCTA />
+        <ServiceAreaBanner />
       </main>
       <Footer />
     </>

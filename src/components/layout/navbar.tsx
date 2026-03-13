@@ -62,6 +62,33 @@ function IconContact() {
   );
 }
 
+function IconCPAP() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+      <rect x="2" y="2" width="20" height="20" rx="3" />
+    </svg>
+  );
+}
+
+function IconResupply() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </svg>
+  );
+}
+
+function IconSupport() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  );
+}
+
 function IconFacts() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -93,6 +120,9 @@ function ChevronDown({ open }: { open: boolean }) {
 
 const SOLUTIONS = [
   { label: "At-Home Sleep Test", href: "/at-home-sleep-test", Icon: IconSleepTest },
+  { label: "CPAP Therapy",       href: "/cpap",               Icon: IconCPAP },
+  { label: "CPAP Care",          href: "/cpap-care",          Icon: IconSupport },
+  { label: "CPAP Resupply",      href: "/resupply",           Icon: IconResupply },
   { label: "Sleep Apnea Care",   href: "/solutions",          Icon: IconCare },
   { label: "Dumbo Health App",   href: "/solutions#step-4",   Icon: IconApp },
 ];
@@ -272,13 +302,6 @@ export function Navbar() {
         <div className="hidden items-center gap-8 lg:flex">
           <MegaTrigger label="SOLUTIONS" items={SOLUTIONS} />
 
-          <Link
-            href="/pricing"
-            className="rounded-full px-4 py-2 font-body text-sm font-medium uppercase tracking-wider text-midnight transition-all duration-200 ease-out hover:bg-midnight hover:text-white active:scale-95"
-          >
-            PRICING
-          </Link>
-
           <MegaTrigger label="RESOURCES" items={RESOURCES} />
 
           <Link
@@ -326,14 +349,6 @@ export function Navbar() {
       >
         <div className="space-y-0.5 px-4 pb-6 pt-3">
           <MobileAccordion label="SOLUTIONS" items={SOLUTIONS} onClose={() => setMobileOpen(false)} />
-
-          <Link
-            href="/pricing"
-            onClick={() => setMobileOpen(false)}
-            className="block rounded-full px-4 py-2.5 font-body text-sm font-medium uppercase tracking-wider text-midnight transition-all duration-200 ease-out hover:bg-midnight hover:text-white active:bg-midnight active:text-white"
-          >
-            PRICING
-          </Link>
 
           <MobileAccordion label="RESOURCES" items={RESOURCES} onClose={() => setMobileOpen(false)} />
 

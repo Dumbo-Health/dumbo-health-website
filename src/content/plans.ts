@@ -19,6 +19,7 @@ export interface Plan {
   extras?: string[];
   cta: string;
   ctaUrl: string;
+  perDay: string;
 }
 
 export const cpapPlans: Plan[] = [
@@ -42,6 +43,7 @@ export const cpapPlans: Plan[] = [
     ],
     cta: "Get started",
     ctaUrl: "https://app.dumbo.health",
+    perDay: "~$2",
   },
   {
     name: "Premium",
@@ -63,6 +65,7 @@ export const cpapPlans: Plan[] = [
     ],
     cta: "Get started",
     ctaUrl: "https://app.dumbo.health",
+    perDay: "~$3",
   },
   {
     name: "Elite",
@@ -84,6 +87,7 @@ export const cpapPlans: Plan[] = [
     ],
     cta: "Get started",
     ctaUrl: "https://app.dumbo.health",
+    perDay: "~$4",
   },
 ];
 

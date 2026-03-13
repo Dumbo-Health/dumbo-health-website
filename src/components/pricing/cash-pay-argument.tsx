@@ -12,31 +12,31 @@ const POINTS = [
   {
     n: "01",
     title: "No prior authorization.",
-    body: "Insurance can deny coverage or demand months of sleep studies before approving treatment. With cash pay, you start therapy in days.",
+    body: "Insurance can deny coverage or require months of pre-authorization before covering a sleep study. With cash pay, you order today and test tonight.",
   },
   {
     n: "02",
-    title: "One number. No surprises.",
-    body: "You know exactly what you pay every month. No deductibles, no copays, no bills that arrive weeks later. One price covers everything.",
+    title: "One price. No surprises.",
+    body: "$149 covers the test, the device, the doctor review, and your prescription. No deductibles. No bills that arrive weeks later.",
   },
   {
     n: "03",
-    title: "Results, not compliance.",
-    body: "Insurance tracks usage minimums. Dumbo tracks results. You're not a compliance metric here. You're a patient, and we're focused on your sleep.",
+    title: "Faster answers.",
+    body: "Insurance delays can push your diagnosis weeks or months out. Cash pay means you know within days, not after a referral chain.",
   },
 ];
 
 const COMPARISON_ROWS = [
-  { label: "Diagnostic process",  traditional: "Lab-based, long waits",          dumbo: "Fast, easy at-home testing" },
-  { label: "Convenience",         traditional: "In-person appointments",          dumbo: "100% online and accessible" },
-  { label: "Price transparency",  traditional: "Hidden fees, unclear pricing",    dumbo: "Clear, all-inclusive pricing" },
-  { label: "Device acquisition",  traditional: "High upfront cost",               dumbo: "No upfront cost on plans" },
-  { label: "Accessories",         traditional: "Additional, frequent fees",       dumbo: "Always included" },
-  { label: "Device maintenance",  traditional: "Additional fees",                 dumbo: "Included in subscription" },
-  { label: "Telehealth access",   traditional: "Limited or extra costs",          dumbo: "Unlimited and always included" },
-  { label: "Insurance complexity",traditional: "Frequent paperwork and denials",  dumbo: "Zero paperwork needed" },
-  { label: "Care continuity",     traditional: "Multiple providers",              dumbo: "One dedicated, accessible team" },
-  { label: "Time to treatment",   traditional: "Weeks to months",                 dumbo: "Start now", highlight: true },
+  { label: "Test setting",         traditional: "Sleep lab, overnight stay",           dumbo: "Your own bed, one night" },
+  { label: "Prior authorization",  traditional: "Often required, weeks of waiting",    dumbo: "None required" },
+  { label: "Cost",                 traditional: "Lab study: $1,000–$3,000+",           dumbo: "Flat $149, all-inclusive" },
+  { label: "Diagnostic process",   traditional: "Polysomnography (in-lab PSG)",        dumbo: "FDA-cleared home test" },
+  { label: "Results turnaround",   traditional: "1–3 weeks",                           dumbo: "Within days" },
+  { label: "Prescription",         traditional: "Separate doctor visit required",      dumbo: "Included with results" },
+  { label: "Insurance complexity", traditional: "Frequent paperwork and denials",      dumbo: "Zero paperwork needed" },
+  { label: "Doctor review",        traditional: "May see different providers",         dumbo: "Dedicated sleep physician" },
+  { label: "Follow-up care",       traditional: "Separate referral needed",            dumbo: "Treatment path included" },
+  { label: "Time to diagnosis",    traditional: "Weeks to months",                     dumbo: "Start tonight", highlight: true },
 ];
 
 export function CashPayArgument() {

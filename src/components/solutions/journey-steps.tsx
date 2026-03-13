@@ -200,7 +200,7 @@ export function JourneySteps() {
                 size="lg"
                 className="mt-6 h-12 rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl hover:shadow-midnight/20 active:translate-y-0 active:shadow-md"
               >
-                <Link href="/pricing">Explore CPAP plans</Link>
+                <Link href="/cpap">Explore CPAP plans</Link>
               </Button>
             </motion.div>
 

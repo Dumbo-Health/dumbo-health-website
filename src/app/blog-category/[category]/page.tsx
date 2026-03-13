@@ -4,8 +4,7 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { CategoryFilter } from "@/components/blog/category-filter";
-import { PostGrid } from "@/components/blog/post-grid";
+import { BlogIndexClient } from "@/components/blog/blog-index-client";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { getBlogPosts, getBlogCategories } from "@/lib/supabase";
 
@@ -30,7 +29,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const { category } = await params;
   const [posts, categories] = await Promise.all([
-    getBlogPosts(category),
+    getBlogPosts(),
     getBlogCategories(),
   ]);
   const label = categories.find((c) => c.slug === category)?.label
@@ -40,22 +39,29 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
     <>
       <Navbar />
       <main>
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1
-            className="font-heading font-medium text-midnight text-center mb-4"
-            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
-          >
-            {label}
-          </h1>
-          <p className="font-body text-midnight/70 text-center mb-12 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "44ch" }}>
-            Browse all {label.toLowerCase()} articles.
-          </p>
-          <CategoryFilter />
-          <PostGrid posts={posts} />
+        <section className="bg-daylight pt-16 sm:pt-24 pb-10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <p
+              className="font-mono uppercase tracking-widest mb-3"
+              style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.45)" }}
+            >
+              The Sleep Journal
+            </p>
+            <h1
+              className="font-heading font-medium text-midnight mb-4"
+              style={{ fontSize: "clamp(2.4rem, 5vw, 3.75rem)" }}
+            >
+              {label}
+            </h1>
+            <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "44ch" }}>
+              Browse all {label.toLowerCase()} articles.
+            </p>
+          </div>
+        </section>
+        <div className="bg-daylight">
+          <BlogIndexClient posts={posts} initialCategory={category} />
         </div>
-      </section>
-      <BottomCTA />
+        <BottomCTA />
       </main>
       <Footer />
     </>
