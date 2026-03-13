@@ -53,7 +53,6 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Toolbox", href: "https://www.dumbo.health/go/tools", external: true },
       { label: "Sleep Protocol", href: "https://www.dumbo.health/go/sleep-protocol", external: true },
-      { label: "Save Money", href: "/struggling-with-cost" },
     ],
   },
   {
