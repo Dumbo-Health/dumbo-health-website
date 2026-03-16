@@ -162,7 +162,7 @@ export function AdherenceIntelligence() {
                   style={{
                     fontSize: "clamp(0.9375rem, 1.0vw, 1.0625rem)",
                     lineHeight: 1.7,
-                    color: "rgba(252,246,237,0.58)",
+                    color: "rgba(252,246,237,0.75)",
                   }}
                 >
                   {item.detail}

@@ -107,7 +107,7 @@ export function ExpertTrust() {
               </p>
               <p
                 className="font-body mt-2 text-pretty"
-                style={{ fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.4 }}
+                style={{ fontSize: "0.875rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.4 }}
               >
                 {s.label}
               </p>

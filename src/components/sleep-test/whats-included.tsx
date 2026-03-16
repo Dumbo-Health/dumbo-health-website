@@ -241,7 +241,7 @@ export function WhatsIncluded() {
                 </p>
                 <p
                   className="font-body text-pretty"
-                  style={{ fontSize: "0.875rem", lineHeight: 1.65, color: "rgba(3,31,61,0.55)" }}
+                  style={{ fontSize: "0.875rem", lineHeight: 1.65, color: "rgba(3,31,61,0.68)" }}
                 >
                   {item.detail}
                 </p>

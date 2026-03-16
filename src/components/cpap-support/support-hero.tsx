@@ -211,7 +211,7 @@ export function SupportHero() {
               >
                 <p
                   className="font-mono uppercase tracking-widest"
-                  style={{ fontSize: "0.65rem", color: "rgba(252,246,237,0.45)", lineHeight: 1 }}
+                  style={{ fontSize: "0.75rem", color: "rgba(252,246,237,0.45)", lineHeight: 1 }}
                 >
                   {chip.label}
                 </p>

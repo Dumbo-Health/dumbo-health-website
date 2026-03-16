@@ -37,7 +37,7 @@ export function PlanCard({ plan }: PlanCardProps) {
           </h3>
           {isPopular && (
             <span
-              className="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full"
+              className="font-mono text-[11px] uppercase tracking-widest px-2.5 py-1 rounded-full"
               style={{
                 backgroundColor: "rgba(255,131,97,0.12)",
                 color: "#FF8361",
@@ -83,7 +83,7 @@ export function PlanCard({ plan }: PlanCardProps) {
           className="mt-3 font-body leading-snug"
           style={{
             fontSize: "0.9375rem",
-            color: "rgba(3,31,61,0.5)",
+            color: "rgba(3,31,61,0.62)",
             fontStyle: "italic",
           }}
         >

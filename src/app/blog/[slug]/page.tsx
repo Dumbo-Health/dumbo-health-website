@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     });
   } catch {
     return createMetadata({
-      title: "Article | Dumbo Health Blog",
+      title: "Article Blog",
       description: "Expert sleep apnea tips and guides.",
       path: `/blog/${slug}`,
       type: "article",

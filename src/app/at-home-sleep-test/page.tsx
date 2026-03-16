@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Order your FDA-cleared at-home sleep apnea test for just $149. Sleep in your own bed, get doctor-reviewed results in days, prescription included. Ships next business day.",
   alternates: { canonical: "https://www.dumbo.health/at-home-sleep-test" },
   openGraph: {
-    title: "At-Home Sleep Apnea Test — FDA Cleared, $149 | Dumbo Health",
+    title: "At-Home Sleep Apnea Test — FDA Cleared, $149",
     description:
       "Sleep in your own bed, test in one night. Doctor-reviewed results for $149. Ships next business day.",
     url: "https://www.dumbo.health/at-home-sleep-test",

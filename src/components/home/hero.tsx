@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { APP_URL, SHOPIFY } from "@/lib/constants";
+import { APP_URL } from "@/lib/constants";
 
 const marqueeImages = [
   { src: "/images/people/couple-in-bed.png",        alt: "Couple resting peacefully" },
@@ -74,7 +74,7 @@ export function HomeHero() {
         <Button
           asChild
           size="lg"
-          className="h-12 rounded-[12px] bg-peach px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0 active:shadow-md"
+          className="h-12 rounded-[12px] bg-peach px-5 sm:px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0 active:shadow-md"
         >
           <a href={APP_URL}>Take our sleep apnea quiz</a>
         </Button>
@@ -84,9 +84,9 @@ export function HomeHero() {
           asChild
           variant="outline"
           size="lg"
-          className="h-12 rounded-[12px] border-midnight/25 bg-transparent px-8 font-body text-sm font-medium uppercase tracking-wider text-midnight transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-midnight hover:bg-midnight hover:text-white hover:shadow-md hover:shadow-midnight/15 active:translate-y-0"
+          className="h-12 rounded-[12px] border-midnight/25 bg-transparent px-5 sm:px-8 font-body text-sm font-medium uppercase tracking-wider text-midnight transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-midnight hover:bg-midnight hover:text-white hover:shadow-md hover:shadow-midnight/15 active:translate-y-0"
         >
-          <a href={SHOPIFY.buyUrl}>Buy your diagnostic kit</a>
+          <a href="/at-home-sleep-test">Buy your diagnostic kit</a>
         </Button>
       </div>
 

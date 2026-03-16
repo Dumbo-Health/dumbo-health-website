@@ -59,7 +59,7 @@ export function FounderStory() {
                   className="font-heading font-medium text-white"
                   style={{ fontSize: "1.25rem" }}
                 >
-                  Mo Balwan &amp; Nicolas Hauvette
+                  Mo &amp; Nico
                 </p>
               </div>
             </div>
@@ -70,7 +70,7 @@ export function FounderStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55, ease: EASE, delay: 0.25 }}
-              className="absolute -bottom-6 -right-4 max-w-xs rounded-2xl p-6 backdrop-blur-sm hidden lg:block"
+              className="absolute -top-6 -right-4 max-w-xs rounded-2xl p-6 backdrop-blur-sm hidden lg:block"
               style={{
                 backgroundColor: "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.1)",
@@ -84,10 +84,10 @@ export function FounderStory() {
                 <br />It&apos;s personal.&rdquo;
               </p>
               <p
-                className="mt-3 font-mono text-[10px] uppercase tracking-widest"
+                className="mt-3 font-mono text-[11px] uppercase tracking-widest"
                 style={{ color: "rgba(255,255,255,0.4)" }}
               >
-                Mo Balwan, Co-founder
+                Mo, Co-founder
               </p>
             </motion.div>
           </motion.div>
@@ -120,7 +120,7 @@ export function FounderStory() {
             <div className="space-y-5">
               <p
                 className="font-body leading-relaxed"
-                style={{ fontSize: "1.0625rem", color: "rgba(252,246,237,0.72)" }}
+                style={{ fontSize: "1.125rem", color: "rgba(252,246,237,0.75)" }}
               >
                 Mo was diagnosed with sleep apnea in his early thirties. What
                 followed was months of navigating a system that felt designed
@@ -131,7 +131,7 @@ export function FounderStory() {
               </p>
               <p
                 className="font-body leading-relaxed"
-                style={{ fontSize: "1.0625rem", color: "rgba(252,246,237,0.72)" }}
+                style={{ fontSize: "1.125rem", color: "rgba(252,246,237,0.75)" }}
               >
                 Nico came at it from a different angle. A background in health
                 technology, and a conviction that the gap between what sleep
@@ -141,7 +141,7 @@ export function FounderStory() {
               </p>
               <p
                 className="font-body leading-relaxed"
-                style={{ fontSize: "1.0625rem", color: "rgba(252,246,237,0.72)" }}
+                style={{ fontSize: "1.125rem", color: "rgba(252,246,237,0.75)" }}
               >
                 They met and saw immediately they were solving the same problem
                 from opposite ends. One had lived it. One had the tools to fix
@@ -165,10 +165,10 @@ export function FounderStory() {
                 &ldquo;It&apos;s not just a business. It&apos;s personal.&rdquo;
               </p>
               <p
-                className="mt-3 font-mono text-[10px] uppercase tracking-widest"
+                className="mt-3 font-mono text-[11px] uppercase tracking-widest"
                 style={{ color: "rgba(255,255,255,0.4)" }}
               >
-                Mo Balwan, Co-founder
+                Mo, Co-founder
               </p>
             </div>
           </motion.div>

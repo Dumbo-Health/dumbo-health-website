@@ -129,7 +129,7 @@ export function HowItWorksLanding() {
                 </h3>
                 <p
                   className="font-body text-pretty"
-                  style={{ fontSize: "0.9375rem", lineHeight: 1.7, color: "rgba(3,31,61,0.58)" }}
+                  style={{ fontSize: "0.9375rem", lineHeight: 1.7, color: "rgba(3,31,61,0.68)" }}
                 >
                   {s.body}
                 </p>

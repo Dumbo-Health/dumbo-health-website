@@ -13,7 +13,7 @@ import { FinalCtaLanding } from "@/components/sleep-test/final-cta-landing";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "At-Home Sleep Apnea Test | Dumbo Health",
+  title: "At-Home Sleep Apnea Test",
   description:
     "Find out if sleep apnea is stealing your sleep. The WatchPAT ONE delivers physician-reviewed results in 48 hours — $149 flat, free shipping. Test positive and start CPAP? Your first month is on us.",
   alternates: {

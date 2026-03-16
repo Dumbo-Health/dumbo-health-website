@@ -13,7 +13,7 @@ import { SupportClose } from "@/components/cpap-support/support-close";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CPAP Care | Dumbo Health",
+  title: "CPAP Care",
   description:
     "CPAP therapy monitoring, clinical care, and adherence intelligence. Dumbo Health reads your nightly data and intervenes before small problems become reasons to quit.",
 };

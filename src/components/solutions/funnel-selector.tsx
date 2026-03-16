@@ -198,7 +198,7 @@ export function FunnelSelector() {
 
             return (
               <motion.a
-                key={card.href}
+                key={card.cta}
                 href={card.href}
                 onClick={(e) => handleClick(e, card.href)}
                 onMouseEnter={() => setHovered(i)}

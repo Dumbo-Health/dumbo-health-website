@@ -146,7 +146,7 @@ export function SupportPricing() {
             >
               {plan.badge && (
                 <span
-                  className="absolute top-5 right-5 font-mono text-[10px] uppercase tracking-widest rounded-full px-2.5 py-1"
+                  className="absolute top-5 right-5 font-mono text-[11px] uppercase tracking-widest rounded-full px-2.5 py-1"
                   style={{
                     backgroundColor: "rgba(255,131,97,0.12)",
                     color: "#FF8361",
@@ -190,7 +190,7 @@ export function SupportPricing() {
                 style={{
                   fontSize: "0.9375rem",
                   lineHeight: 1.65,
-                  color: "rgba(3,31,61,0.55)",
+                  color: "rgba(3,31,61,0.68)",
                   fontStyle: "italic",
                 }}
               >

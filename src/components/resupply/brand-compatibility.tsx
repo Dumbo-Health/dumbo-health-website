@@ -77,7 +77,7 @@ export function BrandCompatibility() {
               </p>
               <p
                 className="font-mono mt-1.5 uppercase tracking-wide"
-                style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.38)" }}
+                style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.38)" }}
               >
                 {brand.detail}
               </p>

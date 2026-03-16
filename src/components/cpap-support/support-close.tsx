@@ -118,7 +118,7 @@ export function SupportClose() {
             size="lg"
             className="h-13 rounded-[12px] font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
             style={{
-              color: "rgba(3,31,61,0.55)",
+              color: "rgba(3,31,61,0.68)",
               border: "1px solid rgba(3,31,61,0.15)",
             }}
           >
@@ -138,7 +138,7 @@ export function SupportClose() {
             <li
               key={item}
               className="flex items-center gap-2 font-mono uppercase tracking-widest"
-              style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.38)" }}
+              style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.38)" }}
             >
               <span style={{ color: "#78BFBC" }}>✓</span>
               {item}

@@ -7,14 +7,14 @@
 /* Brand font faces */
 @font-face {
   font-family: 'Nohemi';
-  src: url('/fonts/nohemi/Nohemi-Regular.woff2') format('woff2');
+  src: url('/fonts/nohemi/Nohemi-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Nohemi';
-  src: url('/fonts/nohemi/Nohemi-Medium.woff2') format('woff2');
+  src: url('/fonts/nohemi/Nohemi-Regular.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -227,6 +227,7 @@
   }
   body {
     @apply bg-background text-foreground font-body;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading text-midnight;

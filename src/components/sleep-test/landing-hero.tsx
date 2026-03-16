@@ -160,7 +160,7 @@ export function LandingHero() {
                   <span key={step} className="flex items-center gap-3">
                     <span
                       className="font-mono uppercase tracking-wider"
-                      style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.42)" }}
+                      style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.42)" }}
                     >
                       {step}
                     </span>
@@ -204,7 +204,7 @@ export function LandingHero() {
               </span>
               <span
                 className="font-body"
-                style={{ fontSize: "0.8rem", color: "rgba(3,31,61,0.45)" }}
+                style={{ fontSize: "0.875rem", color: "rgba(3,31,61,0.62)" }}
               >
                 Rated 4.9 by 1,200+ patients
               </span>

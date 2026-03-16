@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = createMetadata({
-  title: "Privacy Policy | Dumbo Health",
+  title: "Privacy Policy",
   description: "Read Dumbo Health's privacy policy. Learn how we collect, use, and protect your personal information.",
   path: "/privacy-policy",
   noIndex: false,

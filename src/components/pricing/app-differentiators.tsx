@@ -113,7 +113,7 @@ export function AppDifferentiators() {
               </h3>
               <p
                 className="mt-4 font-body leading-relaxed"
-                style={{ color: "rgba(252,246,237,0.55)", fontSize: "1.0625rem" }}
+                style={{ color: "rgba(252,246,237,0.75)", fontSize: "1.125rem" }}
               >
                 {f.body}
               </p>

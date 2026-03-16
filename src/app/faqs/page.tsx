@@ -10,7 +10,7 @@ import Link from "next/link";
 import { getFaqs, getFaqCategories } from "@/lib/supabase";
 
 export const metadata: Metadata = createMetadata({
-  title: "Sleep Apnea FAQs: Testing, Treatment & Insurance | Dumbo Health",
+  title: "Sleep Apnea FAQs: Testing, Treatment & Insurance",
   description: "Get answers to frequently asked questions about sleep apnea testing, CPAP treatment, insurance, prescriptions, and more. Expert answers from Dumbo Health.",
   path: "/faqs",
 });

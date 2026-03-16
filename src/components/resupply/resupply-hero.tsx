@@ -76,7 +76,7 @@ export function ResupplyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-4 font-body"
-            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.5)" }}
+            style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)" }}
           >
             Plans start at{" "}
             <span style={{ color: "#FF8361", fontWeight: 600 }}>under $1 a day</span>

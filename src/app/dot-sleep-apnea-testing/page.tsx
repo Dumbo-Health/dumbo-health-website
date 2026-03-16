@@ -13,7 +13,7 @@ import { DotFaq } from "@/components/dot/dot-faq";
 import { DotFinalCta } from "@/components/dot/dot-final-cta";
 
 export const metadata: Metadata = {
-  title: "DOT Sleep Apnea Test for CDL Drivers | Dumbo Health",
+  title: "DOT Sleep Apnea Test for CDL Drivers",
   description:
     "Flagged for sleep apnea at your DOT physical? Get the physician-reviewed documentation your medical examiner needs in 48 hours. At-home WatchPAT ONE sleep test, $149. Ships anywhere.",
   alternates: {

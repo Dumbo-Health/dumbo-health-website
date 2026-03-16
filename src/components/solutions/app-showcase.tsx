@@ -96,7 +96,7 @@ export function AppShowcase() {
                   <p className="font-body font-bold leading-snug text-white" style={{ fontSize: "1.0625rem" }}>
                     {f.title}
                     {f.highlight && (
-                      <span className="ml-2 font-mono text-[10px] uppercase tracking-wider text-peach">
+                      <span className="ml-2 font-mono text-[11px] uppercase tracking-wider text-peach">
                         new
                       </span>
                     )}

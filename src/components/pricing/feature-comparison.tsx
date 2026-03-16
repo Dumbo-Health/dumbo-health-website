@@ -50,7 +50,7 @@ export function FeatureComparison() {
         </div>
 
         {/* Swipe hint — mobile only */}
-        <p className="sm:hidden font-mono text-[10px] uppercase tracking-widest text-center mb-3" style={{ color: "rgba(3,31,61,0.35)" }}>
+        <p className="sm:hidden font-mono text-[11px] uppercase tracking-widest text-center mb-3" style={{ color: "rgba(3,31,61,0.35)" }}>
           ← Swipe to compare →
         </p>
 
@@ -77,7 +77,7 @@ export function FeatureComparison() {
               }}
             >
               <span className="font-body font-bold text-sm text-midnight block">Premium</span>
-              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "#78BFBC" }}>
+              <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: "#78BFBC" }}>
                 Popular
               </span>
             </div>

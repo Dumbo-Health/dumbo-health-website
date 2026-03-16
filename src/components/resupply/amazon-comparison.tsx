@@ -75,7 +75,7 @@ export function AmazonComparison() {
             className="font-body mt-5"
             style={{
               fontSize: "1.125rem",
-              color: "rgba(3,31,61,0.55)",
+              color: "rgba(3,31,61,0.68)",
               lineHeight: 1.75,
             }}
           >
@@ -134,7 +134,7 @@ export function AmazonComparison() {
                   <div>
                     <p
                       className="font-mono uppercase tracking-widest mb-1"
-                      style={{ fontSize: "0.625rem", color: "rgba(3,31,61,0.35)" }}
+                      style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.35)" }}
                     >
                       {row.label}
                     </p>
@@ -160,7 +160,7 @@ export function AmazonComparison() {
             >
               <p
                 className="font-mono uppercase tracking-widest mb-2"
-                style={{ fontSize: "0.625rem", color: "rgba(3,31,61,0.35)" }}
+                style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.35)" }}
               >
                 Typical annual spend
               </p>
@@ -230,7 +230,7 @@ export function AmazonComparison() {
                   <div>
                     <p
                       className="font-mono uppercase tracking-widest mb-1"
-                      style={{ fontSize: "0.625rem", color: "rgba(3,31,61,0.38)" }}
+                      style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.38)" }}
                     >
                       {row.label}
                     </p>
@@ -260,7 +260,7 @@ export function AmazonComparison() {
             >
               <p
                 className="font-mono uppercase tracking-widest mb-2"
-                style={{ fontSize: "0.625rem", color: "rgba(3,31,61,0.38)" }}
+                style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.38)" }}
               >
                 Annual cost
               </p>
@@ -275,7 +275,7 @@ export function AmazonComparison() {
               </p>
               <p
                 className="font-body mt-1.5"
-                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)" }}
+                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.68)" }}
               >
                 All supplies. All year. Nothing to think about.
               </p>

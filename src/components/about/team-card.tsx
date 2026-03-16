@@ -34,7 +34,7 @@ export function TeamCard({ member, variant = "medical" }: TeamCardProps) {
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
         <p
-          className="font-mono text-[10px] uppercase tracking-widest mb-2"
+          className="font-mono text-[11px] uppercase tracking-widest mb-2"
           style={{ color: isCommittee ? "#FF8361" : "#78BFBC" }}
         >
           {member.title}

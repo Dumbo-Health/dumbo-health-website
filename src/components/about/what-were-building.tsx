@@ -52,7 +52,7 @@ export function WhatWereBuilding() {
             className="font-heading font-medium text-midnight text-balance leading-tight"
             style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)", maxWidth: "20ch" }}
           >
-            What Dumbo is building.
+            What Dumbo Health is building.
           </motion.h2>
         </div>
 
@@ -78,7 +78,7 @@ export function WhatWereBuilding() {
               }}
             >
               <p
-                className="font-mono text-[10px] uppercase tracking-widest mb-4"
+                className="font-mono text-[11px] uppercase tracking-widest mb-4"
                 style={{ color: pillar.accent }}
               >
                 {pillar.eyebrow}

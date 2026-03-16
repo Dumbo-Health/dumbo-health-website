@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { APP_URL, CONTACT, SOCIAL } from "@/lib/constants";
+import { CONTACT, SOCIAL } from "@/lib/constants";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -35,8 +35,17 @@ const FOOTER_COLUMNS = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about-us" },
-      { label: "Solutions", href: "/solutions" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { label: "Sleep Apnea Care", href: "/solutions" },
+      { label: "At-Home Sleep Test", href: "/at-home-sleep-test" },
       { label: "CPAP Therapy", href: "/cpap" },
+      { label: "CPAP Care", href: "/cpap-care" },
+      { label: "CPAP Resupply", href: "/resupply" },
     ],
   },
   {
@@ -45,7 +54,6 @@ const FOOTER_COLUMNS = [
       { label: "Sleep Apnea Facts", href: "/resources/facts" },
       { label: "Blog", href: "/blog" },
       { label: "FAQs", href: "/faqs" },
-      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -53,13 +61,6 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Toolbox", href: "https://www.dumbo.health/go/tools", external: true },
       { label: "Sleep Protocol", href: "https://www.dumbo.health/go/sleep-protocol", external: true },
-    ],
-  },
-  {
-    title: "Account",
-    links: [
-      { label: "Get Started", href: APP_URL, external: true },
-      { label: "Login", href: `${APP_URL}/login`, external: true },
     ],
   },
 ] as const;

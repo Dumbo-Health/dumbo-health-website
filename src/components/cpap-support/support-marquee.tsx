@@ -33,7 +33,7 @@ export function SupportMarquee() {
             />
             <span
               className="font-mono text-xs uppercase tracking-wider"
-              style={{ color: "rgba(252,246,237,0.55)", whiteSpace: "nowrap" }}
+              style={{ color: "rgba(252,246,237,0.75)", whiteSpace: "nowrap" }}
             >
               {item.label}
             </span>

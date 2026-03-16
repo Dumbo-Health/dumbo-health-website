@@ -257,8 +257,8 @@ export function SymptomsProblems() {
                   <p
                     className="relative z-10 font-body leading-relaxed"
                     style={{
-                      fontSize: "clamp(0.8rem, 0.9vw, 0.95rem)",
-                      color: "rgba(3,31,61,0.5)",
+                      fontSize: "clamp(0.875rem, 1vw, 1rem)",
+                      color: "rgba(3,31,61,0.65)",
                     }}
                   >
                     {p.copy}

@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = createMetadata({
-  title: "Terms of Use | Dumbo Health",
+  title: "Terms of Use",
   description: "Read Dumbo Health's terms of use. Understand the terms governing your use of our platform and services.",
   path: "/terms-of-use",
   noIndex: false,

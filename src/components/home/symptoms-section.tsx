@@ -151,7 +151,7 @@ export function SymptomsSection() {
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-teal">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-teal">
                   At-home sleep test
                 </p>
                 <h3 className="mt-1 font-heading text-xl font-medium text-white md:text-2xl">
@@ -182,7 +182,7 @@ export function SymptomsSection() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-sunlight via-daylight to-light-peach/20 p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-peach/10 md:p-6"
           >
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-teal">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-teal">
                 We&apos;re here for you
               </p>
               <h3 className="mt-2 font-heading text-xl font-medium text-midnight md:text-2xl">

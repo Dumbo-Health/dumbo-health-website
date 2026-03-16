@@ -87,11 +87,12 @@ export function HowItWorks() {
 
   return (
     <section ref={sectionRef} className="overflow-hidden bg-midnight py-20 md:py-32">
-      <div style={{ padding: "0 5%" }}>
+      <div className="mx-auto w-full px-[5%]" style={{ maxWidth: "1280px" }}>
 
         {/* ── Header ── */}
         <motion.div
-          className="mb-14 text-center md:mb-16"
+          className="mb-14 text-center md:mb-16 mx-auto"
+          style={{ maxWidth: "720px" }}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -112,7 +113,7 @@ export function HowItWorks() {
             Not in months.{" "}
             <span style={{ color: "#FF8361" }}>In 48 hours.</span>
           </p>
-          <p className="mx-auto mt-6 max-w-xl font-body text-lg leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
+          <p className="mx-auto mt-6 max-w-xl font-body text-lg leading-relaxed" style={{ color: "rgba(252,246,237,0.68)" }}>
             Most people wait months for a sleep apnea diagnosis, see multiple providers,
             and spend thousands. We changed all of that.
           </p>
@@ -120,7 +121,8 @@ export function HowItWorks() {
 
         {/* ── Comparison ── */}
         <motion.div
-          className="mb-16 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_40px_1fr] sm:gap-0 md:mb-20"
+          className="mb-16 mx-auto grid grid-cols-1 gap-3 sm:grid-cols-[1fr_40px_1fr] sm:gap-0 md:mb-20"
+          style={{ maxWidth: "720px" }}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -187,7 +189,7 @@ export function HowItWorks() {
 
           {/* Desktop horizontal */}
           <div className="relative hidden md:block">
-            <div className="absolute left-[4.5%] right-[4.5%] top-[22px] h-px" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+            <div className="absolute left-[5%] right-[5%] top-[27px] h-px" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
               {/* Fill line */}
               <motion.div
                 className="h-full origin-left"
@@ -221,7 +223,7 @@ export function HowItWorks() {
               )}
             </div>
 
-            <div className="grid grid-cols-5 gap-6">
+            <div className="grid grid-cols-5 gap-4">
               {steps.map((step, i) => (
                 <motion.div
                   key={step.number}
@@ -230,21 +232,32 @@ export function HowItWorks() {
                   animate={stepsInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, delay: 0.3 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 >
+                  {/* Icon — sits above the card, connected to the progress line */}
                   <div
-                    className="relative z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-full border-2"
+                    className="relative z-10 mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2"
                     style={{ backgroundColor: step.iconBg, borderColor: step.iconColor + "70", color: step.iconColor }}
                   >
                     {step.icon}
                   </div>
-                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
-                    {step.number}
-                  </p>
-                  <p className="mb-3 font-heading text-[17px] font-medium leading-snug text-daylight">
-                    {step.title}
-                  </p>
-                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
-                    {step.copy}
-                  </p>
+
+                  {/* Text card */}
+                  <div
+                    className="flex flex-1 flex-col rounded-2xl p-5"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    <p className="mb-3 font-mono text-[11px] uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
+                      {step.number}
+                    </p>
+                    <p className="mb-3 font-heading text-[1.0625rem] font-medium leading-snug text-daylight">
+                      {step.title}
+                    </p>
+                    <p className="font-body text-[0.9375rem] leading-relaxed" style={{ color: "rgba(252,246,237,0.72)" }}>
+                      {step.copy}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -302,13 +315,13 @@ export function HowItWorks() {
                     {step.icon}
                   </div>
                   <div className="pt-1.5">
-                    <p className="mb-1 font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
+                    <p className="mb-1 font-mono text-[11px] uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.3)" }}>
                       {step.number}
                     </p>
                     <p className="mb-1.5 font-heading text-base font-medium text-daylight">
                       {step.title}
                     </p>
-                    <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(252,246,237,0.5)" }}>
+                    <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(252,246,237,0.7)" }}>
                       {step.copy}
                     </p>
                   </div>

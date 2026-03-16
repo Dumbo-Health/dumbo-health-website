@@ -108,7 +108,7 @@ export function CashPayArgument() {
                 >
                   {p.title}
                 </h3>
-                <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(252,246,237,0.6)", fontSize: "1rem" }}>
+                <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(252,246,237,0.75)", fontSize: "1.0625rem" }}>
                   {p.body}
                 </p>
               </motion.div>
@@ -141,7 +141,7 @@ export function CashPayArgument() {
           >
             {/* Swipe hint — hidden on large screens where table fits */}
             <p
-              className="lg:hidden font-mono text-[10px] uppercase tracking-widest text-center mb-3"
+              className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-center mb-3"
               style={{ color: "rgba(252,246,237,0.3)" }}
             >
               ← Swipe to compare →
@@ -165,7 +165,7 @@ export function CashPayArgument() {
                       <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(252,246,237,0.5)" }}>
                         Traditional
                       </p>
-                      <p className="font-body text-sm mt-1" style={{ color: "rgba(252,246,237,0.3)" }}>
+                      <p className="font-body text-sm mt-1" style={{ color: "rgba(252,246,237,0.45)" }}>
                         Insurance-based
                       </p>
                     </div>
@@ -190,7 +190,7 @@ export function CashPayArgument() {
                       style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
                     >
                       <div className="px-5 py-4 flex items-center">
-                        <p className="font-body text-sm font-medium" style={{ color: "rgba(252,246,237,0.55)" }}>
+                        <p className="font-body text-sm font-medium" style={{ color: "rgba(252,246,237,0.75)" }}>
                           {row.label}
                         </p>
                       </div>

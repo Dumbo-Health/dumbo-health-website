@@ -88,7 +88,7 @@ export function BottomCTA() {
           </Link>
           <p
             className="mt-4 font-body text-sm"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            style={{ color: "rgba(255,255,255,0.72)" }}
           >
             No insurance required &middot; Ships next business day
           </p>

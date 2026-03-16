@@ -70,6 +70,8 @@ export function BlogIndexClient({ posts, initialCategory = "all" }: BlogIndexCli
           marginRight: "calc(-50vw + 50%)",
           paddingLeft: "calc(50vw - 50%)",
           paddingRight: "calc(50vw - 50%)",
+          maxWidth: "100vw",
+          overflowX: "hidden",
         }}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
@@ -120,7 +122,7 @@ export function BlogIndexClient({ posts, initialCategory = "all" }: BlogIndexCli
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <p className="font-body text-lg" style={{ color: "rgba(3,31,61,0.5)" }}>
+            <p className="font-body text-lg" style={{ color: "rgba(3,31,61,0.65)" }}>
               No articles in this category yet.
             </p>
           </div>

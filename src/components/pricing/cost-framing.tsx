@@ -88,7 +88,7 @@ export function CostFraming() {
               </p>
               <p
                 className="font-body mt-3"
-                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)" }}
+                style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.68)" }}
               >
                 {tier.plan}
               </p>

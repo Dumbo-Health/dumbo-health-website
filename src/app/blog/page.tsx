@@ -10,7 +10,7 @@ import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
 import { getBlogPosts } from "@/lib/supabase";
 
 export const metadata: Metadata = createMetadata({
-  title: "The Sleep Journal: Sleep Apnea Tips & Guides | Dumbo Health",
+  title: "The Sleep Journal: Sleep Apnea Tips & Guides",
   description: "Your guide to better sleep, health and everyday energy. Expert tips, real stories, and the latest in sleep wellness and apnea care.",
   path: "/blog",
 });

@@ -58,8 +58,8 @@ export function Availability() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
           className="mx-auto mt-6 font-body leading-relaxed"
           style={{
-            fontSize: "1.0625rem",
-            color: "rgba(252,246,237,0.6)",
+            fontSize: "1.125rem",
+            color: "rgba(252,246,237,0.75)",
             maxWidth: "48ch",
           }}
         >
@@ -110,7 +110,7 @@ export function Availability() {
         >
           <p
             className="font-body mb-5"
-            style={{ fontSize: "0.9375rem", color: "rgba(252,246,237,0.5)" }}
+            style={{ fontSize: "0.9375rem", color: "rgba(252,246,237,0.7)" }}
           >
             Not in Florida or Texas yet?
           </p>
@@ -127,7 +127,7 @@ export function Availability() {
           </a>
           <p
             className="mt-3 font-body text-xs"
-            style={{ color: "rgba(252,246,237,0.3)" }}
+            style={{ color: "rgba(252,246,237,0.5)" }}
           >
             Be the first to know when we launch in your state.
           </p>

@@ -117,7 +117,7 @@ export function ValuesSection() {
               {/* Content */}
               <div>
                 <p
-                  className="font-mono text-[10px] uppercase tracking-widest mb-3"
+                  className="font-mono text-[11px] uppercase tracking-widest mb-3"
                   style={{ color: "#FF8361" }}
                 >
                   {value.label}

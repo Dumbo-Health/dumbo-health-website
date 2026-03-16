@@ -158,7 +158,7 @@ export function PlanTabs() {
                     }}
                   >
                     <p
-                      className="font-mono text-[10px] uppercase tracking-widest mb-2"
+                      className="font-mono text-[11px] uppercase tracking-widest mb-2"
                       style={{ color: "#78BFBC" }}
                     >
                       Finance
@@ -194,7 +194,7 @@ export function PlanTabs() {
                     }}
                   >
                     <p
-                      className="font-mono text-[10px] uppercase tracking-widest mb-2"
+                      className="font-mono text-[11px] uppercase tracking-widest mb-2"
                       style={{ color: "rgba(3,31,61,0.4)" }}
                     >
                       Pay in full
@@ -219,7 +219,7 @@ export function PlanTabs() {
                 {/* What's included */}
                 <div className="px-8 py-6" style={{ borderBottom: "1px solid rgba(120,191,188,0.15)" }}>
                   <p
-                    className="font-mono text-[10px] uppercase tracking-widest mb-4"
+                    className="font-mono text-[11px] uppercase tracking-widest mb-4"
                     style={{ color: "rgba(3,31,61,0.35)" }}
                   >
                     What&apos;s included
@@ -257,16 +257,19 @@ export function PlanTabs() {
                     Eligibility for oral appliance therapy is determined during your medical intake. Not everyone qualifies. If that&apos;s the case, we&apos;ll guide you to the right alternative.
                   </p>
                   <a
-                    href="https://www.thedaybreak.com/pricing"
+                    href="https://app.dumbo.health"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-body text-sm font-bold uppercase tracking-wider transition-all duration-200 hover:gap-3"
-                    style={{ color: "#78BFBC" }}
+                    className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                    style={{
+                      backgroundColor: "#FF8361",
+                      boxShadow: "0 4px 16px rgba(255,131,97,0.3)",
+                      height: "48px",
+                      paddingLeft: "2rem",
+                      paddingRight: "2rem",
+                    }}
                   >
-                    Learn more at Daybreak
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" />
-                    </svg>
+                    Get Started
                   </a>
                 </div>
               </div>

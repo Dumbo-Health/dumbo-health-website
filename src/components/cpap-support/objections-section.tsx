@@ -46,17 +46,22 @@ function QuestionItem({ question, answer, isOpen, onToggle }: {
         >
           {question}
         </span>
-        <span
-          className="shrink-0 mt-0.5 font-mono transition-transform duration-300"
-          style={{
-            color: "#78BFBC",
-            fontSize: "1.25rem",
-            lineHeight: 1,
-            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-          }}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#78BFBC"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="shrink-0 mt-0.5 transition-transform duration-300"
+          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+          aria-hidden="true"
         >
-          +
-        </span>
+          <path d="m6 9 6 6 6-6" />
+        </svg>
       </button>
 
       <AnimatePresence initial={false}>

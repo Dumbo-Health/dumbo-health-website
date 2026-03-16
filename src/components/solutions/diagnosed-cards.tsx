@@ -83,7 +83,7 @@ export function DiagnosedCards() {
                 Bring your device. We&apos;ll handle the rest.
               </h3>
               <p className="mt-4 font-body text-midnight/65" style={{ fontSize: "1.0625rem", maxWidth: "48ch" }}>
-                Already own a CPAP? Transfer your prescription to Dumbo. We&apos;ll take over your supplies, resupply, and ongoing support. You&apos;ll never feel alone in this again.
+                Already own a CPAP? Transfer your prescription to Dumbo Health. We&apos;ll take over your supplies, resupply, and ongoing support. You&apos;ll never feel alone in this again.
               </p>
               <ul className="mt-6 space-y-2">
                 {["Bring your existing prescription", "Smart supply delivery based on usage", "In-app doctor access included"].map(

@@ -119,7 +119,7 @@ function StepCard({
       <div
         ref={innerRef}
         className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_44%] md:gap-12"
-        style={{ minHeight: "52vh" }}
+        style={{ minHeight: "clamp(320px, 44vh, 600px)" }}
       >
         {/* ── Text ── */}
         <div className="order-last flex flex-col justify-center md:order-first">
@@ -152,7 +152,7 @@ function StepCard({
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: EASE, delay: 0.17 }}
             className="mt-4 font-body text-lg leading-relaxed"
-            style={{ color: "rgba(3,31,61,0.56)", maxWidth: "55ch" }}
+            style={{ color: "rgba(3,31,61,0.65)", maxWidth: "55ch" }}
           >
             {step.copy}
           </motion.p>
@@ -266,7 +266,7 @@ export function SolutionsGrid() {
           </h2>
           <p
             className="mt-4 font-body text-lg leading-relaxed"
-            style={{ color: "rgba(3,31,61,0.55)", maxWidth: "55ch" }}
+            style={{ color: "rgba(3,31,61,0.65)", maxWidth: "55ch" }}
           >
             Five steps. One provider. From your first sleep test to your last resupply.
           </p>

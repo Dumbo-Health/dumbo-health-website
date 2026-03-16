@@ -144,7 +144,7 @@ export function ServiceAreaBanner() {
                 <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(255,131,97,0.08)", border: "1px solid rgba(255,131,97,0.2)" }}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>Florida</span>
-                    <span className="rounded-full px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide" style={{ backgroundColor: "#FF8361", color: "#FCF6ED" }}>Live</span>
+                    <span className="rounded-full px-2 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wide" style={{ backgroundColor: "#FF8361", color: "#FCF6ED" }}>Live</span>
                   </div>
                   <p className="font-heading text-4xl font-medium" style={{ color: "#031F3D" }}>FL</p>
                   <p className="mt-3 font-body text-sm leading-relaxed" style={{ color: "rgba(3,31,61,0.6)" }}>
@@ -155,7 +155,7 @@ export function ServiceAreaBanner() {
                 <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(255,131,97,0.08)", border: "1px solid rgba(255,131,97,0.2)" }}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>Texas</span>
-                    <span className="rounded-full px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide" style={{ backgroundColor: "#FF8361", color: "#FCF6ED" }}>Live</span>
+                    <span className="rounded-full px-2 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wide" style={{ backgroundColor: "#FF8361", color: "#FCF6ED" }}>Live</span>
                   </div>
                   <p className="font-heading text-4xl font-medium" style={{ color: "#031F3D" }}>TX</p>
                   <p className="mt-3 font-body text-sm leading-relaxed" style={{ color: "rgba(3,31,61,0.6)" }}>

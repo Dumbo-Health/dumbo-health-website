@@ -124,7 +124,7 @@ export function SymptomsGrid() {
               </h3>
               <p
                 className="font-body text-pretty"
-                style={{ fontSize: "0.9375rem", lineHeight: 1.7, color: "rgba(3,31,61,0.58)" }}
+                style={{ fontSize: "0.9375rem", lineHeight: 1.7, color: "rgba(3,31,61,0.68)" }}
               >
                 {s.body}
               </p>
@@ -141,7 +141,7 @@ export function SymptomsGrid() {
           className="mt-10 text-center font-body"
           style={{
             fontSize: "clamp(1rem, 1.1vw, 1.125rem)",
-            color: "rgba(3,31,61,0.5)",
+            color: "rgba(3,31,61,0.65)",
           }}
         >
           Two or more of these sound familiar? An at-home sleep test is your next step.

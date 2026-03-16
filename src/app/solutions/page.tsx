@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "From at-home sleep testing to CPAP and oral appliance treatment, Dumbo Health guides you through every step of your sleep apnea care journey.",
   alternates: { canonical: "https://www.dumbo.health/solutions" },
   openGraph: {
-    title: "Sleep Apnea Solutions: Diagnosis to Treatment | Dumbo Health",
+    title: "Sleep Apnea Solutions: Diagnosis to Treatment",
     description:
       "From at-home sleep testing to CPAP and oral appliance treatment, Dumbo Health guides you through every step.",
     url: "https://www.dumbo.health/solutions",

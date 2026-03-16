@@ -135,7 +135,7 @@ export function DotHero() {
                 <span key={step} className="flex items-center gap-3">
                   <span
                     className="font-mono uppercase tracking-wider"
-                    style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.42)" }}
+                    style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.42)" }}
                   >
                     {step}
                   </span>
@@ -157,7 +157,7 @@ export function DotHero() {
             {/* Trust signals */}
             <motion.p
               className="mt-4 font-mono uppercase tracking-wider"
-              style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.38)" }}
+              style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.38)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, ease: EASE, delay: 0.42 }}
