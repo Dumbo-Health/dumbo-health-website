@@ -209,13 +209,13 @@ export function JourneySteps() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sunlight"
+              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#F5E6D1]"
             >
               <Image
-                src="/images/products/cpap-machine.png"
-                alt="CPAP machine for sleep apnea treatment"
+                src="/images/products/cpap-oa.png"
+                alt="CPAP machine and oral appliance — two treatment paths"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>

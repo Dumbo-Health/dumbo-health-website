@@ -39,6 +39,7 @@ const STEPS = [
     cta: "See CPAP options",
     href: "/solutions#equipment",
     image: "/images/products/cpap-machine.png",
+    contain: true,
     spinIcon: false,
   },
   {
@@ -199,12 +200,13 @@ function StepCard({
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, ease: EASE, delay: 0.05 }}
           className="relative order-first overflow-hidden rounded-2xl md:order-last h-[260px] md:h-full md:min-h-[360px]"
+          style={{ backgroundColor: (step as typeof step & { contain?: boolean }).contain ? "#F5E6D1" : undefined }}
         >
           <Image
             src={step.image}
             alt={step.headline}
             fill
-            className="object-cover"
+            className={(step as typeof step & { contain?: boolean }).contain ? "object-contain" : "object-cover"}
             sizes="(max-width: 768px) 100vw, 44vw"
           />
         </motion.div>

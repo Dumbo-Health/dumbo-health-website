@@ -11,13 +11,15 @@ const options = [
     description:
       "The right CPAP machine, with all the parts and refills shipped on your schedule.",
     image: "/images/products/cpap-machine.png",
-    imageAlt: "CPAP Machine",
+    imageAlt: "CPAP machine for sleep apnea treatment",
+    contain: true,
   },
   {
     title: "Oral Device",
     description: "A custom crafted oral device delivered to your door.",
     image: "/images/products/oral-appliance.jpg",
     imageAlt: "Oral device for sleep apnea",
+    contain: false,
   },
   {
     title: "Telehealth Experts",
@@ -25,6 +27,7 @@ const options = [
       "Licensed sleep specialists guide your diagnosis and care with expert help, when you need it.",
     image: "/images/team/doctor-2.jpg",
     imageAlt: "Telehealth Experts",
+    contain: false,
   },
 ];
 
@@ -63,12 +66,12 @@ export function TreatmentOptions() {
               }}
               className="overflow-hidden rounded-2xl bg-white"
             >
-              <div className="relative aspect-[4/3] bg-light-peach/30">
+              <div className="relative aspect-[4/3]" style={{ backgroundColor: opt.contain ? "#F5E6D1" : "rgba(255,214,173,0.3)" }}>
                 <Image
                   src={opt.image}
                   alt={opt.imageAlt}
                   fill
-                  className="object-cover"
+                  className={opt.contain ? "object-contain" : "object-cover"}
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
