@@ -35,50 +35,60 @@ const FLOW_OPTIONS = [
   },
 ];
 
-// ── Animated gradient background (major transitions) ──────────────────────────
-function AnimatedGradientBg({ visible }: { visible: boolean }) {
+// ── Animated gradient background (always present, intensifies on transitions) ──
+function AnimatedGradientBg({ active }: { active: boolean }) {
   return (
-    <motion.div
-      animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.8, ease: EASE }}
-      style={{ position: "fixed", inset: 0, zIndex: -2, pointerEvents: "none" }}
-    >
-      {/* Base: Sunlight → Light Peach */}
+    <div style={{ position: "fixed", inset: 0, zIndex: -2, pointerEvents: "none" }}>
+      {/* Base gradient — always visible */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(145deg, #FCF6ED 0%, #F5E6D1 45%, #FFD6AD 100%)",
+        background: "linear-gradient(145deg, #FCF6ED 0%, #F5E6D1 50%, #FFD6AD 100%)",
       }} />
-      {/* Blob 1: top-right, slow pulse */}
+      {/* Blob 1: top-right — gentle at rest, alive on transition */}
       <motion.div
-        animate={{ opacity: [0.55, 0.85, 0.55], scale: [1, 1.18, 1], x: [0, 28, 0], y: [0, -18, 0] }}
+        animate={{
+          opacity: active ? [0.65, 0.92, 0.65] : [0.28, 0.42, 0.28],
+          scale:   active ? [1, 1.22, 1]        : [1, 1.06, 1],
+          x: [0, 32, 0], y: [0, -20, 0],
+        }}
         transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
         style={{
-          position: "absolute", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
-          maxWidth: 700, maxHeight: 700, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,214,173,0.75) 0%, transparent 65%)",
+          position: "absolute", top: "-15%", right: "-8%",
+          width: "60vw", height: "60vw", maxWidth: 760, maxHeight: 760,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,131,97,0.22) 0%, rgba(255,214,173,0.72) 40%, transparent 68%)",
         }}
       />
-      {/* Blob 2: bottom-left, offset timing */}
+      {/* Blob 2: bottom-left */}
       <motion.div
-        animate={{ opacity: [0.35, 0.65, 0.35], scale: [1.1, 1, 1.1], x: [0, -22, 0], y: [0, 20, 0] }}
+        animate={{
+          opacity: active ? [0.45, 0.72, 0.45] : [0.18, 0.3, 0.18],
+          scale:   active ? [1.1, 1, 1.1]       : [1.04, 1, 1.04],
+          x: [0, -24, 0], y: [0, 22, 0],
+        }}
         transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, delay: 2 }}
         style={{
-          position: "absolute", bottom: "-15%", left: "-10%", width: "50vw", height: "50vw",
-          maxWidth: 600, maxHeight: 600, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,214,173,0.55) 0%, transparent 65%)",
+          position: "absolute", bottom: "-18%", left: "-12%",
+          width: "55vw", height: "55vw", maxWidth: 680, maxHeight: 680,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,214,173,0.65) 0%, transparent 65%)",
         }}
       />
-      {/* Blob 3: center, slow drift */}
+      {/* Blob 3: center-left, very slow */}
       <motion.div
-        animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.25, 1] }}
+        animate={{
+          opacity: active ? [0.3, 0.55, 0.3] : [0.12, 0.22, 0.12],
+          scale:   active ? [1, 1.28, 1]      : [1, 1.1, 1],
+        }}
         transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 1 }}
         style={{
-          position: "absolute", top: "30%", left: "25%", width: "45vw", height: "45vw",
-          maxWidth: 560, maxHeight: 560, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,230,209,0.8) 0%, transparent 65%)",
+          position: "absolute", top: "25%", left: "10%",
+          width: "50vw", height: "50vw", maxWidth: 620, maxHeight: 620,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(245,230,209,0.9) 0%, transparent 65%)",
         }}
       />
-    </motion.div>
+    </div>
   );
 }
 
@@ -104,7 +114,9 @@ function QuizCard({ children, style }: { children: React.ReactNode; style?: Reac
   return (
     <div
       style={{
-        backgroundColor: "white",
+        backgroundColor: "rgba(255,255,255,0.82)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
         borderRadius: 28,
         boxShadow: "0 4px 40px rgba(3,31,61,0.07), 0 1px 4px rgba(3,31,61,0.04)",
         padding: "clamp(32px, 5vw, 56px)",
@@ -1100,14 +1112,15 @@ export default function QuizPage() {
 
   return (
     <>
-      {/* Persistent animated gradient — shown on interstitials + reflections only */}
-      <AnimatedGradientBg visible={isGradientActive} />
+      {/* Persistent animated gradient — always present, intensifies on major transitions */}
+      <AnimatedGradientBg active={isGradientActive} />
 
       {/* Progress bar + minimal header */}
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, height: 68, zIndex: 50,
-        backgroundColor: "rgba(252,246,237,0.95)",
-        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(252,246,237,0.75)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
         borderBottom: "1px solid rgba(245,230,209,0.7)",
       }}>
         {/* Progress bar */}
