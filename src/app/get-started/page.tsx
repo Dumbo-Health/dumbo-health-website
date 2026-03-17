@@ -35,20 +35,40 @@ const FLOW_OPTIONS = [
   },
 ];
 
-// ── Animated gradient background (always present, intensifies on transitions) ──
-function AnimatedGradientBg({ active }: { active: boolean }) {
+// ── Animated gradient background (always present, progresses with quiz) ────────
+function AnimatedGradientBg({ active, progress }: { active: boolean; progress: number }) {
+  const warmth = progress / 100; // 0→1 as quiz progresses
+
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-      {/* Base gradient — always visible */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(145deg, #FCF6ED 0%, #F5E6D1 50%, #FFD6AD 100%)",
-      }} />
-      {/* Blob 1: top-right — gentle at rest, alive on transition */}
+      {/* Stage 1 — Daylight base, always present */}
+      <div style={{ position: "absolute", inset: 0, background: "#FCF6ED" }} />
+
+      {/* Stage 2 — Sunlight wash, creeps in from 0→60% progress */}
+      <motion.div
+        animate={{ opacity: Math.min(warmth * 1.4, 0.85) }}
+        transition={{ duration: 1.4, ease: EASE }}
+        style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(145deg, transparent 0%, rgba(245,230,209,0.9) 55%, transparent 100%)",
+        }}
+      />
+
+      {/* Stage 3 — Light Peach warmth, enters after 30% progress */}
+      <motion.div
+        animate={{ opacity: Math.max(0, (warmth - 0.3) / 0.7) * 0.75 }}
+        transition={{ duration: 1.4, ease: EASE }}
+        style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(145deg, transparent 0%, rgba(255,214,173,0.65) 65%, transparent 100%)",
+        }}
+      />
+
+      {/* Blob 1: top-right — breathes, warms with progress */}
       <motion.div
         animate={{
-          opacity: active ? [0.65, 0.92, 0.65] : [0.28, 0.42, 0.28],
-          scale:   active ? [1, 1.22, 1]        : [1, 1.06, 1],
+          opacity: active ? [0.65, 0.92, 0.65] : [0.25 + warmth * 0.2, 0.38 + warmth * 0.2, 0.25 + warmth * 0.2],
+          scale:   active ? [1, 1.22, 1]        : [1, 1.07, 1],
           x: [0, 32, 0], y: [0, -20, 0],
         }}
         transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
@@ -56,13 +76,14 @@ function AnimatedGradientBg({ active }: { active: boolean }) {
           position: "absolute", top: "-15%", right: "-8%",
           width: "60vw", height: "60vw", maxWidth: 760, maxHeight: 760,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,131,97,0.22) 0%, rgba(255,214,173,0.72) 40%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(255,131,97,0.18) 0%, rgba(255,214,173,0.7) 40%, transparent 68%)",
         }}
       />
+
       {/* Blob 2: bottom-left */}
       <motion.div
         animate={{
-          opacity: active ? [0.45, 0.72, 0.45] : [0.18, 0.3, 0.18],
+          opacity: active ? [0.45, 0.72, 0.45] : [0.15 + warmth * 0.15, 0.26 + warmth * 0.15, 0.15 + warmth * 0.15],
           scale:   active ? [1.1, 1, 1.1]       : [1.04, 1, 1.04],
           x: [0, -24, 0], y: [0, 22, 0],
         }}
@@ -74,10 +95,11 @@ function AnimatedGradientBg({ active }: { active: boolean }) {
           background: "radial-gradient(circle, rgba(255,214,173,0.65) 0%, transparent 65%)",
         }}
       />
-      {/* Blob 3: center-left, very slow */}
+
+      {/* Blob 3: center, slow drift */}
       <motion.div
         animate={{
-          opacity: active ? [0.3, 0.55, 0.3] : [0.12, 0.22, 0.12],
+          opacity: active ? [0.3, 0.55, 0.3] : [0.1 + warmth * 0.12, 0.2 + warmth * 0.12, 0.1 + warmth * 0.12],
           scale:   active ? [1, 1.28, 1]      : [1, 1.1, 1],
         }}
         transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 1 }}
@@ -1115,8 +1137,8 @@ export default function QuizPage() {
       {/* Make body transparent so the gradient shows through */}
       <style>{`body { background: transparent !important; }`}</style>
 
-      {/* Persistent animated gradient — always present, intensifies on major transitions */}
-      <AnimatedGradientBg active={isGradientActive} />
+      {/* Persistent animated gradient — always present, warms as quiz progresses */}
+      <AnimatedGradientBg active={isGradientActive} progress={quiz.progress} />
 
       {/* Progress bar + minimal header */}
       <header style={{
@@ -1139,7 +1161,7 @@ export default function QuizPage() {
         {/* Logo */}
         <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Link href="/" style={{ opacity: 0.85 }}>
-            <Image src="/logos/wordmark-midnight.svg" alt="Dumbo Health" width={148} height={30} priority />
+            <Image src="/logos/wordmark-midnight.svg" alt="Dumbo Health" width={188} height={38} priority />
           </Link>
         </div>
       </header>
