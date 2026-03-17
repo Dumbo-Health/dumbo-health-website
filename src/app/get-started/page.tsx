@@ -16,24 +16,34 @@ const t = (delay = 0, duration = 0.5) => ({ ease: EASE, duration, delay });
 const screen = {
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0, transition: { ease: EASE, duration: 0.65 } },
-  exit: { opacity: 0, y: 0, transition: { ease: "easeIn", duration: 0.28 } },
+  exit: { opacity: 0, y: 0, transition: { ease: "easeIn" as const, duration: 0.28 } },
 };
 
 // ── Static data ────────────────────────────────────────────────────────────────
 const FLOW_OPTIONS = [
   {
     slug: "undiagnosed",
-    icon: "🌙",
-    title: "I think something might be affecting my sleep",
-    subtitle: "Not tested yet. We'll help you figure out what's going on.",
+    iconSrc: "/icons/brand/moon.png",
+    title: "Something feels off with my sleep",
+    subtitle: "Not tested yet. We'll help you understand what's going on.",
   },
   {
     slug: "diagnosed",
-    icon: "💤",
-    title: "I've already been diagnosed with sleep apnea",
-    subtitle: "We'll help you find the right path forward.",
+    iconSrc: "/icons/brand/heart.png",
+    title: "I've been diagnosed and need support",
+    subtitle: "We'll help you find the right setup for where you are now.",
   },
 ];
+
+// ── Section photo mapping ──────────────────────────────────────────────────────
+function getSectionPhoto(slug: string | undefined): string | null {
+  if (!slug) return null;
+  if (slug.includes("symptom") || slug.includes("sleep-q") || slug.includes("snoring")) return "/images/people/woman sleeping peacefully.jpg";
+  if (slug.includes("risk") || slug.includes("health") || slug.includes("factor") || slug.includes("profile")) return "/images/people/woman-blue-pajamas.png";
+  if (slug.includes("impact") || slug.includes("daytime") || slug.includes("day")) return "/images/people/man-drinking-coffee.png";
+  if (slug.includes("treatment") || slug.includes("cpap") || slug.includes("diag") || slug.includes("dx")) return "/images/people/man-with-pillows.png";
+  return null;
+}
 
 
 function getRiskLevel(score: number) {
@@ -129,6 +139,16 @@ function getReflectionTrigger(slug: string | undefined, answer: string | string[
 function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; onContinue: () => void }) {
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+      {/* Gradient atmosphere */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.4 }}
+        style={{
+          position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none",
+          background: "radial-gradient(ellipse at 50% 65%, rgba(255,214,173,0.38) 0%, rgba(245,230,209,0.22) 45%, transparent 75%)",
+        }}
+      />
       <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
@@ -237,7 +257,9 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
                 transition: "border-color 0.2s",
               }}
             >
-              <span style={{ fontSize: "1.625rem", lineHeight: 1, flexShrink: 0 }}>{opt.icon}</span>
+              <span style={{ width: 38, height: 38, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Image src={opt.iconSrc} alt="" width={32} height={32} style={{ objectFit: "contain" }} />
+              </span>
               <div style={{ flex: 1 }}>
                 <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1rem", color: "#031F3D", marginBottom: 2, lineHeight: 1.3 }}>
                   {opt.title}
@@ -261,42 +283,90 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
 }
 
 // ── Section interstitial ───────────────────────────────────────────────────────
-function SectionInterstitial({ title, subtitle, onContinue }: { title: string; subtitle: string; onContinue: () => void }) {
+function SectionInterstitial({ title, subtitle, onContinue, sectionSlug }: { title: string; subtitle: string; onContinue: () => void; sectionSlug?: string }) {
+  const photoSrc = getSectionPhoto(sectionSlug);
+
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.75)}
-          style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 30px" }} />
-        <motion.h2 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(0.25)}
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 16 }}>
-          {title}
-        </motion.h2>
-        <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.4)}
-          style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.7, marginBottom: 48 }}>
-          {subtitle}
-        </motion.p>
-        <motion.button
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={t(0.55)}
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={onContinue}
-          style={{
-            backgroundColor: "#FF8361",
-            color: "white",
-            border: "none",
-            borderRadius: 12,
-            padding: "14px 36px",
-            fontFamily: "var(--font-body)",
-            fontSize: "1rem",
-            fontWeight: 500,
-            cursor: "pointer",
-            boxShadow: "0 4px 16px rgba(255,131,97,0.3)",
-          }}
-        >
-          Continue →
-        </motion.button>
+      {/* Gradient atmosphere */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.4 }}
+        style={{
+          position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none",
+          background: "radial-gradient(ellipse at 50% 65%, rgba(255,214,173,0.38) 0%, rgba(245,230,209,0.22) 45%, transparent 75%)",
+        }}
+      />
+
+      <div style={{ maxWidth: 580, width: "100%" }}>
+        {photoSrc ? (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: EASE, duration: 0.65 }}
+            style={{
+              backgroundColor: "white",
+              borderRadius: 28,
+              overflow: "hidden",
+              boxShadow: "0 8px 48px rgba(3,31,61,0.1), 0 2px 8px rgba(3,31,61,0.05)",
+            }}
+          >
+            {/* Photo area */}
+            <div style={{ position: "relative", height: 252, overflow: "hidden" }}>
+              <Image src={photoSrc} alt="" fill style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 35%, white 100%)" }} />
+            </div>
+            {/* Text area */}
+            <div style={{ padding: "8px 40px 40px", textAlign: "center" }}>
+              <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.2, 0.55)}
+                style={{ width: 32, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 22px" }} />
+              <motion.h2 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(0.3)}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.625rem, 4vw, 2.25rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 14 }}>
+                {title}
+              </motion.h2>
+              <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.42)}
+                style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.72, marginBottom: 36 }}>
+                {subtitle}
+              </motion.p>
+              <motion.button
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={t(0.55)}
+                whileHover={{ y: -2, boxShadow: "0 12px 32px rgba(255,131,97,0.38)" }}
+                whileTap={{ scale: 0.97 }}
+                onClick={onContinue}
+                style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 44px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", boxShadow: "0 4px 18px rgba(255,131,97,0.3)" }}
+              >
+                Let&apos;s go →
+              </motion.button>
+            </div>
+          </motion.div>
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.75)}
+              style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 30px" }} />
+            <motion.h2 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(0.25)}
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 16 }}>
+              {title}
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.4)}
+              style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.7, marginBottom: 48 }}>
+              {subtitle}
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={t(0.55)}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onContinue}
+              style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 36px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", boxShadow: "0 4px 16px rgba(255,131,97,0.3)" }}
+            >
+              Let&apos;s go →
+            </motion.button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1065,6 +1135,7 @@ export default function QuizPage() {
               <SectionInterstitial
                 title={quiz.currentSection.title}
                 subtitle={quiz.currentSection.subtitle}
+                sectionSlug={quiz.currentSection.slug}
                 onContinue={handleInterstitialContinue}
               />
             </motion.div>
@@ -1090,8 +1161,9 @@ export default function QuizPage() {
       <div style={{
         position: "fixed", bottom: 0, left: 0, right: 0, height: 110,
         backgroundImage: "url('/icons/brand/lifeline.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center bottom",
+        backgroundSize: "auto 110px",
+        backgroundRepeat: "repeat-x",
+        backgroundPosition: "left bottom",
         opacity: 0.32,
         pointerEvents: "none",
         zIndex: 0,
