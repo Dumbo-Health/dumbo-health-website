@@ -9,12 +9,14 @@ import type { QuizOption, ResultsTemplate } from "@/types/quiz";
 
 // ── Motion config ──────────────────────────────────────────────────────────────
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const t = (delay = 0, duration = 0.4) => ({ ease: EASE, duration, delay });
+const EASE_OUT: [number, number, number, number] = [0.4, 0, 0.6, 1];
+const t = (delay = 0, duration = 0.5) => ({ ease: EASE, duration, delay });
 
-const fadeSlide = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
+// Screen-level: slow deliberate entrance, quick clean exit
+const screen = {
+  initial: { opacity: 0, y: 32 },
+  animate: { opacity: 1, y: 0, transition: { ease: EASE, duration: 0.65 } },
+  exit: { opacity: 0, y: -18, transition: { ease: EASE_OUT, duration: 0.22 } },
 };
 
 // ── Static data ────────────────────────────────────────────────────────────────
@@ -55,6 +57,138 @@ function QuizCard({ children, style }: { children: React.ReactNode; style?: Reac
       }}
     >
       {children}
+    </div>
+  );
+}
+
+// ── Word-by-word animated text ────────────────────────────────────────────────
+function AnimatedText({ text, delay = 0 }: { text: string; delay?: number }) {
+  const words = text.split(" ");
+  return (
+    <span>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ease: EASE, duration: 0.42, delay: delay + i * 0.035 }}
+          style={{ display: "inline-block", marginRight: "0.28em" }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+// ── Reflection moments (answer-triggered acknowledgment screens) ───────────────
+interface ReflectionMoment {
+  id: string;
+  icon: string;
+  stat: string;
+  headline: string;
+  body: string;
+}
+
+const REFLECTION_MOMENTS: Record<string, ReflectionMoment> = {
+  "snoring:yes-loud": {
+    id: "snoring-loud",
+    icon: "🔊",
+    stat: "90 million Americans snore regularly",
+    headline: "You're not alone",
+    body: "Loud snoring is one of the most common early signs of sleep apnea. Most people who snore loudly don't know why — and many of them have sleep apnea without realizing it.",
+  },
+  "snoring:sometimes": {
+    id: "snoring-sometimes",
+    icon: "😴",
+    stat: "1 in 4 adults snores intermittently",
+    headline: "Even occasional snoring matters",
+    body: "Snoring happens when the airway narrows during sleep. It doesn't have to be every night to be meaningful — it's worth understanding what's behind it.",
+  },
+  "breathing-pauses:yes": {
+    id: "breathing-pauses",
+    icon: "⏸",
+    stat: "One of the strongest signals we look for",
+    headline: "That's important",
+    body: "When breathing pauses during sleep, the brain wakes just enough to restart it — but not enough for you to remember. This can happen dozens of times each night, quietly exhausting you.",
+  },
+  "daytime-sleepiness:daily": {
+    id: "daytime-sleepiness",
+    icon: "☁️",
+    stat: "80 million Americans have undiagnosed sleep apnea",
+    headline: "This exhaustion isn't just how you're wired",
+    body: "Most people with sleep apnea think they're just tired. They don't realize their sleep is being interrupted hundreds of times each night. You're asking exactly the right questions.",
+  },
+};
+
+function getReflectionTrigger(slug: string | undefined, answer: string | string[]): ReflectionMoment | null {
+  if (!slug || typeof answer !== "string") return null;
+  return REFLECTION_MOMENTS[`${slug}:${answer}`] ?? null;
+}
+
+function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; onContinue: () => void }) {
+  return (
+    <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+      <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
+        <motion.div
+          initial={{ scale: 0.4, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ ease: [0.34, 1.56, 0.64, 1], duration: 0.65 }}
+          style={{ fontSize: "3.25rem", marginBottom: 32, lineHeight: 1 }}
+        >
+          {moment.icon}
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.3)}
+          style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.13em", textTransform: "uppercase", color: "#78BFBC", marginBottom: 18 }}
+        >
+          {moment.stat}
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.44)}
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 20 }}
+        >
+          {moment.headline}
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.58)}
+          style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.58)", lineHeight: 1.75, marginBottom: 48 }}
+        >
+          {moment.body}
+        </motion.p>
+
+        <motion.button
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.72)}
+          whileHover={{ y: -2, boxShadow: "0 12px 36px rgba(255,131,97,0.35)" }}
+          whileTap={{ scale: 0.97 }}
+          onClick={onContinue}
+          style={{
+            backgroundColor: "#FF8361",
+            color: "white",
+            border: "none",
+            borderRadius: 12,
+            padding: "14px 44px",
+            fontFamily: "var(--font-body)",
+            fontSize: "1rem",
+            fontWeight: 500,
+            cursor: "pointer",
+            boxShadow: "0 4px 18px rgba(255,131,97,0.28)",
+          }}
+        >
+          Continue →
+        </motion.button>
+      </div>
     </div>
   );
 }
@@ -129,22 +263,22 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
 // ── Section interstitial ───────────────────────────────────────────────────────
 function SectionInterstitial({ title, subtitle, onContinue }: { title: string; subtitle: string; onContinue: () => void }) {
   return (
-    <motion.div {...fadeSlide} transition={t()} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+    <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
       <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.5)}
-          style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 24px" }} />
-        <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.15)}
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 14 }}>
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.75)}
+          style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 30px" }} />
+        <motion.h2 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(0.25)}
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 16 }}>
           {title}
         </motion.h2>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={t(0.22)}
-          style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.6, marginBottom: 36 }}>
+        <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.4)}
+          style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.7, marginBottom: 48 }}>
           {subtitle}
         </motion.p>
         <motion.button
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={t(0.28)}
+          transition={t(0.55)}
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.97 }}
           onClick={onContinue}
@@ -164,7 +298,7 @@ function SectionInterstitial({ title, subtitle, onContinue }: { title: string; s
           Continue →
         </motion.button>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -234,6 +368,10 @@ function QuestionCard({
   );
   const [whyOpen, setWhyOpen] = useState(false);
 
+  // Delay options until question text has mostly animated in
+  const wordCount = question.question_text.split(" ").length;
+  const optionsDelay = Math.min(0.12 + wordCount * 0.032, 0.54);
+
   useEffect(() => {
     setSelected(currentAnswer ?? (question.answer_type === "multi_select" ? [] : ""));
     setWhyOpen(false);
@@ -254,7 +392,7 @@ function QuestionCard({
   }
 
   return (
-    <motion.div key={question.id} {...fadeSlide} transition={t()} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px 20px" }}>
+    <motion.div key={question.id} {...screen} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px 20px" }}>
       <QuizCard>
         {/* Header row */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28 }}>
@@ -270,8 +408,8 @@ function QuestionCard({
         </div>
 
         {/* Question */}
-        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.3rem, 4vw, 1.625rem)", color: "#031F3D", lineHeight: 1.2, marginBottom: question.why_we_ask ? 10 : 24 }}>
-          {question.question_text}
+        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.3rem, 4vw, 1.625rem)", color: "#031F3D", lineHeight: 1.3, marginBottom: question.why_we_ask ? 10 : 24 }}>
+          <AnimatedText text={question.question_text} delay={0.05} />
         </h2>
 
         {/* Why we ask */}
@@ -300,7 +438,7 @@ function QuestionCard({
         {/* Options */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {question.answer_type === "single_select" && options.map((opt, i) => (
-            <motion.div key={opt.value} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05 + i * 0.04)}>
+            <motion.div key={opt.value} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(optionsDelay + i * 0.075)}>
               <OptionBtn label={opt.label} selected={selected === opt.value} onClick={() => handleSingle(opt.value)} type="radio" />
             </motion.div>
           ))}
@@ -308,7 +446,7 @@ function QuestionCard({
           {question.answer_type === "multi_select" && (
             <>
               {options.map((opt, i) => (
-                <motion.div key={opt.value} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05 + i * 0.04)}>
+                <motion.div key={opt.value} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(optionsDelay + i * 0.075)}>
                   <OptionBtn
                     label={opt.label}
                     selected={Array.isArray(selected) && selected.includes(opt.value)}
@@ -388,6 +526,60 @@ function QuestionCard({
               >
                 Continue →
               </button>
+            </>
+          )}
+
+          {question.answer_type === "text_input" && (
+            <>
+              <input
+                type="email"
+                value={selected as string}
+                onChange={(e) => setSelected(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter" && (selected as string).includes("@")) onAnswer(selected as string); }}
+                placeholder="your@email.com"
+                autoFocus
+                style={{
+                  width: "100%",
+                  padding: "13px 16px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.9375rem",
+                  color: "#031F3D",
+                  backgroundColor: "white",
+                  border: "1.5px solid rgba(3,31,61,0.1)",
+                  borderRadius: 14,
+                  outline: "none",
+                  boxSizing: "border-box",
+                  transition: "border-color 0.15s",
+                }}
+                onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
+                onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
+              />
+              <button
+                disabled={!(selected as string).includes("@")}
+                onClick={() => onAnswer(selected as string)}
+                style={{
+                  backgroundColor: (selected as string).includes("@") ? "#FF8361" : "rgba(3,31,61,0.08)",
+                  color: (selected as string).includes("@") ? "white" : "rgba(3,31,61,0.3)",
+                  border: "none",
+                  borderRadius: 12,
+                  padding: "13px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "1rem",
+                  fontWeight: 500,
+                  cursor: (selected as string).includes("@") ? "pointer" : "default",
+                  transition: "all 0.2s",
+                }}
+              >
+                Continue →
+              </button>
+              {!question.is_required && (
+                <button
+                  onClick={() => onAnswer("")}
+                  style={{ background: "none", border: "none", fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.35)", cursor: "pointer", padding: "4px 0", textDecoration: "underline" }}
+                >
+                  Skip for now
+                </button>
+              )}
             </>
           )}
         </div>
@@ -662,12 +854,15 @@ function ResultsPage({
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={product.cta_url ?? "/at-home-sleep-test"}
-                    style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)" }}
-                  >
-                    {product.cta_label ?? "Get started →"}
-                  </Link>
+                  {product.cta_url === "shopify:sleep-test" ? (
+                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)", cursor: "pointer" }}>
+                      {product.cta_label ?? "Get started →"}
+                    </a>
+                  ) : (
+                    <Link href={product.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)" }}>
+                      {product.cta_label ?? "Get started →"}
+                    </Link>
+                  )}
                 </div>
               </ResultBlock>
             )}
@@ -676,10 +871,15 @@ function ResultsPage({
             {!product && hero?.cta_label && (
               <ResultBlock delay={0.22}>
                 <div style={{ marginTop: 28, textAlign: "center" }}>
-                  <Link href={hero.cta_url ?? "/at-home-sleep-test"}
-                    style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}>
-                    {hero.cta_label}
-                  </Link>
+                  {hero.cta_url === "shopify:sleep-test" ? (
+                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}>
+                      {hero.cta_label}
+                    </a>
+                  ) : (
+                    <Link href={hero.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}>
+                      {hero.cta_label}
+                    </Link>
+                  )}
                 </div>
               </ResultBlock>
             )}
@@ -743,6 +943,8 @@ export default function QuizPage() {
   const [flowSlug, setFlowSlug] = useState<string | null>(null);
   const [shownInterstitials, setShownInterstitials] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeReflection, setActiveReflection] = useState<ReflectionMoment | null>(null);
+  const [pendingAnswer, setPendingAnswer] = useState<{ answer: string | string[] } | null>(null);
 
   const quiz = useQuiz(flowSlug ?? "undiagnosed");
 
@@ -760,6 +962,27 @@ export default function QuizPage() {
     if (quiz.currentSection) {
       setShownInterstitials((prev) => new Set([...prev, quiz.currentSection!.id]));
     }
+  }
+
+  function handleAnswer(answer: string | string[]) {
+    const reflection = getReflectionTrigger(quiz.currentQuestion?.slug, answer);
+    if (reflection && !shownInterstitials.has(reflection.id)) {
+      setPendingAnswer({ answer });
+      setActiveReflection(reflection);
+    } else {
+      quiz.answerQuestion(answer);
+    }
+  }
+
+  function handleReflectionContinue() {
+    if (pendingAnswer) {
+      quiz.answerQuestion(pendingAnswer.answer);
+      setPendingAnswer(null);
+    }
+    if (activeReflection) {
+      setShownInterstitials((prev) => new Set([...prev, activeReflection.id]));
+    }
+    setActiveReflection(null);
   }
 
   async function handleSubmit() {
@@ -807,19 +1030,19 @@ export default function QuizPage() {
       <div style={{ paddingTop: 68 }}>
         <AnimatePresence mode="wait">
           {!flowSlug && (
-            <motion.div key="splitter" {...fadeSlide} transition={t()}>
+            <motion.div key="splitter" {...screen}>
               <FlowSplitter onSelect={handleFlowSelect} />
             </motion.div>
           )}
 
           {flowSlug && quiz.state.isLoading && (
-            <motion.div key="loading" {...fadeSlide} transition={t()}>
+            <motion.div key="loading" {...screen}>
               <LoadingSkeleton />
             </motion.div>
           )}
 
           {flowSlug && !quiz.state.isLoading && quiz.state.isComplete && (
-            <motion.div key="results" {...fadeSlide} transition={t()}>
+            <motion.div key="results" {...screen}>
               <ResultsPage
                 results={quiz.getResults()}
                 riskScore={quiz.state.riskScore}
@@ -831,8 +1054,14 @@ export default function QuizPage() {
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && shouldShowInterstitial && quiz.currentSection?.subtitle && (
-            <motion.div key={`interstitial-${quiz.currentSection.id}`} {...fadeSlide} transition={t()}>
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && activeReflection && (
+            <motion.div key={`reflection-${activeReflection.id}`} {...screen}>
+              <ReflectionScreen moment={activeReflection} onContinue={handleReflectionContinue} />
+            </motion.div>
+          )}
+
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && shouldShowInterstitial && quiz.currentSection?.subtitle && (
+            <motion.div key={`interstitial-${quiz.currentSection.id}`} {...screen}>
               <SectionInterstitial
                 title={quiz.currentSection.title}
                 subtitle={quiz.currentSection.subtitle}
@@ -841,12 +1070,12 @@ export default function QuizPage() {
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !shouldShowInterstitial && quiz.currentQuestion && (
-            <motion.div key={quiz.currentQuestion.id} {...fadeSlide} transition={t()}>
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && !shouldShowInterstitial && quiz.currentQuestion && (
+            <motion.div key={quiz.currentQuestion.id} {...screen}>
               <QuestionCard
                 question={quiz.currentQuestion}
                 currentAnswer={quiz.state.answers[quiz.currentQuestion.slug]}
-                onAnswer={(answer) => quiz.answerQuestion(answer)}
+                onAnswer={handleAnswer}
                 onBack={quiz.goBack}
                 questionNumber={questionNumber}
                 totalQuestions={visibleQuestions.length}
