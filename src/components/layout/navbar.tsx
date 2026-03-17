@@ -326,7 +326,7 @@ export function Navbar() {
             asChild
             className="h-10 rounded-lg bg-peach px-6 font-mono text-sm tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-lg hover:shadow-peach/25 active:translate-y-0"
           >
-            <a href={APP_URL}>Get Started</a>
+            <Link href="/get-started">Get Started</Link>
           </Button>
 
           {/* Mobile toggle */}
