@@ -38,7 +38,7 @@ const FLOW_OPTIONS = [
 // ── Animated gradient background (always present, intensifies on transitions) ──
 function AnimatedGradientBg({ active }: { active: boolean }) {
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: -2, pointerEvents: "none" }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
       {/* Base gradient — always visible */}
       <div style={{
         position: "absolute", inset: 0,
@@ -1112,6 +1112,9 @@ export default function QuizPage() {
 
   return (
     <>
+      {/* Make body transparent so the gradient shows through */}
+      <style>{`body { background: transparent !important; }`}</style>
+
       {/* Persistent animated gradient — always present, intensifies on major transitions */}
       <AnimatedGradientBg active={isGradientActive} />
 
@@ -1141,8 +1144,8 @@ export default function QuizPage() {
         </div>
       </header>
 
-      {/* Main content */}
-      <div style={{ paddingTop: 68 }}>
+      {/* Main content — above gradient layer */}
+      <div style={{ paddingTop: 68, position: "relative", zIndex: 1 }}>
         <AnimatePresence mode="wait">
           {!flowSlug && (
             <motion.div key="splitter" {...screen}>
@@ -1201,18 +1204,6 @@ export default function QuizPage() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Brand texture — Lifelines wave */}
-      <div style={{
-        position: "fixed", bottom: 0, left: 0, right: 0, height: 110,
-        backgroundImage: "url('/icons/brand/lifeline.png')",
-        backgroundSize: "auto 110px",
-        backgroundRepeat: "repeat-x",
-        backgroundPosition: "left bottom",
-        opacity: 0.32,
-        pointerEvents: "none",
-        zIndex: 0,
-      }} />
 
       {/* Skeleton pulse animation */}
       <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }`}</style>
