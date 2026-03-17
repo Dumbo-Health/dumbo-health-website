@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "United Sleep Diagnostics, Inc.",
+    "miVIP Sleep Centers",
+    "Sleep Wake Disorders Center",
+    "Florida Lung & Sleep Apnea Center"
+  ],
+  "hospitals": [
+    "Memorial Regional Hospital South",
+    "Joe DiMaggio Children's Hospital",
+    "Memorial Regional Hospital",
+    "Memorial Hospital Pembroke"
+  ],
+  "neighborhoods": [
+    "West Hollywood",
+    "Hollywood Hills",
+    "Driftwood",
+    "441 Corridor"
+  ],
+  "population": "150,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "48,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Memorial Regional Hospital South",
+    "South Florida ENT Associates",
+    "Florida Lung and Sleep Apnea Center",
+    "United Sleep Diagnostics"
+  ]
+}

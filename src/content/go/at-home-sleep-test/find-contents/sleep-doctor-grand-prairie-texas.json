@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Lake Ridge Ortho~TMJ~Sleep Centre",
+    "North Hills ENT",
+    "Sleep TMJ and Pain Center",
+    "Sleep Dallas"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Medical Center – Irving",
+    "Texas Health Arlington Memorial Hospital",
+    "Methodist Mansfield Medical Center",
+    "Medical City Arlington"
+  ],
+  "neighborhoods": [
+    "Mira Lagos",
+    "Grand Peninsula",
+    "Westchester",
+    "Nottingham"
+  ],
+  "population": "200,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 68,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Lake Ridge Ortho-TMJ-Sleep Centre",
+    "North Hills ENT",
+    "Revive Sleep Center",
+    "Pecan Tree Dental"
+  ]
+}

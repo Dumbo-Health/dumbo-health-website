@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Flagler Diagnostic & Sleep Disorder Center",
+    "UF Health Sleep Center at Flagler Hospital",
+    "AdventHealth Palm Coast",
+    "The Florida Center of Sleep Medicine"
+  ],
+  "hospitals": [
+    "AdventHealth Palm Coast",
+    "UF Health Flagler Hospital",
+    "Flagler Diagnostic and Sleep Disorder Center",
+    "Florida Center of Sleep Medicine"
+  ],
+  "neighborhoods": [
+    "Palm Coast",
+    "Balance of Flagler County",
+    "Flagler Beach",
+    "Bunnell"
+  ],
+  "population": "130,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "33% of Flagler County residents aged 16 and older have trouble sleeping; specific number for sleep apnea not provided.",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Flagler Diagnostic and Sleep Disorder Center",
+    "Southeast Snoring & Sleep Apnea Group",
+    "AdventHealth Palm Coast",
+    "Florida Department of Health in Flagler County"
+  ]
+}

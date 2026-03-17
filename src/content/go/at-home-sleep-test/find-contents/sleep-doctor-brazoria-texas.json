@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Brazoria Sleep Experts",
+    "CHN - Angleton Internal Medicine & Primary Care",
+    "CHN - Brazoria County Integrated Health Center",
+    "CHN - Pearland Family Health Center"
+  ],
+  "hospitals": [
+    "St. Luke's Health Brazosport",
+    "UTMB Health Angleton Danbury Campus",
+    "Sweeny Community Hospital",
+    "Memorial Hermann Pearland Hospital"
+  ],
+  "neighborhoods": [
+    "Pearland",
+    "Alvin",
+    "Lake Jackson",
+    "Manvel"
+  ],
+  "population": "400,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "39,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Community Health Network",
+    "Gulf Coast Center Angleton Recovery Program",
+    "Clear Lake Sleep Center",
+    "Inspire Sleep Apnea Treatment Centers"
+  ]
+}

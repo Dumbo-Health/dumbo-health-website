@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Shannon Sleep Center",
+    "Ayass Lung Clinic & Sleep Center",
+    "Dr. Archana Narasimha Rao, MD",
+    "Dr. Syed Asad Raza, MD"
+  ],
+  "hospitals": [
+    "Shannon Medical Center",
+    "San Angelo Community Medical Center",
+    "Ballinger Memorial Hospital",
+    "Heart of Texas Healthcare System"
+  ],
+  "neighborhoods": [
+    "Glenmore",
+    "Santa Rita",
+    "ASU-College Hills",
+    "Southland"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield of Texas",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 2,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Shannon Sleep Center",
+    "Texas OxyCare",
+    "Sleep Apnea Gurus",
+    "Awake In America"
+  ]
+}

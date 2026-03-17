@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Montgomery Sleep Diagnostic Center",
+    "Comprehensive Sleep Medicine Associates (CSMA)",
+    "Texas Sinus, Allergy, Snoring & Sleep Institute (TSASSI)",
+    "Conroe Premier Sleep Center"
+  ],
+  "hospitals": [
+    "Houston Methodist The Woodlands Hospital",
+    "CHI St. Luke's Health – The Woodlands Hospital",
+    "Memorial Hermann The Woodlands Hospital",
+    "Texas Children's Hospital The Woodlands"
+  ],
+  "neighborhoods": [
+    "The Woodlands",
+    "Conroe",
+    "Willis",
+    "Magnolia"
+  ],
+  "population": "750,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Approximately 240,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Conroe Premier Sleep Center",
+    "Global Sleep Technologies",
+    "Wellman Sleep Systems",
+    "Sleep Examinations"
+  ]
+}

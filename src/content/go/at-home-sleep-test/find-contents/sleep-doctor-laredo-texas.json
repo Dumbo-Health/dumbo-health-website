@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Laredo Medical Center Sleep Center",
+    "The Sleep Center at Doctors Hospital of Laredo",
+    "Laredo Sleep Center, LLC",
+    "Sleep Apnea Diagnostics"
+  ],
+  "hospitals": [
+    "Laredo Medical Center",
+    "Doctors Hospital of Laredo",
+    "Laredo Sleep Center",
+    "University of Texas Education and Research Center at Laredo"
+  ],
+  "neighborhoods": [
+    "Del Mar Hills",
+    "Las Cruces",
+    "San Isidro",
+    "Winfield/Plantation"
+  ],
+  "population": "260,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "35,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Laredo Medical Center Sleep Center",
+    "Doctors Hospital Sleep Center",
+    "Laredo Sleep Center",
+    "DML Sleep Diagnostics"
+  ]
+}

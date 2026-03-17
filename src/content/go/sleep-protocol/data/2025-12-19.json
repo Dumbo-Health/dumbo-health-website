@@ -1,0 +1,150 @@
+{
+    "slug": "ferroptosis-sleep-timing-chronotype",
+    "meta_title": "Ferroptosis Pediatric OSA, Sleep Timing Suicide Risk, Chronotype Shift Work",
+    "title": "Sleep Science: Dec 19, 2025",
+    "keywords": [
+        "sleep apnea",
+        "obstructive sleep apnea",
+        "OSA",
+        "pediatric sleep disorders",
+        "ferroptosis",
+        "adenoid hypertrophy",
+        "sleep timing",
+        "chronotype",
+        "circadian rhythm",
+        "suicidal ideation",
+        "adolescent mental health",
+        "shift work",
+        "quick returns",
+        "sleep deprivation",
+        "sleep quality",
+        "cognitive performance",
+        "morningness eveningness",
+        "sleep research",
+        "sleep science",
+        "dumbo health"
+    ],
+    "meta_description": "Sleep research Dec 13-19, 2025: ferroptosis in pediatric OSA, sleep timing and mental health, chronotype and shift work.",
+    "intro": "This week brought 5 new papers across our monitored journals, with significant advances in understanding sleep disorders and their impacts. Standout findings include new insights into ferroptosis mechanisms in pediatric OSA, critical links between sleep timing and suicide risk in adolescents, and evidence that evening chronotypes face genuine performance disadvantages in morning activities. Two papers from Frontiers in Sleep and three from other leading journals explore everything from cellular mechanisms to practical performance implications for different populations.",
+    "digest": [
+        {
+            "title": "The Role of Ferroptosis in Adenoid Hypertrophy in Children with Obstructive Sleep Apnea Syndrome",
+            "target_audience": [
+                "kids",
+                "parents",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Scientists discovered that blocking a specific type of cell death helps adenoids grow larger in kids with sleep apnea, <strong>reversing this could lead to new treatments</strong>.</p>",
+            "summary": "<p>This study identified <strong>8 key genes</strong> related to ferroptosis (a type of cell death) in children's enlarged adenoids causing OSA. Researchers found that ferroptosis is actually <strong>suppressed in severely enlarged adenoids</strong>, which may promote tissue growth. Lab experiments showed that inducing ferroptosis <strong>reduced cell proliferation by ~70%</strong>, suggesting new treatment targets.</p>",
+            "author": "Zilu Shen et al., Nature and Science of Sleep, Published December 18, 2025",
+            "cta": {
+                "anchor": "Read Full Research",
+                "url": "https://www.dovepress.com/the-role-of-ferroptosis-in-adenoid-hypertrophy-in-children-with-obstru-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "A Case of Post-Viral Inflammatory Insomnia: Observed Sleep Restoration Associated with Histamine-Targeted Interventions",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>A man's year-long severe insomnia was <strong>fixed in one day</strong> by treating it like an allergy problem instead of a typical sleep disorder.</p>",
+            "summary": "<p>This case study documents a 74-year-old with severe post-viral insomnia (sleep scores of 30-40) that didn't respond to standard medications. After treatment targeting histamine pathways (including cyproheptadine and dietary changes), sleep scores <strong>improved to 75+ within 24 hours</strong> and were sustained at 4-week follow-up, suggesting <em>mast cell-driven inflammation may cause some forms of treatment-resistant insomnia</em>.</p>",
+            "author": "Amanda Jill Meckes, Frontiers in Sleep, Accepted December 18, 2025",
+            "cta": {
+                "anchor": "Read Case Report",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2025.1736866/full"
+            }
+        },
+        {
+            "title": "J-Shaped Association Between Sleep Timing and Suicidal Ideation: A Nationwide Cross-Sectional Study",
+            "target_audience": [
+                "teenagers",
+                "parents",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Going to bed <strong>too early or too late increases suicide risk</strong> in teens, timing matters as much as how long you sleep.</p>",
+            "summary": "<p>Analysis of <strong>759,350 Korean adolescents</strong> revealed that both very early (8 PM) and very late (3 AM) bedtimes increased suicide risk, creating a J-shaped curve. Evening-type teens were <strong>2.17 times more likely</strong> to have suicidal thoughts when sleeping at 3 AM vs. 11 PM. The effect persisted even after controlling for sleep duration, quality, and depression, with optimal bedtime shifting later with age (<strong>10 PM for 12-13 year-olds, 11 PM for 14-17 year-olds</strong>).</p>",
+            "author": "Jiyu Kang & Eurah Goh, Nature and Science of Sleep, Published December 19, 2025",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/j-shaped-association-between-sleep-timing-and-suicidal-ideation-a-nati-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Quick Returns: A Quasi-Experimental Field Study on the Effects on Sleep, Fatigue and Cognitive Performance",
+            "target_audience": [
+                "healthcare_providers",
+                "adults"
+            ],
+            "tldr": "<p>Nurses working with less than 11 hours off between shifts sleep less and feel more tired but can still handle short mental tasks, <strong>the real danger may be in longer, complex situations</strong>.</p>",
+            "summary": "<p>Study of <strong>36 newly graduated nurses</strong> found that \"quick returns\" (< 11 hours between shifts) <strong>shortened sleep by 46 minutes</strong> and increased fatigue throughout the day. Despite feeling impaired, nurses maintained performance on short cognitive tests, suggesting they can mobilize resources for brief tasks but may face <em>increased risk during complex, extended work activities</em>. Effects lingered into the second day shift.</p>",
+            "author": "Kristin Öster et al., Journal of Sleep Research, Published December 15, 2025",
+            "cta": {
+                "anchor": "Read Research",
+                "url": "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70244"
+            }
+        },
+        {
+            "title": "Influence of Chronotype on Cycling Performance in Simulated 20-km Time Trials",
+            "target_audience": [
+                "young_adults",
+                "adults"
+            ],
+            "tldr": "<p>\"Night owls\" really do perform worse in the morning, it's not just in their heads, they're actually <strong>40 seconds slower in morning races</strong>.</p>",
+            "summary": "<p>Evening-type athletes performed <strong>2% better (40 seconds faster)</strong> in evening trials compared to morning, while morning types showed no significant time-of-day difference. Evening types reported significantly <strong>lower mental readiness and higher sleepiness at 6 AM</strong> compared to all other times. This validates that <em>chronotype genuinely affects athletic performance and isn't just psychological preference</em>.</p>",
+            "author": "Sabrina Forster et al., Journal of Sleep Research, Published December 16, 2025",
+            "cta": {
+                "anchor": "Read Study",
+                "url": "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70268"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "For Parents of Overweight Children: Schedule a sleep evaluation, your child may have undiagnosed OSA affecting their development and behavior. Even moderate weight gain significantly increases risk.",
+            "target_audience": [
+                "kids",
+                "parents",
+                "overweight"
+            ]
+        },
+        {
+            "text": "If You Have Treatment-Resistant Insomnia: Ask your doctor about evaluating mast cell/histamine involvement, especially if your insomnia followed a viral illness or you have allergy-like symptoms.",
+            "target_audience": [
+                "adults"
+            ]
+        },
+        {
+            "text": "For Parents of Teens: Help establish age-appropriate bedtimes (10-11 PM for most teens) and watch for extreme sleep timing in either direction as a potential mental health warning sign.",
+            "target_audience": [
+                "teenagers",
+                "parents"
+            ]
+        },
+        {
+            "text": "For Shift Workers and Healthcare Professionals: Advocate for eliminating \"quick returns\" (<11 hours between shifts) in your workplace, as they significantly impair sleep and sustained performance while increasing long-term safety risks.",
+            "target_audience": [
+                "healthcare_providers",
+                "adults"
+            ]
+        },
+        {
+            "text": "For Evening-Type Athletes and Students: Don't schedule crucial performances, competitions, or important exams in early morning if possible. If unavoidable, allow extra preparation time and consider chronotherapy consultation.",
+            "target_audience": [
+                "young_adults",
+                "adults"
+            ]
+        },
+        {
+            "text": "For All Sleep Apnea Sufferers: Stay informed about emerging treatment research, including ferroptosis-targeted therapies that may offer alternatives to current interventions, especially for pediatric cases.",
+            "target_audience": [
+                "kids",
+                "parents",
+                "healthcare_providers"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering December 19, 2025. This week we have some fascinating findings to share. This week brought 5 new papers across our monitored journals, with significant advances in understanding sleep disorders and their impacts. Standout findings include new insights into ferroptosis mechanisms in pediatric OSA, critical links between sleep timing and suicide risk in adolescents, and evidence that evening chronotypes face genuine performance disadvantages in morning activities. Two papers from Frontiers in Sleep and three from other leading journals explore everything from cellular mechanisms to practical performance implications for different populations. Let us dive in. First up: The Role of Ferroptosis in Adenoid Hypertrophy in Children with Obstructive Sleep Apnea Syndrome. The takeaway? Scientists discovered that blocking a specific type of cell death helps adenoids grow larger in kids with sleep apnea, reversing this could lead to new treatments . This study identified 8 key genes related to ferroptosis (a type of cell death) in children's enlarged adenoids causing OSA. Researchers found that ferroptosis is actually suppressed in severely enlarged adenoids , which may promote tissue growth. Lab experiments showed that inducing ferroptosis reduced cell proliferation by ~70% , suggesting new treatment targets. That comes from Zilu Shen et al., Nature and Science of Sleep, Published December 18, 2025. Next: A Case of Post-Viral Inflammatory Insomnia: Observed Sleep Restoration Associated with Histamine-Targeted Interventions. The takeaway? A man's year-long severe insomnia was fixed in one day by treating it like an allergy problem instead of a typical sleep disorder. This case study documents a 74-year-old with severe post-viral insomnia (sleep scores of 30-40) that didn't respond to standard medications. After treatment targeting histamine pathways (including cyproheptadine and dietary changes), sleep scores improved to 75+ within 24 hours and were sustained at 4-week follow-up, suggesting mast cell-driven inflammation may cause some forms of treatment-resistant insomnia . That comes from Amanda Jill Meckes, Frontiers in Sleep, Accepted December 18, 2025. Another fascinating finding: J-Shaped Association Between Sleep Timing and Suicidal Ideation: A Nationwide Cross-Sectional Study. The takeaway? Going to bed too early or too late increases suicide risk in teens, timing matters as much as how long you sleep. Analysis of 759,350 Korean adolescents revealed that both very early (8 PM) and very late (3 AM) bedtimes increased suicide risk, creating a J-shaped curve. Evening-type teens were 2.17 times more likely to have suicidal thoughts when sleeping at 3 AM vs. 11 PM. The effect persisted even after controlling for sleep duration, quality, and depression, with optimal bedtime shifting later with age ( 10 PM for 12-13 year-olds, 11 PM for 14-17 year-olds ). That comes from Jiyu Kang & Eurah Goh, Nature and Science of Sleep, Published December 19, 2025. Here is something worth paying attention to: Quick Returns: A Quasi-Experimental Field Study on the Effects on Sleep, Fatigue and Cognitive Performance. The takeaway? Nurses working with less than 11 hours off between shifts sleep less and feel more tired but can still handle short mental tasks, the real danger may be in longer, complex situations . Study of 36 newly graduated nurses found that \"quick returns\" ( shortened sleep by 46 minutes and increased fatigue throughout the day. Despite feeling impaired, nurses maintained performance on short cognitive tests, suggesting they can mobilize resources for brief tasks but may face increased risk during complex, extended work activities . Effects lingered into the second day shift. That comes from Kristin Öster et al., Journal of Sleep Research, Published December 15, 2025. And this one is particularly striking: Influence of Chronotype on Cycling Performance in Simulated 20-km Time Trials. The takeaway? \"Night owls\" really do perform worse in the morning, it's not just in their heads, they're actually 40 seconds slower in morning races . Evening-type athletes performed 2% better (40 seconds faster) in evening trials compared to morning, while morning types showed no significant time-of-day difference. Evening types reported significantly lower mental readiness and higher sleepiness at 6 AM compared to all other times. This validates that chronotype genuinely affects athletic performance and isn't just psychological preference . That comes from Sabrina Forster et al., Journal of Sleep Research, Published December 16, 2025. Ready to take action? Here are steps you can take. First: For Parents of Overweight Children: Schedule a sleep evaluation, your child may have undiagnosed OSA affecting their development and behavior. Even moderate weight gain significantly increases risk. Second: If You Have Treatment-Resistant Insomnia: Ask your doctor about evaluating mast cell/histamine involvement, especially if your insomnia followed a viral illness or you have allergy-like symptoms. Third: For Parents of Teens: Help establish age-appropriate bedtimes (10-11 PM for most teens) and watch for extreme sleep timing in either direction as a potential mental health warning sign. Fourth: For Shift Workers and Healthcare Professionals: Advocate for eliminating \"quick returns\" (<11 hours between shifts) in your workplace, as they significantly impair sleep and sustained performance while increasing long-term safety risks. Fifth: For Evening-Type Athletes and Students: Don't schedule crucial performances, competitions, or important exams in early morning if possible. If unavoidable, allow extra preparation time and consider chronotherapy consultation. Sixth: For All Sleep Apnea Sufferers: Stay informed about emerging treatment research, including ferroptosis-targeted therapies that may offer alternatives to current interventions, especially for pediatric cases. That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2025-12-19.mp3"
+}

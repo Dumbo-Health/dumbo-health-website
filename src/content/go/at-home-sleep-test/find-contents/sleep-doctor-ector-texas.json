@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Permian Sleep Center",
+    "UT Health East Texas Sleep Disorders Center - Tyler",
+    "UT Health East Texas Sleep Disorders Center - Jacksonville",
+    "UT Health East Texas Sleep Disorders Center - Carthage"
+  ],
+  "hospitals": [
+    "Medical Center Hospital",
+    "Odessa Regional Medical Center",
+    "Midland Memorial Hospital",
+    "Permian Regional Medical Center"
+  ],
+  "neighborhoods": [
+    "Odessa",
+    "West Odessa",
+    "Gardendale",
+    "Goldsmith"
+  ],
+  "population": "170,000+",
+  "insurance_companies": [
+    "UnitedHealthcare",
+    "Cigna",
+    "Humana",
+    "BlueCross BlueShield"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "55,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Awake In America",
+    "UT Health East Texas Sleep Disorders Center",
+    "Methodist Richardson Medical Center AWAKE Sleep Apnea Support Group",
+    "Texas ENT Center"
+  ]
+}

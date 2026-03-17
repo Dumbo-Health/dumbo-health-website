@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "University of Miami Health System Sleep Medicine",
+    "Sleep Life Center",
+    "Sleep Medicine Specialists of South Florida",
+    "Pulmonary Physicians - Sleep Lab & PET/CT Imaging Center"
+  ],
+  "hospitals": [
+    "University of Miami Health System",
+    "HCA Florida Mercy Hospital",
+    "Baptist Health South Florida",
+    "Mount Sinai Medical Center"
+  ],
+  "neighborhoods": [
+    "Flagami",
+    "Little Havana",
+    "West Flagler",
+    "Allapattah"
+  ],
+  "population": "500,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 200,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Life Center",
+    "Sleep, Snoring & Sinus Clinic of Florida",
+    "Florida Lung And Sleep Apnea Center",
+    "University of Miami Health System Sleep Medicine"
+  ]
+}

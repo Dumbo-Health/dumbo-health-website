@@ -1,0 +1,147 @@
+{
+    "slug": "pediatric-obesity-osa-insomnia-app",
+    "meta_title": "Pediatric Obesity OSA Risk, Multidisciplinary Care, Insomnia App",
+    "title": "Sleep Science: Jan 2, 2026",
+    "keywords": [
+        "sleep apnea",
+        "obstructive sleep apnea",
+        "pediatric OSA",
+        "childhood obesity",
+        "adenoid hypertrophy",
+        "sleep disorders",
+        "OSA treatment",
+        "weight gain sleep",
+        "children sleep problems",
+        "sleep apnea risk factors",
+        "multidisciplinary obesity care",
+        "GLP-1 sleep effects",
+        "bariatric surgery sleep",
+        "adenoidectomy",
+        "ferroptosis adenoids",
+        "insomnia children",
+        "mobile health sleep",
+        "sleep intervention app",
+        "obesity hypoventilation syndrome",
+        "pediatric sleep medicine",
+        "sleep quality children",
+        "sleep-disordered breathing",
+        "OSA diagnosis",
+        "home sleep test",
+        "BMI sleep apnea",
+        "dumbo health"
+    ],
+    "meta_description": "Sleep research Dec 27-Jan 2, 2026: childhood obesity and OSA risk, multidisciplinary care, ferroptosis in adenoid hypertrophy.",
+    "intro": "This week brought groundbreaking research on pediatric sleep apnea and obesity, with four major papers published across our monitored journals. The standout finding: obesity and weight gain in children are strongly linked to obstructive sleep apnea severity, with nearly 3 times higher risk in overweight and obese children. Frontiers in Sleep led with three papers examining the multidisciplinary care of pediatric obesity, OSA prevalence in different weight categories, and digital interventions for insomnia. Nature and Science of Sleep contributed research on ferroptosis mechanisms in adenoid hypertrophy, a major cause of pediatric OSA.",
+    "digest": [
+        {
+            "title": "Multidisciplinary care of pediatric obesity and its impact on sleep: a review",
+            "target_audience": [
+                "parents",
+                "healthcare_providers",
+                "overweight"
+            ],
+            "tldr": "<p>Obese kids need team-based care to tackle both weight and sleep problems, diet, exercise, mental health support, and possibly new medications all work together.</p>",
+            "summary": "<p>This comprehensive review examines how pediatric obesity impacts sleep health, particularly through obstructive sleep apnea (OSA) and obesity hypoventilation syndrome (OHS). The paper emphasizes that multidisciplinary care, including nutritional counseling, physical activity, psychological support, and emerging GLP-1 medications, is essential for managing these interconnected conditions. The review highlights how obesity creates a vicious cycle: excess weight leads to sleep-disordered breathing, which in turn worsens metabolic dysfunction and promotes further weight gain. Although GLP-1 receptor agonists show promise for weight reduction in adolescents, their impact on sleep disorders remains understudied.</p>",
+            "author": "Ravali Inja & Christopher Cielo, Frontiers in Sleep, January 2, 2026",
+            "cta": {
+                "anchor": "Read the Full Review",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2025.1634185/full"
+            }
+        },
+        {
+            "title": "Prevalence of obstructive sleep apnea in overweight, obese and non-obese children",
+            "target_audience": [
+                "parents",
+                "kids",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>One in five young kids has undiagnosed sleep apnea, and being overweight nearly triples the risk, screening should start earlier.</p>",
+            "summary": "<p>This groundbreaking study of <strong>371 children aged 4-9 years</strong> found that <strong>22.7% had undiagnosed OSA</strong>, much higher than previously reported. The research used both questionnaires and home sleep tests to reveal that each 1-unit increase in BMI z-score was associated with 1.35 times higher risk of moderate/severe OSA. Childhood overweight increased OSA risk by <strong>2.71 times</strong>, while obesity increased it by <strong>2.80 times</strong>. Even weight gain since 18 months of age was linked to higher OSA risk. This suggests OSA screening should be routine in overweight children.</p>",
+            "author": "Ingibjorg Ingolfsdottir et al., Frontiers in Sleep, December 24, 2025 (Accepted)",
+            "cta": {
+                "anchor": "Learn More About This Study",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2025.1691091/full"
+            }
+        },
+        {
+            "title": "A Pilot Randomized Control Trial of the ABCs of SLEEPING mHealth Intervention for Parents of School-aged Children with Insomnia Symptoms",
+            "target_audience": [
+                "parents",
+                "kids"
+            ],
+            "tldr": "<p>A new sleep app for parents shows promise in helping kids with insomnia sleep better and function better during the day.</p>",
+            "summary": "<p>Researchers tested a mobile health app designed to help parents manage their school-aged children's insomnia. The study involved <strong>28 parents</strong> and showed small but positive effects: improved sleep habits, reduced insomnia severity, and better daytime functioning in children. While the app showed promise, daily usage was lower than expected, suggesting the need for further refinement. This represents an important step toward accessible, evidence-based digital sleep interventions for families.</p>",
+            "author": "Anastasija Jemcov, Penny Violet Corkum, Isabel Smith & Sean Mackinnon, Frontiers in Sleep, December 24, 2025 (Accepted)",
+            "cta": {
+                "anchor": "Explore the Research",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2025.1665671/full"
+            }
+        },
+        {
+            "title": "The Role of Ferroptosis in Adenoid Hypertrophy in Children with Obstructive Sleep Apnea Syndrome",
+            "target_audience": [
+                "healthcare_providers",
+                "kids"
+            ],
+            "tldr": "<p>Scientists discovered a cellular \"survival trick\" that lets adenoid tissue grow too large in kids with sleep apnea, targeting this could lead to new treatments.</p>",
+            "summary": "<p>This study explored the biological mechanisms behind adenoid hypertrophy (enlarged adenoid tissue), a leading cause of pediatric OSA. Using RNA sequencing and tissue analysis, researchers identified ferroptosis, a type of iron-dependent cell death, as playing a key role. Interestingly, children with more severe adenoid hypertrophy showed <em>reduced</em> ferroptosis, suggesting cells develop resistance to this death pathway, allowing excessive tissue growth. The study identified <strong>7 hub genes</strong> that could serve as biomarkers or therapeutic targets. In lab experiments, inducing ferroptosis suppressed adenoid cell growth.</p>",
+            "author": "Zilu Shen, Jingning Huang et al., Nature and Science of Sleep, December 18, 2025",
+            "cta": {
+                "anchor": "Read the Study",
+                "url": "https://www.dovepress.com/the-role-of-ferroptosis-in-adenoid-hypertrophy-in-children-with-obstru-peer-reviewed-fulltext-article-NSS"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "Screen overweight children for sleep apnea – If your child snores, gasps during sleep, or seems excessively tired during the day, ask your pediatrician about sleep testing, especially if they're above a healthy weight.",
+            "target_audience": [
+                "parents",
+                "healthcare_providers",
+                "overweight",
+                "kids"
+            ]
+        },
+        {
+            "text": "Consider comprehensive, team-based care – If your child has both obesity and sleep problems, look for programs that combine nutrition, exercise, psychology, and sleep medicine rather than treating issues in isolation.",
+            "target_audience": [
+                "parents",
+                "overweight",
+                "healthcare_providers"
+            ]
+        },
+        {
+            "text": "Track your child's weight trajectory – Even gradual weight gain from toddlerhood can increase OSA risk, so maintaining a healthy weight early matters for long-term sleep health.",
+            "target_audience": [
+                "parents",
+                "kids"
+            ]
+        },
+        {
+            "text": "Explore digital sleep interventions – While still under research, mobile health apps designed for pediatric insomnia may offer accessible support for improving sleep habits at home.",
+            "target_audience": [
+                "parents",
+                "kids"
+            ]
+        },
+        {
+            "text": "Stay informed about adenoid treatment options – Beyond traditional surgery, emerging research on the cellular mechanisms of adenoid hypertrophy may lead to new non-surgical treatments in the future. Discuss all options with your ENT specialist.",
+            "target_audience": [
+                "parents",
+                "healthcare_providers",
+                "kids"
+            ]
+        },
+        {
+            "text": "Monitor daytime functioning – Poor concentration, behavioral problems, or declining school performance may signal undiagnosed sleep-disordered breathing, don't dismiss these as \"just growing pains.\"",
+            "target_audience": [
+                "parents",
+                "kids",
+                "teenagers"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering January 2, 2026. This week we have some fascinating findings to share. This week brought groundbreaking research on pediatric sleep apnea and obesity, with four major papers published across our monitored journals. The standout finding: obesity and weight gain in children are strongly linked to obstructive sleep apnea severity, with nearly 3 times higher risk in overweight and obese children. Frontiers in Sleep led with three papers examining the multidisciplinary care of pediatric obesity, OSA prevalence in different weight categories, and digital interventions for insomnia. Nature and Science of Sleep contributed research on ferroptosis mechanisms in adenoid hypertrophy, a major cause of pediatric OSA. Let us dive in. First up: Multidisciplinary care of pediatric obesity and its impact on sleep: a review. The takeaway? Obese kids need team-based care to tackle both weight and sleep problems, diet, exercise, mental health support, and possibly new medications all work together. This comprehensive review examines how pediatric obesity impacts sleep health, particularly through obstructive sleep apnea (OSA) and obesity hypoventilation syndrome (OHS). The paper emphasizes that multidisciplinary care, including nutritional counseling, physical activity, psychological support, and emerging GLP-1 medications, is essential for managing these interconnected conditions. The review highlights how obesity creates a vicious cycle: excess weight leads to sleep-disordered breathing, which in turn worsens metabolic dysfunction and promotes further weight gain. Although GLP-1 receptor agonists show promise for weight reduction in adolescents, their impact on sleep disorders remains understudied. That comes from Ravali Inja & Christopher Cielo, Frontiers in Sleep, January 2, 2026. Next: Prevalence of obstructive sleep apnea in overweight, obese and non-obese children. The takeaway? One in five young kids has undiagnosed sleep apnea, and being overweight nearly triples the risk, screening should start earlier. This groundbreaking study of 371 children aged 4-9 years found that 22.7% had undiagnosed OSA , much higher than previously reported. The research used both questionnaires and home sleep tests to reveal that each 1-unit increase in BMI z-score was associated with 1.35 times higher risk of moderate/severe OSA. Childhood overweight increased OSA risk by 2.71 times , while obesity increased it by 2.80 times . Even weight gain since 18 months of age was linked to higher OSA risk. This suggests OSA screening should be routine in overweight children. That comes from Ingibjorg Ingolfsdottir et al., Frontiers in Sleep, December 24, 2025 (Accepted). Another fascinating finding: A Pilot Randomized Control Trial of the ABCs of SLEEPING mHealth Intervention for Parents of School-aged Children with Insomnia Symptoms. The takeaway? A new sleep app for parents shows promise in helping kids with insomnia sleep better and function better during the day. Researchers tested a mobile health app designed to help parents manage their school-aged children's insomnia. The study involved 28 parents and showed small but positive effects: improved sleep habits, reduced insomnia severity, and better daytime functioning in children. While the app showed promise, daily usage was lower than expected, suggesting the need for further refinement. This represents an important step toward accessible, evidence-based digital sleep interventions for families. That comes from Anastasija Jemcov, Penny Violet Corkum, Isabel Smith & Sean Mackinnon, Frontiers in Sleep, December 24, 2025 (Accepted). Here is something worth paying attention to: The Role of Ferroptosis in Adenoid Hypertrophy in Children with Obstructive Sleep Apnea Syndrome. The takeaway? Scientists discovered a cellular \"survival trick\" that lets adenoid tissue grow too large in kids with sleep apnea, targeting this could lead to new treatments. This study explored the biological mechanisms behind adenoid hypertrophy (enlarged adenoid tissue), a leading cause of pediatric OSA. Using RNA sequencing and tissue analysis, researchers identified ferroptosis, a type of iron-dependent cell death, as playing a key role. Interestingly, children with more severe adenoid hypertrophy showed reduced ferroptosis, suggesting cells develop resistance to this death pathway, allowing excessive tissue growth. The study identified 7 hub genes that could serve as biomarkers or therapeutic targets. In lab experiments, inducing ferroptosis suppressed adenoid cell growth. That comes from Zilu Shen, Jingning Huang et al., Nature and Science of Sleep, December 18, 2025. Ready to take action? Here are steps you can take. First: Screen overweight children for sleep apnea – If your child snores, gasps during sleep, or seems excessively tired during the day, ask your pediatrician about sleep testing, especially if they're above a healthy weight. Second: Consider comprehensive, team-based care – If your child has both obesity and sleep problems, look for programs that combine nutrition, exercise, psychology, and sleep medicine rather than treating issues in isolation. Third: Track your child's weight trajectory – Even gradual weight gain from toddlerhood can increase OSA risk, so maintaining a healthy weight early matters for long-term sleep health. Fourth: Explore digital sleep interventions – While still under research, mobile health apps designed for pediatric insomnia may offer accessible support for improving sleep habits at home. Fifth: Stay informed about adenoid treatment options – Beyond traditional surgery, emerging research on the cellular mechanisms of adenoid hypertrophy may lead to new non-surgical treatments in the future. Discuss all options with your ENT specialist. Sixth: Monitor daytime functioning – Poor concentration, behavioral problems, or declining school performance may signal undiagnosed sleep-disordered breathing, don't dismiss these as \"just growing pains.\" That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2026-01-02.mp3"
+}

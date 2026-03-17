@@ -1,0 +1,13 @@
+User-agent: *
+
+Disallow: /_next/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.woff$
+Disallow: /*.avif$
+Disallow: /*.webp$
+Disallow: /*.jpg$
+Disallow: /*.png$
+Disallow: /go/alternative-to/*
+Disallow: /go/cost-of/*
+Disallow: /go/sleep-clinics/*

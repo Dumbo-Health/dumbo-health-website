@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Florida Lung & Sleep Apnea Center",
+    "Baptist Sleep Center at Pembroke Pines",
+    "United Sleep Diagnostics",
+    "Sleep, Snoring & Sinus Clinic of Florida"
+  ],
+  "hospitals": [
+    "Memorial Hospital Pembroke",
+    "Memorial Hospital West",
+    "Memorial Regional Hospital South",
+    "Baptist Sleep Center at Pembroke Pines"
+  ],
+  "neighborhoods": [
+    "Pembroke Falls",
+    "The Islands",
+    "Pasadena Lakes West",
+    "Pasadena Lakes"
+  ],
+  "population": "170,000+",
+  "insurance_companies": [
+    "UnitedHealthcare",
+    "Blue Cross Blue Shield of Florida",
+    "Aetna",
+    "Cigna"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 5,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Florida Lung and Sleep Apnea Center",
+    "Sleep, Snoring & Sinus Clinic of Florida",
+    "Memorial Hospital Pembroke",
+    "Dr. Sleep With A Smile"
+  ]
+}

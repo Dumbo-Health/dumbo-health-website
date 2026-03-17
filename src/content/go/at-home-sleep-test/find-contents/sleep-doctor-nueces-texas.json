@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Bay Area Sleep Evaluation Center",
+    "Texas Sleep Diagnostics and Therapeutics, PLLC",
+    "Corpus Christi Metro Ministries - Gabbard Memorial Clinic",
+    "Mission of Mercy Free Clinic - Texas"
+  ],
+  "hospitals": [
+    "CHRISTUS Spohn Hospital Corpus Christi",
+    "Corpus Christi Medical Center",
+    "Driscoll Children's Hospital",
+    "South Texas Surgical Hospital"
+  ],
+  "neighborhoods": [
+    "Corpus Christi",
+    "Robstown",
+    "Port Aransas",
+    "Bishop"
+  ],
+  "population": "350,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "70,000 to 80,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Christian Care Sleep Center",
+    "Community Action Corporation of South Texas",
+    "Texas ENT Center",
+    "Sleep Medicine Institute of Texas"
+  ]
+}

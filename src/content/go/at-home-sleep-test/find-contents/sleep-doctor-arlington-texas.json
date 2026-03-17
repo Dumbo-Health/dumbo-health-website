@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep & Snoring Solutions",
+    "The Arlington Sleep Disorder Center",
+    "Heart and Sleep Clinics of America",
+    "Texas Pulmonary Sleep Center"
+  ],
+  "hospitals": [
+    "Texas Health Arlington Memorial",
+    "Medical City Arlington",
+    "USMD at Arlington",
+    "Baylor Orthopedic and Spine Hospital at Arlington"
+  ],
+  "neighborhoods": [
+    "Southeast Arlington",
+    "East Arlington",
+    "West Arlington",
+    "Southwest Arlington"
+  ],
+  "population": "400,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Tens of thousands",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep and Snoring Solutions",
+    "The Arlington Sleep Disorder Center",
+    "Cross Timbers ENT",
+    "A.W.A.K.E."
+  ]
+}

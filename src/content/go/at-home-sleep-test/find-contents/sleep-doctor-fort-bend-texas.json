@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Fort Bend Sleep Center",
+    "Sugar Land Neurology & Sleep M.D., P.A.",
+    "Houston Methodist Sugar Land Hospital",
+    "AccessHealth Richmond Center"
+  ],
+  "hospitals": [
+    "Houston Methodist Sugar Land Hospital",
+    "Memorial Hermann Sugar Land Hospital",
+    "OakBend Medical Center",
+    "St. Luke's Health–Sugar Land Hospital"
+  ],
+  "neighborhoods": [
+    "Sugar Land",
+    "Missouri City",
+    "Fulshear",
+    "Rosenberg"
+  ],
+  "population": "1 million",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 20,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "A.W.A.K.E. Greater Houston by the Sleep Education Consortium",
+    "Houston Methodist Sugar Land Hospital",
+    "Memorial Hermann Sleep Disorders Center at Texas Medical Center",
+    "Texas Multi-Specialty Group"
+  ]
+}

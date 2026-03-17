@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "SleepMed Incorporated",
+    "HCA Florida JFK Hospital Sleep Disorders Center",
+    "South Florida ENT Associates",
+    "Cleveland Clinic Florida Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "Good Samaritan Medical Center",
+    "HCA Florida JFK Hospital",
+    "Jupiter Medical Center",
+    "St. Mary's Medical Center"
+  ],
+  "neighborhoods": [
+    "Villages of Palm Beach Lakes",
+    "Water Catchment Area",
+    "South Side",
+    "Northwood Hills"
+  ],
+  "population": "120,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Humana",
+    "United Healthcare",
+    "Medicare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 15,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "South Florida ENT Associates",
+    "HCA Florida JFK Hospital Sleep Disorders Center",
+    "Palm Beach County Medical Society",
+    "Florida Lung and Sleep Apnea Center"
+  ]
+}

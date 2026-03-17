@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Tampa Bay Sleep Center",
+    "USF Sleep Center",
+    "Tampa Bay Neurology and Sleep Medicine, LLC",
+    "Bay Area Sleep Associates LLC"
+  ],
+  "hospitals": [
+    "Tampa Bay Sleep Center",
+    "Mease Countryside Hospital",
+    "Bardmoor Sleep Disorders Center",
+    "Florida Medical Clinic"
+  ],
+  "neighborhoods": [
+    "Tampa",
+    "Brandon",
+    "Riverview",
+    "Town 'n' Country"
+  ],
+  "population": "1.5 million+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 280,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Tampa General Hospital Sleep Disorders Center",
+    "USF Sleep Center",
+    "BayCare Sleep Disorders Center",
+    "AdventHealth Carrollwood Sleep Center"
+  ]
+}

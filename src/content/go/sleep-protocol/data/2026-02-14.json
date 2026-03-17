@@ -1,0 +1,126 @@
+{
+    "slug": "ai-screening-swallowing-pap-adherence",
+    "meta_title": "AI OSA Screening, Swallowing Dysfunction Cancer, PAP Adherence",
+    "title": "Sleep Science: Feb 8-14",
+    "keywords": [
+        "sleep apnea",
+        "OSA screening",
+        "AI heart rate variability",
+        "HRV patch",
+        "sleep apnea diagnosis",
+        "PAP adherence",
+        "CPAP compliance",
+        "swallowing dysfunction",
+        "head neck cancer",
+        "sleep apnea hypercoagulability",
+        "blood clotting OSA",
+        "obstructive sleep apnea treatment",
+        "sleep apnea technology",
+        "home sleep testing",
+        "sleep apnea outcomes",
+        "cardiovascular sleep apnea",
+        "sleep research 2026",
+        "sleep disorders",
+        "sleep medicine innovation"
+    ],
+    "meta_description": "Feb 8-14 sleep research: AI sleep apnea screening, swallowing dysfunction in head and neck cancer, OSA blood-clot findings, and long-term PAP adherence outcomes.",
+    "intro": "This week brings critical insights from sleep apnea research across our monitored journals. The standout findings center on innovative diagnostic technologies and the complex relationship between OSA and systemic health. Nature and Science of Sleep published compelling papers exploring OSA's link to swallowing dysfunction in cancer patients, AI-powered heart rate variability screening, and the debated connection between OSA and blood clotting disorders. Frontiers in Sleep also highlighted optimized care pathways that dramatically improve long-term PAP adherence. Together, these studies point to both better detection tools and more effective long-term care models.",
+    "digest": [
+        {
+            "title": "Swallowing Function During Sleep in Patients with Head and Neck Cancer: A Polysomnographic Comparison with Matched Controls",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Cancer patients who had radiation in the throat region may swallow differently during sleep in ways that increase aspiration risk and worsen sleep apnea.</p>",
+            "summary": "<p>This study used polysomnography to compare swallowing during sleep in head and neck cancer patients versus matched controls. Patients with head and neck cancer showed significantly altered swallowing patterns: more frequent swallowing during sleep, longer swallowing duration while awake, reduced swallowing-related muscle activity during sleep, and more respiratory pauses around swallowing events. These patterns suggest elevated aspiration risk and impaired airway-swallow coordination.</p>",
+            "why_it_matters": "<p>This is one of the first studies to systematically evaluate nocturnal swallowing dysfunction in this population using sleep-lab methods. Because pharyngeal muscles are involved in both swallowing and airway patency, these findings suggest an important overlap between cancer-related swallowing impairment and OSA risk. Earlier sleep evaluation and swallowing-focused rehabilitation may reduce serious respiratory complications.</p>",
+            "author": "Ishimizu E, Inoshita A, Kawana F, et al., Nature and Science of Sleep, February 12, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/swallowing-function-during-sleep-in-patients-with-head-and-neck-cancer-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Patch-Type Heart Rate Variability Analysis with Artificial Intelligence for Detection of Obstructive Sleep Apnea",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>A simple AI-enabled patch can detect moderate-to-severe sleep apnea with over 80% accuracy without bulky sleep lab equipment.</p>",
+            "summary": "<p>Researchers developed a patch-type heart rate variability analyzer with AI that achieved <strong>81.4% accuracy</strong> for identifying moderate-to-severe OSA (AHI >= 15). The model uses a Cardiovascular Hypopnea Index (CVHI) built from ECG amplitude and nonlinear heart rhythm features and outperformed demographic-only screening (73%) and prior ECG methods (70.6%). The patch is suitable for multi-night home monitoring with less sleep disruption than traditional setups.</p>",
+            "why_it_matters": "<p>Traditional in-lab testing creates access bottlenecks and discomfort that delay diagnosis. A comfortable multi-night patch approach can improve case-finding, enable earlier treatment, and better reflect real-world sleep patterns.</p>",
+            "author": "Hsu YS, Lin YC, Kuo YE, et al., Nature and Science of Sleep, February 5, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/patch-type-heart-rate-variability-analysis-with-artificial-intelligenc-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Obstructive Sleep Apnea and Hypercoagulability: Combining Observational and Mendelian Randomization Analyses to Explore Causal Relationships",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>The blood clot risk signal in sleep apnea appears to be driven mainly by obesity rather than OSA alone.</p>",
+            "summary": "<p>This analysis combined observational data from 790 OSA patients with Mendelian randomization to evaluate causality. Severe OSA was initially associated with clotting abnormalities, but those associations weakened after adjustment for BMI. Genetic analyses did not support a direct causal pathway from OSA to hypercoagulability markers, suggesting obesity is a key driver.</p>",
+            "why_it_matters": "<p>These findings challenge the idea that OSA alone drives thrombotic risk and reinforce the need to pair PAP therapy with aggressive metabolic risk reduction. For overweight patients, weight management may provide cardiovascular and coagulation benefits beyond CPAP alone.</p>",
+            "author": "Su L, Wu L, Han T, Li Y, Zhang X, Nature and Science of Sleep, January 31, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/obstructive-sleep-apnea-and-hypercoagulability-combining-observational-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Managing Sleep Apnea: Long-Term Outcomes From a Comprehensive, Patient-Centered Treatment Care Pathway",
+            "target_audience": [
+                "adults",
+                "healthcare_providers",
+                "overweight"
+            ],
+            "tldr": "<p>A streamlined, high-support sleep apnea care pathway more than tripled long-term PAP adherence versus traditional care models.</p>",
+            "summary": "<p>This real-world pathway study screened over 42,000 patients and followed 4,907 longitudinally. Patients progressed rapidly from screening to diagnosis and treatment initiation, with <strong>84.3%</strong> adopting PAP, <strong>80.6%</strong> meeting 90-day adherence, and <strong>74.2%</strong> still adherent at two years. Usage remained strong over time, reaching about 6.4 hours per night and 6 nights per week by year three.</p>",
+            "why_it_matters": "<p>The largest barrier in OSA care is long-term adherence, not device efficacy. These outcomes show that integrated care design, speed, and ongoing behavioral support can transform retention and likely downstream cardiometabolic outcomes.</p>",
+            "author": "Riney HD, Thorndike FP, Agustsson JS, et al., Frontiers in Sleep, June 9, 2025",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2025.1593874/full"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "Ask about wearable OSA screening options if you are delaying testing. Multi-night patch-based and home diagnostics can reduce friction and speed diagnosis.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "Pair CPAP with weight management if you are overweight. New evidence suggests obesity may drive clotting risk more than OSA alone.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "If you had head and neck cancer treatment, request sleep and swallowing evaluation, especially with snoring, nighttime choking, or daytime fatigue.",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ]
+        },
+        {
+            "text": "Choose programs with coordinated, high-support pathways for OSA care. Faster diagnosis plus proactive coaching strongly improves long-term PAP adherence.",
+            "target_audience": [
+                "adults",
+                "healthcare_providers",
+                "parents"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering the week of February 8 through February 14, 2026. This week we have some fascinating findings to share. This week brings critical insights from sleep apnea research across our monitored journals. The standout findings center on innovative diagnostic technologies and the complex relationship between OSA and systemic health. Nature and Science of Sleep published compelling papers exploring OSA's link to swallowing dysfunction in cancer patients, AI-powered heart rate variability screening, and the debated connection between OSA and blood clotting disorders. Frontiers in Sleep also highlighted optimized care pathways that dramatically improve long-term PAP adherence. Together, these studies point to both better detection tools and more effective long-term care models. Let us dive in. First up: Swallowing Function During Sleep in Patients with Head and Neck Cancer: A Polysomnographic Comparison with Matched Controls. The takeaway? Cancer patients who had radiation in the throat region may swallow differently during sleep in ways that increase aspiration risk and worsen sleep apnea. This study used polysomnography to compare swallowing during sleep in head and neck cancer patients versus matched controls. Patients with head and neck cancer showed significantly altered swallowing patterns: more frequent swallowing during sleep, longer swallowing duration while awake, reduced swallowing-related muscle activity during sleep, and more respiratory pauses around swallowing events. These patterns suggest elevated aspiration risk and impaired airway-swallow coordination. Why does this matter? This is one of the first studies to systematically evaluate nocturnal swallowing dysfunction in this population using sleep-lab methods. Because pharyngeal muscles are involved in both swallowing and airway patency, these findings suggest an important overlap between cancer-related swallowing impairment and OSA risk. Earlier sleep evaluation and swallowing-focused rehabilitation may reduce serious respiratory complications. That comes from Ishimizu E, Inoshita A, Kawana F, et al., Nature and Science of Sleep, February 12, 2026. Next: Patch-Type Heart Rate Variability Analysis with Artificial Intelligence for Detection of Obstructive Sleep Apnea. The takeaway? A simple AI-enabled patch can detect moderate-to-severe sleep apnea with over 80% accuracy without bulky sleep lab equipment. Researchers developed a patch-type heart rate variability analyzer with AI that achieved 81.4% accuracy for identifying moderate-to-severe OSA (AHI >= 15). The model uses a Cardiovascular Hypopnea Index (CVHI) built from ECG amplitude and nonlinear heart rhythm features and outperformed demographic-only screening (73%) and prior ECG methods (70.6%). The patch is suitable for multi-night home monitoring with less sleep disruption than traditional setups. Why does this matter? Traditional in-lab testing creates access bottlenecks and discomfort that delay diagnosis. A comfortable multi-night patch approach can improve case-finding, enable earlier treatment, and better reflect real-world sleep patterns. That comes from Hsu YS, Lin YC, Kuo YE, et al., Nature and Science of Sleep, February 5, 2026. Another fascinating finding: Obstructive Sleep Apnea and Hypercoagulability: Combining Observational and Mendelian Randomization Analyses to Explore Causal Relationships. The takeaway? The blood clot risk signal in sleep apnea appears to be driven mainly by obesity rather than OSA alone. This analysis combined observational data from 790 OSA patients with Mendelian randomization to evaluate causality. Severe OSA was initially associated with clotting abnormalities, but those associations weakened after adjustment for BMI. Genetic analyses did not support a direct causal pathway from OSA to hypercoagulability markers, suggesting obesity is a key driver. Why does this matter? These findings challenge the idea that OSA alone drives thrombotic risk and reinforce the need to pair PAP therapy with aggressive metabolic risk reduction. For overweight patients, weight management may provide cardiovascular and coagulation benefits beyond CPAP alone. That comes from Su L, Wu L, Han T, Li Y, Zhang X, Nature and Science of Sleep, January 31, 2026. Here is something worth paying attention to: Managing Sleep Apnea: Long-Term Outcomes From a Comprehensive, Patient-Centered Treatment Care Pathway. The takeaway? A streamlined, high-support sleep apnea care pathway more than tripled long-term PAP adherence versus traditional care models. This real-world pathway study screened over 42,000 patients and followed 4,907 longitudinally. Patients progressed rapidly from screening to diagnosis and treatment initiation, with 84.3% adopting PAP, 80.6% meeting 90-day adherence, and 74.2% still adherent at two years. Usage remained strong over time, reaching about 6.4 hours per night and 6 nights per week by year three. Why does this matter? The largest barrier in OSA care is long-term adherence, not device efficacy. These outcomes show that integrated care design, speed, and ongoing behavioral support can transform retention and likely downstream cardiometabolic outcomes. That comes from Riney HD, Thorndike FP, Agustsson JS, et al., Frontiers in Sleep, June 9, 2025. Ready to take action? Here are steps you can take. First: Ask about wearable OSA screening options if you are delaying testing. Multi-night patch-based and home diagnostics can reduce friction and speed diagnosis. Second: Pair CPAP with weight management if you are overweight. New evidence suggests obesity may drive clotting risk more than OSA alone. Third: If you had head and neck cancer treatment, request sleep and swallowing evaluation, especially with snoring, nighttime choking, or daytime fatigue. Fourth: Choose programs with coordinated, high-support pathways for OSA care. Faster diagnosis plus proactive coaching strongly improves long-term PAP adherence. That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2026-02-14.mp3"
+}

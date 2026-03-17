@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "UT Health East Texas Sleep Disorders Center in Tyler",
+    "UT Health East Texas Sleep Disorders Center in Quitman",
+    "UT Health East Texas Sleep Disorders Center in Carthage",
+    "Texas Sleep Diagnostics and Therapeutics, PLLC"
+  ],
+  "hospitals": [
+    "UT Health Tyler",
+    "UT Health North Campus Tyler",
+    "CHRISTUS Good Shepherd Medical Center - Longview",
+    "Nacogdoches Medical Center"
+  ],
+  "neighborhoods": [
+    "Tyler",
+    "Whitehouse",
+    "Lindale",
+    "Bullard"
+  ],
+  "population": "250,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "80,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "UT Health East Texas Sleep Disorders Center",
+    "Sleep and Wellness Institute of Texas",
+    "Collom & Carney Clinic Sleep Disorder Center",
+    "Scott & White Sleep Disorders Center"
+  ]
+}

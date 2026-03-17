@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Kell West Regional Hospital Sleep Diagnostic Center",
+    "Texoma Sleep Diagnostics",
+    "United Regional Sleep Diagnostic Center",
+    "Clinics of North Texas Sleep Medicine Department"
+  ],
+  "hospitals": [
+    "Kell West Regional Hospital",
+    "United Regional Health Care System",
+    "Electra Memorial Hospital",
+    "Clay County Memorial Hospital"
+  ],
+  "neighborhoods": [
+    "Faith Village",
+    "Country Club Estates",
+    "Bridge Creek Estates",
+    "Allendale"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "5,000 to 7,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Texoma Sleep Diagnostics",
+    "Kell West Sleep Center",
+    "Clinics of North Texas Sleep Medicine",
+    "Texoma ENT & Allergy"
+  ]
+}

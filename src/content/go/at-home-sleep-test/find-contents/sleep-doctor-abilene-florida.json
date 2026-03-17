@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "The Florida Center of Sleep Medicine",
+    "Anesthesia & Sleep Medicine Services of Florida",
+    "The Sleep Lab at Florida Medical Clinic Orlando Health | Zephyrhills",
+    "Cleveland Clinic Florida Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "AdventHealth Tampa",
+    "AdventHealth DeLand",
+    "Hialeah Hospital",
+    "AdventHealth Sebring"
+  ],
+  "neighborhoods": [
+    "Dyess Air Force Base",
+    "River Oaks",
+    "South Treadaway",
+    "Buck Creek"
+  ],
+  "population": "\"Abilene, Florida\" does not exist; Abilene, Texas has 125,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Approximately 32.4% of U.S. adults aged 20 years and older have obstructive sleep apnea (OSA) in 2024.",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "The Florida Center of Sleep Medicine",
+    "ABC Sleep Disorders Center",
+    "BayCare A.W.A.K.E. Support Group",
+    "Cleveland Clinic Florida Sleep Disorders Center"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "LungDocs",
+    "Texas Pediatric Specialties and Family Sleep Center",
+    "SleepBroz",
+    "Sleep Apnea Solutions-Texas Hill Country"
+  ],
+  "hospitals": [
+    "CHRISTUS Santa Rosa Hospital - New Braunfels",
+    "Pulmonology and Sleep Services of San Antonio",
+    "Texas Pediatric Specialties and Family Sleep Center",
+    "Hill Country Ear Nose & Throat"
+  ],
+  "neighborhoods": [
+    "Downtown New Braunfels",
+    "Gruene Historic District",
+    "Landa Park",
+    "New Braunfels Town Center at Creekside"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "17,500 to 21,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "SleepBroz",
+    "Sleep Apnea Solutions-Texas Hill Country",
+    "Texas Pediatric Specialties and Family Sleep Center",
+    "The ENT Center of New Braunfels"
+  ]
+}

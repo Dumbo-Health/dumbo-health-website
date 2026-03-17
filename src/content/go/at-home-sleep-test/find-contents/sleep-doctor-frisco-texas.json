@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Baylor Scott & White Medical Center – Frisco Sleep Lab",
+    "Sleep Dallas",
+    "Dream Adult & Pediatric Sleep Medicine",
+    "Star Sleep & Wellness"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Medical Center – Frisco",
+    "Baylor Scott & White Pulmonary and Sleep Specialists – Frisco at PGA Parkway",
+    "Medical City Frisco",
+    "Baylor Scott & White Medical Center – Centennial"
+  ],
+  "neighborhoods": [
+    "Phillips Creek Ranch",
+    "Starwood",
+    "Newman Village",
+    "Richwoods"
+  ],
+  "population": "240,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "United Healthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 75,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Baylor Scott & White Medical Center – Frisco Sleep Lab",
+    "Dream Adult & Pediatric Sleep Medicine",
+    "Sleep Dallas",
+    "Frisco Dental Implant Center"
+  ]
+}

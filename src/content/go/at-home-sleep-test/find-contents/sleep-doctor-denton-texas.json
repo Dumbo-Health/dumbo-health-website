@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Lone Star Pulmonary and Sleep Specialists",
+    "Star Sleep & Wellness",
+    "North Texas Sleep Disorders Center",
+    "Baylor Scott & White The Heart Hospital – Denton Sleep Center"
+  ],
+  "hospitals": [
+    "Medical City Denton",
+    "Texas Health Presbyterian Hospital Denton",
+    "Baylor Scott & White The Heart Hospital – Denton",
+    "Mayhill Hospital"
+  ],
+  "neighborhoods": [
+    "Denton",
+    "Lewisville",
+    "Frisco",
+    "Carrollton"
+  ],
+  "population": "1 million",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "338,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Relief of Denton",
+    "Lone Star Pulmonary and Sleep Specialists",
+    "Baylor Scott & White The Heart Hospital – Denton Sleep Center",
+    "Sleep Dallas"
+  ]
+}

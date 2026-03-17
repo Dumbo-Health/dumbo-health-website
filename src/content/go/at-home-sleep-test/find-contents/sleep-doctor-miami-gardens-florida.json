@@ -1,0 +1,35 @@
+{
+  "sleep_clinics": [
+    "Florida Sleep & Neuro Diagnostics Services, Inc.",
+    "Sleep Medicine Specialists of South Florida",
+    "UHealth Sleep Center",
+    "Sleep, Snoring & Sinus Clinic of Florida"
+  ],
+  "hospitals": [
+    "HCA Florida Mercy Hospital",
+    "Baptist Hospital of Miami",
+    "Mount Sinai Medical Center",
+    "Nicklaus Children's Hospital"
+  ],
+  "neighborhoods": [
+    "Carol City",
+    "Norland",
+    "Scott Lake",
+    "Lake Lucerne"
+  ],
+  "population": "110,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "30,000 to 35,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Doctor",
+    "Sleep Life Center",
+    "Sleep, Snoring & Sinus Clinic of Florida",
+    "South Florida ENT Associates",
+    "Sleep Medicine Specialists of South Florida"
+  ]
+}

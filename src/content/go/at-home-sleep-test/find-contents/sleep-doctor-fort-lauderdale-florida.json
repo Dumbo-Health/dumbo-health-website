@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Pulmonary and Sleep Consultants",
+    "Broward Pulmonary and Sleep Specialists",
+    "Choice Physicians Sleep Center",
+    "Holy Cross Health Comprehensive Sleep Disorder Center"
+  ],
+  "hospitals": [
+    "Holy Cross Hospital",
+    "Broward Health Medical Center",
+    "Broward Health Imperial Point",
+    "Cleveland Clinic Hospital"
+  ],
+  "neighborhoods": [
+    "Lauderdale Manors",
+    "South Middle River",
+    "Coral Ridge",
+    "Downtown"
+  ],
+  "population": "200,000",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Several thousand",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "South Florida ENT Associates",
+    "Cleveland Clinic Florida Sleep Disorders Center",
+    "AssociatesMD",
+    "International Institute of Sleep"
+  ]
+}

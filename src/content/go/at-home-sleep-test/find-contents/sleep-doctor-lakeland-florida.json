@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Lakeland Regional Health Sleep Disorders Center",
+    "Lakeland Sleep Center",
+    "Central Florida Sleep Diagnostic & Treatment Center",
+    "Watson Clinic Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "Lakeland Regional Health Medical Center",
+    "Watson Clinic",
+    "Central Florida Sleep Diagnostic & Treatment Center",
+    "Bartow Regional Medical Center"
+  ],
+  "neighborhoods": [
+    "Crystal Lake",
+    "Lake Hollingsworth",
+    "Southwest",
+    "New Jersey Rd"
+  ],
+  "population": "120,000+",
+  "insurance_companies": [
+    "Advantage Care",
+    "Aetna",
+    "AvMed",
+    "Blue Cross Blue Shield"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 1,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Lakeland Sleep Store",
+    "Lakeland Regional Health Sleep Disorders Center",
+    "Central Florida Sleep Diagnostic & Treatment Center",
+    "Watson Clinic Sleep Disorders Center"
+  ]
+}

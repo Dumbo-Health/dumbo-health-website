@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "St. Joseph Health Center",
+    "The Physicians Centre",
+    "Scott & White Clinic",
+    "HealthPoint"
+  ],
+  "hospitals": [
+    "St. Joseph Regional Health Center",
+    "St. Joseph Health Center in College Station",
+    "The Physicians Centre",
+    "Baylor Scott & White Medical Center"
+  ],
+  "neighborhoods": [
+    "College Station",
+    "Bryan",
+    "Kurten",
+    "Wixon Valley"
+  ],
+  "population": "250,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "20,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "NAMI Brazos Valley",
+    "St. Joseph Health",
+    "Hospice Brazos Valley",
+    "Scott & White Sleep Disorders Center"
+  ]
+}

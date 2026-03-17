@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Georgetown Sleep Center",
+    "Georgetown ENT",
+    "Georgetown Sleep Equipment & Supplies",
+    "WellMed at Georgetown Sleep Center PA"
+  ],
+  "hospitals": [
+    "Georgetown Sleep Center",
+    "Sleep Center at Georgetown ENT",
+    "Baylor Scott & White Medical Center – Round Rock",
+    "Baylor Scott & White Medical Center – Temple"
+  ],
+  "neighborhoods": [
+    "Sun City Texas",
+    "Wolf Ranch",
+    "Teravista",
+    "Berry Creek"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "30,000 to 35,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Georgetown Sleep Center",
+    "Sleep Center at Georgetown ENT",
+    "Ascension Seton Williamson Sleep Center at Texas State University",
+    "Solis Dental"
+  ]
+}

@@ -1,0 +1,30 @@
+[
+   {
+      "name":"Florida",
+      "live":"TRUE",
+      "slug":"florida",
+      "timezone":"EST",
+      "phone_number":"+1 (786) 348-2820",
+      "min_lat":"24.396308",
+      "max_lat":"31.000762",
+      "min_lon":"-87.634896",
+      "max_lon":"-79.974306",
+      "center_lat":"27.7567667",
+      "center_lon":"-81.4639835",
+      "zoom":"10"
+   },
+   {
+      "name":"Texas",
+      "live":"TRUE",
+      "slug":"texas",
+      "timezone":"CST",
+      "phone_number":"+1 (786) 348-2820",
+      "min_lat":"25.83706",
+      "max_lat":"36.5004529",
+      "min_lon":"-106.6458459",
+      "max_lon":"-93.5078217",
+      "center_lat":"31.2638905",
+      "center_lon":"-98.5456116",
+      "zoom":"10"
+   }
+]

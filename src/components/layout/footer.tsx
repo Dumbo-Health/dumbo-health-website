@@ -49,18 +49,21 @@ const FOOTER_COLUMNS = [
     ],
   },
   {
-    title: "Resources",
+    title: "Dumbo resources",
     links: [
-      { label: "Sleep Apnea Facts", href: "/resources/facts" },
       { label: "Blog", href: "/blog" },
-      { label: "FAQs", href: "/faqs" },
+      { label: "FAQ", href: "/faqs" },
+      { label: "Facts", href: "/resources/facts" },
+      { label: "Contacts", href: "/contact" },
     ],
   },
   {
-    title: "Tools & Support",
+    title: "Tools",
     links: [
-      { label: "Toolbox", href: "https://www.dumbo.health/go/tools", external: true },
-      { label: "Sleep Protocol", href: "https://www.dumbo.health/go/sleep-protocol", external: true },
+      { label: "Sleep Toolbox", href: "/go/tools" },
+      { label: "Sleep Protocol", href: "/go/sleep-protocol" },
+      { label: "Sleep Hub", href: "/go/sleep-hub" },
+      { label: "30 day better sleep plan", href: "/go/30-day-sleep-plan" },
     ],
   },
 ] as const;

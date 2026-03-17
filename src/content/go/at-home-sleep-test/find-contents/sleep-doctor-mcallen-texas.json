@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Pulmonary & Sleep Center of the Valley",
+    "South McAllen Sleep Lab and Clinic",
+    "Rio Grande Valley Sleep Centers",
+    "South Texas Sleep Disorder Clinic"
+  ],
+  "hospitals": [
+    "South Texas Health System McAllen",
+    "Rio Grande Regional Hospital",
+    "South McAllen Sleep Lab and Clinic",
+    "Pulmonary & Sleep Center of the Valley"
+  ],
+  "neighborhoods": [
+    "Downtown McAllen",
+    "North McAllen",
+    "Sharyland Plantation",
+    "South McAllen"
+  ],
+  "population": "150,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "15,000 to 20,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Pulmonary and Sleep Center of the Valley",
+    "Sleep Apnea Gurus",
+    "South McAllen Sleep Lab and Clinic",
+    "Rio Grande Valley Sleep Centers"
+  ]
+}

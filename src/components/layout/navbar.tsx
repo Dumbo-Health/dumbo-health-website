@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -98,6 +98,17 @@ function IconFacts() {
   );
 }
 
+function IconCalendar() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
@@ -127,21 +138,42 @@ const SOLUTIONS = [
   { label: "Dumbo Health App",   href: "/solutions#step-4",   Icon: IconApp },
 ];
 
-const RESOURCES = [
-  { label: "Sleep Apnea Facts", href: "/resources/facts", Icon: IconFacts },
-  { label: "Blog",              href: "/blog",             Icon: IconBlog },
-  { label: "FAQs",              href: "/faqs",             Icon: IconFAQ },
-  { label: "Contact",           href: "/contact",          Icon: IconContact },
+type NavItem = { label: string; href: string; Icon: React.ComponentType };
+
+const RESOURCES_COLUMNS: { title: string; items: NavItem[] }[] = [
+  {
+    title: "Dumbo resources",
+    items: [
+      { label: "Blog", href: "/blog", Icon: IconBlog },
+      { label: "FAQ", href: "/faqs", Icon: IconFAQ },
+      { label: "Facts", href: "/resources/facts", Icon: IconFacts },
+      { label: "Contacts", href: "/contact", Icon: IconContact },
+    ],
+  },
+  {
+    title: "Tools",
+    items: [
+      { label: "Sleep Toolbox", href: "/go/tools", Icon: IconSupport },
+      { label: "Sleep Protocol", href: "/go/sleep-protocol", Icon: IconSleepTest },
+      { label: "Sleep Hub", href: "/go/sleep-hub", Icon: IconApp },
+      { label: "30 day better sleep plan", href: "/go/30-day-sleep-plan", Icon: IconCalendar },
+    ],
+  },
 ];
+
+/** Flat list for mobile accordion (same items, no column headers) */
+const RESOURCES_FLAT: NavItem[] = RESOURCES_COLUMNS.flatMap((col) => col.items);
 
 // ─── Mega menu panel ──────────────────────────────────────────────────────────
 
 function MegaMenuPanel({
   items,
   open,
+  columns = 1,
 }: {
-  items: typeof SOLUTIONS;
+  items: NavItem[];
   open: boolean;
+  columns?: 1 | 2;
 }) {
   return (
     <div
@@ -155,8 +187,12 @@ function MegaMenuPanel({
       {/* Arrow notch */}
       <div className="mx-auto mb-[-1px] h-2.5 w-2.5 rotate-45 rounded-sm border-l border-t border-sunlight bg-white" style={{ marginLeft: "calc(50% - 5px)", marginRight: "auto" }} />
 
-      <div className="w-60 overflow-hidden rounded-2xl border border-sunlight bg-white shadow-xl shadow-midnight/8">
-        <div className="p-2">
+      <div
+        className={`overflow-hidden rounded-2xl border border-sunlight bg-white shadow-xl shadow-midnight/8 ${
+          columns === 2 ? "w-[31rem]" : "w-60"
+        }`}
+      >
+        <div className={`p-2 ${columns === 2 ? "grid grid-cols-2 gap-1" : ""}`}>
           {items.map(({ label, href, Icon }) => (
             <Link
               key={href}
@@ -177,14 +213,65 @@ function MegaMenuPanel({
   );
 }
 
+function ResourcesMegaMenuPanel({
+  columns: groupedColumns,
+  open,
+}: {
+  columns: { title: string; items: NavItem[] }[];
+  open: boolean;
+}) {
+  return (
+    <div
+      aria-hidden={!open}
+      className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition-all duration-200 ease-out ${
+        open
+          ? "pointer-events-auto translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-1 opacity-0"
+      }`}
+    >
+      <div className="mx-auto mb-[-1px] h-2.5 w-2.5 rotate-45 rounded-sm border-l border-t border-sunlight bg-white" style={{ marginLeft: "calc(50% - 5px)", marginRight: "auto" }} />
+
+      <div className="w-[31rem] overflow-hidden rounded-2xl border border-sunlight bg-white shadow-xl shadow-midnight/8">
+        <div className="grid grid-cols-2 gap-4 p-4">
+          {groupedColumns.map((col) => (
+            <div key={col.title}>
+              <p className="mb-2 font-mono text-[11px] uppercase tracking-widest text-midnight/50">
+                {col.title}
+              </p>
+              <div className="space-y-0.5">
+                {col.items.map(({ label, href, Icon }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-peach/10 text-peach transition-all duration-200 ease-out group-hover:bg-peach group-hover:text-white">
+                      <Icon />
+                    </div>
+                    <span className="font-body text-sm font-medium text-midnight transition-colors duration-200 group-hover:text-peach">
+                      {label}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Desktop mega menu trigger ────────────────────────────────────────────────
 
 function MegaTrigger({
   label,
   items,
+  columns = 1,
 }: {
   label: string;
-  items: typeof SOLUTIONS;
+  items: NavItem[];
+  columns?: 1 | 2;
 }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -211,7 +298,44 @@ function MegaTrigger({
         {label}
         <ChevronDown open={open} />
       </button>
-      <MegaMenuPanel items={items} open={open} />
+      <MegaMenuPanel items={items} open={open} columns={columns} />
+    </div>
+  );
+}
+
+function ResourcesMegaTrigger({
+  label,
+  columns: groupedColumns,
+}: {
+  label: string;
+  columns: { title: string; items: NavItem[] }[];
+}) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function handleEnter() {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  }
+
+  function handleLeave() {
+    timeoutRef.current = setTimeout(() => setOpen(false), 120);
+  }
+
+  return (
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <button
+        aria-expanded={open}
+        className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-body text-sm font-medium uppercase tracking-wider transition-all duration-200 ease-out active:scale-95 ${
+          open
+            ? "bg-midnight text-white"
+            : "text-midnight hover:bg-midnight hover:text-white"
+        }`}
+      >
+        {label}
+        <ChevronDown open={open} />
+      </button>
+      <ResourcesMegaMenuPanel columns={groupedColumns} open={open} />
     </div>
   );
 }
@@ -238,7 +362,7 @@ function MobileAccordion({
   onClose,
 }: {
   label: string;
-  items: typeof SOLUTIONS;
+  items: NavItem[];
   onClose: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -299,10 +423,10 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
           <MegaTrigger label="SOLUTIONS" items={SOLUTIONS} />
 
-          <MegaTrigger label="RESOURCES" items={RESOURCES} />
+          <ResourcesMegaTrigger label="RESOURCES" columns={RESOURCES_COLUMNS} />
 
           <Link
             href="/about-us"
@@ -350,7 +474,7 @@ export function Navbar() {
         <div className="space-y-0.5 px-4 pb-6 pt-3">
           <MobileAccordion label="SOLUTIONS" items={SOLUTIONS} onClose={() => setMobileOpen(false)} />
 
-          <MobileAccordion label="RESOURCES" items={RESOURCES} onClose={() => setMobileOpen(false)} />
+          <MobileAccordion label="RESOURCES" items={RESOURCES_FLAT} onClose={() => setMobileOpen(false)} />
 
           <Link
             href="/about-us"

@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Sleep Solutions",
+    "SleepRight McKinney",
+    "Dallas Sleep",
+    "Metroplex Pulmonary & Sleep Center"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Medical Center - McKinney",
+    "Methodist McKinney Hospital",
+    "Medical City McKinney",
+    "Texas Health Presbyterian Hospital Allen"
+  ],
+  "neighborhoods": [
+    "Stonebridge Ranch",
+    "Westridge",
+    "Craig Ranch",
+    "Eldorado Heights"
+  ],
+  "population": "200,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "3,900 to 19,500",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Dental Sleep Solutions",
+    "Sleep Dallas",
+    "SleepRight McKinney",
+    "Texas Sleep & TMJ Solutions"
+  ]
+}

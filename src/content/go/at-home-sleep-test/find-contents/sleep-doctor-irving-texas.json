@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Dallas",
+    "Star Sleep & Wellness",
+    "North Texas Neuroscience and Sleep Center, PA",
+    "Your Sleep Solution Center LLC"
+  ],
+  "hospitals": [
+    "Baylor Scott and White Medical Center – Irving",
+    "Las Colinas Sleep",
+    "Global Sleep",
+    "Sleep Healers of Irving"
+  ],
+  "neighborhoods": [
+    "North Irving",
+    "South Irving",
+    "Las Colinas",
+    "Valley Ranch"
+  ],
+  "population": "260,000+",
+  "insurance_companies": [
+    "UnitedHealthcare",
+    "Cigna",
+    "Humana",
+    "Tricare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "2,500 to 3,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Dallas",
+    "Star Sleep & Wellness",
+    "Dallas Sleep Better Solutions",
+    "Your Sleep Solution Center"
+  ]
+}

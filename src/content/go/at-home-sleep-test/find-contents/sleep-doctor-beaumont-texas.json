@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Sleep Clinic",
+    "Baptist Sleep Center – Eastex",
+    "Baptist Sleep Center – Broadway",
+    "Elite Sleep Solutions Diagnostic Sleep Lab"
+  ],
+  "hospitals": [
+    "Baptist Hospitals of Southeast Texas",
+    "The Medical Center of Southeast Texas",
+    "Texas Sleep Clinic",
+    "Beaumont Internal Medicine & Geriatric Associates"
+  ],
+  "neighborhoods": [
+    "South Park",
+    "Pear Orchard",
+    "Western Hills",
+    "Old Town"
+  ],
+  "population": "115,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "5,000 to 7,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Texas Sleep Clinic",
+    "The Medical Center of Southeast Texas Diagnostic Sleep Center",
+    "Texas Pulmonary Institute",
+    "Sleep Apnea Gurus"
+  ]
+}

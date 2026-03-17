@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Pulmonary Critical Care Consultants of Volusia (PCCC) – New Smyrna Beach",
+    "Pulmonary Critical Care Consultants of Volusia (PCCC) – Port Orange",
+    "Pulmonary Critical Care Consultants of Volusia (PCCC) – Daytona Beach",
+    "Pulmonary Critical Care Consultants of Volusia (PCCC) – DeLand"
+  ],
+  "hospitals": [
+    "AdventHealth DeLand",
+    "AdventHealth Fish Memorial",
+    "AdventHealth Daytona Beach",
+    "AdventHealth New Smyrna Beach"
+  ],
+  "neighborhoods": [
+    "Deltona",
+    "Daytona Beach",
+    "Port Orange",
+    "DeLand"
+  ],
+  "population": "600,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "84,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Pulmonary Critical Care Consultants of Volusia",
+    "Florida Center of Sleep Medicine",
+    "AdventHealth Outpatient Sleep Center",
+    "Atlantic Ear, Nose & Throat"
+  ]
+}

@@ -1,0 +1,378 @@
+[
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": null,
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-jacksonville-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-jacksonville-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Jacksonville",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-miami-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-miami-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Miami",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-tampa-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-tampa-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Tampa",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-orlando-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-orlando-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Orlando",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-st-petersburg-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-st-petersburg-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "St. Petersburg",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-port-st-lucie-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-port-st-lucie-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Port St. Lucie",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-hialeah-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-hialeah-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Hialeah",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-cape-coral-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-cape-coral-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Cape Coral",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-tallahassee-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-tallahassee-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Tallahassee",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-fort-lauderdale-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-fort-lauderdale-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Fort Lauderdale",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-pembroke-pines-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-pembroke-pines-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Pembroke Pines",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-hollywood-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-hollywood-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Hollywood",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-gainesville-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-gainesville-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Gainesville",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-miramar-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-miramar-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Miramar",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-palm-bay-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-palm-bay-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Palm Bay",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-coral-springs-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-coral-springs-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Coral Springs",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-west-palm-beach-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-west-palm-beach-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "West Palm Beach",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-lehigh-acres-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-lehigh-acres-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Lehigh Acres",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-lakeland-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-lakeland-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Lakeland",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-spring-hill-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-spring-hill-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Spring Hill",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-pompano-beach-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-pompano-beach-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Pompano Beach",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-clearwater-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-clearwater-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Clearwater",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-brandon-florida",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-brandon-florida",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Brandon",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": null,
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-houston-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-houston-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Houston",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-san-antonio-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-san-antonio-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "San Antonio",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-dallas-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-dallas-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Dallas",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-fort-worth-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-fort-worth-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Fort Worth",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-austin-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-austin-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Austin",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-el-paso-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-el-paso-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "El Paso",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-arlington-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-arlington-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Arlington",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-corpus-christi-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-corpus-christi-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Corpus Christi",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-plano-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-plano-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Plano",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-lubbock-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-lubbock-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Lubbock",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-laredo-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-laredo-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Laredo",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-irving-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-irving-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Irving",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-garland-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-garland-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Garland",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-frisco-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-frisco-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Frisco",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-mckinney-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-mckinney-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "McKinney",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-grand-prairie-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-grand-prairie-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Grand Prairie",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-amarillo-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-amarillo-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Amarillo",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-brownsville-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-brownsville-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Brownsville",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-denton-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-denton-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Denton",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-killeen-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-killeen-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Killeen",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-mesquite-city-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-mesquite-city-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Mesquite city",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/find/sleep-doctor-pasadena-texas",
+    "remoteUrl": "https://www.dumbo.health/go/find/sleep-doctor-pasadena-texas",
+    "pageType": "find",
+    "solution": "Sleep Doctor",
+    "city": "Pasadena",
+    "state": "Texas"
+  }
+]

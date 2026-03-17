@@ -1,0 +1,33 @@
+{
+  "sleep_clinics": [
+    "DML Sleep Diagnostics, LLC",
+    "Laredo Sleep Center, LLC",
+    "Laredo Sleep Center LLC",
+    "Laredo Sleep Center"
+  ],
+  "hospitals": [
+    "Doctors Hospital of Laredo",
+    "Laredo Medical Center",
+    "DML Sleep Diagnostics",
+    "Laredo Sleep Center"
+  ],
+  "neighborhoods": [
+    "Laredo",
+    "Rio Bravo",
+    "El Cenizo",
+    "Pueblo Nuevo"
+  ],
+  "population": "270,000+",
+  "insurance_companies": [
+    "UnitedHealthcare",
+    "Cigna",
+    "Humana",
+    "BlueCross BlueShield"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "30,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "DML Sleep Diagnostics",
+    "Laredo Sleep Center",
+    "Webb County Indigent Health Care Program"
+  ]
+}
