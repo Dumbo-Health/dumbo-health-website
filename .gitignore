@@ -35,3 +35,18 @@ next-env.d.ts
 
 # uploads
 public/uploads/
+
+# playwright / testing artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# screenshots and recordings captured during dev
+*.png
+*.jpg
+*.mov
+*.mp4
+*.zip
+# exception: keep brand/product images in public/
+!public/**/*.png
+!public/**/*.jpg
