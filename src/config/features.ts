@@ -48,5 +48,6 @@ export const features = {
     videoSection:    flag('NEXT_PUBLIC_SECTION_VIDEO'),          // VideoSection on homepage
     serviceArea:     flag('NEXT_PUBLIC_SECTION_SERVICE_AREA'),   // ServiceAreaBanner on homepage
     trustMarquee:    flag('NEXT_PUBLIC_SECTION_TRUST_MARQUEE'),  // TrustMarquee (global)
+    sleepAwarenessPromo: flag('NEXT_PUBLIC_SECTION_SLEEP_AWARENESS_PROMO'),  // Sleep Hub countdown banner (March)
   },
 } as const

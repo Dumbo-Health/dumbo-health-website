@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CONTACT, SHOPIFY } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
+import { SleepAwarenessPromoBanner } from "@/components/layout/sleep-awareness-promo-banner";
 
 export function LandingNavbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-sunlight/60 bg-daylight/95 backdrop-blur supports-[backdrop-filter]:bg-daylight/80">
+      <SleepAwarenessPromoBanner />
       <nav
         className="flex items-center justify-between"
         style={{ height: "72px", padding: "0 5%" }}

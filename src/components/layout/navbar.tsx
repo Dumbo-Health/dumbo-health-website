@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { APP_URL } from "@/lib/constants";
+import { SleepAwarenessPromoBanner } from "./sleep-awareness-promo-banner";
 
 // ─── Mega menu icons (geometric line style, matches brand) ───────────────────
 
@@ -409,6 +410,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-sunlight/60 bg-daylight/95 backdrop-blur supports-[backdrop-filter]:bg-daylight/80">
+      <SleepAwarenessPromoBanner />
       <nav className="flex items-center justify-between" style={{ height: "72px", padding: "0 5%" }}>
 
         {/* Logo */}
