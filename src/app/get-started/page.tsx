@@ -39,7 +39,7 @@ const FLOW_OPTIONS = [
 function getSectionPhoto(slug: string | undefined): string | null {
   if (!slug) return null;
   if (slug.includes("symptom") || slug.includes("sleep-q") || slug.includes("snoring")) return "/images/people/woman sleeping peacefully.jpg";
-  if (slug.includes("risk") || slug.includes("health") || slug.includes("factor") || slug.includes("profile")) return "/images/people/woman-blue-pajamas.png";
+  if (slug.includes("risk") || slug.includes("health") || slug.includes("factor")) return "/images/people/woman-blue-pajamas.png";
   if (slug.includes("impact") || slug.includes("daytime") || slug.includes("day")) return "/images/people/man-drinking-coffee.png";
   if (slug.includes("treatment") || slug.includes("cpap") || slug.includes("diag") || slug.includes("dx")) return "/images/people/man-with-pillows.png";
   return null;
