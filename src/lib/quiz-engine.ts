@@ -134,6 +134,9 @@ export function matchesResultConditions(
   if (conditions.tags_include) {
     if (!conditions.tags_include.every((tag) => profile.tags.includes(tag))) return false;
   }
+  if (conditions.tags_include_any) {
+    if (!conditions.tags_include_any.some((tag) => profile.tags.includes(tag))) return false;
+  }
   if (conditions.tags_exclude) {
     if (conditions.tags_exclude.some((tag) => profile.tags.includes(tag))) return false;
   }
