@@ -12,11 +12,11 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const EASE_OUT: [number, number, number, number] = [0.4, 0, 0.6, 1];
 const t = (delay = 0, duration = 0.5) => ({ ease: EASE, duration, delay });
 
-// Screen-level: slow deliberate entrance, quick clean exit
+// Screen-level: deliberate entrance, gentle fade exit (no directional snap)
 const screen = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0, transition: { ease: EASE, duration: 0.65 } },
-  exit: { opacity: 0, y: -18, transition: { ease: EASE_OUT, duration: 0.22 } },
+  exit: { opacity: 0, y: 0, transition: { ease: "easeIn", duration: 0.28 } },
 };
 
 // ── Static data ────────────────────────────────────────────────────────────────
@@ -50,8 +50,8 @@ function QuizCard({ children, style }: { children: React.ReactNode; style?: Reac
         backgroundColor: "white",
         borderRadius: 28,
         boxShadow: "0 4px 40px rgba(3,31,61,0.07), 0 1px 4px rgba(3,31,61,0.04)",
-        padding: "clamp(28px, 6vw, 48px)",
-        maxWidth: 560,
+        padding: "clamp(32px, 5vw, 56px)",
+        maxWidth: 640,
         width: "100%",
         ...style,
       }}
@@ -84,7 +84,7 @@ function AnimatedText({ text, delay = 0 }: { text: string; delay?: number }) {
 // ── Reflection moments (answer-triggered acknowledgment screens) ───────────────
 interface ReflectionMoment {
   id: string;
-  icon: string;
+  iconSrc: string;
   stat: string;
   headline: string;
   body: string;
@@ -93,31 +93,31 @@ interface ReflectionMoment {
 const REFLECTION_MOMENTS: Record<string, ReflectionMoment> = {
   "snoring:yes-loud": {
     id: "snoring-loud",
-    icon: "🔊",
+    iconSrc: "/icons/brand/moon.png",
     stat: "90 million Americans snore regularly",
     headline: "You're not alone",
-    body: "Loud snoring is one of the most common early signs of sleep apnea. Most people who snore loudly don't know why — and many of them have sleep apnea without realizing it.",
+    body: "Loud snoring is one of the most common early signs of sleep apnea. Most people who snore loudly don't know why, and many of them have sleep apnea without realizing it.",
   },
   "snoring:sometimes": {
     id: "snoring-sometimes",
-    icon: "😴",
+    iconSrc: "/icons/brand/moon.png",
     stat: "1 in 4 adults snores intermittently",
     headline: "Even occasional snoring matters",
-    body: "Snoring happens when the airway narrows during sleep. It doesn't have to be every night to be meaningful — it's worth understanding what's behind it.",
+    body: "Snoring happens when the airway narrows during sleep. It doesn't have to happen every night to be worth understanding.",
   },
   "breathing-pauses:yes": {
     id: "breathing-pauses",
-    icon: "⏸",
-    stat: "One of the strongest signals we look for",
-    headline: "That's important",
-    body: "When breathing pauses during sleep, the brain wakes just enough to restart it — but not enough for you to remember. This can happen dozens of times each night, quietly exhausting you.",
+    iconSrc: "/icons/brand/heart.png",
+    stat: "One of the clearest signals we look for",
+    headline: "That's significant",
+    body: "When breathing pauses during sleep, the brain wakes just enough to restart it, but not enough for you to remember. This can happen dozens of times each night, quietly exhausting you.",
   },
   "daytime-sleepiness:daily": {
     id: "daytime-sleepiness",
-    icon: "☁️",
+    iconSrc: "/icons/brand/sun.png",
     stat: "80 million Americans have undiagnosed sleep apnea",
     headline: "This exhaustion isn't just how you're wired",
-    body: "Most people with sleep apnea think they're just tired. They don't realize their sleep is being interrupted hundreds of times each night. You're asking exactly the right questions.",
+    body: "Most people with sleep apnea think they're just tired. They don't realize their sleep is being disrupted hundreds of times each night. You're asking exactly the right questions.",
   },
 };
 
@@ -131,12 +131,12 @@ function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; on
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
       <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
         <motion.div
-          initial={{ scale: 0.4, opacity: 0 }}
+          initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ ease: [0.34, 1.56, 0.64, 1], duration: 0.65 }}
-          style={{ fontSize: "3.25rem", marginBottom: 32, lineHeight: 1 }}
+          transition={{ ease: [0.34, 1.56, 0.64, 1], duration: 0.7 }}
+          style={{ width: 72, height: 72, margin: "0 auto 36px", display: "flex", alignItems: "center", justifyContent: "center" }}
         >
-          {moment.icon}
+          <Image src={moment.iconSrc} alt="" width={64} height={64} style={{ objectFit: "contain" }} />
         </motion.div>
 
         <motion.p
@@ -197,14 +197,14 @@ function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; on
 function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      <div style={{ maxWidth: 540, width: "100%", textAlign: "center" }}>
+      <div style={{ maxWidth: 620, width: "100%", textAlign: "center" }}>
         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05)}
           style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#FF8361", marginBottom: 18 }}>
           Sleep assessment
         </motion.p>
 
         <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.1)}
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.875rem, 5vw, 2.75rem)", color: "#031F3D", lineHeight: 1.12, marginBottom: 12 }}>
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(2rem, 4.5vw, 3.25rem)", color: "#031F3D", lineHeight: 1.1, marginBottom: 14 }}>
           Where are you on your sleep journey?
         </motion.h1>
 
@@ -227,7 +227,7 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
                 backgroundColor: "white",
                 border: "1.5px solid rgba(3,31,61,0.09)",
                 borderRadius: 20,
-                padding: "20px 22px",
+                padding: "clamp(20px, 2.5vw, 28px) clamp(22px, 2.5vw, 30px)",
                 textAlign: "left",
                 cursor: "pointer",
                 display: "flex",
@@ -314,7 +314,7 @@ function OptionBtn({ label, selected, onClick, type }: { label: string; selected
         backgroundColor: selected ? "rgba(255,131,97,0.06)" : "white",
         border: selected ? "2px solid #FF8361" : "1.5px solid rgba(3,31,61,0.1)",
         borderRadius: 14,
-        padding: "13px 16px",
+        padding: "clamp(13px, 1.5vw, 17px) clamp(16px, 2vw, 20px)",
         textAlign: "left",
         cursor: "pointer",
         display: "flex",
@@ -338,7 +338,7 @@ function OptionBtn({ label, selected, onClick, type }: { label: string; selected
           </span>
         )}
       </span>
-      <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "#031F3D", fontWeight: selected ? 500 : 400, lineHeight: 1.35 }}>
+      <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)", color: "#031F3D", fontWeight: selected ? 500 : 400, lineHeight: 1.35 }}>
         {label}
       </span>
     </motion.button>
@@ -381,7 +381,7 @@ function QuestionCard({
 
   function handleSingle(value: string) {
     setSelected(value);
-    setTimeout(() => onAnswer(value), 220);
+    setTimeout(() => onAnswer(value), 420);
   }
 
   function handleMulti(value: string) {
@@ -408,7 +408,7 @@ function QuestionCard({
         </div>
 
         {/* Question */}
-        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.3rem, 4vw, 1.625rem)", color: "#031F3D", lineHeight: 1.3, marginBottom: question.why_we_ask ? 10 : 24 }}>
+        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.375rem, 2.8vw, 2rem)", color: "#031F3D", lineHeight: 1.25, marginBottom: question.why_we_ask ? 12 : 28 }}>
           <AnimatedText text={question.question_text} delay={0.05} />
         </h2>
 
@@ -1085,6 +1085,17 @@ export default function QuizPage() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Brand texture — Lifelines wave */}
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, height: 110,
+        backgroundImage: "url('/icons/brand/lifeline.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
+        opacity: 0.32,
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
 
       {/* Skeleton pulse animation */}
       <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }`}</style>

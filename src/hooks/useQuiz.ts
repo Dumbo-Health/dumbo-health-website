@@ -32,6 +32,16 @@ export function useQuiz(initialFlowSlug: string) {
   const [templates, setTemplates] = useState<ResultsTemplate[]>([]);
   const [submissionId, setSubmissionId] = useState<string | null>(null);
 
+  // Capture UTMs to sessionStorage on first load so they survive navigation
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach((key) => {
+      const val = params.get(key);
+      if (val) sessionStorage.setItem(key, val);
+    });
+  }, []);
+
   useEffect(() => {
     async function load() {
       setState((prev) => ({ ...prev, isLoading: true }));
@@ -133,6 +143,7 @@ export function useQuiz(initialFlowSlug: string) {
   const submitResults = useCallback(async () => {
     const stateAnswer = state.answers["state"] || state.answers["state-dx"] || null;
     const insuranceAnswer = state.answers["insurance-type"] || state.answers["insurance-type-dx"] || null;
+    const emailAnswer = state.answers["email"] || state.answers["email-dx"] || null;
     const result = await submitQuiz({
       flow_slug: state.flowSlug,
       answers: state.answers,
@@ -140,10 +151,11 @@ export function useQuiz(initialFlowSlug: string) {
       risk_score: state.riskScore,
       state: stateAnswer as string | null,
       insurance: insuranceAnswer as string | null,
+      email: (emailAnswer as string) || null,
       device_type: typeof window !== "undefined" && window.innerWidth < 768 ? "mobile" : "desktop",
-      utm_source: typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("utm_source") : null,
-      utm_medium: typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("utm_medium") : null,
-      utm_campaign: typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("utm_campaign") : null,
+      utm_source: typeof window !== "undefined" ? (sessionStorage.getItem("utm_source") || new URLSearchParams(window.location.search).get("utm_source")) : null,
+      utm_medium: typeof window !== "undefined" ? (sessionStorage.getItem("utm_medium") || new URLSearchParams(window.location.search).get("utm_medium")) : null,
+      utm_campaign: typeof window !== "undefined" ? (sessionStorage.getItem("utm_campaign") || new URLSearchParams(window.location.search).get("utm_campaign")) : null,
     });
     if (result) setSubmissionId(result.id);
     return result;

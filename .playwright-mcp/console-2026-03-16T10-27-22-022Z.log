@@ -1,0 +1,4 @@
+[    7492ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://187.77.160.138:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[    7512ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://187.77.160.138:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[    7532ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://187.77.160.138:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[    7576ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://187.77.160.138:3003/fonts/aeonik/Aeonik-Bold.woff2:0

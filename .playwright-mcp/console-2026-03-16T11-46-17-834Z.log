@@ -1,0 +1,2 @@
+[  105624ms] [WARNING] Image with src "/images/hero/hero-device.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://187.77.160.138:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297

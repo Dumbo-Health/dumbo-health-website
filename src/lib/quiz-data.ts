@@ -59,13 +59,13 @@ export async function fetchQuizFlow(flowSlug: string): Promise<{
 }
 
 export async function submitQuiz(submission: QuizSubmission): Promise<{ id: string } | null> {
-  const { data, error } = await supabase
-    .from("quiz_submissions")
-    .insert(submission)
-    .select("id")
-    .single();
-  if (error) return null;
-  return data;
+  const res = await fetch("/api/quiz/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(submission),
+  }).catch(() => null);
+  if (!res || !res.ok) return null;
+  return { id: "submitted" };
 }
 
 export async function fetchABTest(flowId: string): Promise<{

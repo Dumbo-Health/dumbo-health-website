@@ -1,0 +1,18 @@
+[    1467ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[    1468ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[    1468ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[    1468ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[    1678ms] [WARNING] Image with src "https://cdn.prod.website-files.com/68684afdb2c32b34342f1554/68e3b5bd4cd6c097b974dfcc_Nicky%20Charles%20Peters%20Headshot%202025%20(1).png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
+[    1679ms] [WARNING] Image with src "https://cdn.prod.website-files.com/68684afdb2c32b34342f1554/69a8778ec2ea721dd1e7d3c8_Close%20Up%20Person%20Working%20at%20Home%20(1).png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
+[   39310ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[   39320ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[   39320ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[   39320ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[   47587ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[   47597ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[   47597ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[   47597ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[   53910ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[   53913ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[   53927ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[   53928ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0

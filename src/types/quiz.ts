@@ -106,6 +106,7 @@ export interface QuizSubmission {
   risk_score: number;
   state: string | null;
   insurance: string | null;
+  email: string | null;
   device_type: string;
   utm_source: string | null;
   utm_medium: string | null;

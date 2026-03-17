@@ -1,0 +1,168 @@
+[    1487ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[    1488ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[    1488ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[    1489ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[    1772ms] [WARNING] Image with src "https://cdn.prod.website-files.com/68684afdb2c32b34342f1554/68e3b5bd4cd6c097b974dfcc_Nicky%20Charles%20Peters%20Headshot%202025%20(1).png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
+[ 2249533ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2252995ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2256218ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2286956ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2287402ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2287601ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 2288274ms] [ERROR] ./src/components/sleep-test/symptoms-grid.tsx:48:7
+Parsing ecmascript source code failed
+  46 |         background: "linear-gradient(to bottom, #FCF6ED 0%, #FFD6AD 48%, #FCF6ED 100%)",
+  47 |       }}
+> 48 |       <div style={{ padding: "0 5%" }}>
+     |       ^
+  49 |         {/* Header */}
+  50 |         <div className="text-center" style={{ maxWidth: "580px", margin: "0 auto 3.5rem" }}>
+  51 |           <motion.p
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./src/components/sleep-test/symptoms-grid.tsx
+    ./src/app/sleep-test/page.tsx @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:3127
+[ 3846237ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 3846238ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 3846239ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 3846240ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 7095096ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 7095127ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 7095132ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 7095137ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 7185278ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 7185279ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 7185280ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 7185282ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 7300794ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
+[ 7305817ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fis-cpap-covered-by-insurance%2F690c648ead3de0b176845421_Women%252520Sitting%252520Together%252520Plan%252520(4).png&w=640&q=75:0
+[ 7306261ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fhow-do-at-home-sleep-studies-work%2F69a86150eab6be65fc11c332_Senior%252520Man%252520Taking%252520Notes.png&w=640&q=75:0
+[ 7306279ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fauthors%2Fnicky-charles-peters%2F68e3b5bd4cd6c097b974dfcc_Nicky%252520Charles%252520Peters%252520Headshot%2525202025%252520(1).png&w=640&q=75:0
+[ 7306296ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 7306297ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 7306299ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 7306300ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 7306744ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fwhat-are-sleep-tracking-rings%2F69a8778ec2ea721dd1e7d3c8_Close%252520Up%252520Person%252520Working%252520at%252520Home%252520(1).png&w=640&q=75:0
+[ 7306752ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fwhat-is-sleep-apnea%2F69a8616cd6cd89d3a5198a7c_People%252520Relaxing%252520Inside.png&w=640&q=75:0
+[ 8397222ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 8397222ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 8397223ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 8397226ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 8766763ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
+[ 8771409ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fis-cpap-covered-by-insurance%2F690c648ead3de0b176845421_Women%252520Sitting%252520Together%252520Plan%252520(4).png&w=640&q=75:0
+[ 8772326ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Regular.woff2:0
+[ 8772377ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/nohemi/Nohemi-Medium.woff2:0
+[ 8772428ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik-mono/AeonikMono-Regular.woff2:0
+[ 8772429ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/fonts/aeonik/Aeonik-Bold.woff2:0
+[ 8773033ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fhow-do-at-home-sleep-studies-work%2F69a86150eab6be65fc11c332_Senior%252520Man%252520Taking%252520Notes.png&w=640&q=75:0
+[ 8773477ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fwhat-are-sleep-tracking-rings%2F69a8778ec2ea721dd1e7d3c8_Close%252520Up%252520Person%252520Working%252520at%252520Home%252520(1).png&w=640&q=75:0
+[ 8773490ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fauthors%2Fnicky-charles-peters%2F68e3b5bd4cd6c097b974dfcc_Nicky%252520Charles%252520Peters%252520Headshot%2525202025%252520(1).png&w=640&q=75:0
+[ 8773504ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:3003/_next/image?url=https%3A%2F%2Figuhaoprruznhweejeok.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fblog-images%2Fposts%2Fwhat-is-sleep-apnea%2F69a8616cd6cd89d3a5198a7c_People%252520Relaxing%252520Inside.png&w=640&q=75:0
+[ 8774491ms] [WARNING] Image with src "https://iguhaoprruznhweejeok.supabase.co/storage/v1/object/public/blog-images/authors/nicky-charles-peters/68e3b5bd4cd6c097b974dfcc_Nicky%2520Charles%2520Peters%2520Headshot%25202025%2520(1).png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3003/_next/static/chunks/b2b3e_next_dist_77a734fe._.js:2297
