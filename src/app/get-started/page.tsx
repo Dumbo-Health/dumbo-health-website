@@ -35,6 +35,57 @@ const FLOW_OPTIONS = [
   },
 ];
 
+// ── Animated gradient background (major transitions) ──────────────────────────
+function AnimatedGradientBg() {
+  return (
+    <>
+      {/* Base: Sunlight → Daylight */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        style={{
+          position: "fixed", inset: 0, zIndex: -2, pointerEvents: "none",
+          background: "linear-gradient(145deg, #FCF6ED 0%, #F5E6D1 55%, #FFD6AD 100%)",
+        }}
+      />
+      {/* Blob 1: top-right, slow pulse */}
+      <motion.div
+        animate={{ opacity: [0.55, 0.85, 0.55], scale: [1, 1.18, 1], x: [0, 28, 0], y: [0, -18, 0] }}
+        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+        style={{
+          position: "fixed", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
+          maxWidth: 700, maxHeight: 700,
+          borderRadius: "50%", zIndex: -1, pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(255,214,173,0.75) 0%, transparent 65%)",
+        }}
+      />
+      {/* Blob 2: bottom-left, offset timing */}
+      <motion.div
+        animate={{ opacity: [0.35, 0.65, 0.35], scale: [1.1, 1, 1.1], x: [0, -22, 0], y: [0, 20, 0] }}
+        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, delay: 2 }}
+        style={{
+          position: "fixed", bottom: "-15%", left: "-10%", width: "50vw", height: "50vw",
+          maxWidth: 600, maxHeight: 600,
+          borderRadius: "50%", zIndex: -1, pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(255,214,173,0.55) 0%, transparent 65%)",
+        }}
+      />
+      {/* Blob 3: center, slow drift */}
+      <motion.div
+        animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.25, 1] }}
+        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+        style={{
+          position: "fixed", top: "30%", left: "25%", width: "45vw", height: "45vw",
+          maxWidth: 560, maxHeight: 560,
+          borderRadius: "50%", zIndex: -1, pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(245,230,209,0.8) 0%, transparent 65%)",
+        }}
+      />
+    </>
+  );
+}
+
 // ── Section photo mapping ──────────────────────────────────────────────────────
 function getSectionPhoto(slug: string | undefined): string | null {
   if (!slug) return null;
@@ -139,16 +190,7 @@ function getReflectionTrigger(slug: string | undefined, answer: string | string[
 function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; onContinue: () => void }) {
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      {/* Gradient atmosphere */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.4 }}
-        style={{
-          position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none",
-          background: "radial-gradient(ellipse at 50% 65%, rgba(255,214,173,0.38) 0%, rgba(245,230,209,0.22) 45%, transparent 75%)",
-        }}
-      />
+      <AnimatedGradientBg />
       <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
@@ -288,16 +330,7 @@ function SectionInterstitial({ title, subtitle, onContinue, sectionSlug }: { tit
 
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      {/* Gradient atmosphere */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.4 }}
-        style={{
-          position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none",
-          background: "radial-gradient(ellipse at 50% 65%, rgba(255,214,173,0.38) 0%, rgba(245,230,209,0.22) 45%, transparent 75%)",
-        }}
-      />
+      <AnimatedGradientBg />
 
       <div style={{ maxWidth: 580, width: "100%" }}>
         {photoSrc ? (
