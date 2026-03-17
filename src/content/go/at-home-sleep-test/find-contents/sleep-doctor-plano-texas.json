@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Dallas Sleep",
+    "4 Better Sleep Centers",
+    "Sleep Medicine Associates of Texas",
+    "Dream Sleep Medicine"
+  ],
+  "hospitals": [
+    "Medical City Plano",
+    "Baylor Scott & White Medical Center – Plano",
+    "Children's Medical Center Plano",
+    "Texas Health Center for Diagnostics & Surgery"
+  ],
+  "neighborhoods": [
+    "Willow Bend",
+    "Park Forest",
+    "Caddo Park",
+    "Briarwood"
+  ],
+  "population": "290,000+",
+  "insurance_companies": [
+    "Cigna",
+    "United Healthcare",
+    "Aetna",
+    "Blue Cross Blue Shield"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 50,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Rehab",
+    "O2 Pulmonary & Sleep Group",
+    "Dallas Sleep",
+    "Plano Sleep & Headache Relief"
+  ]
+}

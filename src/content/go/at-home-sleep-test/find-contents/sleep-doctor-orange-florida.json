@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "AdventHealth Sleep Center Orlando",
+    "Better Sleep Clinics - Orlando Sleep Medicine Center",
+    "Pediatric Sleep Center - Children's Hospital of Orange County",
+    "Sleep Center Orange County"
+  ],
+  "hospitals": [
+    "Orlando Regional Medical Center",
+    "AdventHealth Kissimmee",
+    "AdventHealth DeLand",
+    "Florida Cardiopulmonary Center"
+  ],
+  "neighborhoods": [
+    "Pine Hills",
+    "Horizon West",
+    "Four Corners",
+    "Apopka"
+  ],
+  "population": "1.5 million",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "United Healthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "tens of thousands",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Florida Center for Sleep Medicine",
+    "Orlando Health Sleep Disorders Center",
+    "AdventHealth Sleep Disorders Center",
+    "University of Central Florida Sleep Disorders Center"
+  ]
+}

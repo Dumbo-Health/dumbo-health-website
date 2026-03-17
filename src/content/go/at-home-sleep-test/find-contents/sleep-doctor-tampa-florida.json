@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Tampa Bay Sleep Center",
+    "USF Sleep Center",
+    "Pulmonary & Sleep of Tampa Bay",
+    "Tampa Pulmonary and Sleep Specialists"
+  ],
+  "hospitals": [
+    "Tampa General Hospital",
+    "USF Sleep Center",
+    "Tampa Pulmonary and Sleep Specialists",
+    "Tampa Bay Sleep Center"
+  ],
+  "neighborhoods": [
+    "East Tampa",
+    "Tampa Palms",
+    "Gandy-Sun Bay South",
+    "Lowry Park Central"
+  ],
+  "population": "400,000+",
+  "insurance_companies": [
+    "Florida Blue",
+    "UnitedHealthcare",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "34,000 to 146,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Tampa Bay Sleep Center",
+    "USF Sleep Center",
+    "Tampa General Hospital Sleep Disorders Center",
+    "BayCare Sleep Centers"
+  ]
+}

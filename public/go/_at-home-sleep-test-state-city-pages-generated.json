@@ -1,0 +1,331 @@
+[
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/florida",
+    "pageType": "at-home-sleep-test",
+    "city": null,
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/jacksonville-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/jacksonville-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Jacksonville",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/miami-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/miami-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Miami",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/tampa-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/tampa-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Tampa",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/orlando-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/orlando-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Orlando",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/st-petersburg-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/st-petersburg-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "St. Petersburg",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/port-st-lucie-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/port-st-lucie-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Port St. Lucie",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/hialeah-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/hialeah-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Hialeah",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/cape-coral-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/cape-coral-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Cape Coral",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/tallahassee-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/tallahassee-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Tallahassee",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/fort-lauderdale-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/fort-lauderdale-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Fort Lauderdale",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/pembroke-pines-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/pembroke-pines-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Pembroke Pines",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/hollywood-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/hollywood-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Hollywood",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/gainesville-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/gainesville-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Gainesville",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/miramar-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/miramar-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Miramar",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/palm-bay-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/palm-bay-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Palm Bay",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/coral-springs-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/coral-springs-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Coral Springs",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/west-palm-beach-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/west-palm-beach-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "West Palm Beach",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/lehigh-acres-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/lehigh-acres-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Lehigh Acres",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/lakeland-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/lakeland-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Lakeland",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/spring-hill-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/spring-hill-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Spring Hill",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/pompano-beach-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/pompano-beach-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Pompano Beach",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/clearwater-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/clearwater-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Clearwater",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/brandon-florida",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/brandon-florida",
+    "pageType": "at-home-sleep-test",
+    "city": "Brandon",
+    "state": "Florida"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/texas",
+    "pageType": "at-home-sleep-test",
+    "city": null,
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/houston-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/houston-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Houston",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/san-antonio-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/san-antonio-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "San Antonio",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/dallas-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/dallas-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Dallas",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/fort-worth-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/fort-worth-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Fort Worth",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/austin-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/austin-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Austin",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/el-paso-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/el-paso-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "El Paso",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/arlington-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/arlington-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Arlington",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/corpus-christi-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/corpus-christi-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Corpus Christi",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/plano-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/plano-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Plano",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/lubbock-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/lubbock-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Lubbock",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/laredo-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/laredo-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Laredo",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/irving-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/irving-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Irving",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/garland-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/garland-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Garland",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/frisco-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/frisco-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Frisco",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/mckinney-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/mckinney-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "McKinney",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/grand-prairie-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/grand-prairie-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Grand Prairie",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/amarillo-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/amarillo-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Amarillo",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/brownsville-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/brownsville-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Brownsville",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/denton-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/denton-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Denton",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/killeen-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/killeen-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Killeen",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/mesquite-city-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/mesquite-city-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Mesquite city",
+    "state": "Texas"
+  },
+  {
+    "localUrl": "http://127.0.0.1:3000/go/at-home-sleep-test/pasadena-texas",
+    "remoteUrl": "https://www.dumbo.health/go/at-home-sleep-test/pasadena-texas",
+    "pageType": "at-home-sleep-test",
+    "city": "Pasadena",
+    "state": "Texas"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "TGH Pulmonary Care & Sleep Institute",
+    "Sleep Disorders Center at HCA Florida JFK Hospital",
+    "Jupiter Medical Center Sleep Center",
+    "ISN Sleep Centers of Palm Beach County"
+  ],
+  "hospitals": [
+    "HCA Florida JFK Hospital",
+    "Cleveland Clinic Florida",
+    "Boca Raton Regional Hospital",
+    "Jupiter Medical Center"
+  ],
+  "neighborhoods": [
+    "West Palm Beach",
+    "Boca Raton",
+    "Boynton Beach",
+    "Delray Beach"
+  ],
+  "population": "1.5 million",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "tens of thousands",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Jupiter Medical Center Sleep Center",
+    "Sleep Disorders Center at JFK Medical Center",
+    "The Center for Sinus, Allergy, and Sleep Wellness",
+    "Sleep Disorders Center at HCA Florida JFK Hospital"
+  ]
+}

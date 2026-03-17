@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Perry Dental Health, PA",
+    "Pulmonary and Sleep Institute",
+    "CPAP of San Antonio",
+    "Dr. Drake's Sleep Solutions"
+  ],
+  "hospitals": [
+    "University Health",
+    "Baptist Medical Center",
+    "Methodist Hospital",
+    "South Texas Medical Center"
+  ],
+  "neighborhoods": [
+    "Timberwood Park",
+    "Cibolo",
+    "Converse",
+    "Universal City"
+  ],
+  "population": "2 million+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield of Texas",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Over 700,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep and Wellness Institute of Texas",
+    "Academy Diagnostics",
+    "Sleep Therapy & Research Center",
+    "The Center for Sleep at Methodist Hospital"
+  ]
+}

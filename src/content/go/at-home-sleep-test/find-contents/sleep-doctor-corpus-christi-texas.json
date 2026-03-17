@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Christian Care Sleep Center",
+    "SleepRite Center",
+    "Torr Sleep Center",
+    "Bay Area Sleep Evaluation Center"
+  ],
+  "hospitals": [
+    "Driscoll Children's Hospital",
+    "Corpus Christi Medical Center Bay Area",
+    "Corpus Christi Medical Center – Doctors Regional",
+    "Corpus Christi Medical Center Northwest"
+  ],
+  "neighborhoods": [
+    "South Side",
+    "Central City",
+    "Bay Area",
+    "Flour Bluff"
+  ],
+  "population": "320,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "approximately 100,000 adults",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Bay Area Sleep Evaluation Center",
+    "Texas Christian Care Sleep Center",
+    "Sleep Apnea Gurus",
+    "SleepRite Center"
+  ]
+}

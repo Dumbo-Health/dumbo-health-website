@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Medicine Consultants of North Texas",
+    "4 Better Sleep Centers",
+    "University Hospital Sleep and Breathing Disorders Clinic",
+    "SleepMed Dallas Office"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Heart and Vascular Hospital – Dallas",
+    "UT Southwestern Medical Center",
+    "Texas Health Presbyterian Hospital Dallas",
+    "Parkland Memorial Hospital"
+  ],
+  "neighborhoods": [
+    "Lake Highlands",
+    "Highland Park",
+    "Lakewood Heights",
+    "Midway Hollow"
+  ],
+  "population": "2.6 million",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "United Healthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "approximately 325,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "University Hospital Sleep and Breathing Disorders Clinic",
+    "Children's Health Sleep Disorders Center Dallas",
+    "Sleep Dallas",
+    "The Texas Sleep Doctor"
+  ]
+}

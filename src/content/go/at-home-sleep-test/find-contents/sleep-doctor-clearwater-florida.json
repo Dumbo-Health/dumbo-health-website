@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "St. Francis Sleep, Allergy & Lung Institute",
+    "Breathe Well Sleep Well",
+    "Serenity Sleep Solutions",
+    "Bay Area Chest Physicians"
+  ],
+  "hospitals": [
+    "Morton Plant Hospital",
+    "HCA Florida Largo Hospital",
+    "Mease Countryside Hospital",
+    "St. Francis Sleep, Allergy & Lung Institute"
+  ],
+  "neighborhoods": [
+    "On Top Of The World",
+    "Greenbriar Club",
+    "Pride",
+    "Wyatt Street"
+  ],
+  "population": "120,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Florida Blue",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 1,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "A.W.A.K.E. Support Group at Mease Countryside Hospital",
+    "Breathe Well Sleep Well",
+    "St. Francis Sleep, Allergy & Lung Institute",
+    "St. Joseph’s Hospital’s A.W.A.K.E. Group"
+  ]
+}

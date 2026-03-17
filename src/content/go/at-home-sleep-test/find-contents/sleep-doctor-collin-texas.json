@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "O2 Pulmonary & Sleep Group",
+    "Collin County Sleep Diagnostics",
+    "Sleep Dallas",
+    "Dallas Center for Sleep Disorders"
+  ],
+  "hospitals": [
+    "Medical City Plano",
+    "Baylor Scott & White Medical Center – Plano",
+    "Medical City McKinney",
+    "Baylor Scott & White Medical Center – McKinney"
+  ],
+  "neighborhoods": [
+    "Plano",
+    "McKinney",
+    "Frisco",
+    "Allen"
+  ],
+  "population": "1.2 million",
+  "insurance_companies": [
+    "United Healthcare",
+    "Cigna",
+    "Blue Cross Blue Shield",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "1 million+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Collin County ENT",
+    "O2 Pulmonary & Sleep Group",
+    "Dallas Sleep",
+    "Sleep Dallas"
+  ]
+}

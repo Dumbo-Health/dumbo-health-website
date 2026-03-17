@@ -1,0 +1,124 @@
+{
+    "slug": "osa-obesity-ai-screening-nightmares",
+    "meta_title": "OSA Obesity Link, AI Wearable Screening, Childhood Nightmare Therapy",
+    "title": "Sleep Science: Feb 22-28, 2026",
+    "keywords": [
+        "sleep apnea research 2026",
+        "obstructive sleep apnea hypercoagulability",
+        "OSA blood clots obesity",
+        "Mendelian randomization sleep apnea",
+        "HRV patch OSA screening",
+        "AI wearable sleep apnea detection",
+        "heart rate variability OSA",
+        "cardiovascular hypopnea index",
+        "childhood nightmares treatment",
+        "DARC-NESS nightmare therapy",
+        "nightmare disorder children",
+        "cognitive behavioral therapy nightmares",
+        "pediatric sleep disorders 2026",
+        "nightmare rescripting children",
+        "nightmare efficacy",
+        "OSA obesity thrombosis",
+        "sleep apnea non-invasive screening",
+        "sleep research February 2026"
+    ],
+    "meta_description": "Weekly digest of sleep apnea research from Feb 22-28, 2026: OSA and hypercoagulability driven by obesity, AI wearable patch for OSA screening, and a breakthrough cognitive-behavioral model for childhood nightmares.",
+    "intro": "This week brought compelling new insights into sleep disorders from our four monitored journals. The standout finding: obstructive sleep apnea's relationship with blood clotting may be more about obesity than the sleep disorder itself — a paradigm shift that could reshape treatment priorities. Meanwhile, AI-powered wearable technology achieved remarkable accuracy in OSA screening, and a novel cognitive-behavioral model for childhood nightmares offers hope for millions of young sufferers. Across these publications, one theme emerges: precision in understanding what actually causes sleep-related health problems leads to better, more targeted treatments.",
+    "digest": [
+        {
+            "title": "Obstructive Sleep Apnea and Hypercoagulability: Combining Observational and Mendelian Randomization Analyses to Explore Causal Relationships",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Sleep apnea doesn't directly cause blood clotting issues — it's <strong>obesity</strong> that's the real problem, meaning weight loss might be more important than breathing machines for preventing blood clots.</p>",
+            "summary": "<p>This groundbreaking study combined clinical observations from <strong>790 OSA patients</strong> with genetic (Mendelian randomization) analysis to investigate whether sleep apnea directly causes blood clotting problems. While severe OSA patients showed higher fibrinogen levels and shorter clotting times, these associations vanished after controlling for BMI. Genetic evidence revealed <strong>no direct causal link</strong> between OSA and hypercoagulability — obesity is the true culprit. The finding suggests that weight management, rather than CPAP alone, should be prioritized to reduce thrombotic risk in OSA patients.</p>",
+            "why_it_matters": "<p>Clinicians may be over-attributing thrombotic risk to OSA severity rather than the underlying obesity. Redirecting treatment focus toward weight loss could produce more meaningful reductions in blood clot risk for patients who have both conditions.</p>",
+            "author": "Su L, Wu L, Han T, Li Y, Zhang X | Nature and Science of Sleep | January 31, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/obstructive-sleep-apnea-and-hypercoagulability-combining-observational-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Patch-Type Heart Rate Variability Analysis with Artificial Intelligence for Detection of Obstructive Sleep Apnea",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>A stick-on heart monitor using AI can detect sleep apnea with over <strong>81% accuracy</strong> just by tracking your heartbeat — no wires, tubes, or oxygen sensors needed.</p>",
+            "summary": "<p>Researchers developed an AI-powered wearable patch that achieved <strong>81.4% accuracy</strong> in screening for moderate-to-severe OSA (AHI ≥15) by analyzing heart rate patterns overnight. The adhesive patch continuously monitors heart rhythms and uses <strong>375 different parameters</strong> — including heart rate complexity and ECG amplitude — to calculate a new \"Cardiovascular Hypopnea Index\" (CVHI). This non-invasive approach outperformed demographic-based screening (73%) and previous ECG methods (70.6%), offering a practical alternative to uncomfortable multi-wire home sleep tests for initial OSA screening and treatment monitoring.</p>",
+            "why_it_matters": "<p>Diagnostic friction is a leading reason OSA goes undetected. A comfortable single-patch device that monitors for up to a week could dramatically expand initial screening reach, particularly in settings where polysomnography access is limited or waitlists are long.</p>",
+            "author": "Hsu YS, Lin YC, Kuo YE, et al. | Nature and Science of Sleep | February 5, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.dovepress.com/patch-type-heart-rate-variability-analysis-with-artificial-intelligenc-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "DARC-NESS: A Mastery-Based Cognitive-Behavioral Model for Treating Chronic Nightmares in Youth",
+            "target_audience": [
+                "kids",
+                "teenagers",
+                "parents",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Teaching kids they can <strong>control their nightmares</strong> through worry boxes, breathing exercises, and rewriting scary dreams helps them sleep better and feel more confident.</p>",
+            "summary": "<p>This comprehensive theoretical paper introduces <strong>DARC-NESS</strong>, a mastery-based cognitive-behavioral treatment framework for chronic nightmares in youth. The model identifies \"nightmare efficacy\" — a child's belief in their ability to manage nightmares — as the central therapeutic mechanism. Treatment combines relaxation skills, sleep hygiene, and nightmare rescripting, where children rewrite scary dreams with empowering endings. A detailed case study of a 15-year-old with multiple traumas demonstrated how addressing multiple pathways (worry boxes, diaphragmatic breathing, positive imagery on pillowcases) reduced nightmares from <strong>4 per week to zero</strong>, alongside eliminating suicidal ideation.</p>",
+            "why_it_matters": "<p>Nightmare disorder affects a substantial proportion of children and adolescents yet receives limited clinical attention. A flexible, multi-pathway CBT framework that builds internal mastery rather than relying on a single technique addresses diverse trauma profiles and bridges the gap between pediatric sleep medicine and mental health care.</p>",
+            "author": "Cromer LD, Cromwell EK, Prince LE, Buck TR | Frontiers in Sleep | February 27, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2026.1772987/full"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "If you have OSA and are concerned about blood clots or cardiovascular risk, prioritize weight management through diet, exercise, or medical weight-loss interventions like GLP-1 medications — research shows obesity, not OSA itself, may be the primary driver of thrombotic risk.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "If you snore or suspect sleep apnea but find traditional sleep studies uncomfortable, ask your doctor about emerging AI-powered patch-type HRV monitors that can screen for OSA from home without multiple wires or sensors.",
+            "target_audience": [
+                "adults"
+            ]
+        },
+        {
+            "text": "Use wearable heart rate monitors to objectively measure whether your OSA treatment is working, especially if you are hesitant to return for formal follow-up testing.",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ]
+        },
+        {
+            "text": "If your child has frequent nightmares, try the DARC-NESS approach: create a worry box for daytime concerns, practice belly breathing before bed, and let them draw positive imagery on their pillowcase as a comforting visual anchor at bedtime.",
+            "target_audience": [
+                "parents",
+                "kids",
+                "teenagers"
+            ]
+        },
+        {
+            "text": "Help your child rewrite their scariest nightmare — write it down together, identify the main scary theme, then collaboratively create a new ending where the child gains control or receives help. Have them read the new version before bed.",
+            "target_audience": [
+                "parents",
+                "kids",
+                "teenagers"
+            ]
+        },
+        {
+            "text": "For children with repeated nightmares that disrupt sleep or cause distress, consider referral to a therapist trained in CBT for sleep disorders, particularly nightmare rescripting and mastery-based approaches.",
+            "target_audience": [
+                "parents",
+                "healthcare_providers"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering the week of February 22 through February 28, 2026. This week we have some fascinating findings to share. This week brought compelling new insights into sleep disorders from our four monitored journals. The standout finding: obstructive sleep apnea's relationship with blood clotting may be more about obesity than the sleep disorder itself — a paradigm shift that could reshape treatment priorities. Meanwhile, AI-powered wearable technology achieved remarkable accuracy in OSA screening, and a novel cognitive-behavioral model for childhood nightmares offers hope for millions of young sufferers. Across these publications, one theme emerges: precision in understanding what actually causes sleep-related health problems leads to better, more targeted treatments. Let us dive in. First up: Obstructive Sleep Apnea and Hypercoagulability: Combining Observational and Mendelian Randomization Analyses to Explore Causal Relationships. The takeaway? Sleep apnea doesn't directly cause blood clotting issues — it's obesity that's the real problem, meaning weight loss might be more important than breathing machines for preventing blood clots. This groundbreaking study combined clinical observations from 790 OSA patients with genetic (Mendelian randomization) analysis to investigate whether sleep apnea directly causes blood clotting problems. While severe OSA patients showed higher fibrinogen levels and shorter clotting times, these associations vanished after controlling for BMI. Genetic evidence revealed no direct causal link between OSA and hypercoagulability — obesity is the true culprit. The finding suggests that weight management, rather than CPAP alone, should be prioritized to reduce thrombotic risk in OSA patients. Why does this matter? Clinicians may be over-attributing thrombotic risk to OSA severity rather than the underlying obesity. Redirecting treatment focus toward weight loss could produce more meaningful reductions in blood clot risk for patients who have both conditions. That research comes from Su L, Wu L, Han T, Li Y, and Zhang X, in Nature and Science of Sleep, January 31, 2026. Next: Patch-Type Heart Rate Variability Analysis with Artificial Intelligence for Detection of Obstructive Sleep Apnea. The takeaway? A stick-on heart monitor using AI can detect sleep apnea with over 81% accuracy just by tracking your heartbeat — no wires, tubes, or oxygen sensors needed. Researchers developed an AI-powered wearable patch that achieved 81.4% accuracy in screening for moderate-to-severe OSA (AHI ≥15) by analyzing heart rate patterns overnight. The adhesive patch continuously monitors heart rhythms and uses 375 different parameters — including heart rate complexity and ECG amplitude — to calculate a new \"Cardiovascular Hypopnea Index\" (CVHI). This non-invasive approach outperformed demographic-based screening (73%) and previous ECG methods (70.6%), offering a practical alternative to uncomfortable multi-wire home sleep tests for initial OSA screening and treatment monitoring. Why does this matter? Diagnostic friction is a leading reason OSA goes undetected. A comfortable single-patch device that monitors for up to a week could dramatically expand initial screening reach, particularly in settings where polysomnography access is limited or waitlists are long. That research comes from Hsu, Lin, Kuo and colleagues, in Nature and Science of Sleep, February 5, 2026. Another fascinating finding: DARC-NESS: A Mastery-Based Cognitive-Behavioral Model for Treating Chronic Nightmares in Youth. The takeaway? Teaching kids they can control their nightmares through worry boxes, breathing exercises, and rewriting scary dreams helps them sleep better and feel more confident. This comprehensive theoretical paper introduces DARC-NESS , a mastery-based cognitive-behavioral treatment framework for chronic nightmares in youth. The model identifies \"nightmare efficacy\" — a child's belief in their ability to manage nightmares — as the central therapeutic mechanism. Treatment combines relaxation skills, sleep hygiene, and nightmare rescripting, where children rewrite scary dreams with empowering endings. A detailed case study of a 15-year-old with multiple traumas demonstrated how addressing multiple pathways (worry boxes, diaphragmatic breathing, positive imagery on pillowcases) reduced nightmares from 4 per week to zero , alongside eliminating suicidal ideation. Why does this matter? Nightmare disorder affects a substantial proportion of children and adolescents yet receives limited clinical attention. A flexible, multi-pathway CBT framework that builds internal mastery rather than relying on a single technique addresses diverse trauma profiles and bridges the gap between pediatric sleep medicine and mental health care. That comes from Cromer LD, Cromwell EK, Prince LE, Buck TR | Frontiers in Sleep | February 27, 2026. Ready to take action? Here are steps you can take. First: If you have OSA and are concerned about blood clots or cardiovascular risk, prioritize weight management through diet, exercise, or medical weight-loss interventions like GLP-1 medications — research shows obesity, not OSA itself, may be the primary driver of thrombotic risk. Second: If you snore or suspect sleep apnea but find traditional sleep studies uncomfortable, ask your doctor about emerging AI-powered patch-type HRV monitors that can screen for OSA from home without multiple wires or sensors. Third: Use wearable heart rate monitors to objectively measure whether your OSA treatment is working, especially if you are hesitant to return for formal follow-up testing. Fourth: If your child has frequent nightmares, try the DARC-NESS approach: create a worry box for daytime concerns, practice belly breathing before bed, and let them draw positive imagery on their pillowcase as a comforting visual anchor at bedtime. Fifth: Help your child rewrite their scariest nightmare — write it down together, identify the main scary theme, then collaboratively create a new ending where the child gains control or receives help. Have them read the new version before bed. Sixth: For children with repeated nightmares that disrupt sleep or cause distress, consider referral to a therapist trained in CBT for sleep disorders, particularly nightmare rescripting and mastery-based approaches. That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2026-02-28.mp3"
+}

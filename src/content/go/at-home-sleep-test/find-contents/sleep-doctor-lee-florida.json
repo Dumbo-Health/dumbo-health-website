@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Lee Health Sleep Lab - Cape Coral Hospital",
+    "Lee Health Sleep Lab - HealthPark Medical Center",
+    "Lee Health Sleep Lab - Plantation Rd",
+    "Pulmonary Consultants of Southwest Florida"
+  ],
+  "hospitals": [
+    "Cape Coral Hospital",
+    "HealthPark Medical Center",
+    "Gulf Coast Medical Center",
+    "Lee Memorial Hospital"
+  ],
+  "neighborhoods": [
+    "Cape Coral",
+    "Fort Myers",
+    "Bonita Springs",
+    "Estero"
+  ],
+  "population": "860,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield of Florida",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 278,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Disorders Center",
+    "LPG Sleep Medicine",
+    "Somnas Sleep Apnea, Insomnia, Sleep Disorder",
+    "Pulmonologist Fort Myers"
+  ]
+}

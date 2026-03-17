@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Ascension Seton Williamson Sleep Center at Texas State University",
+    "Williamson Health Sleep Lab",
+    "Sleep Center at Georgetown ENT",
+    "Heart of Texas Neurology and Sleep, PLLC"
+  ],
+  "hospitals": [
+    "Ascension Seton Williamson Sleep Center",
+    "Williamson Health Sleep Center",
+    "Sleep Center at Georgetown ENT",
+    "Williamson County Pulmonary & Sleep Study Associates"
+  ],
+  "neighborhoods": [
+    "Round Rock",
+    "Georgetown",
+    "Cedar Park",
+    "Hutto"
+  ],
+  "population": "700,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 40,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Ascension Seton Williamson Sleep Center at Texas State University",
+    "Sleep and Wellness Institute of Texas",
+    "Scott & White Sleep Disorders Center",
+    "Coryell Health Sleep Center"
+  ]
+}

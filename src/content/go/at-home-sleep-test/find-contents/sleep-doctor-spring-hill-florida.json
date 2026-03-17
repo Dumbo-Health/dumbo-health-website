@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Associates of Florida",
+    "Florida Sleep Institute",
+    "Oak Hill Family Care - Cortez",
+    "Spring Hill Sleep Center"
+  ],
+  "hospitals": [
+    "TGH Spring Hill",
+    "Oak Hill Hospital",
+    "HCA Florida Bayonet Point Hospital",
+    "AdventHealth Tampa"
+  ],
+  "neighborhoods": [
+    "Seven Hills",
+    "Sterling Hill",
+    "Pristine Place",
+    "Silverthorn"
+  ],
+  "population": "120,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 40,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Associates of Florida",
+    "Oak Hill Family Care - Cortez",
+    "DeLuca, Ressel, & Congemi Dental Care",
+    "TGH Spring Hill"
+  ]
+}

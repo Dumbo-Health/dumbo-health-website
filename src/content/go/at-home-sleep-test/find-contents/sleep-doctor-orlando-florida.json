@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "AdventHealth Sleep Center Orlando",
+    "AdventHealth Sleep Center East Orlando",
+    "Florida Sleep Institute",
+    "Better Sleep Clinics"
+  ],
+  "hospitals": [
+    "AdventHealth Sleep Center Orlando",
+    "Orlando Health Medical Group Pulmonary and Sleep Medicine",
+    "Florida Sleep Institute",
+    "Better Sleep Clinics"
+  ],
+  "neighborhoods": [
+    "Lake Nona",
+    "Downtown Orlando",
+    "College Park",
+    "Baldwin Park"
+  ],
+  "population": "2 million+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Florida Blue",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 600,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Healthy Sleep Solutions",
+    "Orlando Sleep Apnea Solution",
+    "Better Sleep Clinics",
+    "Florida Sleep Institute"
+  ]
+}

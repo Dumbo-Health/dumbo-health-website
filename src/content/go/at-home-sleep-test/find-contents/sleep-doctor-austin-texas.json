@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Sleep Medicine",
+    "Advanced Sleep Center",
+    "SleepSomatics Diagnostic Center",
+    "REM Sleep Center"
+  ],
+  "hospitals": [
+    "Texas Sleep Medicine",
+    "Sleep Medicine Consultants of Central Texas",
+    "Austin Neurology & Sleep Associates",
+    "Austin Heart"
+  ],
+  "neighborhoods": [
+    "North Austin",
+    "Windsor Park",
+    "West University",
+    "Franklin Park"
+  ],
+  "population": "1 million",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "250,000+ adults",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Austin ENT Clinic",
+    "Texas Sleep Medicine",
+    "Austin Sleep & Airway Health",
+    "Sleep Well Austin"
+  ]
+}

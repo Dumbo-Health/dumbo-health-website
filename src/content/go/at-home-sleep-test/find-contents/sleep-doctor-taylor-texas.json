@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Sleep Diagnostics and Therapeutics, PLLC",
+    "Baylor Scott & White Medical Center - Taylor",
+    "UT Health East Texas Sleep Disorders Center in Quitman",
+    "Heart of Texas Healthcare System Sleep Lab"
+  ],
+  "hospitals": [
+    "Abilene Regional Medical Center",
+    "Hendrick Medical Center",
+    "Baylor Scott & White Medical Center – Taylor",
+    "Heart of Texas Healthcare System"
+  ],
+  "neighborhoods": [
+    "Abilene",
+    "Merkel",
+    "Tye",
+    "Tuscola"
+  ],
+  "population": "150,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "48,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "UnitedCare",
+    "Ascension Seton Williamson Sleep Center at Texas State University",
+    "UT Health East Texas Sleep Disorders Center",
+    "Texas ENT Center"
+  ]
+}

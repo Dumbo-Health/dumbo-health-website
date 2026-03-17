@@ -1,0 +1,147 @@
+{
+    "slug": "covid-osa-vitamin-d-ai",
+    "meta_title": "COVID-19 OSA Risk, Vitamin D Heart Failure, AI Apnea Detection",
+    "title": "Sleep Science: Feb 15-21, 2026",
+    "keywords": [
+        "sleep apnea research 2026",
+        "COVID-19 sleep apnea risk",
+        "OSA heart failure vitamin D",
+        "obstructive sleep apnea AI detection",
+        "transformer neural network sleep apnea",
+        "post-COVID sleep disorders",
+        "OSA biological aging",
+        "sleep apnea chronic pain",
+        "DunedinPACE sleep apnea",
+        "OSA cardiovascular risk",
+        "sleep apnea mortality trends",
+        "pneumonia sleep apnea",
+        "diabetic retinopathy OSA",
+        "sleep research February 2026",
+        "sleep apnea diagnosis technology",
+        "OSA vitamin D deficiency",
+        "sleep apnea screening",
+        "post-viral sleep disorders"
+    ],
+    "meta_description": "Weekly digest of sleep apnea research from Feb 15-21, 2026: COVID-19 long-term OSA risk, vitamin D and heart failure risk, AI detection advances, and biological aging links to chronic pain.",
+    "intro": "This week saw limited but important publications across our monitored sleep journals, with a strong focus on the intersection between COVID-19, sleep apnea, and cardiovascular health. The standout finding: COVID-19 survivors may face up to 45% higher risk of developing new-onset obstructive sleep apnea years after infection. Frontiers research also highlighted vitamin D deficiency as a key risk modifier for heart failure in OSA, while a transformer-based AI approach showed promising improvements in automated apnea detection. Taken together, this week underscores both the long-tail consequences of the pandemic and the potential for simpler, scalable diagnostic pathways.",
+    "digest": [
+        {
+            "title": "Risk of new-onset obstructive sleep apnea up to 4.5 years after COVID-19 in the urban population",
+            "target_audience": [
+                "adults",
+                "young_adults",
+                "overweight"
+            ],
+            "tldr": "<p>COVID-19 infection may increase your chance of developing sleep apnea by about <strong>33-41%</strong> for years after recovery, especially after hospitalization.</p>",
+            "summary": "<p>This retrospective cohort study analyzed 910,393 patients and found that both hospitalized (HR <strong>1.41</strong>) and non-hospitalized (HR <strong>1.33</strong>) COVID-19 patients had higher adjusted risk of developing new-onset OSA versus non-COVID controls. Elevated risk persisted for up to <strong>4.5 years</strong> post-infection. Among patients who later developed OSA, those with prior hospitalization for COVID-19 also showed higher downstream risks of heart failure and pulmonary hypertension.</p>",
+            "why_it_matters": "<p>Post-viral effects can outlast acute illness by years. If persistent fatigue or new snoring appears after COVID recovery, delayed OSA recognition may miss a modifiable cardiopulmonary risk factor.</p>",
+            "author": "Sagar Changela et al., medRxiv (preprint), February 15, 2026",
+            "cta": {
+                "anchor": "Read Preprint",
+                "url": "https://www.medrxiv.org/content/10.64898/2026.02.12.26346136v1"
+            }
+        },
+        {
+            "title": "Vitamin D deficiency and risk of heart failure in patients with obstructive sleep apnea: a cohort analysis",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>If you have OSA and low vitamin D, heart failure risk may be nearly <strong>50%</strong> higher, with even stronger effects in obesity.</p>",
+            "summary": "<p>Using 36,497 matched OSA patients, this cohort analysis found vitamin D deficiency was associated with a <strong>45% higher risk</strong> of heart failure (HR <strong>1.45</strong>), plus elevated all-cause mortality (HR <strong>1.76</strong>) and pulmonary embolism risk. The study also reported a dose-response pattern: insufficiency showed intermediate risk, while deficiency showed the highest risk. Associations were stronger in obese patients (HR 1.55) than non-obese patients (HR 1.36).</p>",
+            "why_it_matters": "<p>This supports broader risk stratification in OSA care beyond AHI alone. Correcting micronutrient deficiency may be a practical adjunct in cardiometabolic risk reduction plans.</p>",
+            "author": "Ying-Jen Chang et al., Frontiers in Nutrition, February 19, 2026",
+            "cta": {
+                "anchor": "Read Full Study",
+                "url": "https://www.frontiersin.org/articles/10.3389/fnut.2026.1755607/full"
+            }
+        },
+        {
+            "title": "Transformer-based deep learning approach for obstructive sleep apnea detection using single-lead ECG",
+            "target_audience": [
+                "healthcare_providers",
+                "adults"
+            ],
+            "tldr": "<p>A transformer model detected OSA from single-lead ECG with <strong>F1 0.863</strong> and <strong>AUC 0.852</strong>, improving on prior methods.</p>",
+            "summary": "<p>Researchers proposed a transformer-based model with learnable positional encoding (via autoencoder) for OSA detection from single-lead ECG. The model reached <strong>F1 score 0.863</strong> and <strong>AUC-ROC 0.852</strong>, outperforming prior comparators by over 13% on average. It processed raw noisy signals without heavy preprocessing and provided second-by-second apnea classification, enabling more granular temporal analysis.</p>",
+            "why_it_matters": "<p>ECG-first pathways could reduce diagnostic friction where polysomnography access is limited. Better automated triage can shorten time to confirmatory testing and treatment.</p>",
+            "author": "Malak Abdullah Almarshad et al., Frontiers in Artificial Intelligence, February 11, 2026",
+            "cta": {
+                "anchor": "Read Research",
+                "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2026.1727091/full"
+            }
+        },
+        {
+            "title": "Beyond Restless Sleep: A Cross-Sectional Study of Obstructive Sleep Apnea Risk, Aging Biomarkers, and Chronic Low Back Pain",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Higher OSA risk in chronic low back pain was linked to faster biological aging signals, which may partly drive worse pain outcomes.</p>",
+            "summary": "<p>This cross-sectional study of 199 adults with chronic low back pain found OSA risk correlated with accelerated biological aging biomarkers, including PhenoAge and DunedinPACE. Mediation analysis suggested OSA risk indirectly impacts pain outcomes through increased pace of biological aging.</p>",
+            "why_it_matters": "<p>Sleep-disordered breathing may worsen chronic pain through systemic aging pathways, not only sleep fragmentation. OSA screening can be clinically relevant in chronic pain workflows.</p>",
+            "author": "Khalid Walid Freij et al., Molecular Pain, February 17, 2026",
+            "cta": {
+                "anchor": "Read Study",
+                "url": "https://journals.sagepub.com/doi/10.1177/17448069261427979"
+            }
+        },
+        {
+            "title": "Temporal trends in mortality from pneumonia and obstructive sleep apnea in the United States (1999-2020)",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Pneumonia mortality in people with OSA rose sharply over two decades, with higher burden in men and non-metropolitan regions.</p>",
+            "summary": "<p>Analyzing 13,496 deaths, this study found age-adjusted mortality from pneumonia among people with OSA rose from <strong>0.09 to 0.86</strong> between 1999 and 2020 (AAPC <strong>7.33%</strong>). Male mortality showed a notable spike after 2018 (APC 67.3% from 2018-2020). Regional patterns indicated higher burden in the Midwest and in non-metropolitan areas.</p>",
+            "why_it_matters": "<p>These trends highlight compounding vulnerability in OSA populations and emphasize prevention, vaccination, and timely respiratory care, especially in underserved geographies.</p>",
+            "author": "Khawar Ali et al., Medicine, February 20, 2026",
+            "cta": {
+                "anchor": "Read Full Article",
+                "url": "https://journals.lww.com/md-journal/fulltext/2026/02200/temporal_trends_in_mortality_from_pneumonia_and.34.aspx"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "If you have had COVID-19 and now notice persistent fatigue, loud snoring, or witnessed pauses in breathing, ask for formal sleep apnea screening even if your infection was years ago.",
+            "target_audience": [
+                "young_adults",
+                "adults"
+            ]
+        },
+        {
+            "text": "If you have OSA, discuss vitamin D testing with your clinician and correct deficiency under medical guidance as part of broader cardiometabolic risk management.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "Keep influenza, pneumococcal, and COVID vaccination up to date if you have OSA, especially with additional risk factors such as age, obesity, or cardiometabolic disease.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "Ask whether single-lead ECG or wearable AI pathways are available for early OSA triage if standard sleep lab access is delayed.",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ]
+        },
+        {
+            "text": "For chronic low back pain with snoring or daytime sleepiness, include OSA evaluation in your care plan since untreated sleep-disordered breathing may worsen pain through accelerated aging pathways.",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering the week of February 15 through February 21, 2026. This week we have some fascinating findings to share. This week saw limited but important publications across our monitored sleep journals, with a strong focus on the intersection between COVID-19, sleep apnea, and cardiovascular health. The standout finding: COVID-19 survivors may face up to 45% higher risk of developing new-onset obstructive sleep apnea years after infection. Frontiers research also highlighted vitamin D deficiency as a key risk modifier for heart failure in OSA, while a transformer-based AI approach showed promising improvements in automated apnea detection. Taken together, this week underscores both the long-tail consequences of the pandemic and the potential for simpler, scalable diagnostic pathways. Let us dive in. First up: Risk of new-onset obstructive sleep apnea up to 4.5 years after COVID-19 in the urban population. The takeaway? COVID-19 infection may increase your chance of developing sleep apnea by about 33-41% for years after recovery, especially after hospitalization. This retrospective cohort study analyzed 910,393 patients and found that both hospitalized (HR 1.41 ) and non-hospitalized (HR 1.33 ) COVID-19 patients had higher adjusted risk of developing new-onset OSA versus non-COVID controls. Elevated risk persisted for up to 4.5 years post-infection. Among patients who later developed OSA, those with prior hospitalization for COVID-19 also showed higher downstream risks of heart failure and pulmonary hypertension. Why does this matter? Post-viral effects can outlast acute illness by years. If persistent fatigue or new snoring appears after COVID recovery, delayed OSA recognition may miss a modifiable cardiopulmonary risk factor. That comes from Sagar Changela et al., medRxiv (preprint), February 15, 2026. Next: Vitamin D deficiency and risk of heart failure in patients with obstructive sleep apnea: a cohort analysis. The takeaway? If you have OSA and low vitamin D, heart failure risk may be nearly 50% higher, with even stronger effects in obesity. Using 36,497 matched OSA patients, this cohort analysis found vitamin D deficiency was associated with a 45% higher risk of heart failure (HR 1.45 ), plus elevated all-cause mortality (HR 1.76 ) and pulmonary embolism risk. The study also reported a dose-response pattern: insufficiency showed intermediate risk, while deficiency showed the highest risk. Associations were stronger in obese patients (HR 1.55) than non-obese patients (HR 1.36). Why does this matter? This supports broader risk stratification in OSA care beyond AHI alone. Correcting micronutrient deficiency may be a practical adjunct in cardiometabolic risk reduction plans. That comes from Ying-Jen Chang et al., Frontiers in Nutrition, February 19, 2026. Another fascinating finding: Transformer-based deep learning approach for obstructive sleep apnea detection using single-lead ECG. The takeaway? A transformer model detected OSA from single-lead ECG with F1 0.863 and AUC 0.852 , improving on prior methods. Researchers proposed a transformer-based model with learnable positional encoding (via autoencoder) for OSA detection from single-lead ECG. The model reached F1 score 0.863 and AUC-ROC 0.852 , outperforming prior comparators by over 13% on average. It processed raw noisy signals without heavy preprocessing and provided second-by-second apnea classification, enabling more granular temporal analysis. Why does this matter? ECG-first pathways could reduce diagnostic friction where polysomnography access is limited. Better automated triage can shorten time to confirmatory testing and treatment. That comes from Malak Abdullah Almarshad et al., Frontiers in Artificial Intelligence, February 11, 2026. Here is something worth paying attention to: Beyond Restless Sleep: A Cross-Sectional Study of Obstructive Sleep Apnea Risk, Aging Biomarkers, and Chronic Low Back Pain. The takeaway? Higher OSA risk in chronic low back pain was linked to faster biological aging signals, which may partly drive worse pain outcomes. This cross-sectional study of 199 adults with chronic low back pain found OSA risk correlated with accelerated biological aging biomarkers, including PhenoAge and DunedinPACE. Mediation analysis suggested OSA risk indirectly impacts pain outcomes through increased pace of biological aging. Why does this matter? Sleep-disordered breathing may worsen chronic pain through systemic aging pathways, not only sleep fragmentation. OSA screening can be clinically relevant in chronic pain workflows. That comes from Khalid Walid Freij et al., Molecular Pain, February 17, 2026. And this one is particularly striking: Temporal trends in mortality from pneumonia and obstructive sleep apnea in the United States (1999-2020). The takeaway? Pneumonia mortality in people with OSA rose sharply over two decades, with higher burden in men and non-metropolitan regions. Analyzing 13,496 deaths, this study found age-adjusted mortality from pneumonia among people with OSA rose from 0.09 to 0.86 between 1999 and 2020 (AAPC 7.33% ). Male mortality showed a notable spike after 2018 (APC 67.3% from 2018-2020). Regional patterns indicated higher burden in the Midwest and in non-metropolitan areas. Why does this matter? These trends highlight compounding vulnerability in OSA populations and emphasize prevention, vaccination, and timely respiratory care, especially in underserved geographies. That comes from Khawar Ali et al., Medicine, February 20, 2026. Ready to take action? Here are steps you can take. First: If you have had COVID-19 and now notice persistent fatigue, loud snoring, or witnessed pauses in breathing, ask for formal sleep apnea screening even if your infection was years ago. Second: If you have OSA, discuss vitamin D testing with your clinician and correct deficiency under medical guidance as part of broader cardiometabolic risk management. Third: Keep influenza, pneumococcal, and COVID vaccination up to date if you have OSA, especially with additional risk factors such as age, obesity, or cardiometabolic disease. Fourth: Ask whether single-lead ECG or wearable AI pathways are available for early OSA triage if standard sleep lab access is delayed. Fifth: For chronic low back pain with snoring or daytime sleepiness, include OSA evaluation in your care plan since untreated sleep-disordered breathing may worsen pain through accelerated aging pathways. That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2026-02-21.mp3"
+}

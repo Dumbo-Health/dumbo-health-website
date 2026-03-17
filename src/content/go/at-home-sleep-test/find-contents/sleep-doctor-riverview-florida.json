@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "St. Joseph’s Hospital-South Sleep Disorders Center",
+    "Tampa Bay Sleep Center",
+    "BayCare Sleep Disorders Center",
+    "Florida Sleep Specialists"
+  ],
+  "hospitals": [
+    "St. Joseph's Hospital-South",
+    "AdventHealth Riverview",
+    "Tampa General Hospital",
+    "AdventHealth Tampa"
+  ],
+  "neighborhoods": [
+    "Lakeside",
+    "Waterford on the Alafia",
+    "Riverglen",
+    "Riverview Crest"
+  ],
+  "population": "110,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 5,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Tampa Bay Sleep Center",
+    "BayCare Sleep Disorders Center",
+    "Florida Center of Sleep Medicine",
+    "AdventHealth Riverview"
+  ]
+}

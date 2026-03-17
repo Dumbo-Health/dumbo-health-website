@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Covenant Sleep Center",
+    "Sleep Disorders Center of Lubbock",
+    "Lubbock Better Sleep Solutions",
+    "Advanced Neuro & Sleep Diagnostics"
+  ],
+  "hospitals": [
+    "Covenant Medical Center",
+    "Covenant Children's Hospital",
+    "University Medical Center",
+    "Physicians Sleep Center"
+  ],
+  "neighborhoods": [
+    "Arnett Benson",
+    "Bayless Atkins",
+    "South Overton",
+    "North Overton"
+  ],
+  "population": "325,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "54,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Covenant Medical Center Sleep Center",
+    "Lubbock Better Sleep Solutions",
+    "Ear, Nose & Throat Associates of Lubbock",
+    "Renew Sleep"
+  ]
+}

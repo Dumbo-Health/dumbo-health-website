@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Intercoastal Neurology & Sleep Care Center",
+    "Sleep Wake Disorder Center",
+    "Southeast Snoring & Sleep Apnea Group",
+    "First Coast Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "AdventHealth Palm Coast",
+    "AdventHealth Palm Coast Parkway",
+    "AdventHealth Daytona Beach",
+    "Halifax Health Medical Center"
+  ],
+  "neighborhoods": [
+    "Indian Trails",
+    "Palm Harbor",
+    "Pine Lakes",
+    "Cypress Knoll"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "36,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Southeast Snoring & Sleep Apnea Group",
+    "Atlantic Snore & Sleep Apnea",
+    "Boulder Rock Dental",
+    "AdventHealth Palm Coast"
+  ]
+}

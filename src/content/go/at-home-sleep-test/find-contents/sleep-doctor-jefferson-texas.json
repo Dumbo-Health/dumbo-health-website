@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Southeast Texas Sleep Diagnostics",
+    "Texas Sleep Clinic",
+    "Sleep Labs of Texas, Inc.",
+    "Elite Sleep Solutions Diagnostic Sleep Lab"
+  ],
+  "hospitals": [
+    "CHRISTUS Southeast Texas - Saint Elizabeth",
+    "Baptist Hospitals of Southeast Texas - Beaumont Campus",
+    "CHRISTUS Southeast Texas - Saint Mary",
+    "Mid Jefferson Extended Care Hospital"
+  ],
+  "neighborhoods": [
+    "Beaumont",
+    "Port Arthur",
+    "Nederland",
+    "Groves"
+  ],
+  "population": "250,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "75,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Jefferson County Health Center Sleep Lab",
+    "Joel Lane Smith, DDS",
+    "Gulf Coast Health",
+    "Jefferson County Texas Addiction Hotline"
+  ]
+}

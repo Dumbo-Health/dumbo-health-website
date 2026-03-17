@@ -1,0 +1,128 @@
+{
+    "slug": "pediatric-pap-airway-metabolomics",
+    "meta_title": "Pediatric PAP Programs, Airway Biomarkers, Metabolic OSA Diagnosis",
+    "title": "Sleep Science: March 1-7, 2026",
+    "keywords": [
+        "sleep apnea",
+        "OSA",
+        "obstructive sleep apnea",
+        "CPAP therapy",
+        "PAP adaptation",
+        "pediatric sleep apnea",
+        "sleep apnea biomarkers",
+        "metabolomics sleep disorders",
+        "CPAP adherence",
+        "airway remodeling",
+        "sleep apnea diagnosis",
+        "intermittent hypoxia",
+        "coronary artery disease",
+        "sleep apnea treatment",
+        "heart rate variability",
+        "autonomic regulation",
+        "slow wave sleep",
+        "sleep architecture",
+        "preterm infants",
+        "neonatal sleep",
+        "pediatric PAP programs",
+        "age-related CPAP",
+        "metabolic signatures OSA",
+        "sleep research March 2026"
+    ],
+    "meta_description": "Weekly digest of sleep apnea research from March 1-7, 2026: pediatric PAP programs, age-related CPAP responses, airway remodeling biomarkers, and metabolic signatures for OSA diagnosis.",
+    "intro": "This week's sleep apnea research brings groundbreaking insights across multiple fronts. From Brazil's innovative pediatric PAP adaptation programs to groundbreaking metabolic biomarker discoveries for comorbid conditions, researchers are advancing both clinical care and diagnostic precision. Notable highlights include age-specific CPAP tolerance findings, cellular-level airway remodeling discoveries in OSA, and novel metabolomic signatures that could transform early detection of sleep-breathing disorders. These studies collectively push the field toward more personalized, targeted interventions for sleep apnea sufferers across all age groups.",
+    "digest": [
+        {
+            "title": "Implementation and Feasibility of an Interdisciplinary Pediatric Positive Airway Pressure Adaptation Program in a Brazilian Public Sleep Clinic",
+            "target_audience": [
+                "kids",
+                "teenagers",
+                "parents",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>New Brazilian program helps kids stick with their sleep apnea masks by providing team-based support and follow-up.</p>",
+            "summary": "<p>Brazilian researchers developed an interdisciplinary program to improve PAP adherence in children with OSA (ages 1-18) in the public health system. The program, based on Philadelphia's CPAP Program, aims to optimize adaptation time, increase adherence rates, and reduce costs associated with untreated OSA in pediatric patients.</p>",
+            "why_it_matters": "<p>Early OSA diagnosis and effective PAP treatment can dramatically improve children's academic performance, cognitive development, and social outcomes—but adherence remains the biggest challenge. This structured program offers a roadmap for public health systems worldwide to tackle pediatric sleep apnea more effectively.</p>",
+            "author": "Ila Linares et al. | Frontiers in Sleep | March 10, 2026",
+            "cta": {
+                "anchor": "Read More",
+                "url": "https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2026.1791640/full"
+            }
+        },
+        {
+            "title": "Gerontological Effects on Arousal Frequency, Autonomic Balance, and Slow-Wave Sleep During Pressure Adjustments of CPAP in OSA Patients",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Older OSA patients may struggle more with CPAP pressure changes—their brains and hearts react differently than younger people's.</p>",
+            "summary": "<p>This study compared younger (&lt;65 years) and older adults (≥65 years) during CPAP titration, analyzing 10-minute windows after pressure adjustments. Elderly patients showed higher arousal events, increased heart rate variability (SDNN), elevated LF/HF ratios, and reduced slow-wave sleep quality at higher pressure levels compared to younger patients, suggesting age-related differences in CPAP tolerance.</p>",
+            "why_it_matters": "<p>Older adults may need more gradual CPAP pressure increases to avoid sleep disruption and autonomic imbalance. Understanding these age-specific responses could lead to personalized titration protocols that improve adherence and treatment outcomes in elderly OSA patients.</p>",
+            "author": "Liu IJ et al. | Nature and Science of Sleep | March 11, 2026",
+            "cta": {
+                "anchor": "Read More",
+                "url": "https://www.dovepress.com/gerontological-effects-on-arousal-frequency-autonomic-balance-and-slow-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Metabolomic Biomarkers for Non-Invasive Diagnosis of Coronary Artery Disease and Obstructive Sleep Apnea Co-Occurrence",
+            "target_audience": [
+                "adults",
+                "overweight",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Simple blood tests might soon detect the dangerous combo of sleep apnea plus heart disease before symptoms appear.</p>",
+            "summary": "<p>Researchers identified distinct metabolic signatures for OSA alone, CAD alone, and their comorbidity (CADOSA) through blood metabolomic profiling of <strong>143 participants</strong>. Machine learning identified D-glucuronolactone as a biomarker for OSA, 12-hydroxyoctadecanoic acid for CAD, and downregulated tryptophan for CADOSA. The study also revealed gene-metabolite pairs (tryptophan-DMXL2, C12-AE1S-ZDHHC11, IBMX-FCAR) potentially regulating CADOSA progression.</p>",
+            "why_it_matters": "<p>Currently, diagnosing CADOSA requires invasive procedures and overnight sleep studies. These blood-based biomarkers could enable early, non-invasive detection of this high-risk comorbidity, facilitating timely intervention before serious cardiovascular events occur.</p>",
+            "author": "Chen S et al. | Nature and Science of Sleep | March 10, 2026",
+            "cta": {
+                "anchor": "Read More",
+                "url": "https://www.dovepress.com/metabolomic-biomarkers-for-non-invasive-diagnosis-of-coronary-artery-d-peer-reviewed-fulltext-article-NSS"
+            }
+        },
+        {
+            "title": "Epithelial Na+/K+ Imbalance and Impaired Na+/K+-ATPase Activity as Surface Markers of Airway Remodelling in Obstructive Sleep Apnea",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ],
+            "tldr": "<p>Scientists found cellular changes in OSA patients' airways that could help predict who needs more aggressive treatment.</p>",
+            "summary": "<p>This study identified epithelial sodium/potassium imbalance and impaired Na+/K+-ATPase activity as cellular-level markers of airway remodeling in OSA patients. These surface markers reflect structural changes in the upper airway that contribute to collapse during sleep, offering potential targets for early detection and novel therapeutic approaches.</p>",
+            "why_it_matters": "<p>Current OSA diagnosis relies on symptoms and sleep studies, but doesn't assess underlying airway tissue changes. These cellular markers could identify patients at highest risk for severe airway collapse and guide more targeted interventions beyond standard CPAP therapy.</p>",
+            "author": "Yen-Chun Chen et al. | Journal of Sleep Research | March 2, 2026",
+            "cta": {
+                "anchor": "Read More",
+                "url": "https://onlinelibrary.wiley.com/doi/10.1111/jsr.70323"
+            }
+        }
+    ],
+    "actionables": [
+        {
+            "text": "Seek multidisciplinary sleep programs that offer ongoing support and follow-up for PAP therapy—adherence dramatically improves with structured team-based approaches. Don't accept \"kids won't wear the mask\" as the final answer.",
+            "target_audience": [
+                "parents"
+            ]
+        },
+        {
+            "text": "Request gradual pressure titration protocols rather than rapid increases. Ask your sleep specialist about age-specific adjustments that minimize nighttime awakenings and autonomic disruption during the adaptation period.",
+            "target_audience": [
+                "adults"
+            ]
+        },
+        {
+            "text": "Discuss metabolic screening with your cardiologist—emerging blood biomarkers may detect the dangerous OSA-heart disease combination earlier than traditional methods. Early detection could prevent major cardiovascular events.",
+            "target_audience": [
+                "adults",
+                "overweight"
+            ]
+        },
+        {
+            "text": "Ask about cellular markers of airway remodeling. If traditional CPAP isn't working well, understanding your specific airway tissue changes could reveal why and point toward alternative therapies or combination approaches.",
+            "target_audience": [
+                "adults",
+                "healthcare_providers"
+            ]
+        }
+    ],
+    "transcription_for_ai": "Hey there, and welcome back to your weekly sleep science digest. This week we are covering the week of March 1 through March 7, 2026. This week we have some fascinating findings to share. This week's sleep apnea research brings groundbreaking insights across multiple fronts. From Brazil's innovative pediatric PAP adaptation programs to groundbreaking metabolic biomarker discoveries for comorbid conditions, researchers are advancing both clinical care and diagnostic precision. Notable highlights include age-specific CPAP tolerance findings, cellular-level airway remodeling discoveries in OSA, and novel metabolomic signatures that could transform early detection of sleep-breathing disorders. These studies collectively push the field toward more personalized, targeted interventions for sleep apnea sufferers across all age groups. Let us dive in. First up: Implementation and Feasibility of an Interdisciplinary Pediatric Positive Airway Pressure Adaptation Program in a Brazilian Public Sleep Clinic. The takeaway? New Brazilian program helps kids stick with their sleep apnea masks by providing team-based support and follow-up. Brazilian researchers developed an interdisciplinary program to improve PAP adherence in children with OSA (ages 1-18) in the public health system. The program, based on Philadelphia's CPAP Program, aims to optimize adaptation time, increase adherence rates, and reduce costs associated with untreated OSA in pediatric patients. Why does this matter? Early OSA diagnosis and effective PAP treatment can dramatically improve children's academic performance, cognitive development, and social outcomes—but adherence remains the biggest challenge. This structured program offers a roadmap for public health systems worldwide to tackle pediatric sleep apnea more effectively. That comes from Ila Linares et al. | Frontiers in Sleep | March 10, 2026. Next: Gerontological Effects on Arousal Frequency, Autonomic Balance, and Slow-Wave Sleep During Pressure Adjustments of CPAP in OSA Patients. The takeaway? Older OSA patients may struggle more with CPAP pressure changes—their brains and hearts react differently than younger people's. This study compared younger (<65 years) and older adults (≥65 years) during CPAP titration, analyzing 10-minute windows after pressure adjustments. Elderly patients showed higher arousal events, increased heart rate variability (SDNN), elevated LF/HF ratios, and reduced slow-wave sleep quality at higher pressure levels compared to younger patients, suggesting age-related differences in CPAP tolerance. Why does this matter? Older adults may need more gradual CPAP pressure increases to avoid sleep disruption and autonomic imbalance. Understanding these age-specific responses could lead to personalized titration protocols that improve adherence and treatment outcomes in elderly OSA patients. That comes from Liu IJ et al. | Nature and Science of Sleep | March 11, 2026. Another fascinating finding: Metabolomic Biomarkers for Non-Invasive Diagnosis of Coronary Artery Disease and Obstructive Sleep Apnea Co-Occurrence. The takeaway? Simple blood tests might soon detect the dangerous combo of sleep apnea plus heart disease before symptoms appear. Researchers identified distinct metabolic signatures for OSA alone, CAD alone, and their comorbidity (CADOSA) through blood metabolomic profiling of 143 participants . Machine learning identified D-glucuronolactone as a biomarker for OSA, 12-hydroxyoctadecanoic acid for CAD, and downregulated tryptophan for CADOSA. The study also revealed gene-metabolite pairs (tryptophan-DMXL2, C12-AE1S-ZDHHC11, IBMX-FCAR) potentially regulating CADOSA progression. Why does this matter? Currently, diagnosing CADOSA requires invasive procedures and overnight sleep studies. These blood-based biomarkers could enable early, non-invasive detection of this high-risk comorbidity, facilitating timely intervention before serious cardiovascular events occur. That comes from Chen S et al. | Nature and Science of Sleep | March 10, 2026. Here is something worth paying attention to: Epithelial Na+/K+ Imbalance and Impaired Na+/K+-ATPase Activity as Surface Markers of Airway Remodelling in Obstructive Sleep Apnea. The takeaway? Scientists found cellular changes in OSA patients' airways that could help predict who needs more aggressive treatment. This study identified epithelial sodium/potassium imbalance and impaired Na+/K+-ATPase activity as cellular-level markers of airway remodeling in OSA patients. These surface markers reflect structural changes in the upper airway that contribute to collapse during sleep, offering potential targets for early detection and novel therapeutic approaches. Why does this matter? Current OSA diagnosis relies on symptoms and sleep studies, but doesn't assess underlying airway tissue changes. These cellular markers could identify patients at highest risk for severe airway collapse and guide more targeted interventions beyond standard CPAP therapy. That comes from Yen-Chun Chen et al. | Journal of Sleep Research | March 2, 2026. Ready to take action? Here are steps you can take. First: Seek multidisciplinary sleep programs that offer ongoing support and follow-up for PAP therapy—adherence dramatically improves with structured team-based approaches. Don't accept \"kids won't wear the mask\" as the final answer. Second: Request gradual pressure titration protocols rather than rapid increases. Ask your sleep specialist about age-specific adjustments that minimize nighttime awakenings and autonomic disruption during the adaptation period. Third: Discuss metabolic screening with your cardiologist—emerging blood biomarkers may detect the dangerous OSA-heart disease combination earlier than traditional methods. Early detection could prevent major cardiovascular events. Fourth: Ask about cellular markers of airway remodeling. If traditional CPAP isn't working well, understanding your specific airway tissue changes could reveal why and point toward alternative therapies or combination approaches. That is it for this week. Thanks for listening, and here is to better sleep.",
+    "audio_file": "/audio/sleep-protocol/2026-03-07.mp3"
+}

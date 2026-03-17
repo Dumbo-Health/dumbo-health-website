@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Broward Health Coral Springs Sleep Disorders Center",
+    "Pulmonary & Sleep Disorder Centers, Inc.",
+    "Comprehensive Sleep Disorder Center",
+    "Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "Broward Health Coral Springs",
+    "Cleveland Clinic Hospital",
+    "Broward Health Medical Center",
+    "HCA Florida Northwest Hospital"
+  ],
+  "neighborhoods": [
+    "Forest Hills",
+    "Windham",
+    "Kensington",
+    "Pine Ridge"
+  ],
+  "population": "140,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "2,700",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Lakeview Dental of Coral Springs",
+    "Sawgrass Dental Arts",
+    "Kulick Dental Group",
+    "Cleveland Clinic Florida Sleep Disorders Center"
+  ]
+}

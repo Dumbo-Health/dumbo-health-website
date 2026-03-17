@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Neurology & Sleep Clinic",
+    "Sleep Center Services",
+    "Carrollton Regional Medical Center",
+    "ENT & Allergy Centers of Texas"
+  ],
+  "hospitals": [
+    "Carrollton Regional Medical Center",
+    "Baylor Scott & White Medical Center – Carrollton",
+    "Texas Health Presbyterian Hospital Dallas",
+    "Medical City Lewisville"
+  ],
+  "neighborhoods": [
+    "North Central Carrollton",
+    "Northeast Carrollton",
+    "Northwest Carrollton",
+    "Southwest Carrollton"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "several thousand",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Neurology & Sleep Clinic",
+    "Carrollton Regional Medical Center",
+    "Gentle Dentistry",
+    "Sleep Dallas"
+  ]
+}

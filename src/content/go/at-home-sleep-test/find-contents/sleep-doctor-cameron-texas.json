@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "South Texas Sleep Disorder Clinic",
+    "Zerenity Sleep Center Inc",
+    "Valley Baptist Medical Center Sleep Center",
+    "Harlingen Sleep Center"
+  ],
+  "hospitals": [
+    "Valley Baptist Medical Center",
+    "Harlingen Medical Center",
+    "Valley Regional Medical Center",
+    "Brownsville Doctors Hospital"
+  ],
+  "neighborhoods": [
+    "Brownsville",
+    "Harlingen",
+    "San Benito",
+    "Los Fresnos"
+  ],
+  "population": "400,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "7,380 to 31,631",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "South Texas Sleep Disorder Clinic",
+    "Zerenity Sleep Center",
+    "DHR Health Brownsville",
+    "Harlingen Sleep Disorder Diagnostic Clinic"
+  ]
+}

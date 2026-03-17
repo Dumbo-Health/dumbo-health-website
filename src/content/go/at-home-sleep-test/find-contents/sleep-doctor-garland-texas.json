@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Trends Diagnostic Centers",
+    "Baylor Scott & White Sleep Center – Rowlett",
+    "Perkins TMJ, Headaches & Sleep Disorders",
+    "Baylor Garland Sleep Center"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Sleep Center – Rowlett",
+    "Baylor Garland Sleep Center",
+    "Sleep Trends Diagnostic Centers",
+    "Sleeptrends Diagnostic Center"
+  ],
+  "neighborhoods": [
+    "Coomer Creek",
+    "Apollo Arapaho and Camelot",
+    "Oakridge",
+    "Camelot"
+  ],
+  "population": "250,000+",
+  "insurance_companies": [
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Aetna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 50,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Trends Diagnostic Centers",
+    "Baylor Scott & White Sleep Center – Rowlett",
+    "Perkins TMJ, Headaches & Sleep Disorders",
+    "Verma Dental Snoring & Sleep Experts"
+  ]
+}

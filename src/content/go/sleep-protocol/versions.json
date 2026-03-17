@@ -1,0 +1,139 @@
+{
+    "2026-03-14": {
+        "title": "Sleep Science This Week: March 8-14, 2026",
+        "changes": [
+            "Updated 'Protect your memory and cognitive function' in sleep_apnea section - Sleep (Oxford Academic, March 2026) perspective on CPAP potentially enhancing glymphatic/CSF waste clearance and modifying neurodegenerative risk",
+            "Updated 'Understand the double impact on your heart' in sleep_apnea section - Sleep (Oxford Academic, March 2026) found hypoxemia and arousals create distinct cardiac response signatures; phenotyping as hypoxemic vs arousal dominant may guide personalized treatment",
+            "Added 'Request lipoprotein(a) testing if you have OSA and heart disease' tip in sleep_apnea section - Sleep (Oxford Academic, March 2026) found OSA plus elevated Lp(a) in heart attack survivors creates high-risk combination with worse cardiovascular outcomes",
+            "Added 'Ask about cardiac phenotyping during sleep studies' tip in sleep_apnea section - Sleep (Oxford Academic, March 2026) showed oxygen desaturation vs arousals produce distinct RR interval patterns; detailed cardiac monitoring could guide risk stratification"
+        ]
+    },
+    "2026-03-07": {
+        "title": "Sleep Science This Week: March 1-7, 2026",
+        "changes": [
+            "Added 'Request gradual CPAP pressure titration if you're 65 or older' tip in sleep_apnea section - Liu et al. (Nature and Science of Sleep, March 2026) found older adults show higher arousal, HRV changes, and reduced slow-wave sleep at higher pressures during titration",
+            "Added 'Discuss metabolic screening for heart disease and sleep apnea' tip in sleep_apnea section - Chen et al. identified blood biomarkers (D-glucuronolactone, tryptophan) for CADOSA non-invasive detection",
+            "Added 'Ask about airway remodeling markers if CPAP isn't working' tip in sleep_apnea section - Yen-Chun Chen et al. (Journal of Sleep Research, March 2026) identified epithelial Na+/K+ imbalance as surface markers of airway remodeling",
+            "Added 'Seek multidisciplinary PAP programs for pediatric OSA' tip in children section - Linares et al. (Frontiers in Sleep, March 2026) Brazilian interdisciplinary program improved pediatric PAP adherence"
+        ]
+    },
+    "2026-02-28": {
+        "title": "Sleep Science This Week: February 22-28, 2026",
+        "changes": [
+            "Added 'Help children overcome nightmares using cognitive-behavioral tools' tip in children section - DARC-NESS mastery-based CBT framework (Cromer et al., Frontiers in Sleep, Feb 27 2026) showed nightmare frequency reduction from 4/week to zero; introduces nightmare efficacy as central mechanism, with worry boxes, belly breathing, positive sleep cues, and nightmare rescripting as key techniques"
+        ]
+    },
+    "2026-02-21": {
+        "title": "Sleep Science This Week: February 15-21, 2026",
+        "changes": [
+            "Added 'Get screened for sleep apnea after COVID-19 recovery' tip in sleep_apnea section - cohort of 910,393 patients showed elevated new-onset OSA risk up to 4.5 years post-infection (HR 1.33 non-hospitalized, HR 1.41 hospitalized)",
+            "Added 'Check vitamin D status if you have sleep apnea' tip in sleep_apnea section - matched cohort (n=36,497) linked vitamin D deficiency with higher heart failure risk (HR 1.45), all-cause mortality (HR 1.76), and pulmonary embolism risk",
+            "Added 'Stay current on respiratory vaccines if you have OSA' tip in sleep_apnea section - mortality trend data showed substantial long-term increase in pneumonia-related deaths among patients with OSA",
+            "Added 'Screen for sleep apnea in chronic low back pain' tip in sleep_apnea section - 2026 study linked OSA risk with accelerated aging biomarkers (PhenoAge, DunedinPACE) and worse pain outcomes",
+            "Updated 'Ask about patch-type or wearable OSA screening' in sleep_apnea section with Feb 2026 transformer-based single-lead ECG evidence (F1 0.863, AUC 0.852) for second-by-second apnea detection"
+        ]
+    },
+    "2026-02-14": {
+        "title": "Sleep Science This Week: February 8-14, 2026",
+        "changes": [
+            "Updated 'Advocate for faster, coordinated care' in sleep_apnea section with long-term pathway outcomes (84.3% PAP adoption, 80.6% 90-day adherence, 74.2% adherence at 2 years)",
+            "Added new sleep_apnea tip: 'Get sleep and swallowing evaluation after head/neck cancer treatment' to reflect new evidence linking nocturnal swallowing dysfunction, aspiration risk, and OSA in treated HNC patients"
+        ]
+    },
+    "2026-02-07": {
+        "title": "Sleep Protocol Tips Update: February 7, 2026",
+        "changes": [
+            "Added 'Ask about patch-type or wearable OSA screening' tip in sleep_apnea section - AI-powered chest patch achieved 81.4% accuracy for moderate-to-severe OSA, can monitor up to one week",
+            "Added 'Try therapist-guided online mindfulness therapy for chronic insomnia' tip in schedule section - 8-week iMBCT-I showed 56.10% remission vs 17.07% for sleep hygiene, benefits at 20-week follow-up",
+            "Added 'Seek early sleep-behavior intervention for preschoolers with ADHD signs' tip in children section - PASS protocol combines parent training with sleep medicine; sleep problems affect 2-in-3 young children with ADHD symptoms"
+        ]
+    },
+    "2026-01-31": {
+        "title": "Sleep Science This Week: January 24-30, 2026",
+        "changes": [
+            "Updated 'Watch for blood clot warning signs' in sleep_apnea section - Added Mendelian randomization evidence that obesity, not OSA itself, may be the primary driver of blood clotting problems (study of 790 OSA patients)",
+            "Added 'Request formal sleep testing after stroke or TIA' tip in sleep_apnea section - Up to 70% of stroke patients have undiagnosed OSA, and standard questionnaires (STOP-BANG, Berlin, etc.) don't perform well enough in this population",
+            "Added 'Request earplugs during surgery for better recovery sleep' tip in sleep_apnea section - RCT of 90 patients showing earplugs improved post-op sleep quality, reduced propofol use by 20%, and shortened hospital stays",
+            "Updated 'Lose weight to reduce sleep apnea severity' in weight_management section - Added evidence that weight loss may reduce thrombotic risk more effectively than CPAP alone"
+        ]
+    },
+    "2026-01-23": {
+        "title": "Sleep Protocol Tips Update: January 23, 2026",
+        "changes": [
+            "Added 'Ask about newer PAP technologies if CPAP is uncomfortable' tip in sleep_apnea section (KPAP showing 50% less mask leak and 69-84% patient preference over traditional CPAP)",
+            "Added 'Get screened for sleep apnea if you have COPD' tip in sleep_apnea section (overlap syndrome affects 28-30% of COPD patients with worse outcomes requiring BiPAP)",
+            "Added 'Consider GLP-1 medications for obesity-related sleep apnea' tip in sleep_apnea section (emerging evidence for semaglutide/tirzepatide in managing metabolic component of OSA)",
+            "Updated 'Consider histamine-targeted treatment for resistant insomnia' with additional case evidence (74-year-old with 10 months treatment-resistant insomnia recovered in 24 hours with antihistamine therapy)"
+        ]
+    },
+    "2026-01-16": {
+        "title": "Sleep Protocol Tips Update: January 16, 2026",
+        "changes": [
+            "Added 'Prioritize sleep efficiency over total time in bed' tip in schedule section (study of 173 adults showing sleep efficiency <85% linked to worse memory, especially in older adults)",
+            "Added 'Try video-based sleep education before medication' tip in schedule section (RCT of 119 adults aged 50-80 showing 8-minute video improved subjective sleep quality without medication)",
+            "Added 'Put away your phone during your child's bedtime routine' tip in children section (study of 1,295 preschoolers showing parental smartphone use during bedtime linked to ~19 min shorter sleep)",
+            "Added 'Consider separate sleep spaces for better child sleep quality' tip in children section (co-sleeping associated with more night wakings and daytime sleepiness)",
+            "Updated 'Understand long-term risk tradeoffs of sleep medications' in pharmacology section (added nuance that non-GABAergic sleep medications may actually support memory, unlike benzodiazepines/Z-drugs)"
+        ]
+    },
+    "2026-01-09": {
+        "title": "Sleep Science This Week: January 3-9, 2026",
+        "changes": [
+            "Added telemedicine and AI-enabled OSA care tip (home sleep testing with automated scoring, virtual PAP setup, adherence prediction, and LLM-supported patient education)",
+            "Added pediatric clinical-cephalometric screening tip for resource-limited settings (clinical signs plus ANB angle and nasopharyngeal soft tissue ratio ≥0.68 capturing ~90% of moderate-severe cases with 86% accuracy)",
+            "Expanded evening blue-light guidance with mechanistic evidence (450–465 nm exposure damaging retinal structure and disrupting melatonin/circadian signaling via TGF-beta, JAK-STAT, MAPK pathways)"
+        ]
+    },
+    "2026-01-03": {
+        "title": "Additional categories added to the Sleep Protocol",
+        "changes": [
+            "Added new 'circadian' category with 4 tips: Morning light exposure, evening blue light suppression, seasonal photoperiod alignment, and geographic latitude adjustments - Based on research showing light timing is critical for circadian rhythm regulation",
+            "Added new 'temperature' category with 3 tips: Core body temperature timing, bedroom temperature optimization, and pre-sleep cooling/post-wake warming strategies - Research shows temperature regulation is essential for sleep onset and quality",
+            "Added new 'neurochemical' category with 4 tips: Caffeine cutoff logic, alcohol timing/exclusion, nicotine impact, and supplement timing (magnesium, glycine) - Covers neurochemical factors affecting sleep",
+            "Added new 'chronotype' category with 4 tips: Chronotype identification, shift work adaptation, travel/jet lag protocols, and social jet lag mitigation - Evidence-based personalization for individual circadian rhythms",
+            "Added new 'cognitive' category with 3 tips: Stress downregulation, rumination control, and anxiety/hyperarousal management - Addresses cognitive and emotional factors affecting sleep",
+            "Added new 'digital' category with 4 tips: Screen timing rules, content intensity control, dopamine load management, and notification suppression windows - Digital hygiene for better sleep",
+            "Added new 'measurement' category with 4 tips: Sleep stages optimization, HRV/RHR/respiratory rate tracking, longitudinal trend analysis, and intervention-to-outcome feedback loops - Data-driven sleep optimization",
+            "Added new 'environment' category with 4 tips: Noise profiles, air quality (CO₂/VOCs), humidity control, and mattress/pillow biomechanical fit - Comprehensive environmental optimization",
+            "Added new 'pharmacology' category with 3 tips: Short-term sleep aids, long-term risk tradeoffs, and dependency avoidance frameworks - Safe use of sleep medications",
+            "Added new 'recovery' category with 3 tips: Training-sleep coupling, illness/overtraining adjustments, and cognitive performance carryover - Integration of sleep with performance and recovery",
+            "Added new 'aging' category with 3 tips: Sleep architecture changes with age, REM/deep sleep preservation, and neurodegeneration risk mitigation - Age-specific sleep considerations",
+            "Added new 'governance' category with 4 tips: Non-negotiables vs optional layers, failure modes, compliance scoring, and iteration cadence - Protocol management and optimization"
+        ]
+    },
+    "2026-01-02": {
+        "title": "Sleep Science This Week: Dec 27, 2025 - Jan 2, 2026",
+        "changes": [
+            "Updated 'Screen overweight children for sleep apnea early' - Added specific statistics: 22.7% of children have undiagnosed OSA, overweight = 2.71x risk, obesity = 2.80x risk, weight gain since 18 months linked to higher risk",
+            "Updated 'Understand adenoid issues in children with OSA' - Replaced with ferroptosis mechanism research showing reduced cell death allows tissue overgrowth, identified 7 hub genes as potential therapeutic targets",
+            "Added new tip: 'Consider comprehensive, team-based care for children' - Emphasizes multidisciplinary programs combining nutrition, exercise, psychology, and sleep medicine for children with obesity and sleep problems",
+            "Added new tip: 'Track your child's weight trajectory from early age' - Highlights that weight gain since 18 months increases OSA risk, emphasizing early weight management",
+            "Added new tip: 'Explore digital sleep interventions for children' - Discusses mobile health apps showing promise for pediatric insomnia treatment",
+            "Added new tip: 'Monitor daytime functioning for sleep-disordered breathing signs' - Helps parents recognize behavioral and academic warning signs of undiagnosed OSA in children"
+        ]
+    },
+    "2025-12-26": {
+        "title": "Sleep Science This Week: December 20-26, 2025",
+        "changes": [
+            "Added new tip: 'Advocate for faster, coordinated care' - Based on research showing streamlined care improves CPAP adherence from 11% to 74%",
+            "Added new tip: 'Watch for blood clot warning signs' - Highlights the overlooked VTE risk in sleep apnea patients",
+            "Added new tip: 'Understand the double impact on your heart' - Explains how low oxygen AND sleep disruptions compound cardiovascular stress",
+            "Added new tip: 'Protect your memory and cognitive function' - Links OSA treatment to dementia prevention through sleep spindle protection",
+            "Added new tip: 'Understand night-to-night OSA variability' - Research shows OSA severity can vary dramatically, single-night studies may be unreliable",
+            "Updated 'Use your CPAP machine every night' - Added information about comprehensive care programs improving adherence",
+            "Updated 'Maintain a consistent sleep schedule' - Added research suggesting timing shifts may be less harmful than total sleep loss",
+            "Updated 'Lose weight to reduce sleep apnea severity' - Added research on childhood obesity-OSA connection starting as early as 18 months",
+            "Updated 'Exercise regularly to improve sleep quality' - Added details about exercise providing short-term protection but not preventing long-term heart damage from sleep deprivation",
+            "Added new 'children' category with two tips: 'Screen overweight children for sleep apnea early' and 'Understand adenoid issues in children with OSA'"
+        ]
+    },
+    "2025-12-19": {
+        "title": "Sleep Science This Week: December 13-19, 2025",
+        "changes": [
+            "Added new tip: 'Consider histamine-targeted treatment for resistant insomnia' - Based on research showing mast cell-driven inflammation may cause treatment-resistant insomnia",
+            "Added new tip: 'Establish age-appropriate bedtimes for teenagers' - Research shows sleep timing (not just duration) affects teen mental health and suicide risk",
+            "Added new tip: 'Avoid quick returns in shift work schedules' - Highlights the dangers of less than 11 hours between shifts",
+            "Added new tip: 'Consider your chronotype for important activities' - Evening types genuinely perform worse in morning, not just psychological preference"
+        ]
+    }
+}
