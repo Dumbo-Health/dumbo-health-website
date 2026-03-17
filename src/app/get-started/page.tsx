@@ -9,45 +9,121 @@ import type { QuizOption, ResultsTemplate } from "@/types/quiz";
 
 // ── Motion config ──────────────────────────────────────────────────────────────
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const t = (delay = 0, duration = 0.4) => ({ ease: EASE, duration, delay });
+const EASE_OUT: [number, number, number, number] = [0.4, 0, 0.6, 1];
+const t = (delay = 0, duration = 0.5) => ({ ease: EASE, duration, delay });
 
-const fadeSlide = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
+// Screen-level: deliberate entrance, gentle fade exit (no directional snap)
+const screen = {
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0, transition: { ease: EASE, duration: 0.65 } },
+  exit: { opacity: 0, y: 0, transition: { ease: "easeIn" as const, duration: 0.28 } },
 };
 
 // ── Static data ────────────────────────────────────────────────────────────────
 const FLOW_OPTIONS = [
   {
     slug: "undiagnosed",
-    icon: "🌙",
-    title: "I think I might have a sleep problem",
-    subtitle: "Not tested yet — we'll help you figure out what's going on.",
+    iconSrc: "/icons/brand/moon.png",
+    title: "Something feels off with my sleep",
+    subtitle: "Not tested yet. We'll help you understand what's going on.",
   },
   {
     slug: "diagnosed",
-    icon: "💤",
-    title: "I've already been diagnosed with sleep apnea",
-    subtitle: "We'll find the right treatment path for you.",
+    iconSrc: "/icons/brand/heart.png",
+    title: "I've been diagnosed and need support",
+    subtitle: "We'll help you find the right setup for where you are now.",
   },
 ];
 
-const TAG_LABELS: Record<string, string> = {
-  cdl_urgent: "Urgent DOT renewal — we'll fast-track your results",
-  cdl_driver: "CDL/DOT documentation included with your report",
-  underdiagnosed_group: "Women are often underdiagnosed — your concerns are valid and taken seriously",
-  young_adult: "Sleep apnea affects people in their 20s and 30s more than most realise",
-  drowsy_driving: "Drowsy driving risk noted — testing is important for your safety",
-  re_engagement: "You've started this journey before — this time, we follow through together",
-  no_insurance: "Flat-rate pricing, no insurance paperwork, no surprise bills",
-  medicare: "Our cash-pay rate is often lower than a Medicare sleep lab copay",
-  needs_cpap: "CPAP therapy path identified",
-  cpap_non_adherent: "Getting back on track — we'll make therapy easier",
-  migration_lead: "Ready to switch providers — we make the transition seamless",
-  old_equipment: "Your equipment may be due for an upgrade",
-  resupply_only: "Smart resupply matched to your usage data",
-};
+// ── Animated gradient background (always present, progresses with quiz) ────────
+function AnimatedGradientBg({ active, progress }: { active: boolean; progress: number }) {
+  const warmth = progress / 100; // 0→1 as quiz progresses
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+      {/* Stage 1 — Daylight base, always present */}
+      <div style={{ position: "absolute", inset: 0, background: "#FCF6ED" }} />
+
+      {/* Stage 2 — Sunlight wash, creeps in from 0→60% progress */}
+      <motion.div
+        animate={{ opacity: Math.min(warmth * 1.4, 0.85) }}
+        transition={{ duration: 1.4, ease: EASE }}
+        style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(145deg, transparent 0%, rgba(245,230,209,0.9) 55%, transparent 100%)",
+        }}
+      />
+
+      {/* Stage 3 — Light Peach warmth, enters after 30% progress */}
+      <motion.div
+        animate={{ opacity: Math.max(0, (warmth - 0.3) / 0.7) * 0.75 }}
+        transition={{ duration: 1.4, ease: EASE }}
+        style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(145deg, transparent 0%, rgba(255,214,173,0.65) 65%, transparent 100%)",
+        }}
+      />
+
+      {/* Blob 1: top-right — breathes, warms with progress */}
+      <motion.div
+        animate={{
+          opacity: active ? [0.65, 0.92, 0.65] : [0.25 + warmth * 0.2, 0.38 + warmth * 0.2, 0.25 + warmth * 0.2],
+          scale:   active ? [1, 1.22, 1]        : [1, 1.07, 1],
+          x: [0, 32, 0], y: [0, -20, 0],
+        }}
+        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+        style={{
+          position: "absolute", top: "-15%", right: "-8%",
+          width: "60vw", height: "60vw", maxWidth: 760, maxHeight: 760,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,131,97,0.18) 0%, rgba(255,214,173,0.7) 40%, transparent 68%)",
+        }}
+      />
+
+      {/* Blob 2: bottom-left */}
+      <motion.div
+        animate={{
+          opacity: active ? [0.45, 0.72, 0.45] : [0.15 + warmth * 0.15, 0.26 + warmth * 0.15, 0.15 + warmth * 0.15],
+          scale:   active ? [1.1, 1, 1.1]       : [1.04, 1, 1.04],
+          x: [0, -24, 0], y: [0, 22, 0],
+        }}
+        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, delay: 2 }}
+        style={{
+          position: "absolute", bottom: "-18%", left: "-12%",
+          width: "55vw", height: "55vw", maxWidth: 680, maxHeight: 680,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,214,173,0.65) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Blob 3: center, slow drift */}
+      <motion.div
+        animate={{
+          opacity: active ? [0.3, 0.55, 0.3] : [0.1 + warmth * 0.12, 0.2 + warmth * 0.12, 0.1 + warmth * 0.12],
+          scale:   active ? [1, 1.28, 1]      : [1, 1.1, 1],
+        }}
+        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+        style={{
+          position: "absolute", top: "25%", left: "10%",
+          width: "50vw", height: "50vw", maxWidth: 620, maxHeight: 620,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(245,230,209,0.9) 0%, transparent 65%)",
+        }}
+      />
+    </div>
+  );
+}
+
+// ── Section photo mapping ──────────────────────────────────────────────────────
+function getSectionPhoto(slug: string | undefined): string | null {
+  if (!slug) return null;
+  if (slug.includes("symptom") || slug.includes("sleep-q") || slug.includes("snoring")) return "/images/people/woman sleeping peacefully.jpg";
+  if (slug.includes("risk") || slug.includes("health") || slug.includes("factor")) return "/images/people/woman-blue-pajamas.png";
+  if (slug.includes("impact") || slug.includes("daytime") || slug.includes("day")) return "/images/people/man-drinking-coffee.png";
+  if (slug.includes("treatment") || slug.includes("cpap") || slug.includes("diag") || slug.includes("dx")) return "/images/people/man-with-pillows.png";
+  return null;
+}
+
 
 function getRiskLevel(score: number) {
   if (score >= 4) return { label: "High likelihood", color: "#FF8361", bar: 1 };
@@ -60,11 +136,13 @@ function QuizCard({ children, style }: { children: React.ReactNode; style?: Reac
   return (
     <div
       style={{
-        backgroundColor: "white",
+        backgroundColor: "rgba(255,255,255,0.82)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
         borderRadius: 28,
         boxShadow: "0 4px 40px rgba(3,31,61,0.07), 0 1px 4px rgba(3,31,61,0.04)",
-        padding: "clamp(28px, 6vw, 48px)",
-        maxWidth: 560,
+        padding: "clamp(32px, 5vw, 56px)",
+        maxWidth: 640,
         width: "100%",
         ...style,
       }}
@@ -74,24 +152,156 @@ function QuizCard({ children, style }: { children: React.ReactNode; style?: Reac
   );
 }
 
+// ── Word-by-word animated text ────────────────────────────────────────────────
+function AnimatedText({ text, delay = 0 }: { text: string; delay?: number }) {
+  const words = text.split(" ");
+  return (
+    <span>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ease: EASE, duration: 0.42, delay: delay + i * 0.035 }}
+          style={{ display: "inline-block", marginRight: "0.28em" }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+// ── Reflection moments (answer-triggered acknowledgment screens) ───────────────
+interface ReflectionMoment {
+  id: string;
+  iconSrc: string;
+  stat: string;
+  headline: string;
+  body: string;
+}
+
+const REFLECTION_MOMENTS: Record<string, ReflectionMoment> = {
+  "snoring:yes-loud": {
+    id: "snoring-loud",
+    iconSrc: "/icons/brand/moon.png",
+    stat: "90 million Americans snore regularly",
+    headline: "You're not alone",
+    body: "Loud snoring is one of the most common early signs of sleep apnea. Most people who snore loudly don't know why, and many of them have sleep apnea without realizing it.",
+  },
+  "snoring:sometimes": {
+    id: "snoring-sometimes",
+    iconSrc: "/icons/brand/moon.png",
+    stat: "1 in 4 adults snores intermittently",
+    headline: "Even occasional snoring matters",
+    body: "Snoring happens when the airway narrows during sleep. It doesn't have to happen every night to be worth understanding.",
+  },
+  "breathing-pauses:yes": {
+    id: "breathing-pauses",
+    iconSrc: "/icons/brand/heart.png",
+    stat: "One of the clearest signals we look for",
+    headline: "That's significant",
+    body: "When breathing pauses during sleep, the brain wakes just enough to restart it, but not enough for you to remember. This can happen dozens of times each night, quietly exhausting you.",
+  },
+  "daytime-sleepiness:daily": {
+    id: "daytime-sleepiness",
+    iconSrc: "/icons/brand/sun.png",
+    stat: "80 million Americans have undiagnosed sleep apnea",
+    headline: "This exhaustion isn't just how you're wired",
+    body: "Most people with sleep apnea think they're just tired. They don't realize their sleep is being disrupted hundreds of times each night. You're asking exactly the right questions.",
+  },
+};
+
+function getReflectionTrigger(slug: string | undefined, answer: string | string[]): ReflectionMoment | null {
+  if (!slug || typeof answer !== "string") return null;
+  return REFLECTION_MOMENTS[`${slug}:${answer}`] ?? null;
+}
+
+function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; onContinue: () => void }) {
+  return (
+    <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+      <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ ease: [0.34, 1.56, 0.64, 1], duration: 0.7 }}
+          style={{ width: 72, height: 72, margin: "0 auto 36px", display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          <Image src={moment.iconSrc} alt="" width={64} height={64} style={{ objectFit: "contain" }} />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.3)}
+          style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.13em", textTransform: "uppercase", color: "#78BFBC", marginBottom: 18 }}
+        >
+          {moment.stat}
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.44)}
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 20 }}
+        >
+          {moment.headline}
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.58)}
+          style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.58)", lineHeight: 1.75, marginBottom: 48 }}
+        >
+          {moment.body}
+        </motion.p>
+
+        <motion.button
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.72)}
+          whileHover={{ y: -2, boxShadow: "0 12px 36px rgba(255,131,97,0.35)" }}
+          whileTap={{ scale: 0.97 }}
+          onClick={onContinue}
+          style={{
+            backgroundColor: "#FF8361",
+            color: "white",
+            border: "none",
+            borderRadius: 12,
+            padding: "14px 44px",
+            fontFamily: "var(--font-body)",
+            fontSize: "1rem",
+            fontWeight: 500,
+            cursor: "pointer",
+            boxShadow: "0 4px 18px rgba(255,131,97,0.28)",
+          }}
+        >
+          Continue →
+        </motion.button>
+      </div>
+    </div>
+  );
+}
+
 // ── Flow splitter (entry screen) ───────────────────────────────────────────────
 function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
   return (
     <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      <div style={{ maxWidth: 540, width: "100%", textAlign: "center" }}>
+      <div style={{ maxWidth: 620, width: "100%", textAlign: "center" }}>
         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05)}
           style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#FF8361", marginBottom: 18 }}>
-          Sleep Assessment
+          Sleep assessment
         </motion.p>
 
         <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.1)}
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.875rem, 5vw, 2.75rem)", color: "#031F3D", lineHeight: 1.12, marginBottom: 12 }}>
+          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(2rem, 4.5vw, 3.25rem)", color: "#031F3D", lineHeight: 1.1, marginBottom: 14 }}>
           Where are you on your sleep journey?
         </motion.h1>
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={t(0.18)}
           style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.5)", marginBottom: 36 }}>
-          We'll personalise everything based on your answers.
+          We&apos;ll personalize everything based on your answers.
         </motion.p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -108,7 +318,7 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
                 backgroundColor: "white",
                 border: "1.5px solid rgba(3,31,61,0.09)",
                 borderRadius: 20,
-                padding: "20px 22px",
+                padding: "clamp(20px, 2.5vw, 28px) clamp(22px, 2.5vw, 30px)",
                 textAlign: "left",
                 cursor: "pointer",
                 display: "flex",
@@ -118,7 +328,9 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
                 transition: "border-color 0.2s",
               }}
             >
-              <span style={{ fontSize: "1.625rem", lineHeight: 1, flexShrink: 0 }}>{opt.icon}</span>
+              <span style={{ width: 38, height: 38, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Image src={opt.iconSrc} alt="" width={32} height={32} style={{ objectFit: "contain" }} />
+              </span>
               <div style={{ flex: 1 }}>
                 <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1rem", color: "#031F3D", marginBottom: 2, lineHeight: 1.3 }}>
                   {opt.title}
@@ -142,44 +354,82 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
 }
 
 // ── Section interstitial ───────────────────────────────────────────────────────
-function SectionInterstitial({ title, subtitle, onContinue }: { title: string; subtitle: string; onContinue: () => void }) {
+function SectionInterstitial({ title, subtitle, onContinue, sectionSlug }: { title: string; subtitle: string; onContinue: () => void; sectionSlug?: string }) {
+  const photoSrc = getSectionPhoto(sectionSlug);
+
   return (
-    <motion.div {...fadeSlide} transition={t()} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
-      <div style={{ maxWidth: 480, width: "100%", textAlign: "center" }}>
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.5)}
-          style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 24px" }} />
-        <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.15)}
-          style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 14 }}>
-          {title}
-        </motion.h2>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={t(0.22)}
-          style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.6, marginBottom: 36 }}>
-          {subtitle}
-        </motion.p>
-        <motion.button
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={t(0.28)}
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={onContinue}
-          style={{
-            backgroundColor: "#FF8361",
-            color: "white",
-            border: "none",
-            borderRadius: 12,
-            padding: "14px 36px",
-            fontFamily: "var(--font-body)",
-            fontSize: "1rem",
-            fontWeight: 500,
-            cursor: "pointer",
-            boxShadow: "0 4px 16px rgba(255,131,97,0.3)",
-          }}
-        >
-          Continue →
-        </motion.button>
+    <div style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+
+      <div style={{ maxWidth: 580, width: "100%" }}>
+        {photoSrc ? (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: EASE, duration: 0.65 }}
+            style={{
+              backgroundColor: "white",
+              borderRadius: 28,
+              overflow: "hidden",
+              boxShadow: "0 8px 48px rgba(3,31,61,0.1), 0 2px 8px rgba(3,31,61,0.05)",
+            }}
+          >
+            {/* Photo area */}
+            <div style={{ position: "relative", height: 252, overflow: "hidden" }}>
+              <Image src={photoSrc} alt="" fill style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 35%, white 100%)" }} />
+            </div>
+            {/* Text area */}
+            <div style={{ padding: "8px 40px 40px", textAlign: "center" }}>
+              <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.2, 0.55)}
+                style={{ width: 32, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 22px" }} />
+              <motion.h2 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(0.3)}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.625rem, 4vw, 2.25rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 14 }}>
+                {title}
+              </motion.h2>
+              <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.42)}
+                style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.72, marginBottom: 36 }}>
+                {subtitle}
+              </motion.p>
+              <motion.button
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={t(0.55)}
+                whileHover={{ y: -2, boxShadow: "0 12px 32px rgba(255,131,97,0.38)" }}
+                whileTap={{ scale: 0.97 }}
+                onClick={onContinue}
+                style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 44px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", boxShadow: "0 4px 18px rgba(255,131,97,0.3)" }}
+              >
+                Let&apos;s go →
+              </motion.button>
+            </div>
+          </motion.div>
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={t(0.1, 0.75)}
+              style={{ width: 40, height: 3, backgroundColor: "#FF8361", borderRadius: 2, margin: "0 auto 30px" }} />
+            <motion.h2 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(0.25)}
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.15, marginBottom: 16 }}>
+              {title}
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.4)}
+              style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.7, marginBottom: 48 }}>
+              {subtitle}
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={t(0.55)}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onContinue}
+              style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 36px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", boxShadow: "0 4px 16px rgba(255,131,97,0.3)" }}
+            >
+              Let&apos;s go →
+            </motion.button>
+          </div>
+        )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -195,7 +445,7 @@ function OptionBtn({ label, selected, onClick, type }: { label: string; selected
         backgroundColor: selected ? "rgba(255,131,97,0.06)" : "white",
         border: selected ? "2px solid #FF8361" : "1.5px solid rgba(3,31,61,0.1)",
         borderRadius: 14,
-        padding: "13px 16px",
+        padding: "clamp(13px, 1.5vw, 17px) clamp(16px, 2vw, 20px)",
         textAlign: "left",
         cursor: "pointer",
         display: "flex",
@@ -219,7 +469,7 @@ function OptionBtn({ label, selected, onClick, type }: { label: string; selected
           </span>
         )}
       </span>
-      <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "#031F3D", fontWeight: selected ? 500 : 400, lineHeight: 1.35 }}>
+      <span style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)", color: "#031F3D", fontWeight: selected ? 500 : 400, lineHeight: 1.35 }}>
         {label}
       </span>
     </motion.button>
@@ -249,6 +499,10 @@ function QuestionCard({
   );
   const [whyOpen, setWhyOpen] = useState(false);
 
+  // Delay options until question text has mostly animated in
+  const wordCount = question.question_text.split(" ").length;
+  const optionsDelay = Math.min(0.12 + wordCount * 0.032, 0.54);
+
   useEffect(() => {
     setSelected(currentAnswer ?? (question.answer_type === "multi_select" ? [] : ""));
     setWhyOpen(false);
@@ -258,7 +512,7 @@ function QuestionCard({
 
   function handleSingle(value: string) {
     setSelected(value);
-    setTimeout(() => onAnswer(value), 220);
+    setTimeout(() => onAnswer(value), 420);
   }
 
   function handleMulti(value: string) {
@@ -269,7 +523,7 @@ function QuestionCard({
   }
 
   return (
-    <motion.div key={question.id} {...fadeSlide} transition={t()} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px 20px" }}>
+    <motion.div key={question.id} {...screen} style={{ minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px 20px" }}>
       <QuizCard>
         {/* Header row */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28 }}>
@@ -285,8 +539,8 @@ function QuestionCard({
         </div>
 
         {/* Question */}
-        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.3rem, 4vw, 1.625rem)", color: "#031F3D", lineHeight: 1.2, marginBottom: question.why_we_ask ? 10 : 24 }}>
-          {question.question_text}
+        <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.375rem, 2.8vw, 2rem)", color: "#031F3D", lineHeight: 1.25, marginBottom: question.why_we_ask ? 12 : 28 }}>
+          <AnimatedText text={question.question_text} delay={0.05} />
         </h2>
 
         {/* Why we ask */}
@@ -315,7 +569,7 @@ function QuestionCard({
         {/* Options */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {question.answer_type === "single_select" && options.map((opt, i) => (
-            <motion.div key={opt.value} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05 + i * 0.04)}>
+            <motion.div key={opt.value} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(optionsDelay + i * 0.075)}>
               <OptionBtn label={opt.label} selected={selected === opt.value} onClick={() => handleSingle(opt.value)} type="radio" />
             </motion.div>
           ))}
@@ -323,7 +577,7 @@ function QuestionCard({
           {question.answer_type === "multi_select" && (
             <>
               {options.map((opt, i) => (
-                <motion.div key={opt.value} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05 + i * 0.04)}>
+                <motion.div key={opt.value} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={t(optionsDelay + i * 0.075)}>
                   <OptionBtn
                     label={opt.label}
                     selected={Array.isArray(selected) && selected.includes(opt.value)}
@@ -381,8 +635,8 @@ function QuestionCard({
                 }}
               >
                 <option value="">Select your state</option>
-                {(question.options as string[]).map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
+                {(question.options as QuizOption[]).map((opt) => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
                 ))}
               </select>
               <button
@@ -403,6 +657,60 @@ function QuestionCard({
               >
                 Continue →
               </button>
+            </>
+          )}
+
+          {question.answer_type === "text_input" && (
+            <>
+              <input
+                type="email"
+                value={selected as string}
+                onChange={(e) => setSelected(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter" && (selected as string).includes("@")) onAnswer(selected as string); }}
+                placeholder="your@email.com"
+                autoFocus
+                style={{
+                  width: "100%",
+                  padding: "13px 16px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.9375rem",
+                  color: "#031F3D",
+                  backgroundColor: "white",
+                  border: "1.5px solid rgba(3,31,61,0.1)",
+                  borderRadius: 14,
+                  outline: "none",
+                  boxSizing: "border-box",
+                  transition: "border-color 0.15s",
+                }}
+                onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
+                onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
+              />
+              <button
+                disabled={!(selected as string).includes("@")}
+                onClick={() => onAnswer(selected as string)}
+                style={{
+                  backgroundColor: (selected as string).includes("@") ? "#FF8361" : "rgba(3,31,61,0.08)",
+                  color: (selected as string).includes("@") ? "white" : "rgba(3,31,61,0.3)",
+                  border: "none",
+                  borderRadius: 12,
+                  padding: "13px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "1rem",
+                  fontWeight: 500,
+                  cursor: (selected as string).includes("@") ? "pointer" : "default",
+                  transition: "all 0.2s",
+                }}
+              >
+                Continue →
+              </button>
+              {!question.is_required && (
+                <button
+                  onClick={() => onAnswer("")}
+                  style={{ background: "none", border: "none", fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.35)", cursor: "pointer", padding: "4px 0", textDecoration: "underline" }}
+                >
+                  Skip for now
+                </button>
+              )}
             </>
           )}
         </div>
@@ -437,12 +745,14 @@ function ResultsPage({
   riskScore,
   tags,
   flowSlug,
+  answers,
   onSubmit,
 }: {
   results: Record<string, ResultsTemplate>;
   riskScore: number;
   tags: string[];
   flowSlug: string;
+  answers: Record<string, string | string[]>;
   onSubmit: () => void;
 }) {
   const [waitlistEmail, setWaitlistEmail] = useState("");
@@ -450,16 +760,70 @@ function ResultsPage({
 
   useEffect(() => { onSubmit(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const hero = results.hero_message;
-  const product = results.product_card;
-  const comparison = results.comparison;
-  const nextSteps = results.next_steps;
-  const reassurance = results.reassurance;
+  const hero = results.hero;
+  const product = results.recommendation;
   const waitlist = results.waitlist;
 
   const risk = getRiskLevel(riskScore);
-  const visibleTags = tags.filter((tag) => TAG_LABELS[tag]);
   const isUndiagnosed = flowSlug === "undiagnosed";
+
+  function getNarrative(): string {
+    if (!isUndiagnosed) {
+      const satisfaction = answers["cpap-satisfaction"] as string;
+      if (satisfaction === "stopped" || satisfaction === "struggling") {
+        return "CPAP therapy works really well, but only when it feels comfortable for you. A lot of people stop using it in the first year, usually because of the mask fit, air pressure, or just not having enough support along the way. The good news is that these things are almost always fixable. You don't have to give up.";
+      }
+      return "Getting diagnosed was the most important step, and you've already done it. Most people live with untreated sleep apnea for years without knowing. Now it's just about finding the right setup that feels comfortable and easy to stick with.";
+    }
+    if (riskScore >= 6) {
+      return "Your answers show several signs that are commonly linked to sleep apnea. Here's what may be happening: while you sleep, your airway briefly closes, which stops your breathing for a moment. Your brain wakes you up just enough to start breathing again, but not enough for you to notice. This can happen dozens of times each night. That's often why people wake up feeling tired, foggy, or unrefreshed, even after what seemed like a full night of sleep.";
+    }
+    if (riskScore >= 3) {
+      return "Your answers show some patterns that are often linked to sleep apnea. It's one of the most common conditions people don't know they have, often mistaken for everyday stress or just feeling tired. A simple overnight test is usually all it takes to find out for sure.";
+    }
+    return "Your score is on the lower side, but some of what you shared does point to disrupted sleep. Sleep apnea can be easy to miss, especially in women and younger adults. If your sleep is affecting how you feel during the day, a home test is the easiest way to get some answers.";
+  }
+
+  type Signal = { icon: string; label: string; detail: string };
+  function getSignals(): Signal[] {
+    const signals: Signal[] = [];
+    const snoring = answers["snoring"] as string;
+    const sleepiness = answers["daytime-sleepiness"] as string;
+    const pauses = answers["breathing-pauses"] as string;
+    const morningSymptoms = (answers["morning-symptoms"] ?? []) as string[];
+    const bmi = answers["bmi"] as string;
+    const conditions = (answers["conditions"] ?? []) as string[];
+    const satisfaction = answers["cpap-satisfaction"] as string;
+    const needs = (answers["dx-needs"] ?? []) as string[];
+
+    if (snoring === "yes-loud") signals.push({ icon: "🔊", label: "Loud snoring", detail: "Loud snoring happens when the airway is partially blocked during sleep. It's one of the most common early signs we look for." });
+    if (pauses === "yes") signals.push({ icon: "⏸", label: "Breathing pauses during sleep", detail: "When someone else notices that your breathing stops during sleep, that's one of the clearest signs we look for. It's a strong indicator that something is going on." });
+    if (sleepiness === "daily") signals.push({ icon: "☁️", label: "Feeling tired every day", detail: "Feeling tired every day, even after a full night of sleep, often means your sleep isn't as restful as it should be. It's one of the most common things people with sleep apnea share with us." });
+    if (morningSymptoms.includes("headache")) signals.push({ icon: "🧠", label: "Morning headaches", detail: "Waking up with a headache can be a sign that your oxygen levels dip during the night. This usually goes away once sleep apnea is treated." });
+    if (morningSymptoms.includes("dry-mouth")) signals.push({ icon: "💧", label: "Dry mouth in the morning", detail: "Waking up with a dry mouth often means you've been breathing through your mouth at night, which happens when the airway is partially blocked." });
+    if (bmi === "overweight" || bmi === "obese") signals.push({ icon: "📊", label: "Weight as a risk factor", detail: "Carrying extra weight, especially around the neck, can make the airway narrower during sleep. It's one of the most common risk factors for sleep apnea, and something treatment can help with." });
+    if (conditions.includes("hypertension")) signals.push({ icon: "❤️", label: "High blood pressure", detail: "High blood pressure and sleep apnea often go hand in hand. Each time breathing is disrupted at night, it puts extra stress on the heart. Treating sleep apnea can actually help bring blood pressure down." });
+    if (conditions.includes("heart-disease")) signals.push({ icon: "🫀", label: "Heart health", detail: "Untreated sleep apnea puts extra strain on the heart over time. For people with heart conditions, getting tested and treated is especially important." });
+    if (satisfaction === "stopped") signals.push({ icon: "🔄", label: "Stopped using CPAP", detail: "Stopping CPAP is more common than most people think. It usually comes down to the mask, the pressure, or just not having the right support. Most of the time, these problems can be fixed." });
+    if (satisfaction === "struggling") signals.push({ icon: "⚙️", label: "Struggling with CPAP", detail: "Struggling with CPAP is really common, and it's almost always something we can help with. Better mask fitting, adjusted pressure, and some coaching make a real difference." });
+    if (needs.includes("supplies")) signals.push({ icon: "📦", label: "Supplies may be due", detail: "CPAP masks, filters, and tubing wear out over time and can affect how well therapy works. Most insurance plans cover replacements every 90 days." });
+    if (tags.includes("cdl-driver")) signals.push({ icon: "🚛", label: "CDL driver", detail: "Commercial drivers with sleep apnea need to be tested and treated to meet FMCSA rules. We handle all the paperwork your medical examiner needs." });
+    return signals;
+  }
+
+  function getProductBullets(): string[] {
+    if (isUndiagnosed) {
+      if (tags.includes("cdl-driver")) return ["DOT-accepted testing that meets FMCSA requirements", "A sleep doctor reviews your results within 48 hours", "We prepare all the paperwork your medical examiner needs"];
+      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed, no clinic visit needed", "A sleep doctor reviews your results and calls you to walk through everything", "Most insurance plans cover the full cost"];
+    }
+    if (tags.includes("cpap-dropout") || tags.includes("cpap-struggling")) {
+      return ["A consultation to find the right mask for you", "Pressure settings adjusted to match how you actually breathe", "Ongoing support through the Dumbo Health app", "Insurance-covered equipment and supplies delivered to you"];
+    }
+    return ["Insurance-covered CPAP supplies every 90 days", "Regular check-ins with your care team", "Sleep coaching and progress tracking through the Dumbo Health app", "Dedicated care team available by message"];
+  }
+
+  const signals = getSignals();
+  const bullets = getProductBullets();
 
   function ResultBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
     return (
@@ -488,77 +852,24 @@ function ResultsPage({
         </div>
       </ResultBlock>
 
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 20px" }}>
+      <div style={{ maxWidth: 660, margin: "0 auto", padding: "0 20px" }}>
 
-        {/* Risk profile (undiagnosed only) */}
-        {isUndiagnosed && (
+        {/* ── Waitlist (out-of-state) — replaces all other content ── */}
+        {waitlist ? (
           <ResultBlock delay={0.1}>
-            <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 12 }}>
-                Risk Assessment
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.25rem", color: "#031F3D" }}>
-                  {risk.label}
-                </span>
-                <span style={{ backgroundColor: risk.color, color: "white", fontSize: "0.7rem", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", padding: "3px 10px", borderRadius: 20 }}>
-                  {riskScore > 0 ? `${riskScore} indicator${riskScore !== 1 ? "s" : ""}` : "Screening recommended"}
-                </span>
+            <div style={{ marginTop: 40, textAlign: "center", padding: "44px 32px", backgroundColor: "white", borderRadius: 28, boxShadow: "0 4px 32px rgba(3,31,61,0.07)" }}>
+              <div style={{ width: 52, height: 52, borderRadius: "50%", backgroundColor: "rgba(120,191,188,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+                <span style={{ fontSize: "1.4rem" }}>📍</span>
               </div>
-              {/* Risk bar */}
-              <div style={{ height: 6, backgroundColor: "rgba(3,31,61,0.06)", borderRadius: 3, overflow: "hidden" }}>
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${risk.bar * 100}%` }}
-                  transition={t(0.3, 0.7)}
-                  style={{ height: "100%", backgroundColor: risk.color, borderRadius: 3 }}
-                />
-              </div>
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Personalised insights */}
-        {visibleTags.length > 0 && (
-          <ResultBlock delay={0.15}>
-            <div style={{ marginTop: 16 }}>
-              {visibleTags.map((tag, i) => (
-                <motion.div
-                  key={tag}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={t(0.18 + i * 0.05)}
-                  style={{
-                    display: "flex", alignItems: "flex-start", gap: 10,
-                    padding: "12px 16px", marginBottom: 6,
-                    backgroundColor: "rgba(120,191,188,0.08)",
-                    border: "1px solid rgba(120,191,188,0.2)",
-                    borderRadius: 12,
-                  }}
-                >
-                  <span style={{ color: "#78BFBC", fontSize: "0.875rem", marginTop: 1, flexShrink: 0 }}>✓</span>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#031F3D", lineHeight: 1.4 }}>
-                    {TAG_LABELS[tag]}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Waitlist (out-of-state) */}
-        {waitlist && (
-          <ResultBlock delay={0.2}>
-            <div style={{ marginTop: 32, textAlign: "center", padding: "36px 28px", backgroundColor: "white", borderRadius: 24, boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.5rem", color: "#031F3D", marginBottom: 10 }}>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.625rem", color: "#031F3D", marginBottom: 12 }}>
                 {waitlist.title}
               </h2>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)", marginBottom: 24, lineHeight: 1.6 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, maxWidth: 380, margin: "0 auto 28px" }}>
                 {waitlist.body}
               </p>
               {waitlistSent ? (
                 <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500 }}>
-                  ✓ You're on the list. We'll reach out the moment we're in your state.
+                  ✓ You&apos;re on the list — we&apos;ll reach out the moment we launch in your state.
                 </p>
               ) : (
                 <div style={{ display: "flex", gap: 8, maxWidth: 360, margin: "0 auto" }}>
@@ -567,21 +878,11 @@ function ResultsPage({
                     placeholder="your@email.com"
                     value={waitlistEmail}
                     onChange={(e) => setWaitlistEmail(e.target.value)}
-                    style={{
-                      flex: 1, padding: "12px 16px",
-                      fontFamily: "var(--font-body)", fontSize: "0.9375rem",
-                      border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 12,
-                      color: "#031F3D", backgroundColor: "white", outline: "none",
-                    }}
+                    style={{ flex: 1, padding: "13px 16px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 12, color: "#031F3D", backgroundColor: "white", outline: "none" }}
                   />
                   <button
                     onClick={() => waitlistEmail && setWaitlistSent(true)}
-                    style={{
-                      backgroundColor: "#FF8361", color: "white", border: "none",
-                      borderRadius: 12, padding: "12px 20px",
-                      fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
-                      cursor: "pointer", flexShrink: 0,
-                    }}
+                    style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "13px 22px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, cursor: "pointer", flexShrink: 0 }}
                   >
                     Join
                   </button>
@@ -589,119 +890,173 @@ function ResultsPage({
               )}
             </div>
           </ResultBlock>
-        )}
-
-        {/* Product recommendation */}
-        {!waitlist && product && (
-          <ResultBlock delay={0.2}>
-            <div style={{ marginTop: 32, backgroundColor: "#031F3D", borderRadius: 24, padding: "32px 32px 28px", color: "white" }}>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 12 }}>
-                Recommended for you
-              </p>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.4rem", color: "white", marginBottom: 10 }}>
-                {product.title}
-              </h2>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, marginBottom: 24 }}>
-                {product.body}
-              </p>
-              {product.cta_text && (
-                <Link href={product.cta_url ?? "/at-home-sleep-test"}
-                  style={{
-                    display: "inline-block", backgroundColor: "#FF8361", color: "white",
-                    textDecoration: "none", borderRadius: 12, padding: "13px 28px",
-                    fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500,
-                    boxShadow: "0 4px 16px rgba(255,131,97,0.4)",
-                  }}>
-                  {product.cta_text}
-                </Link>
-              )}
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Hero CTA (if no product card — e.g. generic undiagnosed) */}
-        {!waitlist && !product && hero?.cta_text && (
-          <ResultBlock delay={0.2}>
-            <div style={{ marginTop: 32, textAlign: "center" }}>
-              <Link href={hero.cta_url ?? "/at-home-sleep-test"}
-                style={{
-                  display: "inline-block", backgroundColor: "#FF8361", color: "white",
-                  textDecoration: "none", borderRadius: 12, padding: "15px 36px",
-                  fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500,
-                  boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
-                }}>
-                {hero.cta_text}
-              </Link>
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Comparison (subscription vs. upfront) */}
-        {!waitlist && comparison && (
-          <ResultBlock delay={0.25}>
-            <div style={{ marginTop: 32 }}>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.375rem", color: "#031F3D", marginBottom: 16 }}>
-                {comparison.title ?? "Two ways to get started"}
-              </h2>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                {[
-                  { label: "Monthly subscription", price: "From $59/mo", desc: "Machine, mask, supplies, sleep coach, and the Dumbo app — all included.", href: "/cpap", cta: "Start subscription" },
-                  { label: "Buy upfront", price: "Own it outright", desc: "Purchase your CPAP, then add Dumbo's care plan for coaching and smart resupply.", href: "/cpap", cta: "Browse machines" },
-                ].map((opt) => (
-                  <div key={opt.label} style={{ backgroundColor: "white", borderRadius: 20, padding: "22px 20px", boxShadow: "0 2px 16px rgba(3,31,61,0.06)", display: "flex", flexDirection: "column" }}>
-                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 6 }}>{opt.label}</p>
-                    <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.125rem", color: "#031F3D", marginBottom: 8 }}>{opt.price}</p>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.5, marginBottom: 16, flex: 1 }}>{opt.desc}</p>
-                    <Link href={opt.href} style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500, color: "#FF8361", textDecoration: "none" }}>{opt.cta} →</Link>
+        ) : (
+          <>
+            {/* ── Risk bar + narrative (undiagnosed) ── */}
+            {isUndiagnosed && (
+              <ResultBlock delay={0.1}>
+                <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)" }}>
+                      Your risk level
+                    </p>
+                    <span style={{ backgroundColor: risk.color, color: "white", fontSize: "0.7rem", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", padding: "3px 10px", borderRadius: 20 }}>
+                      {riskScore > 0 ? `${riskScore} indicator${riskScore !== 1 ? "s" : ""}` : "Low score"}
+                    </span>
                   </div>
+                  <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.25rem", color: "#031F3D", marginBottom: 14 }}>
+                    {risk.label}
+                  </p>
+                  <div style={{ height: 7, backgroundColor: "rgba(3,31,61,0.06)", borderRadius: 4, overflow: "hidden", marginBottom: 20 }}>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${risk.bar * 100}%` }}
+                      transition={t(0.3, 0.8)}
+                      style={{ height: "100%", backgroundColor: risk.color, borderRadius: 4 }}
+                    />
+                  </div>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.7 }}>
+                    {getNarrative()}
+                  </p>
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── Narrative card (diagnosed) ── */}
+            {!isUndiagnosed && (
+              <ResultBlock delay={0.1}>
+                <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
+                    Where you are right now
+                  </p>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.75 }}>
+                    {getNarrative()}
+                  </p>
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── Key signals (from answers) ── */}
+            {signals.length > 0 && (
+              <ResultBlock delay={0.15}>
+                <div style={{ marginTop: 24 }}>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
+                    What stood out in your answers
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {signals.map((signal, i) => (
+                      <motion.div
+                        key={signal.label}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={t(0.18 + i * 0.04)}
+                        style={{ display: "flex", gap: 14, padding: "16px 20px", backgroundColor: "white", border: "1px solid rgba(3,31,61,0.07)", borderRadius: 16 }}
+                      >
+                        <span style={{ fontSize: "1.1rem", flexShrink: 0, marginTop: 1 }}>{signal.icon}</span>
+                        <div>
+                          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.875rem", color: "#031F3D", marginBottom: 3 }}>{signal.label}</p>
+                          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.6 }}>{signal.detail}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── Recommendation card (dark) ── */}
+            {product && (
+              <ResultBlock delay={0.22}>
+                <div style={{ marginTop: 28, backgroundColor: "#031F3D", borderRadius: 28, padding: "36px 32px 32px", color: "white" }}>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,131,97,0.8)", marginBottom: 14 }}>
+                    Recommended for you
+                  </p>
+                  <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.5rem", color: "white", lineHeight: 1.2, marginBottom: 10 }}>
+                    {product.title}
+                  </h2>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.65, marginBottom: 22 }}>
+                    {product.body}
+                  </p>
+                  <ul style={{ listStyle: "none", margin: "0 0 28px", padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+                    {bullets.map((b) => (
+                      <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                        <span style={{ color: "#FF8361", fontSize: "0.75rem", marginTop: 3, flexShrink: 0 }}>✦</span>
+                        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {product.cta_url === "shopify:sleep-test" ? (
+                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)", cursor: "pointer" }}>
+                      {product.cta_label ?? "Get started →"}
+                    </a>
+                  ) : (
+                    <Link href={product.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)" }}>
+                      {product.cta_label ?? "Get started →"}
+                    </Link>
+                  )}
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── Fallback CTA (no product card) ── */}
+            {!product && hero?.cta_label && (
+              <ResultBlock delay={0.22}>
+                <div style={{ marginTop: 28, textAlign: "center" }}>
+                  {hero.cta_url === "shopify:sleep-test" ? (
+                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}>
+                      {hero.cta_label}
+                    </a>
+                  ) : (
+                    <Link href={hero.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}>
+                      {hero.cta_label}
+                    </Link>
+                  )}
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── What happens next (undiagnosed) ── */}
+            {isUndiagnosed && (
+              <ResultBlock delay={0.28}>
+                <div style={{ marginTop: 36 }}>
+                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 20 }}>
+                    Here's what happens next
+                  </p>
+                  {[
+                    { n: "1", title: "We send your test kit", body: "An at-home sleep test kit arrives at your door in 2 to 3 business days. No clinic visit needed." },
+                    { n: "2", title: "One night in your own bed", body: "Clip a small device to your finger before bed and sleep as usual. It records your breathing, oxygen levels, and heart rate overnight." },
+                    { n: "3", title: "A sleep doctor calls you", body: "Within 48 hours, a sleep doctor reviews your results and calls you to talk through everything, at no extra cost." },
+                  ].map((step, i) => (
+                    <motion.div key={step.n} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={t(0.3 + i * 0.06)}
+                      style={{ display: "flex", gap: 18, marginBottom: 22 }}>
+                      <div style={{ width: 38, height: 38, borderRadius: "50%", backgroundColor: "rgba(255,131,97,0.1)", border: "1.5px solid rgba(255,131,97,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "0.9rem", color: "#FF8361" }}>{step.n}</span>
+                      </div>
+                      <div>
+                        <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem", color: "#031F3D", marginBottom: 4 }}>{step.title}</p>
+                        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.6 }}>{step.body}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </ResultBlock>
+            )}
+
+            {/* ── Trust strip ── */}
+            <ResultBlock delay={0.34}>
+              <div style={{ marginTop: 12, padding: "20px 24px", backgroundColor: "rgba(120,191,188,0.07)", border: "1px solid rgba(120,191,188,0.18)", borderRadius: 20, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
+                {["Sleep physicians you can talk to", "FDA-cleared devices", "Insurance billing handled for you", "Your data is always private"].map((item) => (
+                  <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)" }}>
+                    <span style={{ color: "#78BFBC" }}>✓</span>
+                    {item}
+                  </span>
                 ))}
               </div>
-            </div>
-          </ResultBlock>
+            </ResultBlock>
+          </>
         )}
 
-        {/* What happens next */}
-        {!waitlist && nextSteps && (
-          <ResultBlock delay={0.3}>
-            <div style={{ marginTop: 40 }}>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 20 }}>
-                What happens next
-              </p>
-              {[
-                { n: "1", title: "We ship your test", body: "An FDA-cleared home sleep test arrives at your door within days." },
-                { n: "2", title: "One night in your own bed", body: "Wear the device comfortably at home. It records everything automatically while you sleep." },
-                { n: "3", title: "A sleep doctor calls you", body: "Within 48 hours, a board-certified sleep physician reviews your results and walks you through everything." },
-              ].map((step, i) => (
-                <motion.div key={step.n} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={t(0.32 + i * 0.06)}
-                  style={{ display: "flex", gap: 16, marginBottom: 20 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", backgroundColor: "rgba(255,131,97,0.1)", border: "1.5px solid rgba(255,131,97,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "0.9rem", color: "#FF8361" }}>{step.n}</span>
-                  </div>
-                  <div>
-                    <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1rem", color: "#031F3D", marginBottom: 4 }}>{step.title}</p>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.5 }}>{step.body}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Reassurance */}
-        {reassurance && (
-          <ResultBlock delay={0.35}>
-            <div style={{ marginTop: 16, padding: "24px 24px", backgroundColor: "rgba(120,191,188,0.08)", border: "1px solid rgba(120,191,188,0.2)", borderRadius: 20 }}>
-              <h3 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.0625rem", color: "#031F3D", marginBottom: 6 }}>
-                {reassurance.title}
-              </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.6 }}>
-                {reassurance.body}
-              </p>
-            </div>
-          </ResultBlock>
-        )}
-
-        {/* Back to home */}
+        {/* ── Back link ── */}
         <ResultBlock delay={0.4}>
           <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(3,31,61,0.07)", textAlign: "center" }}>
             <Link href="/" style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.35)", textDecoration: "none" }}>
@@ -719,6 +1074,8 @@ export default function QuizPage() {
   const [flowSlug, setFlowSlug] = useState<string | null>(null);
   const [shownInterstitials, setShownInterstitials] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeReflection, setActiveReflection] = useState<ReflectionMoment | null>(null);
+  const [pendingAnswer, setPendingAnswer] = useState<{ answer: string | string[] } | null>(null);
 
   const quiz = useQuiz(flowSlug ?? "undiagnosed");
 
@@ -738,6 +1095,27 @@ export default function QuizPage() {
     }
   }
 
+  function handleAnswer(answer: string | string[]) {
+    const reflection = getReflectionTrigger(quiz.currentQuestion?.slug, answer);
+    if (reflection && !shownInterstitials.has(reflection.id)) {
+      setPendingAnswer({ answer });
+      setActiveReflection(reflection);
+    } else {
+      quiz.answerQuestion(answer);
+    }
+  }
+
+  function handleReflectionContinue() {
+    if (pendingAnswer) {
+      quiz.answerQuestion(pendingAnswer.answer);
+      setPendingAnswer(null);
+    }
+    if (activeReflection) {
+      setShownInterstitials((prev) => new Set([...prev, activeReflection.id]));
+    }
+    setActiveReflection(null);
+  }
+
   async function handleSubmit() {
     if (isSubmitting) return;
     setIsSubmitting(true);
@@ -752,13 +1130,22 @@ export default function QuizPage() {
   });
   const questionNumber = visibleQuestions.findIndex((q) => q.id === quiz.currentQuestion?.id) + 1;
 
+  const isGradientActive = !!(activeReflection || shouldShowInterstitial);
+
   return (
     <>
+      {/* Make body transparent so the gradient shows through */}
+      <style>{`body { background: transparent !important; }`}</style>
+
+      {/* Persistent animated gradient — always present, warms as quiz progresses */}
+      <AnimatedGradientBg active={isGradientActive} progress={quiz.progress} />
+
       {/* Progress bar + minimal header */}
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, height: 68, zIndex: 50,
-        backgroundColor: "rgba(252,246,237,0.95)",
-        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(252,246,237,0.75)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
         borderBottom: "1px solid rgba(245,230,209,0.7)",
       }}>
         {/* Progress bar */}
@@ -774,54 +1161,62 @@ export default function QuizPage() {
         {/* Logo */}
         <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Link href="/" style={{ opacity: 0.85 }}>
-            <Image src="/logos/wordmark-midnight.svg" alt="Dumbo Health" width={148} height={30} priority />
+            <Image src="/logos/wordmark-midnight.svg" alt="Dumbo Health" width={188} height={38} priority />
           </Link>
         </div>
       </header>
 
-      {/* Main content */}
-      <div style={{ paddingTop: 68 }}>
+      {/* Main content — above gradient layer */}
+      <div style={{ paddingTop: 68, position: "relative", zIndex: 1 }}>
         <AnimatePresence mode="wait">
           {!flowSlug && (
-            <motion.div key="splitter" {...fadeSlide} transition={t()}>
+            <motion.div key="splitter" {...screen}>
               <FlowSplitter onSelect={handleFlowSelect} />
             </motion.div>
           )}
 
           {flowSlug && quiz.state.isLoading && (
-            <motion.div key="loading" {...fadeSlide} transition={t()}>
+            <motion.div key="loading" {...screen}>
               <LoadingSkeleton />
             </motion.div>
           )}
 
           {flowSlug && !quiz.state.isLoading && quiz.state.isComplete && (
-            <motion.div key="results" {...fadeSlide} transition={t()}>
+            <motion.div key="results" {...screen}>
               <ResultsPage
                 results={quiz.getResults()}
                 riskScore={quiz.state.riskScore}
                 tags={quiz.state.tags}
                 flowSlug={quiz.state.flowSlug}
+                answers={quiz.state.answers}
                 onSubmit={handleSubmit}
               />
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && shouldShowInterstitial && quiz.currentSection?.subtitle && (
-            <motion.div key={`interstitial-${quiz.currentSection.id}`} {...fadeSlide} transition={t()}>
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && activeReflection && (
+            <motion.div key={`reflection-${activeReflection.id}`} {...screen}>
+              <ReflectionScreen moment={activeReflection} onContinue={handleReflectionContinue} />
+            </motion.div>
+          )}
+
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && shouldShowInterstitial && quiz.currentSection?.subtitle && (
+            <motion.div key={`interstitial-${quiz.currentSection.id}`} {...screen}>
               <SectionInterstitial
                 title={quiz.currentSection.title}
                 subtitle={quiz.currentSection.subtitle}
+                sectionSlug={quiz.currentSection.slug}
                 onContinue={handleInterstitialContinue}
               />
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !shouldShowInterstitial && quiz.currentQuestion && (
-            <motion.div key={quiz.currentQuestion.id} {...fadeSlide} transition={t()}>
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && !shouldShowInterstitial && quiz.currentQuestion && (
+            <motion.div key={quiz.currentQuestion.id} {...screen}>
               <QuestionCard
                 question={quiz.currentQuestion}
                 currentAnswer={quiz.state.answers[quiz.currentQuestion.slug]}
-                onAnswer={(answer) => quiz.answerQuestion(answer)}
+                onAnswer={handleAnswer}
                 onBack={quiz.goBack}
                 questionNumber={questionNumber}
                 totalQuestions={visibleQuestions.length}

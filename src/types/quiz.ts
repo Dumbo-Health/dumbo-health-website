@@ -66,13 +66,12 @@ export interface RoutingRule {
 export interface ResultsTemplate {
   id: string;
   flow_id: string;
-  block_type: "hero_message" | "next_steps" | "product_card" | "comparison" | "reassurance" | "waitlist";
+  block_type: "hero" | "recommendation" | "waitlist" | "next_steps" | "reassurance" | "comparison";
   conditions: ResultsConditions;
   title: string | null;
   body: string | null;
-  cta_text: string | null;
+  cta_label: string | null;
   cta_url: string | null;
-  metadata: Record<string, unknown>;
   priority: number;
 }
 
@@ -80,6 +79,7 @@ export interface ResultsConditions {
   risk_score_gte?: number;
   risk_score_lt?: number;
   tags_include?: string[];
+  tags_include_any?: string[];
   tags_exclude?: string[];
   state_in?: string[];
   state_not_in?: string[];
@@ -106,6 +106,7 @@ export interface QuizSubmission {
   risk_score: number;
   state: string | null;
   insurance: string | null;
+  email: string | null;
   device_type: string;
   utm_source: string | null;
   utm_medium: string | null;
