@@ -22,14 +22,14 @@ const FLOW_OPTIONS = [
   {
     slug: "undiagnosed",
     icon: "🌙",
-    title: "I think I might have a sleep problem",
-    subtitle: "Not tested yet — we'll help you figure out what's going on.",
+    title: "I think something might be affecting my sleep",
+    subtitle: "Not tested yet. We'll help you figure out what's going on.",
   },
   {
     slug: "diagnosed",
     icon: "💤",
     title: "I've already been diagnosed with sleep apnea",
-    subtitle: "We'll find the right treatment path for you.",
+    subtitle: "We'll help you find the right path forward.",
   },
 ];
 
@@ -66,7 +66,7 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
       <div style={{ maxWidth: 540, width: "100%", textAlign: "center" }}>
         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={t(0.05)}
           style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#FF8361", marginBottom: 18 }}>
-          Sleep Assessment
+          Sleep assessment
         </motion.p>
 
         <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={t(0.1)}
@@ -76,7 +76,7 @@ function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={t(0.18)}
           style={{ fontFamily: "var(--font-body)", fontSize: "1rem", color: "rgba(3,31,61,0.5)", marginBottom: 36 }}>
-          We'll personalise everything based on your answers.
+          We&apos;ll personalize everything based on your answers.
         </motion.p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -448,17 +448,17 @@ function ResultsPage({
     if (!isUndiagnosed) {
       const satisfaction = answers["cpap-satisfaction"] as string;
       if (satisfaction === "stopped" || satisfaction === "struggling") {
-        return "CPAP is clinically proven — but only if it actually works for you. Studies show that nearly half of CPAP users stop therapy within the first year, almost always due to mask fit, pressure settings, or lack of clinical support. These are fixable problems, not reasons to give up on treatment.";
+        return "CPAP therapy works really well, but only when it feels comfortable for you. A lot of people stop using it in the first year, usually because of the mask fit, air pressure, or just not having enough support along the way. The good news is that these things are almost always fixable. You don't have to give up.";
       }
-      return "You've already taken the most important step — getting diagnosed. Most people live with untreated sleep apnea for years before they reach that point. Now it's about finding the right setup that fits your life and that you'll actually stick with long-term.";
+      return "Getting diagnosed was the most important step, and you've already done it. Most people live with untreated sleep apnea for years without knowing. Now it's just about finding the right setup that feels comfortable and easy to stick with.";
     }
     if (riskScore >= 6) {
-      return "Multiple strong warning signs came up in your answers. Sleep apnea causes your airway to partially or fully collapse dozens — sometimes hundreds — of times per night. Each episode briefly rouses your brain to restart breathing. You never consciously feel it, but you also never reach the deep, restorative sleep your body needs. The fatigue, morning headaches, and mental fog many people experience are often a direct result.";
+      return "Your answers show several signs that are commonly linked to sleep apnea. Here's what may be happening: while you sleep, your airway briefly closes, which stops your breathing for a moment. Your brain wakes you up just enough to start breathing again, but not enough for you to notice. This can happen dozens of times each night. That's often why people wake up feeling tired, foggy, or unrefreshed, even after what seemed like a full night of sleep.";
     }
     if (riskScore >= 3) {
-      return "Several patterns in your answers are consistent with sleep apnea. The condition affects over 936 million adults worldwide — and more than 80% remain undiagnosed. Symptoms like yours are often written off as stress or lifestyle, when the root cause is something a single overnight test can confirm.";
+      return "Your answers show some patterns that are often linked to sleep apnea. It's one of the most common conditions people don't know they have, often mistaken for everyday stress or just feeling tired. A simple overnight test is usually all it takes to find out for sure.";
     }
-    return "While your overall score is lower, some of your symptoms point to disrupted sleep. Sleep apnea can be subtle — especially in women and younger adults — and standard screening tools often miss it. If poor sleep is affecting your daily life, a home test is the simplest way to get clarity.";
+    return "Your score is on the lower side, but some of what you shared does point to disrupted sleep. Sleep apnea can be easy to miss, especially in women and younger adults. If your sleep is affecting how you feel during the day, a home test is the easiest way to get some answers.";
   }
 
   type Signal = { icon: string; label: string; detail: string };
@@ -473,30 +473,30 @@ function ResultsPage({
     const satisfaction = answers["cpap-satisfaction"] as string;
     const needs = (answers["dx-needs"] ?? []) as string[];
 
-    if (snoring === "yes-loud") signals.push({ icon: "🔊", label: "Loud snoring", detail: "Loud snoring is caused by partial airway obstruction — one of the most reliable early indicators of obstructive sleep apnea." });
-    if (pauses === "yes") signals.push({ icon: "⏸", label: "Witnessed breathing pauses", detail: "Observed apneas are among the strongest diagnostic indicators. When breathing stops during sleep, oxygen levels drop and the heart is put under strain." });
-    if (sleepiness === "daily") signals.push({ icon: "☁️", label: "Daily fatigue", detail: "Waking up unrefreshed and feeling tired throughout the day is a hallmark of sleep apnea — your body is reacting to hundreds of micro-interruptions happening overnight." });
-    if (morningSymptoms.includes("headache")) signals.push({ icon: "🧠", label: "Morning headaches", detail: "Headaches on waking are linked to reduced oxygen levels during sleep — a direct consequence of repeated airway obstruction." });
-    if (morningSymptoms.includes("dry-mouth")) signals.push({ icon: "💧", label: "Dry mouth or sore throat", detail: "Waking with a dry mouth often means you've been mouth-breathing at night — a compensation response when the airway is obstructed." });
-    if (bmi === "overweight" || bmi === "obese") signals.push({ icon: "📊", label: "Weight-related risk factor", detail: "Excess weight, especially around the neck and throat, narrows the upper airway and is one of the strongest modifiable risk factors for sleep apnea." });
-    if (conditions.includes("hypertension")) signals.push({ icon: "❤️", label: "High blood pressure", detail: "Sleep apnea and hypertension are closely linked. Each apnea episode triggers a stress response that elevates blood pressure overnight — every single night." });
-    if (conditions.includes("heart-disease")) signals.push({ icon: "🫀", label: "Cardiac risk", detail: "Untreated sleep apnea significantly increases the risk of arrhythmias, heart attack, and stroke. Testing and treatment are particularly important in your case." });
-    if (satisfaction === "stopped") signals.push({ icon: "🔄", label: "Previous CPAP non-adherence", detail: "Most people who stop CPAP do so in the first 90 days. The reasons are almost always solvable with better equipment fitting and proper clinical support." });
-    if (satisfaction === "struggling") signals.push({ icon: "⚙️", label: "CPAP compliance issues", detail: "Struggling with CPAP is extremely common — and nearly always fixable. Pressure titration, mask adjustment, and coaching resolve the majority of adherence problems." });
-    if (needs.includes("supplies")) signals.push({ icon: "📦", label: "Supplies likely overdue", detail: "CPAP masks, filters, and tubing degrade over time and directly affect therapy quality. Most insurance plans cover replacement supplies every 90 days." });
-    if (tags.includes("cdl-driver")) signals.push({ icon: "🚛", label: "CDL / DOT requirement", detail: "FMCSA regulations require commercial drivers with sleep apnea to be treated and compliant. We provide fast DOT-accepted testing and all required documentation." });
+    if (snoring === "yes-loud") signals.push({ icon: "🔊", label: "Loud snoring", detail: "Loud snoring happens when the airway is partially blocked during sleep. It's one of the most common early signs we look for." });
+    if (pauses === "yes") signals.push({ icon: "⏸", label: "Breathing pauses during sleep", detail: "When someone else notices that your breathing stops during sleep, that's one of the clearest signs we look for. It's a strong indicator that something is going on." });
+    if (sleepiness === "daily") signals.push({ icon: "☁️", label: "Feeling tired every day", detail: "Feeling tired every day, even after a full night of sleep, often means your sleep isn't as restful as it should be. It's one of the most common things people with sleep apnea share with us." });
+    if (morningSymptoms.includes("headache")) signals.push({ icon: "🧠", label: "Morning headaches", detail: "Waking up with a headache can be a sign that your oxygen levels dip during the night. This usually goes away once sleep apnea is treated." });
+    if (morningSymptoms.includes("dry-mouth")) signals.push({ icon: "💧", label: "Dry mouth in the morning", detail: "Waking up with a dry mouth often means you've been breathing through your mouth at night, which happens when the airway is partially blocked." });
+    if (bmi === "overweight" || bmi === "obese") signals.push({ icon: "📊", label: "Weight as a risk factor", detail: "Carrying extra weight, especially around the neck, can make the airway narrower during sleep. It's one of the most common risk factors for sleep apnea, and something treatment can help with." });
+    if (conditions.includes("hypertension")) signals.push({ icon: "❤️", label: "High blood pressure", detail: "High blood pressure and sleep apnea often go hand in hand. Each time breathing is disrupted at night, it puts extra stress on the heart. Treating sleep apnea can actually help bring blood pressure down." });
+    if (conditions.includes("heart-disease")) signals.push({ icon: "🫀", label: "Heart health", detail: "Untreated sleep apnea puts extra strain on the heart over time. For people with heart conditions, getting tested and treated is especially important." });
+    if (satisfaction === "stopped") signals.push({ icon: "🔄", label: "Stopped using CPAP", detail: "Stopping CPAP is more common than most people think. It usually comes down to the mask, the pressure, or just not having the right support. Most of the time, these problems can be fixed." });
+    if (satisfaction === "struggling") signals.push({ icon: "⚙️", label: "Struggling with CPAP", detail: "Struggling with CPAP is really common, and it's almost always something we can help with. Better mask fitting, adjusted pressure, and some coaching make a real difference." });
+    if (needs.includes("supplies")) signals.push({ icon: "📦", label: "Supplies may be due", detail: "CPAP masks, filters, and tubing wear out over time and can affect how well therapy works. Most insurance plans cover replacements every 90 days." });
+    if (tags.includes("cdl-driver")) signals.push({ icon: "🚛", label: "CDL driver", detail: "Commercial drivers with sleep apnea need to be tested and treated to meet FMCSA rules. We handle all the paperwork your medical examiner needs." });
     return signals;
   }
 
   function getProductBullets(): string[] {
     if (isUndiagnosed) {
-      if (tags.includes("cdl-driver")) return ["FMCSA-compliant testing accepted by DOT medical examiners", "Results reviewed by a board-certified sleep physician in 48 hours", "Full documentation package prepared for your medical examiner"];
-      return ["FDA-cleared device shipped to your door in 2–3 days", "One night in your own bed — no clinic visit required", "Board-certified sleep physician reviews your results personally", "Most insurance plans cover the full cost"];
+      if (tags.includes("cdl-driver")) return ["DOT-accepted testing that meets FMCSA requirements", "A sleep doctor reviews your results within 48 hours", "We prepare all the paperwork your medical examiner needs"];
+      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed, no clinic visit needed", "A sleep doctor reviews your results and calls you to walk through everything", "Most insurance plans cover the full cost"];
     }
     if (tags.includes("cpap-dropout") || tags.includes("cpap-struggling")) {
-      return ["New mask fitting consultation with a sleep specialist", "Pressure titration to match your actual breathing patterns", "Ongoing coaching via the Dumbo Health app", "Insurance-covered equipment and supplies delivered to your door"];
+      return ["A consultation to find the right mask for you", "Pressure settings adjusted to match how you actually breathe", "Ongoing support through the Dumbo Health app", "Insurance-covered equipment and supplies delivered to you"];
     }
-    return ["Insurance-covered CPAP supplies every 90 days", "Regular clinical check-ins and therapy data reviews", "Sleep coaching and progress tracking via the Dumbo Health app", "Dedicated care team available by message"];
+    return ["Insurance-covered CPAP supplies every 90 days", "Regular check-ins with your care team", "Sleep coaching and progress tracking through the Dumbo Health app", "Dedicated care team available by message"];
   }
 
   const signals = getSignals();
@@ -575,7 +575,7 @@ function ResultsPage({
                 <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
                     <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)" }}>
-                      Risk Assessment
+                      Your risk level
                     </p>
                     <span style={{ backgroundColor: risk.color, color: "white", fontSize: "0.7rem", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", padding: "3px 10px", borderRadius: 20 }}>
                       {riskScore > 0 ? `${riskScore} indicator${riskScore !== 1 ? "s" : ""}` : "Low score"}
@@ -604,7 +604,7 @@ function ResultsPage({
               <ResultBlock delay={0.1}>
                 <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
                   <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
-                    Where you are
+                    Where you are right now
                   </p>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.75 }}>
                     {getNarrative()}
@@ -618,7 +618,7 @@ function ResultsPage({
               <ResultBlock delay={0.15}>
                 <div style={{ marginTop: 24 }}>
                   <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
-                    What we found
+                    What stood out in your answers
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {signals.map((signal, i) => (
@@ -689,12 +689,12 @@ function ResultsPage({
               <ResultBlock delay={0.28}>
                 <div style={{ marginTop: 36 }}>
                   <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 20 }}>
-                    What happens next
+                    Here's what happens next
                   </p>
                   {[
-                    { n: "1", title: "We ship your test", body: "An FDA-cleared home sleep test arrives at your door in 2–3 business days. No clinic visit, no waiting room." },
-                    { n: "2", title: "One night in your own bed", body: "Clip the device to your finger and let it record while you sleep. It captures oxygen levels, heart rate, and breathing patterns automatically." },
-                    { n: "3", title: "A sleep physician calls you", body: "Within 48 hours, a board-certified sleep doctor reviews your data and walks you through your personal results." },
+                    { n: "1", title: "We send your test kit", body: "An at-home sleep test kit arrives at your door in 2 to 3 business days. No clinic visit needed." },
+                    { n: "2", title: "One night in your own bed", body: "Clip a small device to your finger before bed and sleep as usual. It records your breathing, oxygen levels, and heart rate overnight." },
+                    { n: "3", title: "A sleep doctor calls you", body: "Within 48 hours, a sleep doctor reviews your results and calls you to talk through everything, at no extra cost." },
                   ].map((step, i) => (
                     <motion.div key={step.n} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={t(0.3 + i * 0.06)}
                       style={{ display: "flex", gap: 18, marginBottom: 22 }}>
@@ -714,7 +714,7 @@ function ResultsPage({
             {/* ── Trust strip ── */}
             <ResultBlock delay={0.34}>
               <div style={{ marginTop: 12, padding: "20px 24px", backgroundColor: "rgba(120,191,188,0.07)", border: "1px solid rgba(120,191,188,0.18)", borderRadius: 20, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-                {["Board-certified sleep physicians", "FDA-cleared devices", "Insurance billing handled for you", "HIPAA-secure platform"].map((item) => (
+                {["Sleep physicians you can talk to", "FDA-cleared devices", "Insurance billing handled for you", "Your data is always private"].map((item) => (
                   <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)" }}>
                     <span style={{ color: "#78BFBC" }}>✓</span>
                     {item}
