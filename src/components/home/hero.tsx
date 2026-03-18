@@ -23,16 +23,22 @@ const marqueeImages = [
   { src: "/images/hero/hero-device.jpg",            alt: "Sleep test device" },
 ];
 
-// ── Word-by-word reveal — slow, deliberate ────────────────────────────────────
+// Timing (ms)
+const T_Q1    = 600;    // Q1 appears
+const T_Q2    = 3700;   // Q2 appears  (Q1 shown ~3100ms)
+const T_EXIT  = 7000;   // Q2 starts exit (Q2 shown ~3300ms)
+const T_HERO  = 7800;   // Hero reveals (300ms into Q2's 900ms exit)
+
+// ── Word-by-word reveal ────────────────────────────────────────────────────────
 function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
     <span>
       {text.split(" ").map((word, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ease: EASE, duration: 0.7, delay: delay + i * 0.07 }}
+          transition={{ ease: EASE, duration: 0.65, delay: delay + i * 0.07 }}
           style={{ display: "inline-block", marginRight: "0.28em" }}
         >
           {word}
@@ -42,10 +48,10 @@ function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
   );
 }
 
-// ── Gradient (scoped to section) ───────────────────────────────────────────────
-function HeroGradient() {
+// ── Gradient blobs ─────────────────────────────────────────────────────────────
+function GradientBlobs() {
   return (
-    <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
+    <>
       <div style={{
         position: "absolute", inset: 0,
         background: "linear-gradient(148deg, #FCF6ED 0%, #F5E6D1 52%, #FFD6AD 100%)",
@@ -70,7 +76,7 @@ function HeroGradient() {
           background: "radial-gradient(circle, rgba(255,214,173,0.58) 0%, transparent 65%)",
         }}
       />
-    </div>
+    </>
   );
 }
 
@@ -85,18 +91,16 @@ export function HomeHero() {
       setBeat(4);
       return;
     }
-
     fromAnim.current = true;
     setBeat(0);
-
     const timers = [
-      setTimeout(() => setBeat(1), 1200),
-      setTimeout(() => setBeat(2), 3200),
-      setTimeout(() => setBeat(3), 5200),
+      setTimeout(() => setBeat(1), T_Q1),
+      setTimeout(() => setBeat(2), T_Q2),
+      setTimeout(() => setBeat(3), T_EXIT),
       setTimeout(() => {
         setBeat(4);
         sessionStorage.setItem("hero-played", "true");
-      }, 6800),
+      }, T_HERO),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -104,163 +108,201 @@ export function HomeHero() {
   const isAnimating = beat >= 0 && beat < 4;
 
   return (
-    <section style={{ position: "relative", overflow: "hidden" }}>
-      <HeroGradient />
-
-      {/* ── Animation overlay ── */}
+    <>
+      {/* ── Overlay background ── */}
       <AnimatePresence>
         {isAnimating && (
           <motion.div
-            key="intro"
+            key="overlay-bg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.7, ease: EASE } }}
-            exit={{
-              opacity: 0,
-              y: -60,
-              transition: { ease: EASE, duration: 0.85 },
-            }}
+            exit={{ opacity: 0, transition: { ease: "easeIn", duration: 0.6 } }}
             style={{
-              position: "absolute", inset: 0, zIndex: 10,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "0 28px",
-              minHeight: "100vh",
+              position: "fixed", inset: 0, zIndex: 99,
+              pointerEvents: "none", overflow: "hidden",
             }}
           >
-            <div style={{ maxWidth: 620, width: "100%", textAlign: "center" }}>
-              <AnimatePresence mode="wait">
-                {beat === 1 && (
-                  <motion.h2
-                    key="q1"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.35, ease: "easeIn" } }}
-                    style={{
-                      fontFamily: "var(--font-heading)", fontWeight: 500,
-                      fontSize: "clamp(1.875rem, 4.5vw, 3rem)",
-                      color: "#031F3D", lineHeight: 1.15,
-                    }}
-                  >
-                    <AnimatedWords text={QUESTIONS[0]} delay={0.05} />
-                  </motion.h2>
-                )}
-
-                {beat === 2 && (
-                  <motion.h2
-                    key="q2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.35, ease: "easeIn" } }}
-                    style={{
-                      fontFamily: "var(--font-heading)", fontWeight: 500,
-                      fontSize: "clamp(1.875rem, 4.5vw, 3rem)",
-                      color: "#031F3D", lineHeight: 1.15,
-                    }}
-                  >
-                    <AnimatedWords text={QUESTIONS[1]} delay={0.05} />
-                  </motion.h2>
-                )}
-
-                {beat === 3 && (
-                  <motion.div key="resolution">
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ ease: EASE, duration: 0.55, delay: 0.05 }}
-                      style={{
-                        width: 32, height: 3, backgroundColor: "#FF8361",
-                        borderRadius: 2, margin: "0 auto 26px",
-                      }}
-                    />
-                    <motion.h2
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0, transition: { ease: EASE, duration: 0.8, delay: 0.1 } }}
-                      style={{
-                        fontFamily: "var(--font-heading)", fontWeight: 500,
-                        fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-                        color: "#031F3D", lineHeight: 1.08,
-                      }}
-                    >
-                      {HEADLINE}
-                    </motion.h2>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <GradientBlobs />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ── Resting hero — initial:opacity:0 prevents SSR flash ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={
-          beat === 4
-            ? {
-                opacity: 1,
-                y: 0,
-                transition: fromAnim.current
-                  ? { ease: EASE, duration: 0.75, delay: 0.2 }
-                  : { duration: 0.15 },
-              }
-            : { opacity: 0, y: 0, transition: { duration: 0 } }
-        }
-        style={{ position: "relative", zIndex: 1 }}
-      >
-        {/* Headline */}
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-16 md:pt-24">
-          <motion.h1
-            initial={{ y: 8 }}
-            animate={beat === 4 ? { y: 0, transition: fromAnim.current ? { ease: EASE, duration: 0.75, delay: 0.2 } : { duration: 0 } } : { y: 8 }}
-            className="font-heading text-[44px] font-medium leading-[1.08] text-midnight sm:text-[56px] lg:text-[68px] lg:leading-[1.05]"
-          >
-            {HEADLINE}
-          </motion.h1>
-          <p className="mx-auto mt-5 max-w-lg font-body text-lg leading-relaxed text-midnight/55 md:text-xl">
-            {SUBHEAD}
-          </p>
-        </div>
+      {/* ── Questions ── */}
+      <AnimatePresence mode="wait">
 
-        {/* Photo marquee */}
-        <div className="relative mt-12 md:mt-16">
-          <div className="overflow-hidden">
-            <div className="flex w-max gap-4" style={{ animation: "marquee-hero 55s linear infinite" }}>
-              {[...marqueeImages, ...marqueeImages].map((img, i) => (
-                <div
-                  key={i}
-                  className="relative h-[260px] w-[380px] shrink-0 overflow-hidden rounded-2xl md:h-[320px] md:w-[460px]"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 380px, 460px"
-                    priority={i < 3}
-                  />
-                </div>
-              ))}
+        {beat === 1 && (
+          <motion.div
+            key="q1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.55, ease: EASE } }}
+            exit={{ opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }}
+            style={{
+              position: "fixed", inset: 0, zIndex: 100,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              padding: "0 28px", pointerEvents: "none",
+            }}
+          >
+            <div style={{ maxWidth: 680, width: "100%", textAlign: "center" }}>
+              <h2 style={{
+                fontFamily: "var(--font-heading)", fontWeight: 500,
+                fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                color: "#031F3D", lineHeight: 1.12,
+              }}>
+                <AnimatedWords text={QUESTIONS[0]} delay={0.08} />
+              </h2>
             </div>
-          </div>
+          </motion.div>
+        )}
+
+        {/* Q2 exits with anticipation (dip) then rises upward while fading */}
+        {(beat === 2 || beat === 3) && (
+          <motion.div
+            key="q2"
+            initial={{ opacity: 0, y: 14 }}
+            animate={
+              beat === 3
+                ? {
+                    y: [0, 10, -90],
+                    opacity: [1, 1, 0],
+                    transition: { duration: 0.95, times: [0, 0.18, 1], ease: EASE },
+                  }
+                : { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } }
+            }
+            style={{
+              position: "fixed", inset: 0, zIndex: 100,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              padding: "0 28px", pointerEvents: "none",
+            }}
+          >
+            <div style={{ maxWidth: 680, width: "100%", textAlign: "center" }}>
+              <h2 style={{
+                fontFamily: "var(--font-heading)", fontWeight: 500,
+                fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                color: "#031F3D", lineHeight: 1.12,
+              }}>
+                <AnimatedWords text={QUESTIONS[1]} delay={0.08} />
+              </h2>
+            </div>
+          </motion.div>
+        )}
+
+      </AnimatePresence>
+
+      {/* ── Resting hero ── */}
+      <section style={{ position: "relative" }}>
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 0,
+          pointerEvents: "none", overflow: "hidden",
+        }}>
+          <GradientBlobs />
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col items-center gap-3 px-4 pb-16 pt-10 md:pb-20 md:pt-12">
-          <Link
-            href="/get-started"
-            className="inline-flex h-12 items-center rounded-[12px] bg-peach px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0 active:shadow-md"
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-16 md:pt-24">
+
+            <motion.h1
+              className="font-heading text-[44px] font-medium leading-[1.08] text-midnight sm:text-[56px] lg:text-[68px] lg:leading-[1.05]"
+              initial={{ opacity: 0 }}
+              animate={
+                beat === 4
+                  ? {
+                      opacity: 1, y: 0,
+                      transition: fromAnim.current
+                        ? { ease: EASE, duration: 0.9, delay: 0.15 }
+                        : { duration: 0.15 },
+                    }
+                  : { opacity: 0, y: 0, transition: { duration: 0 } }
+              }
+            >
+              {HEADLINE}
+            </motion.h1>
+
+            <motion.p
+              className="mx-auto mt-5 max-w-lg font-body text-lg leading-relaxed text-midnight/55 md:text-xl"
+              initial={{ opacity: 0 }}
+              animate={
+                beat === 4
+                  ? {
+                      opacity: 1, y: 0,
+                      transition: fromAnim.current
+                        ? { ease: EASE, duration: 0.75, delay: 0.55 }
+                        : { duration: 0.15 },
+                    }
+                  : { opacity: 0, y: 0, transition: { duration: 0 } }
+              }
+            >
+              {SUBHEAD}
+            </motion.p>
+          </div>
+
+          {/* Photo marquee */}
+          <motion.div
+            className="relative mt-12 md:mt-16"
+            initial={{ opacity: 0 }}
+            animate={
+              beat === 4
+                ? {
+                    opacity: 1,
+                    transition: fromAnim.current
+                      ? { ease: EASE, duration: 0.8, delay: 0.8 }
+                      : { duration: 0.15 },
+                  }
+                : { opacity: 0, transition: { duration: 0 } }
+            }
           >
-            Get started
-          </Link>
-          <Link
-            href="/at-home-sleep-test"
-            className="font-body text-sm text-midnight/35 transition-colors hover:text-midnight/60"
+            <div className="overflow-hidden">
+              <div className="flex w-max gap-4" style={{ animation: "marquee-hero 55s linear infinite" }}>
+                {[...marqueeImages, ...marqueeImages].map((img, i) => (
+                  <div
+                    key={i}
+                    className="relative h-[260px] w-[380px] shrink-0 overflow-hidden rounded-2xl md:h-[320px] md:w-[460px]"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 380px, 460px"
+                      priority={i < 3}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-col items-center gap-3 px-4 pb-16 pt-10 md:pb-20 md:pt-12"
+            initial={{ opacity: 0 }}
+            animate={
+              beat === 4
+                ? {
+                    opacity: 1,
+                    transition: fromAnim.current
+                      ? { ease: EASE, duration: 0.7, delay: 1.0 }
+                      : { duration: 0.15 },
+                  }
+                : { opacity: 0, transition: { duration: 0 } }
+            }
           >
-            Or buy your diagnostic kit directly →
-          </Link>
+            <Link
+              href="/get-started"
+              className="inline-flex h-12 items-center rounded-[12px] bg-peach px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0 active:shadow-md"
+            >
+              Get started
+            </Link>
+            <Link
+              href="/at-home-sleep-test"
+              className="font-body text-sm text-midnight/35 transition-colors hover:text-midnight/60"
+            >
+              Or buy your diagnostic kit directly →
+            </Link>
+          </motion.div>
         </div>
-      </motion.div>
+      </section>
 
       <style>{`@keyframes marquee-hero { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
-    </section>
+    </>
   );
 }

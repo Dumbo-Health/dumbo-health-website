@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +36,7 @@ const FLOW_OPTIONS = [
 ];
 
 // ── Animated gradient background (always present, progresses with quiz) ────────
-function AnimatedGradientBg({ active, progress }: { active: boolean; progress: number }) {
+function AnimatedGradientBg({ progress }: { progress: number }) {
   const warmth = progress / 100; // 0→1 as quiz progresses
 
   return (
@@ -46,68 +46,68 @@ function AnimatedGradientBg({ active, progress }: { active: boolean; progress: n
 
       {/* Stage 2 — Sunlight wash, creeps in from 0→60% progress */}
       <motion.div
-        animate={{ opacity: Math.min(warmth * 1.4, 0.85) }}
-        transition={{ duration: 1.4, ease: EASE }}
+        animate={{ opacity: Math.min(warmth * 1.1, 0.6) }}
+        transition={{ duration: 1.8, ease: EASE }}
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(145deg, transparent 0%, rgba(245,230,209,0.9) 55%, transparent 100%)",
+          background: "linear-gradient(145deg, transparent 0%, rgba(245,230,209,0.7) 55%, transparent 100%)",
         }}
       />
 
-      {/* Stage 3 — Light Peach warmth, enters after 30% progress */}
+      {/* Stage 3 — Light Peach warmth, enters after 40% progress */}
       <motion.div
-        animate={{ opacity: Math.max(0, (warmth - 0.3) / 0.7) * 0.75 }}
-        transition={{ duration: 1.4, ease: EASE }}
+        animate={{ opacity: Math.max(0, (warmth - 0.4) / 0.6) * 0.45 }}
+        transition={{ duration: 1.8, ease: EASE }}
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(145deg, transparent 0%, rgba(255,214,173,0.65) 65%, transparent 100%)",
+          background: "linear-gradient(145deg, transparent 0%, rgba(255,214,173,0.5) 65%, transparent 100%)",
         }}
       />
 
-      {/* Blob 1: top-right — breathes, warms with progress */}
+      {/* Blob 1: top-right — very gentle breathe, always subtle */}
       <motion.div
         animate={{
-          opacity: active ? [0.65, 0.92, 0.65] : [0.25 + warmth * 0.2, 0.38 + warmth * 0.2, 0.25 + warmth * 0.2],
-          scale:   active ? [1, 1.22, 1]        : [1, 1.07, 1],
-          x: [0, 32, 0], y: [0, -20, 0],
+          opacity: [0.18 + warmth * 0.1, 0.26 + warmth * 0.1, 0.18 + warmth * 0.1],
+          scale: [1, 1.05, 1],
+          x: [0, 18, 0], y: [0, -12, 0],
         }}
-        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
         style={{
           position: "absolute", top: "-15%", right: "-8%",
           width: "60vw", height: "60vw", maxWidth: 760, maxHeight: 760,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,131,97,0.18) 0%, rgba(255,214,173,0.7) 40%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(255,131,97,0.07) 0%, rgba(255,214,173,0.28) 40%, transparent 70%)",
         }}
       />
 
       {/* Blob 2: bottom-left */}
       <motion.div
         animate={{
-          opacity: active ? [0.45, 0.72, 0.45] : [0.15 + warmth * 0.15, 0.26 + warmth * 0.15, 0.15 + warmth * 0.15],
-          scale:   active ? [1.1, 1, 1.1]       : [1.04, 1, 1.04],
-          x: [0, -24, 0], y: [0, 22, 0],
+          opacity: [0.12 + warmth * 0.08, 0.18 + warmth * 0.08, 0.12 + warmth * 0.08],
+          scale: [1.02, 1, 1.02],
+          x: [0, -14, 0], y: [0, 14, 0],
         }}
-        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, delay: 2 }}
+        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 2 }}
         style={{
           position: "absolute", bottom: "-18%", left: "-12%",
           width: "55vw", height: "55vw", maxWidth: 680, maxHeight: 680,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,214,173,0.65) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(255,214,173,0.3) 0%, transparent 65%)",
         }}
       />
 
       {/* Blob 3: center, slow drift */}
       <motion.div
         animate={{
-          opacity: active ? [0.3, 0.55, 0.3] : [0.1 + warmth * 0.12, 0.2 + warmth * 0.12, 0.1 + warmth * 0.12],
-          scale:   active ? [1, 1.28, 1]      : [1, 1.1, 1],
+          opacity: [0.08 + warmth * 0.08, 0.14 + warmth * 0.08, 0.08 + warmth * 0.08],
+          scale: [1, 1.06, 1],
         }}
-        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+        transition={{ duration: 12, ease: "easeInOut", repeat: Infinity, delay: 1 }}
         style={{
           position: "absolute", top: "25%", left: "10%",
           width: "50vw", height: "50vw", maxWidth: 620, maxHeight: 620,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,230,209,0.9) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(245,230,209,0.55) 0%, transparent 65%)",
         }}
       />
     </div>
@@ -740,6 +740,9 @@ function LoadingSkeleton() {
 }
 
 // ── Results page ───────────────────────────────────────────────────────────────
+type DbStep = { step_order: number; title: string; body: string };
+type DbSignal = { signal_key: string; label: string; detail: string; icon_path: string };
+
 function ResultsPage({
   results,
   riskScore,
@@ -757,8 +760,22 @@ function ResultsPage({
 }) {
   const [waitlistEmail, setWaitlistEmail] = useState("");
   const [waitlistSent, setWaitlistSent] = useState(false);
+  const [openSignal, setOpenSignal] = useState<string | null>(null);
+  const [dbSteps, setDbSteps] = useState<DbStep[] | null>(null);
+  const [dbSignalMap, setDbSignalMap] = useState<Record<string, DbSignal> | null>(null);
 
-  useEffect(() => { onSubmit(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    onSubmit();
+    fetch(`/api/quiz/content?flow=${flowSlug}`)
+      .then((r) => r.json())
+      .then(({ steps, signals }: { steps: DbStep[]; signals: DbSignal[] }) => {
+        if (steps.length > 0) setDbSteps(steps);
+        if (signals.length > 0) {
+          setDbSignalMap(Object.fromEntries(signals.map((s) => [s.signal_key, s])));
+        }
+      })
+      .catch(() => { /* silently fall back to hardcoded */ });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const hero = results.hero;
   const product = results.recommendation;
@@ -784,9 +801,9 @@ function ResultsPage({
     return "Your score is on the lower side, but some of what you shared does point to disrupted sleep. Sleep apnea can be easy to miss, especially in women and younger adults. If your sleep is affecting how you feel during the day, a home test is the easiest way to get some answers.";
   }
 
-  type Signal = { icon: string; label: string; detail: string };
+  type Signal = { key: string; icon: string; label: string; detail: string };
   function getSignals(): Signal[] {
-    const signals: Signal[] = [];
+    const raw: Signal[] = [];
     const snoring = answers["snoring"] as string;
     const sleepiness = answers["daytime-sleepiness"] as string;
     const pauses = answers["breathing-pauses"] as string;
@@ -796,34 +813,38 @@ function ResultsPage({
     const satisfaction = answers["cpap-satisfaction"] as string;
     const needs = (answers["dx-needs"] ?? []) as string[];
 
-    if (snoring === "yes-loud") signals.push({ icon: "🔊", label: "Loud snoring", detail: "Loud snoring happens when the airway is partially blocked during sleep. It's one of the most common early signs we look for." });
-    if (pauses === "yes") signals.push({ icon: "⏸", label: "Breathing pauses during sleep", detail: "When someone else notices that your breathing stops during sleep, that's one of the clearest signs we look for. It's a strong indicator that something is going on." });
-    if (sleepiness === "daily") signals.push({ icon: "☁️", label: "Feeling tired every day", detail: "Feeling tired every day, even after a full night of sleep, often means your sleep isn't as restful as it should be. It's one of the most common things people with sleep apnea share with us." });
-    if (morningSymptoms.includes("headache")) signals.push({ icon: "🧠", label: "Morning headaches", detail: "Waking up with a headache can be a sign that your oxygen levels dip during the night. This usually goes away once sleep apnea is treated." });
-    if (morningSymptoms.includes("dry-mouth")) signals.push({ icon: "💧", label: "Dry mouth in the morning", detail: "Waking up with a dry mouth often means you've been breathing through your mouth at night, which happens when the airway is partially blocked." });
-    if (bmi === "overweight" || bmi === "obese") signals.push({ icon: "📊", label: "Weight as a risk factor", detail: "Carrying extra weight, especially around the neck, can make the airway narrower during sleep. It's one of the most common risk factors for sleep apnea, and something treatment can help with." });
-    if (conditions.includes("hypertension")) signals.push({ icon: "❤️", label: "High blood pressure", detail: "High blood pressure and sleep apnea often go hand in hand. Each time breathing is disrupted at night, it puts extra stress on the heart. Treating sleep apnea can actually help bring blood pressure down." });
-    if (conditions.includes("heart-disease")) signals.push({ icon: "🫀", label: "Heart health", detail: "Untreated sleep apnea puts extra strain on the heart over time. For people with heart conditions, getting tested and treated is especially important." });
-    if (satisfaction === "stopped") signals.push({ icon: "🔄", label: "Stopped using CPAP", detail: "Stopping CPAP is more common than most people think. It usually comes down to the mask, the pressure, or just not having the right support. Most of the time, these problems can be fixed." });
-    if (satisfaction === "struggling") signals.push({ icon: "⚙️", label: "Struggling with CPAP", detail: "Struggling with CPAP is really common, and it's almost always something we can help with. Better mask fitting, adjusted pressure, and some coaching make a real difference." });
-    if (needs.includes("supplies")) signals.push({ icon: "📦", label: "Supplies may be due", detail: "CPAP masks, filters, and tubing wear out over time and can affect how well therapy works. Most insurance plans cover replacements every 90 days." });
-    if (tags.includes("cdl-driver")) signals.push({ icon: "🚛", label: "CDL driver", detail: "Commercial drivers with sleep apnea need to be tested and treated to meet FMCSA rules. We handle all the paperwork your medical examiner needs." });
-    return signals;
+    if (snoring === "yes-loud") raw.push({ key: "snoring-loud", icon: "/icons/brand/moon.png", label: "Loud snoring", detail: "Loud snoring happens when the airway is partially blocked during sleep. It's one of the most common early signs we look for." });
+    if (pauses === "yes") raw.push({ key: "breathing-pauses", icon: "/icons/brand/lifeline.png", label: "Breathing pauses during sleep", detail: "When someone else notices that your breathing stops during sleep, that's one of the clearest signs we look for. It's a strong indicator that something is going on." });
+    if (sleepiness === "daily") raw.push({ key: "daytime-sleepiness", icon: "/icons/brand/moon.png", label: "Feeling tired every day", detail: "Feeling tired every day, even after a full night of sleep, often means your sleep isn't as restful as it should be. It's one of the most common things people with sleep apnea share with us." });
+    if (morningSymptoms.includes("headache")) raw.push({ key: "morning-headache", icon: "/icons/brand/sun.png", label: "Morning headaches", detail: "Waking up with a headache can be a sign that your oxygen levels dip during the night. This usually goes away once sleep apnea is treated." });
+    if (morningSymptoms.includes("dry-mouth")) raw.push({ key: "dry-mouth", icon: "/icons/brand/sun.png", label: "Dry mouth in the morning", detail: "Waking up with a dry mouth often means you've been breathing through your mouth at night, which happens when the airway is partially blocked." });
+    if (bmi === "overweight" || bmi === "obese") raw.push({ key: "bmi-weight", icon: "/icons/brand/lifeline.png", label: "Weight as a risk factor", detail: "Carrying extra weight, especially around the neck, can make the airway narrower during sleep. It's one of the most common risk factors for sleep apnea, and something treatment can help with." });
+    if (conditions.includes("hypertension")) raw.push({ key: "hypertension", icon: "/icons/brand/heart.png", label: "High blood pressure", detail: "High blood pressure and sleep apnea often go hand in hand. Each time breathing is disrupted at night, it puts extra stress on the heart. Treating sleep apnea can actually help bring blood pressure down." });
+    if (conditions.includes("heart-disease")) raw.push({ key: "heart-disease", icon: "/icons/brand/heart.png", label: "Heart health", detail: "Untreated sleep apnea puts extra strain on the heart over time. For people with heart conditions, getting tested and treated is especially important." });
+    if (satisfaction === "stopped") raw.push({ key: "cpap-stopped", icon: "/icons/brand/lifeline.png", label: "Stopped using CPAP", detail: "Stopping CPAP is more common than most people think. It usually comes down to the mask, the pressure, or just not having the right support. Most of the time, these problems can be fixed." });
+    if (satisfaction === "struggling") raw.push({ key: "cpap-struggling", icon: "/icons/brand/lifeline.png", label: "Struggling with CPAP", detail: "Struggling with CPAP is really common, and it's almost always something we can help with. Better mask fitting, adjusted pressure, and some coaching make a real difference." });
+    if (needs.includes("supplies")) raw.push({ key: "supplies-due", icon: "/icons/brand/lifeline.png", label: "Supplies may be due", detail: "CPAP masks, filters, and tubing wear out over time and can affect how well therapy works. Most insurance plans cover replacements every 90 days." });
+    if (tags.includes("cdl-driver")) raw.push({ key: "cdl-driver", icon: "/icons/brand/moon.png", label: "CDL driver", detail: "Commercial drivers with sleep apnea need to be tested and treated to meet FMCSA rules. We handle all the paperwork your medical examiner needs." });
+
+    // Merge DB overrides when available
+    return raw.map((s) => {
+      const db = dbSignalMap?.[s.key];
+      return db ? { ...s, label: db.label, detail: db.detail, icon: db.icon_path } : s;
+    });
   }
 
   function getProductBullets(): string[] {
     if (isUndiagnosed) {
       if (tags.includes("cdl-driver")) return ["DOT-accepted testing that meets FMCSA requirements", "A sleep doctor reviews your results within 48 hours", "We prepare all the paperwork your medical examiner needs"];
-      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed, no clinic visit needed", "A sleep doctor reviews your results and calls you to walk through everything", "Most insurance plans cover the full cost"];
+      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed — no clinic visit needed", "A board-certified sleep doctor reviews your results", "Book a sleep review call at no extra cost — included with your test"];
     }
     if (tags.includes("cpap-dropout") || tags.includes("cpap-struggling")) {
-      return ["A consultation to find the right mask for you", "Pressure settings adjusted to match how you actually breathe", "Ongoing support through the Dumbo Health app", "Insurance-covered equipment and supplies delivered to you"];
+      return ["A consultation to find the right mask for you", "Pressure settings adjusted to match how you actually breathe", "Ongoing support through the Dumbo Health app", "Equipment and supplies delivered to your door"];
     }
-    return ["Insurance-covered CPAP supplies every 90 days", "Regular check-ins with your care team", "Sleep coaching and progress tracking through the Dumbo Health app", "Dedicated care team available by message"];
+    return ["CPAP supplies delivered every 90 days", "Regular check-ins with your care team", "Sleep coaching and progress tracking through the Dumbo Health app", "Dedicated care team available by message"];
   }
 
   const signals = getSignals();
-  const bullets = getProductBullets();
 
   function ResultBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
     return (
@@ -835,54 +856,69 @@ function ResultsPage({
 
   return (
     <div style={{ paddingBottom: 80 }}>
-      {/* Hero section */}
-      <ResultBlock delay={0.05}>
-        <div style={{ padding: "clamp(40px, 8vw, 72px) 20px clamp(32px, 6vw, 56px)", textAlign: "center", borderBottom: "1px solid rgba(3,31,61,0.06)" }}>
-          <div style={{ maxWidth: 640, margin: "0 auto" }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#FF8361", marginBottom: 16 }}>
+      <style>{`
+        .results-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        @media (min-width: 860px) {
+          .results-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+          }
+        }
+      `}</style>
+
+      {/* ── HERO — full width ── */}
+      <ResultBlock delay={0}>
+        <div style={{ padding: "clamp(48px, 9vw, 88px) 24px clamp(36px, 7vw, 64px)", textAlign: "center", borderBottom: "1px solid rgba(3,31,61,0.06)" }}>
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FF8361", marginBottom: 20 }}>
               Your Results
             </p>
-            <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 5vw, 2.75rem)", color: "#031F3D", lineHeight: 1.12, marginBottom: 16 }}>
-              {hero?.title ?? "We've reviewed your answers."}
+            <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(2rem, 5.5vw, 3.25rem)", color: "#031F3D", lineHeight: 1.1, marginBottom: 20 }}>
+              {hero?.title ?? "We\u2019ve reviewed your answers."}
             </h1>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 2.5vw, 1.125rem)", color: "rgba(3,31,61,0.6)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
-              {hero?.body ?? "Based on what you shared, here's what we recommend."}
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(1.0625rem, 2.5vw, 1.25rem)", color: "rgba(3,31,61,0.6)", lineHeight: 1.65, maxWidth: 560, margin: "0 auto" }}>
+              {hero?.body ?? "Based on what you shared, here\u2019s what we recommend."}
             </p>
           </div>
         </div>
       </ResultBlock>
 
-      <div style={{ maxWidth: 660, margin: "0 auto", padding: "0 20px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
 
-        {/* ── Waitlist (out-of-state) — replaces all other content ── */}
+        {/* ── WAITLIST (out-of-state) ── */}
         {waitlist ? (
-          <ResultBlock delay={0.1}>
-            <div style={{ marginTop: 40, textAlign: "center", padding: "44px 32px", backgroundColor: "white", borderRadius: 28, boxShadow: "0 4px 32px rgba(3,31,61,0.07)" }}>
+          <ResultBlock delay={0.15}>
+            <div style={{ marginTop: 48, textAlign: "center", padding: "52px 36px", backgroundColor: "white", borderRadius: 28, boxShadow: "0 4px 32px rgba(3,31,61,0.07)" }}>
               <div style={{ width: 52, height: 52, borderRadius: "50%", backgroundColor: "rgba(120,191,188,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                <span style={{ fontSize: "1.4rem" }}>📍</span>
+                <img src="/icons/brand/moon.png" alt="" style={{ width: 28, height: 28, objectFit: "contain" }} />
               </div>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.625rem", color: "#031F3D", marginBottom: 12 }}>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.875rem", color: "#031F3D", marginBottom: 14 }}>
                 {waitlist.title}
               </h2>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, maxWidth: 380, margin: "0 auto 28px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, maxWidth: 400, margin: "0 auto 32px" }}>
                 {waitlist.body}
               </p>
               {waitlistSent ? (
-                <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500 }}>
-                  ✓ You&apos;re on the list — we&apos;ll reach out the moment we launch in your state.
+                <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500, fontSize: "1rem" }}>
+                  You&apos;re on the list \u2014 we&apos;ll reach out the moment we launch in your state.
                 </p>
               ) : (
-                <div style={{ display: "flex", gap: 8, maxWidth: 360, margin: "0 auto" }}>
+                <div style={{ display: "flex", gap: 8, maxWidth: 380, margin: "0 auto" }}>
                   <input
                     type="email"
                     placeholder="your@email.com"
                     value={waitlistEmail}
                     onChange={(e) => setWaitlistEmail(e.target.value)}
-                    style={{ flex: 1, padding: "13px 16px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 12, color: "#031F3D", backgroundColor: "white", outline: "none" }}
+                    style={{ flex: 1, padding: "14px 18px", fontFamily: "var(--font-body)", fontSize: "1rem", border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 12, color: "#031F3D", backgroundColor: "white", outline: "none" }}
                   />
                   <button
                     onClick={() => waitlistEmail && setWaitlistSent(true)}
-                    style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "13px 22px", fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, cursor: "pointer", flexShrink: 0 }}
+                    style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 24px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", flexShrink: 0 }}
                   >
                     Join
                   </button>
@@ -891,179 +927,224 @@ function ResultsPage({
             </div>
           </ResultBlock>
         ) : (
-          <>
-            {/* ── Risk bar + narrative (undiagnosed) ── */}
-            {isUndiagnosed && (
-              <ResultBlock delay={0.1}>
-                <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
-                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)" }}>
-                      Your risk level
-                    </p>
-                    <span style={{ backgroundColor: risk.color, color: "white", fontSize: "0.7rem", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", padding: "3px 10px", borderRadius: 20 }}>
-                      {riskScore > 0 ? `${riskScore} indicator${riskScore !== 1 ? "s" : ""}` : "Low score"}
-                    </span>
-                  </div>
-                  <p style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.25rem", color: "#031F3D", marginBottom: 14 }}>
-                    {risk.label}
-                  </p>
-                  <div style={{ height: 7, backgroundColor: "rgba(3,31,61,0.06)", borderRadius: 4, overflow: "hidden", marginBottom: 20 }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${risk.bar * 100}%` }}
-                      transition={t(0.3, 0.8)}
-                      style={{ height: "100%", backgroundColor: risk.color, borderRadius: 4 }}
-                    />
-                  </div>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.7 }}>
-                    {getNarrative()}
-                  </p>
-                </div>
-              </ResultBlock>
-            )}
+          <div style={{ marginTop: 48 }}>
+            <div className="results-grid">
 
-            {/* ── Narrative card (diagnosed) ── */}
-            {!isUndiagnosed && (
-              <ResultBlock delay={0.1}>
-                <div style={{ marginTop: 40, backgroundColor: "white", borderRadius: 24, padding: "28px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
-                    Where you are right now
-                  </p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.65)", lineHeight: 1.75 }}>
-                    {getNarrative()}
-                  </p>
-                </div>
-              </ResultBlock>
-            )}
+              {/* ═══ LEFT COLUMN — action ═══ */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
-            {/* ── Key signals (from answers) ── */}
-            {signals.length > 0 && (
-              <ResultBlock delay={0.15}>
-                <div style={{ marginTop: 24 }}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 14 }}>
-                    What stood out in your answers
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                    {signals.map((signal, i) => (
+                {/* ── Recommendation card (FIRST) ── */}
+                {product && (
+                  <ResultBlock delay={0.2}>
+                    <div style={{ backgroundColor: "#031F3D", borderRadius: 28, padding: "40px 36px 36px", color: "white" }}>
+                      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,131,97,0.8)", marginBottom: 18 }}>
+                        Recommended for you
+                      </p>
+                      <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "white", lineHeight: 1.15, marginBottom: 14 }}>
+                        {product.title}
+                      </h2>
+                      <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
+                        {product.body}
+                      </p>
+                      {product.cta_url === "shopify:sleep-test" ? (
+                        <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 8px 28px rgba(255,131,97,0.4)", cursor: "pointer" }}>
+                          {product.cta_label ?? "Get started \u2192"}
+                        </a>
+                      ) : (
+                        <Link href={product.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 8px 28px rgba(255,131,97,0.4)" }}>
+                          {product.cta_label ?? "Get started \u2192"}
+                        </Link>
+                      )}
+                    </div>
+                  </ResultBlock>
+                )}
+
+                {/* ── Fallback CTA (no product) ── */}
+                {!product && hero?.cta_label && (
+                  <ResultBlock delay={0.2}>
+                    <div>
+                      {hero.cta_url === "shopify:sleep-test" ? (
+                        <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 40px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}>
+                          {hero.cta_label}
+                        </a>
+                      ) : (
+                        <Link href={hero.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 40px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}>
+                          {hero.cta_label}
+                        </Link>
+                      )}
+                    </div>
+                  </ResultBlock>
+                )}
+
+                {/* ── What happens next (undiagnosed) ── */}
+                {isUndiagnosed && (
+                  <div>
+                    <ResultBlock delay={0.5}>
+                      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 22 }}>
+                        Here&apos;s what happens next
+                      </p>
+                    </ResultBlock>
+                    {(dbSteps ?? [
+                      { step_order: 1, title: "We send your test kit", body: "An at-home sleep test kit arrives at your door in 2 to 3 business days. No clinic visit needed." },
+                      { step_order: 2, title: "One night in your own bed", body: "Clip a small device to your finger before bed and sleep as usual. It records your breathing, oxygen levels, and heart rate overnight." },
+                      { step_order: 3, title: "Book your sleep review call", body: "Once your results are ready, book a call with one of our sleep doctors to go through everything. Included — no extra cost." },
+                    ] as DbStep[]).map((step, i) => (
                       <motion.div
-                        key={signal.label}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={t(0.18 + i * 0.04)}
-                        style={{ display: "flex", gap: 14, padding: "16px 20px", backgroundColor: "white", border: "1px solid rgba(3,31,61,0.07)", borderRadius: 16 }}
+                        key={step.step_order}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={t(0.55 + i * 0.15)}
+                        style={{ display: "flex", gap: 20, marginBottom: 24 }}
                       >
-                        <span style={{ fontSize: "1.1rem", flexShrink: 0, marginTop: 1 }}>{signal.icon}</span>
+                        <div style={{ width: 42, height: 42, borderRadius: "50%", backgroundColor: "rgba(255,131,97,0.1)", border: "1.5px solid rgba(255,131,97,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1rem", color: "#FF8361" }}>{step.step_order}</span>
+                        </div>
                         <div>
-                          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.875rem", color: "#031F3D", marginBottom: 3 }}>{signal.label}</p>
-                          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.6 }}>{signal.detail}</p>
+                          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.0625rem, 1.4vw, 1.25rem)", color: "#031F3D", marginBottom: 6 }}>{step.title}</p>
+                          <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(3,31,61,0.55)", lineHeight: 1.65 }}>{step.body}</p>
                         </div>
                       </motion.div>
                     ))}
                   </div>
-                </div>
-              </ResultBlock>
-            )}
+                )}
 
-            {/* ── Recommendation card (dark) ── */}
-            {product && (
-              <ResultBlock delay={0.22}>
-                <div style={{ marginTop: 28, backgroundColor: "#031F3D", borderRadius: 28, padding: "36px 32px 32px", color: "white" }}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,131,97,0.8)", marginBottom: 14 }}>
-                    Recommended for you
-                  </p>
-                  <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "1.5rem", color: "white", lineHeight: 1.2, marginBottom: 10 }}>
-                    {product.title}
-                  </h2>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.65, marginBottom: 22 }}>
-                    {product.body}
-                  </p>
-                  <ul style={{ listStyle: "none", margin: "0 0 28px", padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-                    {bullets.map((b) => (
-                      <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                        <span style={{ color: "#FF8361", fontSize: "0.75rem", marginTop: 3, flexShrink: 0 }}>✦</span>
-                        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>{b}</span>
-                      </li>
+                {/* ── Trust strip ── */}
+                <ResultBlock delay={0.95}>
+                  <div style={{ padding: "22px 24px", backgroundColor: "rgba(120,191,188,0.07)", border: "1px solid rgba(120,191,188,0.18)", borderRadius: 20, display: "flex", flexWrap: "wrap", gap: 12 }}>
+                    {["Sleep physicians you can talk to", "FDA-cleared devices", "Insurance billing handled for you", "Your data is always private"].map((item) => (
+                      <span key={item} style={{ display: "flex", alignItems: "center", gap: 7, fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)" }}>
+                        <span style={{ color: "#78BFBC", fontWeight: 600 }}>✓</span>
+                        {item}
+                      </span>
                     ))}
-                  </ul>
-                  {product.cta_url === "shopify:sleep-test" ? (
-                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)", cursor: "pointer" }}>
-                      {product.cta_label ?? "Get started →"}
-                    </a>
-                  ) : (
-                    <Link href={product.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "14px 30px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, boxShadow: "0 6px 24px rgba(255,131,97,0.35)" }}>
-                      {product.cta_label ?? "Get started →"}
-                    </Link>
-                  )}
-                </div>
-              </ResultBlock>
-            )}
+                  </div>
+                </ResultBlock>
 
-            {/* ── Fallback CTA (no product card) ── */}
-            {!product && hero?.cta_label && (
-              <ResultBlock delay={0.22}>
-                <div style={{ marginTop: 28, textAlign: "center" }}>
-                  {hero.cta_url === "shopify:sleep-test" ? (
-                    <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}>
-                      {hero.cta_label}
-                    </a>
-                  ) : (
-                    <Link href={hero.cta_url ?? "/at-home-sleep-test"} style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "15px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}>
-                      {hero.cta_label}
-                    </Link>
-                  )}
-                </div>
-              </ResultBlock>
-            )}
+              </div>
 
-            {/* ── What happens next (undiagnosed) ── */}
-            {isUndiagnosed && (
-              <ResultBlock delay={0.28}>
-                <div style={{ marginTop: 36 }}>
-                  <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 20 }}>
-                    Here's what happens next
-                  </p>
-                  {[
-                    { n: "1", title: "We send your test kit", body: "An at-home sleep test kit arrives at your door in 2 to 3 business days. No clinic visit needed." },
-                    { n: "2", title: "One night in your own bed", body: "Clip a small device to your finger before bed and sleep as usual. It records your breathing, oxygen levels, and heart rate overnight." },
-                    { n: "3", title: "A sleep doctor calls you", body: "Within 48 hours, a sleep doctor reviews your results and calls you to talk through everything, at no extra cost." },
-                  ].map((step, i) => (
-                    <motion.div key={step.n} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={t(0.3 + i * 0.06)}
-                      style={{ display: "flex", gap: 18, marginBottom: 22 }}>
-                      <div style={{ width: 38, height: 38, borderRadius: "50%", backgroundColor: "rgba(255,131,97,0.1)", border: "1.5px solid rgba(255,131,97,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "0.9rem", color: "#FF8361" }}>{step.n}</span>
+              {/* ═══ RIGHT COLUMN — evidence ═══ */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+
+                {/* ── Risk bar (undiagnosed) ── */}
+                {isUndiagnosed && (
+                  <ResultBlock delay={0.3}>
+                    <div style={{ backgroundColor: "white", borderRadius: 24, padding: "32px 32px 28px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)" }}>
+                          Your risk level
+                        </p>
+                        <span style={{ backgroundColor: risk.color, color: "white", fontSize: "0.7rem", fontFamily: "var(--font-mono)", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 12px", borderRadius: 20 }}>
+                          {risk.label}
+                        </span>
                       </div>
-                      <div>
-                        <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem", color: "#031F3D", marginBottom: 4 }}>{step.title}</p>
-                        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.6 }}>{step.body}</p>
+                      <div style={{ height: 8, backgroundColor: "rgba(3,31,61,0.06)", borderRadius: 4, overflow: "hidden" }}>
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${risk.bar * 100}%` }}
+                          transition={t(0.5, 0.9)}
+                          style={{ height: "100%", backgroundColor: risk.color, borderRadius: 4 }}
+                        />
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </ResultBlock>
-            )}
+                    </div>
+                  </ResultBlock>
+                )}
 
-            {/* ── Trust strip ── */}
-            <ResultBlock delay={0.34}>
-              <div style={{ marginTop: 12, padding: "20px 24px", backgroundColor: "rgba(120,191,188,0.07)", border: "1px solid rgba(120,191,188,0.18)", borderRadius: 20, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-                {["Sleep physicians you can talk to", "FDA-cleared devices", "Insurance billing handled for you", "Your data is always private"].map((item) => (
-                  <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)" }}>
-                    <span style={{ color: "#78BFBC" }}>✓</span>
-                    {item}
-                  </span>
-                ))}
+                {/* ── Narrative (diagnosed) ── */}
+                {!isUndiagnosed && (
+                  <ResultBlock delay={0.3}>
+                    <div style={{ backgroundColor: "white", borderRadius: 24, padding: "32px 32px", boxShadow: "0 2px 20px rgba(3,31,61,0.06)" }}>
+                      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 16 }}>
+                        Where you are right now
+                      </p>
+                      <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(1.0625rem, 1.3vw, 1.25rem)", color: "rgba(3,31,61,0.65)", lineHeight: 1.75 }}>
+                        {getNarrative()}
+                      </p>
+                    </div>
+                  </ResultBlock>
+                )}
+
+                {/* ── Key signals ── */}
+                {signals.length > 0 && (
+                  <div>
+                    <ResultBlock delay={0.35}>
+                      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.35)", marginBottom: 16 }}>
+                        What stood out in your answers
+                      </p>
+                    </ResultBlock>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      {signals.map((signal, i) => {
+                        const isOpen = openSignal === signal.label;
+                        return (
+                          <motion.div
+                            key={signal.label}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={t(0.4 + i * 0.1)}
+                            style={{ backgroundColor: "white", border: `1px solid ${isOpen ? "rgba(3,31,61,0.12)" : "rgba(3,31,61,0.07)"}`, borderRadius: 16, overflow: "hidden" }}
+                          >
+                            <button
+                              onClick={() => setOpenSignal(isOpen ? null : signal.label)}
+                              style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "18px 20px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
+                            >
+                              <div style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: "#FCF6ED", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                <img src={signal.icon} alt="" style={{ width: 20, height: 20, objectFit: "contain", opacity: 0.85 }} />
+                              </div>
+                              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1rem, 1.4vw, 1.125rem)", color: "#031F3D", flex: 1, margin: 0 }}>{signal.label}</p>
+                              <motion.span
+                                animate={{ rotate: isOpen ? 180 : 0 }}
+                                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                                style={{ color: "rgba(3,31,61,0.3)", fontSize: "0.75rem", flexShrink: 0, display: "inline-block" }}
+                              >
+                                ▾
+                              </motion.span>
+                            </button>
+                            <AnimatePresence initial={false}>
+                              {isOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                                  style={{ overflow: "hidden" }}
+                                >
+                                  <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.25vw, 1.0625rem)", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, padding: "0 20px 18px 72px" }}>
+                                    {signal.detail}
+                                  </p>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* ── Narrative (undiagnosed — after signals) ── */}
+                {isUndiagnosed && (
+                  <ResultBlock delay={0.4 + signals.length * 0.1 + 0.15}>
+                    <div style={{ backgroundColor: "rgba(3,31,61,0.02)", borderRadius: 20, padding: "24px 28px", border: "1px solid rgba(3,31,61,0.06)" }}>
+                      <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.75 }}>
+                        {getNarrative()}
+                      </p>
+                    </div>
+                  </ResultBlock>
+                )}
+
+              </div>
+            </div>
+
+            {/* ── Back link ── */}
+            <ResultBlock delay={1.1}>
+              <div style={{ marginTop: 56, paddingTop: 28, borderTop: "1px solid rgba(3,31,61,0.07)", textAlign: "center" }}>
+                <Link href="/" style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.35)", textDecoration: "none" }}>
+                  \u2190 Back to Dumbo Health
+                </Link>
               </div>
             </ResultBlock>
-          </>
+          </div>
         )}
 
-        {/* ── Back link ── */}
-        <ResultBlock delay={0.4}>
-          <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(3,31,61,0.07)", textAlign: "center" }}>
-            <Link href="/" style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(3,31,61,0.35)", textDecoration: "none" }}>
-              ← Back to Dumbo Health
-            </Link>
-          </div>
-        </ResultBlock>
       </div>
     </div>
   );
@@ -1074,6 +1155,7 @@ export default function QuizPage() {
   const [flowSlug, setFlowSlug] = useState<string | null>(null);
   const [shownInterstitials, setShownInterstitials] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const hasSubmitted = useRef(false);
   const [activeReflection, setActiveReflection] = useState<ReflectionMoment | null>(null);
   const [pendingAnswer, setPendingAnswer] = useState<{ answer: string | string[] } | null>(null);
 
@@ -1117,7 +1199,8 @@ export default function QuizPage() {
   }
 
   async function handleSubmit() {
-    if (isSubmitting) return;
+    if (isSubmitting || hasSubmitted.current) return;
+    hasSubmitted.current = true;
     setIsSubmitting(true);
     await quiz.submitResults();
     setIsSubmitting(false);
@@ -1138,7 +1221,7 @@ export default function QuizPage() {
       <style>{`body { background: transparent !important; }`}</style>
 
       {/* Persistent animated gradient — always present, warms as quiz progresses */}
-      <AnimatedGradientBg active={isGradientActive} progress={quiz.progress} />
+      <AnimatedGradientBg progress={quiz.progress} />
 
       {/* Progress bar + minimal header */}
       <header style={{

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase-admin";
 
 const SubmissionSchema = z.object({
   flow_slug: z.string(),
@@ -34,16 +35,19 @@ export async function POST(req: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
+  // Only persist + notify if email was provided — anonymous completions are skipped
+  if (!submission.email) {
+    return NextResponse.json({ success: true });
+  }
+
   const { error } = await supabase.from("quiz_submissions").insert(submission);
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  if (submission.email) {
-    await notifyCustomerIO(submission).catch(() => {
-      // CIO errors should not block the submission response
-    });
-  }
+  await notifyCustomerIO(submission).catch(() => {
+    // CIO errors should not block the submission response
+  });
 
   return NextResponse.json({ success: true });
 }
@@ -108,6 +112,19 @@ function buildProfile(submission: Submission) {
   };
 }
 
+async function getEnabledCioKeys(): Promise<Set<string> | null> {
+  try {
+    const sb = createAdminClient();
+    const { data } = await sb
+      .from("cio_attribute_config")
+      .select("key, enabled");
+    if (!data) return null;
+    return new Set(data.filter((r) => r.enabled).map((r) => r.key as string));
+  } catch {
+    return null; // table not yet created — send all attributes
+  }
+}
+
 async function notifyCustomerIO(submission: Submission) {
   const siteId = process.env.CUSTOMERIO_SITE_ID;
   const apiKey = process.env.CUSTOMERIO_API_KEY;
@@ -116,7 +133,15 @@ async function notifyCustomerIO(submission: Submission) {
   const email = submission.email!;
   const auth = Buffer.from(`${siteId}:${apiKey}`).toString("base64");
   const baseUrl = "https://track.customer.io/api/v1";
-  const profile = buildProfile(submission);
+  const fullProfile = buildProfile(submission);
+
+  // Filter to only enabled attributes (falls back to all if table not yet created)
+  const enabledKeys = await getEnabledCioKeys();
+  const profile = enabledKeys
+    ? Object.fromEntries(
+        Object.entries(fullProfile).filter(([k]) => k === "email" || enabledKeys.has(k))
+      )
+    : fullProfile;
 
   // Identify — sets all flat attributes on the customer profile
   await fetch(`${baseUrl}/customers/${encodeURIComponent(email)}`, {

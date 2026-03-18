@@ -26,6 +26,15 @@ function isEnabled(envVar: string): boolean {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // Admin auth guard
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+    const session = request.cookies.get('admin_session')
+    if (!session || session.value !== '1') {
+      return NextResponse.redirect(new URL('/admin/login', request.url))
+    }
+  }
+
+  // Page feature flags
   for (const { path, envVar } of PAGE_FLAGS) {
     if (pathname === path || pathname.startsWith(path + '/')) {
       if (!isEnabled(envVar)) {
@@ -38,8 +47,8 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Only run middleware on flagged page routes
   matcher: [
+    '/admin/:path*',
     '/dot-sleep-apnea-testing/:path*',
     '/cpap/:path*',
     '/solutions/:path*',
