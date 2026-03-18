@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,29 +11,28 @@ const QUESTIONS = [
   "Waking up exhausted no matter how much you sleep?",
   "Snoring, brain fog, tired all day?",
 ];
-
 const HEADLINE = "Better sleep is closer than you think.";
-const SUBHEAD = "We help people understand what's disrupting their sleep — and what to do about it.";
+const SUBHEAD  = "We help people understand what's disrupting their sleep — and what to do about it.";
 
 const marqueeImages = [
   { src: "/images/people/couple-in-bed.png",       alt: "Couple resting peacefully" },
-  { src: "/images/people/man-waking-up.png",       alt: "Man waking up refreshed" },
-  { src: "/images/people/woman-blue-pajamas.png",  alt: "Woman ready for a good night" },
-  { src: "/images/people/man-drinking-coffee.png", alt: "Man enjoying his morning" },
-  { src: "/images/people/man-on-beach.png",        alt: "Man feeling great outdoors" },
-  { src: "/images/hero/hero-device.jpg",           alt: "Sleep test device" },
+  { src: "/images/people/man-waking-up.png",        alt: "Man waking up refreshed" },
+  { src: "/images/people/woman-blue-pajamas.png",   alt: "Woman ready for a good night" },
+  { src: "/images/people/man-drinking-coffee.png",  alt: "Man enjoying his morning" },
+  { src: "/images/people/man-on-beach.png",         alt: "Man feeling great outdoors" },
+  { src: "/images/hero/hero-device.jpg",            alt: "Sleep test device" },
 ];
 
-// ── Word-by-word animated text ─────────────────────────────────────────────────
+// ── Word-by-word reveal ────────────────────────────────────────────────────────
 function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
     <span>
       {text.split(" ").map((word, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ease: EASE, duration: 0.42, delay: delay + i * 0.035 }}
+          transition={{ ease: EASE, duration: 0.45, delay: delay + i * 0.038 }}
           style={{ display: "inline-block", marginRight: "0.28em" }}
         >
           {word}
@@ -43,102 +42,102 @@ function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
   );
 }
 
-// ── Contained gradient (hero-scoped, not fixed) ────────────────────────────────
+// ── Gradient (scoped to section, not fixed) ────────────────────────────────────
 function HeroGradient() {
   return (
     <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(145deg, #FCF6ED 0%, #F5E6D1 50%, #FFD6AD 100%)",
+        background: "linear-gradient(148deg, #FCF6ED 0%, #F5E6D1 52%, #FFD6AD 100%)",
       }} />
       <motion.div
-        animate={{ opacity: [0.45, 0.72, 0.45], scale: [1, 1.18, 1], x: [0, 30, 0], y: [0, -16, 0] }}
-        transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }}
+        animate={{ opacity: [0.42, 0.68, 0.42], scale: [1, 1.16, 1], x: [0, 28, 0], y: [0, -14, 0] }}
+        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
         style={{
           position: "absolute", top: "-20%", right: "-10%",
           width: "65vw", height: "65vw", maxWidth: 820, maxHeight: 820,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,131,97,0.14) 0%, rgba(255,214,173,0.68) 40%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(255,131,97,0.12) 0%, rgba(255,214,173,0.66) 40%, transparent 68%)",
         }}
       />
       <motion.div
-        animate={{ opacity: [0.28, 0.52, 0.28], scale: [1.1, 1, 1.1], x: [0, -20, 0], y: [0, 22, 0] }}
-        transition={{ duration: 9, ease: "easeInOut", repeat: Infinity, delay: 2.5 }}
+        animate={{ opacity: [0.26, 0.48, 0.26], scale: [1.08, 1, 1.08], x: [0, -18, 0], y: [0, 20, 0] }}
+        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 3 }}
         style={{
           position: "absolute", bottom: "-20%", left: "-15%",
           width: "55vw", height: "55vw", maxWidth: 700, maxHeight: 700,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,214,173,0.6) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(255,214,173,0.58) 0%, transparent 65%)",
         }}
       />
     </div>
   );
 }
 
-// ── Main hero ──────────────────────────────────────────────────────────────────
+// ── Main ───────────────────────────────────────────────────────────────────────
 export function HomeHero() {
-  // 4 = complete (default for SSR + repeat visits)
-  const [beat, setBeat] = useState<number>(4);
+  // -1 = pre-hydration (hidden), 0-3 = animation beats, 4 = complete
+  const [beat, setBeat] = useState<number>(-1);
+  const fromAnim = useRef(false);
 
   useEffect(() => {
     const played = sessionStorage.getItem("hero-played");
-    if (played) return;
+    if (played) {
+      setBeat(4); // instant reveal, no animation
+      return;
+    }
 
+    fromAnim.current = true;
     setBeat(0);
+
     const timers = [
-      setTimeout(() => setBeat(1), 1000),
-      setTimeout(() => setBeat(2), 2900),
-      setTimeout(() => setBeat(3), 4500),
+      setTimeout(() => setBeat(1), 1200),  // question 1
+      setTimeout(() => setBeat(2), 3000),  // question 2
+      setTimeout(() => setBeat(3), 4800),  // headline
       setTimeout(() => {
         setBeat(4);
         sessionStorage.setItem("hero-played", "true");
-      }, 5900),
+      }, 6400),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const isAnimating = beat < 4;
+  const isAnimating = beat >= 0 && beat < 4;
 
   return (
-    <section
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        minHeight: isAnimating ? "100vh" : "auto",
-        transition: "min-height 0.6s ease",
-      }}
-    >
+    <section style={{ position: "relative", overflow: "hidden" }}>
       <HeroGradient />
 
-      {/* ── Animation phase (beats 0–3) ── */}
+      {/* ── Animation overlay — absolute so resting hero holds layout ── */}
       <AnimatePresence>
         {isAnimating && (
           <motion.div
             key="intro"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.7, ease: "easeIn" } }}
+            animate={{ opacity: 1, transition: { duration: 0.6, ease: EASE } }}
+            exit={{ opacity: 0, transition: { duration: 0.9, ease: [0.4, 0, 1, 1] } }}
             style={{
-              position: "absolute", inset: 0, zIndex: 2,
+              position: "absolute", inset: 0, zIndex: 10,
               display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "0 24px",
+              padding: "0 28px",
+              minHeight: "100vh",
             }}
           >
-            <div style={{ maxWidth: 640, width: "100%", textAlign: "center" }}>
+            <div style={{ maxWidth: 620, width: "100%", textAlign: "center" }}>
               <AnimatePresence mode="wait">
                 {beat === 1 && (
                   <motion.h2
                     key="q1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.3, ease: "easeIn" } }}
+                    exit={{ opacity: 0, transition: { duration: 0.32, ease: "easeIn" } }}
                     style={{
                       fontFamily: "var(--font-heading)", fontWeight: 500,
                       fontSize: "clamp(1.875rem, 4.5vw, 3rem)",
                       color: "#031F3D", lineHeight: 1.15,
                     }}
                   >
-                    <AnimatedWords text={QUESTIONS[0]} delay={0.1} />
+                    <AnimatedWords text={QUESTIONS[0]} delay={0.08} />
                   </motion.h2>
                 )}
 
@@ -147,32 +146,31 @@ export function HomeHero() {
                     key="q2"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.3, ease: "easeIn" } }}
+                    exit={{ opacity: 0, transition: { duration: 0.32, ease: "easeIn" } }}
                     style={{
                       fontFamily: "var(--font-heading)", fontWeight: 500,
                       fontSize: "clamp(1.875rem, 4.5vw, 3rem)",
                       color: "#031F3D", lineHeight: 1.15,
                     }}
                   >
-                    <AnimatedWords text={QUESTIONS[1]} delay={0.1} />
+                    <AnimatedWords text={QUESTIONS[1]} delay={0.08} />
                   </motion.h2>
                 )}
 
                 {beat === 3 && (
                   <motion.div key="resolution">
-                    {/* Pause breath — thin Peach line before headline */}
                     <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
-                      transition={{ ease: EASE, duration: 0.55 }}
+                      transition={{ ease: EASE, duration: 0.5, delay: 0.05 }}
                       style={{
-                        width: 36, height: 3, backgroundColor: "#FF8361",
-                        borderRadius: 2, margin: "0 auto 28px",
+                        width: 32, height: 3, backgroundColor: "#FF8361",
+                        borderRadius: 2, margin: "0 auto 26px",
                       }}
                     />
                     <motion.h2
-                      initial={{ opacity: 0, y: 18 }}
-                      animate={{ opacity: 1, y: 0, transition: { ease: EASE, duration: 0.7, delay: 0.15 } }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0, transition: { ease: EASE, duration: 0.75, delay: 0.12 } }}
                       style={{
                         fontFamily: "var(--font-heading)", fontWeight: 500,
                         fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
@@ -189,10 +187,13 @@ export function HomeHero() {
         )}
       </AnimatePresence>
 
-      {/* ── Resting hero state (beat 4 / complete) ── */}
+      {/* ── Resting hero — always in DOM, animates in at beat 4 ── */}
       <motion.div
-        animate={{ opacity: beat === 4 ? 1 : 0, y: beat === 4 ? 0 : 14 }}
-        transition={{ ease: EASE, duration: 0.7 }}
+        animate={
+          beat === 4
+            ? { opacity: 1, y: 0, transition: fromAnim.current ? { ease: EASE, duration: 0.85, delay: 0.15 } : { duration: 0.15 } }
+            : { opacity: 0, y: 28, transition: { duration: 0 } }
+        }
         style={{ position: "relative", zIndex: 1 }}
       >
         {/* Headline */}
