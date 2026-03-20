@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
+import { aboutPageSchema } from "@/lib/schemas";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { AboutHero } from "@/components/about/hero";
@@ -21,6 +22,10 @@ export const metadata: Metadata = createMetadata({
 export default function AboutUsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema()) }}
+      />
       <Navbar />
       <main>
         {/* 1. Hero — the declaration */}

@@ -8,10 +8,11 @@ import {
 import {
   getSleepPlanOrderedKeys,
 } from "@/lib/go/sleep-plan";
+import { getBlogPosts } from "@/lib/supabase";
 
 const baseUrl = "https://www.dumbo.health";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sleepProtocolPages = getAllSleepProtocols().map((protocol) => ({
     url: `${baseUrl}/go/sleep-protocol/${protocol.slug}`,
     lastModified: protocol.date ? new Date(protocol.date) : new Date(),
@@ -72,13 +73,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/constantly-getting-sick`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ];
 
-  // TODO: Add blog posts from CMS/MDX when available
-  // const blogPosts = getAllPosts().map(post => ({
-  //   url: `${baseUrl}/blog/${post.slug}`,
-  //   lastModified: new Date(post.updatedAt || post.publishedAt),
-  //   changeFrequency: "monthly" as const,
-  //   priority: 0.6,
-  // }));
+  let blogPostPages: MetadataRoute.Sitemap = [];
+  try {
+    const posts = await getBlogPosts();
+    blogPostPages = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.updated_at || post.published_at || new Date()),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // Supabase unavailable at build time — skip blog posts
+  }
 
   const categories = ["sleep-tracking", "sleep-apnea", "sleep-disorders", "cpap"].map((cat) => ({
     url: `${baseUrl}/blog-category/${cat}`,
@@ -87,5 +93,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...sleepProtocolPages, ...atHomeSleepTestPages, ...sleepPlanPages, ...categories];
+  return [...staticPages, ...blogPostPages, ...sleepProtocolPages, ...atHomeSleepTestPages, ...sleepPlanPages, ...categories];
 }

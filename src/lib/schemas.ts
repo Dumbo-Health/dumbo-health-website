@@ -22,7 +22,7 @@ export function organizationSchema() {
       email: CONTACT.email,
       contactType: "Customer Support",
     },
-    sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.linkedin],
+    sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.linkedin, "https://x.com/dumbohealth"],
   };
 }
 
@@ -87,6 +87,58 @@ export function blogPostSchema(post: {
       "@type": "Organization",
       name: "Dumbo Health",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.svg` },
+    },
+  };
+}
+
+export function webPageSchema(title: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: `${SITE_URL}${path}`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function medicalWebPageSchema(
+  title: string,
+  description: string,
+  path: string,
+  specialty = "Sleep Medicine"
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: title,
+    description,
+    url: `${SITE_URL}${path}`,
+    medicalAudience: { "@type": "Patient" },
+    about: { "@type": "MedicalCondition", name: "Sleep Apnea", relevantSpecialty: specialty },
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function aboutPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Dumbo Health",
+    description:
+      "Meet the founders and medical team behind Dumbo Health — a mission-driven telehealth company making sleep apnea diagnosis and treatment simple, affordable, and stigma-free.",
+    url: `${SITE_URL}/about-us`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+    about: {
+      "@type": "MedicalOrganization",
+      name: "Dumbo Health",
+      url: SITE_URL,
+      foundingDate: "2023",
+      medicalSpecialty: "Sleep Medicine",
+      founder: [
+        { "@type": "Person", name: "Mo Sherif", jobTitle: "Co-Founder & CEO" },
+        { "@type": "Person", name: "Nico Aoun", jobTitle: "Co-Founder & CTO" },
+      ],
     },
   };
 }
