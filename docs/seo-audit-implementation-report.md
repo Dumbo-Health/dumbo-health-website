@@ -38,9 +38,9 @@ All P0 items are resolved. All P1 items are resolved. P2 engineering items are f
 | P2.1 | Add blog post URLs to sitemap | ✅ Done | `sitemap.ts` is now async and fetches all published posts from Supabase at build time. Each entry gets individual `lastmod` from `updated_at` or `published_at`. |
 | P2.2 | Add WebPage schema to `/solutions` | ✅ Done | (Classified P2 in audit, bumped to done alongside P1.1 since trivial) |
 | P2.3 | Add TL;DR blocks to symptom pages | ✅ Done | Shipped as P1.3 above. Blog post TL;DRs remain an editorial task. |
-| P2.4 | Create author bio pages with Person schema | ❌ Open | Author data is in Supabase (`blog_authors` table). Needs `/authors/[slug]` pages with Person + sameAs LinkedIn |
-| P2.5 | Add CollectionPage schema to blog category pages | ❌ Open | 4 pages: `/blog-category/sleep-apnea`, `/cpap`, `/sleep-tracking`, `/sleep-disorders` |
-| P2.6 | Add internal link from `/at-home-sleep-test` → `/get-your-at-home-sleep-apnea-test` | ❌ Open | Orphaned PPC landing page. Needs one contextual link to avoid crawl isolation. |
+| P2.4 | Create author bio pages with Person schema | ✅ Done | `/blog-author/[slug]` page built with Person JSON-LD, avatar, bio, social links, and post grid. |
+| P2.5 | Add CollectionPage schema to blog category pages | ✅ Done | `collectionPageSchema()` wired into `/blog-category/[category]/page.tsx` — applies to all category pages. |
+| P2.6 | Add internal link from `/at-home-sleep-test` → `/get-your-at-home-sleep-apnea-test` | ✅ Done | Contextual link added below main content: "Prefer a streamlined checkout? Order your at-home sleep apnea test →" |
 
 ---
 
@@ -48,21 +48,23 @@ All P0 items are resolved. All P1 items are resolved. P2 engineering items are f
 
 ### Engineering (code changes remaining)
 
-1. **Person schemas for team members on `/about-us`** — Pull from the `medical_team` and `scientific_committee` Supabase tables, add `Person` JSON-LD with `sameAs` pointing to LinkedIn profiles already stored in the DB.
-2. **Author bio pages `/authors/[slug]`** — Data is in `blog_authors` table. Needs a new page template + Person schema + fix author name links in blog posts.
-3. **CollectionPage schema on blog category pages** — ~5 lines per page, low effort. 4 pages: `/blog-category/sleep-apnea`, `/cpap`, `/sleep-tracking`, `/sleep-disorders`.
-4. **Internal link from `/at-home-sleep-test` to `/get-your-at-home-sleep-apnea-test`** — One contextual link addition to avoid crawl isolation of the PPC landing page.
-5. **`og:type = article` + `article:published_time` on blog posts** — Open Graph currently uses `website` for all pages. Blog post template should output `article` type with published/modified time.
+All engineering items are now resolved. For reference:
+
+- ✅ Person schemas for team members — `/about-us` pulls from local `medicalTeam` + `scientificCommittee` content and generates `Person` JSON-LD for each.
+- ✅ Author bio pages — `/blog-author/[slug]` built with Person schema, LinkedIn/Twitter sameAs, post grid.
+- ✅ CollectionPage schema on all blog category pages — wired via `collectionPageSchema()` in `[category]/page.tsx`.
+- ✅ Internal link to PPC landing page — contextual link added to `/at-home-sleep-test`.
+- ✅ `og:type = article` on blog posts — `createMetadata({ type: "article" })` already wired in blog post template.
 
 ### Content / Editorial
 
 These require copy decisions or content creation — engineering cannot complete them:
 
-1. **TL;DR boxes on blog posts** — Symptom pages are done. Blog posts still need a 2–3 sentence direct-answer paragraph immediately under the H1. LLMs extract these as standalone passage citations.
-2. **External authority citations in blog posts** — Add inline links to NIH, CDC, AASM, or JCSM for medical claims. Both Google (E-E-A-T) and LLMs weight external citations as credibility signals.
-4. **Medical reviewer bylines** — Every blog post and symptom page should show "Reviewed by [Dr. Name], MD, Board-Certified Sleep Medicine" under the H1. The reviewer's name should link to their profile page.
-5. **Medical review policy page** (`/medical-review-policy` or `/editorial-standards`) — Documents how content is reviewed and updated. Critical E-E-A-T signal for YMYL classification.
-6. **Credentials visible on product pages** — Board-certified physician names and credentials should appear on `/at-home-sleep-test` and `/cpap`, not just in the fine print.
+1. **TL;DR boxes on blog posts** — Blog post template already renders `short_description` as a TL;DR block. Just needs `short_description` populated for each post in Supabase (`blog_posts.short_description`). 2–3 sentence direct-answer summary per article.
+2. **External authority citations in blog posts** — Add inline links to NIH, CDC, AASM, or JCSM within blog post body content in Supabase. Both Google (E-E-A-T) and LLMs weight external citations as credibility signals.
+3. **Medical reviewer bylines** — Every blog post and symptom page should show "Reviewed by [Dr. Name], MD, Board-Certified Sleep Medicine" under the H1. Needs a `reviewer` field in `blog_posts` table + display in blog post template. Reviewer name should link to their `/blog-author/[slug]` page.
+4. ~~**Medical review policy page**~~ — ✅ Done. Live at `/medical-review-policy`. Covers content creation process, physician review, sourcing standards, and update policy.
+5. **Credentials visible on product pages** — Board-certified physician names and credentials should appear on `/at-home-sleep-test` and `/cpap`, not just in the fine print.
 
 ### Off-Site (requires Dumbo Health to take action directly)
 
@@ -85,9 +87,11 @@ These require copy decisions or content creation — engineering cannot complete
 | `/about-us` | None | AboutPage + founders as Person ✅ |
 | `/faqs` | FAQPage | FAQPage (was already good) |
 | `/resources/facts` | None | WebPage + canonical + title ✅ |
-| `/blog/*` | BlogPosting (already existed) | BlogPosting (og:type article pending) |
+| `/blog/*` | BlogPosting (already existed) | BlogPosting + og:type=article ✅ |
+| `/blog-author/[slug]` | None | Person schema + author bio page ✅ |
+| `/medical-review-policy` | None | WebPage schema + E-E-A-T policy page ✅ |
 | Symptom pages (8) | None | TL;DR box on all 8 ✅ (MedicalWebPage schema pending) |
-| Blog category pages (4) | None | None (CollectionPage pending) |
+| Blog category pages (4) | None | CollectionPage schema on all 4 ✅ |
 
 ---
 
@@ -102,6 +106,11 @@ These require copy decisions or content creation — engineering cannot complete
 - [ ] [Google Rich Results Test](https://search.google.com/test/rich-results) on `/about-us` and `/solutions` — schemas should validate
 - [ ] [Google Rich Results Test](https://search.google.com/test/rich-results) on `/at-home-sleep-test` and `/cpap` — FAQPage schema should validate and show FAQ rich result eligibility
 - [ ] View source on any symptom page (e.g. `/always-tired`) — TL;DR card should appear between the hero and the trust marquee
+- [ ] View source on any blog category page — should contain `application/ld+json` CollectionPage block
+- [ ] `https://www.dumbo.health/blog-author/[slug]` — author bio page loads with Person JSON-LD and post grid
+- [ ] `https://www.dumbo.health/medical-review-policy` — page loads with WebPage JSON-LD and full editorial policy copy
+- [ ] View source on `/at-home-sleep-test` — should contain contextual link to `/get-your-at-home-sleep-apnea-test`
+- [ ] View source on any blog post — `og:type` should be `article` (not `website`)
 
 ---
 

@@ -91,6 +91,9 @@ export interface BlogPost {
   created_at: string | null;
   updated_at: string | null;
   published_at: string | null;
+  reviewer_name: string | null;
+  reviewer_title: string | null;
+  reviewer_slug: string | null;
   // Joined fields
   blog_authors?: BlogAuthor;
   blog_categories?: BlogCategory;

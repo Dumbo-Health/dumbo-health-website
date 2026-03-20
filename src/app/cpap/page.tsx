@@ -12,8 +12,10 @@ import { CostFraming } from "@/components/pricing/cost-framing";
 import { FeatureComparison } from "@/components/pricing/feature-comparison";
 import { FAQSection } from "@/components/shared/faq-section";
 import { SleepTestCallout } from "@/components/pricing/sleep-test-callout";
+import Image from "next/image";
 import { SITE_URL } from "@/lib/constants";
 import { faqSchema } from "@/lib/schemas";
+import { medicalTeam } from "@/content/team";
 
 export const metadata: Metadata = createMetadata({
   title: "Sleep Apnea Treatment Plans & CPAP Pricing",
@@ -153,7 +155,46 @@ export default function CpapPage() {
         {/* 9. FAQ + objection handling */}
         <FAQSection limit={7} />
 
-        {/* 10. Sleep test safety net — for visitors not yet diagnosed */}
+        {/* 10. Medical team trust */}
+        <section className="bg-white py-12 sm:py-16 border-t border-sunlight">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <p
+                className="font-mono uppercase tracking-widest mb-2"
+                style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.45)" }}
+              >
+                Our Medical Team
+              </p>
+              <p className="font-body" style={{ fontSize: "1rem", color: "rgba(3,31,61,0.6)" }}>
+                Your CPAP therapy is supported by board-certified sleep medicine physicians.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-12">
+              {medicalTeam.map((member) => (
+                <div key={member.name} className="flex items-center gap-4 sm:flex-col sm:items-center sm:text-center">
+                  {member.image && (
+                    <div
+                      className="relative flex-shrink-0 rounded-full overflow-hidden"
+                      style={{ width: "64px", height: "64px" }}
+                    >
+                      <Image src={member.image} alt={member.name} fill className="object-cover" sizes="64px" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-heading font-medium text-midnight" style={{ fontSize: "0.9375rem" }}>
+                      {member.name}
+                    </p>
+                    <p className="font-body" style={{ fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)" }}>
+                      {member.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 11. Sleep test safety net — for visitors not yet diagnosed */}
         <SleepTestCallout />
       </main>
       <Footer />

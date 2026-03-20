@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SleepTestLanding } from "@/components/sleep-test/sleep-test-landing";
 import { faqSchema } from "@/lib/schemas";
+import { medicalTeam } from "@/content/team";
 
 export const metadata: Metadata = {
   title: "At-Home Sleep Apnea Test — FDA Cleared, $149",
@@ -102,6 +105,59 @@ export default function AtHomeSleepTestPage() {
       <Navbar />
       <main>
         <SleepTestLanding />
+        {/* Medical team trust */}
+        <section className="bg-white py-12 sm:py-16 border-t border-sunlight">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <p
+                className="font-mono uppercase tracking-widest mb-2"
+                style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.45)" }}
+              >
+                Our Medical Team
+              </p>
+              <p className="font-body" style={{ fontSize: "1rem", color: "rgba(3,31,61,0.6)" }}>
+                Every result reviewed by a board-certified sleep medicine physician.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-12">
+              {medicalTeam.map((member) => (
+                <div key={member.name} className="flex items-center gap-4 sm:flex-col sm:items-center sm:text-center">
+                  {member.image && (
+                    <div
+                      className="relative flex-shrink-0 rounded-full overflow-hidden"
+                      style={{ width: "64px", height: "64px" }}
+                    >
+                      <Image src={member.image} alt={member.name} fill className="object-cover" sizes="64px" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-heading font-medium text-midnight" style={{ fontSize: "0.9375rem" }}>
+                      {member.name}
+                    </p>
+                    <p className="font-body" style={{ fontSize: "0.8125rem", color: "rgba(3,31,61,0.5)" }}>
+                      {member.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-daylight py-8 border-t border-sunlight">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <p className="font-body text-sm" style={{ color: "rgba(3,31,61,0.55)" }}>
+              Prefer a streamlined checkout?{" "}
+              <Link
+                href="/get-your-at-home-sleep-apnea-test"
+                className="font-medium hover:underline"
+                style={{ color: "#FF8361" }}
+              >
+                Order your at-home sleep apnea test →
+              </Link>
+            </p>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
