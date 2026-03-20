@@ -928,6 +928,14 @@ const JOURNEY_PHASES = [
   },
 ];
 
+function ResultBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  return (
+    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(delay)}>
+      {children}
+    </motion.div>
+  );
+}
+
 function FullJourneySection() {
   return (
     <div style={{ marginTop: 72, borderTop: "1px solid rgba(3,31,61,0.06)", padding: "64px 24px 72px", background: "linear-gradient(180deg, rgba(245,230,209,0) 0%, rgba(245,230,209,0.35) 25%, rgba(245,230,209,0.35) 75%, rgba(252,246,237,0) 100%)" }}>
@@ -1108,13 +1116,6 @@ function ResultsPage({
 
   const signals = getSignals();
 
-  function ResultBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-    return (
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={t(delay)}>
-        {children}
-      </motion.div>
-    );
-  }
 
   return (
     <div style={{ paddingBottom: 80 }}>
