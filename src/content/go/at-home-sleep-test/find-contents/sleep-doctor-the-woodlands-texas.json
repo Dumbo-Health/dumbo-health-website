@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Health Clinic of The Woodlands",
+    "Houston Methodist Sleep Center at The Woodlands",
+    "Comprehensive Sleep Medicine Associates (CSMA): The Woodlands",
+    "Memorial Hermann Sleep Disorders Center at The Woodlands"
+  ],
+  "hospitals": [
+    "Houston Methodist The Woodlands Hospital",
+    "Memorial Hermann The Woodlands Medical Center",
+    "St. Luke's Health - The Woodlands Hospital",
+    "The Woodlands Specialty Hospital"
+  ],
+  "neighborhoods": [
+    "Alden Bridge",
+    "Panther Creek",
+    "Cochran's Crossing",
+    "Grogan's Mill"
+  ],
+  "population": "120,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "around 28,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Health Clinic of The Woodlands",
+    "Houston Methodist Sleep Center at The Woodlands",
+    "Memorial Hermann Sleep Disorders Center at The Woodlands",
+    "Sleep Center at St. Luke's Health - The Woodlands Hospital"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "sleep_clinics": [
+    "The Florida Center of Sleep Medicine – Fleming Island Sleep Lab",
+    "The Florida Center of Sleep Medicine – Mandarin Sleep Lab",
+    "The Florida Center of Sleep Medicine – Fernandina Sleep Lab",
+    "Beaumont Sleep Apnea Center – Riverview"
+  ],
+  "hospitals": [
+    "Indian River Hospital",
+    "Cleveland Clinic Florida",
+    "HCA Florida Raulerson Hospital"
+  ],
+  "neighborhoods": [
+    "Beaumont",
+    "Benita Park",
+    "South Beaumont",
+    "Canterbury"
+  ],
+  "population": "2,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "15,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "The Florida Center of Sleep Medicine",
+    "Cleveland Clinic Florida Sleep Disorders Center",
+    "BayCare A.W.A.K.E. Support Group",
+    "PHCS Sleep Therapy Specialist"
+  ]
+}

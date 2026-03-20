@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Well Southeast Texas",
+    "Sound Asleep Solutions",
+    "Memorial Hermann Sleep Disorders Center at Southeast",
+    "UTMB Health Ear, Nose & Throat, League City"
+  ],
+  "hospitals": [
+    "Mainland Pulmonary and Sleep Clinic",
+    "UTMB Health Pulmonary & Sleep Medicine, Town Center",
+    "Houston Methodist Clear Lake Hospital",
+    "Texas ENT Specialists"
+  ],
+  "neighborhoods": [
+    "Palm Key",
+    "Nottingham Country",
+    "Meadow Bend",
+    "Newport"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 2,000 residents",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Well Southeast Texas",
+    "Sound Asleep Solutions",
+    "Hometown Smile Dentistry",
+    "Texas ENT Specialists"
+  ]
+}

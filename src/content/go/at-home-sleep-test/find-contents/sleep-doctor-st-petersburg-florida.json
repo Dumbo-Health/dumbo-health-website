@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Stat Care Pulmonary and Sleep",
+    "BayCare Sleep Center",
+    "St. Petersburg General Hospital Sleep Disorders Center",
+    "Custom Sleep Therapy LLC"
+  ],
+  "hospitals": [
+    "Bayfront Health St. Petersburg",
+    "St. Petersburg General Hospital",
+    "HCA Florida Pasadena Hospital",
+    "St. Anthony's Hospital"
+  ],
+  "neighborhoods": [
+    "Disston Heights",
+    "Euclid St. Paul's",
+    "North Shore Historic District (Old Northeast)",
+    "Snell Isle"
+  ],
+  "population": "260,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Blue Cross Blue Shield",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "thousands",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Stat Care Pulmonary and Sleep",
+    "BayCare Sleep Centers",
+    "Bayfront Health St. Petersburg",
+    "St. Anthony's Hospital"
+  ]
+}

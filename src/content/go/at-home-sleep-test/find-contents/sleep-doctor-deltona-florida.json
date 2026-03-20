@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Breathe Sleep Dream",
+    "AdventHealth Sleep Center DeLand",
+    "Florida Sleep Institute",
+    "The Florida Center of Sleep Medicine"
+  ],
+  "hospitals": [
+    "AdventHealth DeLand",
+    "AdventHealth Fish Memorial",
+    "Halifax Health/UF Health Medical Center of Deltona",
+    "Central Florida Regional Hospital"
+  ],
+  "neighborhoods": [
+    "Davis Park",
+    "Enterprise Heights",
+    "Deltona Farms Estates",
+    "Deltona Landings"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Florida Blue",
+    "UnitedHealthcare",
+    "Humana",
+    "Cigna"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "30,000 to 35,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Breathe Sleep Dream",
+    "DeLand Smiles",
+    "Southeast Snoring & Sleep Apnea Group",
+    "American Sleep Apnea Association"
+  ]
+}

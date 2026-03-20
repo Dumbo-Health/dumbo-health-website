@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Pulmonary and Sleep of Tampa Bay",
+    "Florida Sleep Disorder Center of Brandon",
+    "Sunshine Pulmonary and Sleep Medicine P.A.",
+    "Florida Medical Clinic Orlando Health"
+  ],
+  "hospitals": [
+    "HCA Florida Brandon Hospital",
+    "AdventHealth Medical Group Pulmonology at Brandon",
+    "Pulmonary & Sleep of Tampa Bay",
+    "Florida Sleep Disorder Center of Brandon"
+  ],
+  "neighborhoods": [
+    "Providence Lakes",
+    "Heather Lakes at Brandon",
+    "Lakeview Village",
+    "Bloomingdale"
+  ],
+  "population": "115,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross and Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "37,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Florida Sleep Disorder Center",
+    "Bay Area TMJ & Sleep Apnea Center",
+    "Florida Medical Clinic",
+    "USF Sleep Center"
+  ]
+}

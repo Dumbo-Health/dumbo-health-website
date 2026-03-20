@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Ascension Seton Williamson Sleep Center at Texas State University",
+    "Baylor Scott & White Clinic - Round Rock 302 University",
+    "Sleep Science Clinics LLC",
+    "Georgetown Sleep Center"
+  ],
+  "hospitals": [
+    "Ascension Seton Williamson Sleep Center",
+    "Baylor Scott & White Medical Center – Round Rock",
+    "St. David's Round Rock Medical Center",
+    "Georgetown Sleep Center"
+  ],
+  "neighborhoods": [
+    "Crossley Crossing",
+    "Mayfield Ranch Enclave",
+    "Round Rock West",
+    "Behrens Ranch"
+  ],
+  "population": "140,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Humana",
+    "Cigna",
+    "Blue Cross Blue Shield"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "36,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Ascension Seton Williamson Sleep Center",
+    "Solis Dental",
+    "Sleep Better Austin",
+    "Baylor Scott & White Clinic - Round Rock 302 University"
+  ]
+}

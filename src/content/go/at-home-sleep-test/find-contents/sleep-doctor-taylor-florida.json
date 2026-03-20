@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Solutions",
+    "Pulmonary and Sleep Medicine",
+    "Central Florida Sleep Diagnostic & Treatment Center",
+    "Better Sleep Clinics"
+  ],
+  "hospitals": [
+    "Tallahassee Memorial",
+    "HCA Florida Raulerson",
+    "AdventHealth DeLand",
+    "Santa Rosa Medical Center"
+  ],
+  "neighborhoods": [
+    "Perry",
+    "Steinhatchee",
+    "Shady Grove",
+    "Keaton Beach"
+  ],
+  "population": "20,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "7,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Florida Center of Sleep Medicine",
+    "BayCare Sleep Disorder Support Groups",
+    "North Florida Sleep Resources",
+    "Florida Sleep Solutions"
+  ]
+}

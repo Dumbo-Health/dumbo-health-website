@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Metroplex Sleep Center",
+    "Seton Medical Center Harker Heights",
+    "Central Texas Sleep Center",
+    "AdventHealth Central Texas Sleep Disorders Center"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Clinic - Killeen West",
+    "Baylor Scott & White McLane Children's at Baylor Scott & White Specialty Clinic - Killeen Hemingway",
+    "AdventHealth Central Texas",
+    "Seton Medical Center Harker Heights"
+  ],
+  "neighborhoods": [
+    "North Killeen",
+    "South Killeen",
+    "West Killeen",
+    "East Killeen"
+  ],
+  "population": "160,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "20,000 to 30,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "AdventHealth Central Texas Sleep Disorders Center",
+    "Austin Sleep Wellness",
+    "Central Texas Sleep Center",
+    "Killeen Dental Health Center"
+  ]
+}

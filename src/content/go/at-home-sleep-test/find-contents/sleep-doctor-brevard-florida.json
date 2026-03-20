@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Health First Sleep Center",
+    "Parrish Healthcare Sleep Center",
+    "Space Coast Sleep Disorders Center LLC",
+    "Medical Associates of Brevard - Pulmonary & Sleep Medicine"
+  ],
+  "hospitals": [
+    "Holmes Regional Medical Center",
+    "Cape Canaveral Hospital",
+    "Viera Hospital",
+    "Parrish Medical Center"
+  ],
+  "neighborhoods": [
+    "Palm Bay",
+    "Melbourne",
+    "Titusville",
+    "Rockledge"
+  ],
+  "population": "650,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield of Florida",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "70,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Health First Sleep Center",
+    "Parrish Healthcare Sleep Center",
+    "Space Coast Sleep Disorders Center",
+    "Awake Sleep Disorders Support Group"
+  ]
+}

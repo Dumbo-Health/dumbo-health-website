@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "UTMB Health Center for Sleep Disorders, Galveston",
+    "UTMB Health Center for Sleep Disorders, Webster",
+    "CLS Health Sleep Medicine Associates, Clear Lake",
+    "Houston Methodist Sleep Center at Texas Medical Center"
+  ],
+  "hospitals": [
+    "University of Texas Medical Branch Health Galveston Campus",
+    "UTMB Health Angleton Danbury Campus",
+    "UTMB Health Clear Lake Campus",
+    "UTMB Health League City Campus"
+  ],
+  "neighborhoods": [
+    "League City",
+    "Texas City",
+    "Galveston",
+    "Friendswood"
+  ],
+  "population": "370,000",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "100,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "UTMB Health Galveston Sleep Lab",
+    "Clear Lake Sleep Center",
+    "CLS Health Sleep Medicine Associates",
+    "Houston Methodist Sleep Disorders Center"
+  ]
+}

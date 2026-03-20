@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Baylor Scott & White Sleep Center – Waco",
+    "Texas Sleep Diagnostics and Therapeutics, PLLC",
+    "UT Health East Texas Sleep Disorders Center in Tyler",
+    "UT Health East Texas Sleep Disorders Center in Quitman"
+  ],
+  "hospitals": [
+    "AdventHealth Central Texas",
+    "Seton Medical Center Harker Heights",
+    "Baylor Scott & White Medical Center – Temple",
+    "Carl R. Darnall Army Medical Center"
+  ],
+  "neighborhoods": [
+    "Killeen",
+    "Temple",
+    "Harker Heights",
+    "Belton"
+  ],
+  "population": "400,000+",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 40,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Scott & White Sleep Disorders Center",
+    "Coryell Health",
+    "Sleep and Wellness Institute of Texas",
+    "Texas ENT Center"
+  ]
+}

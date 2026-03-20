@@ -13,6 +13,7 @@
 - Speak like a caring coach, not a technician
 - Stigma-free, friendly, approachable language
 - Medical credibility with human warmth
+- A fifth grader can understand it
 
 ## Color Palette
 

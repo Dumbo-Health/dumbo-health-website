@@ -119,6 +119,58 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
 
+            {/* TL;DR */}
+            {post.short_description && (
+              <div
+                className="mb-8 rounded-xl px-6 py-5"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.72)",
+                  border: "1px solid rgba(3,31,61,0.07)",
+                  boxShadow: "0 2px 16px rgba(3,31,61,0.05)",
+                }}
+              >
+                <span
+                  className="font-mono text-xs uppercase tracking-widest"
+                  style={{ color: "#78BFBC" }}
+                >
+                  TL;DR
+                </span>
+                <p
+                  className="mt-2 font-body leading-relaxed text-midnight"
+                  style={{ fontSize: "1.0625rem" }}
+                >
+                  {post.short_description}
+                </p>
+              </div>
+            )}
+
+            {/* Reviewer byline */}
+            {post.reviewer_name && (
+              <div className="flex items-center gap-2 mb-3">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                  <path d="M7 1a4 4 0 100 8A4 4 0 007 1zM2.5 10.5C1.5 11.3 1 12.2 1 13h12c0-.8-.5-1.7-1.5-2.5A6.97 6.97 0 007 9a6.97 6.97 0 00-4.5 1.5z" stroke="#78BFBC" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5.5 5.5l1 1 2-2" stroke="#78BFBC" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span className="font-body text-sm" style={{ color: "rgba(3,31,61,0.55)" }}>
+                  Reviewed by{" "}
+                  {post.reviewer_slug ? (
+                    <a
+                      href={`/blog-author/${post.reviewer_slug}`}
+                      className="font-medium hover:underline"
+                      style={{ color: "#031F3D" }}
+                    >
+                      {post.reviewer_name}
+                    </a>
+                  ) : (
+                    <span className="font-medium" style={{ color: "#031F3D" }}>{post.reviewer_name}</span>
+                  )}
+                  {post.reviewer_title && (
+                    <span style={{ color: "rgba(3,31,61,0.45)" }}>, {post.reviewer_title}</span>
+                  )}
+                </span>
+              </div>
+            )}
+
             {/* Byline */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-8">
               {author?.profile_picture && (

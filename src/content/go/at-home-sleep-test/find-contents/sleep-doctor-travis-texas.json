@@ -1,0 +1,33 @@
+{
+  "sleep_clinics": [
+    "Sleep Medicine Consultants of Central Texas PLLC",
+    "Sleep 360",
+    "Texas Sleep Medicine",
+    "Sleep and Wellness Institute of Texas"
+  ],
+  "hospitals": [
+    "Ascension Seton Medical Center Austin",
+    "Baylor Scott & White Medical Center – Lakeway",
+    "Baylor Scott & White Medical Center – Pflugerville"
+  ],
+  "neighborhoods": [
+    "Montopolis",
+    "Pflugerville",
+    "Lakeway",
+    "Manor"
+  ],
+  "population": "1.3 million",
+  "insurance_companies": [
+    "Aetna",
+    "BlueCross BlueShield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "100,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Cycle Center",
+    "REM Sleep Center",
+    "Sleep Better Austin",
+    "Vista Ridge Family Dentistry"
+  ]
+}

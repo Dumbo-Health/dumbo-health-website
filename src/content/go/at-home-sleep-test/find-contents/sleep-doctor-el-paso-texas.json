@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "El Paso Sleep Center",
+    "Sonno Sleep Center",
+    "8 Hour Sleep Clinic",
+    "Sun City Sleep Center"
+  ],
+  "hospitals": [
+    "University Medical Center of El Paso",
+    "Del Sol Medical Center",
+    "William Beaumont Army Medical Center",
+    "Las Palmas Medical Center"
+  ],
+  "neighborhoods": [
+    "El Paso",
+    "Socorro",
+    "Horizon City",
+    "San Elizario"
+  ],
+  "population": "875,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 100,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "El Paso Sleep Center",
+    "Sweet Dreams Breathing Wellness",
+    "Sonno Sleep Center",
+    "El Paso Head and Neck Surgery"
+  ]
+}

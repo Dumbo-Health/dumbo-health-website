@@ -91,6 +91,90 @@ export function blogPostSchema(post: {
   };
 }
 
+export function webPageSchema(title: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: `${SITE_URL}${path}`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function medicalWebPageSchema(
+  title: string,
+  description: string,
+  path: string,
+  specialty = "Sleep Medicine"
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: title,
+    description,
+    url: `${SITE_URL}${path}`,
+    medicalAudience: { "@type": "Patient" },
+    about: { "@type": "MedicalCondition", name: "Sleep Apnea", relevantSpecialty: specialty },
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function aboutPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Dumbo Health",
+    description:
+      "Meet the founders and medical team behind Dumbo Health — a mission-driven telehealth company making sleep apnea diagnosis and treatment simple, affordable, and stigma-free.",
+    url: `${SITE_URL}/about-us`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+    about: {
+      "@type": "MedicalOrganization",
+      name: "Dumbo Health",
+      url: SITE_URL,
+      foundingDate: "2023",
+      medicalSpecialty: "Sleep Medicine",
+      founder: [
+        { "@type": "Person", name: "Mo Sherif", jobTitle: "Co-Founder & CEO" },
+        { "@type": "Person", name: "Nico Aoun", jobTitle: "Co-Founder & CTO" },
+      ],
+    },
+  };
+}
+
+export function collectionPageSchema(name: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: `${SITE_URL}${path}`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function personSchema(person: {
+  name: string;
+  jobTitle?: string;
+  description?: string;
+  url?: string;
+  sameAs?: (string | undefined | null)[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name,
+    ...(person.jobTitle && { jobTitle: person.jobTitle }),
+    ...(person.description && { description: person.description }),
+    ...(person.url && { url: person.url }),
+    worksFor: { "@type": "Organization", name: "Dumbo Health" },
+    ...(person.sameAs?.filter(Boolean).length && {
+      sameAs: person.sameAs.filter(Boolean),
+    }),
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",

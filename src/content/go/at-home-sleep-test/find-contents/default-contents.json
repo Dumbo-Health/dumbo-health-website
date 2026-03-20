@@ -1,0 +1,19 @@
+{
+    "sleep_clinics": [
+      "sleep clinics of {{geo}}"
+    ],
+    "hospitals": [
+      "hospitals of {{geo}}"
+    ],
+    "neighborhoods": [
+      "neighborhoods of {{geo}}"
+    ],
+    "population": "",
+    "insurance_companies": [
+      "insurance companies located in {{geo}}"
+    ],
+    "estimated_number_of_people_with_sleep_apnea_in_the_area": "",
+    "sleep_apnea_awareness_centers_in_the_area": [
+      "sleep apnea awareness centers in {{geo}}"
+    ]
+  }

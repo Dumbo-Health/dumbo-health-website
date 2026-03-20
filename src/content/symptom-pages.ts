@@ -16,6 +16,8 @@ export interface SymptomPage {
   /** Text after the accent keyword */
   headlinePost: string;
   subline: string;
+  /** 2–3 sentence direct-answer summary shown under the hero, used for LLM passage citation */
+  tldr: string;
   accentColor: string;
   /** Section 2 — Why this happens */
   whyHeadline: string;
@@ -42,6 +44,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "",
     subline:
       "If you wake up tired even after a full night in bed, something is stopping your body from actually resting. Sleep apnea is one of the most common reasons, and one of the most missed.",
+    tldr:
+      "Sleep apnea causes your breathing to stop repeatedly during sleep — sometimes dozens of times an hour — preventing your body from ever reaching the deep, restorative rest it needs. This is why you can spend 8 hours in bed and still wake up exhausted. An at-home sleep test can confirm whether sleep apnea is the cause in a single night.",
     accentColor: "#78BFBC",
     whyHeadline: "Why sleep apnea makes you feel this way.",
     whyBody:
@@ -85,6 +89,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "",
     subline:
       "The mental fog, the forgetfulness, the feeling like you're thinking through mud — these aren't signs of aging or burnout alone. They can be your brain telling you it hasn't had proper rest in a long time.",
+    tldr:
+      "Sleep apnea disrupts the deep sleep your brain needs to consolidate memories, clear metabolic waste, and recharge — leaving you foggy, forgetful, and mentally slow even after a full night in bed. It's one of the most common but least recognized causes of brain fog and difficulty concentrating. A one-night at-home sleep test can tell you whether sleep apnea is affecting how you think.",
     accentColor: "#FF8361",
     whyHeadline: "What happens to your brain without deep sleep.",
     whyBody:
@@ -128,6 +134,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "",
     subline:
       "Not everyone who snores has sleep apnea, but most people with sleep apnea snore. And when the snoring is loud, frequent, or followed by gasping, it's worth paying attention.",
+    tldr:
+      "Loud, frequent snoring is one of the most common warning signs of sleep apnea — a condition where the airway narrows or collapses during sleep, causing breathing to stop. The gasping or snorting sound is your body forcing the airway back open, which can happen dozens of times an hour without you knowing. An at-home sleep test can tell you in one night whether your snoring needs treatment.",
     accentColor: "#78BFBC",
     whyHeadline: "What's actually happening when you snore that loudly.",
     whyBody:
@@ -171,6 +179,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "Your body is in survival mode.",
     subline:
       "If anxiety feels like it's getting worse despite everything you try, the missing piece might be what's happening while you sleep. A nervous system that never gets to rest will stay in a state of high alert all day long.",
+    tldr:
+      "Sleep apnea triggers your body's stress response over and over through the night, flooding your system with cortisol and adrenaline before you even wake up. By morning, your nervous system is already in overdrive — which is why anxiety and chronic stress are often rooted in what's happening while you sleep. Treating sleep apnea helps the nervous system calm down, and many people notice a meaningful shift in their baseline anxiety.",
     accentColor: "#FF8361",
     whyHeadline: "How poor sleep floods your system with stress.",
     whyBody:
@@ -214,6 +224,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "",
     subline:
       "When your body is running on fragmented sleep, hormone production suffers, energy disappears, and drive, including sexual drive, fades. This is rarely talked about, but it's common, and it's treatable.",
+    tldr:
+      "Most testosterone is produced during deep sleep — and sleep apnea disrupts that process every single night, causing hormone levels to drop in both men and women. Low libido, reduced energy, and diminished motivation are common but rarely discussed symptoms of untreated sleep apnea. Treating sleep apnea can help restore hormonal balance and bring drive and vitality back.",
     accentColor: "#78BFBC",
     whyHeadline: "The connection between sleep apnea and hormones.",
     whyBody:
@@ -257,6 +269,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "Your hormones are off.",
     subline:
       "If you're doing everything right and the weight still won't budge, poor sleep might be the hidden obstacle. Sleep apnea disrupts the hormones that control hunger, metabolism, and fat storage.",
+    tldr:
+      "Sleep apnea raises ghrelin (the hormone that makes you hungry) and lowers leptin (the hormone that makes you feel full), while also elevating cortisol, which promotes fat storage around the abdomen. This hormonal imbalance can make weight loss extremely difficult, even when you're dieting and exercising. Treating sleep apnea helps restore the hormonal environment your body needs to manage weight effectively.",
     accentColor: "#FF8361",
     whyHeadline: "Why bad sleep makes weight loss harder.",
     whyBody:
@@ -300,6 +314,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "when you do.",
     subline:
       "If you have high blood pressure that's hard to control, sleep apnea is one of the most common and overlooked reasons. Every time your breathing stops at night, your cardiovascular system pays the price.",
+    tldr:
+      "Every time sleep apnea stops your breathing, your body releases a surge of adrenaline that spikes your blood pressure. When this happens dozens of times a night, your cardiovascular system never fully recovers — which is why sleep apnea is a recognized cause of hypertension that doesn't respond to medication alone. Treating sleep apnea can make blood pressure significantly easier to control.",
     accentColor: "#78BFBC",
     whyHeadline: "What sleep apnea does to your heart and blood pressure.",
     whyBody:
@@ -343,6 +359,8 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
     headlinePost: "",
     subline:
       "If you're catching everything that goes around or taking longer than usual to recover, your body may not be getting the deep sleep it needs to keep your defenses strong.",
+    tldr:
+      "During deep sleep, your body produces the immune proteins (cytokines) it needs to fight infection and inflammation. Sleep apnea repeatedly cuts this process short, leaving your immune system chronically under-resourced and slower to respond. If you're getting sick more often or struggling to recover, poor sleep quality — not bad luck — may be the reason.",
     accentColor: "#FF8361",
     whyHeadline: "How sleep apnea undermines your immune system.",
     whyBody:

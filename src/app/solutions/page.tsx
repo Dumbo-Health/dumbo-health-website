@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { webPageSchema } from "@/lib/schemas";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SolutionsHero } from "@/components/solutions/hero";
@@ -33,8 +34,17 @@ export const metadata: Metadata = {
 };
 
 export default function SolutionsPage() {
+  const schema = webPageSchema(
+    "Sleep Apnea Solutions: Diagnosis to Treatment",
+    "From at-home sleep testing to CPAP and oral appliance treatment, Dumbo Health guides you through every step of your sleep apnea care journey.",
+    "/solutions"
+  );
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Navbar />
       <main>
         {/* 1. Hero — sets the frame, earns the click */}

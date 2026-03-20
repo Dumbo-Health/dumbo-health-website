@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "SOMNAS",
+    "Pulmonary Consultants of Southwest Florida",
+    "Lee Health Sleep Lab – Cape Coral Hospital",
+    "Dental Sleep Medicine of Southwest Florida, LLC"
+  ],
+  "hospitals": [
+    "Cape Coral Hospital",
+    "Gulf Coast Medical Center",
+    "HealthPark Medical Center",
+    "Somnas Sleep Center"
+  ],
+  "neighborhoods": [
+    "Pelican",
+    "Mariner",
+    "Burnt Store",
+    "Hancock"
+  ],
+  "population": "200,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "17,000 to 74,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Somnas",
+    "Sleep Disorders Center at Lee Health",
+    "Pulmonary Consultants of Southwest Florida",
+    "The Florida Center of Sleep Medicine"
+  ]
+}

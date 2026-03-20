@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Watson Clinic Sleep Disorders Center",
+    "Lakeland Regional Health Sleep Disorders Center",
+    "Central Florida Sleep Center Polk County",
+    "Brain, Spine & Sleep Institute"
+  ],
+  "hospitals": [
+    "AdventHealth Heart of Florida",
+    "AdventHealth Lake Wales",
+    "Bartow Regional Medical Center",
+    "Lakeland Regional Health Medical Center"
+  ],
+  "neighborhoods": [
+    "Lakeland",
+    "Poinciana",
+    "Winter Haven",
+    "Haines City"
+  ],
+  "population": "850,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "94,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Central Florida Sleep Center Polk County",
+    "Polk Starlight Sleep Lab",
+    "AdventHealth Lake Wales",
+    "Florida Lung and Sleep Apnea Center"
+  ]
+}

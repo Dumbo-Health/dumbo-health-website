@@ -16,7 +16,6 @@ function getClient(): SupabaseClient {
 
 export interface BlogAuthor {
   id: string;
-  webflow_item_id: string | null;
   name: string;
   slug: string;
   role: string | null;
@@ -35,7 +34,6 @@ export interface BlogAuthor {
 
 export interface ScientificCommitteeMember {
   id: string;
-  webflow_item_id: string | null;
   full_name: string;
   slug: string;
   expertise_area: string | null;
@@ -52,7 +50,6 @@ export interface ScientificCommitteeMember {
 
 export interface MedicalTeamMember {
   id: string;
-  webflow_item_id: string | null;
   full_name: string;
   slug: string;
   expertise_area: string | null;
@@ -76,8 +73,6 @@ export interface BlogCategory {
 
 export interface BlogPost {
   id: string;
-  webflow_item_id: string | null;
-  webflow_collection_id: string | null;
   title: string;
   slug: string;
   featured: boolean;
@@ -96,6 +91,9 @@ export interface BlogPost {
   created_at: string | null;
   updated_at: string | null;
   published_at: string | null;
+  reviewer_name: string | null;
+  reviewer_title: string | null;
+  reviewer_slug: string | null;
   // Joined fields
   blog_authors?: BlogAuthor;
   blog_categories?: BlogCategory;
@@ -110,7 +108,6 @@ export interface FaqCategory {
 
 export interface Faq {
   id: string;
-  webflow_item_id: string | null;
   question: string;
   slug: string;
   answer: string;
@@ -248,6 +245,34 @@ export async function getScientificCommittee() {
 
   if (error) throw error;
   return data as ScientificCommitteeMember[];
+}
+
+/** Returns all published posts by a given author id */
+export async function getPostsByAuthorId(authorId: string): Promise<BlogPost[]> {
+  const { data, error } = await getClient()
+    .from("blog_posts")
+    .select("*, blog_authors(name, slug, profile_picture), blog_categories(slug, label)")
+    .eq("author_id", authorId)
+    .eq("archived", false)
+    .eq("draft", false)
+    .order("published_at", { ascending: false });
+  if (error) throw error;
+  return (data as BlogPost[]).map((post) => ({
+    ...post,
+    reading_time: calculateReadingTime(post.content),
+  }));
+}
+
+/** Returns all published authors */
+export async function getAllAuthors(): Promise<BlogAuthor[]> {
+  const { data, error } = await getClient()
+    .from("blog_authors")
+    .select("*")
+    .eq("archived", false)
+    .eq("draft", false)
+    .order("name", { ascending: true });
+  if (error) throw error;
+  return data as BlogAuthor[];
 }
 
 /** Returns an author by slug */

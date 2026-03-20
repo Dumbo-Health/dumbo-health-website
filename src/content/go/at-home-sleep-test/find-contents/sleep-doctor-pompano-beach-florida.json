@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Pulmonary and Sleep Specialists of Florida PA",
+    "Sleep Medicine Center",
+    "Dr. Paul Lapco, ENT",
+    "Lighthouse Dental Care"
+  ],
+  "hospitals": [
+    "Broward Health North",
+    "Broward Health Imperial Point",
+    "Holy Cross Hospital",
+    "Cleveland Clinic Florida"
+  ],
+  "neighborhoods": [
+    "Collier Manor-Cresthaven",
+    "Pompano Beach Highlands",
+    "Loch Lomond",
+    "Kendall Green"
+  ],
+  "population": "100,000+ (approximately 115,000)",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Humana",
+    "Cigna"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "7,500+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Lighthouse Dental Care",
+    "Dr. Paul Lapco, ENT",
+    "International Institute of Sleep",
+    "Total Sleep Apnea Solutions"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Tallahassee Memorial Sleep Center",
+    "Tallahassee Sleep Diagnostic Center",
+    "Tallahassee TMJ & Sleep Apnea Center",
+    "Children's Lung, Asthma and Sleep Specialists"
+  ],
+  "hospitals": [
+    "Tallahassee Memorial HealthCare",
+    "HCA Florida Capital Hospital",
+    "Tallahassee Sleep Diagnostics",
+    "Tallahassee Sleep Disorder Center"
+  ],
+  "neighborhoods": [
+    "Southwest Tallahassee",
+    "Forest Heights",
+    "South Monroe",
+    "Terrance Heights"
+  ],
+  "population": "200,000+",
+  "insurance_companies": [
+    "AARP",
+    "Ambetter",
+    "AvMed",
+    "Beech Street"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Around 49,000 residents",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Tallahassee Memorial Sleep Center",
+    "Sleep Tight Tallahassee",
+    "NAMI Tallahassee",
+    "Sleep in Heavenly Peace"
+  ]
+}

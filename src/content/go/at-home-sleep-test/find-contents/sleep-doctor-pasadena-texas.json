@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Pulmonary & Sleep Clinic, P.A.",
+    "HCA Houston Healthcare Southeast Sleep Center",
+    "Sleep Center at Patients Medical Center",
+    "The SleepWell Center"
+  ],
+  "hospitals": [
+    "HCA Houston Healthcare Southeast",
+    "Houston Neurological Institute & Sleep Lab Services",
+    "Texas Pulmonary & Sleep Clinic",
+    "Patients Medical Center"
+  ],
+  "neighborhoods": [
+    "Downtown Pasadena",
+    "Golden Acres",
+    "Alta Vista Acres",
+    "Red Bluff Terrace"
+  ],
+  "population": "150,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "United Healthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "49,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Texas Pulmonary & Sleep Clinic",
+    "Houston Neurological Institute",
+    "HCA Houston Healthcare Southeast Sleep Center",
+    "Sleep Center at Patients Medical Center"
+  ]
+}

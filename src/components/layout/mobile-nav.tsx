@@ -20,12 +20,13 @@ const mobileLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "CPAP Therapy", href: "/cpap" },
   { label: "CPAP Care", href: "/cpap-care" },
   { label: "CPAP Resupply", href: "/resupply" },
+  { label: "Sleep Hub", href: "/go/sleep-hub" },
+  { label: "Sleep Toolbox", href: "/go/tools" },
+  { label: "Sleep Protocol", href: "/go/sleep-protocol" },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about-us" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
-  { label: "Sleep Toolbox", href: "https://www.dumbo.health/go/tools", external: true },
-  { label: "Sleep Protocol", href: "https://www.dumbo.health/go/sleep-protocol", external: true },
 ];
 
 export function MobileNav() {

@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Jacksonville Sleep Center",
+    "Children's Lung, Asthma and Sleep Specialists",
+    "Florida Centers of Sleep Medicine",
+    "Singular Sleep, LLC"
+  ],
+  "hospitals": [
+    "UF Health Jacksonville",
+    "Baptist Medical Center Jacksonville",
+    "Baptist Medical Center South",
+    "Baptist Medical Center Beaches"
+  ],
+  "neighborhoods": [
+    "Hogans Creek",
+    "Baymeadows",
+    "Riverside/Avondale",
+    "Jacksonville Beach"
+  ],
+  "population": "1 million",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "United Healthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "250,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Jacksonville Sleep Center",
+    "Florida Sleep Solutions of Jax",
+    "Singular Sleep",
+    "American Sleep Products"
+  ]
+}

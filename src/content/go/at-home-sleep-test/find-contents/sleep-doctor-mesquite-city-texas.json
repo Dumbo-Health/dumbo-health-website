@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sleep Trends Diagnostic Centers",
+    "Texas Allergy & Breathing Centers",
+    "Sleep Healers",
+    "Total Sleep Diagnostics"
+  ],
+  "hospitals": [
+    "Baylor Scott and White Medical Center Lake Pointe",
+    "Children's Medical Center of Dallas",
+    "Dallas Regional Medical Center",
+    "Sleep Trends & Diagnostic Centers"
+  ],
+  "neighborhoods": [
+    "Creek Crossing Estates",
+    "Falcon's Lair",
+    "Palos Verdes Estates",
+    "Stonecrest Estates"
+  ],
+  "population": "150,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "Between 20,000 and 30,000 residents",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Trends",
+    "Texas Allergy & Breathing Centers",
+    "Sleep Healers",
+    "Snoring Experts"
+  ]
+}

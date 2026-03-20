@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Texas Sinus, Allergy, Snoring & Sleep Institute",
+    "CLS Health Sleep Medicine Associates",
+    "Texas Pulmonary & Sleep Clinic, P.A.",
+    "Houston Methodist Sleep Center"
+  ],
+  "hospitals": [
+    "Houston Methodist",
+    "Memorial Hermann",
+    "St. Luke's Health",
+    "Texas Sinus, Allergy, Snoring & Sleep Institute"
+  ],
+  "neighborhoods": [
+    "Houston",
+    "Pasadena",
+    "Baytown",
+    "La Porte"
+  ],
+  "population": "5 million+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 1.5 million",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Houston Methodist Sleep Center at Texas Medical Center",
+    "Memorial Hermann Sleep Disorders Center at Texas Medical Center",
+    "Texas Sinus, Allergy, Snoring & Sleep Institute",
+    "Sleep Tight Diagnostic Center"
+  ]
+}

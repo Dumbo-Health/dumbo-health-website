@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Home Sleep Diagnostics",
+    "Texas Sleep Diagnostics and Therapeutics, PLLC",
+    "UT Health East Texas Sleep Disorders Center in Quitman",
+    "UT Health East Texas Sleep Disorders Center in Carthage"
+  ],
+  "hospitals": [
+    "Baptist Saint Anthony's Hospital",
+    "North West Texas Healthcare System",
+    "Thomas E. Creek VA Medical Center",
+    "Panhandle Surgical Hospital"
+  ],
+  "neighborhoods": [
+    "Amarillo",
+    "Balance of Potter County",
+    "Bishop Hills",
+    "Cliffside"
+  ],
+  "population": "Approximately 115,000",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "30,000 to 40,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Northwest Texas Healthcare System Sleep Disorders Center",
+    "Panhandle Substance Use Services",
+    "Alcoholics Anonymous Area 66",
+    "Narcotics Anonymous Panhandle & West Texas"
+  ]
+}

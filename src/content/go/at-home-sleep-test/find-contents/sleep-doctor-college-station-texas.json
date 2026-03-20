@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Baylor Scott & White Medical Plaza 900 Sleep Center – College Station",
+    "Baylor Scott & White Clinic – College Station Rock Prairie",
+    "Sleep Center at St. Joseph Health – College Station",
+    "Baylor Scott & White Medical Center – College Station"
+  ],
+  "hospitals": [
+    "Baylor Scott & White Medical Center – College Station",
+    "Baylor Scott & White Clinic – College Station Rock Prairie",
+    "St. Joseph Health College Station Hospital",
+    "St. Joseph Health Sleep Center"
+  ],
+  "neighborhoods": [
+    "Central College Station",
+    "Northgate",
+    "Wolf Pen Creek District",
+    "Parkway Plaza"
+  ],
+  "population": "130,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "10,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Baylor Scott & White Medical Plaza 900 Sleep Center",
+    "Sleep Center at St. Joseph Health",
+    "Sleep Better BCS",
+    "Baylor Scott & White Clinic - College Station Rock Prairie"
+  ]
+}

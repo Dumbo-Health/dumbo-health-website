@@ -12,6 +12,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { organizationSchema, faqSchema } from "@/lib/schemas";
 import { faqs } from "@/content/faqs";
+import { features } from "@/config/features";
 
 export const metadata: Metadata = {
   title: "Sleep Apnea Treatment Online | At-Home Sleep Test | Dumbo Health",
@@ -63,13 +64,13 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HomeHero />
-        <TrustMarquee />
+        {features.sections.trustMarquee && <TrustMarquee />}
         <SymptomsProblems />
         <HowItWorks />
         <SolutionsGrid />
         <BenefitsGrid />
         <Testimonials />
-        <ServiceAreaBanner />
+        {features.sections.serviceArea && <ServiceAreaBanner />}
         <FAQSection />
       </main>
       <Footer />

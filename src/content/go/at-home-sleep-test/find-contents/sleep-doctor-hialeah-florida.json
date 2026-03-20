@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "United Sleep Diagnostics Inc",
+    "Florida Sleep & Neuro Diagnostics Services, Inc.",
+    "Vital Imaging Center- Hialeah Center",
+    "Larkin Sleep Lab Center"
+  ],
+  "hospitals": [
+    "Hialeah Hospital",
+    "Larkin Community Hospital Palm Springs Campus",
+    "Baptist Sleep Center at Miami Lakes",
+    "Larkin Sleep Lab Center"
+  ],
+  "neighborhoods": [
+    "Palm Springs",
+    "Essex Village",
+    "Seminola City",
+    "Westhaven Park"
+  ],
+  "population": "220,000+",
+  "insurance_companies": [
+    "Aetna",
+    "Blue Cross Blue Shield",
+    "Cigna",
+    "Humana"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "over 30,000",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "United Sleep Diagnostics",
+    "San Marcus Sleep Lab",
+    "Sleep Life Center",
+    "Florida Lung and Sleep Apnea Center"
+  ]
+}

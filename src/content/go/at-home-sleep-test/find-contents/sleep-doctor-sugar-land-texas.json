@@ -1,0 +1,34 @@
+{
+  "sleep_clinics": [
+    "Sugar Land Neurology & Sleep",
+    "Texas Lung and Sleep Associates PLLC",
+    "Comprehensive Sleep Medicine Associates",
+    "Memorial Hermann Sleep Disorders Center at Sugar Land"
+  ],
+  "hospitals": [
+    "Houston Methodist Sugar Land Hospital",
+    "Memorial Hermann Sugar Land Hospital",
+    "St. Luke's Health–Sugar Land Hospital",
+    "OakBend Medical Center"
+  ],
+  "neighborhoods": [
+    "First Colony",
+    "New Territory",
+    "Telfair",
+    "Greatwood"
+  ],
+  "population": "100,000+",
+  "insurance_companies": [
+    "Blue Cross Blue Shield",
+    "Aetna",
+    "Cigna",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "several thousand",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Memorial Hermann Sleep Disorders Center at Sugar Land",
+    "Comprehensive Sleep Medicine Associates",
+    "Houston Methodist Pulmonary & Sleep Medicine Specialists",
+    "TriCoastal Narcolepsy and Sleep Disorders Center"
+  ]
+}

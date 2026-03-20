@@ -1,0 +1,35 @@
+{
+  "sleep_clinics": [
+    "Treasure Coast Sleep Disorders, LLC",
+    "Children's Lung, Asthma and Sleep Specialists",
+    "Pulmonary and Sleep Clinic",
+    "Associated Coastal ENT"
+  ],
+  "hospitals": [
+    "Cleveland Clinic Tradition Hospital",
+    "HCA Florida St. Lucie Hospital",
+    "Cleveland Clinic Martin North Hospital",
+    "HCA Florida Lawnwood Hospital"
+  ],
+  "neighborhoods": [
+    "St. Lucie West",
+    "Tradition",
+    "The Reserve",
+    "Maidstone"
+  ],
+  "population": "250,000",
+  "insurance_companies": [
+    "Aetna",
+    "Cigna",
+    "Humana",
+    "UnitedHealthcare"
+  ],
+  "estimated_number_of_people_with_sleep_apnea_in_the_area": "80,000+",
+  "sleep_apnea_awareness_centers_in_the_area": [
+    "Sleep Doctor",
+    "Sleep Disorders Center Florida",
+    "Sleep Apnea Wellness Center",
+    "Treasure Coast Sleep Disorders",
+    "Children's Lung, Asthma and Sleep Specialists"
+  ]
+}

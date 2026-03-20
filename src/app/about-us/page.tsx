@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
+import { aboutPageSchema, personSchema } from "@/lib/schemas";
+import { medicalTeam, scientificCommittee } from "@/content/team";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { AboutHero } from "@/components/about/hero";
@@ -19,8 +21,28 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function AboutUsPage() {
+  const teamSchemas = [
+    ...medicalTeam.map((m) =>
+      personSchema({ name: m.name, jobTitle: m.title, description: m.bio, sameAs: [m.linkedin] })
+    ),
+    ...scientificCommittee.map((m) =>
+      personSchema({ name: m.name, jobTitle: m.title, description: m.bio, sameAs: [m.linkedin] })
+    ),
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema()) }}
+      />
+      {teamSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Navbar />
       <main>
         {/* 1. Hero — the declaration */}
