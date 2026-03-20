@@ -119,6 +119,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
 
+            {/* TL;DR */}
+            {post.short_description && (
+              <div
+                className="mb-8 rounded-xl px-6 py-5"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.72)",
+                  border: "1px solid rgba(3,31,61,0.07)",
+                  boxShadow: "0 2px 16px rgba(3,31,61,0.05)",
+                }}
+              >
+                <span
+                  className="font-mono text-xs uppercase tracking-widest"
+                  style={{ color: "#78BFBC" }}
+                >
+                  TL;DR
+                </span>
+                <p
+                  className="mt-2 font-body leading-relaxed text-midnight"
+                  style={{ fontSize: "1.0625rem" }}
+                >
+                  {post.short_description}
+                </p>
+              </div>
+            )}
+
             {/* Byline */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-8">
               {author?.profile_picture && (
