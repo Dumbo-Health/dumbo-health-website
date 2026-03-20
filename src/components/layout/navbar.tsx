@@ -130,16 +130,42 @@ function ChevronDown({ open }: { open: boolean }) {
 
 // ─── Mega menu data ───────────────────────────────────────────────────────────
 
-const SOLUTIONS = [
-  { label: "At-Home Sleep Test", href: "/at-home-sleep-test", Icon: IconSleepTest },
-  { label: "CPAP Therapy",       href: "/cpap",               Icon: IconCPAP },
-  { label: "CPAP Care",          href: "/cpap-care",          Icon: IconSupport },
-  { label: "CPAP Resupply",      href: "/resupply",           Icon: IconResupply },
-  { label: "Sleep Apnea Care",   href: "/solutions",          Icon: IconCare },
-  { label: "Dumbo Health App",   href: "/solutions#step-4",   Icon: IconApp },
+type NavItem = { label: string; href: string; Icon: React.ComponentType; description?: string };
+
+const SOLUTIONS_FEATURED: NavItem = {
+  label: "Sleep Apnea Care",
+  href: "/solutions",
+  Icon: IconCare,
+  description: "Your complete care journey, from diagnosis to treatment",
+};
+
+const SOLUTIONS_GROUPS: { title: string; items: NavItem[] }[] = [
+  {
+    title: "For the Undiagnosed",
+    items: [
+      {
+        label: "Home Sleep Test",
+        href: "/at-home-sleep-test",
+        Icon: IconSleepTest,
+        description: "Test in your own bed, get results in days",
+      },
+    ],
+  },
+  {
+    title: "CPAP Therapies",
+    items: [
+      { label: "CPAP Therapy",  href: "/cpap",       Icon: IconCPAP,     description: "Start treatment with expert guidance" },
+      { label: "CPAP Care",     href: "/cpap-care",  Icon: IconSupport,  description: "Ongoing support for CPAP users" },
+      { label: "CPAP Resupply", href: "/resupply",   Icon: IconResupply, description: "Automatic replacement of your supplies" },
+    ],
+  },
 ];
 
-type NavItem = { label: string; href: string; Icon: React.ComponentType };
+/** Flat list for mobile (featured first, then all group items) */
+const SOLUTIONS_FLAT: NavItem[] = [
+  SOLUTIONS_FEATURED,
+  ...SOLUTIONS_GROUPS.flatMap((g) => g.items),
+];
 
 const RESOURCES_COLUMNS: { title: string; items: NavItem[] }[] = [
   {
@@ -165,17 +191,9 @@ const RESOURCES_COLUMNS: { title: string; items: NavItem[] }[] = [
 /** Flat list for mobile accordion (same items, no column headers) */
 const RESOURCES_FLAT: NavItem[] = RESOURCES_COLUMNS.flatMap((col) => col.items);
 
-// ─── Mega menu panel ──────────────────────────────────────────────────────────
+// ─── Solutions mega menu panel ────────────────────────────────────────────────
 
-function MegaMenuPanel({
-  items,
-  open,
-  columns = 1,
-}: {
-  items: NavItem[];
-  open: boolean;
-  columns?: 1 | 2;
-}) {
+function SolutionsMegaMenuPanel({ open }: { open: boolean }) {
   return (
     <div
       aria-hidden={!open}
@@ -188,27 +206,64 @@ function MegaMenuPanel({
       {/* Arrow notch */}
       <div className="mx-auto mb-[-1px] h-2.5 w-2.5 rotate-45 rounded-sm border-l border-t border-sunlight bg-white" style={{ marginLeft: "calc(50% - 5px)", marginRight: "auto" }} />
 
-      <div
-        className={`overflow-hidden rounded-2xl border border-sunlight bg-white shadow-xl shadow-midnight/8 ${
-          columns === 2 ? "w-[31rem]" : "w-60"
-        }`}
-      >
-        <div className={`p-2 ${columns === 2 ? "grid grid-cols-2 gap-1" : ""}`}>
-          {items.map(({ label, href, Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight"
-            >
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-peach/10 text-peach transition-all duration-200 ease-out group-hover:bg-peach group-hover:text-white">
-                <Icon />
+      <div className="w-[26rem] overflow-hidden rounded-2xl border border-sunlight bg-white shadow-xl" style={{ boxShadow: "0 8px 32px rgba(3,31,61,0.10)" }}>
+        {/* Featured: Sleep Apnea Care */}
+        <div className="p-2 pb-1">
+          <Link
+            href={SOLUTIONS_FEATURED.href}
+            className="group flex items-center gap-3 rounded-xl px-3 py-3 transition-all duration-200 ease-out hover:bg-daylight"
+            style={{ background: "rgba(252,246,237,0.6)" }}
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-peach text-white transition-all duration-200 ease-out group-hover:scale-105">
+              <SOLUTIONS_FEATURED.Icon />
+            </div>
+            <div className="min-w-0">
+              <p className="font-body text-sm font-semibold text-midnight transition-colors duration-200 group-hover:text-peach">
+                {SOLUTIONS_FEATURED.label}
+              </p>
+              <p className="font-body text-xs text-midnight/50">{SOLUTIONS_FEATURED.description}</p>
+            </div>
+          </Link>
+        </div>
+
+        {/* Divider */}
+        <div className="mx-4 my-1 border-t border-sunlight" />
+
+        {/* Grouped columns */}
+        <div className="grid grid-cols-2 gap-0 p-2 pt-1">
+          {SOLUTIONS_GROUPS.map((group) => (
+            <div key={group.title}>
+              <p className="mb-1.5 px-3 font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(3,31,61,0.4)" }}>
+                {group.title}
+              </p>
+              <div className="space-y-0.5">
+                {group.items.map(({ label, href, Icon, description }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight"
+                  >
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-peach/10 text-peach transition-all duration-200 ease-out group-hover:bg-peach group-hover:text-white">
+                      <Icon />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-body text-sm font-medium text-midnight transition-colors duration-200 group-hover:text-peach">
+                        {label}
+                      </p>
+                      {description && (
+                        <p className="font-body text-xs leading-tight" style={{ color: "rgba(3,31,61,0.45)" }}>
+                          {description}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
               </div>
-              <span className="font-body text-sm font-medium text-midnight transition-colors duration-200 group-hover:text-peach">
-                {label}
-              </span>
-            </Link>
+            </div>
           ))}
         </div>
+
+        <div className="h-2" />
       </div>
     </div>
   );
@@ -263,17 +318,9 @@ function ResourcesMegaMenuPanel({
   );
 }
 
-// ─── Desktop mega menu trigger ────────────────────────────────────────────────
+// ─── Desktop mega menu triggers ───────────────────────────────────────────────
 
-function MegaTrigger({
-  label,
-  items,
-  columns = 1,
-}: {
-  label: string;
-  items: NavItem[];
-  columns?: 1 | 2;
-}) {
+function SolutionsMegaTrigger({ label }: { label: string }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -291,15 +338,13 @@ function MegaTrigger({
       <button
         aria-expanded={open}
         className={`flex items-center gap-1.5 rounded-full px-4 py-2 font-body text-sm font-medium uppercase tracking-wider transition-all duration-200 ease-out active:scale-95 ${
-          open
-            ? "bg-midnight text-white"
-            : "text-midnight hover:bg-midnight hover:text-white"
+          open ? "bg-midnight text-white" : "text-midnight hover:bg-midnight hover:text-white"
         }`}
       >
         {label}
         <ChevronDown open={open} />
       </button>
-      <MegaMenuPanel items={items} open={open} columns={columns} />
+      <SolutionsMegaMenuPanel open={open} />
     </div>
   );
 }
@@ -403,6 +448,88 @@ function MobileAccordion({
   );
 }
 
+// ─── Solutions mobile accordion (structured) ──────────────────────────────────
+
+function SolutionsMobileAccordion({ onClose }: { onClose: () => void }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between rounded-full px-4 py-2.5 font-body text-sm font-medium uppercase tracking-wider text-midnight transition-all duration-200 ease-out hover:bg-midnight hover:text-white active:bg-midnight active:text-white"
+      >
+        SOLUTIONS
+        <ChevronDown open={open} />
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-out ${open ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"}`}
+      >
+        <div className="px-2 pt-2 pb-1">
+
+          {/* Featured: Sleep Apnea Care */}
+          <Link
+            href={SOLUTIONS_FEATURED.href}
+            onClick={onClose}
+            className="group flex items-center gap-3 rounded-xl px-3 py-3 transition-all duration-200 ease-out hover:bg-daylight"
+            style={{ background: "rgba(252,246,237,0.7)" }}
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-peach text-white">
+              <SOLUTIONS_FEATURED.Icon />
+            </div>
+            <div>
+              <p className="font-body text-sm font-semibold text-midnight group-hover:text-peach transition-colors duration-200">
+                {SOLUTIONS_FEATURED.label}
+              </p>
+              <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.45)" }}>
+                {SOLUTIONS_FEATURED.description}
+              </p>
+            </div>
+          </Link>
+
+          {/* Divider */}
+          <div className="mx-2 my-2.5 border-t border-sunlight" />
+
+          {/* Groups */}
+          {SOLUTIONS_GROUPS.map((group, i) => (
+            <div key={group.title} className={i > 0 ? "mt-3" : ""}>
+              <p className="mb-1.5 px-3 font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(3,31,61,0.4)" }}>
+                {group.title}
+              </p>
+              <div className="space-y-0.5">
+                {group.items.map(({ label, href, Icon, description }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={onClose}
+                    className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-peach/10 text-peach transition-all duration-200 group-hover:bg-peach group-hover:text-white">
+                      <Icon />
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-medium text-midnight group-hover:text-peach transition-colors duration-200">
+                        {label}
+                      </p>
+                      {description && (
+                        <p className="font-body text-xs leading-tight" style={{ color: "rgba(3,31,61,0.45)" }}>
+                          {description}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export function Navbar() {
@@ -426,7 +553,7 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
-          <MegaTrigger label="SOLUTIONS" items={SOLUTIONS} />
+          <SolutionsMegaTrigger label="SOLUTIONS" />
 
           <ResourcesMegaTrigger label="RESOURCES" columns={RESOURCES_COLUMNS} />
 
@@ -474,7 +601,7 @@ export function Navbar() {
         }`}
       >
         <div className="space-y-0.5 px-4 pb-6 pt-3">
-          <MobileAccordion label="SOLUTIONS" items={SOLUTIONS} onClose={() => setMobileOpen(false)} />
+          <SolutionsMobileAccordion onClose={() => setMobileOpen(false)} />
 
           <MobileAccordion label="RESOURCES" items={RESOURCES_FLAT} onClose={() => setMobileOpen(false)} />
 

@@ -97,24 +97,20 @@ The value is computed server-side in priority order:
 ---
 
 ### Email 0-1 — Day 0
-**Subject**: We're not in {{customer.quiz_state}} yet, but we're working on it.
+**Subject**: We're not in {{customer.quiz_state}} yet.
 
-**Preview**: You're not forgotten. Here's what we have for you right now.
+**Preview**: You'll be first to know when we are.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: You're ahead of the curve.
+**You're ahead of the curve.**
 
-That check-in was a smart move. You already know more about your sleep than most people ever will. That matters.
+Dumbo Health isn't in {{customer.quiz_state}} just yet — but you're on the list.
 
-Here's where things stand:
-
-- Dumbo Health isn't in {{customer.quiz_state}} just yet
-- We're expanding, and your state is on our list
-- You'll be one of the first to know when we launch there
-- In the meantime, there are a few things you can do today
+- We're expanding. Your state is coming.
+- You'll hear from us the moment we launch there.
 
 **CTA**: See What's Available Near You
 
@@ -123,24 +119,19 @@ Here's where things stand:
 ---
 
 ### Email 0-2 — Day 21
-**Subject**: A small update from Dumbo Health
+**Subject**: Still thinking about your sleep?
 
-**Preview**: Still thinking about your sleep? Good. Here's something useful.
+**Preview**: A few things you can do right now.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Sleep better while you wait.
+**While you wait.**
 
-We're still not in {{customer.quiz_state}} yet, but that doesn't mean you're stuck.
-
-Here's what you can do right now:
-
-- Talk to your primary care doctor about a referral for a sleep study
-- Read our free guide on recognizing sleep apnea symptoms
-- Share Dumbo Health with a friend who lives somewhere we do serve
-- Stay on this list. We'll reach out the moment we expand to your area.
+- Talk to your doctor about a sleep study referral
+- Read our free guide on sleep apnea signs
+- We'll reach out the moment we expand to {{customer.quiz_state}}
 
 **CTA**: Read Our Sleep Apnea Guide
 
@@ -157,26 +148,21 @@ Here's what you can do right now:
 ---
 
 ### Email A-1 — Day 0 (immediate)
-**Subject**: Your recent visit: a note from us
+**Subject**: Your results: worth a look.
 
-**Preview**: Here's what we found, and what it means for you.
+**Preview**: Your top symptom flagged something important.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Your results are in, and they're worth paying attention to.
+**Your results came back high risk.**
 
-You recently stopped by Dumbo Health and shared some information about your sleep. Based on what you told us, your results came back in the high-risk range for sleep apnea. That's not a diagnosis. It just means your symptoms match a pattern we see often, and it's worth knowing about.
+You flagged **{{customer.quiz_top_symptom | default: "disrupted sleep"}}** — one of the clearest signals we look for.
 
-Here's what stood out:
-
-- Your top symptom was **{{customer.quiz_top_symptom | default: "disrupted sleep"}}**, one of the clearest signals we look for
-- Your answers match the profile of someone who would genuinely benefit from a sleep test
-- An at-home sleep test takes just one night in your own bed
-- A licensed sleep doctor reviews your results. Real answers, no guessing.
-
-You came to us because something felt off. That instinct was right.
+- Not a diagnosis. Just a strong signal worth acting on.
+- One night at home, in your own bed.
+- A licensed doctor reviews your results within 48 hours.
 
 **CTA**: Get Your At-Home Sleep Test
 
@@ -185,26 +171,22 @@ You came to us because something felt off. That instinct was right.
 ---
 
 ### Email A-2 — Day 2
-**Subject**: What better sleep can actually change for you
+**Subject**: What better sleep actually changes.
 
-**Preview**: It's more than just feeling rested. Here's the full picture.
+**Preview**: More than just feeling rested.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Better sleep changes more than you'd think.
+**Better sleep changes everything.**
 
-Sleep apnea affects the whole body, not just your nights. When it's treated, people often notice changes they weren't even expecting.
+When sleep apnea is treated, people notice shifts they weren't expecting:
 
-Here's what a lot of our patients share after starting treatment:
-
-- More energy through the day, without leaning on caffeine to get by
-- Clearer thinking and better focus, with less of that foggy, dragging feeling
-- Lower blood pressure (sleep apnea is a major driver that most people don't connect)
-- A quieter night for their partner too
-
-The first step is knowing for sure. What you shared with us suggests it's worth finding out. And finding out is easier than most people think.
+- More energy. Less caffeine.
+- Clearer thinking, less fog.
+- Lower blood pressure.
+- Quieter nights for their partner.
 
 **CTA**: Start With an At-Home Sleep Test
 
@@ -219,25 +201,20 @@ Hey, it's Dumbo Health. You checked in with us a few days ago and your results c
 ---
 
 ### Email A-3 — Day 6
-**Subject**: Here's exactly what the process looks like, start to finish
+**Subject**: One night. Real results.
 
-**Preview**: One night. Real results. No waiting rooms.
+**Preview**: Here's exactly what the process looks like.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Here's what happens when you get tested.
+**No clinic. No stranger watching you sleep.**
 
-No hospital. No stranger watching you sleep. No awkward overnight stays somewhere unfamiliar. Here's the full picture:
-
-- Your at-home test kit arrives at your door in 1–2 days
-- You wear a small, comfortable sensor on your finger for one night, in your own bed
-- A licensed sleep doctor reviews your data and sends your results within 48 hours
-- If sleep apnea is confirmed, we connect you with treatment options that fit your life
-- If it's not, you'll have peace of mind. That's worth a lot too.
-
-Most people say they forget the sensor is even there after a few minutes.
+- Test kit arrives in 1–2 days
+- Small finger sensor, your own bed, one night
+- Doctor reviews results within 48 hours
+- Positive: we walk you through next steps. Negative: peace of mind.
 
 **CTA**: Order Your Sleep Test
 
@@ -246,27 +223,22 @@ Most people say they forget the sensor is even there after a few minutes.
 ---
 
 ### Email A-4 — Day 10
-**Subject**: Still on the fence? Here's what we hear most.
+**Subject**: Still on the fence?
 
-**Preview**: We get it. Here's what usually makes people feel ready.
+**Preview**: It's simpler than you're imagining.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: The test is easier than you're probably imagining.
+**Here's what the test actually involves.**
 
-A lot of people put off getting tested, not because they don't care, but because they're not quite sure what it involves. So let's clear that up.
+- Small device. Padded box. Nothing intimidating.
+- Finger sensor in your own bed overnight
+- Prepaid return envelope — done in the morning
+- Board-certified doctor sends results in 48 hours
 
-Here's exactly what it looks like:
-
-- A small device arrives at your door in a padded box. Nothing intimidating.
-- You wear a finger sensor in your own bed, in your normal sleep environment
-- It quietly records your oxygen levels, breathing, and heart rate overnight
-- You send it back in the prepaid envelope the next morning
-- A board-certified sleep doctor sends your results within 48 hours
-
-That's it. No big commitment. Just clarity about something that affects every single day.
+That's it.
 
 **CTA**: See How It Works
 
@@ -275,26 +247,17 @@ That's it. No big commitment. Just clarity about something that affects every si
 ---
 
 ### Email A-5 — Day 16
-**Subject**: We'll give you some space after this.
+**Subject**: We'll leave you alone after this.
 
-**Preview**: One last thing, then we'll leave it with you.
+**Preview**: One last thing worth knowing.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: We're not going to keep showing up. But here's what we want you to know.
+**We're not going to keep showing up.**
 
-It's been a couple of weeks since your check-in. We've shared a lot. We understand if now isn't the right moment. Life gets full.
-
-Before we go quiet, just a few things worth keeping in mind:
-
-- Your results don't expire, but every night does
-- The at-home test is here whenever you're ready. No pressure, no deadline.
-- If your symptoms have shifted, the quiz is always open
-- We'll be here when the time feels right
-
-Wishing you better nights ahead, {{customer.first_name | default: "friend"}}.
+Your results don't expire, but every night does. We'll be here whenever you're ready, {{customer.first_name | default: "friend"}}.
 
 **CTA**: I'm Ready. Order My Sleep Test.
 
@@ -311,26 +274,20 @@ Wishing you better nights ahead, {{customer.first_name | default: "friend"}}.
 ---
 
 ### Email B-1 — Day 0 (immediate)
-**Subject**: Your recent visit: here's what we found
+**Subject**: Your results: some patterns worth knowing.
 
-**Preview**: Moderate risk. Here's what that means for you specifically.
+**Preview**: Moderate risk. Here's what that means for you.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Your results show some patterns worth paying attention to.
+**Your sleep is worth a closer look.**
 
-You recently stopped by Dumbo Health and shared some information about your sleep. Based on what you told us, you're in the moderate-risk range for sleep apnea. That's not a diagnosis, and it doesn't mean anything is certain. But it does mean your sleep is worth a closer look.
+You flagged **{{customer.quiz_top_symptom | default: "disrupted sleep"}}** — a common early signal.
 
-Here's what your answers showed:
-
-- Your top symptom was **{{customer.quiz_top_symptom | default: "disrupted sleep"}}**, a common early signal
-- Several of your answers match patterns we see in people who go on to get diagnosed
-- Many people in the moderate range are genuinely surprised by their test results
-- A one-night at-home sleep test can give you a clear answer within 48 hours
-
-You don't have to wonder. You can find out.
+- Moderate risk doesn't mean certain. But it does mean worth checking.
+- One night at home. A real answer in 48 hours.
 
 **CTA**: Learn About the At-Home Sleep Test
 
@@ -339,26 +296,22 @@ You don't have to wonder. You can find out.
 ---
 
 ### Email B-2 — Day 4
-**Subject**: What your quiz answers are actually telling us
+**Subject**: What your answers are telling us.
 
-**Preview**: Your top symptom rarely shows up alone. Here's the full picture.
+**Preview**: {{customer.quiz_top_symptom | default: "Disrupted sleep"}} rarely shows up alone.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Your symptoms are speaking up. Worth listening to.
+**{{customer.quiz_top_symptom | default: "Disrupted sleep"}} rarely shows up alone.**
 
-You flagged **{{customer.quiz_top_symptom | default: "disrupted sleep"}}** during your check-in. It's one of the most common signals we look for. And it rarely shows up alone.
+- Waking up tired after a full night
+- Afternoon energy crashes
+- Morning headaches or dry mouth
+- A partner who's mentioned snoring
 
-Here's what people in the moderate-risk range usually have in common:
-
-- Waking up tired even after what feels like a full night of sleep
-- Afternoon energy dips that are hard to shake
-- Morning headaches or a dry mouth when you wake up
-- A partner or roommate who's mentioned snoring or restless sleep
-
-Each of these is easy to brush off on its own. Together, they're telling you something. And finding out what's going on is easier than most people expect.
+Each easy to brush off. Together, they're worth listening to.
 
 **CTA**: Take the Next Step
 
@@ -375,25 +328,19 @@ Hey, Dumbo Health here. You recently checked in with us and your results came ba
 ### Email B-3 — Day 10
 **Subject**: "I never thought it would be me."
 
-**Preview**: A lot of people in the moderate range say the same thing after getting tested.
+**Preview**: Sleep apnea shows up in people you wouldn't expect.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Sleep apnea shows up in people you wouldn't expect.
+**Sleep apnea doesn't look the way people think.**
 
-Most people picture sleep apnea as something that happens to someone else: older, heavier, louder snorer. But it shows up across all ages, body types, and lifestyles. Moderate-risk scores surprise people more often than not.
+It shows up across all ages, body types, and lifestyles. Moderate-risk scores surprise people more often than not.
 
-Here's what getting tested actually looks like:
-
-- Your kit arrives in 1–2 days. No clinic visit, no appointment required.
-- One night with a small, comfortable finger sensor in your own bed
-- A licensed sleep doctor reads your data and sends a clear report
-- If there's a diagnosis, we walk you through next steps together
-- If there isn't, you'll know. And that peace of mind matters.
-
-There's no downside to knowing.
+- Kit arrives in 1–2 days. No clinic, no appointment.
+- One night, one finger sensor, your own bed.
+- Doctor sends results within 48 hours.
 
 **CTA**: Order Your At-Home Sleep Test
 
@@ -404,24 +351,15 @@ There's no downside to knowing.
 ### Email B-4 — Day 18
 **Subject**: Checking in one last time.
 
-**Preview**: No pressure. Just one last thing worth sitting with.
+**Preview**: No pressure. Just one thing worth sitting with.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Still thinking about it? That's okay.
+**Still thinking? That's okay.**
 
-It's been a couple of weeks since your check-in. We've shared some information and we don't want to be the email you dread seeing.
-
-Before we step back, a few things worth sitting with:
-
-- Sleep apnea affects around 1 billion people worldwide, most of them undiagnosed
-- Moderate-risk symptoms don't usually resolve on their own over time
-- Getting tested now means better sleep sooner, and that ripples into everything
-- The at-home test is here whenever you're ready
-
-No rush. No hard sell. Just an open door, {{customer.first_name | default: "friend"}}.
+Moderate-risk symptoms don't usually resolve on their own. We'll be here when you're ready, {{customer.first_name | default: "friend"}}.
 
 **CTA**: Get Tested From Home
 
@@ -438,26 +376,21 @@ No rush. No hard sell. Just an open door, {{customer.first_name | default: "frie
 ---
 
 ### Email C-1 — Day 0 (immediate)
-**Subject**: Your recent visit: the good news
+**Subject**: Your results: the good news.
 
-**Preview**: Low risk. Here's what to keep an eye on going forward.
+**Preview**: Low risk. Here's what to keep an eye on.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Good news: your results look reassuring.
+**Your results look reassuring.**
 
-You scored in the low-risk range for sleep apnea. That's genuinely great to see. Your answers didn't flag the patterns we usually associate with a diagnosis.
-
-A few things worth keeping in mind going forward:
+You scored low risk for sleep apnea. You did flag **{{customer.quiz_top_symptom | default: "disrupted sleep"}}** — worth monitoring over time.
 
 - Low risk means unlikely, not impossible
-- Your top reported symptom was **{{customer.quiz_top_symptom | default: "disrupted sleep"}}**, which is worth monitoring over time
-- Sleep patterns can shift with age, stress, or lifestyle changes
-- If anything changes, you can always check in again. We'll be here.
-
-For now, your sleep looks healthy. We'll share a few simple tips in the coming days to help keep it that way.
+- Sleep can shift with age, stress, or lifestyle
+- If anything changes, we're here
 
 **CTA**: Read Our Sleep Health Guide
 
@@ -466,25 +399,21 @@ For now, your sleep looks healthy. We'll share a few simple tips in the coming d
 ---
 
 ### Email C-2 — Day 8
-**Subject**: Five small things that make a real difference for sleep
+**Subject**: Five habits that actually help sleep.
 
-**Preview**: Not a long list. Just the ones that actually work.
+**Preview**: Not a long list. Just the ones that work.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Sleep hygiene that's actually worth doing.
+**Sleep hygiene worth doing.**
 
-You scored low risk, which is great. But there's always room to sleep better. Here are five habits that research backs:
-
-- **Consistent wake time**, even on weekends. Your body clock responds to this more than anything else.
-- **Cut caffeine by early afternoon.** It stays in your system longer than most people realize.
-- **Keep your room cool.** 65–68°F is the research-backed sweet spot.
-- **A short screen-free buffer before bed.** Even 20–30 minutes helps your brain wind down.
-- **Check in with yourself every few months.** If symptoms like {{customer.quiz_top_symptom | default: "disrupted sleep"}} shift, it's worth checking in with us again.
-
-You're already ahead of most people just by paying attention.
+- Same wake time every day — your body clock responds most to this
+- Cut caffeine by early afternoon
+- Keep your room at 65–68°F
+- 20–30 min screen-free before bed
+- If **{{customer.quiz_top_symptom | default: "your symptoms"}}** shift, check in with us again
 
 **CTA**: Learn More About Sleep Apnea
 
@@ -493,26 +422,23 @@ You're already ahead of most people just by paying attention.
 ---
 
 ### Email C-3 — Day 30
-**Subject**: A quick check-in: how's your sleep lately?
+**Subject**: How's your sleep lately?
 
-**Preview**: It's been a month. A few questions worth asking yourself.
+**Preview**: A quick check worth doing right now.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: A month later: how are you feeling?
+**A month later — still feeling good?**
 
-When you last checked in with us, things looked reassuring. But sleep changes. Stress, travel, weight shifts, and life in general can all move the needle.
+Sleep changes. Quick gut check:
 
-A quick check worth doing right now:
+- Waking up rested most mornings?
+- Energy holding through the day?
+- Anyone mention snoring or restless sleep?
 
-- Are you waking up feeling rested most mornings?
-- Is your energy holding steady through the day?
-- Has anyone mentioned snoring or restless sleep?
-- Are you nodding off faster than feels normal?
-
-If any of those have shifted, your risk level may have too. A check-in takes about 3 minutes and gives you a fresh read on where things stand.
+If things have shifted, it's worth a fresh read.
 
 **CTA**: Check In Again
 
@@ -529,26 +455,21 @@ If any of those have shifted, your risk level may have too. A check-in takes abo
 ---
 
 ### Email D-1 — Day 0 (immediate)
-**Subject**: CPAP not working for you? You're far from alone.
+**Subject**: CPAP not working? You're not alone.
 
-**Preview**: Most people who stop don't know there are other options. Here's what they are.
+**Preview**: There are other options. Here's what they are.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Stopping CPAP doesn't mean stopping treatment.
+**Stopping CPAP doesn't mean stopping treatment.**
 
-You told us you are {% if customer.quiz_cpap_satisfaction == "stopped" %}no longer using your CPAP{% else %}struggling to stick with your CPAP{% endif %}. We hear this constantly. You're not the exception. You're the rule.
+You told us you're {% if customer.quiz_cpap_satisfaction == "stopped" %}no longer using your CPAP{% else %}struggling with your CPAP{% endif %}. Half of people who start CPAP feel the same way.
 
-Here's something the sleep medicine world doesn't say loudly enough:
-
-- CPAP has a real dropout rate. Studies put it as high as 50% in the first year.
-- There are other FDA-cleared treatments that don't involve a mask or hose
-- Oral appliance therapy is a quiet, mask-free option that works well for many people
-- Remote CPAP support can help if you want to stick with it but need your settings adjusted
-
-You already did the hard part: getting diagnosed. There's no reason to live with untreated sleep apnea when other paths exist.
+- Oral appliance therapy: no mask, no hose
+- Remote CPAP support to dial in your settings
+- Combination approaches that fit real life
 
 **CTA**: See Your Treatment Options
 
@@ -557,24 +478,19 @@ You already did the hard part: getting diagnosed. There's no reason to live with
 ---
 
 ### Email D-2 — Day 3
-**Subject**: Why CPAP doesn't work for everyone (it's not your fault)
+**Subject**: It's not the machine. It's the fit.
 
-**Preview**: The machine isn't wrong. But it doesn't fit everyone. Here's the science.
+**Preview**: CPAP works — just not the same way for everyone.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: CPAP is a great tool. It's just not always a great fit.
+**CPAP is a great tool. Just not always a great fit.**
 
-CPAP works by keeping your airway open with pressurized air. For some people, it's life-changing from night one. For others, the mask leaks, the air feels suffocating, or sleep just isn't possible through it. Both experiences are completely valid.
-
-Here's what most people don't know:
-
-- **Pressure settings matter a lot.** A poorly calibrated CPAP is miserable. A well-calibrated one is usually very tolerable.
-- **Mask fit is half the battle.** There are dozens of styles and most people have only tried one or two.
-- **Oral appliance therapy** is an alternative that uses no air pressure at all. It repositions your jaw to keep the airway open.
-- **Some people do best with a combination**, like lower-pressure CPAP plus an oral appliance together.
+- Pressure settings matter. A poorly calibrated CPAP is miserable.
+- Mask fit is half the battle. Most people have only tried one style.
+- Oral appliance therapy uses no air pressure at all.
 
 The goal is treated sleep apnea. How you get there is flexible.
 
@@ -591,25 +507,20 @@ Hi, it's Dumbo Health. Struggling with CPAP is more common than you think. There
 ---
 
 ### Email D-3 — Day 8
-**Subject**: Here's what a Dumbo Health consultation actually looks like
+**Subject**: What a Dumbo Health consultation actually looks like.
 
-**Preview**: No judgment. No pressure. Just a real conversation about your sleep.
+**Preview**: No judgment. No surprises.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: What happens when you reach out to us.
+**Here's exactly what happens when you reach out.**
 
-Going back into the healthcare system after a frustrating experience can feel like a lot. So here's exactly what a consultation with Dumbo Health looks like. No surprises:
-
-- You fill out a short intake form online. No phone calls required to get started.
-- A licensed sleep specialist reviews your history and your quiz answers
-- They recommend one or more treatment options based on your specific situation
-- If you move forward, everything is managed remotely from your home
-- No waiting room. No driving anywhere. No starting over from scratch.
-
-We've helped a lot of people who tried and gave up on CPAP find treatments that actually work for them.
+- Short intake form online. No phone calls to get started.
+- A sleep specialist reviews your history and your quiz answers
+- Treatment recommendations based on your specific situation
+- Everything managed remotely. No waiting room, no driving.
 
 **CTA**: Start Your Consultation
 
@@ -620,26 +531,20 @@ We've helped a lot of people who tried and gave up on CPAP find treatments that 
 ### Email D-4 — Day 14
 **Subject**: One more thing before we go quiet.
 
-**Preview**: We don't want to crowd your inbox. But this is worth saying.
+**Preview**: You've already done the hardest part.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: You've already done the hardest part.
+**You got diagnosed. That's the hard part.**
 
-You got diagnosed. That means you know exactly what's happening when you sleep, and that puts you way ahead of the millions of people who are still wondering.
+You deserve treated sleep apnea, not just a diagnosis. We're here whenever you're ready, {{customer.first_name | default: "friend"}}.
 
-The next step doesn't have to be going back to something that didn't work. There are other options, and we're here to help you find the right one.
+- Oral appliance therapy. Remote CPAP support. Combination approaches.
+- All managed from home.
 
-A few things worth remembering:
-
-- You deserve treated sleep apnea, not just a diagnosis
-- Oral appliance therapy, remote CPAP support, and combination approaches are all available
-- Everything at Dumbo Health is managed from home. No clinic, no waiting room.
-- We're here whenever you're ready, {{customer.first_name | default: "friend"}}
-
-**CTA**: Explore Your Options at Dumbo Health
+**CTA**: Explore Your Options
 
 > URL: https://dumbo.health/cpap
 
@@ -662,18 +567,13 @@ A few things worth remembering:
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: You're one of the good ones.
+**You're one of the good ones.**
 
-You recently stopped by Dumbo Health and told us your sleep apnea treatment is going reasonably well. That puts you in a group that most people with sleep apnea never reach. Genuinely, well done.
+Most people with sleep apnea never get here. Genuinely — well done.
 
-A few things we can offer even when things are going well:
-
-- A second opinion on your current setup, in case there's room to optimize
-- Resources for managing sleep apnea during travel, when routines fall apart
-- Support for a partner or family member who may be showing signs of sleep apnea
-- A community of people who get what it's like to live with and manage this condition
-
-We're not just here for people who are struggling. We're here for the long run.
+- Second opinion on your current setup if you want to optimize
+- Tips for managing sleep apnea during travel
+- Resources for a partner showing signs of sleep apnea
 
 **CTA**: Browse Our Sleep Health Resources
 
@@ -682,24 +582,20 @@ We're not just here for people who are struggling. We're here for the long run.
 ---
 
 ### Email E-2 — Day 14
-**Subject**: A few things we think you'll actually find useful.
+**Subject**: A few things worth knowing in long-term treatment.
 
-**Preview**: Practical tips for people already in treatment.
+**Preview**: Being in treatment is the start, not the finish.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: Being in treatment is the start, not the finish.
+**Treatment is the start, not the finish.**
 
-Effective sleep apnea treatment means more than just wearing the device. Here are a few things people in long-term treatment say made a real difference:
-
-- **CPAP cleaning matters more than most people think.** A dirty machine affects both performance and your health.
-- **Travel-sized machines exist** and make compliance on the road much easier if you travel frequently.
-- **Annual follow-ups are recommended.** Weight changes, sleep position shifts, and aging can change your treatment needs over time.
-- **Equipment evolves.** If your mask or device is more than 2 years old, there may be a meaningfully better option available.
-
-If any of this sparks a question, we're happy to help. Reach out anytime.
+- Clean your CPAP more than you think you need to
+- Travel-sized machines exist — compliance on the road matters
+- Annual follow-ups are recommended as your needs change
+- Mask or device 2+ years old? There may be a better option.
 
 **CTA**: Talk to Our Sleep Team
 
@@ -710,25 +606,21 @@ If any of this sparks a question, we're happy to help. Reach out anytime.
 ### Email E-3 — Day 35
 **Subject**: Know someone who might need this?
 
-**Preview**: Sleep apnea is underdiagnosed. You might know someone who needs a nudge.
+**Preview**: You figured it out. Help someone else do the same.
 
 ---
 
 {% if customer.first_name %}Hi {{customer.first_name}},{% else %}Hi there,{% endif %}
 
-**Heading**: You figured it out. Help someone else do the same.
+**Sleep apnea is underdiagnosed. You know what the signs look like.**
 
-Sleep apnea affects an estimated 1 in 4 adults, but most of them have no idea. You've been through the diagnosis process. You know what the signs look like.
+Someone in your life might have:
 
-If someone in your life has any of these habits, they might want to take the quiz:
-
-- Loud snoring that wakes up other people in the house
+- Loud snoring that wakes others up
 - Always tired no matter how much they sleep
-- Waking up with headaches or a dry mouth
-- Falling asleep quickly in chairs or on couches
-- Irritable or foggy in ways that seem out of character
+- Morning headaches or a dry mouth
 
-It's a 3-minute check-in and it's free. Sharing it might be the thing that changes someone's life.
+The quiz is 3 minutes and free. Sharing it might change someone's life.
 
 **CTA**: Share Dumbo Health with Someone You Know
 

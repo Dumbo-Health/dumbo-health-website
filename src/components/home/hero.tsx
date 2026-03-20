@@ -26,8 +26,8 @@ const marqueeImages = [
 // Timing (ms)
 const T_Q1    = 600;    // Q1 appears
 const T_Q2    = 3700;   // Q2 appears  (Q1 shown ~3100ms)
-const T_EXIT  = 7000;   // Q2 starts exit (Q2 shown ~3300ms)
-const T_HERO  = 7800;   // Hero reveals (300ms into Q2's 900ms exit)
+const T_EXIT  = 6500;   // Q2 starts exit (Q2 shown ~2800ms)
+const T_HERO  = 6700;   // Hero reveals (200ms into Q2's 2000ms exit)
 
 // ── Word-by-word reveal ────────────────────────────────────────────────────────
 function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
@@ -147,6 +147,7 @@ export function HomeHero() {
                 fontFamily: "var(--font-heading)", fontWeight: 500,
                 fontSize: "clamp(2rem, 5vw, 3.25rem)",
                 color: "#031F3D", lineHeight: 1.12,
+                textWrap: "balance",
               }}>
                 <AnimatedWords text={QUESTIONS[0]} delay={0.08} />
               </h2>
@@ -162,9 +163,9 @@ export function HomeHero() {
             animate={
               beat === 3
                 ? {
-                    y: [0, 10, -90],
+                    y: [0, 10, -1200],
                     opacity: [1, 1, 0],
-                    transition: { duration: 0.95, times: [0, 0.18, 1], ease: EASE },
+                    transition: { duration: 2.0, times: [0, 0.15, 1], ease: EASE },
                   }
                 : { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } }
             }
@@ -179,6 +180,7 @@ export function HomeHero() {
                 fontFamily: "var(--font-heading)", fontWeight: 500,
                 fontSize: "clamp(2rem, 5vw, 3.25rem)",
                 color: "#031F3D", lineHeight: 1.12,
+                textWrap: "balance",
               }}>
                 <AnimatedWords text={QUESTIONS[1]} delay={0.08} />
               </h2>

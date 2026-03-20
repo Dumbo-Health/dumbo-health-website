@@ -284,6 +284,170 @@ function ReflectionScreen({ moment, onContinue }: { moment: ReflectionMoment; on
   );
 }
 
+// ── Journey bridge screen ──────────────────────────────────────────────────────
+const BRIDGE_ROWS = [
+  { before: "Sleep lab, away from home",   after: "At-home test, your own bed"    },
+  { before: "4–6 week wait for results",   after: "Results today"                 },
+  { before: "Thousands in surprise costs", after: "Transparent, cash-pay pricing" },
+];
+
+function JourneyBridgeScreen({ onContinue }: { onContinue: () => void }) {
+  return (
+    <div style={{ position: "relative", minHeight: "calc(100vh - 68px)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", padding: "60px 24px" }}>
+
+      {/* ── Base ── */}
+      <div style={{ position: "absolute", inset: 0, background: "#FCF6ED", zIndex: 0 }} />
+
+      {/* ── Brand pattern — one instance stretched to fill, center masked out ── */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
+        backgroundImage: "url('/patterns/brand-pattern.png')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        opacity: 0.32,
+        maskImage: "radial-gradient(ellipse 60% 62% at 50% 50%, transparent 42%, rgba(0,0,0,0.6) 68%, black 88%)",
+        WebkitMaskImage: "radial-gradient(ellipse 60% 62% at 50% 50%, transparent 42%, rgba(0,0,0,0.6) 68%, black 88%)",
+      }} />
+
+      {/* ── Warm gradient blobs — depth and atmosphere ── */}
+      <motion.div
+        animate={{ opacity: [0.55, 0.8, 0.55], scale: [1, 1.1, 1], x: [0, 20, 0], y: [0, -12, 0] }}
+        transition={{ duration: 9, ease: "easeInOut", repeat: Infinity }}
+        style={{
+          position: "absolute", top: "-25%", right: "-12%", zIndex: 2,
+          width: "58vw", height: "58vw", maxWidth: 720, maxHeight: 720,
+          borderRadius: "50%", pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(255,214,173,0.55) 0%, rgba(255,131,97,0.08) 45%, transparent 68%)",
+        }}
+      />
+      <motion.div
+        animate={{ opacity: [0.4, 0.62, 0.4], scale: [1.06, 1, 1.06], x: [0, -16, 0], y: [0, 18, 0] }}
+        transition={{ duration: 11, ease: "easeInOut", repeat: Infinity, delay: 2.5 }}
+        style={{
+          position: "absolute", bottom: "-22%", left: "-14%", zIndex: 2,
+          width: "52vw", height: "52vw", maxWidth: 660, maxHeight: 660,
+          borderRadius: "50%", pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(255,214,173,0.5) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* ── Center content ── */}
+      <div style={{ position: "relative", zIndex: 3, maxWidth: 580, width: "100%", textAlign: "center" }}>
+
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.08)}
+          style={{
+            fontFamily: "var(--font-mono)", fontSize: "0.68rem",
+            letterSpacing: "0.16em", textTransform: "uppercase",
+            color: "#78BFBC", marginBottom: 24,
+          }}
+        >
+          Before we show you your results
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.16)}
+          style={{
+            fontFamily: "var(--font-heading)", fontWeight: 500,
+            fontSize: "clamp(2.5rem, 5.5vw, 4rem)",
+            color: "#031F3D", lineHeight: 1.07, marginBottom: 44,
+            letterSpacing: "-0.015em",
+            textWrap: "balance" as React.CSSProperties["textWrap"],
+          }}
+        >
+          Most people wait months{" "}
+          <span style={{ color: "rgba(3,31,61,0.38)", fontWeight: 400 }}>to get here.</span>
+          <br />
+          <span style={{ color: "#FF8361" }}>You just did it in minutes.</span>
+        </motion.h2>
+
+        {/* Contrast card */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.3)}
+          style={{
+            backgroundColor: "rgba(255,255,255,0.95)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            borderRadius: 24,
+            overflow: "hidden",
+            boxShadow: "0 8px 48px rgba(3,31,61,0.1), 0 1px 4px rgba(3,31,61,0.06)",
+            marginBottom: 36,
+          }}
+        >
+          {/* Column headers */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "1fr 32px 1fr",
+            padding: "14px 24px 10px", gap: 12,
+            borderBottom: "1px solid rgba(3,31,61,0.07)",
+          }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(3,31,61,0.3)", textAlign: "right", margin: 0 }}>The usual path</p>
+            <span />
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#78BFBC", textAlign: "left", margin: 0 }}>With Dumbo Health</p>
+          </div>
+
+          {BRIDGE_ROWS.map((row, i) => (
+            <div
+              key={i}
+              style={{
+                display: "grid", gridTemplateColumns: "1fr 32px 1fr",
+                alignItems: "center", gap: 12,
+                padding: "18px 24px",
+                borderBottom: i < BRIDGE_ROWS.length - 1 ? "1px solid rgba(3,31,61,0.05)" : "none",
+              }}
+            >
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.875rem, 1.3vw, 1rem)", color: "rgba(3,31,61,0.26)", lineHeight: 1.4, textAlign: "right", textDecoration: "line-through", margin: 0 }}>
+                {row.before}
+              </p>
+              <span style={{ color: "#FF8361", fontSize: "1.1rem", textAlign: "center", display: "block", fontWeight: 700 }}>→</span>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.875rem, 1.3vw, 1rem)", fontWeight: 600, color: "#031F3D", lineHeight: 1.4, textAlign: "left", margin: 0 }}>
+                {row.after}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={t(0.52)}
+          style={{
+            fontFamily: "var(--font-body)", fontSize: "1.0625rem",
+            color: "rgba(3,31,61,0.42)", lineHeight: 1.68, marginBottom: 38,
+            textWrap: "balance" as React.CSSProperties["textWrap"],
+          }}
+        >
+          We know this journey. That&apos;s why we built a better one.
+        </motion.p>
+
+        <motion.button
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={t(0.62)}
+          whileHover={{ y: -2, boxShadow: "0 16px 44px rgba(255,131,97,0.42)" }}
+          whileTap={{ scale: 0.97 }}
+          onClick={onContinue}
+          style={{
+            backgroundColor: "#FF8361", color: "white", border: "none",
+            borderRadius: 12, padding: "17px 56px",
+            fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500,
+            cursor: "pointer", boxShadow: "0 6px 24px rgba(255,131,97,0.34)",
+          }}
+        >
+          See my results →
+        </motion.button>
+
+      </div>
+    </div>
+  );
+}
+
 // ── Flow splitter (entry screen) ───────────────────────────────────────────────
 function FlowSplitter({ onSelect }: { onSelect: (slug: string) => void }) {
   return (
@@ -739,6 +903,102 @@ function LoadingSkeleton() {
   );
 }
 
+// ── Full journey section ────────────────────────────────────────────────────────
+const JOURNEY_PHASES = [
+  {
+    num: "01",
+    label: "Get clarity",
+    title: "Your answer, within 48 hours",
+    body: "A board-certified doctor reviews your at-home sleep test and delivers a clear diagnosis. No waiting rooms, no referrals, no guessing.",
+    active: true,
+  },
+  {
+    num: "02",
+    label: "Get treated",
+    title: "The right therapy, delivered",
+    body: "If you're diagnosed, we match you to CPAP therapy, oral devices, or alternatives — and handle everything from fitting to your front door.",
+    active: false,
+  },
+  {
+    num: "03",
+    label: "Stay well",
+    title: "Support that doesn't stop",
+    body: "Regular check-ins, automatic supply management, and a dedicated care team available whenever you need them. The relationship doesn't end at diagnosis.",
+    active: false,
+  },
+];
+
+function FullJourneySection() {
+  return (
+    <div style={{ marginTop: 72, borderTop: "1px solid rgba(3,31,61,0.06)", padding: "64px 24px 72px", background: "linear-gradient(180deg, rgba(245,230,209,0) 0%, rgba(245,230,209,0.35) 25%, rgba(245,230,209,0.35) 75%, rgba(252,246,237,0) 100%)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+
+        {/* Header */}
+        <ResultBlock delay={0}>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FF8361", marginBottom: 16 }}>
+              The full picture
+            </p>
+            <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", color: "#031F3D", lineHeight: 1.12, marginBottom: 16, textWrap: "balance" as React.CSSProperties["textWrap"] }}>
+              Whatever your results show, we&apos;re here for all of it.
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.5)", lineHeight: 1.65, maxWidth: 500, margin: "0 auto", textWrap: "balance" as React.CSSProperties["textWrap"] }}>
+              Most people don&apos;t know sleep apnea is treatable. Fewer know how good life feels on the other side.
+            </p>
+          </div>
+        </ResultBlock>
+
+        {/* Phases */}
+        <div className="journey-phases">
+          {JOURNEY_PHASES.map((phase, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={t(0.15 + i * 0.12)}
+              style={{
+                backgroundColor: phase.active ? "#031F3D" : "white",
+                borderRadius: 24,
+                padding: "32px 28px 28px",
+                boxShadow: phase.active
+                  ? "0 10px 48px rgba(3,31,61,0.16)"
+                  : "0 2px 20px rgba(3,31,61,0.06)",
+                border: phase.active ? "none" : "1px solid rgba(3,31,61,0.06)",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 22 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: phase.active ? "rgba(255,131,97,0.7)" : "rgba(3,31,61,0.3)" }}>
+                  {phase.label}
+                </span>
+                <span style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "2rem", color: phase.active ? "rgba(255,255,255,0.1)" : "rgba(3,31,61,0.07)", lineHeight: 1 }}>
+                  {phase.num}
+                </span>
+              </div>
+              <h3 style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(1.125rem, 1.8vw, 1.375rem)", color: phase.active ? "white" : "#031F3D", lineHeight: 1.2, marginBottom: 14 }}>
+                {phase.title}
+              </h3>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)", color: phase.active ? "rgba(255,255,255,0.58)" : "rgba(3,31,61,0.5)", lineHeight: 1.7, margin: 0 }}>
+                {phase.body}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={t(0.55)}
+          style={{ textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.35)", lineHeight: 1.65, marginTop: 40, textWrap: "balance" as React.CSSProperties["textWrap"] }}
+        >
+          Not diagnosed with sleep apnea? You still get answers — and peace of mind is its own result.
+        </motion.p>
+
+      </div>
+    </div>
+  );
+}
+
 // ── Results page ───────────────────────────────────────────────────────────────
 type DbStep = { step_order: number; title: string; body: string };
 type DbSignal = { signal_key: string; label: string; detail: string; icon_path: string };
@@ -783,6 +1043,8 @@ function ResultsPage({
 
   const risk = getRiskLevel(riskScore);
   const isUndiagnosed = flowSlug === "undiagnosed";
+  const insuranceAnswer = ((answers["insurance-type"] ?? answers["insurance-type-dx"]) as string) ?? "";
+  const showInsuranceNote = /medicare|medicaid/i.test(insuranceAnswer);
 
   function getNarrative(): string {
     if (!isUndiagnosed) {
@@ -889,6 +1151,18 @@ function ResultsPage({
       </ResultBlock>
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+
+        {/* ── Insurance note ── */}
+        {showInsuranceNote && (
+          <ResultBlock delay={0.08}>
+            <div style={{ marginTop: 28, display: "flex", gap: 12, alignItems: "flex-start", backgroundColor: "rgba(120,191,188,0.08)", border: "1px solid rgba(120,191,188,0.25)", borderRadius: 16, padding: "16px 20px" }}>
+              <span style={{ color: "#78BFBC", fontWeight: 700, fontSize: "1rem", flexShrink: 0, lineHeight: 1.5 }}>ⓘ</span>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.65, margin: 0 }}>
+                We currently don&apos;t accept Medicare or Medicaid. All our plans are straightforward cash-pay — no surprise bills, no prior authorizations.
+              </p>
+            </div>
+          </ResultBlock>
+        )}
 
         {/* ── WAITLIST (out-of-state) ── */}
         {waitlist ? (
@@ -1092,10 +1366,12 @@ function ResultsPage({
                               <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1rem, 1.4vw, 1.125rem)", color: "#031F3D", flex: 1, margin: 0 }}>{signal.label}</p>
                               <motion.span
                                 animate={{ rotate: isOpen ? 180 : 0 }}
-                                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                                style={{ color: "rgba(3,31,61,0.3)", fontSize: "0.75rem", flexShrink: 0, display: "inline-block" }}
+                                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                                style={{ color: "rgba(3,31,61,0.5)", flexShrink: 0, display: "flex", alignItems: "center" }}
                               >
-                                ▾
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
                               </motion.span>
                             </button>
                             <AnimatePresence initial={false}>
@@ -1134,6 +1410,9 @@ function ResultsPage({
               </div>
             </div>
 
+            {/* ── Full journey (undiagnosed only) ── */}
+            {isUndiagnosed && <FullJourneySection />}
+
             {/* ── Back link ── */}
             <ResultBlock delay={1.1}>
               <div style={{ marginTop: 56, paddingTop: 28, borderTop: "1px solid rgba(3,31,61,0.07)", textAlign: "center" }}>
@@ -1158,6 +1437,7 @@ export default function QuizPage() {
   const hasSubmitted = useRef(false);
   const [activeReflection, setActiveReflection] = useState<ReflectionMoment | null>(null);
   const [pendingAnswer, setPendingAnswer] = useState<{ answer: string | string[] } | null>(null);
+  const [shownJourneyBridge, setShownJourneyBridge] = useState(false);
 
   const quiz = useQuiz(flowSlug ?? "undiagnosed");
 
@@ -1214,6 +1494,14 @@ export default function QuizPage() {
   const questionNumber = visibleQuestions.findIndex((q) => q.id === quiz.currentQuestion?.id) + 1;
 
   const isGradientActive = !!(activeReflection || shouldShowInterstitial);
+  const shouldShowJourneyBridge =
+    flowSlug === "undiagnosed" &&
+    !quiz.state.isLoading &&
+    !quiz.state.isComplete &&
+    !activeReflection &&
+    !shouldShowInterstitial &&
+    quiz.currentQuestion?.answer_type === "text_input" &&
+    !shownJourneyBridge;
 
   return (
     <>
@@ -1258,13 +1546,13 @@ export default function QuizPage() {
             </motion.div>
           )}
 
-          {flowSlug && quiz.state.isLoading && (
+          {flowSlug && quiz.state.isLoading && !quiz.state.isComplete && (
             <motion.div key="loading" {...screen}>
               <LoadingSkeleton />
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && quiz.state.isComplete && (
+          {flowSlug && quiz.state.isComplete && (
             <motion.div key="results" {...screen}>
               <ResultsPage
                 results={quiz.getResults()}
@@ -1294,7 +1582,13 @@ export default function QuizPage() {
             </motion.div>
           )}
 
-          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && !shouldShowInterstitial && quiz.currentQuestion && (
+          {shouldShowJourneyBridge && (
+            <motion.div key="journey-bridge" {...screen}>
+              <JourneyBridgeScreen onContinue={() => setShownJourneyBridge(true)} />
+            </motion.div>
+          )}
+
+          {flowSlug && !quiz.state.isLoading && !quiz.state.isComplete && !activeReflection && !shouldShowInterstitial && !shouldShowJourneyBridge && quiz.currentQuestion && (
             <motion.div key={quiz.currentQuestion.id} {...screen}>
               <QuestionCard
                 question={quiz.currentQuestion}
@@ -1311,7 +1605,11 @@ export default function QuizPage() {
       </div>
 
       {/* Skeleton pulse animation */}
-      <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }`}</style>
+      <style>{`
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .journey-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 720px) { .journey-phases { grid-template-columns: 1fr; } }
+      `}</style>
     </>
   );
 }
