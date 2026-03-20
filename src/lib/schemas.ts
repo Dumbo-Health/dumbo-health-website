@@ -22,7 +22,7 @@ export function organizationSchema() {
       email: CONTACT.email,
       contactType: "Customer Support",
     },
-    sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.linkedin, "https://x.com/dumbohealth"],
+    sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.linkedin],
   };
 }
 
