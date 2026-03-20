@@ -888,28 +888,36 @@ export function SleepTestLanding() {
               <Accordion type="single" collapsible>
                 {[
                   {
-                    q: "Can this home sleep test really diagnose sleep apnea?",
-                    a: "Yes. It is FDA-cleared and built to measure the signals needed to diagnose obstructive sleep apnea. The same technology has been used in tens of thousands of tests with strong clinical accuracy.",
+                    q: "What exactly is an at-home sleep test?",
+                    a: "An at-home sleep test is a small, wearable device you sleep with for one night in your own bed. It measures your breathing patterns, blood oxygen levels, heart rate, and sleep position while you sleep. A licensed physician then reviews the data and tells you whether you have sleep apnea.",
                   },
                   {
-                    q: "Do I ever need a sleep lab?",
-                    a: "Almost never. Fewer than one in 100 people need a full in-lab sleep study. Most people get a complete diagnosis from the home test.",
+                    q: "How accurate is an at-home sleep test compared to a sleep lab?",
+                    a: "For the most common type of sleep apnea (obstructive sleep apnea), at-home sleep tests are clinically validated and widely used by physicians. They're not a replacement for a full polysomnography in every case, but for the vast majority of people being evaluated for obstructive sleep apnea, they're just as reliable and far more comfortable.",
                   },
                   {
-                    q: "How does the testing process work?",
-                    a: "After completing a short health form, your kit ships next business day. Pair the WatchPAT ONE device with your phone, wear it on your finger overnight. The device is single-use and disposable after one night. A physician reviews your data and sends results within days.",
+                    q: "Who is a good candidate for an at-home sleep test?",
+                    a: "At-home sleep tests work well for most adults who suspect they have obstructive sleep apnea. If you snore, wake up exhausted, feel foggy during the day, or have a partner who notices your breathing stops at night, you're likely a good candidate. A physician will review your results and let you know if a more detailed in-lab study is needed.",
                   },
                   {
-                    q: "What is a home sleep test?",
-                    a: "A small disposable device worn on your finger overnight. It tracks breathing, blood oxygen (SpO2), heart rate, snoring, and sleep stages using a light sensor. Data uploads automatically through the companion app.",
+                    q: "What does the test involve? Will it be uncomfortable?",
+                    a: "The device is small and worn on your wrist or finger. Most people sleep through the night without issue. There are no wires attached to your head, no sensors glued to your scalp, and no technician in the room. You do it at home, on your schedule.",
                   },
                   {
-                    q: "What makes Dumbo Health different?",
-                    a: "Board-certified sleep specialists read every result. We use FDA-cleared technology. One flat price covers the device, physician review, and your prescription if diagnosed. No hidden fees.",
+                    q: "How long until I get my results?",
+                    a: "Most patients receive their physician-reviewed results within 3 to 5 business days of returning the device. We'll notify you when they're ready, and a physician will walk you through what the data shows.",
                   },
                   {
-                    q: "Why is testing important?",
-                    a: "When your throat narrows during sleep, your oxygen drops. This stresses your heart, brain, and organs. Untreated sleep apnea is linked to high blood pressure, diabetes, stroke, and chronic fatigue. An accurate diagnosis is the first step toward real treatment.",
+                    q: "What if the test shows I don't have sleep apnea?",
+                    a: "That's still a useful result. If sleep apnea is ruled out, your physician can help point you toward other possible causes of your symptoms and guide next steps. You'll leave with a real answer either way.",
+                  },
+                  {
+                    q: "Does insurance cover the at-home sleep test?",
+                    a: "Our sleep test is available as a direct-pay service. We keep it simple and affordable: no insurance paperwork, no prior authorizations, no surprise bills. The cost is $149, which includes the device, physician interpretation, and your results.",
+                  },
+                  {
+                    q: "What happens after my results come back?",
+                    a: "If sleep apnea is detected, your physician will issue a prescription and you can move straight to treatment. No additional appointments required. If CPAP therapy is recommended, we can have your equipment shipped within days.",
                   },
                 ].map((faq, i) => (
                   <AccordionItem key={faq.q} value={`faq-${i}`} style={{ borderColor: "rgba(3,31,61,0.12)" }}>

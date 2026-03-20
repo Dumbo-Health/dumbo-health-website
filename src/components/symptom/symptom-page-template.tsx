@@ -79,6 +79,38 @@ function SymptomHero({ page }: { page: SymptomPage }) {
   );
 }
 
+// ─── TL;DR Box ────────────────────────────────────────────────────────────────
+
+function TldrBox({ page }: { page: SymptomPage }) {
+  return (
+    <section style={{ backgroundColor: "#FCF6ED" }}>
+      <div className="mx-auto max-w-4xl px-[5%] py-10 md:py-14">
+        <div
+          className="rounded-2xl px-8 py-7"
+          style={{
+            backgroundColor: "rgba(255,255,255,0.72)",
+            border: "1px solid rgba(3,31,61,0.07)",
+            boxShadow: "0 2px 16px rgba(3,31,61,0.05)",
+          }}
+        >
+          <span
+            className="font-mono text-xs uppercase tracking-widest"
+            style={{ color: page.accentColor }}
+          >
+            TL;DR
+          </span>
+          <p
+            className="mt-3 font-body leading-relaxed text-midnight"
+            style={{ fontSize: "1.0625rem" }}
+          >
+            {page.tldr}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Why This Happens ─────────────────────────────────────────────────────────
 
 function WhyThisHappens({ page }: { page: SymptomPage }) {
@@ -430,6 +462,7 @@ export function SymptomPageTemplate({ page }: { page: SymptomPage }) {
   return (
     <>
       <SymptomHero page={page} />
+      <TldrBox page={page} />
       <TrustMarquee />
       <div style={{ background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 100%)" }}>
         <WhyThisHappens page={page} />

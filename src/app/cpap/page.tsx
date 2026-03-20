@@ -13,6 +13,7 @@ import { FeatureComparison } from "@/components/pricing/feature-comparison";
 import { FAQSection } from "@/components/shared/faq-section";
 import { SleepTestCallout } from "@/components/pricing/sleep-test-callout";
 import { SITE_URL } from "@/lib/constants";
+import { faqSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = createMetadata({
   title: "Sleep Apnea Treatment Plans & CPAP Pricing",
@@ -21,6 +22,49 @@ export const metadata: Metadata = createMetadata({
   path: "/cpap",
   ogImage: "/og/pricing.jpg",
 });
+
+function CpapFaqJsonLd() {
+  const schema = faqSchema([
+    {
+      question: "What is CPAP therapy?",
+      answer: "CPAP stands for Continuous Positive Airway Pressure. It's the most effective treatment for obstructive sleep apnea. A small machine delivers a steady stream of air through a mask while you sleep, keeping your airway open so breathing stays uninterrupted throughout the night.",
+    },
+    {
+      question: "Does CPAP actually work?",
+      answer: "Yes. CPAP is the gold standard for treating obstructive sleep apnea and has decades of clinical evidence behind it. Most people notice a difference within the first few nights: deeper sleep, less snoring, more energy during the day. The key is finding the right mask fit and pressure settings, which is where our team helps.",
+    },
+    {
+      question: "Will CPAP feel claustrophobic or uncomfortable?",
+      answer: "It can feel strange at first. That's normal. Most people adjust within one to two weeks. Modern CPAP machines are much quieter and lighter than older models, and today's masks come in a wide range of styles, including nasal pillows, nasal masks, and full-face masks, so you can find one that fits your face and sleeping style.",
+    },
+    {
+      question: "What equipment comes with my Dumbo Health CPAP subscription?",
+      answer: "Your subscription includes a prescription-grade CPAP machine, your choice of mask, all necessary accessories, and ongoing resupply of filters and cushions on a set schedule. We also include access to our care team and telehealth check-ins, so you're never dealing with equipment questions alone.",
+    },
+    {
+      question: "What if I can't tolerate CPAP therapy?",
+      answer: "Sticking with CPAP is the hardest part for most people. The most common reason people give up is a poor mask fit or incorrect pressure settings. Our team actively monitors your compliance data and reaches out when something looks off. If CPAP isn't working for you, we'll troubleshoot before giving up on it.",
+    },
+    {
+      question: "How do I know if my CPAP is working?",
+      answer: "Your machine tracks usage data every night: hours of use, events per hour, and mask leak rate. Our care team can review it with you. Over time, your AHI (apnea-hypopnea index) should drop significantly, and you should start feeling the difference in how rested you are.",
+    },
+    {
+      question: "Do I need a prescription for CPAP?",
+      answer: "Yes, CPAP requires a prescription in the US. If you tested with us, your physician prescription is already on file and we'll handle everything. If you have a diagnosis from another provider, you can upload your existing prescription and we'll take it from there.",
+    },
+    {
+      question: "How often do I need to replace my CPAP equipment?",
+      answer: "Masks, cushions, filters, and tubing wear out over time and should be replaced on a regular schedule, usually every one to six months depending on the part. Your Dumbo Health subscription automatically sends replacements before things wear out, so you're never using degraded equipment without realizing it.",
+    },
+  ]);
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 function CpapSchema() {
   const schema = {
@@ -78,6 +122,7 @@ function CpapSchema() {
 export default function CpapPage() {
   return (
     <>
+      <CpapFaqJsonLd />
       <CpapSchema />
       <Navbar />
       <main>
