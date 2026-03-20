@@ -7,6 +7,8 @@ import { Footer } from "@/components/layout/footer";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { PostCard } from "@/components/blog/post-card";
 import { getAuthorBySlug, getPostsByAuthorId } from "@/lib/supabase";
+import { personSchema } from "@/lib/schemas";
+import { SITE_URL } from "@/lib/constants";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,8 +47,20 @@ export default async function BlogAuthorPage({ params }: AuthorPageProps) {
 
   const posts = await getPostsByAuthorId(author.id);
 
+  const schema = personSchema({
+    name: author.name,
+    jobTitle: author.role ?? undefined,
+    description: author.short_bio ?? undefined,
+    url: `${SITE_URL}/blog-author/${author.slug}`,
+    sameAs: [author.linkedin_url, author.twitter_url],
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Navbar />
       <main className="bg-daylight">
         {/* ── Hero ── */}

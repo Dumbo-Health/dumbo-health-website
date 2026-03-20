@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import {
@@ -936,6 +937,16 @@ export function SleepTestLanding() {
                   </AccordionItem>
                 ))}
               </Accordion>
+
+              <p className="mt-8 font-body text-sm" style={{ color: "rgba(3,31,61,0.45)" }}>
+                Have questions about the ordering process?{" "}
+                <Link
+                  href="/get-your-at-home-sleep-apnea-test"
+                  className="underline underline-offset-2 transition-colors hover:text-peach"
+                >
+                  Visit our step-by-step guide.
+                </Link>
+              </p>
             </div>
           </div>
 

@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { BlogIndexClient } from "@/components/blog/blog-index-client";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { getBlogPosts, getBlogCategories } from "@/lib/supabase";
+import { collectionPageSchema } from "@/lib/schemas";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -35,8 +36,18 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const label = categories.find((c) => c.slug === category)?.label
     ?? category.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
+  const schema = collectionPageSchema(
+    `${label} Articles | Dumbo Health Blog`,
+    `Browse ${label.toLowerCase()} articles on the Dumbo Health blog. Expert tips and guides for better sleep.`,
+    `/blog-category/${category}`
+  );
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Navbar />
       <main>
         <section className="bg-daylight pt-16 sm:pt-24 pb-10">

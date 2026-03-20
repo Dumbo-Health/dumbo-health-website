@@ -143,6 +143,38 @@ export function aboutPageSchema() {
   };
 }
 
+export function collectionPageSchema(name: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: `${SITE_URL}${path}`,
+    isPartOf: { "@type": "WebSite", url: SITE_URL, name: "Dumbo Health" },
+  };
+}
+
+export function personSchema(person: {
+  name: string;
+  jobTitle?: string;
+  description?: string;
+  url?: string;
+  sameAs?: (string | undefined | null)[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name,
+    ...(person.jobTitle && { jobTitle: person.jobTitle }),
+    ...(person.description && { description: person.description }),
+    ...(person.url && { url: person.url }),
+    worksFor: { "@type": "Organization", name: "Dumbo Health" },
+    ...(person.sameAs?.filter(Boolean).length && {
+      sameAs: person.sameAs.filter(Boolean),
+    }),
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
