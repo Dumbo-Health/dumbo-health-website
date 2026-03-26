@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const LIFELINE = "M0 40 L200 40 L240 40 L260 10 L280 70 L300 5 L320 75 L340 20 L360 60 L380 40 L420 40 L460 40 L480 15 L500 65 L520 8 L540 72 L560 25 L580 55 L600 40 L800 40 L820 40 L840 18 L860 62 L880 5 L900 75 L920 22 L940 58 L960 40 L1000 40 L1200 40";
 
 function fadeUp(delay = 0) {
   return {
@@ -16,9 +17,6 @@ function fadeUp(delay = 0) {
 }
 
 function AnimatedLifeline() {
-  const ref = useRef<SVGPathElement>(null);
-  const isInView = useInView({ current: ref.current ? ref.current.closest("section") as Element : null }, { once: true, margin: "-100px" });
-
   return (
     <svg
       viewBox="0 0 1200 80"
@@ -29,25 +27,26 @@ function AnimatedLifeline() {
       aria-hidden="true"
     >
       <motion.path
-        ref={ref}
-        d="M0 40 L200 40 L240 40 L260 10 L280 70 L300 5 L320 75 L340 20 L360 60 L380 40 L420 40 L460 40 L480 15 L500 65 L520 8 L540 72 L560 25 L580 55 L600 40 L800 40 L820 40 L840 18 L860 62 L880 5 L900 75 L920 22 L940 58 L960 40 L1000 40 L1200 40"
-        stroke="rgba(255,131,97,0.25)"
+        d={LIFELINE}
+        stroke="rgba(255,131,97,0.30)"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-        transition={{ duration: 2.5, ease: "easeInOut", delay: 0.3 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 2.5, ease: "easeInOut", delay: 0.2 }}
       />
       <motion.path
-        d="M0 40 L200 40 L240 40 L260 10 L280 70 L300 5 L320 75 L340 20 L360 60 L380 40 L420 40 L460 40 L480 15 L500 65 L520 8 L540 72 L560 25 L580 55 L600 40 L800 40 L820 40 L840 18 L860 62 L880 5 L900 75 L920 22 L940 58 L960 40 L1000 40 L1200 40"
-        stroke="rgba(120,191,188,0.15)"
+        d={LIFELINE}
+        stroke="rgba(120,191,188,0.18)"
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-        transition={{ duration: 2.5, ease: "easeInOut", delay: 0.6 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 2.5, ease: "easeInOut", delay: 0.5 }}
       />
     </svg>
   );
