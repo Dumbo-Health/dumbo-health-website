@@ -155,8 +155,8 @@ const SOLUTIONS_GROUPS: { title: string; items: NavItem[] }[] = [
     title: "CPAP Therapies",
     items: [
       { label: "CPAP Therapy",  href: "/cpap",       Icon: IconCPAP,     description: "Start treatment with expert guidance" },
-      { label: "CPAP Care",     href: "/cpap-care",  Icon: IconSupport,  description: "Ongoing support for CPAP users" },
-      { label: "CPAP Resupply", href: "/resupply",   Icon: IconResupply, description: "Automatic replacement of your supplies" },
+      ...(process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE !== "true" ? [{ label: "CPAP Care", href: "/cpap-care", Icon: IconSupport, description: "Ongoing support for CPAP users" }] : []),
+      ...(process.env.NEXT_PUBLIC_HIDE_RESUPPLY_PAGE !== "true" ? [{ label: "CPAP Resupply", href: "/resupply", Icon: IconResupply, description: "Automatic replacement of your supplies" }] : []),
     ],
   },
 ];
@@ -547,6 +547,7 @@ export function Navbar() {
             alt="Dumbo Health"
             width={200}
             height={40}
+            className="h-7 w-auto sm:h-9"
             priority
           />
         </Link>
@@ -577,7 +578,7 @@ export function Navbar() {
 
           <Button
             asChild
-            className="h-10 rounded-lg bg-peach px-6 font-mono text-sm tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-lg hover:shadow-peach/25 active:translate-y-0"
+            className="h-10 rounded-lg bg-peach px-4 sm:px-6 font-mono text-sm tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-lg hover:shadow-peach/25 active:translate-y-0"
           >
             <Link href="/get-started">Get Started</Link>
           </Button>

@@ -640,6 +640,118 @@ function OptionBtn({ label, selected, onClick, type }: { label: string; selected
   );
 }
 
+// ── Searchable state combobox ──────────────────────────────────────────────────
+function StateCombobox({
+  options,
+  value,
+  onChange,
+}: {
+  options: QuizOption[];
+  value: string;
+  onChange: (val: string) => void;
+}) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const filtered = query.length === 0
+    ? options
+    : options.filter((o) => o.label.toLowerCase().startsWith(query.toLowerCase()));
+
+  const selected = options.find((o) => o.value === value);
+
+  // Close on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  function handleSelect(opt: QuizOption) {
+    onChange(opt.value);
+    setQuery(opt.label);
+    setOpen(false);
+  }
+
+  return (
+    <div ref={containerRef} style={{ position: "relative", width: "100%" }}>
+      <div style={{ position: "relative" }}>
+        <input
+          type="text"
+          placeholder="Type or select your state"
+          value={selected && !open ? selected.label : query}
+          onFocus={() => { setOpen(true); setQuery(""); }}
+          onChange={(e) => { setQuery(e.target.value); onChange(""); setOpen(true); }}
+          style={{
+            width: "100%",
+            padding: "13px 44px 13px 16px",
+            fontFamily: "var(--font-body)",
+            fontSize: "0.9375rem",
+            color: "#031F3D",
+            backgroundColor: "white",
+            border: `1.5px solid ${open ? "rgba(3,31,61,0.3)" : "rgba(3,31,61,0.1)"}`,
+            borderRadius: open && filtered.length > 0 ? "14px 14px 0 0" : 14,
+            outline: "none",
+            boxSizing: "border-box",
+            transition: "border-color 0.15s",
+          }}
+        />
+        <svg
+          width="12" height="8" viewBox="0 0 12 8" fill="none"
+          style={{ position: "absolute", right: 16, top: "50%", transform: `translateY(-50%) rotate(${open ? "180deg" : "0deg"})`, transition: "transform 0.2s", pointerEvents: "none" }}
+        >
+          <path d="M1 1l5 5 5-5" stroke="#031F3D" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </div>
+
+      {open && filtered.length > 0 && (
+        <div style={{
+          position: "absolute",
+          top: "100%",
+          left: 0,
+          right: 0,
+          maxHeight: 240,
+          overflowY: "auto",
+          backgroundColor: "white",
+          border: "1.5px solid rgba(3,31,61,0.15)",
+          borderTop: "1px solid rgba(3,31,61,0.06)",
+          borderRadius: "0 0 14px 14px",
+          zIndex: 50,
+          boxShadow: "0 8px 24px rgba(3,31,61,0.08)",
+        }}>
+          {filtered.map((opt) => (
+            <button
+              key={opt.value}
+              onMouseDown={() => handleSelect(opt)}
+              style={{
+                display: "block",
+                width: "100%",
+                textAlign: "left",
+                padding: "11px 16px",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.9375rem",
+                color: opt.value === value ? "#FF8361" : "#031F3D",
+                backgroundColor: opt.value === value ? "rgba(255,131,97,0.06)" : "transparent",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: opt.value === value ? 500 : 400,
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(3,31,61,0.04)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = opt.value === value ? "rgba(255,131,97,0.06)" : "transparent"; }}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Question card ──────────────────────────────────────────────────────────────
 function QuestionCard({
   question,
@@ -779,30 +891,11 @@ function QuestionCard({
 
           {question.answer_type === "dropdown" && (
             <>
-              <select
+              <StateCombobox
+                options={question.options as QuizOption[]}
                 value={selected as string}
-                onChange={(e) => setSelected(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "13px 16px",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.9375rem",
-                  color: selected ? "#031F3D" : "rgba(3,31,61,0.4)",
-                  backgroundColor: "white",
-                  border: "1.5px solid rgba(3,31,61,0.1)",
-                  borderRadius: 14,
-                  cursor: "pointer",
-                  appearance: "none",
-                  backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23031F3D' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E\")",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 16px center",
-                }}
-              >
-                <option value="">Select your state</option>
-                {(question.options as QuizOption[]).map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
+                onChange={(val) => setSelected(val)}
+              />
               <button
                 disabled={!selected}
                 onClick={() => selected && onAnswer(selected)}
@@ -916,7 +1009,7 @@ const JOURNEY_PHASES = [
     num: "02",
     label: "Get treated",
     title: "The right therapy, delivered",
-    body: "If you're diagnosed, we match you to CPAP therapy, oral devices, or alternatives — and handle everything from fitting to your front door.",
+    body: "If you're diagnosed, we match you to CPAP therapy, oral devices, or alternatives and handle everything from fitting to your front door.",
     active: false,
   },
   {
@@ -938,7 +1031,7 @@ function ResultBlock({ children, delay = 0 }: { children: React.ReactNode; delay
 
 function FullJourneySection() {
   return (
-    <div style={{ marginTop: 72, borderTop: "1px solid rgba(3,31,61,0.06)", padding: "64px 24px 72px", background: "linear-gradient(180deg, rgba(245,230,209,0) 0%, rgba(245,230,209,0.35) 25%, rgba(245,230,209,0.35) 75%, rgba(252,246,237,0) 100%)" }}>
+    <div style={{ padding: "64px 24px 72px", background: "linear-gradient(180deg, #F5E6D1 0%, rgba(255,214,173,0.55) 100%)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
@@ -999,7 +1092,7 @@ function FullJourneySection() {
           transition={t(0.55)}
           style={{ textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.35)", lineHeight: 1.65, marginTop: 40, textWrap: "balance" as React.CSSProperties["textWrap"] }}
         >
-          Not diagnosed with sleep apnea? You still get answers — and peace of mind is its own result.
+          Not diagnosed with sleep apnea? You still get answers. Peace of mind is its own result.
         </motion.p>
 
       </div>
@@ -1026,8 +1119,6 @@ function ResultsPage({
   answers: Record<string, string | string[]>;
   onSubmit: () => void;
 }) {
-  const [waitlistEmail, setWaitlistEmail] = useState("");
-  const [waitlistSent, setWaitlistSent] = useState(false);
   const [openSignal, setOpenSignal] = useState<string | null>(null);
   const [dbSteps, setDbSteps] = useState<DbStep[] | null>(null);
   const [dbSignalMap, setDbSignalMap] = useState<Record<string, DbSignal> | null>(null);
@@ -1106,7 +1197,7 @@ function ResultsPage({
   function getProductBullets(): string[] {
     if (isUndiagnosed) {
       if (tags.includes("cdl-driver")) return ["DOT-accepted testing that meets FMCSA requirements", "A sleep doctor reviews your results within 48 hours", "We prepare all the paperwork your medical examiner needs"];
-      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed — no clinic visit needed", "A board-certified sleep doctor reviews your results", "Book a sleep review call at no extra cost — included with your test"];
+      return ["An FDA-cleared device arrives at your door in 2 to 3 business days", "One night in your own bed, no clinic visit needed", "A board-certified sleep doctor reviews your results", "Book a sleep review call at no extra cost, included with your test"];
     }
     if (tags.includes("cpap-dropout") || tags.includes("cpap-struggling")) {
       return ["A consultation to find the right mask for you", "Pressure settings adjusted to match how you actually breathe", "Ongoing support through the Dumbo Health app", "Equipment and supplies delivered to your door"];
@@ -1159,7 +1250,7 @@ function ResultsPage({
             <div style={{ marginTop: 28, display: "flex", gap: 12, alignItems: "flex-start", backgroundColor: "rgba(120,191,188,0.08)", border: "1px solid rgba(120,191,188,0.25)", borderRadius: 16, padding: "16px 20px" }}>
               <span style={{ color: "#78BFBC", fontWeight: 700, fontSize: "1rem", flexShrink: 0, lineHeight: 1.5 }}>ⓘ</span>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.65, margin: 0 }}>
-                We currently don&apos;t accept Medicare or Medicaid. All our plans are straightforward cash-pay — no surprise bills, no prior authorizations.
+                We currently don&apos;t accept Medicare or Medicaid. All our plans are straightforward cash-pay with no surprise bills and no prior authorizations.
               </p>
             </div>
           </ResultBlock>
@@ -1178,27 +1269,9 @@ function ResultsPage({
               <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, maxWidth: 400, margin: "0 auto 32px" }}>
                 {waitlist.body}
               </p>
-              {waitlistSent ? (
-                <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500, fontSize: "1rem" }}>
-                  You&apos;re on the list \u2014 we&apos;ll reach out the moment we launch in your state.
-                </p>
-              ) : (
-                <div style={{ display: "flex", gap: 8, maxWidth: 380, margin: "0 auto" }}>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={waitlistEmail}
-                    onChange={(e) => setWaitlistEmail(e.target.value)}
-                    style={{ flex: 1, padding: "14px 18px", fontFamily: "var(--font-body)", fontSize: "1rem", border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 12, color: "#031F3D", backgroundColor: "white", outline: "none" }}
-                  />
-                  <button
-                    onClick={() => waitlistEmail && setWaitlistSent(true)}
-                    style={{ backgroundColor: "#FF8361", color: "white", border: "none", borderRadius: 12, padding: "14px 24px", fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", flexShrink: 0 }}
-                  >
-                    Join
-                  </button>
-                </div>
-              )}
+              <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500, fontSize: "1rem" }}>
+                You&apos;re on the list. We&apos;ll reach out the moment we launch in your state.
+              </p>
             </div>
           </ResultBlock>
         ) : (
@@ -1262,7 +1335,7 @@ function ResultsPage({
                     {(dbSteps ?? [
                       { step_order: 1, title: "We send your test kit", body: "An at-home sleep test kit arrives at your door in 2 to 3 business days. No clinic visit needed." },
                       { step_order: 2, title: "One night in your own bed", body: "Clip a small device to your finger before bed and sleep as usual. It records your breathing, oxygen levels, and heart rate overnight." },
-                      { step_order: 3, title: "Book your sleep review call", body: "Once your results are ready, book a call with one of our sleep doctors to go through everything. Included — no extra cost." },
+                      { step_order: 3, title: "Book your sleep review call", body: "Once your results are ready, book a call with one of our sleep doctors to go through everything. Included at no extra cost." },
                     ] as DbStep[]).map((step, i) => (
                       <motion.div
                         key={step.step_order}
@@ -1412,13 +1485,42 @@ function ResultsPage({
             </div>
 
             {/* ── Full journey (undiagnosed only) ── */}
-            {isUndiagnosed && <FullJourneySection />}
+            {isUndiagnosed && (
+              <>
+                {/* Scroll bridge */}
+                <div style={{ textAlign: "center", padding: "72px 24px 56px", background: "linear-gradient(180deg, transparent 0%, rgba(245,230,209,0.25) 100%)" }}>
+                  <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(255,131,97,0.08)", border: "1px solid rgba(255,131,97,0.22)", borderRadius: 100, padding: "8px 20px" }}>
+                      <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FF8361" }}>
+                        The full picture
+                      </span>
+                    </div>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.48)", margin: 0, maxWidth: 300, lineHeight: 1.6 }}>
+                      See where your journey goes from here
+                    </p>
+                    <motion.div
+                      animate={{ y: [0, 8, 0] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}
+                    >
+                      <svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="rgba(255,131,97,0.7)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="2 2 14 13 26 2" />
+                      </svg>
+                      <svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="rgba(255,131,97,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="2 2 14 13 26 2" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                </div>
+                <FullJourneySection />
+              </>
+            )}
 
             {/* ── Back link ── */}
             <ResultBlock delay={1.1}>
               <div style={{ marginTop: 56, paddingTop: 28, borderTop: "1px solid rgba(3,31,61,0.07)", textAlign: "center" }}>
                 <Link href="/" style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.35)", textDecoration: "none" }}>
-                  \u2190 Back to Dumbo Health
+                  ← Back to Dumbo Health
                 </Link>
               </div>
             </ResultBlock>

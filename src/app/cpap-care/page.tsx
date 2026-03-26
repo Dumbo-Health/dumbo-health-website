@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SupportHero } from "@/components/cpap-support/support-hero";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function CpapCarePage() {
+  if (process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE === "true") redirect("/coming-soon");
   return (
     <>
       <Navbar />

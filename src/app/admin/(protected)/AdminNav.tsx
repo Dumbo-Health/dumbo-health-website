@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/admin/signals",     label: "Signals" },
   { href: "/admin/cio",         label: "CIO Attributes" },
   { href: "/admin/submissions", label: "Submissions" },
+  { href: "/admin/analytics",  label: "Analytics" },
 ];
 
 export default function AdminNav() {

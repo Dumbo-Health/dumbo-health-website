@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
@@ -80,6 +81,7 @@ function ResupplySchema() {
 }
 
 export default function ResupplyPage() {
+  if (process.env.NEXT_PUBLIC_HIDE_RESUPPLY_PAGE === "true") redirect("/coming-soon");
   return (
     <>
       <ResupplySchema />
