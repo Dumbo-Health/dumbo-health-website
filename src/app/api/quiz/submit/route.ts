@@ -40,7 +40,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   }
 
-  const { error } = await supabase.from("quiz_submissions").insert(submission);
+  const { error } = await supabase.from("quiz_submissions").insert({
+    ...submission,
+    environment: process.env.NODE_ENV,
+  });
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
