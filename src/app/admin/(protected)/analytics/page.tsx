@@ -1,6 +1,6 @@
 import { createAdminClient } from "@/lib/supabase-admin";
 import AnalyticsDashboard from "./AnalyticsDashboard";
-import type { AnalyticsData } from "./AnalyticsDashboard";
+import type { AnalyticsData, FlowStats } from "./AnalyticsDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +28,7 @@ function aggregateFlow(
   submissions: RawSubmission[],
   flowSlug: string,
   questions: RawQuestion[]
-) {
+): FlowStats {
   const flowSubs = submissions.filter((s) => s.flow_slug === flowSlug);
 
   // Build answer counts per question slug
