@@ -42,6 +42,27 @@ export function useQuiz(initialFlowSlug: string) {
     });
   }, []);
 
+  // Sync external flowSlug changes (e.g. user picks a different path)
+  useEffect(() => {
+    setState((prev) => {
+      if (prev.flowSlug === initialFlowSlug) return prev;
+      return {
+        ...prev,
+        flowSlug: initialFlowSlug,
+        currentQuestionIndex: 0,
+        answers: {},
+        tags: [],
+        riskScore: 0,
+        sections: [],
+        questions: [],
+        rules: [],
+        skippedSections: [],
+        isComplete: false,
+        isLoading: true,
+      };
+    });
+  }, [initialFlowSlug]);
+
   useEffect(() => {
     async function load() {
       setState((prev) => ({ ...prev, isLoading: true }));
