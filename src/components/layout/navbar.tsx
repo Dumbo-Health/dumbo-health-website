@@ -169,12 +169,13 @@ const SOLUTIONS_FLAT: NavItem[] = [
 
 const RESOURCES_COLUMNS: { title: string; items: NavItem[] }[] = [
   {
-    title: "Dumbo resources",
+    title: "Resources",
     items: [
       { label: "Blog", href: "/blog", Icon: IconBlog },
       { label: "FAQ", href: "/faqs", Icon: IconFAQ },
       { label: "Facts", href: "/resources/facts", Icon: IconFacts },
       { label: "Contacts", href: "/contact", Icon: IconContact },
+      { label: "WatchPAT ONE Setup", href: "/watchpat-one-set-up", Icon: IconSleepTest },
     ],
   },
   {
