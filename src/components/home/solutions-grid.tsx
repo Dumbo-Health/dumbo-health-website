@@ -17,7 +17,6 @@ const STEPS = [
     cta: "Take the sleep test",
     href: "/at-home-sleep-test",
     image: "/images/products/hst-box.png",
-    spinIcon: true,
   },
   {
     n: 2,
@@ -26,21 +25,19 @@ const STEPS = [
     copy: "Board-certified sleep specialists review your results and prescribe the right treatment, no referrals or waiting rooms.",
     chips: ["Board-certified", "Same-week consult", "Prescription included"],
     cta: "Meet our doctors",
-    href: "/solutions#telehealth",
+    href: "/solutions",
     image: "/images/people/man-drinking-coffee.png",
-    spinIcon: false,
   },
   {
     n: 3,
     label: "Treat",
     headline: "Get your therapy, delivered.",
     copy: "Your CPAP, mask, and accessories ship directly to your door. Already have a prescription? We handle the transfer.",
-    chips: ["Insurance billed", "Setup guide included", "Easy transfer"],
+    chips: ["Setup guide included", "Easy transfer", "Expert support"],
     cta: "See CPAP options",
-    href: "/solutions#equipment",
+    href: "/cpap",
     image: "/images/products/cpap-machine.png",
     contain: true,
-    spinIcon: false,
   },
   {
     n: 4,
@@ -48,53 +45,114 @@ const STEPS = [
     headline: "See your progress every morning.",
     copy: "Sleep score, breathing pauses per hour, and therapy trends. All in one place, shared automatically with your care team.",
     chips: ["Nightly sleep score", "AHI tracking", "Shared with doctor"],
-    cta: "See the dashboard",
-    href: "/solutions#dashboard",
+    cta: "Start your journey",
+    href: "/get-started",
     image: "/images/products/dashboard.png",
-    spinIcon: false,
   },
   {
     n: 5,
     label: "Resupply",
     headline: "Never run out of supplies.",
-    copy: "We track your usage and auto-ship fresh masks, filters, and tubing before you run out, covered by insurance.",
-    chips: ["Auto-scheduled", "Insurance covered", "Doorstep delivery"],
+    copy: "We track your usage and auto-ship fresh masks, filters, and tubing before you run out — delivered straight to your door on schedule.",
+    chips: ["Auto-scheduled", "Auto-shipped", "Doorstep delivery"],
     cta: "Learn about resupply",
-    href: "/solutions#resupply",
+    href: "/resupply",
     image: "/images/people/man-with-pillows.png",
-    spinIcon: false,
   },
 ];
 
-// ── Sticky progress pill ───────────────────────────────────────────────────
-function StepPill({ active }: { active: number }) {
+// ── Horizontal step rail (replaces broken sticky pill) ─────────────────────
+function StepRail({ active, top }: { active: number; top: number }) {
   return (
-    <div className="sticky top-[72px] z-10 py-3 px-[5vw]">
-      <div
-        className="inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5"
-        style={{
-          backgroundColor: "rgba(252,246,237,0.92)",
-          backdropFilter: "blur(8px)",
-          borderColor: "rgba(3,31,61,0.1)",
-        }}
-      >
-        <span className="font-mono text-xs font-medium" style={{ color: "#FF8361" }}>
-          {String(active + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
-        </span>
-        <span style={{ color: "rgba(3,31,61,0.2)" }}>·</span>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={active}
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.18, ease: EASE }}
-            className="font-body text-xs font-semibold"
-            style={{ color: "#031F3D" }}
-          >
-            {STEPS[active].label}
-          </motion.span>
-        </AnimatePresence>
+    <div
+      className="sticky z-10 border-b"
+      style={{
+        top,
+        backgroundColor: "rgba(252,246,237,0.96)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderColor: "rgba(3,31,61,0.08)",
+      }}
+    >
+      {/* Desktop: all 5 steps in a row */}
+      <div className="hidden md:flex items-center px-[5vw] py-3 gap-0">
+        {STEPS.map((step, i) => (
+          <div key={step.n} className="flex items-center">
+            {/* Connector line between steps */}
+            {i > 0 && (
+              <div
+                style={{
+                  width: 28,
+                  height: 1,
+                  backgroundColor: i <= active ? "rgba(255,131,97,0.4)" : "rgba(3,31,61,0.1)",
+                  flexShrink: 0,
+                  transition: "background-color 0.3s",
+                }}
+              />
+            )}
+            <motion.div
+              animate={{ opacity: i === active ? 1 : i < active ? 0.45 : 0.25 }}
+              transition={{ duration: 0.25 }}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full"
+              style={{
+                backgroundColor: i === active ? "rgba(255,131,97,0.08)" : "transparent",
+                transition: "background-color 0.25s",
+              }}
+            >
+              <span
+                className="font-mono text-[11px] font-medium"
+                style={{ color: i === active ? "#FF8361" : "#031F3D" }}
+              >
+                {String(step.n).padStart(2, "0")}
+              </span>
+              <span
+                className="font-body text-xs font-semibold tracking-wide"
+                style={{ color: i === active ? "#031F3D" : "#031F3D" }}
+              >
+                {step.label}
+              </span>
+            </motion.div>
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile: current step + progress bar */}
+      <div className="flex md:hidden items-center justify-between px-[5vw] py-3">
+        <div className="flex items-center gap-2.5">
+          <span className="font-mono text-xs font-medium" style={{ color: "#FF8361" }}>
+            {String(active + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
+          </span>
+          <span style={{ color: "rgba(3,31,61,0.2)" }}>·</span>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={active}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.18, ease: EASE }}
+              className="font-body text-xs font-semibold"
+              style={{ color: "#031F3D" }}
+            >
+              {STEPS[active].label}
+            </motion.span>
+          </AnimatePresence>
+        </div>
+        {/* Progress bar */}
+        <div
+          style={{
+            width: 72,
+            height: 2,
+            backgroundColor: "rgba(3,31,61,0.1)",
+            borderRadius: 2,
+            overflow: "hidden",
+          }}
+        >
+          <motion.div
+            animate={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
+            transition={{ duration: 0.35, ease: EASE }}
+            style={{ height: "100%", backgroundColor: "#FF8361", borderRadius: 2 }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -103,13 +161,19 @@ function StepPill({ active }: { active: number }) {
 // ── Individual step card ───────────────────────────────────────────────────
 function StepCard({
   step,
+  index,
+  active,
   cardRef,
 }: {
   step: typeof STEPS[number];
+  index: number;
+  active: number;
   cardRef: (el: HTMLDivElement | null) => void;
 }) {
   const innerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(innerRef, { once: true, margin: "-8% 0px -8% 0px" });
+  const isPast = index < active;
+  const isActive = index === active;
 
   return (
     <div
@@ -125,16 +189,32 @@ function StepCard({
         {/* ── Text ── */}
         <div className="order-last flex flex-col justify-center md:order-first">
 
-          {/* Step tag */}
-          <motion.p
+          {/* Step tag with timeline node */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: EASE }}
-            className="font-mono text-xs uppercase tracking-widest"
-            style={{ color: "#FF8361" }}
+            className="flex items-center gap-3"
           >
-            {String(step.n).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
-          </motion.p>
+            {/* Timeline node */}
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                backgroundColor: isPast || isActive ? "#FF8361" : "transparent",
+                border: `1.5px solid ${isPast || isActive ? "#FF8361" : "rgba(3,31,61,0.2)"}`,
+                flexShrink: 0,
+                transition: "all 0.4s",
+              }}
+            />
+            <p
+              className="font-mono text-xs uppercase tracking-widest"
+              style={{ color: "#FF8361" }}
+            >
+              {String(step.n).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
+            </p>
+          </motion.div>
 
           {/* Headline */}
           <motion.h3
@@ -147,7 +227,7 @@ function StepCard({
             {step.headline}
           </motion.h3>
 
-          {/* Copy — capped at 55ch for readability */}
+          {/* Copy */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -218,9 +298,20 @@ function StepCard({
 // ══════════════════════════════════════════════════════════════════════════
 export function SolutionsGrid() {
   const [active, setActive] = useState(0);
+  const [navHeight, setNavHeight] = useState(72);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+
+  useEffect(() => {
+    const header = document.querySelector("header");
+    if (!header) return;
+    const measure = () => setNavHeight(header.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(header);
+    return () => ro.disconnect();
+  }, []);
 
   const getCardRef = useCallback(
     (i: number) => (el: HTMLDivElement | null) => { cardRefs.current[i] = el; },
@@ -229,7 +320,6 @@ export function SolutionsGrid() {
 
   useEffect(() => {
     function onScroll() {
-      // Trigger point: 1/3 down the viewport (below navbar + pill)
       const triggerY = window.innerHeight / 3;
       let activeIdx = 0;
       cardRefs.current.forEach((ref, i) => {
@@ -240,12 +330,12 @@ export function SolutionsGrid() {
       setActive(activeIdx);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // set correct state on mount
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <section style={{ backgroundColor: "#FCF6ED" }}>
+    <section style={{ background: "linear-gradient(180deg, #FCF6ED 0%, rgba(245,230,209,0.45) 100%)" }}>
 
       {/* Section header */}
       <div className="px-[5vw] pb-4 pt-20 md:pt-28">
@@ -278,12 +368,12 @@ export function SolutionsGrid() {
       {/* Divider */}
       <div className="mt-12 border-t" style={{ borderColor: "rgba(3,31,61,0.08)" }} />
 
-      {/* Sticky step pill */}
-      <StepPill active={active} />
+      {/* Step rail */}
+      <StepRail active={active} top={navHeight} />
 
       {/* Step cards */}
       {STEPS.map((step, i) => (
-        <StepCard key={step.n} step={step} cardRef={getCardRef(i)} />
+        <StepCard key={step.n} step={step} index={i} active={active} cardRef={getCardRef(i)} />
       ))}
 
     </section>

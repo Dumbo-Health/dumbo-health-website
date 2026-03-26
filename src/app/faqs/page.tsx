@@ -36,15 +36,21 @@ export default async function FAQsPage() {
       />
       <Navbar />
       <main>
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-daylight py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <p
+            className="font-mono uppercase tracking-widest mb-5"
+            style={{ fontSize: "0.75rem", color: "#78BFBC" }}
+          >
+            Everything you need to know
+          </p>
           <h1
             className="font-heading font-medium text-midnight mb-6"
             style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
           >
-            FAQs
+            Frequently asked questions
           </h1>
-          <p className="font-body text-midnight/70 mx-auto" style={{ fontSize: "1.125rem", maxWidth: "52ch" }}>
+          <p className="font-body mx-auto" style={{ fontSize: "1.25rem", lineHeight: 1.72, color: "rgba(3,31,61,0.68)", maxWidth: "52ch" }}>
             From testing and treatment to pricing and support, here&apos;s everything you need to know about starting your sleep journey with Dumbo Health.
           </p>
         </div>
@@ -52,14 +58,23 @@ export default async function FAQsPage() {
 
       <FAQsContent faqs={faqs} categories={categories} />
 
-      <section className="bg-sunlight py-16 sm:py-24 text-center">
-        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-sunlight py-20 sm:py-28 text-center">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+          <p
+            className="font-mono uppercase tracking-widest mb-5"
+            style={{ fontSize: "0.75rem", color: "#78BFBC" }}
+          >
+            We&apos;re here to help
+          </p>
           <h2
             className="font-heading font-medium text-midnight mb-6"
             style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
           >
             Still have questions?
           </h2>
+          <p className="font-body mb-8" style={{ fontSize: "1.25rem", lineHeight: 1.72, color: "rgba(3,31,61,0.65)" }}>
+            Our team is available to walk you through every step.
+          </p>
           <Button size="lg" asChild>
             <Link href="/contact">Contact Us</Link>
           </Button>

@@ -164,7 +164,7 @@ You flagged **{{customer.quiz_top_symptom | default: "disrupted sleep"}}** — o
 - One night at home, in your own bed.
 - A licensed doctor reviews your results within 48 hours.
 
-**CTA**: Get Your At-Home Sleep Test
+**CTA**: c
 
 > URL: https://dumbo.health/at-home-sleep-test
 

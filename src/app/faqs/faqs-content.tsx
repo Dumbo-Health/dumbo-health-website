@@ -22,12 +22,12 @@ export function FAQsContent({ faqs, categories }: FAQsContentProps) {
     : faqs;
 
   return (
-    <section className="bg-daylight pb-16 sm:pb-24">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap gap-2 mb-8 justify-center">
+    <section className="bg-daylight pb-20 sm:pb-28">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap gap-2 mb-10 justify-center">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
+            className={`px-5 py-2.5 rounded-full font-mono text-sm transition-colors ${
               activeCategory === null
                 ? "bg-midnight text-white"
                 : "bg-sunlight text-midnight hover:bg-light-peach"
@@ -39,7 +39,7 @@ export function FAQsContent({ faqs, categories }: FAQsContentProps) {
             <button
               key={cat.slug}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-4 py-2 rounded-full font-mono text-xs transition-colors ${
+              className={`px-5 py-2.5 rounded-full font-mono text-sm transition-colors ${
                 activeCategory === cat.slug
                   ? "bg-midnight text-white"
                   : "bg-sunlight text-midnight hover:bg-light-peach"
@@ -53,10 +53,10 @@ export function FAQsContent({ faqs, categories }: FAQsContentProps) {
         <Accordion type="single" collapsible className="w-full">
           {filteredFaqs.map((faq) => (
             <AccordionItem key={faq.id} value={faq.id}>
-              <AccordionTrigger className="text-left font-body text-lg font-medium text-midnight">
+              <AccordionTrigger className="text-left font-body text-xl font-medium text-midnight">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="font-body text-base text-midnight/70">
+              <AccordionContent className="font-body text-lg" style={{ color: "rgba(3,31,61,0.70)" }}>
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

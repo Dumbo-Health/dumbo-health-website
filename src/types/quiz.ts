@@ -41,6 +41,7 @@ export interface QuizQuestion {
 export type RoutingCondition =
   | { answer_equals: string }
   | { answer_in: string[] }
+  | { answer_not_in: string[] }
   | { answer_includes: string }
   | { answer_count_gte: number };
 

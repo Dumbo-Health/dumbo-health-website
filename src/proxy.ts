@@ -23,7 +23,7 @@ function isEnabled(envVar: string): boolean {
   return val === 'true'
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Admin auth guard

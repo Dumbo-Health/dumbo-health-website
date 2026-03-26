@@ -13,8 +13,8 @@ const PLANS = [
   {
     name: "Essentials",
     tagline: "Your basics, always fresh.",
-    quarterly: { price: "$87", period: "/quarter", perDay: "Less than $1/day" },
-    annual: { price: "$299", period: "/year", saving: "Save $49 vs. quarterly" },
+    quarterly: { price: "$87", period: "/quarter", dayNum: "~$1", dayPeriod: "/day" },
+    annual: { price: "$299", period: "/year", saving: "Save $49 vs. quarterly", saveNum: "$49", saveLabel: "saved vs. quarterly" },
     badge: null,
     includes: [
       "Fresh filters every quarter",
@@ -33,8 +33,8 @@ const PLANS = [
   {
     name: "Premium",
     tagline: "Everything in Essentials, plus clinical support.",
-    quarterly: { price: "$117", period: "/quarter", perDay: "Less than $1.30/day" },
-    annual: { price: "$399", period: "/year", saving: "Save $69 vs. quarterly" },
+    quarterly: { price: "$117", period: "/quarter", dayNum: "~$1.30", dayPeriod: "/day" },
+    annual: { price: "$399", period: "/year", saving: "Save $69 vs. quarterly", saveNum: "$69", saveLabel: "saved vs. quarterly" },
     badge: "Most popular",
     includes: [
       "Everything in Essentials",
@@ -53,8 +53,8 @@ const PLANS = [
   {
     name: "Elite",
     tagline: "Complete system coverage, premium everything.",
-    quarterly: { price: "$177", period: "/quarter", perDay: "Less than $2/day" },
-    annual: { price: "$569", period: "/year", saving: "Save $139 vs. quarterly" },
+    quarterly: { price: "$177", period: "/quarter", dayNum: "~$2", dayPeriod: "/day" },
+    annual: { price: "$569", period: "/year", saving: "Save $139 vs. quarterly", saveNum: "$139", saveLabel: "saved vs. quarterly" },
     badge: null,
     includes: [
       "Everything in Premium",
@@ -257,7 +257,7 @@ export function ResupplyPricing() {
                 <div className="mt-3 flex items-end gap-1.5">
                   <AnimatePresence mode="wait">
                     <motion.span
-                      key={pricing.price}
+                      key={billing === "quarterly" ? plan.quarterly.dayNum : plan.annual.saveNum}
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
@@ -265,15 +265,22 @@ export function ResupplyPricing() {
                       className="font-heading font-medium text-midnight leading-none"
                       style={{ fontSize: "clamp(2.25rem, 3.5vw, 3rem)" }}
                     >
-                      {pricing.price}
+                      {billing === "quarterly" ? plan.quarterly.dayNum : plan.annual.saveNum}
                     </motion.span>
                   </AnimatePresence>
-                  <span
-                    className="font-body mb-1.5"
-                    style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.45)" }}
-                  >
-                    {pricing.period}
-                  </span>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={billing}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="font-body mb-1.5"
+                      style={{ fontSize: "0.9375rem", color: "rgba(3,31,61,0.45)" }}
+                    >
+                      {billing === "quarterly" ? plan.quarterly.dayPeriod : plan.annual.saveLabel}
+                    </motion.span>
+                  </AnimatePresence>
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -287,8 +294,8 @@ export function ResupplyPricing() {
                     style={{ fontSize: "0.72rem", color: "#78BFBC" }}
                   >
                     {billing === "quarterly"
-                      ? plan.quarterly.perDay
-                      : plan.annual.saving}
+                      ? `${plan.quarterly.price}${plan.quarterly.period}`
+                      : `${plan.annual.price}${plan.annual.period}`}
                   </motion.p>
                 </AnimatePresence>
 

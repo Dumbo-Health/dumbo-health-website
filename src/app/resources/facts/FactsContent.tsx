@@ -281,7 +281,7 @@ function WhatIsSleepApnea() {
               </p>
               <h2
                 className="font-heading font-medium text-midnight text-balance"
-                style={{ fontSize: "clamp(2.2rem, 4vw, 3.4rem)", lineHeight: 1.08 }}
+                style={{ fontSize: "clamp(2.4rem, 4vw, 3.6rem)", lineHeight: 1.08 }}
               >
                 What&apos;s actually happening while you sleep
               </h2>
@@ -296,7 +296,7 @@ function WhatIsSleepApnea() {
               <p
                 className="font-body mt-6 text-pretty"
                 style={{
-                  fontSize: "1.1875rem",
+                  fontSize: "1.25rem",
                   lineHeight: 1.8,
                   color: "rgba(3,31,61,0.80)",
                 }}
@@ -319,7 +319,7 @@ function WhatIsSleepApnea() {
                 className="font-heading font-medium my-10 pl-6 text-balance"
                 style={{
                   borderLeft: "4px solid #FF8361",
-                  fontSize: "clamp(1.2rem, 2vw, 1.45rem)",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.65rem)",
                   color: "#031F3D",
                   lineHeight: 1.35,
                 }}
@@ -344,7 +344,7 @@ function WhatIsSleepApnea() {
               <p
                 className="font-body text-pretty"
                 style={{
-                  fontSize: "1.1875rem",
+                  fontSize: "1.25rem",
                   lineHeight: 1.8,
                   color: "rgba(3,31,61,0.80)",
                 }}
@@ -371,7 +371,7 @@ function WhatIsSleepApnea() {
               <p
                 className="font-body text-pretty"
                 style={{
-                  fontSize: "1.1875rem",
+                  fontSize: "1.25rem",
                   lineHeight: 1.8,
                   color: "rgba(3,31,61,0.80)",
                 }}
@@ -393,13 +393,13 @@ function WhatIsSleepApnea() {
                 <div>
                   <p
                     className="font-heading font-medium text-midnight"
-                    style={{ fontSize: "2rem", lineHeight: 1 }}
+                    style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1 }}
                   >
                     30M
                   </p>
                   <p
                     className="font-mono uppercase tracking-widest mt-1"
-                    style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.55)" }}
+                    style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.55)" }}
                   >
                     Americans affected
                   </p>
@@ -410,13 +410,13 @@ function WhatIsSleepApnea() {
                 <div>
                   <p
                     className="font-heading font-medium text-midnight"
-                    style={{ fontSize: "2rem", lineHeight: 1 }}
+                    style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1 }}
                   >
                     80%
                   </p>
                   <p
                     className="font-mono uppercase tracking-widest mt-1"
-                    style={{ fontSize: "0.65rem", color: "rgba(3,31,61,0.55)" }}
+                    style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.55)" }}
                   >
                     Undiagnosed
                   </p>
@@ -522,17 +522,16 @@ function WhyItMatters() {
             </p>
             <h2
               className="font-heading font-medium text-midnight text-balance"
-              style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.1 }}
+              style={{ fontSize: "clamp(2.4rem, 4vw, 3.6rem)", lineHeight: 1.1 }}
             >
               This is what&apos;s been running your life
             </h2>
             <p
               className="font-body mt-5 text-pretty"
               style={{
-                fontSize: "1.1875rem",
+                fontSize: "1.25rem",
                 lineHeight: 1.8,
                 color: "rgba(3,31,61,0.78)",
-                maxWidth: "44ch",
               }}
             >
               It&apos;s not laziness. It&apos;s not aging. It&apos;s a
@@ -551,7 +550,7 @@ function WhyItMatters() {
               <p
                 className="font-heading font-medium text-balance"
                 style={{
-                  fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
+                  fontSize: "clamp(1.35rem, 2.2vw, 1.7rem)",
                   color: "#031F3D",
                   lineHeight: 1.35,
                 }}
@@ -589,7 +588,7 @@ function WhyItMatters() {
                   <p
                     className="font-heading font-medium text-midnight"
                     style={{
-                      fontSize: "1.075rem",
+                      fontSize: "1.125rem",
                       lineHeight: 1.3,
                       marginBottom: "0.4rem",
                     }}
@@ -599,7 +598,7 @@ function WhyItMatters() {
                   <p
                     className="font-body text-pretty"
                     style={{
-                      fontSize: "1.0625rem",
+                      fontSize: "1.125rem",
                       color: "rgba(3,31,61,0.75)",
                       lineHeight: 1.72,
                     }}
@@ -679,9 +678,9 @@ function HowItFound() {
           <h2
             className="font-heading font-medium text-balance mx-auto"
             style={{
-              fontSize: "clamp(2rem, 3.5vw, 3rem)",
+              fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
               lineHeight: 1.1,
-              maxWidth: "600px",
+              maxWidth: "720px",
               color: "#FCF6ED",
             }}
           >
@@ -690,10 +689,9 @@ function HowItFound() {
           <p
             className="font-body mt-5 mx-auto text-pretty"
             style={{
-              fontSize: "1.1875rem",
+              fontSize: "1.25rem",
               lineHeight: 1.8,
               color: "rgba(252,246,237,0.72)",
-              maxWidth: "46ch",
             }}
           >
             Sleep apnea is one of the most treatable conditions there is. And
@@ -722,7 +720,7 @@ function HowItFound() {
                   <span
                     className="font-heading font-medium"
                     style={{
-                      fontSize: "2.5rem",
+                      fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
                       color: "rgba(255,131,97,0.42)",
                       lineHeight: 1,
                     }}
@@ -744,7 +742,7 @@ function HowItFound() {
                 <h3
                   className="font-heading font-medium"
                   style={{
-                    fontSize: "clamp(1.15rem, 1.6vw, 1.3rem)",
+                    fontSize: "clamp(1.25rem, 1.8vw, 1.5rem)",
                     color: "#FCF6ED",
                     lineHeight: 1.25,
                   }}
@@ -754,7 +752,7 @@ function HowItFound() {
                 <p
                   className="font-body text-pretty"
                   style={{
-                    fontSize: "1.0625rem",
+                    fontSize: "1.125rem",
                     color: "rgba(252,246,237,0.76)",
                     lineHeight: 1.78,
                   }}
@@ -843,7 +841,7 @@ function TreatmentDumboSurfaces() {
           <h2
             className="font-heading font-medium text-midnight text-balance mx-auto"
             style={{
-              fontSize: "clamp(2rem, 3.5vw, 3rem)",
+              fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
               lineHeight: 1.1,
               maxWidth: "680px",
             }}
@@ -856,10 +854,9 @@ function TreatmentDumboSurfaces() {
           <p
             className="font-body mt-5 mx-auto text-pretty"
             style={{
-              fontSize: "1.1875rem",
+              fontSize: "1.25rem",
               lineHeight: 1.8,
               color: "rgba(3,31,61,0.72)",
-              maxWidth: "50ch",
             }}
           >
             At Dumbo Health, this is exactly what we built for. Every option
@@ -916,7 +913,7 @@ function TreatmentDumboSurfaces() {
                 <h3
                   className="font-heading font-medium text-midnight"
                   style={{
-                    fontSize: "clamp(1.5rem, 2.5vw, 1.9rem)",
+                    fontSize: "clamp(1.7rem, 2.8vw, 2.2rem)",
                     lineHeight: 1.15,
                   }}
                 >
@@ -927,7 +924,7 @@ function TreatmentDumboSurfaces() {
                 <p
                   className="font-body text-pretty"
                   style={{
-                    fontSize: "1.0625rem",
+                    fontSize: "1.125rem",
                     color: "rgba(3,31,61,0.75)",
                     lineHeight: 1.8,
                   }}
@@ -941,14 +938,14 @@ function TreatmentDumboSurfaces() {
                 >
                   <p
                     className="font-mono uppercase tracking-widest mb-2"
-                    style={{ fontSize: "0.65rem", color: t.iconColor }}
+                    style={{ fontSize: "0.75rem", color: t.iconColor }}
                   >
                     How Dumbo Health delivers this
                   </p>
                   <p
                     className="font-body text-pretty"
                     style={{
-                      fontSize: "0.9375rem",
+                      fontSize: "1rem",
                       color: "rgba(3,31,61,0.75)",
                       lineHeight: 1.75,
                     }}
@@ -1032,7 +1029,7 @@ function ConversionFork() {
           <p
             className="font-body mt-5 mx-auto text-pretty"
             style={{
-              fontSize: "1.1875rem",
+              fontSize: "1.25rem",
               lineHeight: 1.8,
               color: "rgba(252,246,237,0.64)",
               maxWidth: "48ch",
@@ -1096,7 +1093,7 @@ function ConversionFork() {
           <p
             className="font-body text-pretty"
             style={{
-              fontSize: "1.125rem",
+              fontSize: "1.25rem",
               color: "rgba(252,246,237,0.82)",
               lineHeight: 1.78,
               fontStyle: "italic",
@@ -1138,7 +1135,7 @@ function ConversionFork() {
             <h3
               className="font-heading font-medium text-balance"
               style={{
-                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                fontSize: "clamp(1.6rem, 2.8vw, 2.25rem)",
                 lineHeight: 1.12,
                 color: "#031F3D",
               }}
@@ -1149,7 +1146,7 @@ function ConversionFork() {
             <p
               className="font-body text-pretty"
               style={{
-                fontSize: "1.0625rem",
+                fontSize: "1.125rem",
                 color: "rgba(3,31,61,0.70)",
                 lineHeight: 1.78,
               }}

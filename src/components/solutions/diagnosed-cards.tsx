@@ -16,7 +16,7 @@ export function DiagnosedCards() {
             Skip the test. Pick your path.
           </h2>
           <p className="mx-auto mt-3 font-body text-midnight/60" style={{ fontSize: "1.125rem", maxWidth: "50ch" }}>
-            You have a diagnosis — here are your two direct routes into treatment.
+            You have a diagnosis. Here are your two direct routes into treatment.
           </p>
         </div>
 
@@ -96,13 +96,20 @@ export function DiagnosedCards() {
                 )}
               </ul>
             </div>
-            <Button
-              asChild
-              size="lg"
-              className="mt-8 h-12 w-full rounded-lg bg-midnight px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-midnight/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight/85 hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto"
-            >
-              <Link href="/cpap">Transfer my CPAP</Link>
-            </Button>
+            <div className="mt-8 flex items-center gap-3">
+              <span
+                className="inline-flex items-center gap-2 rounded-lg px-5 py-3 font-body text-sm font-bold uppercase tracking-wider"
+                style={{ backgroundColor: "rgba(3,31,61,0.07)", color: "rgba(3,31,61,0.35)", cursor: "default" }}
+              >
+                Transfer my CPAP
+              </span>
+              <span
+                className="inline-flex items-center rounded-full px-3 py-1 font-mono text-xs uppercase tracking-widest"
+                style={{ backgroundColor: "rgba(120,191,188,0.15)", color: "#5a9e9b" }}
+              >
+                Coming Soon
+              </span>
+            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -25,6 +25,10 @@ function evaluateCondition(
     if (Array.isArray(answer)) return answer.some((a) => condition.answer_in.includes(a));
     return condition.answer_in.includes(answer as string);
   }
+  if ("answer_not_in" in condition) {
+    if (Array.isArray(answer)) return !answer.some((a) => condition.answer_not_in.includes(a));
+    return !condition.answer_not_in.includes(answer as string);
+  }
   if ("answer_includes" in condition) {
     if (Array.isArray(answer)) return answer.includes(condition.answer_includes);
     return answer === condition.answer_includes;
