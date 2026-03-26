@@ -155,8 +155,8 @@ const SOLUTIONS_GROUPS: { title: string; items: NavItem[] }[] = [
     title: "CPAP Therapies",
     items: [
       { label: "CPAP Therapy",  href: "/cpap",       Icon: IconCPAP,     description: "Start treatment with expert guidance" },
-      ...(process.env.NEXT_PUBLIC_PAGE_CPAP_CARE !== "false" ? [{ label: "CPAP Care", href: "/cpap-care", Icon: IconSupport, description: "Ongoing support for CPAP users" }] : []),
-      ...(process.env.NEXT_PUBLIC_PAGE_RESUPPLY !== "false" ? [{ label: "CPAP Resupply", href: "/resupply", Icon: IconResupply, description: "Automatic replacement of your supplies" }] : []),
+      ...(process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE !== "true" ? [{ label: "CPAP Care", href: "/cpap-care", Icon: IconSupport, description: "Ongoing support for CPAP users" }] : []),
+      ...(process.env.NEXT_PUBLIC_HIDE_RESUPPLY_PAGE !== "true" ? [{ label: "CPAP Resupply", href: "/resupply", Icon: IconResupply, description: "Automatic replacement of your supplies" }] : []),
     ],
   },
 ];
