@@ -74,7 +74,7 @@ export default function ComingSoonContent({ page: _page }: { page: string }) {
 
         {/* Body */}
         <motion.p {...fadeUp(0.34)} style={{ fontFamily: "var(--font-body)", fontSize: "1.125rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 40px" }}>
-          This part of Dumbo Health isn&apos;t ready yet — but we&apos;re on it. We&apos;ll reach out to you directly the moment it&apos;s live.
+          This part of Dumbo Health isn&apos;t ready yet, but we&apos;re on it. We&apos;ll reach out to you directly the moment it&apos;s live.
         </motion.p>
 
         {/* CTAs */}
