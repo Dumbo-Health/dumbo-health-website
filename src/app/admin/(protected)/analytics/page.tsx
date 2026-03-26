@@ -121,7 +121,7 @@ export default async function AnalyticsPage() {
 
   const [{ data: flows }, { data: allSubmissions }, { data: allQuestions }] = await Promise.all([
     sb.from("quiz_flows").select("id, slug").eq("is_active", true),
-    sb.from("quiz_submissions").select("flow_slug, answers, tags, risk_score, device_type, state, created_at").order("created_at", { ascending: false }).limit(2000),
+    sb.from("quiz_submissions").select("flow_slug, answers, tags, risk_score, device_type, state, created_at").eq("environment", "production").order("created_at", { ascending: false }).limit(2000),
     sb.from("quiz_questions").select("slug, question_text, answer_type, options, flow_id").order("position", { ascending: true }),
   ]);
 
