@@ -31,6 +31,9 @@
     "three": "^0.183.1",
     "zod": "^4.3.6"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["msw", "sharp", "unrs-resolver"]
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
