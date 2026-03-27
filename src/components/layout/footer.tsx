@@ -44,8 +44,12 @@ const FOOTER_COLUMNS = [
       { label: "Sleep Apnea Care", href: "/solutions" },
       { label: "At-Home Sleep Test", href: "/at-home-sleep-test" },
       { label: "CPAP Therapy", href: "/cpap" },
-      { label: "CPAP Care", href: "/cpap-care" },
-      { label: "CPAP Resupply", href: "/resupply" },
+      ...(process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE !== "true"
+        ? [{ label: "CPAP Care", href: "/cpap-care" }]
+        : []),
+      ...(process.env.NEXT_PUBLIC_HIDE_RESUPPLY_PAGE !== "true"
+        ? [{ label: "CPAP Resupply", href: "/resupply" }]
+        : []),
     ],
   },
   {
@@ -66,7 +70,7 @@ const FOOTER_COLUMNS = [
       { label: "30 day better sleep plan", href: "/go/30-day-sleep-plan" },
     ],
   },
-] as const;
+];
 
 const SOCIAL_LINKS = [
   { href: SOCIAL.facebook, icon: FacebookIcon, label: "Facebook" },
