@@ -414,7 +414,7 @@ export default function WatchPatSetupContent() {
         </section>
 
         {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-        <section style={{ background: "#FCF6ED", padding: "clamp(64px, 9vw, 104px) 5%" }}>
+        <section style={{ background: "#FFD6AD", padding: "clamp(64px, 9vw, 104px) 5%" }}>
           <div style={{ maxWidth: 800, margin: "0 auto" }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
