@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import AppDownloadButtons from "./AppDownloadButtons";
@@ -77,7 +76,7 @@ const FAQS = [
   },
   {
     q: "What if the device does not connect in the app?",
-    a: "Make sure Bluetooth is enabled and you are within a few feet of the device. Try closing and reopening the app. If it still will not connect, reach out at hello@dumbohealth.com and we will get you sorted before your test night.",
+    a: "Make sure Bluetooth is enabled and you are within a few feet of the device. Try closing and reopening the app. If it still will not connect, reach out at contact@dumbo.health and we will get you sorted before your test night.",
   },
   {
     q: "When will I get my results?",
@@ -292,8 +291,67 @@ export default function WatchPatSetupContent() {
           </div>
         </section>
 
+        {/* ── App download ──────────────────────────────────────────────────── */}
+        <section style={{ background: "#031F3D", padding: "clamp(56px, 8vw, 88px) 5%", position: "relative", overflow: "hidden" }}>
+          {/* Wave */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/uploads/Vector-1.svg"
+            alt=""
+            aria-hidden="true"
+            style={{ position: "absolute", left: 0, width: "100%", top: "50%", transform: "translateY(-50%)", opacity: 0.06, pointerEvents: "none" }}
+          />
+          {/* Center glow */}
+          <div style={{
+            position: "absolute", top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "60vw", maxWidth: 780, height: "60vw", maxHeight: 780,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,131,97,0.16) 0%, transparent 65%)",
+            filter: "blur(72px)", pointerEvents: "none",
+          }} />
+
+          <div style={{ position: "relative", zIndex: 1, maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: EASE }}
+              style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#78BFBC", marginBottom: 20 }}
+            >
+              Before anything else
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, ease: EASE, delay: 0.08 }}
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(2rem, 3.5vw, 2.8rem)", color: "white", marginBottom: 18 }}
+            >
+              Download the WatchPAT app
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.16 }}
+              style={{ fontFamily: "var(--font-body)", color: "rgba(252,246,237,0.55)", fontSize: "1.125rem", marginBottom: 40, lineHeight: 1.75 }}
+            >
+              The app is free. Install it now so you have plenty of time to pair your device before test night.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, ease: EASE, delay: 0.24 }}
+            >
+              <AppDownloadButtons />
+            </motion.div>
+          </div>
+        </section>
+
         {/* ── Key facts ─────────────────────────────────────────────────────── */}
-        <section style={{ background: "linear-gradient(180deg, #F5E6D1 0%, #FCF6ED 100%)", padding: "clamp(60px, 8vw, 96px) 5%" }}>
+        <section style={{ background: "linear-gradient(180deg, #F5E6D1 0%, #FCF6ED 100%)", padding: "clamp(56px, 7vw, 80px) 5%" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <motion.div
               className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
@@ -339,7 +397,7 @@ export default function WatchPatSetupContent() {
         </section>
 
         {/* ── Video ─────────────────────────────────────────────────────────── */}
-        <section style={{ background: "#FCF6ED", padding: "clamp(72px, 10vw, 112px) 5%" }}>
+        <section style={{ background: "#FCF6ED", padding: "clamp(56px, 7vw, 80px) 5%" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -382,7 +440,7 @@ export default function WatchPatSetupContent() {
         </section>
 
         {/* ── Steps ─────────────────────────────────────────────────────────── */}
-        <section style={{ background: "linear-gradient(180deg, #FCF6ED 0%, #F5E6D1 100%)", padding: "clamp(72px, 10vw, 112px) 5%" }}>
+        <section style={{ background: "linear-gradient(180deg, #FCF6ED 0%, #F5E6D1 100%)", padding: "clamp(56px, 7vw, 80px) 5%" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -446,65 +504,6 @@ export default function WatchPatSetupContent() {
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── App download ──────────────────────────────────────────────────── */}
-        <section style={{ background: "#031F3D", padding: "clamp(80px, 11vw, 120px) 5%", position: "relative", overflow: "hidden" }}>
-          {/* Wave */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/uploads/Vector-1.svg"
-            alt=""
-            aria-hidden="true"
-            style={{ position: "absolute", left: 0, width: "100%", top: "50%", transform: "translateY(-50%)", opacity: 0.06, pointerEvents: "none" }}
-          />
-          {/* Center glow */}
-          <div style={{
-            position: "absolute", top: "50%", left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "60vw", maxWidth: 780, height: "60vw", maxHeight: 780,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(255,131,97,0.16) 0%, transparent 65%)",
-            filter: "blur(72px)", pointerEvents: "none",
-          }} />
-
-          <div style={{ position: "relative", zIndex: 1, maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: EASE }}
-              style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#78BFBC", marginBottom: 20 }}
-            >
-              Step 1 — Get the app first
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: EASE, delay: 0.08 }}
-              style={{ fontFamily: "var(--font-heading)", fontWeight: 500, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "white", marginBottom: 18 }}
-            >
-              Download WatchPAT
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: EASE, delay: 0.16 }}
-              style={{ fontFamily: "var(--font-body)", color: "rgba(252,246,237,0.55)", fontSize: "1.125rem", marginBottom: 44, lineHeight: 1.75 }}
-            >
-              The app is free. Install it before the night of your test so you have time to pair your device without rushing.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, ease: EASE, delay: 0.24 }}
-            >
-              <AppDownloadButtons />
             </motion.div>
           </div>
         </section>
@@ -579,27 +578,19 @@ export default function WatchPatSetupContent() {
                 Once your data uploads, our licensed sleep clinicians review your study. You will receive your results and a clear explanation of what they mean. If treatment is recommended, we will walk you through every next step.
               </p>
 
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 14 }}>
-                <Link
-                  href="/contact"
-                  style={{
-                    display: "inline-block",
-                    background: "#031F3D", color: "white",
-                    fontFamily: "var(--font-body)", fontWeight: 700,
-                    fontSize: "0.9375rem", letterSpacing: "0.06em", textTransform: "uppercase",
-                    padding: "16px 40px", borderRadius: 12,
-                    textDecoration: "none",
-                  }}
-                >
-                  Contact us
-                </Link>
-                <a
-                  href="mailto:hello@dumbohealth.com"
-                  style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.45)", textDecoration: "none" }}
-                >
-                  hello@dumbohealth.com
-                </a>
-              </div>
+              <a
+                href="mailto:contact@dumbo.health"
+                style={{
+                  display: "inline-block",
+                  background: "#031F3D", color: "white",
+                  fontFamily: "var(--font-body)", fontWeight: 700,
+                  fontSize: "0.9375rem", letterSpacing: "0.06em", textTransform: "uppercase",
+                  padding: "16px 40px", borderRadius: 12,
+                  textDecoration: "none",
+                }}
+              >
+                Email us at contact@dumbo.health
+              </a>
             </motion.div>
           </div>
         </section>
