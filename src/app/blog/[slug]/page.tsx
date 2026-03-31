@@ -78,8 +78,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               excerpt: post.short_description || "",
               publishedAt: post.published_at || new Date().toISOString(),
               updatedAt: post.updated_at ?? undefined,
-              featuredImage: post.main_image,
-              author: author?.name,
+              featuredImage: post.main_image ?? undefined,
+              author: author?.name ?? undefined,
             })
           ),
         }}
