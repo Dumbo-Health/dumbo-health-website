@@ -324,7 +324,7 @@ export default function SleepProtocolIndexClient({
                 {protocol.audio_file ? (
                   <div className="mt-4 border-t border-gray-100 pt-4">
                     <AudioPlayer
-                      src={`/go${protocol.audio_file}`}
+                      src={protocol.audio_file}
                       ariaLabel={`Listen to ${protocol.title}`}
                       title="Listen"
                       size="sm"
