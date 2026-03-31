@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               slug: post.slug,
               excerpt: post.short_description || "",
               publishedAt: post.published_at || new Date().toISOString(),
-              updatedAt: post.updated_at,
+              updatedAt: post.updated_at ?? undefined,
               featuredImage: post.main_image,
               author: author?.name,
             })
