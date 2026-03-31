@@ -14,7 +14,7 @@ export function createMetadata({
   title,
   description,
   path = "",
-  ogImage = "/og/default.jpg",
+  ogImage = "/opengraph-image",
   type = "website",
   noIndex = false,
 }: CreateMetadataOptions): Metadata {

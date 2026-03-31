@@ -26,12 +26,15 @@ function getPromoCountdown() {
 }
 
 export function SleepAwarenessPromoBanner() {
-  const [countdown, setCountdown] = useState(getPromoCountdown());
+  // Initialize as null so SSR and client agree — hydration mismatch fix.
+  // Real value is set client-side in useEffect only.
+  const [countdown, setCountdown] = useState<string | null>(null);
 
   const showPromo = features.sections.sleepAwarenessPromo;
 
   useEffect(() => {
     if (!showPromo) return;
+    setCountdown(getPromoCountdown());
     const intervalId = setInterval(() => {
       setCountdown(getPromoCountdown());
     }, 1000);
@@ -67,7 +70,7 @@ export function SleepAwarenessPromoBanner() {
             Free access in March. Limited time.
           </span>
           <span className="whitespace-nowrap font-semibold">
-            30-day countdown: {countdown}
+            30-day countdown: {countdown ?? "—"}
           </span>
         </Link>
       </div>

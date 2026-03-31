@@ -48,34 +48,55 @@ function AnimatedWords({ text, delay = 0 }: { text: string; delay?: number }) {
   );
 }
 
-// ── Gradient blobs ─────────────────────────────────────────────────────────────
-function GradientBlobs() {
+// ── Gradient blobs (static during intro, animated only in the resting hero) ────
+function GradientBlobs({ animated = false }: { animated?: boolean }) {
   return (
     <>
       <div style={{
         position: "absolute", inset: 0,
         background: "linear-gradient(148deg, #FCF6ED 0%, #F5E6D1 52%, #FFD6AD 100%)",
       }} />
-      <motion.div
-        animate={{ opacity: [0.42, 0.68, 0.42], scale: [1, 1.16, 1], x: [0, 28, 0], y: [0, -14, 0] }}
-        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
-        style={{
-          position: "absolute", top: "-20%", right: "-10%",
-          width: "65vw", height: "65vw", maxWidth: 820, maxHeight: 820,
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,131,97,0.12) 0%, rgba(255,214,173,0.66) 40%, transparent 68%)",
-        }}
-      />
-      <motion.div
-        animate={{ opacity: [0.26, 0.48, 0.26], scale: [1.08, 1, 1.08], x: [0, -18, 0], y: [0, 20, 0] }}
-        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 3 }}
-        style={{
-          position: "absolute", bottom: "-20%", left: "-15%",
-          width: "55vw", height: "55vw", maxWidth: 700, maxHeight: 700,
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,214,173,0.58) 0%, transparent 65%)",
-        }}
-      />
+      {animated ? (
+        <>
+          <motion.div
+            animate={{ opacity: [0.42, 0.68, 0.42], scale: [1, 1.16, 1], x: [0, 28, 0], y: [0, -14, 0] }}
+            transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
+            style={{
+              position: "absolute", top: "-20%", right: "-10%",
+              width: "65vw", height: "65vw", maxWidth: 820, maxHeight: 820,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(255,131,97,0.12) 0%, rgba(255,214,173,0.66) 40%, transparent 68%)",
+            }}
+          />
+          <motion.div
+            animate={{ opacity: [0.26, 0.48, 0.26], scale: [1.08, 1, 1.08], x: [0, -18, 0], y: [0, 20, 0] }}
+            transition={{ duration: 10, ease: "easeInOut", repeat: Infinity, delay: 3 }}
+            style={{
+              position: "absolute", bottom: "-20%", left: "-15%",
+              width: "55vw", height: "55vw", maxWidth: 700, maxHeight: 700,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(255,214,173,0.58) 0%, transparent 65%)",
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <div style={{
+            position: "absolute", top: "-20%", right: "-10%",
+            width: "65vw", height: "65vw", maxWidth: 820, maxHeight: 820,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,131,97,0.12) 0%, rgba(255,214,173,0.66) 40%, transparent 68%)",
+            opacity: 0.55,
+          }} />
+          <div style={{
+            position: "absolute", bottom: "-20%", left: "-15%",
+            width: "55vw", height: "55vw", maxWidth: 700, maxHeight: 700,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,214,173,0.58) 0%, transparent 65%)",
+            opacity: 0.37,
+          }} />
+        </>
+      )}
     </>
   );
 }
@@ -91,25 +112,29 @@ export function HomeHero() {
       setBeat(4);
       return;
     }
+    let cancelled = false;
     fromAnim.current = true;
+    // Set the guard immediately — any remount (HMR, Strict Mode, error boundary)
+    // will find the key already set and jump directly to beat 4 instead of looping.
+    sessionStorage.setItem("hero-played", "true");
     setBeat(0);
     const timers = [
-      setTimeout(() => setBeat(1), T_Q1),
-      setTimeout(() => setBeat(2), T_Q2),
-      setTimeout(() => setBeat(3), T_EXIT),
-      setTimeout(() => {
-        setBeat(4);
-        sessionStorage.setItem("hero-played", "true");
-      }, T_HERO),
+      setTimeout(() => { if (!cancelled) setBeat(1); }, T_Q1),
+      setTimeout(() => { if (!cancelled) setBeat(2); }, T_Q2),
+      setTimeout(() => { if (!cancelled) setBeat(3); }, T_EXIT),
+      setTimeout(() => { if (!cancelled) setBeat(4); }, T_HERO),
     ];
-    return () => timers.forEach(clearTimeout);
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   const isAnimating = beat >= 0 && beat < 4;
 
   return (
     <>
-      {/* ── Overlay background ── */}
+      {/* ── Overlay background (static blobs — no infinite animation during intro) ── */}
       <AnimatePresence>
         {isAnimating && (
           <motion.div
@@ -122,7 +147,7 @@ export function HomeHero() {
               pointerEvents: "none", overflow: "hidden",
             }}
           >
-            <GradientBlobs />
+            <GradientBlobs animated={false} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -196,7 +221,7 @@ export function HomeHero() {
           position: "absolute", inset: 0, zIndex: 0,
           pointerEvents: "none", overflow: "hidden",
         }}>
-          <GradientBlobs />
+          <GradientBlobs animated={true} />
         </div>
 
         <div style={{ position: "relative", zIndex: 1 }}>
@@ -304,7 +329,6 @@ export function HomeHero() {
         </div>
       </section>
 
-      <style>{`@keyframes marquee-hero { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
     </>
   );
 }

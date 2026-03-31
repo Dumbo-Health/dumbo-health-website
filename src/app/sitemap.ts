@@ -38,9 +38,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${baseUrl}/solutions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/at-home-sleep-test`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/dot-sleep-apnea-testing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/sleep-test`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/watchpat-one-set-up`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/cpap`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/pricing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/learn`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/about-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/medical-review-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.5 },
     { url: `${baseUrl}/faqs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/resources/facts`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
@@ -86,6 +92,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Supabase unavailable at build time — skip blog posts
   }
 
+  // Blog author pages — match Webflow site authors
+  const authors = ["alex-carter", "kaila-caldwell", "nicky-charles-peters"].map((author) => ({
+    url: `${baseUrl}/blog-author/${author}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.4,
+  }));
+
   const categories = ["sleep-tracking", "sleep-apnea", "sleep-disorders", "cpap"].map((cat) => ({
     url: `${baseUrl}/blog-category/${cat}`,
     lastModified: new Date(),
@@ -93,5 +107,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...blogPostPages, ...sleepProtocolPages, ...atHomeSleepTestPages, ...sleepPlanPages, ...categories];
+  return [...staticPages, ...blogPostPages, ...sleepProtocolPages, ...atHomeSleepTestPages, ...sleepPlanPages, ...authors, ...categories];
 }
