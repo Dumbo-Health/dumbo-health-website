@@ -14,8 +14,8 @@ export const metadata = createMetadata({
   path: "/go/sleep-protocol",
 });
 
-export default function SleepProtocolIndexPage() {
-  const protocols = getAllSleepProtocols();
+export default async function SleepProtocolIndexPage() {
+  const protocols = await getAllSleepProtocols();
   const versions = getSleepProtocolVersions();
   const tips = getSleepProtocolTips();
 

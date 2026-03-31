@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 const SLEEP_PROTOCOL_DIR = path.join(
   process.cwd(),
@@ -8,7 +9,6 @@ const SLEEP_PROTOCOL_DIR = path.join(
   "go",
   "sleep-protocol"
 );
-const SLEEP_PROTOCOL_DATA_DIR = path.join(SLEEP_PROTOCOL_DIR, "data");
 
 export interface SleepProtocolDigestItem {
   title: string;
@@ -63,6 +63,17 @@ export interface SleepProtocolTip {
 
 export type SleepProtocolTips = Record<string, Record<string, SleepProtocolTip[]>>;
 
+let _client: SupabaseClient | null = null;
+
+function getClient(): SupabaseClient {
+  if (_client) return _client;
+  const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) throw new Error("Supabase env vars are not set");
+  _client = createClient(url, key);
+  return _client;
+}
+
 function readJsonFile<T>(filePath: string): T | null {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
@@ -71,60 +82,86 @@ function readJsonFile<T>(filePath: string): T | null {
   }
 }
 
-export function getAllSleepProtocolDates(): string[] {
-  if (!fs.existsSync(SLEEP_PROTOCOL_DATA_DIR)) {
-    return [];
-  }
-
-  return fs
-    .readdirSync(SLEEP_PROTOCOL_DATA_DIR)
-    .filter((file) => file.endsWith(".json"))
-    .map((file) => file.replace(/\.json$/, ""))
-    .sort()
-    .reverse();
+function rowToEntry(row: Record<string, unknown>): SleepProtocolEntry {
+  return {
+    slug: row.slug as string,
+    date: row.date as string | undefined,
+    meta_title: row.meta_title as string | undefined,
+    meta_description: row.meta_description as string | undefined,
+    title: row.title as string,
+    intro: row.intro as string,
+    keywords: row.keywords as string[] | undefined,
+    transcription_for_ai: row.transcription_for_ai as string | undefined,
+    audio_file: row.audio_file as string | undefined,
+    digest: row.digest as SleepProtocolDigestItem[],
+    actionables: row.actionables as SleepProtocolActionable[],
+  };
 }
 
-export function getAllSleepProtocols(): SleepProtocolEntry[] {
-  return getAllSleepProtocolDates()
-    .map((date) => getSleepProtocolByDate(date))
-    .filter((entry): entry is SleepProtocolEntry => Boolean(entry));
+export async function getAllSleepProtocolDates(): Promise<string[]> {
+  const { data, error } = await getClient()
+    .from("go_sleep_protocol_entries")
+    .select("date")
+    .eq("is_published", true)
+    .order("date", { ascending: false });
+
+  if (error || !data) return [];
+  return data.map((row) => row.date as string);
 }
 
-export function getSleepProtocolByDate(date: string): SleepProtocolEntry | null {
-  const entry = readJsonFile<SleepProtocolEntry>(
-    path.join(SLEEP_PROTOCOL_DATA_DIR, `${date}.json`)
-  );
+export async function getAllSleepProtocols(): Promise<SleepProtocolEntry[]> {
+  const { data, error } = await getClient()
+    .from("go_sleep_protocol_entries")
+    .select("*")
+    .eq("is_published", true)
+    .order("date", { ascending: false });
 
-  if (!entry) return null;
-  return { ...entry, date };
+  if (error || !data) return [];
+  return data.map(rowToEntry);
 }
 
-export function getSleepProtocolBySlug(slug: string): SleepProtocolEntry | null {
-  for (const date of getAllSleepProtocolDates()) {
-    const entry = getSleepProtocolByDate(date);
-    if (entry?.slug === slug) {
-      return entry;
-    }
-  }
+export async function getSleepProtocolByDate(date: string): Promise<SleepProtocolEntry | null> {
+  const { data, error } = await getClient()
+    .from("go_sleep_protocol_entries")
+    .select("*")
+    .eq("date", date)
+    .eq("is_published", true)
+    .single();
 
-  return null;
+  if (error || !data) return null;
+  return rowToEntry(data as Record<string, unknown>);
 }
 
-export function getSleepProtocolByEntry(entry: string): SleepProtocolEntry | null {
+export async function getSleepProtocolBySlug(slug: string): Promise<SleepProtocolEntry | null> {
+  const { data, error } = await getClient()
+    .from("go_sleep_protocol_entries")
+    .select("*")
+    .eq("slug", slug)
+    .eq("is_published", true)
+    .single();
+
+  if (error || !data) return null;
+  return rowToEntry(data as Record<string, unknown>);
+}
+
+export async function getSleepProtocolByEntry(entry: string): Promise<SleepProtocolEntry | null> {
   const isDate = /^\d{4}-\d{2}-\d{2}$/.test(entry);
   return isDate ? getSleepProtocolByDate(entry) : getSleepProtocolBySlug(entry);
 }
 
-export function getSleepProtocolStaticParams() {
+export async function getSleepProtocolStaticParams(): Promise<Array<{ date: string }>> {
+  const { data, error } = await getClient()
+    .from("go_sleep_protocol_entries")
+    .select("date, slug")
+    .eq("is_published", true);
+
+  if (error || !data) return [];
+
   const params: Array<{ date: string }> = [];
-
-  for (const date of getAllSleepProtocolDates()) {
-    const entry = getSleepProtocolByDate(date);
-    if (!entry) continue;
-    params.push({ date });
-    params.push({ date: entry.slug });
+  for (const row of data) {
+    params.push({ date: row.date as string });
+    params.push({ date: row.slug as string });
   }
-
   return params;
 }
 

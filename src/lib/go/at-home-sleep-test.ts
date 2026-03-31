@@ -1,17 +1,13 @@
-import fs from "fs";
-import path from "path";
-
-const AT_HOME_SLEEP_TEST_DIR = path.join(
-  process.cwd(),
-  "src",
-  "content",
-  "go",
-  "at-home-sleep-test",
-  "pages"
-);
-const FILE_PREFIX = "at-home-sleep-test-";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 export interface AtHomeSleepTestPageData {
+  slug?: string;
+  location_type?: "city" | "state";
+  formatted_location?: string;
+  city?: string;
+  state?: string;
+  state_slug?: string;
+  city_slug?: string;
   meta_title?: string;
   meta_description?: string;
   hero_headline?: string;
@@ -19,6 +15,10 @@ export interface AtHomeSleepTestPageData {
   hero_subtitle?: string;
   hero_primary_cta_anchor?: string;
   hero_primary_cta_link?: string;
+  hero_secondary_cta_anchor?: string;
+  hero_secondary_cta_link?: string;
+  hero_image_src?: string;
+  hero_image_alt?: string;
   quick_facts?: {
     headline?: string;
     title?: string;
@@ -32,8 +32,8 @@ export interface AtHomeSleepTestPageData {
     headline?: string;
     badge_text?: string;
     last_updated?: string;
-    medical_team?: Array<{ name: string }>;
-    scientific_team?: Array<{ name: string }>;
+    medical_team?: Array<{ name: string; imageSrc?: string; imageAlt?: string }>;
+    scientific_team?: Array<{ name: string; imageSrc?: string; imageAlt?: string }>;
     certifications?: string[];
     cta_text?: string;
     cta_link?: string;
@@ -44,6 +44,9 @@ export interface AtHomeSleepTestPageData {
   local_relevance_check_1?: string;
   local_relevance_check_2?: string;
   local_relevance_check_3?: string;
+  local_relevance_image_src?: string;
+  local_relevance_image_alt?: string;
+  local_relevance_reverse_flex?: boolean;
   how_it_works_headline?: string;
   how_it_works_title?: string;
   how_it_works_subtitle?: string;
@@ -60,6 +63,9 @@ export interface AtHomeSleepTestPageData {
   price_transparency_check_1?: string;
   price_transparency_check_2?: string;
   price_transparency_check_3?: string;
+  price_transparency_image_src?: string;
+  price_transparency_image_alt?: string;
+  price_transparency_reverse_flex?: boolean;
   trust_badges_headline?: string;
   trust_badges_title?: string;
   trust_badges_subtitle?: string;
@@ -68,6 +74,18 @@ export interface AtHomeSleepTestPageData {
   trust_badges_check_3?: string;
   trust_badges_check_4?: string;
   trust_badges_check_5?: string;
+  trust_badges_image_src?: string;
+  trust_badges_image_alt?: string;
+  trust_badges_reverse_flex?: boolean;
+  comparison_title?: string;
+  comparison_subtitle_1?: string;
+  comparison_subtitle_2?: string;
+  comparison_table_header?: string;
+  comparison_small_note?: string;
+  comparison_text_footer?: string;
+  comparison_cta_text?: string;
+  comparison_cta_link?: string;
+  comparison_data?: Array<{ category: string; traditional: string | boolean; dumbo: string | boolean }>;
   map_title?: string;
   map_subtitle?: string;
   map_cta_title?: string;
@@ -75,12 +93,24 @@ export interface AtHomeSleepTestPageData {
   map_phone_label?: string;
   map_features?: string[];
   map_schedule_text?: string;
+  bounding_box?: {
+    min_lat: string;
+    max_lat: string;
+    min_lon: string;
+    max_lon: string;
+    center_lat?: string;
+    center_lon?: string;
+    zoom?: string;
+  };
+  city_data?: { phone_number?: string; latitude?: number; longitude?: number; zoom?: number };
+  state_data?: { phone_number?: string; latitude?: number; longitude?: number; zoom?: number };
   testimonial_title?: string;
   testimonials?: Array<{
     quote: string;
     name: string;
     title?: string;
     credential?: string;
+    rating?: number;
   }>;
   testimonial_bottom_tagline?: string;
   faq_title?: string;
@@ -93,35 +123,44 @@ export interface AtHomeSleepTestPageData {
   cities_served?: Array<{
     text: string;
     link: string;
+    image_src?: string;
+    image_alt?: string;
   }>;
-  location_type?: "city" | "state";
-  formatted_location?: string;
-  final_url?: string;
+  solution_slug?: string;
+  interlink_heading?: { city_level?: string };
   [key: string]: unknown;
 }
 
-function readJsonFile<T>(filePath: string): T | null {
-  try {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
-  } catch {
-    return null;
-  }
+let _client: SupabaseClient | null = null;
+
+function getClient(): SupabaseClient {
+  if (_client) return _client;
+  const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) throw new Error("Supabase env vars are not set");
+  _client = createClient(url, key);
+  return _client;
 }
 
-export function getAllAtHomeSleepTestSlugs(): string[] {
-  if (!fs.existsSync(AT_HOME_SLEEP_TEST_DIR)) {
-    return [];
-  }
+export async function getAllAtHomeSleepTestSlugs(): Promise<string[]> {
+  const { data, error } = await getClient()
+    .from("go_at_home_sleep_test_pages")
+    .select("slug")
+    .eq("is_published", true)
+    .order("slug", { ascending: true });
 
-  return fs
-    .readdirSync(AT_HOME_SLEEP_TEST_DIR)
-    .filter((file) => file.startsWith(FILE_PREFIX) && file.endsWith(".json"))
-    .map((file) => file.replace(FILE_PREFIX, "").replace(/\.json$/, ""))
-    .sort();
+  if (error || !data) return [];
+  return data.map((row) => row.slug as string);
 }
 
-export function getAtHomeSleepTestPage(slug: string): AtHomeSleepTestPageData | null {
-  return readJsonFile<AtHomeSleepTestPageData>(
-    path.join(AT_HOME_SLEEP_TEST_DIR, `${FILE_PREFIX}${slug}.json`)
-  );
+export async function getAtHomeSleepTestPage(slug: string): Promise<AtHomeSleepTestPageData | null> {
+  const { data, error } = await getClient()
+    .from("go_at_home_sleep_test_pages")
+    .select("*")
+    .eq("slug", slug)
+    .eq("is_published", true)
+    .single();
+
+  if (error || !data) return null;
+  return data as AtHomeSleepTestPageData;
 }

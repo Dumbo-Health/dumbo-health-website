@@ -15,13 +15,13 @@ type PageProps = {
   }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return getSleepProtocolStaticParams();
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolved = await params;
-  const protocol = getSleepProtocolByEntry(resolved.date);
+  const protocol = await getSleepProtocolByEntry(resolved.date);
 
   if (!protocol) {
     return {
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function SleepProtocolDetailPage({ params }: PageProps) {
   const resolved = await params;
-  const protocol = getSleepProtocolByEntry(resolved.date);
+  const protocol = await getSleepProtocolByEntry(resolved.date);
 
   if (!protocol) {
     notFound();
@@ -93,7 +93,7 @@ export default async function SleepProtocolDetailPage({ params }: PageProps) {
               {protocol.audio_file ? (
                 <div className="mb-8">
                   <AudioPlayer
-                    src={`/go${protocol.audio_file}`}
+                    src={protocol.audio_file}
                     ariaLabel={`Listen to ${protocol.title}`}
                     title="Listen to this digest"
                     size="lg"

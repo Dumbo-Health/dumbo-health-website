@@ -29,13 +29,14 @@ type PageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return getAllAtHomeSleepTestSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getAllAtHomeSleepTestSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolved = await params;
-  const pageData = getAtHomeSleepTestPage(resolved.slug);
+  const pageData = await getAtHomeSleepTestPage(resolved.slug);
 
   if (!pageData) {
     return {
@@ -69,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function AtHomeSleepTestPage({ params }: PageProps) {
   const resolved = await params;
-  const pageData = getAtHomeSleepTestPage(resolved.slug);
+  const pageData = await getAtHomeSleepTestPage(resolved.slug);
 
   if (!pageData) {
     notFound();
