@@ -53,6 +53,10 @@
             {
                 "title": "Try therapist-guided online mindfulness therapy for chronic insomnia",
                 "description": "<p>If you've struggled with chronic insomnia for months, look for <strong>therapist-guided, internet-delivered mindfulness-based cognitive therapy for insomnia (iMBCT-I)</strong>. A February 2026 randomized trial in 82 adults found an 8-week program achieved a <strong>56.10% remission rate</strong> versus 17.07% for sleep hygiene education alone, with sustained benefits at 20-week follow-up (improved sleep quality, shorter sleep onset latency, better sleep efficiency). Over 90% of participants said they would recommend the program.</p><p>Combining mindfulness with CBT-I techniques via telehealth can be as effective as in-person care and improves access when specialists are scarce.</p>"
+            },
+            {
+                "title": "Set screen-free windows before bed for teenagers — social media use predicts shorter sleep",
+                "description": "<p>A March 2026 study confirmed a <strong>bidirectional relationship between social media use and shorter sleep in adolescents</strong>: teens who use more social media sleep less, and teens who sleep less use more social media the next day — creating a reinforcing loop. The effect was stronger in teens with higher brain reward sensitivity, suggesting some adolescents are neurologically more vulnerable to the habit-forming pull of social platforms.</p><p>Set a <strong>device-free window of at least 60 minutes before bed</strong>, and charge phones outside the bedroom overnight. The light, content stimulation, and social feedback loops of platforms are designed to be engaging at the exact time the brain needs to wind down. For teens who resist this, explain the bidirectional mechanism — social media doesn't just delay sleep, it also makes them reach for the phone more the next day.</p>"
             }
         ],
         "sleep_apnea": [
@@ -175,6 +179,14 @@
             {
                 "title": "Ask about cardiac phenotyping during sleep studies",
                 "description": "<p>When undergoing a sleep study, ask about <strong>detailed cardiac monitoring</strong> beyond the standard AHI. Research in Sleep (Oxford Academic, March 2026) showed that oxygen desaturation and arousals create distinct cardiac response signatures—RR intervals (time between heartbeats) differ depending on whether your apneas cause mainly oxygen drops versus sleep disruptions.</p><p>Understanding whether you have a \"hypoxemic phenotype\" or \"arousal phenotype\" could guide more personalized treatment strategies and help predict your cardiovascular versus neurocognitive risk profile. For healthcare providers: phenotyping OSA patients by dominant mechanism may inform treatment intensity decisions.</p>"
+            },
+            {
+                "title": "Understand how untreated OSA fuels stroke risk through brain inflammation",
+                "description": "<p>A March 2026 study found that <strong>67.5% of stroke patients have obstructive sleep apnea</strong>, yet most are never tested. The research identified a key biological pathway: untreated OSA activates the <strong>NLRP3 inflammasome</strong>, a molecular trigger that drives neuroinflammation, damages blood vessel walls, promotes clotting, and raises stroke risk.</p><p>This explains why treating OSA reduces stroke risk beyond just normalizing oxygen levels. If you or a family member has had a stroke or TIA, push for formal sleep apnea testing — the majority of stroke patients have it undetected. And if you already have OSA, CPAP adherence is one of the most modifiable brain-protection strategies available to you.</p>"
+            },
+            {
+                "title": "Get screened for OSA if you have bronchiectasis or chronic lung disease",
+                "description": "<p>A March 2026 study found that <strong>50.5% of patients with bronchiectasis</strong> (a chronic lung condition causing airway widening and infection) also have obstructive sleep apnea — yet OSA is rarely screened for in this population. Importantly, the risk factors were <strong>male sex and corticosteroid use, not obesity</strong>, which means standard OSA screening tools (which weight-adjust heavily) miss many of these patients.</p><p>If you have bronchiectasis, COPD, or other chronic lung conditions, ask for OSA screening even if you're not overweight. The combination of chronic airway inflammation and nighttime breathing disruption creates a compounding burden on your lungs and cardiovascular system. Both conditions treated together leads to better outcomes than managing either alone.</p>"
             }
         ],
         "children": [
@@ -225,6 +237,14 @@
             {
                 "title": "Seek multidisciplinary PAP programs for pediatric OSA",
                 "description": "<p>If your child has OSA and needs PAP therapy, look for <strong>interdisciplinary programs</strong> that offer ongoing support and follow-up. A March 2026 study (Linares et al., Frontiers in Sleep) described a Brazilian public sleep clinic program based on Philadelphia's CPAP Program, designed to optimize adaptation time, increase adherence rates, and reduce costs for pediatric patients (ages 1-18).</p><p>Don't accept \"kids won't wear the mask\" as the final answer. Structured team-based approaches—combining sleep medicine, psychology, and regular follow-up—can dramatically improve pediatric PAP adherence. Ask your pediatrician or sleep specialist about multidisciplinary programs rather than one-off device fittings.</p>"
+            },
+            {
+                "title": "Try behavioral sleep interventions first for children with autism or ADHD",
+                "description": "<p>Children with neurodevelopmental conditions like autism and ADHD have sleep problems at far higher rates than other kids, yet families often wait years for help. A March 2026 review confirmed that <strong>behavioral sleep interventions (BSI)</strong> — including structured bedtime routines, graduated extinction, and parent-education programs — are highly effective and should be the first-line treatment before medications.</p><p>If your child has autism, ADHD, or a similar diagnosis and struggles with sleep, ask your pediatrician specifically about a <strong>behavioral sleep program</strong>. These approaches address hyperarousal, sensory sensitivities, and family patterns that drive the sleep problems without relying on sedatives. Untreated sleep disruption worsens daytime behavior, learning, and family stress.</p>"
+            },
+            {
+                "title": "Treat OSA in children to support their sleep-based temperature regulation",
+                "description": "<p>A March 2026 study found that <strong>pediatric OSA disrupts thermoregulation during sleep</strong> — the normal process by which the body drops core temperature to initiate and maintain deep sleep. Children with untreated OSA show abnormal thermal patterns that interfere with sleep quality beyond just breathing interruptions.</p><p>This adds to the growing evidence that OSA in children is a whole-body disorder, not just an airway problem. If your child has OSA symptoms (snoring, mouth breathing, restless sleep, bedwetting, behavioral issues), treatment isn't just about the breathing — it restores multiple sleep regulatory systems that affect growth, immune function, and brain development.</p>"
             }
         ],
         "positioning": [
@@ -389,6 +409,14 @@
             {
                 "title": "Use sleep to mitigate neurodegeneration risk",
                 "description": "<p>Quality sleep plays a critical role in <strong>brain health and may reduce the risk of neurodegenerative diseases</strong> like Alzheimer's. During deep sleep, the brain clears metabolic waste (including amyloid-beta, associated with Alzheimer's). Disrupted sleep impairs this clearance process.</p><p>For older adults with sleep apnea, this makes CPAP treatment especially important, untreated apnea fragments deep sleep and may increase neurodegeneration risk. Effective CPAP treatment restores deep sleep, supporting the brain's natural cleaning processes. Treating sleep apnea isn't just about sleep quality, it may be protective for long-term brain health.</p>"
+            },
+            {
+                "title": "If you have Parkinson's, avoid excessive time in bed — sleep quality matters more than duration",
+                "description": "<p>A March 2026 study found that <strong>long sleep duration (≥8 hours) in Parkinson's disease patients was associated with significantly higher mortality risk</strong>. Unlike the general population where 7-8 hours is protective, Parkinson's patients appear to face a different relationship between sleep quantity and outcomes.</p><p>This likely reflects that excessive sleep in Parkinson's is a marker of disease progression, autonomic dysfunction, or nighttime breathing problems like REM sleep behavior disorder, rather than being restorative. If you or a loved one has Parkinson's and is sleeping excessively, <strong>discuss this with a neurologist</strong> — it may signal undertreated symptoms, medication side effects, or an undiagnosed sleep disorder that needs attention.</p>"
+            },
+            {
+                "title": "Know that sleep spindles decline with age — and why this matters for your memory",
+                "description": "<p>A March 2026 study showed that <strong>sleep spindles — brief bursts of brain activity during NREM sleep crucial for memory consolidation — naturally decline with age</strong>. The research also found that women have significantly stronger sleep spindles than men across all ages, which may partly explain sex differences in memory and cognitive aging.</p><p>Sleep spindles are disrupted by OSA (through oxygen drops and arousals), sleep fragmentation, and many common medications. If you're over 50, protecting your sleep architecture is not just about feeling rested — it's about preserving the neurological processes that consolidate new information and flush out brain waste. Treating OSA, avoiding sedating medications at night, and maintaining consistent deep sleep are your best tools.</p>"
             }
         ],
         "governance": [

@@ -1,4 +1,21 @@
 {
+    "2026-03-28": {
+        "title": "Sleep Science This Week: March 22-28, 2026",
+        "changes": [
+            "Added 'Get screened for OSA if you have bronchiectasis or chronic lung disease' tip in sleep_apnea section - March 2026 study found 50.5% OSA prevalence in bronchiectasis patients; male sex and corticosteroid use (not obesity) are the key risk factors",
+            "Added 'Know that sleep spindles decline with age — and why this matters for your memory' tip in aging section - March 2026 research showed sleep spindles decrease with age and are stronger in women; OSA disrupts spindles, compounding memory and cognitive aging risk",
+            "Added 'Treat OSA in children to support their sleep-based temperature regulation' tip in children section - March 2026 study found pediatric OSA disrupts thermoregulation during sleep, affecting sleep quality beyond just breathing interruptions",
+            "Added 'Set screen-free windows before bed for teenagers — social media use predicts shorter sleep' tip in schedule section - March 2026 study confirmed bidirectional relationship between social media and adolescent sleep duration, moderated by brain reward sensitivity"
+        ]
+    },
+    "2026-03-21": {
+        "title": "Sleep Science This Week: March 15-21, 2026",
+        "changes": [
+            "Added 'Try behavioral sleep interventions first for children with autism or ADHD' tip in children section - March 2026 review confirmed BSI (structured bedtime routines, graduated extinction, parent-education programs) as effective first-line treatment before medications for NDD children",
+            "Added 'Understand how untreated OSA fuels stroke risk through brain inflammation' tip in sleep_apnea section - March 2026 study found 67.5% of stroke patients have OSA; NLRP3 inflammasome neuroinflammation pathway identified as key mechanism linking untreated OSA to stroke risk",
+            "Added 'If you have Parkinson's, avoid excessive time in bed — sleep quality matters more than duration' tip in aging section - March 2026 study found long sleep duration (≥8 hours) in Parkinson's patients associated with higher mortality risk, likely reflecting disease progression or undiagnosed comorbid sleep disorders"
+        ]
+    },
     "2026-03-14": {
         "title": "Sleep Science This Week: March 8-14, 2026",
         "changes": [
