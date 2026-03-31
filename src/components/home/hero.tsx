@@ -107,7 +107,7 @@ export function HomeHero() {
   const fromAnim = useRef(false);
 
   useEffect(() => {
-    const played = sessionStorage.getItem("hero-played");
+    const played = localStorage.getItem("hero-played");
     if (played) {
       setBeat(4);
       return;
@@ -116,7 +116,7 @@ export function HomeHero() {
     fromAnim.current = true;
     // Set the guard immediately — any remount (HMR, Strict Mode, error boundary)
     // will find the key already set and jump directly to beat 4 instead of looping.
-    sessionStorage.setItem("hero-played", "true");
+    localStorage.setItem("hero-played", "true");
     setBeat(0);
     const timers = [
       setTimeout(() => { if (!cancelled) setBeat(1); }, T_Q1),
