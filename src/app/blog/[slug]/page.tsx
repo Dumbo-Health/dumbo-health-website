@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { getBlogPostBySlug, getRelatedPosts } from "@/lib/supabase";
+import { blogPostSchema } from "@/lib/schemas";
 import { notFound } from "next/navigation";
 import { parseHeadings, injectHeadingIds } from "@/lib/reading-time";
 import { ReadingProgress } from "@/components/blog/reading-progress";
@@ -67,6 +68,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            blogPostSchema({
+              title: post.title,
+              slug: post.slug,
+              excerpt: post.short_description || "",
+              publishedAt: post.published_at || new Date().toISOString(),
+              updatedAt: post.updated_at,
+              featuredImage: post.main_image,
+              author: author?.name,
+            })
+          ),
+        }}
+      />
       <Navbar />
       <ReadingProgress />
       <main className="bg-daylight">
