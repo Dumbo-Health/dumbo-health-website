@@ -17,7 +17,7 @@ export function Availability() {
       {/* Lifeline */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/uploads/Vector-2.png"
+        src="/uploads/Vector-2.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-0 w-full"

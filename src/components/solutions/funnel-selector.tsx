@@ -48,7 +48,7 @@ const cards = [
     headline: "I have a CPAP but I still feel alone in this.",
     body: "The device is there and you're using it. But supplies run out, data makes no sense, and no one checks in. You deserve real support.",
     cta: "Transfer my care",
-    ctaNote: "Bring your prescription.",
+    ctaNote: "Coming soon.",
     bg: "#FCF6ED",
     border: "rgba(3,31,61,0.12)",
     hoverBorder: "rgba(3,31,61,0.22)",
@@ -143,7 +143,7 @@ export function FunnelSelector() {
       {/* Lifeline — peach wave, sits inside the bottom fade */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/uploads/Vector-4.png"
+        src="/uploads/Vector-4.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-0 w-full"

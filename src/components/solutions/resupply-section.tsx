@@ -1,9 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
 
 const pillars = [
   {
@@ -40,13 +37,20 @@ export function ResupplySection() {
           <p className="mx-auto mt-5 font-body text-midnight/65 text-balance" style={{ fontSize: "1.125rem", maxWidth: "50ch" }}>
             Don't want to migrate your device? No problem. Dumbo uses your CPAP usage data to send supplies at exactly the right time, not on a fixed schedule. Less waste, lower cost, better results.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 h-12 rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl hover:shadow-midnight/20 active:translate-y-0 active:shadow-md"
-          >
-            <Link href={APP_URL}>Join the resupply program</Link>
-          </Button>
+          <div className="mt-8 inline-flex items-center gap-3">
+            <span
+              className="inline-flex items-center gap-2 rounded-lg px-5 py-3 font-body text-sm font-bold uppercase tracking-wider"
+              style={{ backgroundColor: "rgba(3,31,61,0.07)", color: "rgba(3,31,61,0.35)", cursor: "default" }}
+            >
+              Join the resupply program
+            </span>
+            <span
+              className="inline-flex items-center rounded-full px-3 py-1 font-mono text-xs uppercase tracking-widest"
+              style={{ backgroundColor: "rgba(120,191,188,0.15)", color: "#5a9e9b" }}
+            >
+              Coming Soon
+            </span>
+          </div>
         </motion.div>
 
         <motion.div

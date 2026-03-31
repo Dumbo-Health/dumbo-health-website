@@ -18,7 +18,7 @@ export function JourneySteps() {
       {/* Lifeline — light peach active wave, mid-section */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/uploads/Vector-2.png"
+        src="/uploads/Vector-2.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-0 w-full"
@@ -186,14 +186,14 @@ export function JourneySteps() {
                     Buy outright or start with a monthly plan. No large upfront cost required.
                   </p>
                 </div>
-                <div className="rounded-xl border border-sunlight bg-daylight p-5">
+                <Link href="/cpap#plans" className="block rounded-xl border border-sunlight bg-daylight p-5 transition-colors hover:border-teal/40">
                   <p className="font-body text-base font-bold uppercase tracking-wider text-teal">
                     Oral Appliance
                   </p>
                   <p className="mt-2 font-body text-sm text-midnight/65">
                     A comfortable alternative for those who qualify. No mask, no machine.
                   </p>
-                </div>
+                </Link>
               </div>
               <Button
                 asChild

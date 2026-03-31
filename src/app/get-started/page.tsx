@@ -1269,9 +1269,11 @@ function ResultsPage({
               <p style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", color: "rgba(3,31,61,0.55)", lineHeight: 1.65, maxWidth: 400, margin: "0 auto 32px" }}>
                 {waitlist.body}
               </p>
-              <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500, fontSize: "1rem" }}>
-                You&apos;re on the list. We&apos;ll reach out the moment we launch in your state.
-              </p>
+              {(answers["email-dx"] || answers["email"]) && (
+                <p style={{ fontFamily: "var(--font-body)", color: "#78BFBC", fontWeight: 500, fontSize: "1rem" }}>
+                  You&apos;re on the list. We&apos;ll reach out the moment we launch in your state.
+                </p>
+              )}
             </div>
           </ResultBlock>
         ) : (
@@ -1359,7 +1361,7 @@ function ResultsPage({
                 {/* ── Trust strip ── */}
                 <ResultBlock delay={0.95}>
                   <div style={{ padding: "22px 24px", backgroundColor: "rgba(120,191,188,0.07)", border: "1px solid rgba(120,191,188,0.18)", borderRadius: 20, display: "flex", flexWrap: "wrap", gap: 12 }}>
-                    {["Sleep physicians you can talk to", "FDA-cleared devices", "Insurance billing handled for you", "Your data is always private"].map((item) => (
+                    {["Sleep physicians you can talk to", "FDA-cleared devices", "Your data is always private"].map((item) => (
                       <span key={item} style={{ display: "flex", alignItems: "center", gap: 7, fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "rgba(3,31,61,0.55)" }}>
                         <span style={{ color: "#78BFBC", fontWeight: 600 }}>✓</span>
                         {item}

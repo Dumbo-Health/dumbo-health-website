@@ -58,6 +58,7 @@ const STEPS = [
     cta: "Learn about resupply",
     href: "/resupply",
     image: "/images/people/man-with-pillows.png",
+    comingSoon: true,
   },
 ];
 
@@ -261,16 +262,33 @@ function StepCard({
             transition={{ duration: 0.4, ease: EASE, delay: 0.38 }}
             className="mt-8"
           >
-            <Link
-              href={step.href}
-              className="group inline-flex items-center gap-2 font-body text-sm font-bold transition-opacity duration-200 hover:opacity-50"
-              style={{ color: "#031F3D" }}
-            >
-              {step.cta}
-              <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            {(step as typeof step & { comingSoon?: boolean }).comingSoon ? (
+              <div className="inline-flex items-center gap-3">
+                <span
+                  className="inline-flex items-center gap-2 rounded-lg px-5 py-3 font-body text-sm font-bold uppercase tracking-wider"
+                  style={{ backgroundColor: "rgba(3,31,61,0.07)", color: "rgba(3,31,61,0.35)", cursor: "default" }}
+                >
+                  {step.cta}
+                </span>
+                <span
+                  className="inline-flex items-center rounded-full px-3 py-1 font-mono text-xs uppercase tracking-widest"
+                  style={{ backgroundColor: "rgba(120,191,188,0.15)", color: "#5a9e9b" }}
+                >
+                  Coming Soon
+                </span>
+              </div>
+            ) : (
+              <Link
+                href={step.href}
+                className="group inline-flex items-center gap-2 font-body text-sm font-bold transition-opacity duration-200 hover:opacity-50"
+                style={{ color: "#031F3D" }}
+              >
+                {step.cta}
+                <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            )}
           </motion.div>
         </div>
 

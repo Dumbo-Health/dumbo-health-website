@@ -14,7 +14,7 @@ export function DotFinalCta() {
       {/* Wave texture */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/uploads/Vector-1.png"
+        src="/uploads/Vector-1.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-0 w-full"
