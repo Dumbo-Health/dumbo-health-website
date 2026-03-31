@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer";
 import { SymptomPageTemplate } from "@/components/symptom/symptom-page-template";
 import { SYMPTOM_PAGES } from "@/content/symptom-pages";
 import { medicalWebPageSchema } from "@/lib/schemas";
+import { SITE_URL } from "@/lib/constants";
 
 const page = SYMPTOM_PAGES.find((p) => p.slug === "always-tired")!;
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Dumbo Health",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: page.seoTitle }],
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: page.seoTitle }],
   },
   twitter: {
     card: "summary_large_image",
