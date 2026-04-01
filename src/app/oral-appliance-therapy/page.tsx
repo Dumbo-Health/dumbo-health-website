@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import { OralHero } from "@/components/oral-appliance/oral-hero";
 import { OralQualifier } from "@/components/oral-appliance/oral-qualifier";
 import { OralHowItWorks } from "@/components/oral-appliance/oral-how-it-works";
@@ -17,7 +19,9 @@ export const metadata: Metadata = {
 
 export default function OralApplianceTherapyPage() {
   return (
-    <main>
+    <>
+      <Navbar />
+      <main>
       <OralHero />
       <OralQualifier />
       <OralHowItWorks />
@@ -27,6 +31,8 @@ export default function OralApplianceTherapyPage() {
       <OralComparison />
       <OralFaq />
       <OralCta />
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

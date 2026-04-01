@@ -15,9 +15,10 @@ const INCLUDED = [
 ];
 
 const COST_COMPARE = [
-  { label: "Oral appliance therapy (one-time)", value: "$3,490" },
-  { label: "CPAP machine + supplies, year one", value: "~$1,500" },
-  { label: "CPAP machine + supplies, three years", value: "~$3,200" },
+  { label: "Oral appliance therapy (one-time)", value: "$3,490", highlight: false },
+  { label: "CPAP machine + supplies, year one", value: "~$1,500", highlight: false },
+  { label: "CPAP machine + supplies, three years", value: "~$3,200", highlight: false },
+  { label: "CPAP therapy with Dumbo Health", value: "from $2/day", sub: "less than $60/mo", highlight: true },
 ];
 
 export function OralPricing() {
@@ -140,35 +141,55 @@ export function OralPricing() {
               >
                 Cost in context
               </p>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {COST_COMPARE.map((row, i) => (
                   <li
                     key={row.label}
-                    className="flex items-baseline justify-between gap-4"
-                    style={{
-                      paddingBottom: i < COST_COMPARE.length - 1 ? "1rem" : 0,
-                      borderBottom:
-                        i < COST_COMPARE.length - 1
-                          ? "1px solid rgba(3,31,61,0.07)"
-                          : "none",
-                    }}
+                    className="flex items-center justify-between gap-4 rounded-xl px-4 py-3"
+                    style={
+                      row.highlight
+                        ? {
+                            backgroundColor: "rgba(255,131,97,0.08)",
+                            border: "1px solid rgba(255,131,97,0.22)",
+                          }
+                        : {
+                            borderBottom:
+                              i < COST_COMPARE.length - 2
+                                ? "1px solid rgba(3,31,61,0.07)"
+                                : "none",
+                          }
+                    }
                   >
                     <span
                       className="font-body"
                       style={{
                         fontSize: "0.9375rem",
-                        color: "rgba(3,31,61,0.65)",
+                        color: row.highlight ? "#FF8361" : "rgba(3,31,61,0.65)",
                         lineHeight: 1.4,
+                        fontWeight: row.highlight ? 600 : 400,
                       }}
                     >
                       {row.label}
                     </span>
-                    <span
-                      className="font-heading font-medium text-midnight shrink-0"
-                      style={{ fontSize: "1.125rem" }}
-                    >
-                      {row.value}
-                    </span>
+                    <div className="text-right shrink-0">
+                      <span
+                        className="font-heading font-medium block"
+                        style={{
+                          fontSize: "1.125rem",
+                          color: row.highlight ? "#FF8361" : "#031F3D",
+                        }}
+                      >
+                        {row.value}
+                      </span>
+                      {"sub" in row && row.sub && (
+                        <span
+                          className="font-body"
+                          style={{ fontSize: "0.75rem", color: "rgba(255,131,97,0.7)" }}
+                        >
+                          {row.sub}
+                        </span>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>

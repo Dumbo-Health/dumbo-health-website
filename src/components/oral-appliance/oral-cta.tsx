@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CONTACT } from "@/lib/constants";
+import { APP_URL, CONTACT } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -9,31 +9,31 @@ export function OralCta() {
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
+      style={{ backgroundColor: "#F5E6D1", isolation: "isolate" }}
     >
-      {/* Wave texture */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/uploads/Vector-1.svg"
-        alt=""
+      {/* Soft dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0"
         aria-hidden="true"
-        className="pointer-events-none select-none absolute left-0 w-full"
         style={{
-          top: "50%",
-          transform: "translateY(-50%)",
-          opacity: 0.05,
-          zIndex: 0,
+          backgroundImage:
+            "radial-gradient(circle, rgba(3,31,61,0.07) 1.5px, transparent 1.5px)",
+          backgroundSize: "28px 28px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 20%, black 100%)",
+          maskImage:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 20%, black 100%)",
         }}
       />
 
-      {/* Warm glow */}
+      {/* Peach glow */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0"
         aria-hidden="true"
         style={{
-          height: "50%",
+          height: "60%",
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,131,97,0.14) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,131,97,0.1) 0%, transparent 70%)",
           zIndex: 0,
         }}
       />
@@ -58,7 +58,7 @@ export function OralCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.65, ease: EASE, delay: 0.07 }}
-          className="font-heading font-medium text-white text-balance mx-auto"
+          className="font-heading font-medium text-midnight text-balance mx-auto"
           style={{
             fontSize: "clamp(2.4rem, 5vw, 4rem)",
             lineHeight: 1.06,
@@ -80,7 +80,7 @@ export function OralCta() {
           style={{
             fontSize: "clamp(1.125rem, 1.3vw, 1.3125rem)",
             lineHeight: 1.75,
-            color: "rgba(252,246,237,0.65)",
+            color: "rgba(3,31,61,0.62)",
             maxWidth: "46ch",
           }}
         >
@@ -95,8 +95,8 @@ export function OralCta() {
           transition={{ duration: 0.5, ease: EASE, delay: 0.25 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <button
-            type="button"
+          <a
+            href={APP_URL}
             className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
             style={{
               backgroundColor: "#FF8361",
@@ -107,14 +107,14 @@ export function OralCta() {
             }}
           >
             Get Started
-          </button>
+          </a>
 
           <a
             href={CONTACT.phoneTel}
             className="inline-flex items-center justify-center gap-2 rounded-[12px] font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
             style={{
-              border: "1px solid rgba(252,246,237,0.2)",
-              color: "rgba(252,246,237,0.75)",
+              border: "1px solid rgba(3,31,61,0.15)",
+              color: "rgba(3,31,61,0.7)",
               height: "52px",
               paddingLeft: "2rem",
               paddingRight: "2rem",
@@ -142,7 +142,7 @@ export function OralCta() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-7 font-body"
-          style={{ fontSize: "0.8125rem", color: "rgba(252,246,237,0.35)" }}
+          style={{ fontSize: "0.8125rem", color: "rgba(3,31,61,0.35)" }}
         >
           HIPAA compliant · Board-certified physicians · 3-year device guarantee
         </motion.p>
