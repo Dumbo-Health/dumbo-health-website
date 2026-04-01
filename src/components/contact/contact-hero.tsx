@@ -12,7 +12,7 @@ const t = (delay = 0) => ({ ease: EASE, duration: 0.65, delay });
 export function ContactHero() {
   return (
     <section
-      className="relative overflow-hidden bg-daylight"
+      className="relative overflow-hidden"
       style={{ padding: "80px 5% 72px" }}
     >
       {/* Gradient blobs */}

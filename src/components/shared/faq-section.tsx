@@ -12,14 +12,15 @@ interface FAQSectionProps {
   limit?: number;
   showCta?: boolean;
   categories?: string[];
+  className?: string;
 }
 
-export function FAQSection({ limit = 5, showCta = true, categories }: FAQSectionProps) {
+export function FAQSection({ limit = 5, showCta = true, categories, className }: FAQSectionProps) {
   const filtered = categories ? faqs.filter((f) => categories.includes(f.category)) : faqs;
   const displayFaqs = filtered.slice(0, limit);
 
   return (
-    <section className="bg-daylight py-20 md:py-28">
+    <section className={className ?? "bg-daylight py-20 md:py-28"}>
       <div style={{ padding: "0 5%" }}>
         <div className="text-center">
           <p className="mb-5 font-mono text-xs uppercase tracking-widest text-teal">
