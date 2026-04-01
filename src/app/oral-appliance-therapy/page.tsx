@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default function OralApplianceTherapyPage() {
+  if (process.env.NEXT_PUBLIC_HIDE_ORAL_APPLIANCE === "true") {
+    notFound();
+  }
+
   return (
     <>
       <Navbar />
