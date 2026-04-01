@@ -2,7 +2,7 @@ import { trustIndicators } from "@/content/trust-indicators";
 
 export function TrustMarquee() {
   return (
-    <section className="overflow-hidden border-y border-sunlight py-4" style={{ backgroundColor: "rgba(245,230,209,0.5)" }}>
+    <section className="overflow-hidden border-y border-sunlight py-4" style={{ backgroundColor: "#F5E6D1" }}>
       <div className="flex w-max animate-marquee items-center gap-8">
         {[...trustIndicators, ...trustIndicators].map((item, i) => (
           <div

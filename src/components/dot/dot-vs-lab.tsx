@@ -37,7 +37,7 @@ export function DotVsLab() {
     <section
       className="relative py-20 md:py-24"
       style={{
-        background: "linear-gradient(to bottom, #F5E6D1 0%, #F5E6D1 70%, #FCF6ED 100%)",
+        background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 50%, #FCF6ED 100%)",
       }}
     >
       <div style={{ padding: "0 5%" }}>
