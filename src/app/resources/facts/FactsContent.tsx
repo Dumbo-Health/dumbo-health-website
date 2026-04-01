@@ -190,7 +190,7 @@ function TheHook() {
           transition={{ duration: 0.6, delay: 0.55, ease: EASE }}
           className="mt-10 flex flex-wrap justify-center gap-3"
         >
-          {["30M Americans affected", "80% undiagnosed", "Treatable in days"].map(
+          {["80M Americans affected", "80% undiagnosed", "Treatable in days"].map(
             (chip) => (
               <span
                 key={chip}
@@ -395,7 +395,7 @@ function WhatIsSleepApnea() {
                     className="font-heading font-medium text-midnight"
                     style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1 }}
                   >
-                    30M
+                    80M
                   </p>
                   <p
                     className="font-mono uppercase tracking-widest mt-1"
