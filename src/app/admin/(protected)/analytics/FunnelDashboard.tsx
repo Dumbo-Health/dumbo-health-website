@@ -103,7 +103,7 @@ function FlowFunnel({ flow, color }: { flow: FunnelFlowStats; color: string }) {
               />
               <Tooltip
                 cursor={{ fill: "rgba(0,0,0,0.04)" }}
-                formatter={(val: number | string | undefined) => [val ?? 0, "sessions reached"]}
+                formatter={(val) => [val ?? 0, "sessions reached"] as [number, string]}
                 contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid #e5e7eb" }}
               />
               <Bar dataKey="reached" radius={[0, 4, 4, 0]} maxBarSize={24}>
