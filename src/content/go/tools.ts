@@ -99,4 +99,34 @@ export const goTools: GoTool[] = [
     href: "/go/tools/ess-calculator",
     available: true,
   },
+  {
+    id: "stop-bang",
+    title: "STOP-BANG Questionnaire",
+    description:
+      "Answer 8 clinically validated yes/no questions to assess your risk for obstructive sleep apnea — the same screening tool used by sleep specialists.",
+    category: "Sleep Analysis",
+    icon: "🔍",
+    href: "/go/tools/stop-bang",
+    available: true,
+  },
+  {
+    id: "sleep-study-explainer",
+    title: "Sleep Study Results Explainer",
+    description:
+      "Enter your AHI, oxygen nadir, and sleep efficiency and get a plain-English breakdown of what your sleep study numbers actually mean.",
+    category: "Sleep Analysis",
+    icon: "📋",
+    href: "/go/tools/sleep-study-explainer",
+    available: true,
+  },
+  {
+    id: "bedtime-routine-builder",
+    title: "Bedtime Routine Builder",
+    description:
+      "Answer 5 questions about your sleep habits and get a personalized wind-down routine with exact times to help you fall asleep faster tonight.",
+    category: "Sleep Hygiene",
+    icon: "🌙",
+    href: "/go/tools/bedtime-routine-builder",
+    available: true,
+  },
 ];
