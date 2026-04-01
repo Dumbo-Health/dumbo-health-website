@@ -13,14 +13,14 @@ import { getBlogPosts } from "@/lib/supabase";
 const baseUrl = "https://www.dumbo.health";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const sleepProtocolPages = getAllSleepProtocols().map((protocol) => ({
+  const sleepProtocolPages = (await getAllSleepProtocols()).map((protocol) => ({
     url: `${baseUrl}/go/sleep-protocol/${protocol.slug}`,
     lastModified: protocol.date ? new Date(protocol.date) : new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
-  const atHomeSleepTestPages = getAllAtHomeSleepTestSlugs().map((slug) => ({
+  const atHomeSleepTestPages = (await getAllAtHomeSleepTestSlugs()).map((slug) => ({
     url: `${baseUrl}/go/at-home-sleep-test/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
