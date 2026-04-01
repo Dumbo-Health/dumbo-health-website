@@ -139,24 +139,6 @@ export function ContactHero() {
               priority
             />
           </div>
-          {/* Floating trust pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={t(0.6)}
-            className="absolute -bottom-4 -left-4 flex items-center gap-3 rounded-[16px] bg-white px-5 py-3.5"
-            style={{ boxShadow: "0 8px 32px rgba(3,31,61,0.10)" }}
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal/20">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#78BFBC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </span>
-            <div>
-              <p className="font-body text-sm font-bold text-midnight">Real humans, real answers</p>
-              <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.5)" }}>No bots. No automated queues.</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
