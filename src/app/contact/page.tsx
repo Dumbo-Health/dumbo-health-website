@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { ContactHero } from "@/components/contact/contact-hero";
 import { ContactCards } from "@/components/contact/contact-card";
-import { ContactForm } from "@/components/contact/contact-form";
 import { FAQSection } from "@/components/shared/faq-section";
 import { BottomCTA } from "@/components/shared/bottom-cta";
 import { ServiceAreaBanner } from "@/components/shared/service-area-banner";
@@ -21,64 +21,53 @@ export default function ContactPage() {
     <>
       <Navbar />
       <main>
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h1
-            className="font-heading font-medium text-midnight text-center mb-12"
-            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
-          >
-            Contact Dumbo Health
-          </h1>
-          <ContactCards />
-        </div>
-      </section>
+        <ContactHero />
 
-      <section className="bg-sunlight py-12 sm:py-16">
-        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="font-heading font-medium text-midnight mb-2"
-            style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
-          >
-            Are you already a Dumbo Health Patient?
-          </h2>
-          <p className="font-body text-base text-midnight/70 mb-6" style={{ maxWidth: "44ch", margin: "0 auto 1.5rem" }}>
-            Log in for help tailored to your treatment, account, and more.
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Button variant="outline" asChild>
-              <a href={`${APP_URL}/login`}>Login</a>
-            </Button>
-            <Button asChild>
-              <a href={APP_URL}>Start Now</a>
-            </Button>
+        {/* Contact cards */}
+        <section className="bg-daylight pb-20 pt-4">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <ContactCards />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="bg-daylight py-16 sm:py-24">
-        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2
-              className="font-heading font-medium text-midnight mb-2"
-              style={{ fontSize: "clamp(2.4rem, 4vw, 3.5rem)" }}
-            >
-              Let&apos;s talk!
-            </h2>
-            <h3
-              className="font-heading font-medium text-midnight/70 mb-2"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
-            >
-              Tell us what you need
-            </h3>
-            <p className="font-body text-base text-midnight/70">Write to us, we&apos;re here to help</p>
+        {/* Patient section */}
+        <section className="bg-midnight py-16 sm:py-20">
+          <div
+            className="mx-auto flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"
+            style={{ maxWidth: "900px", padding: "0 5%" }}
+          >
+            <div>
+              <h2
+                className="font-heading font-medium text-white"
+                style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}
+              >
+                Already a Dumbo Health patient?
+              </h2>
+              <p className="mt-2 font-body text-base" style={{ color: "rgba(252,246,237,0.55)", maxWidth: "42ch" }}>
+                Log in for support tailored to your treatment, account, and device.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-3">
+              <Button
+                variant="outline"
+                asChild
+                className="rounded-[12px] border-white/20 bg-transparent font-body text-sm font-bold uppercase tracking-wider text-white hover:bg-white/10 hover:border-white/40"
+              >
+                <a href={`${APP_URL}/login`}>Log in</a>
+              </Button>
+              <Button
+                asChild
+                className="rounded-[12px] bg-peach font-body text-sm font-bold uppercase tracking-wider text-white hover:bg-peach/90"
+              >
+                <a href={APP_URL}>Get started</a>
+              </Button>
+            </div>
           </div>
-          <ContactForm />
-        </div>
-      </section>
+        </section>
 
-      <ServiceAreaBanner />
-      <FAQSection />
-      <BottomCTA />
+        <ServiceAreaBanner />
+        <FAQSection />
+        <BottomCTA />
       </main>
       <Footer />
     </>
