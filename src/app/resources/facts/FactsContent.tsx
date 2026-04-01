@@ -441,8 +441,8 @@ function WhatIsSleepApnea() {
               }}
             >
               <Image
-                src="/images/people/man-smiling-in-bed-1.png"
-                alt="Person resting well"
+                src="/images/people/man-waking-up.png"
+                alt="Man waking up refreshed"
                 fill
                 className="object-cover"
                 sizes="45vw"
