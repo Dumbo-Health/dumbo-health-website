@@ -16,6 +16,11 @@ const pages = [
     path: "/get-your-at-home-sleep-apnea-test",
     description: "General consumer landing page for the HST product.",
   },
+  {
+    title: "Oral Appliance Therapy",
+    path: "/oral-appliance-therapy",
+    description: "Treatment page for mild to low-moderate sleep apnea patients.",
+  },
 ];
 
 export default function InternalPage() {

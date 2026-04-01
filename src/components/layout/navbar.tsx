@@ -110,6 +110,17 @@ function IconCalendar() {
   );
 }
 
+function IconOralAppliance() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9c0 0 2-2 9-2s9 2 9 2v3c0 4.5-4 7-9 7s-9-2.5-9-7V9z" />
+      <line x1="8" y1="9" x2="8" y2="12" />
+      <line x1="12" y1="7" x2="12" y2="10" />
+      <line x1="16" y1="9" x2="16" y2="12" />
+    </svg>
+  );
+}
+
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
@@ -152,9 +163,10 @@ const SOLUTIONS_GROUPS: { title: string; items: NavItem[] }[] = [
     ],
   },
   {
-    title: "CPAP Therapies",
+    title: "Treatments",
     items: [
       { label: "CPAP Therapy",  href: "/cpap",       Icon: IconCPAP,     description: "Start treatment with expert guidance" },
+      { label: "Oral Appliance Therapy", href: "/oral-appliance-therapy", Icon: IconOralAppliance, description: "A custom device for mild to moderate sleep apnea" },
       ...(process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE !== "true" ? [{ label: "CPAP Care", href: "/cpap-care", Icon: IconSupport, description: "Ongoing support for CPAP users" }] : []),
       ...(process.env.NEXT_PUBLIC_HIDE_RESUPPLY_PAGE !== "true" ? [{ label: "CPAP Resupply", href: "/resupply", Icon: IconResupply, description: "Automatic replacement of your supplies" }] : []),
     ],
