@@ -66,7 +66,7 @@ export function HomeHero() {
             className="font-heading text-[44px] font-medium leading-[1.08] text-midnight sm:text-[56px] lg:text-[68px] lg:leading-[1.05]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ ease: EASE, duration: 0.75, delay: 0.1 }}
+            transition={{ ease: EASE, duration: 0.45, delay: 0.05 }}
           >
             {HEADLINE}
           </motion.h1>
@@ -75,7 +75,7 @@ export function HomeHero() {
             className="mx-auto mt-5 max-w-lg font-body text-lg leading-relaxed text-midnight/55 md:text-xl"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ ease: EASE, duration: 0.65, delay: 0.3 }}
+            transition={{ ease: EASE, duration: 0.4, delay: 0.15 }}
           >
             {SUBHEAD}
           </motion.p>
@@ -86,7 +86,7 @@ export function HomeHero() {
           className="relative mt-12 md:mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ ease: EASE, duration: 0.7, delay: 0.5 }}
+          transition={{ ease: EASE, duration: 0.45, delay: 0.25 }}
         >
           <div className="overflow-hidden">
             <div className="flex w-max gap-4" style={{ animation: "marquee-hero 55s linear infinite" }}>
@@ -114,7 +114,7 @@ export function HomeHero() {
           className="flex flex-col items-center gap-3 px-4 pb-16 pt-10 md:pb-20 md:pt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ ease: EASE, duration: 0.6, delay: 0.7 }}
+          transition={{ ease: EASE, duration: 0.4, delay: 0.35 }}
         >
           <Link
             href="/get-started"
