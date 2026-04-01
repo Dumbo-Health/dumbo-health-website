@@ -38,7 +38,10 @@ export default function AtHomeSleepTestInterlinkSection({
   pageType,
 }: InterlinkSectionProps) {
   const cities = loadCities();
-  const { city_slug = "", state_slug, solution_slug = "", state = "" } = pageData;
+  const city_slug = pageData.city_slug ?? "";
+  const state_slug = pageData.state_slug;
+  const solution_slug = pageData.solution_slug ?? "";
+  const state = pageData.state ?? "";
 
   const isCityPage = city_slug.length > 0;
   let cityLinks: Array<{ href: string; title: string }> = [];
