@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-
-const SHOPIFY_BUY_URL =
-  "https://checkout.dumbo.health/cart/add?id=8933198397592&quantity=1";
+import { SHOPIFY } from "@/lib/constants";
 
 const atHome = [
   "Verified sleep apnea diagnosis",
@@ -85,7 +83,7 @@ export function ComparisonChecklist() {
 
         <div className="mt-10 text-center">
           <Button asChild size="lg" className="h-12 rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl hover:shadow-midnight/20 active:translate-y-0 active:shadow-md">
-            <Link href={SHOPIFY_BUY_URL}>BUY your test</Link>
+            <Link href={SHOPIFY.buyUrl}>BUY your test</Link>
           </Button>
         </div>
       </div>

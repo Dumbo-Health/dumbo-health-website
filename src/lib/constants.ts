@@ -4,7 +4,7 @@ export const APP_URL = "https://app.dumbo.health";
 export const SHOPIFY = {
   productId: "8933198397592",
   checkoutDomain: "checkout.dumbo.health",
-  buyUrl: "https://checkout.dumbo.health/cart/add?id=8933198397592&quantity=1",
+  buyUrl: "https://checkout.dumbo.health/cart/8933198397592:1",
 } as const;
 
 export const CONTACT = {

@@ -5,9 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
-const SHOPIFY_BUY_URL =
-  "https://checkout.dumbo.health/cart/add?id=8933198397592&quantity=1";
+import { SHOPIFY } from "@/lib/constants";
 
 export function ProductHero() {
   return (
@@ -92,7 +90,7 @@ export function ProductHero() {
 
             {/* CTA */}
             <Button asChild size="lg" className="mt-8 w-full h-12 rounded-[12px] bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto">
-              <Link href={SHOPIFY_BUY_URL}>Buy your test</Link>
+              <Link href={SHOPIFY.buyUrl}>Buy your test</Link>
             </Button>
 
             {/* Trust signals */}
