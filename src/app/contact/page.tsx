@@ -19,10 +19,10 @@ export default function ContactPage() {
     <>
       <Navbar />
       <main>
-        {/* Gradient wrapper: light peach → daylight → sunlight */}
+        {/* Gradient wrapper: light peach → daylight */}
         <div
           style={{
-            background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 40%, #F5E6D1 100%)",
+            background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 100%)",
           }}
         >
           <ContactHero />
