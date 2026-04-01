@@ -7,8 +7,8 @@ type PageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return getAllFindSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getAllFindSlugs()).map((slug) => ({ slug }));
 }
 
 export default async function GoFindRedirectPage({ params }: PageProps) {
