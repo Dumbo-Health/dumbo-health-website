@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "What if I test positive for sleep apnea?",
-    a: "A positive result means CPAP therapy is required for DOT re-certification. Dumbo Health sets up your CPAP, monitors your nightly usage, and generates the 30-day compliance report your examiner needs. Your first month of CPAP is free when you start a plan after a positive test with Dumbo Health.",
+    a: "A positive result means CPAP therapy is required for DOT re-certification. Dumbo Health sets up your CPAP, monitors your nightly usage, and generates the 30-day compliance report your examiner needs.",
   },
   {
     q: "Can I order if I am currently on the road?",

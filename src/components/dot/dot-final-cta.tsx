@@ -79,8 +79,7 @@ export function DotFinalCta() {
           }}
         >
           One night. Your physician-reviewed report and documentation package
-          arrive within 48 hours. If sleep apnea is confirmed, your first month
-          of CPAP is on us.
+          arrive within 48 hours.
         </motion.p>
 
         <motion.div

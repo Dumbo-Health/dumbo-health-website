@@ -79,9 +79,7 @@ export function FinalCtaLanding() {
             maxWidth: "48ch",
           }}
         >
-          The test takes one night. Results arrive within 48 hours. And if
-          sleep apnea is confirmed, your first month of CPAP treatment is
-          on us.
+          The test takes one night. Results arrive within 48 hours.
         </motion.p>
 
         <motion.div
