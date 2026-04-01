@@ -9,7 +9,7 @@ export function DotFinalCta() {
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
+      style={{ background: "linear-gradient(to bottom, #FCF6ED 0%, #031F3D 12%)", isolation: "isolate" }}
     >
       {/* Wave texture */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
