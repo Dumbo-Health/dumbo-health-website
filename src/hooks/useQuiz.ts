@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import type {
   QuizState,
   QuizSection,
@@ -32,7 +32,70 @@ export function useQuiz(initialFlowSlug: string) {
   const [templates, setTemplates] = useState<ResultsTemplate[]>([]);
   const [submissionId, setSubmissionId] = useState<string | null>(null);
 
-  // Capture UTMs to sessionStorage on first load so they survive navigation
+  // ── Funnel tracking refs ─────────────────────────────────────────────────────
+  // Stable refs so beforeunload handler always sees the latest values
+  const sessionIdRef = useRef<string>("");
+  const routePathRef = useRef<string[]>([]);
+  const stateRef = useRef(state);
+  useEffect(() => { stateRef.current = state; });
+
+  // Initialize session ID from sessionStorage (persists within browser session)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = sessionStorage.getItem("quiz_session_id");
+    const id = stored ?? crypto.randomUUID();
+    if (!stored) sessionStorage.setItem("quiz_session_id", id);
+    sessionIdRef.current = id;
+  }, []);
+
+  // Fire-and-forget tracking call — never throws, never blocks
+  const track = useCallback((event: string, extra: Record<string, unknown> = {}) => {
+    if (typeof window === "undefined" || !sessionIdRef.current) return;
+    const s = stateRef.current;
+    fetch("/api/quiz/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        session_id: sessionIdRef.current,
+        event,
+        flow_slug: s.flowSlug,
+        device_type: window.innerWidth < 768 ? "mobile" : "desktop",
+        utm_source: sessionStorage.getItem("utm_source"),
+        ...extra,
+      }),
+    }).catch(() => {});
+  }, []); // stable — reads only from refs
+
+  // Register beforeunload beacon once — sends abandoned event if quiz not completed
+  useEffect(() => {
+    const handleUnload = () => {
+      const s = stateRef.current;
+      if (s.isComplete || !sessionIdRef.current || typeof window === "undefined") return;
+      const cq = s.questions[s.currentQuestionIndex];
+      const sec = cq ? s.sections.find((sc) => sc.id === cq.section_id) : null;
+      navigator.sendBeacon(
+        "/api/quiz/track",
+        new Blob(
+          [JSON.stringify({
+            session_id: sessionIdRef.current,
+            event: "abandoned",
+            flow_slug: s.flowSlug,
+            question_slug: cq?.slug ?? null,
+            question_index: s.currentQuestionIndex,
+            section_slug: sec?.slug ?? null,
+            route_path: routePathRef.current,
+            device_type: window.innerWidth < 768 ? "mobile" : "desktop",
+            utm_source: sessionStorage.getItem("utm_source"),
+          })],
+          { type: "application/json" }
+        )
+      );
+    };
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, []); // register once — reads from refs
+
+  // ── Capture UTMs to sessionStorage on first load ─────────────────────────────
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -77,12 +140,15 @@ export function useQuiz(initialFlowSlug: string) {
           currentQuestionIndex: 0,
         }));
         setTemplates(data.templates);
+        // Reset route path on flow load, then fire started
+        routePathRef.current = [];
+        track("started");
       } else {
         setState((prev) => ({ ...prev, isLoading: false }));
       }
     }
     load();
-  }, [state.flowSlug]);
+  }, [state.flowSlug, track]);
 
   const currentQuestion: QuizQuestion | null = state.questions[state.currentQuestionIndex] || null;
 
@@ -105,6 +171,20 @@ export function useQuiz(initialFlowSlug: string) {
   const answerQuestion = useCallback(
     (answer: string | string[]) => {
       if (!currentQuestion) return;
+
+      // Track this step before state changes
+      const sectionSlug = state.sections.find((s) => s.id === currentQuestion.section_id)?.slug ?? null;
+      track("step_completed", {
+        question_slug: currentQuestion.slug,
+        question_index: state.currentQuestionIndex,
+        section_slug: sectionSlug,
+      });
+
+      // Accumulate route path
+      if (!routePathRef.current.includes(currentQuestion.slug)) {
+        routePathRef.current = [...routePathRef.current, currentQuestion.slug];
+      }
+
       setState((prev) => {
         const newAnswers = { ...prev.answers, [currentQuestion.slug]: answer };
         const { tagsToAdd, scoreToAdd, skipToSection, skipToQuestion, redirectFlow, endFlow } =
@@ -151,7 +231,7 @@ export function useQuiz(initialFlowSlug: string) {
         };
       });
     },
-    [currentQuestion]
+    [currentQuestion, state.currentQuestionIndex, state.sections, track]
   );
 
   const goBack = useCallback(() => {
@@ -178,9 +258,12 @@ export function useQuiz(initialFlowSlug: string) {
       utm_medium: typeof window !== "undefined" ? (sessionStorage.getItem("utm_medium") || new URLSearchParams(window.location.search).get("utm_medium")) : null,
       utm_campaign: typeof window !== "undefined" ? (sessionStorage.getItem("utm_campaign") || new URLSearchParams(window.location.search).get("utm_campaign")) : null,
     });
-    if (result) setSubmissionId(result.id);
+    if (result) {
+      setSubmissionId(result.id);
+      track("completed");
+    }
     return result;
-  }, [state]);
+  }, [state, track]);
 
   const getResults = useCallback(() => {
     const stateAnswer = state.answers["state"] || state.answers["state-dx"] || null;
