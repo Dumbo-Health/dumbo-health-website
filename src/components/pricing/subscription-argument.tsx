@@ -27,7 +27,7 @@ const BENEFITS = [
 
 export function SubscriptionArgument() {
   return (
-    <section style={{ backgroundColor: "#F5E6D1" }} className="py-24 md:py-32">
+    <section id="whats-included" style={{ backgroundColor: "#F5E6D1" }} className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
 

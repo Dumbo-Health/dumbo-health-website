@@ -76,7 +76,7 @@ const steps = [
 ];
 
 const oldWay  = ["3–5 months to diagnosis", "Multiple providers", "~$3,000 on average"];
-const dumboWay = ["Under 48 hours", "One place. One team.", "From $149"];
+const dumboWay = ["Under 48 hours", "One place. One team.", "$149"];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export function HowItWorks() {

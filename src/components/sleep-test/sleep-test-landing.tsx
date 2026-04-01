@@ -662,7 +662,7 @@ export function SleepTestLanding() {
                   desc: "Your WatchPAT ONE device ships next business day with everything inside.",
                 },
                 {
-                  day: "Night 3–5",
+                  day: "1 Night",
                   title: "Wear it while you sleep",
                   desc: "Put the device on your finger before bed. The app guides you through setup in seconds.",
                 },
@@ -678,8 +678,8 @@ export function SleepTestLanding() {
                 },
                 {
                   day: "Final step",
-                  title: "Your results and care plan arrive",
-                  desc: "Clear report, diagnosis, and next steps emailed directly to you. Prescription included at no extra cost if you have sleep apnea.",
+                  title: "Results, prescription, and care. All in one place.",
+                  desc: "Log in to your secure Dumbo Health portal to review your results with your doctor. If treatment is needed, we have you covered from prescription to CPAP, start to finish.",
                   isLast: true,
                 },
               ].map((step, i) => {

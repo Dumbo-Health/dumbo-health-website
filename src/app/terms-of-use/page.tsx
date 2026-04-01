@@ -785,7 +785,7 @@ export default function TermsOfUsePage() {
                   29. Copyright &amp; Trademark Information
                 </h2>
                 <p>
-                  Copyright &copy; 2025 Dumbo Health, Inc. All rights reserved. All trademarks, logos, and service
+                  Copyright &copy; 2026 Dumbo Health, Inc. All rights reserved. All trademarks, logos, and service
                   marks (&ldquo;Marks&rdquo;) displayed on the Platform are our property or that of third parties.
                   You may not use these Marks without prior written consent.
                 </p>

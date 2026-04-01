@@ -11,12 +11,12 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const US_STATES = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
-  "Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois",
+  "Delaware","District of Columbia","Georgia","Hawaii","Idaho","Illinois",
   "Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts",
   "Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada",
   "New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota",
   "Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
-  "South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington",
+  "South Dakota","Tennessee","Utah","Vermont","Virginia","Washington",
   "West Virginia","Wisconsin","Wyoming",
 ];
 

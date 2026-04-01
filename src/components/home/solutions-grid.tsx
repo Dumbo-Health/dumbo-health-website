@@ -25,7 +25,7 @@ const STEPS = [
     copy: "Board-certified sleep specialists review your results and prescribe the right treatment, no referrals or waiting rooms.",
     chips: ["Board-certified", "Same-week consult", "Prescription included"],
     cta: "Meet our doctors",
-    href: "/solutions",
+    href: "/about-us#medical-team",
     image: "/images/people/man-drinking-coffee.png",
   },
   {
@@ -36,7 +36,7 @@ const STEPS = [
     chips: ["Setup guide included", "Easy transfer", "Expert support"],
     cta: "See CPAP options",
     href: "/cpap",
-    image: "/images/products/cpap-machine.png",
+    image: "/images/products/cpap-mask-card.png",
     contain: true,
   },
   {
@@ -48,17 +48,17 @@ const STEPS = [
     cta: "Start your journey",
     href: "/get-started",
     image: "/images/products/dashboard.png",
+    contain: true,
   },
   {
     n: 5,
     label: "Resupply",
-    headline: "Never run out of supplies.",
-    copy: "We track your usage and auto-ship fresh masks, filters, and tubing before you run out — delivered straight to your door on schedule.",
-    chips: ["Auto-scheduled", "Auto-shipped", "Doorstep delivery"],
-    cta: "Learn about resupply",
-    href: "/resupply",
+    headline: "Supplies that never run out. Built in.",
+    copy: "Every Dumbo Health CPAP plan tracks the age of your components. When it's time, fresh filters, tubing, and mask parts ship automatically. Included free on select plans, or at member pricing.",
+    chips: ["Included in your plan", "Component age tracking", "Auto-shipped"],
+    cta: "See what's included",
+    href: "/cpap#whats-included",
     image: "/images/people/man-with-pillows.png",
-    comingSoon: true,
   },
 ];
 

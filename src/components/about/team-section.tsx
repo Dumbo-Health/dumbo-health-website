@@ -80,6 +80,7 @@ export function TeamSection() {
 
       {/* Medical Team */}
       <section
+        id="medical-team"
         className="py-24 md:py-32"
         style={{ backgroundColor: "#F5E6D1" }}
       >

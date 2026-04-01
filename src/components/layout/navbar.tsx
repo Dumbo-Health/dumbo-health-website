@@ -174,7 +174,7 @@ const RESOURCES_COLUMNS: { title: string; items: NavItem[] }[] = [
       { label: "Blog", href: "/blog", Icon: IconBlog },
       { label: "FAQ", href: "/faqs", Icon: IconFAQ },
       { label: "Facts", href: "/resources/facts", Icon: IconFacts },
-      { label: "Contacts", href: "/contact", Icon: IconContact },
+      { label: "Contact", href: "/contact", Icon: IconContact },
       { label: "WatchPAT ONE Setup", href: "/watchpat-one-set-up", Icon: IconSleepTest },
     ],
   },
@@ -538,7 +538,6 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-sunlight/60 bg-daylight/95 backdrop-blur supports-[backdrop-filter]:bg-daylight/80">
-      <SleepAwarenessPromoBanner />
       <nav className="flex items-center justify-between" style={{ height: "72px", padding: "0 5%" }}>
 
         {/* Logo */}

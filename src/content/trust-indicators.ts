@@ -4,7 +4,7 @@ export interface TrustIndicator {
 
 export const trustIndicators: TrustIndicator[] = [
   { label: "HIPAA-Secure" },
-  { label: "FDA Regulated Devices" },
+  { label: "FDA-Cleared Devices" },
   { label: "Free and Fast Shipping" },
   { label: "Certified Sleep Experts" },
   { label: "Secure Payments" },

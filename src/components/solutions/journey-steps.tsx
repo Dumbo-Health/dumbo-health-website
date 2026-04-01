@@ -80,7 +80,7 @@ export function JourneySteps() {
               className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sunlight"
             >
               <Image
-                src="/uploads/HST-box-mockup.png"
+                src="/images/products/hst-box.png"
                 alt="Dumbo Health at-home sleep test unboxing"
                 fill
                 className="object-cover"
@@ -138,8 +138,8 @@ export function JourneySteps() {
               className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sunlight lg:col-start-1"
             >
               <Image
-                src="/images/team/doctor-1.jpg"
-                alt="Dumbo Health sleep physician"
+                src="/images/team/medical/zachary-adams.avif"
+                alt="Dr. Zachary Adams, Dumbo Health sleep physician"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

@@ -1,6 +1,6 @@
 {
-    "meta_title": "At-Home Sleep Test in {{geo}} | FDA-Approved",
-    "meta_description": "No sleep lab. No waiting rooms. Get a 100% at-home sleep apnea test in {{geo}}. FDA-approved, specialist-reviewed, and delivered to your door.",
+    "meta_title": "At-Home Sleep Test in {{geo}} | FDA-Cleared",
+    "meta_description": "No sleep lab. No waiting rooms. Get a 100% at-home sleep apnea test in {{geo}}. FDA-cleared, specialist-reviewed, and delivered to your door.",
     "quick_facts": {
         "headline": "QUICK FACTS",
         "title": "At-Home Sleep Test: Key Details",
@@ -9,7 +9,7 @@
             {"label": "Shipping", "value": "24 hours", "detail": "ships same day if ordered before 2pm {{timezone}}"},
             {"label": "Results Turnaround", "value": "3-5 days", "detail": "after test returned"},
             {"label": "Test Duration", "value": "1 night", "detail": "single overnight study"},
-            {"label": "FDA Status", "value": "FDA-Approved", "detail": "Type II home sleep test device"},
+            {"label": "FDA Status", "value": "FDA-Cleared", "detail": "Type II home sleep test device"},
             {"label": "Review", "value": "Board-Certified", "detail": "sleep specialist reviews every result"}
         ]
     },
@@ -71,7 +71,7 @@
     "hero_image_alt": "At-home sleep study in {{geo}}",
     "local_relevance_headline": "AT HOME SLEEP APNEA TESTING",
     "local_relevance_title": "Complete your sleep apnea diagnosis from home in {{geo}}",
-    "local_relevance_subtitle": "{{demographic_note}}, yet many go undiagnosed due to inconvenient testing options. Our FDA-approved at-home sleep test is delivered directly to your door in {{geo}}, with results reviewed by board-certified sleep specialists within days. {{health_angle}} - getting diagnosed is the critical first step. We serve {{estimated_number_of_people_with_sleep_apnea_in_the_area}} residents with sleep apnea in {{geo}}.",
+    "local_relevance_subtitle": "{{demographic_note}}, yet many go undiagnosed due to inconvenient testing options. Our FDA-cleared at-home sleep test is delivered directly to your door in {{geo}}, with results reviewed by board-certified sleep specialists within days. {{health_angle}} - getting diagnosed is the critical first step. We serve {{estimated_number_of_people_with_sleep_apnea_in_the_area}} residents with sleep apnea in {{geo}}.",
     "local_relevance_check_1": "<strong>No clinic visits</strong> - {{local_benefit}}. Everything happens at home, avoiding waits at centers like {{sleep_apnea_awareness_centers_in_the_area}}",
     "local_relevance_check_2": "<strong>Fast specialist review</strong> - board-certified sleep medicine physicians review your results within 3-5 business days",
     "local_relevance_check_3": "<strong>24-hour shipping</strong> - test kit ships to {{geo}} same day when ordered before 2pm {{timezone}}",
@@ -80,12 +80,12 @@
     "local_relevance_reverse_flex": false,
     "how_it_works_headline": "HOW DUMBO HEALTH WORKS",
     "how_it_works_title": "Your Complete At-Home Sleep Apnea Solution",
-    "how_it_works_subtitle": "Given {{state}}'s {{lifestyle_mention}}, finding time for sleep clinic visits is challenging. Everything you need for better sleep is delivered to your door in {{geo}} - no appointments at clinics like {{sleep_clinics}}. From FDA-approved testing ($149) to treatment plans (from $59/month), get complete care in one place.",
+    "how_it_works_subtitle": "Given {{state}}'s {{lifestyle_mention}}, finding time for sleep clinic visits is challenging. Everything you need for better sleep is delivered to your door in {{geo}} - no appointments at clinics like {{sleep_clinics}}. From FDA-cleared testing ($149) to treatment plans (from $59/month), get complete care in one place.",
     "how_it_works_steps": [
         {
             "number": "01",
             "title": "At-Home Diagnostic Kit in {{geo}}",
-            "description": "FDA-approved, one-night test, specialist review. Get accurate sleep apnea diagnosis without leaving your home in {{geo}}. Test, diagnosis, and treatment recommendation:",
+            "description": "FDA-cleared, one-night test, specialist review. Get accurate sleep apnea diagnosis without leaving your home in {{geo}}. Test, diagnosis, and treatment recommendation:",
             "imageSrc": "/how-it-works-at-home-diagnostic-kit.png",
             "imageAlt": "At-home sleep diagnostic kit delivered to {{geo}}"
         },
@@ -130,7 +130,7 @@
     "price_transparency_headline": "TRANSPARENT PRICING",
     "price_transparency_title": "Complete pricing - no insurance required, no hidden fees",
     "price_transparency_subtitle": "Traditional sleep studies at facilities like {{hospitals}} can cost $1,000-$3,000+ out of pocket, with weeks of wait time. Here's exactly what {{geo}} residents pay with Dumbo Health:",
-    "price_transparency_check_1": "<strong>Home Sleep Test: $149</strong> - FDA-approved device, shipping both ways, board-certified physician interpretation, detailed diagnostic report",
+    "price_transparency_check_1": "<strong>Home Sleep Test: $149</strong> - FDA-cleared device, shipping both ways, board-certified physician interpretation, detailed diagnostic report",
     "price_transparency_check_2": "<strong>CPAP Subscription: From $59/month</strong> - includes device, mask, filters, tubing, ongoing telehealth support, automatic resupply",
     "price_transparency_check_3": "<strong>Oral Appliance Option: Custom pricing</strong> - for mild-moderate OSA patients who prefer alternatives to CPAP therapy",
     "price_transparency_image_src": "/transparent-pricing.png",
@@ -148,7 +148,7 @@
     "trust_badges_image_alt": "Trusted sleep apnea care in {{geo}}",
     "trust_badges_reverse_flex": false,
     "map_title": "At-Home Sleep Study Available Throughout {{geo}}",
-    "map_subtitle": "We deliver sleep apnea testing and treatment to all addresses in {{geo}}, including areas like {{neighborhoods}}. {{local_benefit}} - your FDA-approved test kit arrives in 2-3 business days via standard shipping.",
+    "map_subtitle": "We deliver sleep apnea testing and treatment to all addresses in {{geo}}, including areas like {{neighborhoods}}. {{local_benefit}} - your FDA-cleared test kit arrives in 2-3 business days via standard shipping.",
     "map_cta_title": "Ready to Start?",
     "map_cta_subtitle": "Order before 2pm {{timezone}} for same-day shipping to {{geo}}",
     "map_phone_label": "Questions? Call us:",
@@ -198,7 +198,7 @@
         },
         {
             "question": "What does the $149 sleep test include?",
-            "answer": "<strong>All-inclusive pricing breakdown:</strong> FDA-approved home sleep test device (shipped to {{geo}}), prepaid return shipping, raw data analysis, interpretation by a board-certified sleep medicine physician, detailed diagnostic report with AHI score and severity classification, treatment recommendations, and follow-up consultation if needed. No hidden fees, no surprise charges, no insurance paperwork required."
+            "answer": "<strong>All-inclusive pricing breakdown:</strong> FDA-cleared home sleep test device (shipped to {{geo}}), prepaid return shipping, raw data analysis, interpretation by a board-certified sleep medicine physician, detailed diagnostic report with AHI score and severity classification, treatment recommendations, and follow-up consultation if needed. No hidden fees, no surprise charges, no insurance paperwork required."
         },
         {
             "question": "What measurements does the home sleep test record?",
@@ -214,7 +214,7 @@
         }
     ],
     "final_cta_title": "Order now - ships to {{geo}} within 24 hours",
-    "final_cta_subtitle": "{{urgency_phrase}}. $149 gets you an FDA-approved home sleep test, board-certified physician review, and results in under 2 weeks. No referrals, no insurance paperwork, no clinic appointments needed.",
+    "final_cta_subtitle": "{{urgency_phrase}}. $149 gets you an FDA-cleared home sleep test, board-certified physician review, and results in under 2 weeks. No referrals, no insurance paperwork, no clinic appointments needed.",
     "final_cta_button_anchor": "Order Your At-Home Sleep Study",
     "final_cta_button_link": "https://app.dumbo.health/assessment",
     "interlink_heading": {

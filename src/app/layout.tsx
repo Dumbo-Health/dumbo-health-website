@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { IntercomProvider } from "@/components/providers/intercom-provider";
+import { GA4_ID } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Dumbo Health",
   },
   description:
-    "Get diagnosed and treated for sleep apnea from home. FDA-approved at-home sleep test for $149. Expert telehealth care in FL & TX. Start sleeping better today.",
+    "Get diagnosed and treated for sleep apnea from home. FDA-cleared at-home sleep test for $149. Expert telehealth care in FL & TX. Start sleeping better today.",
   metadataBase: new URL("https://www.dumbo.health"),
   openGraph: {
     siteName: "Dumbo Health",
@@ -26,15 +28,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <TooltipProvider>{children}</TooltipProvider>
+        <IntercomProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </IntercomProvider>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_ID}');
+          `}
+        </Script>
         <Script
           id="shopify-checkout"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){
   var SHOP_DOMAIN="checkout.dumbo.health";
-  var STOREFRONT_TOKEN="aa64f3017acd47798db553248a5ec0a2";
-  var PRODUCT_NUMERIC_ID="8933198397592";
+  var STOREFRONT_TOKEN="${process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN ?? ""}";
+  var PRODUCT_NUMERIC_ID="${process.env.NEXT_PUBLIC_SHOPIFY_PRODUCT_ID ?? ""}";
   var PRODUCT_GID="gid://shopify/Product/"+PRODUCT_NUMERIC_ID;
   var QUANTITY=1;
   var SDK_URL="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";

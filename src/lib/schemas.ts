@@ -47,7 +47,7 @@ export function productSchema() {
     "@type": "Product",
     name: "At-Home Sleep Apnea Test",
     description:
-      "FDA-approved at-home sleep test kit with doctor interpretation and telehealth consultation.",
+      "FDA-cleared at-home sleep test kit with doctor interpretation and telehealth consultation.",
     brand: { "@type": "Brand", name: "Dumbo Health" },
     offers: {
       "@type": "Offer",

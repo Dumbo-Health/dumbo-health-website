@@ -4,7 +4,7 @@ import { webPageSchema } from "@/lib/schemas";
 import FactsContent from "./FactsContent";
 
 export const metadata: Metadata = createMetadata({
-  title: "Sleep Apnea Facts: What 39 Million Americans Need to Know",
+  title: "Sleep Apnea Facts: What 80 Million Americans Need to Know",
   description:
     "Evidence-based sleep apnea facts: who it affects, how it harms your health, and how at-home testing and CPAP therapy can change your life. Backed by clinical research.",
   path: "/resources/facts",
@@ -12,7 +12,7 @@ export const metadata: Metadata = createMetadata({
 
 export default function FactsPage() {
   const schema = webPageSchema(
-    "Sleep Apnea Facts: What 39 Million Americans Need to Know",
+    "Sleep Apnea Facts: What 80 Million Americans Need to Know",
     "Evidence-based sleep apnea facts: who it affects, how it harms your health, and how at-home testing and CPAP therapy can change your life.",
     "/resources/facts"
   );

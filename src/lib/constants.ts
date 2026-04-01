@@ -31,4 +31,5 @@ export const SOCIAL = {
 
 export const INTERCOM_APP_ID = "b8ghtrgk";
 export const GTM_ID = "GTM-KTGR9GD8";
+export const GA4_ID = "G-FJEEST973R";
 export const MIXPANEL_TOKEN = "db352dc3d86d9cf594dab43f244d7607";

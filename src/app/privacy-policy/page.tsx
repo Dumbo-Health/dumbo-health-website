@@ -42,9 +42,9 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-xl font-medium text-midnight">2. No Children Under 13</h2>
+            <h2 className="font-heading text-xl font-medium text-midnight">2. No Children Under 18</h2>
             <p>
-              Our platform is not intended for individuals under 13. We do not knowingly collect data from children. Contact us at{" "}
+              Our platform is not intended for individuals under 18. We do not knowingly collect data from children. Contact us at{" "}
               <a href={`mailto:${CONTACT.privacyEmail}`} className="text-peach hover:underline">{CONTACT.privacyEmail}</a>.
             </p>
           </section>

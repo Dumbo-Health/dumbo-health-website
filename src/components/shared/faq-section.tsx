@@ -11,10 +11,12 @@ import { faqs } from "@/content/faqs";
 interface FAQSectionProps {
   limit?: number;
   showCta?: boolean;
+  categories?: string[];
 }
 
-export function FAQSection({ limit = 5, showCta = true }: FAQSectionProps) {
-  const displayFaqs = faqs.slice(0, limit);
+export function FAQSection({ limit = 5, showCta = true, categories }: FAQSectionProps) {
+  const filtered = categories ? faqs.filter((f) => categories.includes(f.category)) : faqs;
+  const displayFaqs = filtered.slice(0, limit);
 
   return (
     <section className="bg-daylight py-20 md:py-28">

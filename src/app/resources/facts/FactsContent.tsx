@@ -376,7 +376,7 @@ function WhatIsSleepApnea() {
                   color: "rgba(3,31,61,0.80)",
                 }}
               >
-                More people than you&apos;d think. Over 30 million Americans
+                More people than you&apos;d think. Over 80 million Americans
                 have sleep apnea, and most of them have no idea. It affects
                 men and women, all body types, and every age group. The tired,
                 snoring stereotype? That&apos;s only part of the story.

@@ -10,7 +10,7 @@ const features = [
   {
     title: "Smart resupply",
     description:
-      "We read your CPAP data and tell you when to replace components, not on a fixed calendar. Right parts, right time.",
+      "We track actual usage data to ship supplies when components are worn, not on a fixed calendar. Because therapy only works when your equipment does.",
     highlight: true,
   },
   {
@@ -138,7 +138,7 @@ export function AppShowcase() {
             <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-midnight/10 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 grid grid-cols-3 gap-3">
               {[
-                { value: "94%", label: "avg compliance" },
+                { value: "94%", label: "still using at 90 days" },
                 { value: "24/7", label: "AI support" },
                 { value: "$149", label: "sleep test" },
               ].map((stat) => (

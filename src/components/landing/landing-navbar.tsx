@@ -8,7 +8,6 @@ import { SleepAwarenessPromoBanner } from "@/components/layout/sleep-awareness-p
 export function LandingNavbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-sunlight/60 bg-daylight/95 backdrop-blur supports-[backdrop-filter]:bg-daylight/80">
-      <SleepAwarenessPromoBanner />
       <nav
         className="flex items-center justify-between"
         style={{ height: "72px", padding: "0 5%" }}

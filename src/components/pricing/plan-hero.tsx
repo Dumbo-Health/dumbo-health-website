@@ -70,7 +70,7 @@ export function PlanHero() {
           }}
         >
           Dumbo handles the equipment, the setup, the supplies, and the support.
-          Starting at $59/month, about $2 a day.
+          Starting at $2 a day, about $59/month.
         </motion.p>
 
         <motion.div

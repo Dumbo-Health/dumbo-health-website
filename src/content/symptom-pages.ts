@@ -35,7 +35,7 @@ export interface SymptomPage {
 export const SYMPTOM_PAGES: SymptomPage[] = [
   {
     slug: "always-tired",
-    seoTitle: "Always Tired? It Might Be Sleep Apnea | Dumbo Health",
+    seoTitle: "Always Tired? It Might Be Sleep Apnea",
     seoDescription:
       "Waking up exhausted no matter how much you sleep? Constant fatigue could be a sign of sleep apnea. Find out in one night with an at-home sleep test.",
     canonical: "https://www.dumbo.health/always-tired",
@@ -80,7 +80,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "cant-focus",
-    seoTitle: "Can't Focus or Concentrate? It Could Be Sleep Apnea | Dumbo Health",
+    seoTitle: "Can't Focus or Concentrate? It Could Be Sleep Apnea",
     seoDescription:
       "Brain fog, trouble concentrating, forgetting things? Untreated sleep apnea disrupts the deep sleep your brain needs to function. Learn more.",
     canonical: "https://www.dumbo.health/cant-focus",
@@ -125,7 +125,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "loud-snoring",
-    seoTitle: "Loud Snoring at Night? It May Be More Than Just Snoring | Dumbo Health",
+    seoTitle: "Loud Snoring at Night? It May Be More Than Just Snoring",
     seoDescription:
       "Loud or frequent snoring is one of the most common signs of sleep apnea. Take an at-home sleep test and find out what's really happening.",
     canonical: "https://www.dumbo.health/loud-snoring",
@@ -170,7 +170,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "anxiety-and-stress",
-    seoTitle: "Anxiety and Stress Worse at Night? Sleep Apnea Could Be Why | Dumbo Health",
+    seoTitle: "Anxiety and Stress Worse at Night? Sleep Apnea Could Be Why",
     seoDescription:
       "Feeling anxious, on edge, or overwhelmed? Undiagnosed sleep apnea disrupts your nervous system overnight. See if a sleep test could help.",
     canonical: "https://www.dumbo.health/anxiety-and-stress",
@@ -215,7 +215,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "low-sex-drive",
-    seoTitle: "Low Sex Drive or Libido? Sleep Apnea May Be a Factor | Dumbo Health",
+    seoTitle: "Low Sex Drive or Libido? Sleep Apnea May Be a Factor",
     seoDescription:
       "Loss of libido and sexual dysfunction are common, unspoken symptoms of sleep apnea. Find out if better sleep can help restore your energy and drive.",
     canonical: "https://www.dumbo.health/low-sex-drive",
@@ -260,7 +260,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "hard-to-lose-weight",
-    seoTitle: "Hard to Lose Weight? Sleep Apnea May Be Working Against You | Dumbo Health",
+    seoTitle: "Hard to Lose Weight? Sleep Apnea May Be Working Against You",
     seoDescription:
       "Struggling to lose weight despite diet and exercise? Untreated sleep apnea disrupts the hormones that control hunger and metabolism. Learn more.",
     canonical: "https://www.dumbo.health/hard-to-lose-weight",
@@ -305,7 +305,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "high-blood-pressure",
-    seoTitle: "High Blood Pressure at Night? Sleep Apnea Could Be the Cause | Dumbo Health",
+    seoTitle: "High Blood Pressure at Night? Sleep Apnea Could Be the Cause",
     seoDescription:
       "Hypertension that doesn't respond to medication may be linked to sleep apnea. See how treating sleep apnea can help regulate your blood pressure.",
     canonical: "https://www.dumbo.health/high-blood-pressure",
@@ -350,7 +350,7 @@ export const SYMPTOM_PAGES: SymptomPage[] = [
   },
   {
     slug: "constantly-getting-sick",
-    seoTitle: "Always Getting Sick? Poor Sleep May Be Weakening Your Immune System | Dumbo Health",
+    seoTitle: "Always Getting Sick? Poor Sleep May Be Weakening Your Immune System",
     seoDescription:
       "Frequent colds, slow recovery, and feeling run down are signs of immune dysfunction. Sleep apnea may be undermining your immune system every night.",
     canonical: "https://www.dumbo.health/constantly-getting-sick",

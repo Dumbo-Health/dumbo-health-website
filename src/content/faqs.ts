@@ -26,7 +26,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "What is a home sleep test, and how does it work?",
-    answer: "A home sleep test is a convenient way to assess for sleep apnea from the comfort of your own bed. You'll receive a FDA-approved small device that monitors your breathing, oxygen levels, and heart rate overnight. After the test, our sleep specialists analyze the data to provide an accurate diagnosis and tell you if you have sleep apnea. No need to visit any doctors or any sleep clinic, all of this from the comfort of your home",
+    answer: "A home sleep test is a convenient way to assess for sleep apnea from the comfort of your own bed. You'll receive an FDA-cleared small device that monitors your breathing, oxygen levels, and heart rate overnight. After the test, our sleep specialists analyze the data to provide an accurate diagnosis and tell you if you have sleep apnea. No need to visit any doctors or any sleep clinic, all of this from the comfort of your home",
     category: "testing",
   },
   {

@@ -153,7 +153,7 @@ export default function CpapPage() {
         <FeatureComparison />
 
         {/* 9. FAQ + objection handling */}
-        <FAQSection limit={7} />
+        <FAQSection limit={7} categories={["cpap", "treatment", "subscriptions", "getting-started", "prescriptions"]} />
 
         {/* 10. Medical team trust */}
         <section className="bg-white py-12 sm:py-16 border-t border-sunlight">
