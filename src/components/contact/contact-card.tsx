@@ -1,53 +1,70 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, TrendingUp, Newspaper } from "lucide-react";
-
-const contactCards = [
-  {
-    icon: Mail,
-    heading: "Help & Support",
-    body: "Need help with your treatment, device, or account? We're here to support you every step of the way.",
-    cta: "Get support",
-    href: "mailto:contact@dumbo.health",
-  },
-  {
-    icon: TrendingUp,
-    heading: "Investors",
-    body: "Interested in backing a new era of sleep care? Reach out to learn more about investment opportunities.",
-    cta: "Contact our team",
-    href: "mailto:invest@dumbo.health?subject=I'm%20interested%20in%20investing.",
-  },
-  {
-    icon: Newspaper,
-    heading: "Media & Press",
-    body: "Looking to feature Dumbo Health in your story? Access our press kit or reach out for interviews and insights.",
-    cta: "Contact our team",
-    href: "mailto:press@dumbo.health",
-  },
-  {
-    icon: Phone,
-    heading: "Call us",
-    body: "Looking for help or reassurance? Call us anytime. We'll listen, answer your questions, and make your path to better sleep feel simple.",
-    cta: "Call us +1 (786) 348 2820",
-    href: "tel:+17863482820",
-  },
-];
+import { useIntercom } from "@/lib/hooks/use-intercom";
 
 export function ContactCards() {
+  const { show } = useIntercom();
+
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {contactCards.map((card) => (
-        <Card key={card.heading} className="border-sunlight">
-          <CardContent className="p-6">
-            <card.icon className="h-8 w-8 text-peach mb-4" />
-            <h3 className="font-heading text-xl font-medium text-midnight mb-2">{card.heading}</h3>
-            <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>{card.body}</p>
-            <Button variant="outline" size="sm" asChild>
-              <a href={card.href}>{card.cta}</a>
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
+      {/* Help & Support — opens Intercom */}
+      <Card className="border-sunlight">
+        <CardContent className="p-6">
+          <Mail className="h-8 w-8 text-peach mb-4" />
+          <h3 className="font-heading text-xl font-medium text-midnight mb-2">Help &amp; Support</h3>
+          <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>
+            Need help with your treatment, device, or account? We&apos;re here to support you every step of the way.
+          </p>
+          <Button variant="outline" size="sm" onClick={show}>
+            Get support
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Investors */}
+      <Card className="border-sunlight">
+        <CardContent className="p-6">
+          <TrendingUp className="h-8 w-8 text-peach mb-4" />
+          <h3 className="font-heading text-xl font-medium text-midnight mb-2">Investors</h3>
+          <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>
+            Interested in backing a new era of sleep care? Reach out to learn more about investment opportunities.
+          </p>
+          <Button variant="outline" size="sm" asChild>
+            <a href="mailto:invest@dumbo.health?subject=I'm%20interested%20in%20investing.">Contact our team</a>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Media & Press */}
+      <Card className="border-sunlight">
+        <CardContent className="p-6">
+          <Newspaper className="h-8 w-8 text-peach mb-4" />
+          <h3 className="font-heading text-xl font-medium text-midnight mb-2">Media &amp; Press</h3>
+          <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>
+            Looking to feature Dumbo Health in your story? Access our press kit or reach out for interviews and insights.
+          </p>
+          <Button variant="outline" size="sm" asChild>
+            <a href="mailto:press@dumbo.health">Contact our team</a>
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Call us */}
+      <Card className="border-sunlight">
+        <CardContent className="p-6">
+          <Phone className="h-8 w-8 text-peach mb-4" />
+          <h3 className="font-heading text-xl font-medium text-midnight mb-2">Call us</h3>
+          <p className="font-body text-base text-midnight/70 mb-4" style={{ maxWidth: "44ch" }}>
+            Looking for help or reassurance? Call us anytime. We&apos;ll listen, answer your questions, and make your path to better sleep feel simple.
+          </p>
+          <Button variant="outline" size="sm" asChild>
+            <a href="tel:+17863482820">Call us +1 (786) 348 2820</a>
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }
