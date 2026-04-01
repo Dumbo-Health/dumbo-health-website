@@ -28,7 +28,7 @@ export default function ContactPage() {
           <ContactHero />
 
           <section className="pb-24 pt-4">
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <ContactCards />
             </div>
           </section>
