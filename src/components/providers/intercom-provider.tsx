@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { boot, show, hide, onShow, onHide, shutdown } from "@intercom/messenger-js-sdk";
+import Intercom, { show, hide, onShow, onHide, shutdown } from "@intercom/messenger-js-sdk";
 import { INTERCOM_APP_ID } from "@/lib/constants";
 
 interface IntercomContextValue {
@@ -27,7 +27,7 @@ export function IntercomProvider({ children }: { children: React.ReactNode }) {
     if (booted.current) return;
     booted.current = true;
 
-    boot({ app_id: INTERCOM_APP_ID, hide_default_launcher: true });
+    Intercom({ app_id: INTERCOM_APP_ID, hide_default_launcher: true });
     onShow(() => setIsOpen(true));
     onHide(() => setIsOpen(false));
 
