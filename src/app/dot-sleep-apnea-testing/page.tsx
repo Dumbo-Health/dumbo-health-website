@@ -7,7 +7,6 @@ import { DotHero } from "@/components/dot/dot-hero";
 import { DotClearanceNeed } from "@/components/dot/dot-clearance-need";
 import { DotHowItWorks } from "@/components/dot/dot-how-it-works";
 import { DotWhatsIncluded } from "@/components/dot/dot-whats-included";
-import { DotAfterPositive } from "@/components/dot/dot-after-positive";
 import { DotVsLab } from "@/components/dot/dot-vs-lab";
 import { DotFaq } from "@/components/dot/dot-faq";
 import { DotFinalCta } from "@/components/dot/dot-final-cta";
@@ -32,7 +31,6 @@ export default function DotLandingPage() {
         <DotHowItWorks />
         <ExpertTrust />
         <DotWhatsIncluded />
-        <DotAfterPositive />
         <DotVsLab />
         <DotFaq />
         <DotFinalCta />

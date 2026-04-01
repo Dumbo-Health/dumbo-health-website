@@ -6,7 +6,6 @@ import { SymptomsGrid } from "@/components/sleep-test/symptoms-grid";
 import { HowItWorksLanding } from "@/components/sleep-test/how-it-works-landing";
 import { ExpertTrust } from "@/components/sleep-test/expert-trust";
 import { WhatsIncluded } from "@/components/sleep-test/whats-included";
-import { TheOffer } from "@/components/sleep-test/the-offer";
 import { TestVsLab } from "@/components/sleep-test/test-vs-lab";
 import { FAQSection } from "@/components/shared/faq-section";
 import { FinalCtaLanding } from "@/components/sleep-test/final-cta-landing";
@@ -32,7 +31,6 @@ export default function SleepTestLandingPage() {
         <HowItWorksLanding />
         <ExpertTrust />
         <WhatsIncluded />
-        <TheOffer />
         <TestVsLab />
         <FAQSection limit={5} showCta={false} />
         <FinalCtaLanding />
