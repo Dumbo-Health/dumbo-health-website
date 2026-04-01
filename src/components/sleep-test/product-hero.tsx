@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -90,7 +89,7 @@ export function ProductHero() {
 
             {/* CTA */}
             <Button asChild size="lg" className="mt-8 w-full h-12 rounded-[12px] bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto">
-              <Link href={SHOPIFY.buyUrl}>Buy your test</Link>
+              <a data-shopify-checkout="sleep-test" href={SHOPIFY.buyUrl}>Buy your test</a>
             </Button>
 
             {/* Trust signals */}

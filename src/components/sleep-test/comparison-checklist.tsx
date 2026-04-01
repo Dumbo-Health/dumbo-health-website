@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SHOPIFY } from "@/lib/constants";
@@ -83,7 +82,7 @@ export function ComparisonChecklist() {
 
         <div className="mt-10 text-center">
           <Button asChild size="lg" className="h-12 rounded-lg bg-peach px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-peach/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight hover:shadow-xl hover:shadow-midnight/20 active:translate-y-0 active:shadow-md">
-            <Link href={SHOPIFY.buyUrl}>BUY your test</Link>
+            <a data-shopify-checkout="sleep-test" href={SHOPIFY.buyUrl}>BUY your test</a>
           </Button>
         </div>
       </div>
