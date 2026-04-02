@@ -6,9 +6,54 @@ export type GoTool = {
   icon: string;
   href?: string;
   available: boolean;
+  createdAt: string; // ISO date string, used for sorting and "New" badge
 };
 
 export const goTools: GoTool[] = [
+  {
+    id: "sleep-playlist",
+    title: "Sleep Playlist Generator",
+    description:
+      "Answer 4 questions about your vibe and sleep habits. AI composes a personalized sleep soundtrack just for tonight — then share it with the community.",
+    category: "AI Consultation",
+    icon: "🎵",
+    href: "/go/tools/sleep-playlist",
+    available: true,
+    createdAt: "2026-04-02",
+  },
+  {
+    id: "bedtime-routine-builder",
+    title: "Bedtime Routine Builder",
+    description:
+      "Answer 5 questions about your sleep habits and get a personalized wind-down routine with exact times to help you fall asleep faster tonight.",
+    category: "Sleep Hygiene",
+    icon: "🌙",
+    href: "/go/tools/bedtime-routine-builder",
+    available: true,
+    createdAt: "2026-03-30",
+  },
+  {
+    id: "stop-bang",
+    title: "STOP-BANG Questionnaire",
+    description:
+      "Answer 8 clinically validated yes/no questions to assess your risk for obstructive sleep apnea — the same screening tool used by sleep specialists.",
+    category: "Sleep Analysis",
+    icon: "🔍",
+    href: "/go/tools/stop-bang",
+    available: true,
+    createdAt: "2026-03-30",
+  },
+  {
+    id: "sleep-study-explainer",
+    title: "Sleep Study Results Explainer",
+    description:
+      "Enter your AHI, oxygen nadir, and sleep efficiency and get a plain-English breakdown of what your sleep study numbers actually mean.",
+    category: "Sleep Analysis",
+    icon: "📋",
+    href: "/go/tools/sleep-study-explainer",
+    available: true,
+    createdAt: "2026-03-30",
+  },
   {
     id: "dream-interpreter",
     title: "Dream Interpreter",
@@ -18,6 +63,7 @@ export const goTools: GoTool[] = [
     icon: "✨",
     href: "/go/tools/dream-interpreter",
     available: true,
+    createdAt: "2026-02-10",
   },
   {
     id: "sleep-sound-check",
@@ -28,6 +74,7 @@ export const goTools: GoTool[] = [
     icon: "🔊",
     href: "/go/tools/sleep-sound-check",
     available: true,
+    createdAt: "2026-02-10",
   },
   {
     id: "cpap-mask-selector-quiz",
@@ -38,6 +85,7 @@ export const goTools: GoTool[] = [
     icon: "❓",
     href: "/go/tools/cpap-mask-selector-quiz",
     available: true,
+    createdAt: "2026-02-01",
   },
   {
     id: "sleep-schedule-calculator",
@@ -48,6 +96,7 @@ export const goTools: GoTool[] = [
     icon: "📅",
     href: "/go/tools/sleep-schedule-calculator",
     available: true,
+    createdAt: "2026-01-20",
   },
   {
     id: "sleep-mate",
@@ -58,6 +107,7 @@ export const goTools: GoTool[] = [
     icon: "🌙",
     href: "/go/tools/sleep-mate",
     available: true,
+    createdAt: "2026-01-15",
   },
   {
     id: "sleep-diary",
@@ -68,6 +118,7 @@ export const goTools: GoTool[] = [
     icon: "📓",
     href: "/go/tools/sleep-diary",
     available: true,
+    createdAt: "2026-01-15",
   },
   {
     id: "ai-sleep-consultant",
@@ -78,6 +129,7 @@ export const goTools: GoTool[] = [
     icon: "🤖",
     href: "/go/tools/ai-sleep-consultant",
     available: true,
+    createdAt: "2026-01-10",
   },
   {
     id: "ahi-index-calculator",
@@ -88,6 +140,7 @@ export const goTools: GoTool[] = [
     icon: "📊",
     href: "/go/tools/ahi-index-calculator",
     available: true,
+    createdAt: "2026-01-10",
   },
   {
     id: "ess-calculator",
@@ -98,5 +151,6 @@ export const goTools: GoTool[] = [
     icon: "😴",
     href: "/go/tools/ess-calculator",
     available: true,
+    createdAt: "2026-01-10",
   },
 ];
