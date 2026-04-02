@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase-admin";
 
+// Allow up to 60s on Vercel Pro (22s audio gen + OpenAI + upload)
+export const maxDuration = 60;
+
 const requestSchema = z.object({
   vibe: z.enum(["chill", "dreamy", "deep", "nature"]),
   mood: z.enum(["anxious", "tired", "neutral", "wired"]),
@@ -69,17 +72,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const { vibe, mood, bedtime, sleepStruggle } = parsed.data;
 
   // Step 1: OpenAI refines the music prompt
-  const systemPrompt = `You are a sleep music prompt engineer for ElevenLabs sound generation.
-Write a vivid, specific sound generation prompt (2–3 sentences).
-Focus on: instruments, texture, atmosphere, BPM, key.
-Never mention lyrics, beats, or harsh sounds. Always end with "Optimized for sleep onset."`;
+  // ElevenLabs hard cap: 450 characters
+  const ELEVENLABS_MAX_CHARS = 440;
 
-  const userContent = `Create a personalized sleep music prompt for:
-- Sound style: ${vibeDescriptions[vibe]}
-- Listener mood: ${moodDirections[mood]}
-- Usual bedtime: ${bedtime}
-- Sleep challenge: ${sleepStruggle}
-Base prompt to refine: "${buildMusicPrompt(parsed.data)}"`;
+  const systemPrompt = `You are a sleep music prompt engineer for ElevenLabs sound generation.
+Write ONE sentence (under 400 characters total) describing ambient sleep audio.
+Include: instrument or texture, atmosphere, tempo feel. No lyrics, no drums, no harsh sounds.`;
+
+  const userContent = `Vibe: ${vibeDescriptions[vibe]}. Mood: ${moodDirections[mood]}. Write the prompt now:`;
 
   const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -93,7 +93,7 @@ Base prompt to refine: "${buildMusicPrompt(parsed.data)}"`;
         { role: "system", content: systemPrompt },
         { role: "user", content: userContent },
       ],
-      max_tokens: 150,
+      max_tokens: 80,
       temperature: 0.85,
     }),
   });
@@ -108,7 +108,11 @@ Base prompt to refine: "${buildMusicPrompt(parsed.data)}"`;
   const openaiData = await openaiRes.json() as {
     choices: Array<{ message: { content: string | null } }>;
   };
-  const musicPrompt = openaiData.choices[0]?.message?.content?.trim() ?? buildMusicPrompt(parsed.data);
+  const rawPrompt = openaiData.choices[0]?.message?.content?.trim() ?? buildMusicPrompt(parsed.data);
+  // Hard cap to stay within ElevenLabs 450-char limit
+  const musicPrompt = rawPrompt.length > ELEVENLABS_MAX_CHARS
+    ? rawPrompt.slice(0, ELEVENLABS_MAX_CHARS)
+    : rawPrompt;
 
   // Step 2: ElevenLabs generates audio
   const elevenlabsRes = await fetch("https://api.elevenlabs.io/v1/sound-generation", {
@@ -125,8 +129,14 @@ Base prompt to refine: "${buildMusicPrompt(parsed.data)}"`;
   });
 
   if (!elevenlabsRes.ok) {
+    const errBody = await elevenlabsRes.text();
     return NextResponse.json(
-      { success: false, error: "Music generation failed. Please try again." },
+      {
+        success: false,
+        error: "Music generation failed. Please try again.",
+        detail: errBody,
+        status: elevenlabsRes.status,
+      },
       { status: 502 }
     );
   }

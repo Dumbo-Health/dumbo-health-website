@@ -11,8 +11,16 @@ export const metadata = createMetadata({
   path: "/go/tools",
 });
 
+const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
+
+function isNew(createdAt: string): boolean {
+  return Date.now() - new Date(createdAt).getTime() < TWO_WEEKS_MS;
+}
+
 export default function GoToolsPage() {
-  const availableTools = goTools.filter((tool) => tool.available);
+  const availableTools = goTools
+    .filter((tool) => tool.available)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   return (
     <main>
@@ -45,29 +53,46 @@ export default function GoToolsPage() {
           </div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {availableTools.map((tool) => (
-              <article
-                key={tool.id}
-                className="rounded-3xl border border-sunlight bg-daylight p-7 shadow-sm"
-              >
-                <div className="text-4xl">{tool.icon}</div>
-                <div className="inline-flex rounded-full bg-peach/12 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-peach">
-                  {tool.category}
-                </div>
-                <h3 className="mt-4 font-heading text-2xl text-midnight">{tool.title}</h3>
-                <p className="mt-3 font-body leading-7 text-midnight/72">
-                  {tool.description}
-                </p>
-                {tool.href ? (
-                  <Button asChild className="mt-6 rounded-lg font-mono tracking-wider">
-                    <Link href={tool.href}>
-                      Open Tool
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                ) : null}
-              </article>
-            ))}
+            {availableTools.map((tool) => {
+              const fresh = isNew(tool.createdAt);
+              return (
+                <article
+                  key={tool.id}
+                  className="rounded-3xl border bg-daylight p-7 shadow-sm"
+                  style={{
+                    borderColor: fresh ? "#78BFBC" : undefined,
+                    boxShadow: fresh ? "0 0 0 1px #78BFBC" : undefined,
+                  }}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="text-4xl">{tool.icon}</div>
+                    {fresh && (
+                      <span
+                        className="shrink-0 rounded-full px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em]"
+                        style={{ backgroundColor: "#78BFBC", color: "#031F3D" }}
+                      >
+                        New
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-3 inline-flex rounded-full bg-peach/12 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-peach">
+                    {tool.category}
+                  </div>
+                  <h3 className="mt-4 font-heading text-2xl text-midnight">{tool.title}</h3>
+                  <p className="mt-3 font-body leading-7 text-midnight/72">
+                    {tool.description}
+                  </p>
+                  {tool.href ? (
+                    <Button asChild className="mt-6 rounded-lg font-mono tracking-wider">
+                      <Link href={tool.href}>
+                        Open Tool
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
