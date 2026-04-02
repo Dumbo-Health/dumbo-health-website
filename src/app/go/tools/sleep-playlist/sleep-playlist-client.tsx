@@ -81,6 +81,24 @@ const VIBE_GRADIENTS: Record<Vibe, string> = {
 
 const WAVEFORM_HEIGHTS = [30, 50, 70, 45, 85, 60, 40, 75, 55, 65, 35, 80, 50, 70, 45, 60, 40, 85, 55, 70, 30, 65, 50, 75, 40, 60];
 
+const SLEEP_FACTS = [
+  "Adults need 7–9 hours of sleep. Only 1 in 3 Americans consistently gets that.",
+  "Your brain replays memories during deep sleep — that's how learning sticks.",
+  "Sleep apnea affects over 1 billion people worldwide, most of them undiagnosed.",
+  "During REM sleep, your muscles are temporarily paralyzed to stop you acting out dreams.",
+  "The world record for staying awake is 11 days — the holder reported hallucinations by day 3.",
+  "Elephants sleep just 2 hours a night. Koalas sleep up to 22 hours. You're somewhere in between.",
+  "Your core body temperature drops by 1–2°F as you fall asleep — a cool room speeds this up.",
+  "Humans are the only mammals that deliberately delay sleep. Every other animal just… sleeps.",
+  "A single night of poor sleep can temporarily reduce your pain tolerance by up to 15%.",
+  "Snoring affects 45% of adults occasionally. Loud, chronic snoring can be a sign of sleep apnea.",
+  "CPAP therapy can normalize blood pressure in people with sleep apnea within weeks.",
+  "Your brain produces a wave of cerebrospinal fluid during deep sleep that literally washes away toxins.",
+  "Dreaming in color is the norm — but 12% of people only dream in black and white.",
+  "The term 'sleep debt' is real: you accumulate a deficit that affects your mood, focus, and metabolism.",
+  "Pink noise (like rain or waves) has been shown to improve deep sleep quality.",
+];
+
 // ─── Waveform ─────────────────────────────────────────────────────────────────
 
 function Waveform({ isPlaying, progress = 0, color = "#FF8361" }: { isPlaying: boolean; progress?: number; color?: string }) {
@@ -262,12 +280,30 @@ export default function SleepPlaylistClient() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(22);
 
+  // Generating facts
+  const [factIndex, setFactIndex] = useState(0);
+
   // Community
   const [communityTracks, setCommunityTracks] = useState<CommunityTrack[]>([]);
   const [communityLoading, setCommunityLoading] = useState(true);
   const [activeCommunityId, setActiveCommunityId] = useState<string | null>(null);
   const communityAudioRef = useRef<HTMLAudioElement>(null);
   const [communityPlaying, setCommunityPlaying] = useState(false);
+  const [activeVibeFilter, setActiveVibeFilter] = useState<Vibe | "all">("all");
+  const [communityEmail, setCommunityEmail] = useState<string | null>(null);
+  const [pendingCommunityTrack, setPendingCommunityTrack] = useState<CommunityTrack | null>(null);
+  const [communityEmailInput, setCommunityEmailInput] = useState("");
+  const [communityEmailError, setCommunityEmailError] = useState<string | null>(null);
+
+  // Cycle sleep facts during generation
+  useEffect(() => {
+    if (stage !== "generating") return;
+    setFactIndex(0);
+    const interval = setInterval(() => {
+      setFactIndex((i) => (i + 1) % SLEEP_FACTS.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [stage]);
 
   // Load community tracks
   useEffect(() => {
@@ -323,19 +359,17 @@ export default function SleepPlaylistClient() {
     }
   }, [isPlaying]);
 
-  const playCommunityTrack = useCallback(
+  const doPlayCommunityTrack = useCallback(
     (track: CommunityTrack) => {
       const audio = communityAudioRef.current;
       if (!audio) return;
 
-      // Toggle off if same track
       if (activeCommunityId === track.id && communityPlaying) {
         audio.pause();
         setCommunityPlaying(false);
         return;
       }
 
-      // Pause main player if running
       if (isPlaying && audioRef.current) {
         audioRef.current.pause();
         setIsPlaying(false);
@@ -346,7 +380,6 @@ export default function SleepPlaylistClient() {
       setActiveCommunityId(track.id);
       setCommunityPlaying(true);
 
-      // Increment play count
       void fetch("/api/sleep-playlist/community", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -354,6 +387,34 @@ export default function SleepPlaylistClient() {
       });
     },
     [activeCommunityId, communityPlaying, isPlaying]
+  );
+
+  const playCommunityTrack = useCallback(
+    (track: CommunityTrack) => {
+      if (!communityEmail) {
+        setPendingCommunityTrack(track);
+        return;
+      }
+      doPlayCommunityTrack(track);
+    },
+    [communityEmail, doPlayCommunityTrack]
+  );
+
+  const submitCommunityEmail = useCallback(
+    (e: React.SyntheticEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (!communityEmailInput.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        setCommunityEmailError("Please enter a valid email address.");
+        return;
+      }
+      setCommunityEmailError(null);
+      setCommunityEmail(communityEmailInput);
+      if (pendingCommunityTrack) {
+        doPlayCommunityTrack(pendingCommunityTrack);
+        setPendingCommunityTrack(null);
+      }
+    },
+    [communityEmailInput, pendingCommunityTrack, doPlayCommunityTrack]
   );
 
   const selectAnswer = useCallback(
@@ -652,11 +713,50 @@ export default function SleepPlaylistClient() {
                 `}</style>
               </div>
               <h2 className="font-heading text-2xl text-midnight mb-3">Composing your track…</h2>
-              <div className="space-y-1.5 font-body text-sm" style={{ color: "rgba(3,31,61,0.55)" }}>
+              <div className="space-y-1.5 font-body text-sm mb-8" style={{ color: "rgba(3,31,61,0.55)" }}>
                 <p>Analyzing your vibe ✓</p>
                 <p>Writing your sound prompt ✓</p>
-                <p>Generating with ElevenLabs AI…</p>
+                <p>Generating your soundtrack…</p>
               </div>
+
+              {/* Sleep fact carousel */}
+              <div
+                className="rounded-2xl p-5 text-left"
+                style={{ backgroundColor: "rgba(120,191,188,0.12)", border: "1px solid rgba(120,191,188,0.3)" }}
+              >
+                <p className="font-mono text-[9px] uppercase tracking-widest mb-2" style={{ color: "#78BFBC" }}>
+                  Did you know?
+                </p>
+                <p
+                  key={factIndex}
+                  className="font-body text-sm leading-6"
+                  style={{
+                    color: "rgba(3,31,61,0.75)",
+                    animation: "factFade 0.5s ease-in",
+                  }}
+                >
+                  {SLEEP_FACTS[factIndex]}
+                </p>
+                <style>{`
+                  @keyframes factFade {
+                    from { opacity: 0; transform: translateY(4px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                  }
+                `}</style>
+                <div className="mt-3 flex gap-1.5">
+                  {SLEEP_FACTS.map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-1 rounded-full transition-all duration-500"
+                      style={{
+                        flex: i === factIndex ? 2 : 1,
+                        backgroundColor: i === factIndex ? "#78BFBC" : "rgba(120,191,188,0.3)",
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+
               <p className="mt-6 font-mono text-xs uppercase tracking-widest" style={{ color: "rgba(3,31,61,0.4)" }}>
                 This takes about 20 seconds
               </p>
@@ -740,8 +840,8 @@ export default function SleepPlaylistClient() {
           {/* PLAYER */}
           {stage === "player" && generatedTrack && (
             <div className="max-w-2xl mx-auto">
-              {/* Hidden audio element */}
-              <audio ref={audioRef} src={generatedTrack.audioUrl} />
+              {/* Hidden audio element — looping for continuous ambient playback */}
+              <audio ref={audioRef} src={generatedTrack.audioUrl} loop />
 
               <div className="rounded-3xl overflow-hidden border" style={{ borderColor: "rgba(245,230,209,0.8)" }}>
                 {/* Cover */}
@@ -790,7 +890,7 @@ export default function SleepPlaylistClient() {
 
                   <div className="mt-2 flex justify-between font-mono text-[10px]" style={{ color: "rgba(3,31,61,0.5)" }}>
                     <span>{formatTime(currentTime)}</span>
-                    <span>{formatTime(duration)}</span>
+                    <span>∞ looping</span>
                   </div>
 
                   <div className="mt-4 p-4 rounded-2xl" style={{ backgroundColor: "rgba(245,230,209,0.6)" }}>
@@ -850,17 +950,82 @@ export default function SleepPlaylistClient() {
       {/* ── Community Feed ── */}
       <section style={{ backgroundColor: "#031F3D" }}>
         <div className="mx-auto max-w-5xl px-6 py-14 sm:px-8 lg:px-10">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.28em] mb-2" style={{ color: "#78BFBC" }}>
-                Community
-              </p>
-              <h2 className="font-heading text-3xl text-white">Tracks made by our visitors</h2>
-              <p className="mt-2 font-body" style={{ color: "rgba(252,246,237,0.6)" }}>
-                Every track below was composed by someone just like you.
-              </p>
-            </div>
+          <div className="mb-6">
+            <p className="font-mono text-xs uppercase tracking-[0.28em] mb-2" style={{ color: "#78BFBC" }}>
+              Community
+            </p>
+            <h2 className="font-heading text-3xl text-white">Tracks made by our visitors</h2>
+            <p className="mt-2 font-body" style={{ color: "rgba(252,246,237,0.6)" }}>
+              Every track below was composed by someone just like you.
+            </p>
           </div>
+
+          {/* Category filter chips */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {([
+              { value: "all", label: "All" },
+              { value: "chill", label: "Chill Lo-Fi", emoji: "🎹" },
+              { value: "dreamy", label: "Dreamy Ambient", emoji: "✨" },
+              { value: "deep", label: "Deep Meditation", emoji: "🔊" },
+              { value: "nature", label: "Nature Sounds", emoji: "🌿" },
+            ] as { value: Vibe | "all"; label: string; emoji?: string }[]).map((f) => (
+              <button
+                key={f.value}
+                type="button"
+                onClick={() => setActiveVibeFilter(f.value)}
+                className="rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-wider transition-all"
+                style={{
+                  backgroundColor: activeVibeFilter === f.value ? "#78BFBC" : "rgba(255,255,255,0.07)",
+                  color: activeVibeFilter === f.value ? "#031F3D" : "rgba(252,246,237,0.65)",
+                  border: `1px solid ${activeVibeFilter === f.value ? "#78BFBC" : "rgba(255,255,255,0.12)"}`,
+                }}
+              >
+                {f.emoji ? `${f.emoji} ${f.label}` : f.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Email gate modal */}
+          {pendingCommunityTrack && !communityEmail && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center px-4" style={{ backgroundColor: "rgba(3,31,61,0.85)", backdropFilter: "blur(4px)" }}>
+              <div className="w-full max-w-sm rounded-3xl p-8" style={{ backgroundColor: "#FCF6ED" }}>
+                <p className="font-heading text-xl text-midnight mb-1">Enter your email to listen</p>
+                <p className="font-body text-sm mb-5" style={{ color: "rgba(3,31,61,0.6)" }}>
+                  Quick access to all community tracks — no spam, ever.
+                </p>
+                <form onSubmit={(e) => void submitCommunityEmail(e)}>
+                  <input
+                    type="email"
+                    value={communityEmailInput}
+                    onChange={(e) => setCommunityEmailInput(e.target.value)}
+                    placeholder="your@email.com"
+                    autoFocus
+                    className="w-full rounded-xl border px-4 py-3 font-body text-sm text-midnight placeholder-midnight/40 focus:outline-none focus:ring-2 mb-3"
+                    style={{ borderColor: "rgba(245,230,209,0.8)", backgroundColor: "white" }}
+                    required
+                  />
+                  {communityEmailError && (
+                    <p className="mb-3 font-body text-sm text-red-600">{communityEmailError}</p>
+                  )}
+                  <Button
+                    type="submit"
+                    className="w-full rounded-xl font-mono tracking-wider"
+                    style={{ backgroundColor: "#FF8361", color: "white" }}
+                  >
+                    ▶ Play Track
+                  </Button>
+                </form>
+                <button
+                  type="button"
+                  onClick={() => setPendingCommunityTrack(null)}
+                  className="mt-4 w-full font-body text-sm text-center"
+                  style={{ color: "rgba(3,31,61,0.45)" }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
 
           {communityLoading ? (
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -874,26 +1039,32 @@ export default function SleepPlaylistClient() {
                 </div>
               ))}
             </div>
-          ) : communityTracks.length === 0 ? (
+          ) : communityTracks.filter((t) => activeVibeFilter === "all" || t.vibe === activeVibeFilter).length === 0 ? (
             <div
               className="rounded-3xl border p-12 text-center"
               style={{ borderColor: "rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.04)" }}
             >
-              <p className="font-heading text-xl text-white mb-2">Be the first.</p>
+              <p className="font-heading text-xl text-white mb-2">
+                {communityTracks.length === 0 ? "Be the first." : "No tracks in this category yet."}
+              </p>
               <p className="font-body" style={{ color: "rgba(252,246,237,0.55)" }}>
-                Generate a track above and it will appear here for everyone to hear.
+                {communityTracks.length === 0
+                  ? "Generate a track above and it will appear here for everyone to hear."
+                  : "Generate one above and it'll show up here."}
               </p>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {communityTracks.map((track) => (
-                <TrackCard
-                  key={track.id}
-                  track={track}
-                  isPlaying={activeCommunityId === track.id && communityPlaying}
-                  onPlay={() => playCommunityTrack(track)}
-                />
-              ))}
+              {communityTracks
+                .filter((t) => activeVibeFilter === "all" || t.vibe === activeVibeFilter)
+                .map((track) => (
+                  <TrackCard
+                    key={track.id}
+                    track={track}
+                    isPlaying={activeCommunityId === track.id && communityPlaying}
+                    onPlay={() => playCommunityTrack(track)}
+                  />
+                ))}
             </div>
           )}
         </div>
