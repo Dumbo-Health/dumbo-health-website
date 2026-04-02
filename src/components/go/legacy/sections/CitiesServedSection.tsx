@@ -63,7 +63,7 @@ export default function CitiesServedSection({
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                 style={{ 
-                  backgroundImage: `url(/go${city.image_src})`,
+                  backgroundImage: `url(${city.image_src?.startsWith("http") ? city.image_src : "/go" + city.image_src})`,
                   backgroundColor: '#1a365d' 
                 }}
               />
