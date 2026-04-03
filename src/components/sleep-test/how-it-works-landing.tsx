@@ -158,7 +158,7 @@ export function HowItWorksLanding() {
               paddingRight: "2.25rem",
             }}
           >
-            Order my sleep test, $149
+            Order your test · $149
           </a>
         </motion.div>
       </div>

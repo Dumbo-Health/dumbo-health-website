@@ -1165,7 +1165,7 @@ function ConversionFork() {
                 boxShadow: "0 6px 24px rgba(255,131,97,0.45)",
               }}
             >
-              Order your sleep test — $149
+              Order your test · $149
             </Link>
             <p
               className="font-body text-xs text-center"
