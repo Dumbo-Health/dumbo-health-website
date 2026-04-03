@@ -101,7 +101,7 @@ export function DotFinalCta() {
               paddingRight: "2.5rem",
             }}
           >
-            Order my sleep test, $149
+            Order your test · $149
           </a>
 
           <a

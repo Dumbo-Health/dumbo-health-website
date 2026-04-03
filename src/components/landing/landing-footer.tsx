@@ -51,7 +51,7 @@ export function LandingFooter() {
               paddingRight: "1.75rem",
             }}
           >
-            Order your sleep test, $149
+            Order your test · $149
           </a>
           <a
             href="/pricing"
