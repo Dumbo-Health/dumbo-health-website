@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const HEADLINE = "Better sleep is closer than you think.";
-const SUBHEAD  = "We help people understand what's disrupting their sleep and what to do about it.";
+const HEADLINE = "Find out if sleep apnea is stealing your sleep.";
+const SUBHEAD  = "Treat it from home. FDA-cleared test for $149. No referral, no waiting room, no surprise bills.";
 
 const marqueeImages = [
   { src: "/images/people/couple-in-bed.png",       alt: "Couple resting peacefully" },
