@@ -43,7 +43,7 @@ export function useQuiz(initialFlowSlug: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const stored = sessionStorage.getItem("quiz_session_id");
-    const id = stored ?? crypto.randomUUID();
+    const id = stored ?? (crypto.randomUUID?.() ?? Math.random().toString(36).slice(2) + Date.now().toString(36));
     if (!stored) sessionStorage.setItem("quiz_session_id", id);
     sessionIdRef.current = id;
   }, []);
@@ -241,7 +241,7 @@ export function useQuiz(initialFlowSlug: string) {
     });
   }, []);
 
-  const submitResults = useCallback(async () => {
+  const submitResults = useCallback(async (contactDetails?: { first_name?: string; last_name?: string; phone?: string }) => {
     const stateAnswer = state.answers["state"] || state.answers["state-dx"] || null;
     const insuranceAnswer = state.answers["insurance-type"] || state.answers["insurance-type-dx"] || null;
     const emailAnswer = state.answers["email"] || state.answers["email-dx"] || null;
@@ -257,6 +257,9 @@ export function useQuiz(initialFlowSlug: string) {
       utm_source: typeof window !== "undefined" ? (sessionStorage.getItem("utm_source") || new URLSearchParams(window.location.search).get("utm_source")) : null,
       utm_medium: typeof window !== "undefined" ? (sessionStorage.getItem("utm_medium") || new URLSearchParams(window.location.search).get("utm_medium")) : null,
       utm_campaign: typeof window !== "undefined" ? (sessionStorage.getItem("utm_campaign") || new URLSearchParams(window.location.search).get("utm_campaign")) : null,
+      first_name: contactDetails?.first_name || null,
+      last_name: contactDetails?.last_name || null,
+      phone: contactDetails?.phone || null,
     });
     if (result) {
       setSubmissionId(result.id);

@@ -761,6 +761,7 @@ function QuestionCard({
   questionNumber,
   totalQuestions,
   canGoBack,
+  onContactDetails,
 }: {
   question: NonNullable<ReturnType<typeof useQuiz>["currentQuestion"]>;
   currentAnswer: string | string[] | undefined;
@@ -769,11 +770,15 @@ function QuestionCard({
   questionNumber: number;
   totalQuestions: number;
   canGoBack: boolean;
+  onContactDetails?: (d: { first_name: string; last_name: string; phone: string }) => void;
 }) {
   const [selected, setSelected] = useState<string | string[]>(
     currentAnswer ?? (question.answer_type === "multi_select" ? [] : "")
   );
   const [whyOpen, setWhyOpen] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
 
   // Delay options until question text has mostly animated in
   const wordCount = question.question_text.split(" ").length;
@@ -923,7 +928,7 @@ function QuestionCard({
                 type="email"
                 value={selected as string}
                 onChange={(e) => setSelected(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter" && (selected as string).includes("@")) onAnswer(selected as string); }}
+                onKeyDown={(e) => { if (e.key === "Enter" && (selected as string).includes("@")) { onContactDetails?.({ first_name: firstName, last_name: lastName, phone }); onAnswer(selected as string); } }}
                 placeholder="your@email.com"
                 autoFocus
                 style={{
@@ -942,9 +947,77 @@ function QuestionCard({
                 onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
                 onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
               />
+
+              {/* Optional contact details */}
+              <div style={{ display: "flex", gap: 8 }}>
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First name (optional)"
+                  style={{
+                    flex: 1,
+                    padding: "13px 16px",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9375rem",
+                    color: "#031F3D",
+                    backgroundColor: "white",
+                    border: "1.5px solid rgba(3,31,61,0.1)",
+                    borderRadius: 14,
+                    outline: "none",
+                    boxSizing: "border-box",
+                    transition: "border-color 0.15s",
+                  }}
+                  onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
+                />
+                <input
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Last name (optional)"
+                  style={{
+                    flex: 1,
+                    padding: "13px 16px",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9375rem",
+                    color: "#031F3D",
+                    backgroundColor: "white",
+                    border: "1.5px solid rgba(3,31,61,0.1)",
+                    borderRadius: 14,
+                    outline: "none",
+                    boxSizing: "border-box",
+                    transition: "border-color 0.15s",
+                  }}
+                  onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
+                />
+              </div>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone number (optional)"
+                style={{
+                  width: "100%",
+                  padding: "13px 16px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.9375rem",
+                  color: "#031F3D",
+                  backgroundColor: "white",
+                  border: "1.5px solid rgba(3,31,61,0.1)",
+                  borderRadius: 14,
+                  outline: "none",
+                  boxSizing: "border-box",
+                  transition: "border-color 0.15s",
+                }}
+                onFocus={(e) => { e.target.style.borderColor = "#78BFBC"; }}
+                onBlur={(e) => { e.target.style.borderColor = "rgba(3,31,61,0.1)"; }}
+              />
+
               <button
                 disabled={!(selected as string).includes("@")}
-                onClick={() => onAnswer(selected as string)}
+                onClick={() => { onContactDetails?.({ first_name: firstName, last_name: lastName, phone }); onAnswer(selected as string); }}
                 style={{
                   backgroundColor: (selected as string).includes("@") ? "#FF8361" : "rgba(3,31,61,0.08)",
                   color: (selected as string).includes("@") ? "white" : "rgba(3,31,61,0.3)",
@@ -1539,6 +1612,7 @@ export default function QuizPage() {
   const [flowSlug, setFlowSlug] = useState<string | null>(null);
   const [shownInterstitials, setShownInterstitials] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contactDetails, setContactDetails] = useState<{ first_name: string; last_name: string; phone: string } | undefined>(undefined);
   const hasSubmitted = useRef(false);
   const [activeReflection, setActiveReflection] = useState<ReflectionMoment | null>(null);
   const [pendingAnswer, setPendingAnswer] = useState<{ answer: string | string[] } | null>(null);
@@ -1587,7 +1661,7 @@ export default function QuizPage() {
     if (isSubmitting || hasSubmitted.current) return;
     hasSubmitted.current = true;
     setIsSubmitting(true);
-    await quiz.submitResults();
+    await quiz.submitResults(contactDetails);
     setIsSubmitting(false);
   }
 
@@ -1703,6 +1777,7 @@ export default function QuizPage() {
                 questionNumber={questionNumber}
                 totalQuestions={visibleQuestions.length}
                 canGoBack={quiz.state.currentQuestionIndex > 0}
+                onContactDetails={setContactDetails}
               />
             </motion.div>
           )}

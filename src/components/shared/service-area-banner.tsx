@@ -60,6 +60,9 @@ export function ServiceAreaBanner() {
   const [selectedState, setSelectedState] = useState("");
   const [interest, setInterest] = useState<"insurance" | "cash">("cash");
   const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [alreadyExists, setAlreadyExists] = useState(false);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(headerRef, { once: true, margin: "-8% 0px" });
@@ -184,6 +187,18 @@ export function ServiceAreaBanner() {
 
                 {!submitted ? (
                   <div className="flex flex-col gap-4">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      className="w-full rounded-xl px-4 py-3.5 font-body text-base outline-none"
+                      style={{
+                        backgroundColor: "#FCF6ED",
+                        border: "1px solid rgba(3,31,61,0.15)",
+                        color: "#031F3D",
+                      }}
+                    />
                     <select
                       value={selectedState}
                       onChange={(e) => setSelectedState(e.target.value)}
@@ -212,11 +227,27 @@ export function ServiceAreaBanner() {
                     </div>
 
                     <Button
-                      onClick={() => selectedState && setSubmitted(true)}
-                      className="h-12 rounded-[12px] bg-peach font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                      onClick={async () => {
+                        if (!selectedState || !email) return;
+                        setLoading(true);
+                        try {
+                          const res = await fetch("/api/waitlist/join", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ email, state: selectedState, interest }),
+                          });
+                          const data = await res.json();
+                          if (data.already_exists) setAlreadyExists(true);
+                          setSubmitted(true);
+                        } finally {
+                          setLoading(false);
+                        }
+                      }}
+                      disabled={loading || !selectedState || !email}
+                      className="h-12 rounded-[12px] bg-peach font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                       style={{ boxShadow: "0 4px 20px rgba(255,131,97,0.22)" }}
                     >
-                      Join the waitlist
+                      {loading ? "Joining..." : "Join the waitlist"}
                     </Button>
 
                     <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.35)" }}>
@@ -226,10 +257,21 @@ export function ServiceAreaBanner() {
                   </div>
                 ) : (
                   <div className="py-2">
-                    <p className="font-heading text-xl font-medium" style={{ color: "#031F3D" }}>You&apos;re on the list.</p>
-                    <p className="mt-2 font-body text-base" style={{ color: "rgba(3,31,61,0.56)" }}>
-                      We&apos;ll reach out as soon as Dumbo Health launches in {selectedState}.
-                    </p>
+                    {alreadyExists ? (
+                      <>
+                        <p className="font-heading text-xl font-medium" style={{ color: "#031F3D" }}>You&apos;re already on the list.</p>
+                        <p className="mt-2 font-body text-base" style={{ color: "rgba(3,31,61,0.56)" }}>
+                          We&apos;ll reach out as soon as Dumbo Health launches in {selectedState}.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="font-heading text-xl font-medium" style={{ color: "#031F3D" }}>You&apos;re on the list.</p>
+                        <p className="mt-2 font-body text-base" style={{ color: "rgba(3,31,61,0.56)" }}>
+                          We&apos;ll reach out as soon as Dumbo Health launches in {selectedState}.
+                        </p>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
