@@ -52,7 +52,7 @@ export default function ArticleColumn({
                 <div className="mb-6 relative">
                   <div className="bg-gradient-to-br from-light to-light-grey rounded-xl p-4 aspect-[4/3] flex items-center justify-center overflow-hidden">
                     <img
-                      src={step.imageSrc.startsWith("http") ? step.imageSrc : "/go" + step.imageSrc}
+                      src={step.imageSrc ? (step.imageSrc.startsWith("http") ? step.imageSrc : "/go" + step.imageSrc) : ""}
                       alt={step.imageAlt}
                       className="w-full h-full object-cover rounded-lg"
                     />

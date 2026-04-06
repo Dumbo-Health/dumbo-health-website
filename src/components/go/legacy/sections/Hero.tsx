@@ -72,7 +72,7 @@ export default function Hero({
           <div ref={rightContent.ref} className={`relative lg:pl-12 ${rightContent.animationClasses}`}>
             <div className="relative">
               <img
-                src={imageSrc.startsWith("http") ? imageSrc : "/go" + imageSrc}
+                src={imageSrc ? (imageSrc.startsWith("http") ? imageSrc : "/go" + imageSrc) : ""}
                 alt={imageAlt}
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
