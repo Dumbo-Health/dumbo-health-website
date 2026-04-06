@@ -15,6 +15,9 @@ const SubmissionSchema = z.object({
   utm_source: z.string().nullable(),
   utm_medium: z.string().nullable(),
   utm_campaign: z.string().nullable(),
+  first_name: z.string().nullable().optional(),
+  last_name: z.string().nullable().optional(),
+  phone: z.string().nullable().optional(),
 });
 
 type Submission = z.infer<typeof SubmissionSchema>;
@@ -94,7 +97,7 @@ function buildProfile(submission: Submission) {
     quiz_risk_level: getRiskLevel(submission.risk_score),
     quiz_top_symptom: getTopSymptom(a),
     quiz_tags: submission.tags.join(","),
-    quiz_state: submission.state,
+    state: submission.state ?? str(a["state"]),
     quiz_insurance: submission.insurance,
     quiz_completed_at: Math.floor(Date.now() / 1000),
     // ── Undiagnosed symptoms ──────────────────────────────────────
@@ -112,6 +115,10 @@ function buildProfile(submission: Submission) {
     quiz_utm_medium: submission.utm_medium,
     quiz_utm_campaign: submission.utm_campaign,
     quiz_device: submission.device_type,
+    // ── Contact details (optional) ────────────────────────────────
+    first_name: submission.first_name ?? null,
+    last_name: submission.last_name ?? null,
+    phone: submission.phone ?? null,
   };
 }
 
