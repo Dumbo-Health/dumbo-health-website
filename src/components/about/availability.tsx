@@ -1,14 +1,48 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { APP_URL } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const LIVE_STATES = ["Florida", "Texas"];
 
+const US_STATES = [
+  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
+  "Delaware","District of Columbia","Georgia","Hawaii","Idaho","Illinois",
+  "Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts",
+  "Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada",
+  "New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota",
+  "Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
+  "South Dakota","Tennessee","Utah","Vermont","Virginia","Washington",
+  "West Virginia","Wisconsin","Wyoming",
+];
+
 export function Availability() {
+  const [email, setEmail] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [interest, setInterest] = useState<"cash" | "insurance">("cash");
+  const [submitted, setSubmitted] = useState(false);
+  const [alreadyExists, setAlreadyExists] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit() {
+    if (!email || !selectedState) return;
+    setLoading(true);
+    try {
+      const res = await fetch("/api/waitlist/join", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, state: selectedState, interest, source: "availability_section" }),
+      });
+      const data = await res.json();
+      if (data.already_exists) setAlreadyExists(true);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
@@ -100,37 +134,117 @@ export function Availability() {
           </span>
         </motion.div>
 
-        {/* Waitlist CTA */}
+        {/* Waitlist form */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, ease: EASE, delay: 0.38 }}
-          className="mt-10"
+          className="mt-10 mx-auto"
+          style={{ maxWidth: "420px" }}
         >
-          <p
-            className="font-body mb-5"
-            style={{ fontSize: "0.9375rem", color: "rgba(252,246,237,0.7)" }}
-          >
-            Not in Florida or Texas yet?
-          </p>
-          <a
-            href={APP_URL}
-            className="inline-flex h-12 items-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
-            style={{
-              backgroundColor: "#FF8361",
-              color: "#FFFFFF",
-              boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
-            }}
-          >
-            Join the early access waitlist
-          </a>
-          <p
-            className="mt-3 font-body text-xs"
-            style={{ color: "rgba(252,246,237,0.5)" }}
-          >
-            Be the first to know when we launch in your state.
-          </p>
+          {!submitted ? (
+            <>
+              <p
+                className="font-body mb-5"
+                style={{ fontSize: "0.9375rem", color: "rgba(252,246,237,0.7)" }}
+              >
+                Not in Florida or Texas yet?
+              </p>
+
+              <div className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="w-full rounded-xl px-4 py-3.5 font-body text-base outline-none"
+                  style={{
+                    backgroundColor: "rgba(252,246,237,0.07)",
+                    border: "1px solid rgba(252,246,237,0.15)",
+                    color: "#FCF6ED",
+                  }}
+                />
+
+                <select
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                  className="w-full rounded-xl px-4 py-3.5 font-body text-base outline-none"
+                  style={{
+                    backgroundColor: "rgba(252,246,237,0.07)",
+                    border: "1px solid rgba(252,246,237,0.15)",
+                    color: selectedState ? "#FCF6ED" : "rgba(252,246,237,0.4)",
+                  }}
+                >
+                  <option value="" style={{ color: "#031F3D" }}>Select your state</option>
+                  {US_STATES.map((s) => (
+                    <option key={s} value={s} style={{ color: "#031F3D" }}>{s}</option>
+                  ))}
+                </select>
+
+                <div className="flex justify-center gap-6">
+                  {(["cash", "insurance"] as const).map((opt) => (
+                    <label key={opt} className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="availability-interest"
+                        value={opt}
+                        checked={interest === opt}
+                        onChange={() => setInterest(opt)}
+                        className="accent-peach"
+                      />
+                      <span className="font-body text-sm" style={{ color: "rgba(252,246,237,0.8)" }}>
+                        {opt === "cash" ? "Cash-pay" : "Insurance"}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+
+                <button
+                  onClick={handleSubmit}
+                  disabled={loading || !email || !selectedState}
+                  className="inline-flex h-12 items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  style={{
+                    backgroundColor: "#FF8361",
+                    color: "#FFFFFF",
+                    boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
+                  }}
+                >
+                  {loading ? "Joining..." : "Join the early access waitlist"}
+                </button>
+
+                <p
+                  className="font-body text-xs"
+                  style={{ color: "rgba(252,246,237,0.35)" }}
+                >
+                  By joining you agree to our{" "}
+                  <a href="/terms-of-use" className="underline hover:opacity-70">Terms of Use</a>. No spam, ever.
+                </p>
+              </div>
+            </>
+          ) : (
+            <div className="py-2">
+              {alreadyExists ? (
+                <>
+                  <p className="font-heading text-xl font-medium" style={{ color: "#FCF6ED" }}>
+                    You&apos;re already on the list.
+                  </p>
+                  <p className="mt-2 font-body" style={{ color: "rgba(252,246,237,0.6)", fontSize: "1rem" }}>
+                    We&apos;ll reach out as soon as Dumbo Health launches in {selectedState}.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="font-heading text-xl font-medium" style={{ color: "#FCF6ED" }}>
+                    You&apos;re on the list.
+                  </p>
+                  <p className="mt-2 font-body" style={{ color: "rgba(252,246,237,0.6)", fontSize: "1rem" }}>
+                    We&apos;ll reach out as soon as Dumbo Health launches in {selectedState}.
+                  </p>
+                </>
+              )}
+            </div>
+          )}
         </motion.div>
 
       </div>
