@@ -225,7 +225,7 @@ export function EssCalculatorClient() {
           <h2 className="font-heading text-3xl text-midnight">What is Excessive Daytime Sleepiness?</h2>
           <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
             Excessive daytime sleepiness (EDS) is the chronic inability to stay awake and alert during the day,
-            despite adequate opportunity for sleep. It is one of the most common — and most underreported — symptoms
+            despite adequate opportunity for sleep. It is one of the most common and most underreported symptoms
             of sleep disorders, particularly obstructive sleep apnea (OSA). When OSA causes repeated breathing
             disruptions throughout the night, sleep becomes fragmented and non-restorative, leaving the brain in a
             perpetual state of fatigue.
@@ -233,7 +233,7 @@ export function EssCalculatorClient() {
           <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
             The consequences extend well beyond feeling tired. EDS impairs concentration, memory, and reaction time.
             Drowsy driving is a factor in an estimated 5x higher crash risk. At work, EDS reduces productivity and
-            increases the likelihood of errors. Addressing the underlying cause — often OSA — typically reverses
+            increases the likelihood of errors. Addressing the underlying cause, often OSA, typically reverses
             sleepiness within weeks.
           </p>
           <div className="mt-6 rounded-2xl border border-sunlight bg-daylight px-6 py-5">
@@ -301,7 +301,7 @@ export function EssCalculatorClient() {
         <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
           <h2 className="font-heading text-3xl text-midnight">Conditions Associated with High ESS Scores</h2>
           <p className="mt-3 font-body text-lg leading-7 text-midnight/72">
-            A high ESS score is not a diagnosis — it is a flag that warrants evaluation. These are the most common
+            A high ESS score is not a diagnosis. It is a flag that warrants evaluation. These are the most common
             conditions associated with clinically elevated daytime sleepiness.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -342,7 +342,7 @@ export function EssCalculatorClient() {
           <h2 className="font-heading text-3xl text-midnight">ESS vs STOP-BANG: Two Tools, Two Questions</h2>
           <p className="mt-3 font-body text-lg leading-7 text-midnight/72">
             The ESS and STOP-BANG screen for different dimensions of sleep apnea risk. Used together, they give
-            clinicians — and patients — a much clearer picture.
+            clinicians and patients a much clearer picture.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <div className="rounded-2xl bg-white p-6">
@@ -357,7 +357,7 @@ export function EssCalculatorClient() {
               <p className="font-mono text-sm uppercase tracking-wider text-teal">STOP-BANG</p>
               <h3 className="mt-2 font-heading text-xl text-midnight">"How likely do you have OSA?"</h3>
               <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
-                Measures structural and physiological risk factors — anatomy, age, BMI, blood pressure. Identifies
+                Measures structural and physiological risk factors, including anatomy, age, BMI, blood pressure. Identifies
                 who is at risk before symptoms become severe.
               </p>
             </div>
@@ -384,7 +384,7 @@ export function EssCalculatorClient() {
             {[
               "ESS is the most widely used validated tool for measuring daytime sleepiness.",
               "Scores above 10 indicate sleepiness worth discussing with a healthcare provider.",
-              "High ESS alone doesn't diagnose a sleep disorder — it's a flag for evaluation.",
+              "High ESS alone doesn't diagnose a sleep disorder. It's a flag for evaluation.",
               "OSA is the most common cause of excessive daytime sleepiness in adults.",
               "Effective treatment (CPAP, lifestyle) typically reduces ESS score by 3–5 points.",
             ].map((point, i) => (

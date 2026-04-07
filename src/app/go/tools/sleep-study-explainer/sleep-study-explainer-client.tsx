@@ -37,7 +37,7 @@ const ahiCopy: Record<AhiSeverity, { label: string; tone: string; explanation: s
     label: "No Sleep Apnea",
     tone: "bg-green-100 text-green-800",
     explanation:
-      "Your AHI is in the normal range — fewer than 5 breathing interruptions per hour. This means sleep apnea is unlikely based on this number alone.",
+      "Your AHI is in the normal range, fewer than 5 breathing interruptions per hour. This means sleep apnea is unlikely based on this number alone.",
   },
   mild: {
     label: "Mild Sleep Apnea",
@@ -49,7 +49,7 @@ const ahiCopy: Record<AhiSeverity, { label: string; tone: string; explanation: s
     label: "Moderate Sleep Apnea",
     tone: "bg-orange-100 text-orange-800",
     explanation:
-      "15–29 interruptions per hour is considered moderate sleep apnea. At this level, treatment is typically recommended — usually CPAP therapy or an oral appliance.",
+      "15–29 interruptions per hour is considered moderate sleep apnea. At this level, treatment is typically recommended, usually CPAP therapy or an oral appliance.",
   },
   severe: {
     label: "Severe Sleep Apnea",
@@ -87,7 +87,7 @@ function efficiencyLabel(pct: number): { label: string; tone: string; explanatio
     return {
       label: "Good Sleep Efficiency",
       tone: "bg-green-100 text-green-800",
-      explanation: "85% or above is considered healthy sleep efficiency — you spent most of your time in bed actually sleeping.",
+      explanation: "85% or above is considered healthy sleep efficiency, meaning you spent most of your time in bed actually sleeping.",
     };
   }
   if (pct >= 75) {
@@ -160,7 +160,7 @@ export function SleepStudyExplainerClient() {
               <div className="mt-6 space-y-5">
                 <div>
                   <label className="font-mono text-[11px] uppercase tracking-[0.22em] text-midnight/55">
-                    AHI — Apnea-Hypopnea Index <span className="text-peach">*</span>
+                    AHI: Apnea-Hypopnea Index <span className="text-peach">*</span>
                   </label>
                   <p className="mt-1 font-body text-xs text-midnight/50">
                     Total breathing events per hour of sleep
@@ -178,7 +178,7 @@ export function SleepStudyExplainerClient() {
 
                 <div>
                   <label className="font-mono text-[11px] uppercase tracking-[0.22em] text-midnight/55">
-                    SpO₂ Nadir — Lowest oxygen % (optional)
+                    SpO₂ Nadir: Lowest oxygen % (optional)
                   </label>
                   <p className="mt-1 font-body text-xs text-midnight/50">
                     The lowest blood oxygen saturation recorded during your study
@@ -376,7 +376,7 @@ export function SleepStudyExplainerClient() {
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-peach">Sleep Medicine Basics</p>
           <h2 className="mt-3 font-heading text-3xl text-midnight sm:text-4xl">Types of Sleep Studies</h2>
           <p className="mt-4 font-body text-lg leading-8 text-midnight/72">
-            Not all sleep studies are the same. Understanding the differences helps you know what to expect — and why one type may have been ordered for you.
+            Not all sleep studies are the same. Understanding the differences helps you know what to expect and why one type may have been ordered for you.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -461,15 +461,15 @@ export function SleepStudyExplainerClient() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-sunlight bg-white p-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-peach">Primary Metric</p>
-              <h3 className="mt-2 font-heading text-lg text-midnight">AHI — Apnea-Hypopnea Index</h3>
+              <h3 className="mt-2 font-heading text-lg text-midnight">AHI: Apnea-Hypopnea Index</h3>
               <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
                 Total breathing events (apneas + hypopneas) per hour of sleep. The primary diagnostic metric for OSA severity.
               </p>
               <div className="mt-4 space-y-1 font-mono text-xs text-midnight/60">
-                <p>&lt;5 — Normal</p>
-                <p>5–14 — Mild OSA</p>
-                <p>15–29 — Moderate OSA</p>
-                <p>30+ — Severe OSA</p>
+                <p>&lt;5: Normal</p>
+                <p>5–14: Mild OSA</p>
+                <p>15–29: Moderate OSA</p>
+                <p>30+: Severe OSA</p>
               </div>
             </div>
 
@@ -480,10 +480,10 @@ export function SleepStudyExplainerClient() {
                 The lowest blood oxygen saturation recorded during the night. Reflects how severely breathing events deprive the body of oxygen.
               </p>
               <div className="mt-4 space-y-1 font-mono text-xs text-midnight/60">
-                <p>≥95% — Normal</p>
-                <p>90–94% — Mild desaturation</p>
-                <p>85–89% — Moderate desaturation</p>
-                <p>&lt;85% — Severe (treatment urgent)</p>
+                <p>≥95%: Normal</p>
+                <p>90–94%: Mild desaturation</p>
+                <p>85–89%: Moderate desaturation</p>
+                <p>&lt;85%: Severe (treatment urgent)</p>
               </div>
             </div>
 
@@ -494,9 +494,9 @@ export function SleepStudyExplainerClient() {
                 Time asleep divided by time in bed, expressed as a percentage. Reflects how consolidated and restorative your sleep is.
               </p>
               <div className="mt-4 space-y-1 font-mono text-xs text-midnight/60">
-                <p>≥85% — Healthy</p>
-                <p>75–84% — Below ideal</p>
-                <p>&lt;75% — Fragmented sleep</p>
+                <p>≥85%: Healthy</p>
+                <p>75–84%: Below ideal</p>
+                <p>&lt;75%: Fragmented sleep</p>
               </div>
             </div>
 
@@ -507,8 +507,8 @@ export function SleepStudyExplainerClient() {
                 Number of partial awakenings per hour of sleep. Even brief arousals (3–15 seconds) disrupt sleep architecture without you fully waking up.
               </p>
               <div className="mt-4 space-y-1 font-mono text-xs text-midnight/60">
-                <p>&lt;15/hr — Within normal range</p>
-                <p>≥15/hr — Clinically elevated</p>
+                <p>&lt;15/hr: Within normal range</p>
+                <p>≥15/hr: Clinically elevated</p>
               </div>
             </div>
 
@@ -519,8 +519,8 @@ export function SleepStudyExplainerClient() {
                 Time from sleep onset to the first REM sleep episode. Shortened REM latency (under 70 minutes) can indicate depression, narcolepsy, or REM sleep behavior disorder.
               </p>
               <div className="mt-4 space-y-1 font-mono text-xs text-midnight/60">
-                <p>70–120 min — Typical</p>
-                <p>&lt;70 min — Evaluate further</p>
+                <p>70–120 min: Typical</p>
+                <p>&lt;70 min: Evaluate further</p>
               </div>
             </div>
 
@@ -553,10 +553,10 @@ export function SleepStudyExplainerClient() {
               <h3 className="font-heading text-xl text-midnight">The Day Before</h3>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Avoid caffeine after noon — it delays sleep onset and reduces deep sleep",
-                  "No alcohol — it distorts sleep architecture even if it helps you fall asleep",
+                  "Avoid caffeine after noon, as it delays sleep onset and reduces deep sleep",
+                  "No alcohol, as it distorts sleep architecture even if it helps you fall asleep",
                   "Take your normal medications unless your physician says otherwise",
-                  "Wash your hair and leave it free of products — gels and sprays interfere with EEG electrode adhesion",
+                  "Wash your hair and leave it free of products, as gels and sprays interfere with EEG electrode adhesion",
                   "Arrive in comfortable sleepwear you would actually sleep in",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 font-body text-sm leading-6 text-midnight/72">
@@ -589,9 +589,9 @@ export function SleepStudyExplainerClient() {
               <h3 className="font-heading text-xl text-midnight">During an In-Lab Study</h3>
               <ul className="mt-4 space-y-3">
                 {[
-                  "A technologist will apply sensors using water-soluble paste or gel — painless and removable",
+                  "A technologist will apply sensors using water-soluble paste or gel, which is painless and removable",
                   "You'll sleep in a private room that resembles a hotel more than a hospital",
-                  "Bathroom use is possible during the night — the technologist disconnects you temporarily",
+                  "Bathroom use is possible during the night. The technologist disconnects you temporarily",
                   "The technologist monitors you remotely through the night and will not disturb you unless necessary",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 font-body text-sm leading-6 text-midnight/72">
@@ -606,10 +606,10 @@ export function SleepStudyExplainerClient() {
               <h3 className="font-heading text-xl text-midnight">For Home Sleep Tests</h3>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Follow the device instructions exactly — incorrect placement is the most common source of error",
+                  "Follow the device instructions exactly. Incorrect placement is the most common source of error",
                   "Sleep in your normal position and environment for representative data",
                   "Place the device on your nightstand before starting so it is easy to reach",
-                  "Avoid napping the day of the test — natural sleep pressure improves data quality",
+                  "Avoid napping the day of the test. Natural sleep pressure improves data quality",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 font-body text-sm leading-6 text-midnight/72">
                     <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-peach" />
@@ -628,7 +628,7 @@ export function SleepStudyExplainerClient() {
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-peach">Clinical Guidance</p>
           <h2 className="mt-3 font-heading text-3xl text-midnight sm:text-4xl">Understanding Your Results: Next Steps by Severity</h2>
           <p className="mt-4 font-body text-lg leading-8 text-midnight/72">
-            AHI severity guides treatment decisions. Here is what each category typically means for next steps — always discuss specifics with your sleep physician.
+            AHI severity guides treatment decisions. Here is what each category typically means for next steps. Always discuss specifics with your sleep physician.
           </p>
 
           <div className="mt-10 overflow-x-auto rounded-2xl border border-sunlight">
@@ -682,9 +682,9 @@ export function SleepStudyExplainerClient() {
           <h2 className="mt-3 font-heading text-3xl text-white sm:text-4xl">Key Takeaways</h2>
           <ul className="mt-8 space-y-5">
             {[
-              "Home sleep tests are appropriate for most adults suspected of moderate-to-severe OSA — no overnight lab stay required.",
+              "Home sleep tests are appropriate for most adults suspected of moderate-to-severe OSA, with no overnight lab stay required.",
               "AHI is the primary diagnostic metric; SpO₂ nadir and sleep efficiency add important clinical context about severity and impact.",
-              "Sleep efficiency below 75% often signals sleep fragmentation beyond just apnea — it warrants its own clinical discussion.",
+              "Sleep efficiency below 75% often signals sleep fragmentation beyond just apnea, and warrants its own clinical discussion.",
               "An AHI of 15 or higher typically warrants treatment; even mild OSA (AHI 5–14) deserves evaluation if you are symptomatic.",
               "CPAP is the most effective treatment for moderate-to-severe OSA, reducing AHI by 80–90% when used consistently.",
             ].map((point) => (

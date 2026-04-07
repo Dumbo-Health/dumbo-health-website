@@ -218,10 +218,10 @@ export function DreamInterpreterClient() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
           <h2 className="font-heading text-3xl text-midnight mb-4">The Neuroscience of Dreaming</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            Dreaming occurs primarily in REM sleep (Rapid Eye Movement), which comprises 20–25% of a healthy night&apos;s sleep. During REM, the prefrontal cortex (rational thinking) is relatively suppressed while the amygdala (emotion) and visual cortex are highly active — explaining why dreams feel vivid and emotionally intense but logically strange.
+            Dreaming occurs primarily in REM sleep (Rapid Eye Movement), which comprises 20–25% of a healthy night&apos;s sleep. During REM, the prefrontal cortex (rational thinking) is relatively suppressed while the amygdala (emotion) and visual cortex are highly active, explaining why dreams feel vivid and emotionally intense but logically strange.
           </p>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            The average person dreams for 2 hours per night across 4–6 REM periods; most dreams are immediately forgotten. REM cycles lengthen through the night — the richest dreaming happens in the final 2 hours of sleep (cycles 4–5).
+            The average person dreams for 2 hours per night across 4–6 REM periods; most dreams are immediately forgotten. REM cycles lengthen through the night, and the richest dreaming happens in the final 2 hours of sleep (cycles 4–5).
           </p>
           <p className="font-body text-lg text-midnight leading-8">
             Sleep deprivation causes <strong>REM rebound</strong>: when sleep is finally possible, the brain prioritizes and prolongs REM, resulting in more vivid or unusual dreams.
@@ -232,13 +232,13 @@ export function DreamInterpreterClient() {
       {/* Section 2: Why We Dream */}
       <section className="bg-daylight py-14 lg:py-16">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
-          <h2 className="font-heading text-3xl text-midnight mb-8">Why We Dream — Current Scientific Theories</h2>
+          <h2 className="font-heading text-3xl text-midnight mb-8">Why We Dream: Current Scientific Theories</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
               { label: "Memory Consolidation", desc: "REM sleep replays waking experiences and transfers information from hippocampus (short-term) to cortex (long-term). Studying before sleep improves recall by 20–40%." },
               { label: "Emotional Regulation", desc: "The \"Overnight Therapy\" hypothesis (Matthew Walker): REM sleep separates the emotional charge from memories, reducing the psychological impact of distressing experiences." },
               { label: "Threat Simulation", desc: "Evolutionary theory suggests dreaming runs simulations of threats so we can rehearse responses without real-world risk." },
-              { label: "Default Mode Network Activity", desc: "Dreaming may reflect the brain's resting state — the DMN generates narrative experiences using recent memories as raw material." },
+              { label: "Default Mode Network Activity", desc: "Dreaming may reflect the brain's resting state, as the DMN generates narrative experiences using recent memories as raw material." },
             ].map((item) => (
               <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
                 <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
@@ -290,7 +290,7 @@ export function DreamInterpreterClient() {
           <ul className="space-y-3">
             {[
               "Nightmares (distressing dreams causing awakening) affect 5–8% of adults regularly and are associated with PTSD, anxiety disorders, and depression.",
-              "REM Sleep Behavior Disorder (RBD): Acting out dreams physically — potentially a precursor to Parkinson's disease or Lewy body dementia.",
+              "REM Sleep Behavior Disorder (RBD): Acting out dreams physically, potentially a precursor to Parkinson's disease or Lewy body dementia.",
               "Sleep paralysis with hallucinations: Occurs during transitions in/out of REM; experienced by 20–40% of people at least once.",
               "OSA can trigger vivid, distressing dreams by causing oxygen drops and arousals during REM sleep; treating OSA often improves dream quality.",
             ].map((point) => (
@@ -309,7 +309,7 @@ export function DreamInterpreterClient() {
           <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
           <ul className="space-y-3">
             {[
-              "Dreaming primarily occurs in REM sleep — the most cognitively active stage.",
+              "Dreaming primarily occurs in REM sleep, the most cognitively active stage.",
               "Dreams serve memory consolidation and emotional processing functions.",
               "Common dream themes are universal and reflect universal human anxieties.",
               "Recurring nightmares or violent dream behaviors are worth discussing with a clinician.",

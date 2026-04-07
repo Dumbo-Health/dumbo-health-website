@@ -237,7 +237,7 @@ export function AiSleepConsultantClient() {
               { label: "Obstructive Sleep Apnea (OSA)", desc: "Repeated airway collapse during sleep; affects ~1 billion people worldwide; 80% undiagnosed. Signs: loud snoring, gasping, morning headaches, excessive fatigue." },
               { label: "Chronic Insomnia", desc: "Difficulty falling or staying asleep ≥3 nights/week for ≥3 months; affects 10–15% of adults. Causes: stress, anxiety, poor sleep habits, medical conditions." },
               { label: "Restless Legs Syndrome (RLS)", desc: "Irresistible urge to move the legs, worse at rest and in the evening; affects 7–10% of adults; often disrupts sleep onset." },
-              { label: "Circadian Rhythm Disorders", desc: "Misalignment between internal clock and social schedule — includes Delayed Sleep Phase, Shift Work Disorder, and Jet Lag." },
+              { label: "Circadian Rhythm Disorders", desc: "Misalignment between internal clock and social schedule, including Delayed Sleep Phase, Shift Work Disorder, and Jet Lag." },
             ].map((item) => (
               <div key={item.label} className="bg-daylight rounded-2xl p-5 border border-sunlight">
                 <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
@@ -248,10 +248,10 @@ export function AiSleepConsultantClient() {
         </div>
       </section>
 
-      {/* Section 2: Insomnia — Types and Evidence-Based Treatments */}
+      {/* Section 2: Insomnia: Types and Evidence-Based Treatments */}
       <section className="bg-daylight py-14 lg:py-16">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
-          <h2 className="font-heading text-3xl text-midnight mb-4">Insomnia — Types and Evidence-Based Treatments</h2>
+          <h2 className="font-heading text-3xl text-midnight mb-4">Insomnia: Types and Evidence-Based Treatments</h2>
           <ul className="space-y-3 mb-4">
             {[
               { label: "Acute insomnia (days to weeks)", desc: "Usually triggered by stress or a life event; resolves on its own. Management: sleep hygiene, temporary sleep restriction." },
@@ -267,7 +267,7 @@ export function AiSleepConsultantClient() {
           </ul>
           <div className="bg-white rounded-xl px-5 py-4 border border-sunlight">
             <p className="font-body text-base leading-7 text-midnight">
-              <strong>CBT-I success rates:</strong> 70–80% report clinically meaningful improvement; effects are durable — versus medication, where effects stop when pills stop.
+              <strong>CBT-I success rates:</strong> 70–80% report clinically meaningful improvement; effects are durable, versus medication, where effects stop when pills stop.
             </p>
           </div>
         </div>
@@ -299,10 +299,10 @@ export function AiSleepConsultantClient() {
         </div>
       </section>
 
-      {/* Section 4: CBT-I — The Gold Standard for Insomnia */}
+      {/* Section 4: CBT-I: The Gold Standard for Insomnia */}
       <section className="bg-daylight py-14 lg:py-16">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
-          <h2 className="font-heading text-3xl text-midnight mb-4">CBT-I — The Gold Standard for Insomnia</h2>
+          <h2 className="font-heading text-3xl text-midnight mb-4">CBT-I: The Gold Standard for Insomnia</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
             CBT-I is endorsed by the American College of Physicians, American Academy of Sleep Medicine, and UK NICE guidelines as the <strong>first-line treatment</strong> for chronic insomnia.
           </p>
@@ -332,10 +332,10 @@ export function AiSleepConsultantClient() {
           <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
           <ul className="space-y-3">
             {[
-              "CBT-I is more effective than sleep medication for long-term insomnia — ask your doctor about it.",
-              "OSA is the most underdiagnosed sleep disorder — an at-home sleep test takes one night.",
+              "CBT-I is more effective than sleep medication for long-term insomnia. Ask your doctor about it.",
+              "OSA is the most underdiagnosed sleep disorder. An at-home sleep test takes one night.",
               "If you wake unrested despite adequate time in bed, a sleep disorder is the likely cause.",
-              "Sleep problems are not a sign of weakness — they are medical conditions with effective treatments.",
+              "Sleep problems are not a sign of weakness. They are medical conditions with effective treatments.",
               "Most sleep disorders are highly treatable; the barrier is usually awareness and diagnosis.",
             ].map((point) => (
               <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>
