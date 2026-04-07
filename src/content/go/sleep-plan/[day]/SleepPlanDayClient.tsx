@@ -7,6 +7,64 @@ import PrimaryCTASection from '@/components/go/legacy/sections/PrimaryCTASection
 import { EmailCaptureProvider, useEmailCapture } from '@/components/EmailCaptureProvider';
 import type { PlanEntry } from '../lib/planLoader';
 
+interface YoutubeEmbedProps {
+  videoId: string;
+  thumbnail?: string;
+  title: string;
+}
+
+function YoutubeEmbed({ videoId, thumbnail, title }: YoutubeEmbedProps) {
+  const [playing, setPlaying] = useState(false);
+
+  if (playing) {
+    return (
+      <div className="mt-6 rounded-xl overflow-hidden aspect-video bg-black">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setPlaying(true)}
+      className="mt-6 relative w-full rounded-xl overflow-hidden aspect-video bg-black group cursor-pointer"
+      aria-label={`Play video: ${title}`}
+    >
+      {thumbnail ? (
+        <Image
+          src={thumbnail}
+          alt=""
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(max-width: 768px) 100vw, 720px"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-midnight/80" />
+      )}
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center shadow-lg transition-colors">
+          <svg
+            className="w-6 h-6 text-midnight ml-1"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 interface SleepPlanDayClientProps {
   day: string;
   entry: PlanEntry;
@@ -93,7 +151,9 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
           {entry.description && (
             <p className="text-white/90 text-base sm:text-lg leading-relaxed font-aeonik">{entry.description}</p>
           )}
-          {entry.thumbnail && (
+          {entry.videoId ? (
+            <YoutubeEmbed videoId={entry.videoId} thumbnail={entry.thumbnail} title={entry.title} />
+          ) : entry.thumbnail ? (
             <div className="mt-6 rounded-lg overflow-hidden bg-white/10">
               <Image
                 src={entry.thumbnail}
@@ -104,7 +164,7 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
                 sizes="(max-width: 768px) 100vw, 720px"
               />
             </div>
-          )}
+          ) : null}
         </div>
       </section>
 
