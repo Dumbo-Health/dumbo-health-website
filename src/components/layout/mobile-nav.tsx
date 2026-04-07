@@ -71,7 +71,7 @@ export function MobileNav() {
             <a href={`${APP_URL}/login`}>Login</a>
           </Button>
           <Button asChild className="w-full">
-            <a href={APP_URL}>Get Started</a>
+            <Link href="/get-started">Get Started</Link>
           </Button>
         </div>
       </SheetContent>

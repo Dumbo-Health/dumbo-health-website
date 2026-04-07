@@ -112,4 +112,7 @@ export interface QuizSubmission {
   utm_source: string | null;
   utm_medium: string | null;
   utm_campaign: string | null;
+  first_name?: string | null;
+  last_name?: string | null;
+  phone?: string | null;
 }

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -370,7 +369,7 @@ export function BenefitsGrid() {
           className="h-14 rounded-[12px] bg-peach px-10 font-body text-base font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
           style={{ boxShadow: "0 6px 24px rgba(255,131,97,0.22)" }}
         >
-          <Link href={APP_URL}>Get started with better sleep</Link>
+          <Link href="/get-started">Get started with better sleep</Link>
         </Button>
       </motion.div>
 

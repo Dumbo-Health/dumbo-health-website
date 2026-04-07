@@ -192,9 +192,9 @@ export function AhiIndexCalculatorClient() {
                   Calculate AHI
                 </Button>
                 <Button asChild className="w-full rounded-lg font-mono tracking-wider">
-                  <a href="https://app.dumbo.health" target="_blank" rel="noopener noreferrer">
+                  <Link href="/get-started">
                     Explore Dumbo Health Care
-                  </a>
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" className="w-full rounded-lg font-mono tracking-wider">
                   <Link href="/go/tools">Back To Tools</Link>
@@ -510,14 +510,12 @@ export function AhiIndexCalculatorClient() {
               If you haven&apos;t had a sleep study yet, Dumbo Health offers an at-home sleep test that&apos;s comfortable, easy to use, and interpreted by licensed clinicians.
             </p>
             <div className="mt-6">
-              <a
-                href="https://app.dumbo.health"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/at-home-sleep-test"
                 className="inline-flex items-center font-mono text-sm uppercase tracking-wider text-peach hover:underline"
               >
                 Learn about at-home sleep testing →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

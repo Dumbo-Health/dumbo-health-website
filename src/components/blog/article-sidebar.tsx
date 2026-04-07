@@ -26,7 +26,7 @@ export function ArticleSidebar() {
           Takes 2 minutes. No credit card required.
         </p>
         <Link
-          href="https://app.dumbo.health/"
+          href="/get-started"
           className="block w-full text-center rounded-xl py-3 font-body font-bold text-sm uppercase tracking-wide transition-all duration-200 hover:-translate-y-0.5"
           style={{ background: "#FF8361", color: "#fff" }}
         >

@@ -915,9 +915,9 @@ export default function SleepPlaylistClient() {
                       className="flex-1 rounded-xl font-mono tracking-wide text-sm"
                       style={{ backgroundColor: "#FF8361", color: "white" }}
                     >
-                      <a href="https://app.dumbo.health" target="_blank" rel="noopener noreferrer">
+                      <Link href="/get-started">
                         Explore Sleep Care
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>
@@ -1085,9 +1085,9 @@ export default function SleepPlaylistClient() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild className="rounded-xl font-mono tracking-wider px-8" style={{ backgroundColor: "#FF8361", color: "white" }}>
-              <a href="https://app.dumbo.health" target="_blank" rel="noopener noreferrer">
+              <Link href="/get-started">
                 Start Sleep Care
-              </a>
+              </Link>
             </Button>
             <Button asChild variant="outline" className="rounded-xl font-mono tracking-wider px-8">
               <Link href="/go/tools">Back to All Tools</Link>
