@@ -442,7 +442,7 @@ export function AhiIndexCalculatorClient() {
               You should use an AHI Calculator when sleep apnea symptoms suggest possible nighttime breathing disruption. Symptoms that justify use include loud snoring, gasping, witnessed pauses, daytime fatigue, morning headaches, and non-restorative sleep.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/68">
-              You should also use an AHI Calculator when a bed partner reports irregular breathing or when wearables show unstable oxygen saturation or unusual overnight heart rate patterns. A calculator is especially useful before scheduling a clinic appointment because it helps organize observations into a structured summary for a sleep specialist.
+              You should also use an AHI Calculator when a bed partner reports irregular breathing or when wearables show unstable oxygen saturation or unusual overnight heart rate patterns. A calculator is especially useful before scheduling a clinic appointment because it helps organize observations into a structured summary for a sleep specialist. See also our guides to sleep apnea symptoms and how home sleep apnea tests work.
             </p>
           </div>
 
@@ -469,7 +469,7 @@ export function AhiIndexCalculatorClient() {
               Treatment for central sleep apnea can differ because central sleep apnea involves unstable respiratory drive rather than simple airway blockage. The 2025 AASM guideline for central sleep apnea reviewed several therapies including CPAP and other device strategies, which shows why central sleep apnea needs its own treatment logic. Some patients may require bilevel positive airway pressure, and selected patients may need advanced evaluation if heart failure or other medical issues are present.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/68">
-              A patient should not assume that all event patterns are treated the same. A clinician may also review medication use, medication side effects, or other conditions that affect breathing stability.
+              A patient should not assume that all event patterns are treated the same. A clinician may also review medication use, pain medication, medication side effects, or other conditions that affect breathing stability. In severe edge cases, related respiratory illness may increase concern for respiratory failure, which requires urgent medical care.
             </p>
           </div>
 
