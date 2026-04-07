@@ -71,7 +71,7 @@ function SymptomHero({ page }: { page: SymptomPage }) {
               className="h-12 rounded-[12px] bg-peach px-8 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
               style={{ boxShadow: "0 4px 20px rgba(255,131,97,0.3)" }}
             >
-              <a href={SHOPIFY.buyUrl}>Start your sleep test · $149</a>
+              <a href={SHOPIFY.buyUrl} data-shopify-checkout="sleep-test">Start your sleep test · $149</a>
             </Button>
           </motion.div>
         </div>

@@ -341,6 +341,7 @@ export function HowItWorks() {
         >
           <a
             href={SHOPIFY.buyUrl}
+            data-shopify-checkout="sleep-test"
             className="inline-flex h-12 items-center rounded-[12px] bg-peach px-8 font-body text-sm font-medium uppercase tracking-wider text-white shadow-md shadow-peach/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-peach/90 hover:shadow-xl hover:shadow-peach/25 active:translate-y-0"
           >
             Start your sleep test for $149

@@ -83,7 +83,7 @@ export function TreatmentOptions() {
                   {opt.description}
                 </p>
                 <Button asChild size="lg" className="mt-4 w-full rounded-[12px] bg-peach text-white hover:bg-peach/90 font-body font-bold">
-                  <Link href="https://app.dumbo.health/">Get started</Link>
+                  <Link href="/get-started">Get started</Link>
                 </Button>
               </div>
             </motion.div>
