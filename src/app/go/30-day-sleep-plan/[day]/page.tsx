@@ -9,6 +9,7 @@ import {
   readSleepPlanContent,
 } from "@/lib/go/sleep-plan";
 import { SITE_URL } from "@/lib/constants";
+import { YoutubeEmbed } from "./youtube-embed";
 
 type PageProps = {
   params: Promise<{
@@ -90,7 +91,7 @@ export default async function SleepPlanDayPage({ params }: PageProps) {
             {entry.description}
           </p>
           {entry.thumbnail && (
-            <div className="mt-8 overflow-hidden rounded-lg bg-white/10">
+            <div className="mt-8 overflow-hidden rounded-2xl">
               <Image
                 src={entry.thumbnail}
                 alt=""
@@ -100,6 +101,13 @@ export default async function SleepPlanDayPage({ params }: PageProps) {
                 sizes="(max-width: 768px) 100vw, 720px"
               />
             </div>
+          )}
+          {entry.videoId && (
+            <YoutubeEmbed
+              videoId={entry.videoId}
+              videoThumbnail={entry.videoThumbnail}
+              title={entry.title}
+            />
           )}
         </div>
       </section>
