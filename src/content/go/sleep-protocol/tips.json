@@ -57,6 +57,14 @@
             {
                 "title": "Set screen-free windows before bed for teenagers — social media use predicts shorter sleep",
                 "description": "<p>A March 2026 study confirmed a <strong>bidirectional relationship between social media use and shorter sleep in adolescents</strong>: teens who use more social media sleep less, and teens who sleep less use more social media the next day — creating a reinforcing loop. The effect was stronger in teens with higher brain reward sensitivity, suggesting some adolescents are neurologically more vulnerable to the habit-forming pull of social platforms.</p><p>Set a <strong>device-free window of at least 60 minutes before bed</strong>, and charge phones outside the bedroom overnight. The light, content stimulation, and social feedback loops of platforms are designed to be engaging at the exact time the brain needs to wind down. For teens who resist this, explain the bidirectional mechanism — social media doesn't just delay sleep, it also makes them reach for the phone more the next day.</p>"
+            },
+            {
+                "title": "Don't blame spring for your fatigue — it's probably not the season",
+                "description": "<p>A year-long study published in the <em>Journal of Sleep Research</em> tracked <strong>418 participants</strong> with sleep assessments every six weeks and found <strong>no evidence that spring fatigue is a real seasonal phenomenon</strong>. Despite nearly half of participants believing they experience it, objective measures of sleepiness, sleep quality, and insomnia symptoms showed no seasonal variation.</p><p>\"Spring fatigue\" is a <strong>cultural label</strong>, not a biological syndrome. If you feel persistently tired in spring — or any other season — that tiredness deserves real investigation rather than seasonal dismissal. Track your sleep quality, rule out sleep disorders, and speak with your doctor if fatigue is affecting your daily functioning.</p>"
+            },
+            {
+                "title": "Try digital CBT-I if you have insomnia and pre-diabetes",
+                "description": "<p>A February 2026 feasibility trial in the <em>Journal of Sleep Research</em> tested a <strong>digital cognitive behavioral therapy for insomnia (dCBT-I)</strong> program in 24 people with both insomnia and pre-diabetes. Results were promising: <strong>83.3% completed four or more sessions</strong>, and participants showed significant improvements in sleep and depression — plus encouraging trends toward better metabolic markers including reductions in triglycerides and blood sugar-related indicators.</p><p>If you're managing pre-diabetes and also struggling with poor sleep, don't treat these as unrelated problems. Ask your healthcare provider about evidence-based digital sleep programs — the benefits may extend well beyond the bedroom. dCBT-I is accessible, affordable, and now showing early signs of metabolic benefit alongside its established sleep improvements.</p>"
             }
         ],
         "sleep_apnea": [
@@ -187,6 +195,10 @@
             {
                 "title": "Get screened for OSA if you have bronchiectasis or chronic lung disease",
                 "description": "<p>A March 2026 study found that <strong>50.5% of patients with bronchiectasis</strong> (a chronic lung condition causing airway widening and infection) also have obstructive sleep apnea — yet OSA is rarely screened for in this population. Importantly, the risk factors were <strong>male sex and corticosteroid use, not obesity</strong>, which means standard OSA screening tools (which weight-adjust heavily) miss many of these patients.</p><p>If you have bronchiectasis, COPD, or other chronic lung conditions, ask for OSA screening even if you're not overweight. The combination of chronic airway inflammation and nighttime breathing disruption creates a compounding burden on your lungs and cardiovascular system. Both conditions treated together leads to better outcomes than managing either alone.</p>"
+            },
+            {
+                "title": "Start CPAP early to cut your stroke recurrence risk",
+                "description": "<p>A March 2026 review in <em>Nature and Science of Sleep</em> found that <strong>67.5% of ischemic stroke patients have obstructive sleep apnea</strong> — and that early CPAP treatment was directly associated with reduced stroke recurrence rates. The earlier treatment begins, the better the protection.</p><p>If you've had a stroke or TIA, or if you have cardiovascular risk factors, ask your doctor about sleep apnea screening as part of your recovery and prevention plan. Treating OSA with CPAP is not just about sleeping better — it may be one of the most important steps you can take for your long-term brain health.</p>"
             }
         ],
         "children": [
