@@ -1095,6 +1095,124 @@ export default function SleepPlaylistClient() {
           </div>
         </div>
       </section>
+
+      {/* ── Educational Content ─────────────────────────────────────────── */}
+
+      {/* Section 1: The Science of Music and Sleep */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">The Science of Music and Sleep</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Music affects sleep through multiple pathways: slowing heart rate and respiration, reducing cortisol, distracting from rumination, and triggering relaxation via the autonomic nervous system. Tempo is the most important factor — music at <strong>60–80 BPM</strong> synchronizes with a resting heart rate, promoting physiological relaxation.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            A meta-analysis of 10 randomized controlled trials found that music listening before sleep reduced sleep onset latency, improved sleep quality, and decreased nighttime awakenings.
+          </p>
+          <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
+            <p className="font-body text-base leading-7 text-midnight">
+              The effect appears cumulative — people who listen to sleep music regularly report greater benefits over time as the routine becomes a conditioned sleep cue.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Types of Sleep Sounds */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-8">Types of Sleep Sounds and What Research Says</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { label: "Calming Music (60–80 BPM)", desc: "Classical, ambient, lo-fi, acoustic. Reduces cortisol and heart rate. Best for: people with racing thoughts at bedtime." },
+              { label: "White Noise", desc: "Broadband sound masking environmental noise. Consistent, non-musical. Best for: urban environments; infants." },
+              { label: "Binaural Beats (Delta/Theta)", desc: "Two slightly different frequencies in each ear create a perceived beat. Delta (0.5–4 Hz) targets deep sleep; Theta (4–8 Hz) targets relaxation. Requires headphones." },
+              { label: "Nature Sounds", desc: "Rain, ocean, forest. Activates the parasympathetic nervous system. Research shows they improve recovery from stress faster than silence." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
+                <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
+                <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Tempo, Frequency, and Your Brain */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Tempo, Frequency, and Your Brain</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The brain naturally entrains to rhythmic auditory input — neural oscillations match the beat. This is called <strong>brainwave entrainment</strong> or auditory driving. Sleep-promoting frequencies: Delta (deep sleep), Theta (pre-sleep drowsiness), Alpha (relaxed wakefulness).
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The recommended range for sleep music: <strong>60–80 BPM.</strong> Avoid syncopation and sharp dynamic changes.
+          </p>
+          <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
+            <p className="font-heading text-sm text-midnight mb-2">Frequencies to avoid before sleep</p>
+            <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>
+              Major key energetic music · Fast tempo (&gt;120 BPM) · Lyrics (engage language areas of the brain) · Crescendos and sudden changes in volume
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Building Your Ideal Sleep Soundscape */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Building Your Ideal Sleep Soundscape</h2>
+          <ul className="space-y-3">
+            {[
+              "Start 30–45 minutes before lights out — the relaxation effect builds gradually.",
+              "Volume: Keep below 60 dB (comfortable background level); louder sounds can increase arousal.",
+              "Fade-out timer: Use a 30–45 minute timer so music stops after sleep onset; continuous all-night music may increase micro-arousals.",
+              "Consistency: The same music becomes a conditioned sleep cue over time — your brain learns to associate it with sleep.",
+              "Headphones: Uncomfortable for sleep; consider a sleep speaker, pillow speaker, or sleep-specific earbuds (AcousticSheep SleepPhones).",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 text-midnight flex gap-3 list-none">
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 5: Key Takeaways */}
+      <section className="bg-midnight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
+          <ul className="space-y-3">
+            {[
+              "Music at 60–80 BPM reduces heart rate and cortisol, making it easier to fall asleep.",
+              "Nature sounds and ambient music are the most researched and effective genres for sleep.",
+              "Binaural beats targeting delta frequencies may enhance deep sleep when used with headphones.",
+              "Set a sleep timer — continuous music throughout the night may fragment sleep.",
+              "The effect is cumulative: a consistent sleep music ritual becomes a powerful conditioned cue.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6: References */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-2xl text-midnight mb-4">References</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            {[
+              `de Niet G, et al. "Music-assisted relaxation to improve sleep quality." Journal of Advanced Nursing. 2009.`,
+              `Harmat L, et al. "Music improves sleep quality in students." Journal of Advanced Nursing. 2008.`,
+              `Trahan T, et al. "The music that helps people sleep and the reasons they believe it works." PLOS ONE. 2018.`,
+            ].map((ref) => (
+              <li key={ref} className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.65)" }}>{ref}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
     </main>
   );
 }

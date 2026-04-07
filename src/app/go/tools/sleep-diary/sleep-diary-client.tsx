@@ -206,6 +206,134 @@ export function SleepDiaryClient() {
           </div>
         </div>
       </section>
+
+      {/* ── Educational Content ─────────────────────────────────────────── */}
+
+      {/* Section 1: Why Sleep Tracking Works */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Why Sleep Tracking Works</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Sleep diaries are the gold-standard behavioral tool in Cognitive Behavioral Therapy for Insomnia (CBT-I). Most people significantly misjudge their own sleep — overestimating how long they sleep by 30–60 minutes on average.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            A 2-week diary reveals patterns invisible to memory: which nights are worst, what precedes a bad night, whether your sleep window needs adjusting. Sleep physicians and CBT-I therapists use diary data to calculate sleep efficiency, set new sleep windows for sleep restriction therapy, and track treatment progress.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 2: What a Sleep Diary Tracks */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-8">What a Sleep Diary Tracks</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { label: "Bedtime", desc: "When you got into bed with the intention to sleep." },
+              { label: "Sleep Onset", desc: "Estimated time until you fell asleep (sleep latency)." },
+              { label: "Wake-After-Sleep-Onset (WASO)", desc: "Minutes spent awake during the night." },
+              { label: "Wake Time", desc: "When you woke up for good in the morning." },
+              { label: "Total Sleep Time (TST)", desc: "Actual time asleep — subtract latency and WASO from time in bed." },
+              { label: "Sleep Efficiency", desc: "TST ÷ Time in Bed × 100. Target: ≥85%." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
+                <p className="font-heading text-base text-midnight mb-1">{item.label}</p>
+                <p className="font-body text-sm text-midnight leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Sleep Diary vs Consumer Sleep Trackers */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-6">Sleep Diary vs. Consumer Sleep Trackers</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full font-body text-sm text-midnight border-collapse">
+              <thead>
+                <tr className="border-b border-sunlight">
+                  <th className="text-left py-3 pr-4 font-heading text-base">Feature</th>
+                  <th className="text-left py-3 pr-4 font-heading text-base">Sleep Diary</th>
+                  <th className="text-left py-3 font-heading text-base">Wearable (Fitbit / Oura / Apple Watch)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Accuracy", "Self-reported", "Actigraphy estimate (±15–20 min error)"],
+                  ["Gold standard for CBT-I", "Yes", "No"],
+                  ["Identifies behavioral patterns", "Excellent", "Limited"],
+                  ["Used in clinical trials", "Yes (required)", "Rarely"],
+                  ["Cost", "Free", "$100–$500+"],
+                  ["Measures sleep stages", "No (perception only)", "Estimated (not validated)"],
+                ].map(([feature, diary, wearable]) => (
+                  <tr key={feature} className="border-b border-sunlight">
+                    <td className="py-3 pr-4 font-body" style={{ color: "rgba(3,31,61,0.85)" }}>{feature}</td>
+                    <td className="py-3 pr-4" style={{ color: "rgba(3,31,61,0.7)" }}>{diary}</td>
+                    <td className="py-3" style={{ color: "rgba(3,31,61,0.7)" }}>{wearable}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: CBT-I Sleep Restriction Basics */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">CBT-I Sleep Restriction Basics</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Sleep restriction is the most effective component of CBT-I — it builds homeostatic sleep pressure to consolidate fragmented sleep.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            <strong>The method:</strong> Calculate your average TST from the diary → Set your sleep window equal to TST (minimum 5.5 hrs) → Maintain a strict rise time → Expand window by 15 min per week when efficiency reaches ≥85%.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            This feels counterintuitive (going to bed later when you&apos;re already tired) but works: 70–80% of patients see significant improvement within 4–6 weeks.
+          </p>
+          <p className="font-body text-base leading-7 bg-white rounded-xl px-5 py-4 border border-sunlight" style={{ color: "rgba(3,31,61,0.7)" }}>
+            <strong>Important:</strong> Only attempt sleep restriction with guidance from a CBT-I therapist if you have OSA, bipolar disorder, or a seizure disorder.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 5: Key Takeaways */}
+      <section className="bg-midnight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
+          <ul className="space-y-3">
+            {[
+              "2 weeks of diary data is enough to identify actionable sleep patterns.",
+              "Sleep efficiency is the most useful single metric from a diary.",
+              "Most people sleep less than they think — and need to know their real baseline.",
+              "CBT-I, guided by diary data, outperforms sleep medication for long-term insomnia treatment.",
+              "A diary is also the most useful thing to bring to a sleep specialist appointment.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 flex gap-3" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6: References */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-2xl text-midnight mb-4">References</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            {[
+              `Morin CM, et al. "Nonpharmacological Interventions for Insomnia." American Journal of Psychiatry. 1994.`,
+              `Harvey AG, et al. "Sleep disturbance as transdiagnostic: consideration of neurobiological mechanisms." Clinical Psychology Review. 2011.`,
+              `Espie CA. "Insomnia: Conceptual issues in the development, persistence, and treatment of sleep disorder in adults." Annual Review of Psychology. 2002.`,
+            ].map((ref) => (
+              <li key={ref} className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.65)" }}>{ref}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
     </main>
   );
 }

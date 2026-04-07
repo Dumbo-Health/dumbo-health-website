@@ -218,6 +218,203 @@ export function EssCalculatorClient() {
           </Accordion>
         </div>
       </section>
+
+      {/* What is Excessive Daytime Sleepiness */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-3xl text-midnight">What is Excessive Daytime Sleepiness?</h2>
+          <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
+            Excessive daytime sleepiness (EDS) is the chronic inability to stay awake and alert during the day,
+            despite adequate opportunity for sleep. It is one of the most common — and most underreported — symptoms
+            of sleep disorders, particularly obstructive sleep apnea (OSA). When OSA causes repeated breathing
+            disruptions throughout the night, sleep becomes fragmented and non-restorative, leaving the brain in a
+            perpetual state of fatigue.
+          </p>
+          <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
+            The consequences extend well beyond feeling tired. EDS impairs concentration, memory, and reaction time.
+            Drowsy driving is a factor in an estimated 5x higher crash risk. At work, EDS reduces productivity and
+            increases the likelihood of errors. Addressing the underlying cause — often OSA — typically reverses
+            sleepiness within weeks.
+          </p>
+          <div className="mt-6 rounded-2xl border border-sunlight bg-daylight px-6 py-5">
+            <p className="font-mono text-sm uppercase tracking-wider text-peach">Key Fact</p>
+            <p className="mt-2 font-body text-base leading-7 text-midnight">
+              The NTSB estimates drowsy driving causes 100,000 crashes and 1,500 deaths annually in the U.S.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How the Epworth Scale Works */}
+      <section className="bg-daylight">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-3xl text-midnight">How the Epworth Sleepiness Scale Works</h2>
+          <p className="mt-3 font-body text-lg leading-7 text-midnight/72">
+            The ESS was developed by Dr. Murray Johns at Epworth Hospital in Melbourne, Australia, in 1991. It has
+            since been validated across 18+ languages and is used in over 100 countries as the standard subjective
+            measure of daytime sleepiness.
+          </p>
+          <div className="mt-6 space-y-3">
+            {[
+              "The ESS presents 8 common daily situations and asks how likely you are to doze off in each.",
+              "Each situation is rated 0 (would never doze) to 3 (high chance of dozing).",
+              "Maximum possible score: 24. Scores above 10 indicate clinically meaningful sleepiness.",
+              "The scale measures your general level of sleepiness in recent daily life, not just last night.",
+            ].map((point, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-peach" />
+                <span className="font-body text-base leading-7 text-midnight/72">{point}</span>
+              </div>
+            ))}
+          </div>
+          <h3 className="mt-10 font-heading text-xl text-midnight">Score Interpretation</h3>
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-sunlight">
+            <table className="w-full min-w-[480px] text-sm">
+              <thead>
+                <tr className="border-b border-sunlight bg-white">
+                  <th className="px-5 py-4 text-left font-heading text-base text-midnight">Score Range</th>
+                  <th className="px-5 py-4 text-left font-heading text-base text-midnight">Classification</th>
+                  <th className="px-5 py-4 text-left font-heading text-base text-midnight">Recommended Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { range: "0–10", label: "Normal", action: "Monitor; maintain good sleep hygiene" },
+                  { range: "11–12", label: "Mild sleepiness", action: "Track with a sleep diary; consider lifestyle factors" },
+                  { range: "13–15", label: "Moderate sleepiness", action: "Consult a physician; evaluate for sleep disorders" },
+                  { range: "16–24", label: "Severe sleepiness", action: "Seek prompt clinical evaluation; avoid driving when fatigued" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-sunlight last:border-0">
+                    <td className="px-5 py-4 font-body font-bold text-midnight">{row.range}</td>
+                    <td className="px-5 py-4 font-body text-midnight/72">{row.label}</td>
+                    <td className="px-5 py-4 font-body text-midnight/72">{row.action}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Conditions Associated with High ESS Scores */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-3xl text-midnight">Conditions Associated with High ESS Scores</h2>
+          <p className="mt-3 font-body text-lg leading-7 text-midnight/72">
+            A high ESS score is not a diagnosis — it is a flag that warrants evaluation. These are the most common
+            conditions associated with clinically elevated daytime sleepiness.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                title: "Obstructive Sleep Apnea",
+                description:
+                  "The most common cause of EDS in adults. Repeated apnea events fragment deep sleep, leaving the brain sleep-deprived regardless of total time in bed. CPAP therapy typically reduces ESS scores by 3–5 points.",
+              },
+              {
+                title: "Insomnia",
+                description:
+                  "Chronic difficulty falling or staying asleep accumulates as sleep debt. Even when the primary complaint is difficulty sleeping, daytime sleepiness often coexists and compounds functional impairment.",
+              },
+              {
+                title: "Narcolepsy",
+                description:
+                  "A neurological disorder affecting the brain's ability to regulate sleep-wake cycles. Characterized by sudden, uncontrollable sleep attacks, cataplexy, and sleep paralysis. ESS scores are typically very high (16+).",
+              },
+              {
+                title: "Shift Work Disorder",
+                description:
+                  "Working non-traditional hours misaligns the body's circadian rhythm with the sleep schedule. The resulting circadian disruption produces excessive sleepiness during work hours and poor sleep during available rest periods.",
+              },
+            ].map(({ title, description }) => (
+              <div key={title} className="rounded-2xl border border-sunlight p-5">
+                <h3 className="font-heading text-lg text-midnight">{title}</h3>
+                <p className="mt-2 font-body text-sm leading-6 text-midnight/72">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ESS vs STOP-BANG */}
+      <section className="bg-daylight">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-3xl text-midnight">ESS vs STOP-BANG: Two Tools, Two Questions</h2>
+          <p className="mt-3 font-body text-lg leading-7 text-midnight/72">
+            The ESS and STOP-BANG screen for different dimensions of sleep apnea risk. Used together, they give
+            clinicians — and patients — a much clearer picture.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            <div className="rounded-2xl bg-white p-6">
+              <p className="font-mono text-sm uppercase tracking-wider text-peach">ESS</p>
+              <h3 className="mt-2 font-heading text-xl text-midnight">"How sleepy ARE you?"</h3>
+              <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
+                Measures current daytime impairment. Captures how OSA (or another disorder) is affecting your
+                waking life right now. Useful for monitoring treatment response over time.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white p-6">
+              <p className="font-mono text-sm uppercase tracking-wider text-teal">STOP-BANG</p>
+              <h3 className="mt-2 font-heading text-xl text-midnight">"How likely do you have OSA?"</h3>
+              <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
+                Measures structural and physiological risk factors — anatomy, age, BMI, blood pressure. Identifies
+                who is at risk before symptoms become severe.
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 space-y-4 rounded-2xl border border-sunlight bg-white px-6 py-5">
+            <p className="font-body text-base leading-7 text-midnight">
+              <span className="font-bold">Best practice:</span> Use both together. A high ESS score combined with a
+              high STOP-BANG score significantly strengthens the case for a sleep study.
+            </p>
+            <p className="font-body text-base leading-7 text-midnight">
+              <span className="font-bold">Tracking treatment:</span> ESS is also used to measure treatment
+              response. Effective CPAP therapy typically reduces ESS scores by 3–5 points within the first few
+              months.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Takeaways */}
+      <section className="bg-midnight">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-3xl text-white">Key Takeaways</h2>
+          <ul className="mt-6 space-y-4">
+            {[
+              "ESS is the most widely used validated tool for measuring daytime sleepiness.",
+              "Scores above 10 indicate sleepiness worth discussing with a healthcare provider.",
+              "High ESS alone doesn't diagnose a sleep disorder — it's a flag for evaluation.",
+              "OSA is the most common cause of excessive daytime sleepiness in adults.",
+              "Effective treatment (CPAP, lifestyle) typically reduces ESS score by 3–5 points.",
+            ].map((point, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-peach" />
+                <span className="font-body text-base leading-7 text-white/70">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Clinical References */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+          <h2 className="font-heading text-2xl text-midnight">References</h2>
+          <ol className="mt-5 space-y-3 list-decimal list-inside">
+            {[
+              'Johns MW. "A New Method for Measuring Daytime Sleepiness: The Epworth Sleepiness Scale." Sleep. 1991.',
+              'Johns MW. "Reliability and Factor Analysis of the Epworth Sleepiness Scale." Sleep. 1992.',
+              'Masa JF, et al. "Validity of the International Classification of Sleep Disorders for diagnosing obstructive sleep apnea." Thorax. 2011.',
+              'Arand D, et al. "The clinical use of the MSLT and MWT." Sleep. 2005.',
+            ].map((ref, i) => (
+              <li key={i} className="font-body text-sm leading-6 text-midnight/60">
+                {ref}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
     </main>
   );
 }

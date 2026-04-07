@@ -210,6 +210,136 @@ export function DreamInterpreterClient() {
           </div>
         </div>
       </section>
+
+      {/* ── Educational Content ─────────────────────────────────────────── */}
+
+      {/* Section 1: The Neuroscience of Dreaming */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">The Neuroscience of Dreaming</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Dreaming occurs primarily in REM sleep (Rapid Eye Movement), which comprises 20–25% of a healthy night&apos;s sleep. During REM, the prefrontal cortex (rational thinking) is relatively suppressed while the amygdala (emotion) and visual cortex are highly active — explaining why dreams feel vivid and emotionally intense but logically strange.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The average person dreams for 2 hours per night across 4–6 REM periods; most dreams are immediately forgotten. REM cycles lengthen through the night — the richest dreaming happens in the final 2 hours of sleep (cycles 4–5).
+          </p>
+          <p className="font-body text-lg text-midnight leading-8">
+            Sleep deprivation causes <strong>REM rebound</strong>: when sleep is finally possible, the brain prioritizes and prolongs REM, resulting in more vivid or unusual dreams.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 2: Why We Dream */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-8">Why We Dream — Current Scientific Theories</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { label: "Memory Consolidation", desc: "REM sleep replays waking experiences and transfers information from hippocampus (short-term) to cortex (long-term). Studying before sleep improves recall by 20–40%." },
+              { label: "Emotional Regulation", desc: "The \"Overnight Therapy\" hypothesis (Matthew Walker): REM sleep separates the emotional charge from memories, reducing the psychological impact of distressing experiences." },
+              { label: "Threat Simulation", desc: "Evolutionary theory suggests dreaming runs simulations of threats so we can rehearse responses without real-world risk." },
+              { label: "Default Mode Network Activity", desc: "Dreaming may reflect the brain's resting state — the DMN generates narrative experiences using recent memories as raw material." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
+                <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
+                <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Common Dream Themes */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-6">Common Dream Themes and What Research Shows</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full font-body text-sm text-midnight border-collapse">
+              <thead>
+                <tr className="border-b border-sunlight">
+                  <th className="text-left py-3 pr-4 font-heading text-base">Dream Theme</th>
+                  <th className="text-left py-3 pr-4 font-heading text-base">Prevalence</th>
+                  <th className="text-left py-3 font-heading text-base">Common Psychological Association</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Being chased", "80% of adults", "Anxiety, avoidance, unresolved stress"],
+                  ["Flying", "60% of adults", "Desire for freedom, sense of control"],
+                  ["Falling", "73% of adults", "Loss of control, transition, uncertainty"],
+                  ["Teeth falling out", "39% of adults", "Communication anxiety, self-image concerns"],
+                  ["Unprepared for a test", "50%+ of adults", "Performance anxiety, competence concerns"],
+                  ["Unable to move", "40% of adults", "Sleep paralysis overlap; transition states"],
+                ].map(([theme, prev, assoc]) => (
+                  <tr key={theme} className="border-b border-sunlight">
+                    <td className="py-3 pr-4" style={{ color: "rgba(3,31,61,0.85)" }}>{theme}</td>
+                    <td className="py-3 pr-4" style={{ color: "rgba(3,31,61,0.7)" }}>{prev}</td>
+                    <td className="py-3" style={{ color: "rgba(3,31,61,0.7)" }}>{assoc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Dreams and Sleep Disorders */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Dreams and Sleep Disorders</h2>
+          <ul className="space-y-3">
+            {[
+              "Nightmares (distressing dreams causing awakening) affect 5–8% of adults regularly and are associated with PTSD, anxiety disorders, and depression.",
+              "REM Sleep Behavior Disorder (RBD): Acting out dreams physically — potentially a precursor to Parkinson's disease or Lewy body dementia.",
+              "Sleep paralysis with hallucinations: Occurs during transitions in/out of REM; experienced by 20–40% of people at least once.",
+              "OSA can trigger vivid, distressing dreams by causing oxygen drops and arousals during REM sleep; treating OSA often improves dream quality.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 text-midnight flex gap-3 list-none">
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 5: Key Takeaways */}
+      <section className="bg-midnight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
+          <ul className="space-y-3">
+            {[
+              "Dreaming primarily occurs in REM sleep — the most cognitively active stage.",
+              "Dreams serve memory consolidation and emotional processing functions.",
+              "Common dream themes are universal and reflect universal human anxieties.",
+              "Recurring nightmares or violent dream behaviors are worth discussing with a clinician.",
+              "Treating sleep disorders (especially OSA) often significantly improves dream quality and reduces nightmares.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6: References */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-2xl text-midnight mb-4">References</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            {[
+              `Walker MP, Stickgold R. "Sleep, Memory, and Plasticity." Annual Review of Psychology. 2006.`,
+              `Hobson JA. "REM sleep and dreaming: towards a theory of protoconsciousness." Nature Reviews Neuroscience. 2009.`,
+              `Stickgold R, Walker MP. "Sleep-dependent memory consolidation and reconsolidation." Sleep Medicine. 2007.`,
+            ].map((ref) => (
+              <li key={ref} className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.65)" }}>{ref}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
     </main>
   );
 }
