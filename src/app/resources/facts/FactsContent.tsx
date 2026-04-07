@@ -1155,8 +1155,9 @@ function ConversionFork() {
               results, and a prescription if sleep apnea is found. All for
               $149. No waiting rooms. No referrals.
             </p>
-            <Link
+            <a
               href={SHOPIFY.buyUrl}
+              data-shopify-checkout="sleep-test"
               className="inline-flex items-center justify-center rounded-[12px] px-8 font-body text-sm font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
               style={{
                 height: "52px",
@@ -1166,7 +1167,7 @@ function ConversionFork() {
               }}
             >
               Order your test · $149
-            </Link>
+            </a>
             <p
               className="font-body text-xs text-center"
               style={{ color: "rgba(3,31,61,0.32)" }}
