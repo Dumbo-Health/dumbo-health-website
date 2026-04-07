@@ -102,6 +102,11 @@ export default async function SleepPlanDayPage({ params }: PageProps) {
               />
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10">
           {entry.videoId && (
             <YoutubeEmbed
               videoId={entry.videoId}
@@ -109,13 +114,8 @@ export default async function SleepPlanDayPage({ params }: PageProps) {
               title={entry.title}
             />
           )}
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10">
           <div
-            className="font-body text-lg leading-8 text-midnight/80 [&_h1]:font-heading [&_h1]:text-4xl [&_h1]:text-midnight [&_h2]:mt-10 [&_h2]:font-heading [&_h2]:text-3xl [&_h2]:text-midnight [&_h3]:mt-8 [&_h3]:font-heading [&_h3]:text-2xl [&_h3]:text-midnight [&_p]:mt-4 [&_img]:mt-6 [&_img]:rounded-3xl [&_img]:border [&_img]:border-sunlight [&_img]:bg-daylight [&_img]:p-2 [&_img]:max-w-full [&_img]:h-auto [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-2 [&_strong]:font-semibold"
+            className={`font-body text-lg leading-8 text-midnight/80 ${entry.videoId ? "mt-10" : ""} [&_h1]:font-heading [&_h1]:text-4xl [&_h1]:text-midnight [&_h2]:mt-10 [&_h2]:font-heading [&_h2]:text-3xl [&_h2]:text-midnight [&_h3]:mt-8 [&_h3]:font-heading [&_h3]:text-2xl [&_h3]:text-midnight [&_p]:mt-4 [&_img]:mt-6 [&_img]:rounded-3xl [&_img]:border [&_img]:border-sunlight [&_img]:bg-daylight [&_img]:p-2 [&_img]:max-w-full [&_img]:h-auto [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-2 [&_strong]:font-semibold"
             dangerouslySetInnerHTML={{ __html: content }}
           />
 
