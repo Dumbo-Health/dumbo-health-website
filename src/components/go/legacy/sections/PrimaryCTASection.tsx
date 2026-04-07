@@ -2,19 +2,22 @@
 
 import Link from 'next/link';
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { SHOPIFY } from "@/lib/constants";
 
 interface PrimaryCTASectionProps {
   title: string;
   subtitle: string;
   ctaText: string;
   ctaLink: string;
+  shopifyCheckout?: boolean;
 }
 
 export default function PrimaryCTASection({
   title,
   subtitle,
   ctaText,
-  ctaLink
+  ctaLink,
+  shopifyCheckout = false,
 }: PrimaryCTASectionProps) {
   const ctaSection = useScrollAnimation({ delay: 0 });
   return (
@@ -31,12 +34,22 @@ export default function PrimaryCTASection({
 
             {/* Right CTA Button */}
             <div className="lg:col-span-4 flex justify-start lg:justify-end">
-              <Link
-                href={ctaLink}
-                className="inline-block bg-white text-primary hover:bg-gray-50 transition-colors duration-200 font-medium px-8 py-4 rounded-lg text-lg shadow-lg hover:shadow-xl font-button text-center"
-              >
-                {ctaText.toUpperCase()}
-              </Link>
+              {shopifyCheckout ? (
+                <a
+                  href={SHOPIFY.buyUrl}
+                  data-shopify-checkout="sleep-test"
+                  className="inline-block bg-white text-primary hover:bg-gray-50 transition-colors duration-200 font-medium px-8 py-4 rounded-lg text-lg shadow-lg hover:shadow-xl font-button text-center"
+                >
+                  {ctaText.toUpperCase()}
+                </a>
+              ) : (
+                <Link
+                  href={ctaLink}
+                  className="inline-block bg-white text-primary hover:bg-gray-50 transition-colors duration-200 font-medium px-8 py-4 rounded-lg text-lg shadow-lg hover:shadow-xl font-button text-center"
+                >
+                  {ctaText.toUpperCase()}
+                </Link>
+              )}
             </div>
           </div>
         </div>

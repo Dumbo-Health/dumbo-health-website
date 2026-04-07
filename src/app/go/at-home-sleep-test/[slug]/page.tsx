@@ -113,6 +113,7 @@ export default async function AtHomeSleepTestPage({ params }: PageProps) {
         imageSrc={str(pageData.hero_image_src) || "/at-home-sleep-study-hero.png"}
         imageAlt={str(pageData.hero_image_alt) || "At-home sleep study"}
         showStatsCard={true}
+        shopifyCheckout={true}
       />
 
       {pageData.location_type === "city" && str(pageData.state) && str(pageData.city) ? (
@@ -206,6 +207,7 @@ export default async function AtHomeSleepTestPage({ params }: PageProps) {
         }> | undefined) || []}
         ctaText={pageData.how_it_works_cta_text as string | undefined}
         ctaLink={pageData.how_it_works_cta_link as string | undefined}
+        shopifyCheckout={true}
       />
 
       {str(pageData.price_transparency_title) ? (
@@ -260,6 +262,7 @@ export default async function AtHomeSleepTestPage({ params }: PageProps) {
         subtitle={str(pageData.final_cta_subtitle)}
         ctaText={str(pageData.final_cta_button_anchor)}
         ctaLink={str(pageData.final_cta_button_link) || "#"}
+        shopifyCheckout={true}
       />
 
       {pageData.testimonials ? (

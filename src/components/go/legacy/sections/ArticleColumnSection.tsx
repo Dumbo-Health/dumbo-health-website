@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import { SHOPIFY } from "@/lib/constants";
 
 interface Step {
   number: string;
@@ -18,6 +19,7 @@ interface ArticleColumnProps {
   steps: Step[];
   ctaText?: string;
   ctaLink?: string;
+  shopifyCheckout?: boolean;
 }
 
 const STEP_COLORS = ["#FF8361", "#78BFBC", "#031F3D", "#FF8361", "#78BFBC"];
@@ -29,6 +31,7 @@ export default function ArticleColumn({
   steps,
   ctaText,
   ctaLink,
+  shopifyCheckout = false,
 }: ArticleColumnProps) {
   return (
     <section className="py-16 px-6 sm:px-8 lg:px-12" style={{ backgroundColor: "#FCF6ED" }}>
@@ -94,7 +97,7 @@ export default function ArticleColumn({
                       color: "#fff",
                     }}
                   >
-                    {step.number}
+                    {step.number || String(index + 1).padStart(2, "0")}
                   </div>
 
                   {/* Content */}
@@ -124,18 +127,32 @@ export default function ArticleColumn({
         </div>
 
         {/* CTA Button */}
-        {ctaText && ctaLink && (
+        {ctaText && (ctaLink || shopifyCheckout) && (
           <div className="text-center">
-            <Link
-              href={ctaLink || "#"}
-              className="inline-block font-body font-bold text-white text-sm uppercase tracking-wider px-8 py-3 rounded-[12px] transition-all duration-200 hover:-translate-y-0.5"
-              style={{
-                backgroundColor: "#FF8361",
-                boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
-              }}
-            >
-              <span dangerouslySetInnerHTML={{ __html: ctaText }} />
-            </Link>
+            {shopifyCheckout ? (
+              <a
+                href={SHOPIFY.buyUrl}
+                data-shopify-checkout="sleep-test"
+                className="inline-block font-body font-bold text-white text-sm uppercase tracking-wider px-8 py-3 rounded-[12px] transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#FF8361",
+                  boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
+                }}
+              >
+                <span dangerouslySetInnerHTML={{ __html: ctaText }} />
+              </a>
+            ) : (
+              <Link
+                href={ctaLink || "#"}
+                className="inline-block font-body font-bold text-white text-sm uppercase tracking-wider px-8 py-3 rounded-[12px] transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#FF8361",
+                  boxShadow: "0 4px 20px rgba(255,131,97,0.3)",
+                }}
+              >
+                <span dangerouslySetInnerHTML={{ __html: ctaText }} />
+              </Link>
+            )}
           </div>
         )}
       </div>
