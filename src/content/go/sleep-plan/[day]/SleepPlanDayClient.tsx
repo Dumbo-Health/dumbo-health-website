@@ -251,7 +251,7 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
         title="Think you might have sleep apnea?"
         subtitle="Dumbo Health offers at-home sleep testing, diagnosis, and ongoing care for sleep apnea-at a fraction of traditional clinic costs."
         ctaText="Start your assessment"
-        ctaLink="https://app.dumbo.health/assessment"
+        ctaLink="/get-started"
       />
     </div>
   );
