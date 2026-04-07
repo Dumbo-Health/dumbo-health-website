@@ -8,8 +8,10 @@ export interface PlanEntry {
   title: string;
   description: string;
   content: string;
-  /** Optional thumbnail image URL (e.g. /go/30-day/intro/intro-1.png) */
+  /** Optional thumbnail image URL (e.g. /go/30-day/thumbnails/intro.jpg) */
   thumbnail?: string;
+  /** Optional YouTube video ID */
+  videoId?: string;
 }
 
 export type PlanConfig = Record<string, PlanEntry>;

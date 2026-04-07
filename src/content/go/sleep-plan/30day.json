@@ -3,192 +3,224 @@
     "title": "Dumbo Health 30-Day Sleep Improvement Plan",
     "description": "Build better sleep in 30 days. Week 1: Foundation. Week 2: Sleep–bed connection. Week 3: Calm your mind. Week 4: Lock in success.",
     "content": "intro/content.html",
-    "thumbnail": "/go/30-day/intro/intro-1.png"
+    "thumbnail": "/go/30-day/thumbnails/intro.jpg",
+    "videoId": "Ooiz3fWzwSY"
   },
   "day-1": {
     "title": "Day 1: Set Your Wake-Up Time",
     "description": "Choose a wake-up time you can stick to every single day even weekends and set your alarm for that time starting tomorrow morning.",
     "content": "day-1/content.html",
-    "thumbnail": "/go/30-day/day-1/day-1.png"
+    "thumbnail": "/go/30-day/thumbnails/day-1.jpg",
+    "videoId": "4P5Z_1_rxIA"
   },
   "day-2": {
     "title": "Day 2: Start Your Sleep Diary",
     "description": "Tonight, start tracking your sleep. Note bed time, when you fell asleep, any wake-ups, and when you woke up.",
     "content": "day-2/content.html",
-    "thumbnail": "/go/30-day/day-2/day-2.png"
+    "thumbnail": "/go/30-day/thumbnails/day-2.jpg",
+    "videoId": "NFiBEAyxLsY"
   },
   "day-3": {
     "title": "Day 3: Assess Your Sleep Environment",
     "description": "Walk into your bedroom tonight and notice everything. Is it dark enough? Too warm? Make one change to improve your sleep space.",
     "content": "day-3/content.html",
-    "thumbnail": "/go/30-day/day-3/day-3.png"
+    "thumbnail": "/go/30-day/thumbnails/day-3.jpg",
+    "videoId": "TzJrYjmGMmw"
   },
   "day-4": {
     "title": "Day 4: Cut the Caffeine Cutoff",
     "description": "No caffeine after 2 PM today. That includes coffee, tea, energy drinks, and even chocolate.",
     "content": "day-4/content.html",
-    "thumbnail": "/go/30-day/day-4/day-4.png"
+    "thumbnail": "/go/30-day/thumbnails/day-4.jpg",
+    "videoId": "EuEqTytlanc"
   },
   "day-5": {
     "title": "Day 5: Lower the Pressure Around Sleep",
     "description": "Tonight, practice letting go of the need to force sleep. Your only job right now is to rest your body.",
     "content": "day-5/content.html",
-    "thumbnail": "/go/30-day/day-5/day-5.png"
+    "thumbnail": "/go/30-day/thumbnails/day-5.jpg",
+    "videoId": "p-yxalpNsa8"
   },
   "day-6": {
     "title": "Day 6: Create a Wind-Down Ritual",
     "description": "Starting one hour before bed, do the same 3 calming activities in the same order. Dim lights, herbal tea, stretch, read, or soft music.",
     "content": "day-6/content.html",
-    "thumbnail": "/go/30-day/day-6/day-6.png"
+    "thumbnail": "/go/30-day/thumbnails/day-6.jpg",
+    "videoId": "VBXnLZqzd08"
   },
   "day-7": {
     "title": "Day 7: Reflect on Week 1",
     "description": "Review your sleep diary from the past week. Notice trends: Are you falling asleep faster? How do you feel during the day?",
     "content": "day-7/content.html",
-    "thumbnail": "/go/30-day/day-7/day-7.png"
+    "thumbnail": "/go/30-day/thumbnails/day-7.jpg",
+    "videoId": "PGCD8fkDlec"
   },
   "day-8": {
     "title": "Day 8: The 15-Minute Rule",
     "description": "If you can't fall asleep within 15–20 minutes, get out of bed. Do something calm and boring, then return when you feel sleepy.",
     "content": "day-8/content.html",
-    "thumbnail": "/go/30-day/day-8/day-8.png"
+    "thumbnail": "/go/30-day/thumbnails/day-8.jpg",
+    "videoId": "BBoGXpgyExk"
   },
   "day-9": {
     "title": "Day 9: Keep Your Bed Sacred",
     "description": "Use your bed only for sleep (and intimacy). No scrolling, no TV, no work emails.",
     "content": "day-9/content.html",
-    "thumbnail": "/go/30-day/day-9/day-9.png"
+    "thumbnail": "/go/30-day/thumbnails/day-9.jpg",
+    "videoId": "Nmhr0nnm224"
   },
   "day-10": {
     "title": "Day 10: Master the Middle-of-the-Night Wake-Up",
     "description": "If you wake and can't fall back asleep within 15–20 minutes, get up. Do a calm activity, then return to bed when sleepy.",
     "content": "day-10/content.html",
-    "thumbnail": "/go/30-day/day-10/day-10.png"
+    "thumbnail": "/go/30-day/thumbnails/day-10.jpg",
+    "videoId": "x0bzA5JqVCA"
   },
   "day-11": {
     "title": "Day 11: Set a Bedtime Window",
     "description": "Only go to bed when you're truly sleepy not just tired or bored. Notice the difference between tired and sleepy.",
     "content": "day-11/content.html",
-    "thumbnail": "/go/30-day/day-11/day-11.png"
+    "thumbnail": "/go/30-day/thumbnails/day-11.jpg",
+    "videoId": "wII0pjBbo1E"
   },
   "day-12": {
     "title": "Day 12: Limit Liquids Before Bed",
     "description": "Stop drinking fluids 90 minutes before bedtime to reduce nighttime trips to the bathroom.",
     "content": "day-12/content.html",
-    "thumbnail": "/go/30-day/day-12/day-12.png"
+    "thumbnail": "/go/30-day/thumbnails/day-12.jpg",
+    "videoId": "XIzrK8YalJ4"
   },
   "day-13": {
     "title": "Day 13: Practice the Sleepy Walk",
     "description": "If you get out of bed tonight, move slowly and calmly. Keep lights dim. Walk like you're still half-asleep.",
     "content": "day-13/content.html",
-    "thumbnail": "/go/30-day/day-13/day-13.png"
+    "thumbnail": "/go/30-day/thumbnails/day-13.jpg",
+    "videoId": "jBVzaQzINJ4"
   },
   "day-14": {
     "title": "Day 14: Week 2 Reflection",
     "description": "Review your sleep diary. Calculate sleep efficiency: (Total Sleep Time ÷ Time in Bed) × 100. Aim for 85% or higher.",
     "content": "day-14/content.html",
-    "thumbnail": "/go/30-day/day-14/day-14.png"
+    "thumbnail": "/go/30-day/thumbnails/day-14.jpg",
+    "videoId": "cLz3w5nw7vs"
   },
   "day-15": {
     "title": "Day 15: Try Progressive Muscle Relaxation",
     "description": "Before bed, tense each muscle group for 5 seconds then release, from toes to head. Use a guided audio if helpful.",
     "content": "day-15/content.html",
-    "thumbnail": "/go/30-day/day-15/day-15.png"
+    "thumbnail": "/go/30-day/thumbnails/day-15.jpg",
+    "videoId": "Q7I1MVwGBOM"
   },
   "day-16": {
     "title": "Day 16: The Worry Dump",
     "description": "One hour before bed, write down everything on your mind worries, to-dos, random thoughts. Then close the notebook and leave it in another room.",
     "content": "day-16/content.html",
-    "thumbnail": "/go/30-day/day-16/day-16.png"
+    "thumbnail": "/go/30-day/thumbnails/day-16.jpg",
+    "videoId": "AQ8xNEuhqlA"
   },
   "day-17": {
     "title": "Day 17: Challenge Catastrophic Thinking",
     "description": "Replace thoughts like I'll never sleep with: I've had bad nights before and managed. I'll get through tomorrow.",
     "content": "day-17/content.html",
-    "thumbnail": "/go/30-day/day-17/day-17.png"
+    "thumbnail": "/go/30-day/thumbnails/day-17.jpg",
+    "videoId": "lLOq4Pcyr2M"
   },
   "day-18": {
     "title": "Day 18: Use the 4-7-8 Breathing Technique",
     "description": "Breathe in for 4 counts, hold for 7, exhale for 8. Repeat 4 times. Activates your body's relaxation response.",
     "content": "day-18/content.html",
-    "thumbnail": "/go/30-day/day-18/day-18.png"
+    "thumbnail": "/go/30-day/thumbnails/day-18.jpg",
+    "videoId": "AAzRaW3cCvo"
   },
   "day-19": {
     "title": "Day 19: Visualize Your Calm Place",
     "description": "As you lie in bed, imagine a place where you feel completely safe and relaxed. Picture every detail sights, sounds, smells.",
     "content": "day-19/content.html",
-    "thumbnail": "/go/30-day/day-19/day-19.png"
+    "thumbnail": "/go/30-day/thumbnails/day-19.jpg",
+    "videoId": "GMC74Yap1J8"
   },
   "day-20": {
     "title": "Day 20: Give Yourself Permission to Rest",
     "description": "Remind yourself: Even if I don't fall asleep right away, rest is still valuable. My body is healing and recharging.",
     "content": "day-20/content.html",
-    "thumbnail": "/go/30-day/day-20/day-20.png"
+    "thumbnail": "/go/30-day/thumbnails/day-20.jpg",
+    "videoId": "UntfXvE6IV8"
   },
   "day-21": {
     "title": "Day 21: Week 3 Reflection",
     "description": "Review your week. Which relaxation or cognitive technique felt most helpful? Write down your top 2 to use moving forward.",
     "content": "day-21/content.html",
-    "thumbnail": "/go/30-day/day-21/day-21.png"
+    "thumbnail": "/go/30-day/thumbnails/day-21.jpg",
+    "videoId": "YnFDHRO-EEk"
   },
   "day-22": {
     "title": "Day 22: Optimize Your Sleep Schedule",
     "description": "Adjust your bedtime so you're in bed only as long as you're actually sleeping. Match bed time to your average sleep duration.",
     "content": "day-22/content.html",
-    "thumbnail": "/go/30-day/day-22/day-22.png"
+    "thumbnail": "/go/30-day/thumbnails/day-22.jpg",
+    "videoId": "VBTNAjUR3GA"
   },
   "day-23": {
     "title": "Day 23: Plan for Off Nights",
     "description": "Accept that not every night will be perfect. Make a plan for what to do when sleep doesn't come easily.",
     "content": "day-23/content.html",
-    "thumbnail": "/go/30-day/day-23/day-23.png"
+    "thumbnail": "/go/30-day/thumbnails/day-23.jpg",
+    "videoId": "Q2FyXlKdaPA"
   },
   "day-24": {
     "title": "Day 24: Move Your Body",
     "description": "Get at least 20–30 minutes of movement today walking, stretching, yoga. Finish at least 3 hours before bed.",
     "content": "day-24/content.html",
-    "thumbnail": "/go/30-day/day-24/day-24.png"
+    "thumbnail": "/go/30-day/thumbnails/day-24.jpg",
+    "videoId": "_vPKjKBUaRQ"
   },
   "day-25": {
     "title": "Day 25: Mindful Eating Before Bed",
     "description": "Avoid heavy, spicy, or large meals within 3 hours of bedtime. If you need a snack, choose something light and sleep-friendly.",
     "content": "day-25/content.html",
-    "thumbnail": "/go/30-day/day-25/day-25.png"
+    "thumbnail": "/go/30-day/thumbnails/day-25.jpg",
+    "videoId": "_xh6a--dZRw"
   },
   "day-26": {
     "title": "Day 26: Review Your Wins",
     "description": "Look back at your sleep diary from Day 1. Compare to this week. What's improved? Write down 3 improvements you've noticed.",
     "content": "day-26/content.html",
-    "thumbnail": "/go/30-day/day-26/day-26.png"
+    "thumbnail": "/go/30-day/thumbnails/day-26.jpg",
+    "videoId": "7tLBuPUwcb0"
   },
   "day-27": {
     "title": "Day 27: Create Your Maintenance Plan",
     "description": "List the 5 habits from this program that made the biggest difference. These are your non-negotiables moving forward.",
     "content": "day-27/content.html",
-    "thumbnail": "/go/30-day/day-27/day-27.png"
+    "thumbnail": "/go/30-day/thumbnails/day-27.jpg",
+    "videoId": "IMQbx78RwYA"
   },
   "day-28": {
     "title": "Day 28: Handle Travel and Schedule Changes",
     "description": "Make a plan for how you'll protect your sleep during travel, late events, and stress.",
     "content": "day-28/content.html",
-    "thumbnail": "/go/30-day/day-28/day-28.png"
+    "thumbnail": "/go/30-day/thumbnails/day-28.jpg",
+    "videoId": "BnIKMh-I5n0"
   },
   "day-29": {
     "title": "Day 29: Express Gratitude for Your Sleep",
     "description": "Tonight before bed, think of 3 things you're grateful for about your sleep journey.",
     "content": "day-29/content.html",
-    "thumbnail": "/go/30-day/day-29/day-29.png"
+    "thumbnail": "/go/30-day/thumbnails/day-29.jpg",
+    "videoId": "Bonyseflno8"
   },
   "day-30": {
     "title": "Day 30: Celebrate and Commit",
     "description": "Review your entire 30-day journey. Celebrate your progress, download your certificate, and commit to continuing the habits that work.",
     "content": "day-30/content.html",
-    "thumbnail": "/go/30-day/day-30/day-30.png"
+    "thumbnail": "/go/30-day/thumbnails/day-30.jpg",
+    "videoId": "A4YpoFQh44Y"
   },
   "conclusion": {
     "title": "Conclusion: Keep Your Sleep Habits Alive",
     "description": "Sleep improvement is a lifestyle. Continue your non-negotiable habits and return to this plan whenever you need a reset.",
     "content": "conclusion/content.html",
-    "thumbnail": "/go/30-day/conclusion/conclusion.png"
+    "thumbnail": "/go/30-day/thumbnails/conclusion.jpg",
+    "videoId": "SZoLW02mpvU"
   }
 }
