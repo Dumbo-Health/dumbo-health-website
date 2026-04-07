@@ -174,18 +174,25 @@ export function StopBangClient() {
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-peach">
                 Your score
               </p>
-              <div className="mt-4 flex items-end gap-3">
-                <p className="font-heading text-5xl text-midnight">{score}</p>
-                <span className="pb-2 text-sm text-midnight/55">/ 8</span>
-              </div>
-
-              <div className="mt-4">
-                <span
-                  className={`rounded-full px-3 py-1 text-sm font-medium ${riskCopy[level].tone}`}
-                >
-                  {riskCopy[level].label}
-                </span>
-              </div>
+              {hasCalculated ? (
+                <>
+                  <div className="mt-4 flex items-end gap-3">
+                    <p className="font-heading text-5xl text-midnight">{score}</p>
+                    <span className="pb-2 text-sm text-midnight/55">/ 8</span>
+                  </div>
+                  <div className="mt-4">
+                    <span
+                      className={`rounded-full px-3 py-1 text-sm font-medium ${riskCopy[level].tone}`}
+                    >
+                      {riskCopy[level].label}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div className="mt-4 flex items-end gap-3">
+                  <p className="font-heading text-5xl" style={{ color: "rgba(3,31,61,0.15)" }}>–</p>
+                </div>
+              )}
 
               <p className="mt-5 font-body leading-7 text-midnight/72">
                 {allAnswered && hasCalculated
