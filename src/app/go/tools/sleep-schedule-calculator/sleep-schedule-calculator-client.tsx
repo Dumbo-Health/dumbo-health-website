@@ -348,22 +348,22 @@ export function SleepScheduleCalculatorClient() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {[
               {
-                stage: "N1 — Light Sleep",
+                stage: "N1: Light Sleep",
                 pct: "~5% of total sleep",
-                body: "The transition between wakefulness and sleep. Muscle activity slows, hypnic jerks may occur. Easily disrupted — this is where fragmented sleep wastes the most time.",
+                body: "The transition between wakefulness and sleep. Muscle activity slows, hypnic jerks may occur. Easily disrupted, this is where fragmented sleep wastes the most time.",
               },
               {
-                stage: "N2 — Core Sleep",
+                stage: "N2: Core Sleep",
                 pct: "~45–55% of total sleep",
-                body: "The largest share of the night. Heart rate and body temperature drop. Sleep spindles appear — bursts of neural activity associated with memory consolidation.",
+                body: "The largest share of the night. Heart rate and body temperature drop. Sleep spindles appear, bursts of neural activity associated with memory consolidation.",
               },
               {
-                stage: "N3 — Deep Sleep (Slow-Wave)",
+                stage: "N3: Deep Sleep (Slow-Wave)",
                 pct: "~15–20% of total sleep",
                 body: "Physically restorative. Growth hormone is released, tissues repair, immune function strengthens. Dominates early cycles (1–2). Hardest to wake from.",
               },
               {
-                stage: "REM — Dream Sleep",
+                stage: "REM: Dream Sleep",
                 pct: "~20–25% of total sleep",
                 body: "Critical for memory consolidation, emotional processing, and creativity. Dominates later cycles (4–5). Cutting sleep short by even 1 hour disproportionately reduces REM.",
               },
@@ -378,7 +378,7 @@ export function SleepScheduleCalculatorClient() {
           <div className="mt-8 rounded-2xl border border-sunlight bg-daylight p-6">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-peach">Key Fact</p>
             <p className="mt-3 font-body leading-7 text-midnight">
-              "Adults who consistently get fewer than 7 hours of sleep show the same cognitive impairment as those who have been awake for 24 hours straight — yet most report feeling only slightly tired."
+              "Adults who consistently get fewer than 7 hours of sleep show the same cognitive impairment as those who have been awake for 24 hours straight, yet most report feeling only slightly tired."
             </p>
           </div>
         </div>
@@ -445,7 +445,7 @@ export function SleepScheduleCalculatorClient() {
               {
                 type: "Late (Night Owl)",
                 pct: "~25% of adults",
-                desc: "Genetically delayed DLMO — melatonin onset occurs 1–3 hours later than average. Not laziness. Forcing early wake times causes chronic social jetlag.",
+                desc: "Genetically delayed DLMO, melatonin onset occurs 1–3 hours later than average. Not laziness. Forcing early wake times causes chronic social jetlag.",
               },
             ].map(({ type, pct, desc }) => (
               <div key={type} className="rounded-2xl border border-sunlight bg-daylight p-5">
@@ -458,7 +458,7 @@ export function SleepScheduleCalculatorClient() {
           <div className="mt-8 rounded-2xl border border-sunlight bg-daylight p-6">
             <p className="font-heading text-base text-midnight">What is social jetlag?</p>
             <p className="mt-3 font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-              Social jetlag is the weekly discrepancy between your biological clock and your social schedule. The average person has 2 hours of social jetlag — equivalent to traveling two time zones every weekend. Chronic social jetlag is associated with higher rates of obesity, metabolic disorder, and depression.
+              Social jetlag is the weekly discrepancy between your biological clock and your social schedule. The average person has 2 hours of social jetlag, equivalent to traveling two time zones every weekend. Chronic social jetlag is associated with higher rates of obesity, metabolic disorder, and depression.
             </p>
           </div>
         </div>
@@ -469,7 +469,7 @@ export function SleepScheduleCalculatorClient() {
         <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
           <h2 className="font-heading text-3xl text-midnight">How to Shift Your Sleep Schedule Safely</h2>
           <p className="mt-4 font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-            Whether you need to move your schedule earlier or later, the circadian system responds to gradual shifts — not abrupt changes.
+            Whether you need to move your schedule earlier or later, the circadian system responds to gradual shifts, not abrupt changes.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl border border-sunlight bg-white p-6">
@@ -477,9 +477,9 @@ export function SleepScheduleCalculatorClient() {
               <ul className="mt-4 space-y-3">
                 {[
                   "Advance bedtime and wake time by 15–30 minutes every 2–3 days",
-                  "Get bright light immediately upon waking — outdoors or with a 10,000 lux lamp",
+                  "Get bright light immediately upon waking, outdoors or with a 10,000 lux lamp",
                   "Take 0.5–1mg melatonin 5 hours before your target bedtime (low dose, not sedating dose)",
-                  "Avoid evening light exposure — blue-blocking glasses after sunset help",
+                  "Avoid evening light exposure. Blue-blocking glasses after sunset help",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-peach" />
@@ -492,10 +492,10 @@ export function SleepScheduleCalculatorClient() {
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-peach">Moving Later</p>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Delay bedtime and wake time gradually — same 15–30 min cadence",
+                  "Delay bedtime and wake time gradually, same 15–30 min cadence",
                   "Use blackout curtains in the morning to block early-morning light",
                   "Avoid bright light in the morning until closer to your target wake time",
-                  "Allow 1–2 weeks per hour of shift — rushing creates social jetlag",
+                  "Allow 1–2 weeks per hour of shift. Rushing creates social jetlag",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-peach" />
@@ -506,7 +506,7 @@ export function SleepScheduleCalculatorClient() {
             </div>
           </div>
           <p className="mt-6 font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-            <span className="font-medium text-midnight">Avoid weekend catch-up sleep.</span> Sleeping in on weekends perpetuates the social jetlag cycle and makes Monday mornings progressively harder. A consistent wake time — even after a poor night — is the fastest way to stabilize your schedule.
+            <span className="font-medium text-midnight">Avoid weekend catch-up sleep.</span> Sleeping in on weekends perpetuates the social jetlag cycle and makes Monday mornings progressively harder. A consistent wake time, even after a poor night, is the fastest way to stabilize your schedule.
           </p>
         </div>
       </section>
@@ -517,10 +517,10 @@ export function SleepScheduleCalculatorClient() {
           <h2 className="font-heading text-3xl text-white">Key Takeaways</h2>
           <ul className="mt-6 space-y-4">
             {[
-              "Sleep cycles last approximately 90 minutes. Waking at the natural end of a cycle — rather than in the middle — dramatically reduces grogginess (sleep inertia).",
+              "Sleep cycles last approximately 90 minutes. Waking at the natural end of a cycle, rather than in the middle, dramatically reduces grogginess (sleep inertia).",
               "Adults need 7–9 hours. Consistently sleeping fewer than 7 hours produces cognitive impairment equivalent to total sleep deprivation, even when you feel only mildly tired.",
-              "Early cycles are rich in deep sleep (N3); later cycles are rich in REM. Both are essential — cutting the night short at either end has measurable consequences.",
-              "Chronotype is biological, not a character flaw. Night owls are not undisciplined — they have a genetically delayed circadian clock.",
+              "Early cycles are rich in deep sleep (N3); later cycles are rich in REM. Both are essential, and cutting the night short at either end has measurable consequences.",
+              "Chronotype is biological, not a character flaw. Night owls are not undisciplined. They have a genetically delayed circadian clock.",
               "A consistent wake time (not bedtime) is the most powerful single lever for circadian health. Anchor the morning; the evening follows.",
             ].map((item) => (
               <li key={item} className="flex gap-4">

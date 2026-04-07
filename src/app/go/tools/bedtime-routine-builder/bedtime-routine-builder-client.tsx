@@ -84,7 +84,7 @@ function buildRoutine(answers: Answers): RoutineStep[] {
     title: "Put screens away",
     description:
       screens === "no"
-        ? "You're already screen-light before bed — keep it up. Use this window for light reading or conversation instead."
+        ? "You're already screen-light before bed. Keep it up. Use this window for light reading or conversation instead."
         : "Blue light from screens delays melatonin release. Switching off now gives your brain time to shift into sleep mode.",
   });
 
@@ -107,7 +107,7 @@ function buildRoutine(answers: Answers): RoutineStep[] {
     });
   }
 
-  // Temperature drop — shower
+  // Temperature drop: shower
   steps.push({
     time: subtractMinutes(wakeTime, bedtimeOffset + 90),
     icon: "🚿",
@@ -132,7 +132,7 @@ function buildRoutine(answers: Answers): RoutineStep[] {
     title: "Lights out",
     description:
       fallAsleep === "under10"
-        ? "You fall asleep quickly — keep up whatever you're doing. Stick to this time and your body clock will stay calibrated."
+        ? "You fall asleep quickly. Keep up whatever you're doing. Stick to this time and your body clock will stay calibrated."
         : "Getting into bed at a consistent time trains your circadian rhythm. Even on weekends, try not to shift this by more than an hour.",
   });
 
@@ -441,7 +441,7 @@ export function BedtimeRoutineBuilderClient() {
               <AccordionContent className="font-body leading-7 text-midnight/72">
                 Short-wavelength blue light from screens suppresses melatonin by up to
                 50% for several hours. Beyond the light itself, mentally stimulating
-                content — news, social media, video — also keeps your nervous system
+                content, including news, social media, and video, also keeps your nervous system
                 activated when it should be winding down.
               </AccordionContent>
             </AccordionItem>
@@ -450,7 +450,7 @@ export function BedtimeRoutineBuilderClient() {
                 Does a bedtime routine help if I have sleep apnea?
               </AccordionTrigger>
               <AccordionContent className="font-body leading-7 text-midnight/72">
-                Yes — and no routine replaces treatment for sleep apnea itself. A
+                Yes, and no routine replaces treatment for sleep apnea itself. A
                 consistent wind-down helps you fall asleep faster and reduces the time
                 you spend in light sleep, but if you're waking up still exhausted,
                 untreated apnea is likely the underlying issue worth addressing directly.
@@ -469,13 +469,13 @@ export function BedtimeRoutineBuilderClient() {
           </p>
           <ul className="mt-6 space-y-4">
             <li className="font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-              <span className="font-medium text-midnight">Core temperature drop.</span> Your core body temperature must fall by 1–2°F to initiate sleep. This cooling process begins roughly 2 hours before your natural sleep time — which is why a warm bath paradoxically helps (your body cools rapidly after you step out).
+              <span className="font-medium text-midnight">Core temperature drop.</span> Your core body temperature must fall by 1–2°F to initiate sleep. This cooling process begins roughly 2 hours before your natural sleep time, which is why a warm bath paradoxically helps (your body cools rapidly after you step out).
             </li>
             <li className="font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
               <span className="font-medium text-midnight">Melatonin onset (DLMO).</span> Dim-light melatonin onset starts approximately 2 hours before your habitual sleep time. Bright light and screen exposure during this window suppresses melatonin secretion, delaying the physiological signal to sleep.
             </li>
             <li className="font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-              <span className="font-medium text-midnight">Cortisol clearance.</span> Cortisol — the primary alerting hormone — peaks in the morning and must drop before sleep is possible. Stress, stimulating content, and bright environments all delay this drop.
+              <span className="font-medium text-midnight">Cortisol clearance.</span> Cortisol, the primary alerting hormone, peaks in the morning and must drop before sleep is possible. Stress, stimulating content, and bright environments all delay this drop.
             </li>
             <li className="font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
               <span className="font-medium text-midnight">Conditioned stimulus effect.</span> A consistent pre-sleep routine functions as a conditioned stimulus: repeated cues train the brain to associate those behaviors with sleep onset, reducing the effort required to fall asleep over time.
@@ -502,7 +502,7 @@ export function BedtimeRoutineBuilderClient() {
               {
                 n: "1",
                 title: "Set a consistent wake time",
-                body: "Seven days a week — even weekends. This is the single most powerful anchor for your circadian rhythm. Consistent wake time stabilizes the system; bedtime follows naturally.",
+                body: "Seven days a week, even weekends. This is the single most powerful anchor for your circadian rhythm. Consistent wake time stabilizes the system; bedtime follows naturally.",
               },
               {
                 n: "2",
@@ -517,12 +517,12 @@ export function BedtimeRoutineBuilderClient() {
               {
                 n: "4",
                 title: "Limit caffeine after 2pm",
-                body: "Caffeine's half-life is 5–7 hours. A coffee at 3pm still has significant adenosine-blocking activity at 10pm — delaying sleep onset even if you don't feel alert.",
+                body: "Caffeine's half-life is 5–7 hours. A coffee at 3pm still has significant adenosine-blocking activity at 10pm, delaying sleep onset even if you don't feel alert.",
               },
               {
                 n: "5",
                 title: "Avoid alcohol within 3 hours of bedtime",
-                body: "Alcohol may feel sedating but it fragments sleep architecture and suppresses REM sleep — the stage most critical for memory, emotional regulation, and cognitive recovery.",
+                body: "Alcohol may feel sedating but it fragments sleep architecture and suppresses REM sleep, the stage most critical for memory, emotional regulation, and cognitive recovery.",
               },
               {
                 n: "6",
@@ -542,7 +542,7 @@ export function BedtimeRoutineBuilderClient() {
               {
                 n: "9",
                 title: "Avoid large meals within 2–3 hours of bed",
-                body: "Active digestion raises core body temperature and can cause acid reflux when lying down — both of which fragment sleep, particularly in the first half of the night.",
+                body: "Active digestion raises core body temperature and can cause acid reflux when lying down, both of which fragment sleep, particularly in the first half of the night.",
               },
               {
                 n: "10",
@@ -577,7 +577,7 @@ export function BedtimeRoutineBuilderClient() {
               {
                 t: "T−60 min",
                 title: "No more screens; start relaxing activity",
-                body: "Book, podcast, gentle stretching, or conversation. Your goal is mental deceleration — reducing the cognitive arousal that keeps the brain in problem-solving mode.",
+                body: "Book, podcast, gentle stretching, or conversation. Your goal is mental deceleration, reducing the cognitive arousal that keeps the brain in problem-solving mode.",
               },
               {
                 t: "T−45 min",
@@ -587,7 +587,7 @@ export function BedtimeRoutineBuilderClient() {
               {
                 t: "T−30 min",
                 title: "Warm shower or bath",
-                body: "Counterintuitively, this cools your core temperature as you get out — accelerating one of the body's primary sleep-onset signals. Optimal timing is 1–2 hours before bed.",
+                body: "Counterintuitively, this cools your core temperature as you get out, accelerating one of the body's primary sleep-onset signals. Optimal timing is 1–2 hours before bed.",
               },
               {
                 t: "T−15 min",
@@ -596,7 +596,7 @@ export function BedtimeRoutineBuilderClient() {
               },
               {
                 t: "T−0",
-                title: "Lights out — same time every night",
+                title: "Lights out, same time every night",
                 body: "Consistency at this step compounds over time. Your circadian system begins anticipating sleep 30–60 minutes before a habitual bedtime, releasing melatonin proactively.",
               },
             ].map(({ t, title, body }, i, arr) => (
@@ -623,7 +623,7 @@ export function BedtimeRoutineBuilderClient() {
         <div className="mx-auto max-w-4xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
           <h2 className="font-heading text-3xl text-midnight">Sleep Hygiene vs CBT-I: When to Upgrade</h2>
           <p className="mt-4 font-body leading-7" style={{ color: "rgba(3,31,61,0.72)" }}>
-            Sleep hygiene and bedtime routines are the behavioral foundation — but they have a ceiling. Here is when to consider the clinical gold standard.
+            Sleep hygiene and bedtime routines are the behavioral foundation, but they have a ceiling. Here is when to consider the clinical gold standard.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl border border-sunlight bg-white p-6">
@@ -648,9 +648,9 @@ export function BedtimeRoutineBuilderClient() {
               <p className="mt-3 font-heading text-lg text-midnight">The gold standard</p>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Cognitive Behavioral Therapy for Insomnia — first-line treatment for chronic insomnia",
+                  "Cognitive Behavioral Therapy for Insomnia: first-line treatment for chronic insomnia",
                   "Includes: sleep restriction therapy, stimulus control, cognitive restructuring, relaxation training",
-                  "70–80% success rate for chronic insomnia — outperforms sleep medications long-term",
+                  "70–80% success rate for chronic insomnia, outperforming sleep medications long-term",
                   "Digital CBT-I programs (Somryst, Sleepio) are now FDA-cleared and widely accessible",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
@@ -670,11 +670,11 @@ export function BedtimeRoutineBuilderClient() {
           <h2 className="font-heading text-3xl text-white">Key Takeaways</h2>
           <ul className="mt-6 space-y-4">
             {[
-              "The 90 minutes before bed is the most powerful window to influence sleep quality — what you do in that window has an outsized effect on how quickly you fall asleep and how deeply you sleep.",
+              "The 90 minutes before bed is the most powerful window to influence sleep quality, and what you do in that window has an outsized effect on how quickly you fall asleep and how deeply you sleep.",
               "Consistent wake time is more important than consistent bedtime for circadian health. The wake anchor stabilizes the entire sleep system.",
-              "Screens, bright lights, and caffeine are the three most common sleep routine disruptors — all three delay the physiological signals your body needs to initiate sleep.",
+              "Screens, bright lights, and caffeine are the three most common sleep routine disruptors. All three delay the physiological signals your body needs to initiate sleep.",
               "A bedtime routine helps, but cannot fix untreated sleep apnea or chronic insomnia. If you wake exhausted despite good habits, those require clinical evaluation.",
-              "CBT-I is the most effective treatment for chronic insomnia, with durable results that outlast medication — and digital programs make it more accessible than ever.",
+              "CBT-I is the most effective treatment for chronic insomnia, with durable results that outlast medication, and digital programs make it more accessible than ever.",
             ].map((item) => (
               <li key={item} className="flex gap-4">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-peach" />

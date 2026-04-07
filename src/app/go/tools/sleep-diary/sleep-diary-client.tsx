@@ -214,7 +214,7 @@ export function SleepDiaryClient() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
           <h2 className="font-heading text-3xl text-midnight mb-4">Why Sleep Tracking Works</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            Sleep diaries are the gold-standard behavioral tool in Cognitive Behavioral Therapy for Insomnia (CBT-I). Most people significantly misjudge their own sleep — overestimating how long they sleep by 30–60 minutes on average.
+            Sleep diaries are the gold-standard behavioral tool in Cognitive Behavioral Therapy for Insomnia (CBT-I). Most people significantly misjudge their own sleep, overestimating how long they sleep by 30–60 minutes on average.
           </p>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
             A 2-week diary reveals patterns invisible to memory: which nights are worst, what precedes a bad night, whether your sleep window needs adjusting. Sleep physicians and CBT-I therapists use diary data to calculate sleep efficiency, set new sleep windows for sleep restriction therapy, and track treatment progress.
@@ -232,7 +232,7 @@ export function SleepDiaryClient() {
               { label: "Sleep Onset", desc: "Estimated time until you fell asleep (sleep latency)." },
               { label: "Wake-After-Sleep-Onset (WASO)", desc: "Minutes spent awake during the night." },
               { label: "Wake Time", desc: "When you woke up for good in the morning." },
-              { label: "Total Sleep Time (TST)", desc: "Actual time asleep — subtract latency and WASO from time in bed." },
+              { label: "Total Sleep Time (TST)", desc: "Actual time asleep: subtract latency and WASO from time in bed." },
               { label: "Sleep Efficiency", desc: "TST ÷ Time in Bed × 100. Target: ≥85%." },
             ].map((item) => (
               <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
@@ -283,7 +283,7 @@ export function SleepDiaryClient() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
           <h2 className="font-heading text-3xl text-midnight mb-4">CBT-I Sleep Restriction Basics</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            Sleep restriction is the most effective component of CBT-I — it builds homeostatic sleep pressure to consolidate fragmented sleep.
+            Sleep restriction is the most effective component of CBT-I, building homeostatic sleep pressure to consolidate fragmented sleep.
           </p>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
             <strong>The method:</strong> Calculate your average TST from the diary → Set your sleep window equal to TST (minimum 5.5 hrs) → Maintain a strict rise time → Expand window by 15 min per week when efficiency reaches ≥85%.
@@ -305,7 +305,7 @@ export function SleepDiaryClient() {
             {[
               "2 weeks of diary data is enough to identify actionable sleep patterns.",
               "Sleep efficiency is the most useful single metric from a diary.",
-              "Most people sleep less than they think — and need to know their real baseline.",
+              "Most people sleep less than they think and need to know their real baseline.",
               "CBT-I, guided by diary data, outperforms sleep medication for long-term insomnia treatment.",
               "A diary is also the most useful thing to bring to a sleep specialist appointment.",
             ].map((point) => (

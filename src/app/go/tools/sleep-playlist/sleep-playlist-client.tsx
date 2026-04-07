@@ -83,18 +83,18 @@ const WAVEFORM_HEIGHTS = [30, 50, 70, 45, 85, 60, 40, 75, 55, 65, 35, 80, 50, 70
 
 const SLEEP_FACTS = [
   "Adults need 7–9 hours of sleep. Only 1 in 3 Americans consistently gets that.",
-  "Your brain replays memories during deep sleep — that's how learning sticks.",
+  "Your brain replays memories during deep sleep, that's how learning sticks.",
   "Sleep apnea affects over 1 billion people worldwide, most of them undiagnosed.",
   "During REM sleep, your muscles are temporarily paralyzed to stop you acting out dreams.",
-  "The world record for staying awake is 11 days — the holder reported hallucinations by day 3.",
+  "The world record for staying awake is 11 days, and the holder reported hallucinations by day 3.",
   "Elephants sleep just 2 hours a night. Koalas sleep up to 22 hours. You're somewhere in between.",
-  "Your core body temperature drops by 1–2°F as you fall asleep — a cool room speeds this up.",
+  "Your core body temperature drops by 1–2°F as you fall asleep, and a cool room speeds this up.",
   "Humans are the only mammals that deliberately delay sleep. Every other animal just… sleeps.",
   "A single night of poor sleep can temporarily reduce your pain tolerance by up to 15%.",
   "Snoring affects 45% of adults occasionally. Loud, chronic snoring can be a sign of sleep apnea.",
   "CPAP therapy can normalize blood pressure in people with sleep apnea within weeks.",
   "Your brain produces a wave of cerebrospinal fluid during deep sleep that literally washes away toxins.",
-  "Dreaming in color is the norm — but 12% of people only dream in black and white.",
+  "Dreaming in color is the norm, but 12% of people only dream in black and white.",
   "The term 'sleep debt' is real: you accumulate a deficit that affects your mood, focus, and metabolism.",
   "Pink noise (like rain or waves) has been shown to improve deep sleep quality.",
 ];
@@ -568,7 +568,7 @@ export default function SleepPlaylistClient() {
             Sleep Playlist Generator
           </h1>
           <p className="mt-5 font-body text-lg leading-8" style={{ color: "rgba(252,246,237,0.72)" }}>
-            Answer 4 questions. We&apos;ll use AI to compose a personalized sleep soundtrack — just for tonight.
+            Answer 4 questions. We&apos;ll use AI to compose a personalized sleep soundtrack, just for tonight.
           </p>
         </div>
       </section>
@@ -881,7 +881,7 @@ export default function SleepPlaylistClient() {
               >
                 <p className="font-heading text-lg text-midnight mb-1">Enter your email to listen</p>
                 <p className="font-body text-sm mb-5" style={{ color: "rgba(3,31,61,0.6)" }}>
-                  Your track will also be shared with the Dumbo Health community — you can inspire other sleepers.
+                  Your track will also be shared with the Dumbo Health community, and you can inspire other sleepers.
                 </p>
 
                 <form onSubmit={(e) => void submitEmail(e)}>
@@ -917,7 +917,7 @@ export default function SleepPlaylistClient() {
           {/* PLAYER */}
           {stage === "player" && generatedTrack && (
             <div className="max-w-2xl mx-auto">
-              {/* Hidden audio element — looping for continuous ambient playback */}
+              {/* Hidden audio element: looping for continuous ambient playback */}
               <audio ref={audioRef} src={generatedTrack.audioUrl} loop />
 
               <div className="rounded-3xl overflow-hidden border" style={{ borderColor: "rgba(245,230,209,0.8)" }}>
@@ -1099,7 +1099,7 @@ export default function SleepPlaylistClient() {
               <div className="w-full max-w-sm rounded-3xl p-8" style={{ backgroundColor: "#FCF6ED" }}>
                 <p className="font-heading text-xl text-midnight mb-1">Enter your email to listen</p>
                 <p className="font-body text-sm mb-5" style={{ color: "rgba(3,31,61,0.6)" }}>
-                  Quick access to all community tracks — no spam, ever.
+                  Quick access to all community tracks. No spam, ever.
                 </p>
                 <form onSubmit={(e) => void submitCommunityEmail(e)}>
                   <input
@@ -1190,7 +1190,7 @@ export default function SleepPlaylistClient() {
           </h2>
           <p className="font-body text-lg leading-8 mb-8" style={{ color: "rgba(3,31,61,0.65)" }}>
             If you&apos;re waking up tired despite good sleep habits, sleep apnea may be the missing piece.
-            Dumbo Health makes it easy to find out — from home.
+            Dumbo Health makes it easy to find out, from home.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild className="rounded-xl font-mono tracking-wider px-8" style={{ backgroundColor: "#FF8361", color: "white" }}>
@@ -1212,14 +1212,14 @@ export default function SleepPlaylistClient() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
           <h2 className="font-heading text-3xl text-midnight mb-4">The Science of Music and Sleep</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            Music affects sleep through multiple pathways: slowing heart rate and respiration, reducing cortisol, distracting from rumination, and triggering relaxation via the autonomic nervous system. Tempo is the most important factor — music at <strong>60–80 BPM</strong> synchronizes with a resting heart rate, promoting physiological relaxation.
+            Music affects sleep through multiple pathways: slowing heart rate and respiration, reducing cortisol, distracting from rumination, and triggering relaxation via the autonomic nervous system. Tempo is the most important factor, and music at <strong>60–80 BPM</strong> synchronizes with a resting heart rate, promoting physiological relaxation.
           </p>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
             A meta-analysis of 10 randomized controlled trials found that music listening before sleep reduced sleep onset latency, improved sleep quality, and decreased nighttime awakenings.
           </p>
           <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
             <p className="font-body text-base leading-7 text-midnight">
-              The effect appears cumulative — people who listen to sleep music regularly report greater benefits over time as the routine becomes a conditioned sleep cue.
+              The effect appears cumulative, and people who listen to sleep music regularly report greater benefits over time as the routine becomes a conditioned sleep cue.
             </p>
           </div>
         </div>
@@ -1250,7 +1250,7 @@ export default function SleepPlaylistClient() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
           <h2 className="font-heading text-3xl text-midnight mb-4">Tempo, Frequency, and Your Brain</h2>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
-            The brain naturally entrains to rhythmic auditory input — neural oscillations match the beat. This is called <strong>brainwave entrainment</strong> or auditory driving. Sleep-promoting frequencies: Delta (deep sleep), Theta (pre-sleep drowsiness), Alpha (relaxed wakefulness).
+            The brain naturally entrains to rhythmic auditory input, as neural oscillations match the beat. This is called <strong>brainwave entrainment</strong> or auditory driving. Sleep-promoting frequencies: Delta (deep sleep), Theta (pre-sleep drowsiness), Alpha (relaxed wakefulness).
           </p>
           <p className="font-body text-lg text-midnight leading-8 mb-4">
             The recommended range for sleep music: <strong>60–80 BPM.</strong> Avoid syncopation and sharp dynamic changes.
@@ -1270,10 +1270,10 @@ export default function SleepPlaylistClient() {
           <h2 className="font-heading text-3xl text-midnight mb-4">Building Your Ideal Sleep Soundscape</h2>
           <ul className="space-y-3">
             {[
-              "Start 30–45 minutes before lights out — the relaxation effect builds gradually.",
+              "Start 30–45 minutes before lights out, as the relaxation effect builds gradually.",
               "Volume: Keep below 60 dB (comfortable background level); louder sounds can increase arousal.",
               "Fade-out timer: Use a 30–45 minute timer so music stops after sleep onset; continuous all-night music may increase micro-arousals.",
-              "Consistency: The same music becomes a conditioned sleep cue over time — your brain learns to associate it with sleep.",
+              "Consistency: The same music becomes a conditioned sleep cue over time, and your brain learns to associate it with sleep.",
               "Headphones: Uncomfortable for sleep; consider a sleep speaker, pillow speaker, or sleep-specific earbuds (AcousticSheep SleepPhones).",
             ].map((point) => (
               <li key={point} className="font-body text-lg leading-8 text-midnight flex gap-3 list-none">
@@ -1294,7 +1294,7 @@ export default function SleepPlaylistClient() {
               "Music at 60–80 BPM reduces heart rate and cortisol, making it easier to fall asleep.",
               "Nature sounds and ambient music are the most researched and effective genres for sleep.",
               "Binaural beats targeting delta frequencies may enhance deep sleep when used with headphones.",
-              "Set a sleep timer — continuous music throughout the night may fragment sleep.",
+              "Set a sleep timer. Continuous music throughout the night may fragment sleep.",
               "The effect is cumulative: a consistent sleep music ritual becomes a powerful conditioned cue.",
             ].map((point) => (
               <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>

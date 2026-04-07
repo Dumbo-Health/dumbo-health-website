@@ -18,7 +18,7 @@ const questions = [
   {
     key: "S",
     label: "Snoring",
-    text: "Do you snore loudly — louder than talking or loud enough to be heard through closed doors?",
+    text: "Do you snore loudly, louder than talking or loud enough to be heard through closed doors?",
   },
   {
     key: "T",
@@ -128,7 +128,7 @@ export function StopBangClient() {
             <div className="rounded-3xl border border-sunlight bg-daylight p-6 sm:p-8">
               <h2 className="font-heading text-2xl text-midnight">Answer each question</h2>
               <p className="mt-3 font-body leading-7 text-midnight/72">
-                Be as honest as possible — there are no wrong answers.
+                Be as honest as possible. There are no wrong answers.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -293,7 +293,7 @@ export function StopBangClient() {
                 What should I do with a high score?
               </AccordionTrigger>
               <AccordionContent className="font-body leading-7 text-midnight/72">
-                A high score doesn't mean you definitely have sleep apnea — it means a
+                A high score doesn't mean you definitely have sleep apnea. It means a
                 sleep study is worth considering. An at-home sleep test is a simple,
                 affordable first step that can either rule it out or give you the clarity
                 you need to move forward with treatment.
@@ -309,8 +309,8 @@ export function StopBangClient() {
           <h2 className="font-heading text-3xl text-midnight">What is Obstructive Sleep Apnea?</h2>
           <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
             Obstructive sleep apnea (OSA) is a chronic condition in which the muscles at the back of the throat
-            relax during sleep, causing the airway to collapse partially or completely. Breathing stops — sometimes
-            dozens or hundreds of times per night — and the brain briefly wakes you to reopen the airway. Most
+            relax during sleep, causing the airway to collapse partially or completely. Breathing stops, sometimes
+            dozens or hundreds of times per night, and the brain briefly wakes you to reopen the airway. Most
             people have no memory of these awakenings, but the cumulative effect is severely fragmented sleep.
           </p>
           <p className="mt-4 font-body text-lg leading-7 text-midnight/72">
@@ -359,7 +359,7 @@ export function StopBangClient() {
                 letter: "P",
                 name: "Blood Pressure",
                 description:
-                  "OSA and hypertension are bidirectional — each worsens the other. Repeated oxygen desaturations during apnea events activate the sympathetic nervous system, raising blood pressure. Treating OSA can meaningfully lower BP.",
+                  "OSA and hypertension are bidirectional, each worsens the other. Repeated oxygen desaturations during apnea events activate the sympathetic nervous system, raising blood pressure. Treating OSA can meaningfully lower BP.",
               },
               {
                 letter: "B",

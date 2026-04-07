@@ -292,7 +292,7 @@ export function CpapMaskSelectorQuizClient() {
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-peach">CPAP Basics</p>
           <h2 className="mt-3 font-heading text-3xl text-midnight sm:text-4xl">How CPAP Therapy Works</h2>
           <p className="mt-4 font-body text-lg leading-8 text-midnight/72">
-            CPAP (Continuous Positive Airway Pressure) delivers a steady stream of pressurized air through a mask to keep the upper airway open during sleep. The pressure acts as a pneumatic splint — preventing the throat tissues from collapsing and blocking airflow.
+            CPAP (Continuous Positive Airway Pressure) delivers a steady stream of pressurized air through a mask to keep the upper airway open during sleep. The pressure acts as a pneumatic splint, preventing the throat tissues from collapsing and blocking airflow.
           </p>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
@@ -319,7 +319,7 @@ export function CpapMaskSelectorQuizClient() {
           <div className="mt-8 rounded-2xl border border-peach/30 bg-peach/8 p-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-peach">Key Fact</p>
             <p className="mt-2 font-body text-base leading-7 text-midnight">
-              CPAP is effective only when worn. The average CPAP user wears it 5.5 hours per night — 6 or more hours per night is associated with the greatest symptom relief and health benefit.
+              CPAP is effective only when worn. The average CPAP user wears it 5.5 hours per night, and 6 or more hours per night is associated with the greatest symptom relief and health benefit.
             </p>
           </div>
         </div>
@@ -339,7 +339,7 @@ export function CpapMaskSelectorQuizClient() {
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-peach">Most Minimal</p>
               <h3 className="mt-2 font-heading text-xl text-midnight">Nasal Pillow Mask</h3>
               <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
-                The smallest and lightest mask design. Two soft silicone cushions insert just at the nostrils — no frame covers the nose or face. Ideal for nose breathers, side sleepers, people with facial hair, and those who feel claustrophobic with larger masks.
+                The smallest and lightest mask design. Two soft silicone cushions insert just at the nostrils, with no frame covering the nose or face. Ideal for nose breathers, side sleepers, people with facial hair, and those who feel claustrophobic with larger masks.
               </p>
               <div className="mt-4 rounded-xl bg-daylight p-4">
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-midnight/50">Limitation</p>
@@ -375,7 +375,7 @@ export function CpapMaskSelectorQuizClient() {
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-peach">Mixed Breathers</p>
               <h3 className="mt-2 font-heading text-xl text-midnight">Hybrid Mask</h3>
               <p className="mt-3 font-body text-sm leading-6 text-midnight/72">
-                Combines nasal pillow inserts with an oral cushion to cover the mouth — without the full face seal of a traditional full-face mask. Designed for people who switch between nose and mouth breathing, or who want less facial bulk than a full-face mask.
+                Combines nasal pillow inserts with an oral cushion to cover the mouth, without the full face seal of a traditional full-face mask. Designed for people who switch between nose and mouth breathing, or who want less facial bulk than a full-face mask.
               </p>
               <div className="mt-4 rounded-xl bg-daylight p-4">
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-midnight/50">Limitation</p>
@@ -455,12 +455,12 @@ export function CpapMaskSelectorQuizClient() {
               {
                 n: "1",
                 title: "Acclimatize before bed",
-                body: "Wear the mask for short periods during the day while awake — watching TV, reading. This helps your brain stop treating the mask as a foreign sensation before you need to fall asleep in it.",
+                body: "Wear the mask for short periods during the day while awake, watching TV or reading. This helps your brain stop treating the mask as a foreign sensation before you need to fall asleep in it.",
               },
               {
                 n: "2",
                 title: "Ensure a proper fit first",
-                body: "Even a small leak causes pressure to drop, reducing therapy effectiveness. Adjust the headgear while lying in your normal sleep position — not while standing in front of a mirror.",
+                body: "Even a small leak causes pressure to drop, reducing therapy effectiveness. Adjust the headgear while lying in your normal sleep position, not while standing in front of a mirror.",
               },
               {
                 n: "3",
@@ -470,12 +470,12 @@ export function CpapMaskSelectorQuizClient() {
               {
                 n: "4",
                 title: "Follow the replacement schedule",
-                body: "Replace cushions or pillow inserts monthly, headgear every 6 months, and the mask frame every 6–12 months. Worn components cause leaks and reduce seal quality — and most insurance covers replacements.",
+                body: "Replace cushions or pillow inserts monthly, headgear every 6 months, and the mask frame every 6–12 months. Worn components cause leaks and reduce seal quality, and most insurance covers replacements.",
               },
               {
                 n: "5",
                 title: "Track how you feel",
-                body: "Keep a brief daily log of alertness, energy, and sleep quality. Improvement in daytime functioning — even subtle at first — is the most powerful motivator for continued CPAP use.",
+                body: "Keep a brief daily log of alertness, energy, and sleep quality. Improvement in daytime functioning, even subtle at first, is the most powerful motivator for continued CPAP use.",
               },
               {
                 n: "6",
@@ -504,11 +504,11 @@ export function CpapMaskSelectorQuizClient() {
           <h2 className="mt-3 font-heading text-3xl text-white sm:text-4xl">Key Takeaways</h2>
           <ul className="mt-8 space-y-5">
             {[
-              "CPAP therapy reduces AHI by 80–90% when worn correctly and consistently — it is the most effective treatment for moderate-to-severe OSA.",
-              "Mask type is the most common reason people discontinue CPAP — getting the right fit for your breathing pattern matters as much as the machine itself.",
+              "CPAP therapy reduces AHI by 80–90% when worn correctly and consistently, making it the most effective treatment for moderate-to-severe OSA.",
+              "Mask type is the most common reason people discontinue CPAP. Getting the right fit for your breathing pattern matters as much as the machine itself.",
               "Nasal pillow masks are the most comfortable option for most people, but they require nose breathing and are not suitable above about 15 cmH₂O.",
               "Full-face masks are the right choice for mouth breathers or people with frequent nasal congestion, despite their added bulk.",
-              "Heated humidification significantly improves comfort and compliance rates — use it from night one if your machine includes it.",
+              "Heated humidification significantly improves comfort and compliance rates. Use it from night one if your machine includes it.",
             ].map((point) => (
               <li key={point} className="flex items-start gap-4 font-body text-base leading-7 text-white/80">
                 <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-peach" />
