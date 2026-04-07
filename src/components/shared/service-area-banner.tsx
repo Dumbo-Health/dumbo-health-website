@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
 import Link from "next/link";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -318,7 +317,7 @@ export function ServiceAreaBanner() {
                   className="h-12 rounded-[12px] bg-peach px-7 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                   style={{ boxShadow: "0 4px 20px rgba(255,131,97,0.25)" }}
                 >
-                  <Link href={APP_URL}>Get started today</Link>
+                  <Link href="/get-started">Get started today</Link>
                 </Button>
               </motion.div>
             </div>

@@ -192,9 +192,9 @@ export function AhiIndexCalculatorClient() {
                   Calculate AHI
                 </Button>
                 <Button asChild className="w-full rounded-lg font-mono tracking-wider">
-                  <a href="https://app.dumbo.health" target="_blank" rel="noopener noreferrer">
+                  <Link href="/get-started">
                     Explore Dumbo Health Care
-                  </a>
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" className="w-full rounded-lg font-mono tracking-wider">
                   <Link href="/go/tools">Back To Tools</Link>
