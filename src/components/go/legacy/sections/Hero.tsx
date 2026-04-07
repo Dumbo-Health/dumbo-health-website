@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { SHOPIFY } from "@/lib/constants";
 
 interface HeroProps {
   category?: string;
@@ -15,6 +16,7 @@ interface HeroProps {
   imageSrc?: string;
   imageAlt?: string;
   showStatsCard?: boolean;
+  shopifyCheckout?: boolean;
 }
 
 export default function Hero({
@@ -28,7 +30,8 @@ export default function Hero({
   secondaryCtaLink,
   imageSrc = "/find-hero.aviv",
   imageAlt = "Healthcare service",
-  showStatsCard = true
+  showStatsCard = true,
+  shopifyCheckout = false,
 }: HeroProps) {
   const leftContent = useScrollAnimation({ delay: 0 });
   const rightContent = useScrollAnimation({ delay: 200 });
@@ -52,19 +55,30 @@ export default function Hero({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link
-                href={primaryCtaLink || "#"}
-                className="bg-orange text-white hover:bg-dark transition-colors duration-200 font-medium px-4 py-2 rounded-lg text-lg shadow-lg hover:shadow-xl font-button whitespace-nowrap text-center"
-              >
-                {primaryCtaText.toUpperCase()}
-              </Link>
+              {shopifyCheckout ? (
+                <a
+                  href={SHOPIFY.buyUrl}
+                  data-shopify-checkout="sleep-test"
+                  className="bg-orange text-white hover:bg-dark transition-colors duration-200 font-medium px-4 py-2 rounded-lg text-lg shadow-lg hover:shadow-xl font-button whitespace-nowrap text-center"
+                >
+                  {primaryCtaText.toUpperCase()}
+                </a>
+              ) : (
+                <Link
+                  href={primaryCtaLink || "#"}
+                  className="bg-orange text-white hover:bg-dark transition-colors duration-200 font-medium px-4 py-2 rounded-lg text-lg shadow-lg hover:shadow-xl font-button whitespace-nowrap text-center"
+                >
+                  {primaryCtaText.toUpperCase()}
+                </Link>
+              )}
               {secondaryCtaLink && secondaryCtaText && (
-              <Link
-                href={secondaryCtaLink || "#"}
-                className="text-primary border-2 border-orange hover:border-primary transition-all duration-200 font-medium px-4 py-2 rounded-lg text-lg hover:shadow-md font-button whitespace-nowrap text-center"
-              >
-                {secondaryCtaText.toUpperCase()}
-              </Link>)}
+                <Link
+                  href={secondaryCtaLink || "#"}
+                  className="text-primary border-2 border-orange hover:border-primary transition-all duration-200 font-medium px-4 py-2 rounded-lg text-lg hover:shadow-md font-button whitespace-nowrap text-center"
+                >
+                  {secondaryCtaText.toUpperCase()}
+                </Link>
+              )}
             </div>
           </div>
 
