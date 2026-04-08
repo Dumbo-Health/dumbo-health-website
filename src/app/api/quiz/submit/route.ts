@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
       flow_slug: submission.flow_slug,
       risk_score: submission.risk_score,
       tags: submission.tags,
+      sourceUrl: req.headers.get("referer") ?? "",
       submittedAt: new Date().toISOString(),
     }),
   }).catch(() => {});

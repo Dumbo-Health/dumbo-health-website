@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
   fetch(N8N_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, source: "waitlist", waitlist_state: state, interest, submittedAt: new Date().toISOString() }),
+    body: JSON.stringify({ email, source: "waitlist", waitlist_state: state, interest, sourceUrl: req.headers.get("referer") ?? "", submittedAt: new Date().toISOString() }),
   }).catch(() => {});
 
   await notifyCustomerIO({ email, state, interest, source }).catch(() => {
