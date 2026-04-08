@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase-admin";
 
+const N8N_WEBHOOK_URL = "https://n8n.dumbo.health/webhook/email-capture-from-website";
+
 const saveSchema = z.object({
   email: z.string().email(),
   audioUrl: z.string().url(),
@@ -54,6 +56,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { status: 500 }
     );
   }
+
+  // Notify n8n — fire-and-forget
+  fetch(N8N_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: parsed.data.email,
+      source: "sleep_playlist",
+      vibe: parsed.data.vibe,
+      mood: parsed.data.mood,
+      submittedAt: new Date().toISOString(),
+    }),
+  }).catch(() => {});
 
   return NextResponse.json({ success: true, data: track });
 }

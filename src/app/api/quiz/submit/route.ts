@@ -3,6 +3,8 @@ import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import { createAdminClient } from "@/lib/supabase-admin";
 
+const N8N_WEBHOOK_URL = "https://n8n.dumbo.health/webhook/email-capture-from-website";
+
 const SubmissionSchema = z.object({
   flow_slug: z.string(),
   answers: z.record(z.string(), z.unknown()),
@@ -50,6 +52,20 @@ export async function POST(req: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+
+  // Notify n8n — fire-and-forget
+  fetch(N8N_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: submission.email,
+      source: "quiz",
+      flow_slug: submission.flow_slug,
+      risk_score: submission.risk_score,
+      tags: submission.tags,
+      submittedAt: new Date().toISOString(),
+    }),
+  }).catch(() => {});
 
   await notifyCustomerIO(submission).catch(() => {
     // CIO errors should not block the submission response

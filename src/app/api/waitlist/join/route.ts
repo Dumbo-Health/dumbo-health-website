@@ -3,6 +3,8 @@ import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import { createAdminClient } from "@/lib/supabase-admin";
 
+const N8N_WEBHOOK_URL = "https://n8n.dumbo.health/webhook/email-capture-from-website";
+
 const WaitlistSchema = z.object({
   email:    z.email(),
   state:    z.string().min(1),
@@ -48,6 +50,13 @@ export async function POST(req: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+
+  // Notify n8n — fire-and-forget
+  fetch(N8N_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, source: "waitlist", waitlist_state: state, interest, submittedAt: new Date().toISOString() }),
+  }).catch(() => {});
 
   await notifyCustomerIO({ email, state, interest, source }).catch(() => {
     // CIO errors should not block the waitlist response
