@@ -66,6 +66,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       source: "sleep_playlist",
       vibe: parsed.data.vibe,
       mood: parsed.data.mood,
+      sourceUrl: request.headers.get("referer") ?? "",
       submittedAt: new Date().toISOString(),
     }),
   }).catch(() => {});

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   fetch(N8N_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, source: "coming_soon", page, submittedAt: new Date().toISOString() }),
+    body: JSON.stringify({ email, source: "coming_soon", page, sourceUrl: req.headers.get("referer") ?? "", submittedAt: new Date().toISOString() }),
   }).catch(() => {});
 
   const siteId = process.env.CUSTOMERIO_SITE_ID;
