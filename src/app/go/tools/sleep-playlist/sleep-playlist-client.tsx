@@ -83,18 +83,18 @@ const WAVEFORM_HEIGHTS = [30, 50, 70, 45, 85, 60, 40, 75, 55, 65, 35, 80, 50, 70
 
 const SLEEP_FACTS = [
   "Adults need 7–9 hours of sleep. Only 1 in 3 Americans consistently gets that.",
-  "Your brain replays memories during deep sleep — that's how learning sticks.",
+  "Your brain replays memories during deep sleep, that's how learning sticks.",
   "Sleep apnea affects over 1 billion people worldwide, most of them undiagnosed.",
   "During REM sleep, your muscles are temporarily paralyzed to stop you acting out dreams.",
-  "The world record for staying awake is 11 days — the holder reported hallucinations by day 3.",
+  "The world record for staying awake is 11 days, and the holder reported hallucinations by day 3.",
   "Elephants sleep just 2 hours a night. Koalas sleep up to 22 hours. You're somewhere in between.",
-  "Your core body temperature drops by 1–2°F as you fall asleep — a cool room speeds this up.",
+  "Your core body temperature drops by 1–2°F as you fall asleep, and a cool room speeds this up.",
   "Humans are the only mammals that deliberately delay sleep. Every other animal just… sleeps.",
   "A single night of poor sleep can temporarily reduce your pain tolerance by up to 15%.",
   "Snoring affects 45% of adults occasionally. Loud, chronic snoring can be a sign of sleep apnea.",
   "CPAP therapy can normalize blood pressure in people with sleep apnea within weeks.",
   "Your brain produces a wave of cerebrospinal fluid during deep sleep that literally washes away toxins.",
-  "Dreaming in color is the norm — but 12% of people only dream in black and white.",
+  "Dreaming in color is the norm, but 12% of people only dream in black and white.",
   "The term 'sleep debt' is real: you accumulate a deficit that affects your mood, focus, and metabolism.",
   "Pink noise (like rain or waves) has been shown to improve deep sleep quality.",
 ];
@@ -148,10 +148,12 @@ function TrackCard({
   track,
   isPlaying,
   onPlay,
+  onShare,
 }: {
   track: CommunityTrack;
   isPlaying: boolean;
   onPlay: () => void;
+  onShare: () => void;
 }) {
   const vibeLabel: Record<Vibe, string> = {
     chill: "Chill Lo-Fi",
@@ -234,9 +236,24 @@ function TrackCard({
             {track.play_count} plays · {timeAgo(track.created_at)}
           </span>
         </div>
-        <p className="mt-1 font-mono text-[10px]" style={{ color: "rgba(3,31,61,0.45)" }}>
-          for {moodLabel[track.mood]} nights
-        </p>
+        <div className="mt-2 flex items-center justify-between">
+          <p className="font-mono text-[10px]" style={{ color: "rgba(3,31,61,0.45)" }}>
+            for {moodLabel[track.mood]} nights
+          </p>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onShare(); }}
+            className="flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider transition-opacity hover:opacity-60"
+            style={{ color: "#FF8361" }}
+            aria-label="Share track"
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+            Share
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -409,6 +426,18 @@ export default function SleepPlaylistClient() {
       }
       setCommunityEmailError(null);
       setCommunityEmail(communityEmailInput);
+
+      // Notify n8n — fire-and-forget
+      fetch("/go/api/funnel/email-capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: communityEmailInput,
+          sourceUrl: window.location.href,
+          metadata: { source: "sleep_playlist_community" },
+        }),
+      }).catch(() => {});
+
       if (pendingCommunityTrack) {
         doPlayCommunityTrack(pendingCommunityTrack);
         setPendingCommunityTrack(null);
@@ -506,6 +535,26 @@ export default function SleepPlaylistClient() {
     setTimeout(() => setCopied(false), 2000);
   }, []);
 
+  const shareOnX = useCallback((trackTitle?: string) => {
+    const text = trackTitle
+      ? `I just made a personalized AI sleep track "${trackTitle}" with Dumbo Health 🎵 Try it free:`
+      : "I just made a personalized AI sleep track with Dumbo Health 🎵 Try it free:";
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${url}`, "_blank", "noopener,noreferrer");
+  }, []);
+
+  const shareOnWhatsApp = useCallback((trackTitle?: string) => {
+    const text = trackTitle
+      ? `I just made a personalized AI sleep track "${trackTitle}" with Dumbo Health 🎵 Try it free: ${window.location.href}`
+      : `I just made a personalized AI sleep track with Dumbo Health 🎵 Try it free: ${window.location.href}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+  }, []);
+
+  const shareOnFacebook = useCallback(() => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank", "noopener,noreferrer");
+  }, []);
+
   const formatTime = (secs: number): string => {
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
@@ -531,7 +580,7 @@ export default function SleepPlaylistClient() {
             Sleep Playlist Generator
           </h1>
           <p className="mt-5 font-body text-lg leading-8" style={{ color: "rgba(252,246,237,0.72)" }}>
-            Answer 4 questions. We&apos;ll use AI to compose a personalized sleep soundtrack — just for tonight.
+            Answer 4 questions. We&apos;ll use AI to compose a personalized sleep soundtrack, just for tonight.
           </p>
         </div>
       </section>
@@ -798,13 +847,53 @@ export default function SleepPlaylistClient() {
                 </p>
               </div>
 
+              {/* Share before email gate */}
+              <div className="mb-4 flex items-center justify-center gap-3">
+                <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.45)" }}>Share your track:</p>
+                <button
+                  type="button"
+                  onClick={() => shareOnX(generatedTrack.title)}
+                  className="flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                  style={{ backgroundColor: "#000" }}
+                  aria-label="Share on X"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => shareOnWhatsApp(generatedTrack.title)}
+                  className="flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                  style={{ backgroundColor: "#25D366" }}
+                  aria-label="Share on WhatsApp"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={shareOnFacebook}
+                  className="flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                  style={{ backgroundColor: "#1877F2" }}
+                  aria-label="Share on Facebook"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void copyShareLink()}
+                  className="flex h-8 items-center gap-1.5 rounded-full px-3 font-mono text-[10px] uppercase tracking-wider transition-opacity hover:opacity-75"
+                  style={{ backgroundColor: "rgba(245,230,209,0.8)", color: "rgba(3,31,61,0.7)" }}
+                >
+                  {copied ? "✓" : "Copy"}
+                </button>
+              </div>
+
               <div
                 className="rounded-3xl border p-6"
                 style={{ borderColor: "rgba(245,230,209,0.8)", backgroundColor: "white" }}
               >
                 <p className="font-heading text-lg text-midnight mb-1">Enter your email to listen</p>
                 <p className="font-body text-sm mb-5" style={{ color: "rgba(3,31,61,0.6)" }}>
-                  Your track will also be shared with the Dumbo Health community — you can inspire other sleepers.
+                  Your track will also be shared with the Dumbo Health community, and you can inspire other sleepers.
                 </p>
 
                 <form onSubmit={(e) => void submitEmail(e)}>
@@ -840,7 +929,7 @@ export default function SleepPlaylistClient() {
           {/* PLAYER */}
           {stage === "player" && generatedTrack && (
             <div className="max-w-2xl mx-auto">
-              {/* Hidden audio element — looping for continuous ambient playback */}
+              {/* Hidden audio element: looping for continuous ambient playback */}
               <audio ref={audioRef} src={generatedTrack.audioUrl} loop />
 
               <div className="rounded-3xl overflow-hidden border" style={{ borderColor: "rgba(245,230,209,0.8)" }}>
@@ -902,17 +991,48 @@ export default function SleepPlaylistClient() {
                     </p>
                   </div>
 
-                  <div className="mt-4 flex gap-3">
-                    <Button
-                      onClick={() => void copyShareLink()}
-                      variant="outline"
-                      className="flex-1 rounded-xl font-mono tracking-wide text-sm"
-                    >
-                      {copied ? "✓ Copied!" : "Share Link"}
-                    </Button>
+                  <div className="mt-4">
+                    <p className="font-mono text-[9px] uppercase tracking-widest mb-2" style={{ color: "rgba(3,31,61,0.4)" }}>Share your track</p>
+                    <div className="flex gap-2 mb-3">
+                      <button
+                        type="button"
+                        onClick={() => shareOnX(generatedTrack.title)}
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                        style={{ backgroundColor: "#000" }}
+                        aria-label="Share on X"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => shareOnWhatsApp(generatedTrack.title)}
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                        style={{ backgroundColor: "#25D366" }}
+                        aria-label="Share on WhatsApp"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={shareOnFacebook}
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+                        style={{ backgroundColor: "#1877F2" }}
+                        aria-label="Share on Facebook"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void copyShareLink()}
+                        className="flex h-9 flex-1 items-center justify-center gap-1.5 rounded-full border font-mono text-[10px] uppercase tracking-wider transition-opacity hover:opacity-75"
+                        style={{ borderColor: "rgba(245,230,209,0.8)", color: "rgba(3,31,61,0.6)" }}
+                      >
+                        {copied ? "✓ Copied" : "Copy Link"}
+                      </button>
+                    </div>
                     <Button
                       asChild
-                      className="flex-1 rounded-xl font-mono tracking-wide text-sm"
+                      className="w-full rounded-xl font-mono tracking-wide text-sm"
                       style={{ backgroundColor: "#FF8361", color: "white" }}
                     >
                       <Link href="/get-started">
@@ -991,7 +1111,7 @@ export default function SleepPlaylistClient() {
               <div className="w-full max-w-sm rounded-3xl p-8" style={{ backgroundColor: "#FCF6ED" }}>
                 <p className="font-heading text-xl text-midnight mb-1">Enter your email to listen</p>
                 <p className="font-body text-sm mb-5" style={{ color: "rgba(3,31,61,0.6)" }}>
-                  Quick access to all community tracks — no spam, ever.
+                  Quick access to all community tracks. No spam, ever.
                 </p>
                 <form onSubmit={(e) => void submitCommunityEmail(e)}>
                   <input
@@ -1063,6 +1183,7 @@ export default function SleepPlaylistClient() {
                     track={track}
                     isPlaying={activeCommunityId === track.id && communityPlaying}
                     onPlay={() => playCommunityTrack(track)}
+                    onShare={() => shareOnX(track.title)}
                   />
                 ))}
             </div>
@@ -1081,7 +1202,7 @@ export default function SleepPlaylistClient() {
           </h2>
           <p className="font-body text-lg leading-8 mb-8" style={{ color: "rgba(3,31,61,0.65)" }}>
             If you&apos;re waking up tired despite good sleep habits, sleep apnea may be the missing piece.
-            Dumbo Health makes it easy to find out — from home.
+            Dumbo Health makes it easy to find out, from home.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild className="rounded-xl font-mono tracking-wider px-8" style={{ backgroundColor: "#FF8361", color: "white" }}>
@@ -1095,6 +1216,124 @@ export default function SleepPlaylistClient() {
           </div>
         </div>
       </section>
+
+      {/* ── Educational Content ─────────────────────────────────────────── */}
+
+      {/* Section 1: The Science of Music and Sleep */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">The Science of Music and Sleep</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Music affects sleep through multiple pathways: slowing heart rate and respiration, reducing cortisol, distracting from rumination, and triggering relaxation via the autonomic nervous system. Tempo is the most important factor, and music at <strong>60–80 BPM</strong> synchronizes with a resting heart rate, promoting physiological relaxation.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            A meta-analysis of 10 randomized controlled trials found that music listening before sleep reduced sleep onset latency, improved sleep quality, and decreased nighttime awakenings.
+          </p>
+          <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
+            <p className="font-body text-base leading-7 text-midnight">
+              The effect appears cumulative, and people who listen to sleep music regularly report greater benefits over time as the routine becomes a conditioned sleep cue.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Types of Sleep Sounds */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-8">Types of Sleep Sounds and What Research Says</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { label: "Calming Music (60–80 BPM)", desc: "Classical, ambient, lo-fi, acoustic. Reduces cortisol and heart rate. Best for: people with racing thoughts at bedtime." },
+              { label: "White Noise", desc: "Broadband sound masking environmental noise. Consistent, non-musical. Best for: urban environments; infants." },
+              { label: "Binaural Beats (Delta/Theta)", desc: "Two slightly different frequencies in each ear create a perceived beat. Delta (0.5–4 Hz) targets deep sleep; Theta (4–8 Hz) targets relaxation. Requires headphones." },
+              { label: "Nature Sounds", desc: "Rain, ocean, forest. Activates the parasympathetic nervous system. Research shows they improve recovery from stress faster than silence." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-2xl p-5 border border-sunlight">
+                <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
+                <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Tempo, Frequency, and Your Brain */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Tempo, Frequency, and Your Brain</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The brain naturally entrains to rhythmic auditory input, as neural oscillations match the beat. This is called <strong>brainwave entrainment</strong> or auditory driving. Sleep-promoting frequencies: Delta (deep sleep), Theta (pre-sleep drowsiness), Alpha (relaxed wakefulness).
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The recommended range for sleep music: <strong>60–80 BPM.</strong> Avoid syncopation and sharp dynamic changes.
+          </p>
+          <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
+            <p className="font-heading text-sm text-midnight mb-2">Frequencies to avoid before sleep</p>
+            <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>
+              Major key energetic music · Fast tempo (&gt;120 BPM) · Lyrics (engage language areas of the brain) · Crescendos and sudden changes in volume
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Building Your Ideal Sleep Soundscape */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Building Your Ideal Sleep Soundscape</h2>
+          <ul className="space-y-3">
+            {[
+              "Start 30–45 minutes before lights out, as the relaxation effect builds gradually.",
+              "Volume: Keep below 60 dB (comfortable background level); louder sounds can increase arousal.",
+              "Fade-out timer: Use a 30–45 minute timer so music stops after sleep onset; continuous all-night music may increase micro-arousals.",
+              "Consistency: The same music becomes a conditioned sleep cue over time, and your brain learns to associate it with sleep.",
+              "Headphones: Uncomfortable for sleep; consider a sleep speaker, pillow speaker, or sleep-specific earbuds (AcousticSheep SleepPhones).",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 text-midnight flex gap-3 list-none">
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 5: Key Takeaways */}
+      <section className="bg-midnight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
+          <ul className="space-y-3">
+            {[
+              "Music at 60–80 BPM reduces heart rate and cortisol, making it easier to fall asleep.",
+              "Nature sounds and ambient music are the most researched and effective genres for sleep.",
+              "Binaural beats targeting delta frequencies may enhance deep sleep when used with headphones.",
+              "Set a sleep timer. Continuous music throughout the night may fragment sleep.",
+              "The effect is cumulative: a consistent sleep music ritual becomes a powerful conditioned cue.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6: References */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-2xl text-midnight mb-4">References</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            {[
+              `de Niet G, et al. "Music-assisted relaxation to improve sleep quality." Journal of Advanced Nursing. 2009.`,
+              `Harmat L, et al. "Music improves sleep quality in students." Journal of Advanced Nursing. 2008.`,
+              `Trahan T, et al. "The music that helps people sleep and the reasons they believe it works." PLOS ONE. 2018.`,
+            ].map((ref) => (
+              <li key={ref} className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.65)" }}>{ref}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
     </main>
   );
 }

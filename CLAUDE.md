@@ -1,4 +1,4 @@
-# dev-sergio — Claude Instructions
+# website — Claude Instructions
 
 ## Project
 
@@ -10,12 +10,12 @@ This directory (`/home/dumbo/DumboHealth/dev-sergio`) is a worktree of the **Dum
 
 ## Branch Rule
 
-**Always work from the `dev-sergio` branch.**
+**Always work from the `dev` branch.**
 
-At the start of every session in this directory, verify the current branch is `dev-sergio`. If it is not, switch to it before doing anything else:
+At the start of every session in this directory, verify the current branch is `dev`. If it is not, switch to it before doing anything else:
 
 ```bash
-git checkout dev-sergio
+git checkout dev
 ```
 
-All commits and pushes must target `dev-sergio` — PRs go from `dev-sergio` → `dev`. Never commit directly to `dev` or `main` unless explicitly instructed.
+All commits, edits, and pushes must target the `dev` branch — never `main` or any other branch unless explicitly instructed.

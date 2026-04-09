@@ -1,4 +1,12 @@
 {
+    "2026-04-04": {
+        "title": "Sleep Science This Week: March 29 - April 4, 2026",
+        "changes": [
+            "Added 'Start CPAP early to cut your stroke recurrence risk' tip in sleep_apnea section - Zhang et al. (Nature and Science of Sleep, March 2026) found 67.5% of ischemic stroke patients have OSA; early CPAP treatment associated with reduced stroke recurrence rates",
+            "Added 'Don't blame spring for your fatigue' tip in schedule section - Blume & Vorster (Journal of Sleep Research, March 2026) found no evidence of seasonal fatigue variation across 418 participants over one year; spring fatigue is a cultural labeling effect",
+            "Added 'Try digital CBT-I if you have insomnia and pre-diabetes' tip in schedule section - Sharman et al. (Journal of Sleep Research, February 2026) feasibility trial showed 83.3% session completion and promising metabolic improvements alongside sleep benefits in 24 participants with insomnia and pre-diabetes"
+        ]
+    },
     "2026-03-28": {
         "title": "Sleep Science This Week: March 22-28, 2026",
         "changes": [

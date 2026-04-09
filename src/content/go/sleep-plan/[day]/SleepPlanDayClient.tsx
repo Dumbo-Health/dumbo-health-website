@@ -9,11 +9,11 @@ import type { PlanEntry } from '../lib/planLoader';
 
 interface YoutubeEmbedProps {
   videoId: string;
-  thumbnail?: string;
+  videoThumbnail?: string;
   title: string;
 }
 
-function YoutubeEmbed({ videoId, thumbnail, title }: YoutubeEmbedProps) {
+function YoutubeEmbed({ videoId, videoThumbnail, title }: YoutubeEmbedProps) {
   const [playing, setPlaying] = useState(false);
 
   if (playing) {
@@ -37,9 +37,9 @@ function YoutubeEmbed({ videoId, thumbnail, title }: YoutubeEmbedProps) {
       className="mt-6 relative w-full rounded-xl overflow-hidden aspect-video bg-black group cursor-pointer"
       aria-label={`Play video: ${title}`}
     >
-      {thumbnail ? (
+      {videoThumbnail ? (
         <Image
-          src={thumbnail}
+          src={videoThumbnail}
           alt=""
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -151,10 +151,8 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
           {entry.description && (
             <p className="text-white/90 text-base sm:text-lg leading-relaxed font-aeonik">{entry.description}</p>
           )}
-          {entry.videoId ? (
-            <YoutubeEmbed videoId={entry.videoId} thumbnail={entry.thumbnail} title={entry.title} />
-          ) : entry.thumbnail ? (
-            <div className="mt-6 rounded-lg overflow-hidden bg-white/10">
+          {entry.thumbnail && (
+            <div className="mt-6 rounded-xl overflow-hidden">
               <Image
                 src={entry.thumbnail}
                 alt=""
@@ -164,7 +162,10 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
                 sizes="(max-width: 768px) 100vw, 720px"
               />
             </div>
-          ) : null}
+          )}
+          {entry.videoId && (
+            <YoutubeEmbed videoId={entry.videoId} videoThumbnail={entry.videoThumbnail} title={entry.title} />
+          )}
         </div>
       </section>
 
@@ -250,7 +251,7 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
         title="Think you might have sleep apnea?"
         subtitle="Dumbo Health offers at-home sleep testing, diagnosis, and ongoing care for sleep apnea-at a fraction of traditional clinic costs."
         ctaText="Start your assessment"
-        ctaLink="https://app.dumbo.health/assessment"
+        ctaLink="/get-started"
       />
     </div>
   );

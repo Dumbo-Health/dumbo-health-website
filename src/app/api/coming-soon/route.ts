@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+const N8N_WEBHOOK_URL = "https://n8n.dumbo.health/webhook/email-capture-from-website";
+
 const Schema = z.object({
   email: z.string().email(),
   page: z.string(),
@@ -14,6 +16,13 @@ export async function POST(req: NextRequest) {
   if (!parsed.success) return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
 
   const { email, page } = parsed.data;
+
+  // Notify n8n — fire-and-forget
+  fetch(N8N_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, source: "coming_soon", page, sourceUrl: req.headers.get("referer") ?? "", submittedAt: new Date().toISOString() }),
+  }).catch(() => {});
 
   const siteId = process.env.CUSTOMERIO_SITE_ID;
   const apiKey = process.env.CUSTOMERIO_API_KEY;

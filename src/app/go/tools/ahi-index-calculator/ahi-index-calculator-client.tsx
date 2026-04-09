@@ -343,7 +343,7 @@ export function AhiIndexCalculatorClient() {
           <div className="mb-12 rounded-3xl border border-sunlight bg-daylight p-6 sm:p-8">
             <h3 className="font-heading text-2xl text-midnight">How to calculate your AHI step by step</h3>
             <p className="mt-3 font-body leading-7 text-midnight/72">
-              <strong>Example:</strong> A sleeper with 24 apneas, 12 hypopneas, and 6 hours of sleep has an estimated AHI of 6 — sitting in the mild range. That supports booking a sleep test if symptoms are present. A 2025 prevalence analysis found that 61% of estimated U.S. OSA cases were mild, so lower-range scores still matter. &ldquo;Mild&rdquo; does not mean &ldquo;ignore.&rdquo;
+              <strong>Example:</strong> A sleeper with 24 apneas, 12 hypopneas, and 6 hours of sleep has an estimated AHI of 6, sitting in the mild range. That supports booking a sleep test if symptoms are present. A 2025 prevalence analysis found that 61% of estimated U.S. OSA cases were mild, so lower-range scores still matter. &ldquo;Mild&rdquo; does not mean &ldquo;ignore.&rdquo;
             </p>
             <ol className="mt-5 space-y-2 font-body text-sm leading-7 text-midnight/72">
               {[
@@ -365,7 +365,7 @@ export function AhiIndexCalculatorClient() {
               ))}
             </ol>
             <p className="mt-5 font-body text-sm leading-7 text-midnight/68">
-              The score is only as good as the inputs. A brief sleep diary — including bedtime, wake time, awakenings, naps, alcohol intake, and sleep position notes — can improve the estimate.
+              The score is only as good as the inputs. A brief sleep diary, including bedtime, wake time, awakenings, naps, alcohol intake, and sleep position notes, can improve the estimate.
             </p>
           </div>
 
@@ -390,7 +390,7 @@ export function AhiIndexCalculatorClient() {
             </div>
             <div className="mt-6 rounded-2xl border border-sunlight bg-daylight p-5">
               <p className="font-body text-sm leading-7 text-midnight/72">
-                <strong className="text-midnight">Summary:</strong> National Sleep Foundation data from 2025 showed 38% of adults did not feel refreshed on waking, which is why a breathing-focused screen is useful when fatigue persists. Combine symptom tracking with formal testing — not either one alone.
+                <strong className="text-midnight">Summary:</strong> National Sleep Foundation data from 2025 showed 38% of adults did not feel refreshed on waking, which is why a breathing-focused screen is useful when fatigue persists. Combine symptom tracking with formal testing, not either one alone.
               </p>
             </div>
           </div>
@@ -405,7 +405,7 @@ export function AhiIndexCalculatorClient() {
               A lab-based sleep study provides the most complete data because a sleep laboratory can measure sleep stages, sleep staging, sleep architecture, respiratory effort, and the relationship between breathing events and arousals. Some cases also need a review of the oxygen desaturation index, respiratory disturbance, or the Respiratory Disturbance Index.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/68">
-              A sleep study is the formal test used for sleep apnea diagnosis and classification. The American Academy of Sleep Medicine uses structured scoring rules and 2025 clinical guidance for both obstructive sleep apnea and central sleep apnea, which means treatment depends on the event pattern — not only on snoring.
+              A sleep study is the formal test used for sleep apnea diagnosis and classification. The American Academy of Sleep Medicine uses structured scoring rules and 2025 clinical guidance for both obstructive sleep apnea and central sleep apnea, which means treatment depends on the event pattern, not only on snoring.
             </p>
           </div>
 
@@ -413,7 +413,7 @@ export function AhiIndexCalculatorClient() {
           <div className="mb-12">
             <h2 className="font-heading text-3xl text-midnight sm:text-4xl">AHI calculator vs. sleep study: what&apos;s the difference?</h2>
             <p className="mt-4 font-body leading-7 text-midnight/72">
-              The calculator estimates burden; a sleep study confirms diagnosis and event type. The calculator is a screening method — the sleep study is the diagnostic method.
+              The calculator estimates burden; a sleep study confirms diagnosis and event type. The calculator is a screening method, the sleep study is the diagnostic method.
             </p>
             <div className="mt-6 overflow-hidden rounded-2xl border border-sunlight">
               {[
@@ -442,7 +442,7 @@ export function AhiIndexCalculatorClient() {
               You should use an AHI Calculator when sleep apnea symptoms suggest possible nighttime breathing disruption. Symptoms that justify use include loud snoring, gasping, witnessed pauses, daytime fatigue, morning headaches, and non-restorative sleep.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/68">
-              You should also use an AHI Calculator when a bed partner reports irregular breathing or when wearables show unstable oxygen saturation or unusual overnight heart rate patterns. A calculator is especially useful before scheduling a clinic appointment because it helps organize observations into a structured summary for a sleep specialist.
+              You should also use an AHI Calculator when a bed partner reports irregular breathing or when wearables show unstable oxygen saturation or unusual overnight heart rate patterns. A calculator is especially useful before scheduling a clinic appointment because it helps organize observations into a structured summary for a sleep specialist. See also our guides to sleep apnea symptoms and how home sleep apnea tests work.
             </p>
           </div>
 
@@ -469,7 +469,7 @@ export function AhiIndexCalculatorClient() {
               Treatment for central sleep apnea can differ because central sleep apnea involves unstable respiratory drive rather than simple airway blockage. The 2025 AASM guideline for central sleep apnea reviewed several therapies including CPAP and other device strategies, which shows why central sleep apnea needs its own treatment logic. Some patients may require bilevel positive airway pressure, and selected patients may need advanced evaluation if heart failure or other medical issues are present.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/68">
-              A patient should not assume that all event patterns are treated the same. A clinician may also review medication use, medication side effects, or other conditions that affect breathing stability.
+              A patient should not assume that all event patterns are treated the same. A clinician may also review medication use, pain medication, medication side effects, or other conditions that affect breathing stability. In severe edge cases, related respiratory illness may increase concern for respiratory failure, which requires urgent medical care.
             </p>
           </div>
 
@@ -504,20 +504,18 @@ export function AhiIndexCalculatorClient() {
           <div className="rounded-3xl border border-sunlight bg-daylight p-6 sm:p-8">
             <h3 className="font-heading text-xl text-midnight">Where do these numbers come from?</h3>
             <p className="mt-3 font-body leading-7 text-midnight/72">
-              Apneas and hypopneas are recorded during a sleep study — either an in-lab polysomnography (PSG) or a home sleep apnea test (HSAT). Look for &ldquo;total apneas,&rdquo; &ldquo;total hypopneas,&rdquo; and &ldquo;total sleep time&rdquo; on your report. Your CPAP device also reports a nightly residual AHI through its companion app.
+              Apneas and hypopneas are recorded during a sleep study, either an in-lab polysomnography (PSG) or a home sleep apnea test (HSAT). Look for &ldquo;total apneas,&rdquo; &ldquo;total hypopneas,&rdquo; and &ldquo;total sleep time&rdquo; on your report. Your CPAP device also reports a nightly residual AHI through its companion app.
             </p>
             <p className="mt-4 font-body leading-7 text-midnight/72">
               If you haven&apos;t had a sleep study yet, Dumbo Health offers an at-home sleep test that&apos;s comfortable, easy to use, and interpreted by licensed clinicians.
             </p>
             <div className="mt-6">
-              <a
-                href="https://app.dumbo.health"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/at-home-sleep-test"
                 className="inline-flex items-center font-mono text-sm uppercase tracking-wider text-peach hover:underline"
               >
                 Learn about at-home sleep testing →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -627,7 +625,7 @@ export function AhiIndexCalculatorClient() {
                 What&apos;s the difference between an apnea and a hypopnea?
               </AccordionTrigger>
               <AccordionContent className="font-body leading-7 text-midnight/72">
-                An apnea is a complete stop in airflow lasting at least 10 seconds. A hypopnea is a partial reduction in airflow — typically 30% or more — that also causes a drop in blood oxygen or an arousal from sleep. Both are counted together in the AHI formula.
+                An apnea is a complete stop in airflow lasting at least 10 seconds. A hypopnea is a partial reduction in airflow, typically 30% or more, that also causes a drop in blood oxygen or an arousal from sleep. Both are counted together in the AHI formula.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="cpap-ahi">

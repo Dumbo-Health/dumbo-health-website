@@ -5,7 +5,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -13,7 +12,6 @@ import {
 import EmailCaptureBlock, {
   EmailCaptureBlockProps,
 } from "@/components/EmailCaptureBlock";
-import { EMAIL_CAPTURE_STORAGE_KEY } from "@/lib/emailCapture";
 
 type EnsureEmailCaptureOptions = Pick<
   EmailCaptureBlockProps,
@@ -44,38 +42,18 @@ export function EmailCaptureProvider({
   defaults,
 }: EmailCaptureProviderProps) {
   const [modalKey, setModalKey] = useState(0);
-  const [hasCapturedEmail, setHasCapturedEmail] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return window.localStorage.getItem(EMAIL_CAPTURE_STORAGE_KEY) === "true";
-  });
+  const [hasCapturedEmail, setHasCapturedEmail] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [overlayOptions, setOverlayOptions] = useState<EnsureEmailCaptureOptions>();
   const pendingPromiseRef = useRef<{ resolve: () => void; promise: Promise<void> } | null>(
     null
   );
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const handleStorage = () => {
-      const stored =
-        window.localStorage.getItem(EMAIL_CAPTURE_STORAGE_KEY) === "true";
-      setHasCapturedEmail(stored);
-    };
-
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
-
   const ensureEmailCapture = useCallback(
     (options: EnsureEmailCaptureOptions = {}) => {
-      const storedValue =
-        typeof window !== "undefined"
-          ? window.localStorage.getItem(EMAIL_CAPTURE_STORAGE_KEY) === "true"
-          : hasCapturedEmail;
-
-      if (storedValue) {
-        if (!hasCapturedEmail) setHasCapturedEmail(true);
+      // Always show the gate on a fresh page load — no localStorage bypass.
+      // hasCapturedEmail is session-only: prevents asking twice in one session.
+      if (hasCapturedEmail) {
         return Promise.resolve();
       }
 
