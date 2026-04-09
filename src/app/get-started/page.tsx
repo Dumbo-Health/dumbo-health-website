@@ -1370,7 +1370,17 @@ function ResultsPage({
                         {product.body}
                       </p>
                       {product.cta_url === "shopify:sleep-test" ? (
-                        <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 8px 28px rgba(255,131,97,0.4)", cursor: "pointer" }}>
+                        <a
+                          data-shopify-checkout="sleep-test"
+                          style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 36px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 8px 28px rgba(255,131,97,0.4)", cursor: "pointer" }}
+                          onClick={() => {
+                            fetch("/api/quiz/track", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({ session_id: crypto.randomUUID(), event: "buy_click", flow_slug: flowSlug }),
+                            }).catch(() => {});
+                          }}
+                        >
                           {product.cta_label ?? "Get started \u2192"}
                         </a>
                       ) : (
@@ -1387,7 +1397,17 @@ function ResultsPage({
                   <ResultBlock delay={0.2}>
                     <div>
                       {hero.cta_url === "shopify:sleep-test" ? (
-                        <a data-shopify-checkout="sleep-test" style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 40px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}>
+                        <a
+                          data-shopify-checkout="sleep-test"
+                          style={{ display: "inline-block", backgroundColor: "#FF8361", color: "white", textDecoration: "none", borderRadius: 12, padding: "16px 40px", fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500, boxShadow: "0 4px 20px rgba(255,131,97,0.3)", cursor: "pointer" }}
+                          onClick={() => {
+                            fetch("/api/quiz/track", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({ session_id: crypto.randomUUID(), event: "buy_click", flow_slug: flowSlug }),
+                            }).catch(() => {});
+                          }}
+                        >
                           {hero.cta_label}
                         </a>
                       ) : (
