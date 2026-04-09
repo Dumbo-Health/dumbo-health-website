@@ -302,14 +302,14 @@ function HeroSection() {
             <a
               href="#referral-form"
               className="font-mono text-sm uppercase tracking-wider"
-              style={{ background: "#FF8361", color: "#FFFFFF", borderRadius: 50, padding: "15px 36px", textDecoration: "none", display: "inline-block", letterSpacing: "0.08em" }}
+              style={{ background: "#FF8361", color: "#FFFFFF", borderRadius: 12, padding: "15px 36px", textDecoration: "none", display: "inline-block", letterSpacing: "0.08em" }}
             >
               Refer a Patient
             </a>
             <a
               href="#how-it-works"
               className="font-mono text-sm uppercase tracking-wider"
-              style={{ background: "transparent", color: "#031F3D", border: "1.5px solid rgba(3,31,61,0.22)", borderRadius: 50, padding: "15px 36px", textDecoration: "none", display: "inline-block", letterSpacing: "0.08em" }}
+              style={{ background: "transparent", color: "#031F3D", border: "1.5px solid rgba(3,31,61,0.22)", borderRadius: 12, padding: "15px 36px", textDecoration: "none", display: "inline-block", letterSpacing: "0.08em" }}
             >
               See How It Works
             </a>
@@ -679,7 +679,7 @@ function ReferralFormSection() {
               style={{
                 background: "transparent", color: "#031F3D",
                 border: "1.5px solid rgba(3,31,61,0.22)",
-                borderRadius: 50, padding: "14px 32px",
+                borderRadius: 12, padding: "14px 32px",
                 cursor: "pointer", letterSpacing: "0.08em",
               }}
             >
@@ -925,7 +925,7 @@ function ReferralFormSection() {
                   style={{
                     background: "transparent", color: "rgba(3,31,61,0.45)",
                     border: "1.5px solid rgba(3,31,61,0.14)",
-                    borderRadius: 50, padding: "12px 24px",
+                    borderRadius: 12, padding: "12px 24px",
                     cursor: "pointer", letterSpacing: "0.08em",
                   }}
                 >
@@ -937,7 +937,7 @@ function ReferralFormSection() {
                   type="button"
                   onClick={advance}
                   className="font-mono text-sm uppercase tracking-wider"
-                  style={{ background: "#FF8361", color: "#FFFFFF", border: "none", borderRadius: 50, padding: "13px 32px", cursor: "pointer", letterSpacing: "0.08em" }}
+                  style={{ background: "#FF8361", color: "#FFFFFF", border: "none", borderRadius: 12, padding: "13px 32px", cursor: "pointer", letterSpacing: "0.08em" }}
                 >
                   Continue
                 </button>
@@ -948,7 +948,7 @@ function ReferralFormSection() {
                   className="font-mono text-sm uppercase tracking-wider"
                   style={{
                     background: (isSubmitting || submitGuard) ? "rgba(255,131,97,0.55)" : "#FF8361",
-                    color: "#FFFFFF", border: "none", borderRadius: 50, padding: "13px 32px",
+                    color: "#FFFFFF", border: "none", borderRadius: 12, padding: "13px 32px",
                     cursor: (isSubmitting || submitGuard) ? "not-allowed" : "pointer", letterSpacing: "0.08em",
                   }}
                 >
