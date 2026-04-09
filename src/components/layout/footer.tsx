@@ -42,6 +42,7 @@ const FOOTER_COLUMNS = [
     title: "Solutions",
     links: [
       { label: "Sleep Apnea Care", href: "/solutions" },
+      { label: "Refer a Patient", href: "/referrals" },
       { label: "At-Home Sleep Test", href: "/at-home-sleep-test" },
       { label: "CPAP Therapy", href: "/cpap" },
       ...(process.env.NEXT_PUBLIC_HIDE_CPAP_CARE_PAGE !== "true"
