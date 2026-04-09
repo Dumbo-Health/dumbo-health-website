@@ -1035,25 +1035,6 @@ function FAQSection() {
   );
 }
 
-// ── ClosingSection ────────────────────────────────────────────────────────────
-
-function ClosingSection() {
-  return (
-    <section className="py-16 md:py-20" style={{ background: "#031F3D" }}>
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="font-mono text-xs uppercase tracking-widest mb-5" style={{ color: "#78BFBC" }}>
-          Have Questions?
-        </p>
-        <p className="font-body text-lg" style={{ color: "rgba(252,246,237,0.7)", lineHeight: 1.75 }}>
-          Reach our team at{" "}
-          <a href="mailto:contact@dumbo.health" className="font-mono" style={{ color: "#FF8361", textDecoration: "none" }}>
-            contact@dumbo.health
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-}
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -1069,7 +1050,6 @@ export default function ReferralsPage() {
         <WhatYouNeedSection />
         <ReferralFormSection />
         <FAQSection />
-        <ClosingSection />
       </main>
       <Footer />
     </>
