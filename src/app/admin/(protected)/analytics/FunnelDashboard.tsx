@@ -29,7 +29,8 @@ export type FunnelFlowStats = {
   flow_slug: string;
   starts: number;
   completions: number;
-  conversion_pct: number;
+  completion_pct: number;
+  buy_clicks: number;
   steps: FunnelStep[];
   top_drop_question: string | null;
   top_drop_section: string | null;
@@ -67,22 +68,23 @@ function FlowFunnel({ flow, color }: { flow: FunnelFlowStats; color: string }) {
         <StatCard label="Started" value={flow.starts} />
         <StatCard label="Completed" value={flow.completions} />
         <StatCard
-          label="Conversion"
-          value={`${flow.conversion_pct}%`}
-          accent={flow.conversion_pct >= 50 ? "#22c55e" : flow.conversion_pct >= 25 ? "#f59e0b" : "#ef4444"}
+          label="Completion rate"
+          value={`${flow.completion_pct}%`}
+          sub="quiz start → submit"
+          accent={flow.completion_pct >= 50 ? "#22c55e" : flow.completion_pct >= 25 ? "#f59e0b" : "#ef4444"}
         />
         <StatCard
-          label="Top drop-off"
-          value={flow.top_drop_section ?? flow.top_drop_question ?? "—"}
-          sub="section with most exits"
+          label="Buy clicks"
+          value={flow.buy_clicks > 0 ? flow.buy_clicks : "—"}
+          sub={flow.flow_slug === "undiagnosed" ? "clicked Buy your test" : "page not yet live"}
         />
       </div>
 
       {/* Step-by-step funnel chart */}
       {flow.steps.length > 0 && (
         <div className="bg-white rounded-xl border border-gray-100 p-5">
-          <p className="text-sm font-medium mb-1" style={{ color: MIDNIGHT }}>Reach per step</p>
-          <p className="text-xs text-gray-400 mb-4">Sessions that answered each question</p>
+          <p className="text-sm font-medium mb-1" style={{ color: MIDNIGHT }}>Drop-off by question</p>
+          <p className="text-xs text-gray-400 mb-4">How many sessions answered each question (red = high drop-off)</p>
           <ResponsiveContainer width="100%" height={Math.max(200, flow.steps.length * 36)}>
             <BarChart
               data={flow.steps.map((s) => ({

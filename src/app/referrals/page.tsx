@@ -18,40 +18,35 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const ReferralSchema = z.object({
   provider_name: z.string().min(1, "Required"),
-  provider_npi: z.string().optional(),
+  provider_npi: z.string().refine(val => !val || /^\d{10}$/.test(val), "NPI must be 10 digits").optional(),
   practice_name: z.string().min(1, "Required"),
   provider_email: z.string().email("Enter a valid email"),
-  provider_fax: z.string().optional(),
-  provider_phone: z.string().min(1, "Required"),
+  provider_fax: z.string().refine(val => !val || val.replace(/\D/g, "").length === 10, "Enter a valid 10-digit fax number").optional(),
+  provider_phone: z.string().refine(val => val.replace(/\D/g, "").length === 10, "Enter a valid 10-digit phone number"),
   patient_first_name: z.string().min(1, "Required"),
   patient_last_name: z.string().min(1, "Required"),
-  patient_dob: z.string().min(1, "Required"),
-  patient_mobile: z.string().min(1, "Required"),
-  patient_state: z.string().min(1, "Required"),
-  patient_zip: z.string().min(1, "Required"),
+  patient_dob: z.string().min(1, "Required").refine(val => !val || new Date(val) <= new Date(), "Date of birth cannot be in the future"),
+  patient_mobile: z.string().refine(val => val.replace(/\D/g, "").length === 10, "Enter a valid 10-digit phone number"),
+  patient_email: z.string().email("Enter a valid email"),
+  patient_state: z.string().min(2, "Required").max(2, "Use 2-letter state code"),
+  patient_zip: z.string().regex(/^\d{5}$/, "Enter a valid 5-digit zip"),
   patient_address: z.string().min(1, "Required"),
   referral_reasons: z.array(z.string()).min(1, "Select at least one reason"),
-  special_requests: z.string().optional(),
-  insurance_holder_first: z.string().optional(),
-  insurance_holder_last: z.string().optional(),
-  insurance_provider: z.string().optional(),
-  insurance_membership_id: z.string().optional(),
+  special_requests: z.string().max(300).optional(),
 });
 
 type ReferralFormData = z.infer<typeof ReferralSchema>;
 
 const STEP_FIELDS: Record<number, (keyof ReferralFormData)[]> = {
-  1: ["provider_name", "practice_name", "provider_email", "provider_phone"],
-  2: ["patient_first_name", "patient_last_name", "patient_dob", "patient_mobile", "patient_state", "patient_zip", "patient_address"],
+  1: ["provider_name", "provider_npi", "practice_name", "provider_email", "provider_phone", "provider_fax"],
+  2: ["patient_first_name", "patient_last_name", "patient_dob", "patient_mobile", "patient_email", "patient_state", "patient_zip", "patient_address"],
   3: ["referral_reasons"],
-  4: [],
 };
 
 const FORM_STEPS = [
   { id: 1, label: "Practice" },
   { id: 2, label: "Patient" },
   { id: 3, label: "Referral" },
-  { id: 4, label: "Insurance" },
 ];
 
 // ── Static data ───────────────────────────────────────────────────────────────
@@ -124,7 +119,7 @@ const PROCESS_STEPS = [
 const WHAT_YOU_NEED = [
   { num: "01", title: "Your practice info", body: "Name, NPI, practice name, email, fax, and phone." },
   { num: "02", title: "Patient demographics", body: "Full name, date of birth, address, and contact information." },
-  { num: "03", title: "Insurance details", body: "Insurance provider and member ID. Required even for cash-pay patients." },
+  { num: "03", title: "Insurance details", body: "Insurance provider and member ID if available. Optional — helps speed up intake." },
 ];
 
 const REFERRAL_REASONS = [
@@ -153,9 +148,32 @@ const FAQS = [
   },
   {
     q: "What treatment options do you provide?",
-    a: "Dumbo Health manages the full spectrum of sleep disorders. PAP therapy is handled end-to-end in most states including equipment coordination, follow-up, and coaching. Oral appliance therapy is available for mild or positional OSA through our dental sleep medicine partner network.",
+    a: "Dumbo Health specializes in sleep apnea. We manage PAP therapy end-to-end — from diagnosis to equipment coordination, follow-up, and ongoing coaching — so your patients get consistent, expert care without adding to your workload.",
   },
 ];
+
+// ── Input character filters (onInput handlers) ────────────────────────────────
+
+function filterTel(e: React.FormEvent<HTMLInputElement>) {
+  const t = e.currentTarget;
+  const digits = t.value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length === 0) { t.value = ""; return; }
+  if (digits.length <= 3) {
+    t.value = `(${digits}`;
+  } else if (digits.length <= 6) {
+    t.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  } else {
+    t.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+}
+function filterDigits(e: React.FormEvent<HTMLInputElement>) {
+  const t = e.currentTarget;
+  t.value = t.value.replace(/\D/g, "");
+}
+function filterZip(e: React.FormEvent<HTMLInputElement>) {
+  const t = e.currentTarget;
+  t.value = t.value.replace(/[^\d-]/g, "");
+}
 
 // ── Shared form styles ────────────────────────────────────────────────────────
 
@@ -240,6 +258,12 @@ function HeroSection() {
     <section style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
         <GradientBlobs />
+        {/* Bottom fade — blends hero into WhyReferSection (#F5E6D1) */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          height: 160,
+          background: "linear-gradient(to bottom, transparent, #F5E6D1)",
+        }} />
       </div>
       <div style={{ position: "relative", zIndex: 1 }}>
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-20 pb-20 md:pt-28 md:pb-28">
@@ -433,7 +457,7 @@ function ProcessSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-8% 0px" });
   return (
-    <section id="how-it-works" className="py-24 md:py-32" style={{ background: "#031F3D" }}>
+    <section id="how-it-works" className="py-24 md:py-32" style={{ background: "linear-gradient(180deg, #F5E6D1 0%, #FCF6ED 100%)" }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="mb-16">
           <motion.p
@@ -447,7 +471,7 @@ function ProcessSection() {
           </motion.p>
           <motion.h2
             className="font-heading font-medium leading-tight"
-            style={{ color: "#FCF6ED", fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: "26ch" }}
+            style={{ color: "#031F3D", fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: "26ch" }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
@@ -458,7 +482,7 @@ function ProcessSection() {
         <div className="relative">
           <div
             className="hidden md:block absolute"
-            style={{ top: 23, left: "10%", right: "10%", height: 2, background: "rgba(255,131,97,0.2)", zIndex: 0 }}
+            style={{ top: 23, left: "10%", right: "10%", height: 2, background: "rgba(255,131,97,0.3)", zIndex: 0 }}
           />
           <div className="grid grid-cols-1 gap-10 md:grid-cols-5 md:gap-4">
             {PROCESS_STEPS.map((step, i) => (
@@ -472,15 +496,15 @@ function ProcessSection() {
               >
                 <div style={{
                   width: 48, height: 48, borderRadius: "50%",
-                  background: "#031F3D", border: `2px solid ${step.color}`,
+                  background: "#FFFFFF", border: `2px solid ${step.color}`,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontFamily: "Nohemi, sans-serif", fontSize: 13, fontWeight: 500,
                   color: step.color, marginBottom: 20, position: "relative", zIndex: 2,
                 }}>
                   {step.number}
                 </div>
-                <h3 className="font-heading font-medium mb-2" style={{ color: "#FCF6ED", fontSize: 15, lineHeight: 1.4 }}>{step.title}</h3>
-                <p className="font-body text-sm" style={{ color: "rgba(252,246,237,0.55)", lineHeight: 1.65 }}>{step.body}</p>
+                <h3 className="font-heading font-medium mb-2" style={{ color: "#031F3D", fontSize: 15, lineHeight: 1.4 }}>{step.title}</h3>
+                <p className="font-body text-sm" style={{ color: "rgba(3,31,61,0.6)", lineHeight: 1.65 }}>{step.body}</p>
               </motion.div>
             ))}
           </div>
@@ -566,6 +590,7 @@ function ReferralFormSection() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
+  const [submitGuard, setSubmitGuard] = useState(false);
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue, trigger } =
     useForm<ReferralFormData>({ resolver: zodResolver(ReferralSchema), defaultValues: { referral_reasons: [] } });
@@ -584,7 +609,14 @@ function ReferralFormSection() {
   async function advance() {
     const fields = STEP_FIELDS[step];
     const valid = await trigger(fields);
-    if (valid) { setDirection(1); setStep((s) => s + 1); }
+    if (valid) {
+      setDirection(1);
+      setStep((s) => s + 1);
+      // Guard: prevent accidental submit from click-event bleed when Continue
+      // button position becomes Submit button position on step transition.
+      setSubmitGuard(true);
+      setTimeout(() => setSubmitGuard(false), 450);
+    }
   }
 
   function back() { setDirection(-1); setStep((s) => Math.max(1, s - 1)); }
@@ -767,7 +799,7 @@ function ReferralFormSection() {
                           <input {...register("provider_name")} style={INPUT_STYLE} placeholder="Dr. Jane Smith" />
                         </Field>
                         <Field label="NPI" error={errors.provider_npi?.message}>
-                          <input {...register("provider_npi")} style={INPUT_STYLE} placeholder="1234567890" />
+                          <input {...register("provider_npi")} onInput={filterDigits} style={INPUT_STYLE} placeholder="1234567890" maxLength={10} />
                         </Field>
                         <Field label="Practice name *" error={errors.practice_name?.message}>
                           <input {...register("practice_name")} style={INPUT_STYLE} placeholder="Sunrise Medical Group" />
@@ -776,10 +808,10 @@ function ReferralFormSection() {
                           <input {...register("provider_email")} type="email" style={INPUT_STYLE} placeholder="dr.smith@practice.com" />
                         </Field>
                         <Field label="Phone *" error={errors.provider_phone?.message}>
-                          <input {...register("provider_phone")} style={INPUT_STYLE} placeholder="555-000-0000" />
+                          <input {...register("provider_phone")} type="tel" onInput={filterTel} maxLength={14} style={INPUT_STYLE} placeholder="(555) 000-0000" />
                         </Field>
                         <Field label="Fax" error={errors.provider_fax?.message}>
-                          <input {...register("provider_fax")} style={INPUT_STYLE} placeholder="555-000-0000" />
+                          <input {...register("provider_fax")} type="tel" onInput={filterTel} maxLength={14} style={INPUT_STYLE} placeholder="(555) 000-0000" />
                         </Field>
                       </div>
                     </div>
@@ -796,16 +828,23 @@ function ReferralFormSection() {
                           <input {...register("patient_last_name")} style={INPUT_STYLE} placeholder="Doe" />
                         </Field>
                         <Field label="Date of birth *" error={errors.patient_dob?.message}>
-                          <input {...register("patient_dob")} type="date" style={INPUT_STYLE} />
+                          <input {...register("patient_dob")} type="date" max={new Date().toISOString().split("T")[0]} style={INPUT_STYLE} />
                         </Field>
                         <Field label="Mobile *" error={errors.patient_mobile?.message}>
-                          <input {...register("patient_mobile")} style={INPUT_STYLE} placeholder="555-000-0000" />
+                          <input {...register("patient_mobile")} type="tel" onInput={filterTel} maxLength={14} style={INPUT_STYLE} placeholder="(555) 000-0000" />
+                        </Field>
+                        <Field label="Email *" error={errors.patient_email?.message}>
+                          <input {...register("patient_email")} type="email" style={INPUT_STYLE} placeholder="patient@email.com" />
                         </Field>
                         <Field label="State *" error={errors.patient_state?.message}>
-                          <input {...register("patient_state")} style={INPUT_STYLE} placeholder="FL" maxLength={2} />
+                          <select {...register("patient_state")} style={{ ...INPUT_STYLE, cursor: "pointer" }}>
+                            <option value="">Select state</option>
+                            <option value="FL">Florida (FL)</option>
+                            <option value="TX">Texas (TX)</option>
+                          </select>
                         </Field>
                         <Field label="Zip code *" error={errors.patient_zip?.message}>
-                          <input {...register("patient_zip")} style={INPUT_STYLE} placeholder="33101" />
+                          <input {...register("patient_zip")} onInput={filterDigits} style={INPUT_STYLE} placeholder="33101" maxLength={5} />
                         </Field>
                         <div className="md:col-span-2">
                           <Field label="Street address *" error={errors.patient_address?.message}>
@@ -855,45 +894,22 @@ function ReferralFormSection() {
                       </div>
                       {errors.referral_reasons && <p style={ERROR_STYLE}>{errors.referral_reasons.message}</p>}
                       <Field label="Clinical notes (optional)" error={errors.special_requests?.message}>
-                        <textarea {...register("special_requests")} rows={3} style={{ ...INPUT_STYLE, resize: "vertical" }} placeholder="Any additional context for our team..." />
+                        <textarea {...register("special_requests")} rows={3} maxLength={300} style={{ ...INPUT_STYLE, resize: "vertical" }} placeholder="Any additional context for our team..." />
+                        <p style={{ fontSize: 12, color: "rgba(3,31,61,0.35)", textAlign: "right", marginTop: 4, fontFamily: "'Aeonik Mono', monospace" }}>
+                          {(watch("special_requests") ?? "").length}/300
+                        </p>
                       </Field>
                     </div>
                   )}
 
-                  {step === 4 && (
-                    <div>
-                      <p className="font-heading font-medium text-midnight mb-2" style={{ fontSize: 19 }}>Insurance information</p>
-                      <p className="font-body mb-7" style={{ fontSize: 14, color: "rgba(3,31,61,0.45)" }}>All fields optional — helps speed up intake</p>
-                      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                        <Field label="Holder first name" error={errors.insurance_holder_first?.message}>
-                          <input {...register("insurance_holder_first")} style={INPUT_STYLE} placeholder="John" />
-                        </Field>
-                        <Field label="Holder last name" error={errors.insurance_holder_last?.message}>
-                          <input {...register("insurance_holder_last")} style={INPUT_STYLE} placeholder="Doe" />
-                        </Field>
-                        <Field label="Insurance provider" error={errors.insurance_provider?.message}>
-                          <input {...register("insurance_provider")} style={INPUT_STYLE} placeholder="BlueCross BlueShield" />
-                        </Field>
-                        <Field label="Membership ID" error={errors.insurance_membership_id?.message}>
-                          <input {...register("insurance_membership_id")} style={INPUT_STYLE} placeholder="XYZ123456789" />
-                        </Field>
-                      </div>
-                      <div className="mt-6 rounded-xl p-4 flex items-start gap-3" style={{ background: "rgba(255,131,97,0.05)", border: "1px solid rgba(255,131,97,0.16)" }}>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF8361" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 1, flexShrink: 0 }}>
-                          <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
-                        </svg>
-                        <p className="font-body text-sm" style={{ color: "rgba(3,31,61,0.6)", lineHeight: 1.65 }}>
-                          Fax insurance card and H&P to <strong style={{ color: "#031F3D" }}>628-216-8120</strong> if available. Optional but speeds up intake.
-                        </p>
-                      </div>
-                      {serverError && <p className="font-body text-sm mt-5" style={{ color: "#E53E3E" }}>{serverError}</p>}
-                    </div>
-                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
 
             {/* Navigation */}
+            {serverError && (
+              <p className="font-body text-sm px-10 pb-2" style={{ color: "#E53E3E" }}>{serverError}</p>
+            )}
             <div style={{
               padding: "20px 40px 28px",
               borderTop: "1px solid rgba(3,31,61,0.06)",
@@ -916,7 +932,7 @@ function ReferralFormSection() {
                   Back
                 </button>
               )}
-              {step < 4 ? (
+              {step < 3 ? (
                 <button
                   type="button"
                   onClick={advance}
@@ -928,12 +944,12 @@ function ReferralFormSection() {
               ) : (
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || submitGuard}
                   className="font-mono text-sm uppercase tracking-wider"
                   style={{
-                    background: isSubmitting ? "rgba(255,131,97,0.55)" : "#FF8361",
+                    background: (isSubmitting || submitGuard) ? "rgba(255,131,97,0.55)" : "#FF8361",
                     color: "#FFFFFF", border: "none", borderRadius: 50, padding: "13px 32px",
-                    cursor: isSubmitting ? "not-allowed" : "pointer", letterSpacing: "0.08em",
+                    cursor: (isSubmitting || submitGuard) ? "not-allowed" : "pointer", letterSpacing: "0.08em",
                   }}
                 >
                   {isSubmitting ? "Submitting..." : "Submit Referral"}
@@ -950,7 +966,7 @@ function ReferralFormSection() {
           className="font-body text-sm text-center mt-6"
           style={{ color: "rgba(252,246,237,0.28)" }}
         >
-          Or fax to 628-216-8120
+          Questions? <a href="mailto:contact@dumbo.health" style={{ color: "rgba(252,246,237,0.5)", textDecoration: "none" }}>contact@dumbo.health</a>
         </motion.p>
       </div>
     </section>
@@ -1026,14 +1042,12 @@ function ClosingSection() {
     <section className="py-16 md:py-20" style={{ background: "#031F3D" }}>
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <p className="font-mono text-xs uppercase tracking-widest mb-5" style={{ color: "#78BFBC" }}>
-          Other Ways to Reach Us
+          Have Questions?
         </p>
         <p className="font-body text-lg" style={{ color: "rgba(252,246,237,0.7)", lineHeight: 1.75 }}>
-          Prefer to fax?{" "}
-          <span className="font-mono" style={{ color: "#FCF6ED" }}>628-216-8120</span>
-          {"  "}Have questions?{" "}
-          <a href="mailto:partners@dumbo.health" className="font-mono" style={{ color: "#FF8361", textDecoration: "none" }}>
-            partners@dumbo.health
+          Reach our team at{" "}
+          <a href="mailto:contact@dumbo.health" className="font-mono" style={{ color: "#FF8361", textDecoration: "none" }}>
+            contact@dumbo.health
           </a>
         </p>
       </div>
