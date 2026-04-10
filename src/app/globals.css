@@ -4,6 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Restore pointer cursor reset by Tailwind preflight */
+a, button { cursor: pointer; }
+
 /* Brand font faces */
 @font-face {
   font-family: 'Nohemi';
