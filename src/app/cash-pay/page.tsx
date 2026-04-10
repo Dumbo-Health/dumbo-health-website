@@ -157,16 +157,7 @@ function HeroSection() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 50% 60% at 85% 20%, rgba(255,131,97,0.07) 0%, transparent 65%)",
-          zIndex: -1,
-        }}
-      />
-      {/* Teal radial lower */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 60% at 50% 70%, rgba(120,191,188,0.07) 0%, transparent 65%)",
+            "radial-gradient(ellipse 55% 65% at 85% 20%, rgba(255,131,97,0.14) 0%, transparent 65%)",
           zIndex: -1,
         }}
       />
@@ -255,7 +246,10 @@ const REASONS = [
 
 function WhyCashPay() {
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: "#FCF6ED" }}>
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "linear-gradient(to bottom, #F5E6D1 0%, #FCF6ED 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14">
           <SectionLabel>Why people choose cash pay</SectionLabel>
@@ -377,7 +371,7 @@ function CostReality() {
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#F5E6D1", isolation: "isolate" }}
+      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
     >
       {/* Brand pattern overlay */}
       <div
@@ -396,7 +390,7 @@ function CostReality() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center mb-16">
           <div>
             <SectionLabel color="#FF8361">The real cost of insurance CPAP</SectionLabel>
-            <SectionHeading maxWidth="22ch">
+            <SectionHeading light maxWidth="22ch">
               That &ldquo;$0 upfront&rdquo; machine might cost more than you
               think.
             </SectionHeading>
@@ -404,7 +398,7 @@ function CostReality() {
               {...fadeUp(0.18)}
               className="font-body mt-5 leading-relaxed"
               style={{
-                color: "rgba(3,31,61,0.6)",
+                color: "rgba(252,246,237,0.68)",
                 fontSize: "1.0625rem",
                 maxWidth: "48ch",
               }}
@@ -427,13 +421,13 @@ function CostReality() {
               className="w-full h-full flex flex-col items-center justify-center gap-3"
               style={{
                 background:
-                  "linear-gradient(135deg, #FCF6ED 0%, #FFD6AD 100%)",
-                border: "1px solid rgba(255,131,97,0.12)",
+                  "linear-gradient(135deg, rgba(252,246,237,0.06) 0%, rgba(255,214,173,0.1) 100%)",
+                border: "1px solid rgba(252,246,237,0.1)",
               }}
             >
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "rgba(255,131,97,0.1)" }}
+                style={{ backgroundColor: "rgba(255,131,97,0.15)" }}
               >
                 <svg
                   width="26"
@@ -452,7 +446,7 @@ function CostReality() {
               </div>
               <p
                 className="font-mono text-[11px] uppercase tracking-widest"
-                style={{ color: "rgba(3,31,61,0.28)" }}
+                style={{ color: "rgba(252,246,237,0.35)" }}
               >
                 Image placeholder
               </p>
@@ -463,7 +457,7 @@ function CostReality() {
         {/* Mobile swipe hint */}
         <p
           className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-center mb-3"
-          style={{ color: "rgba(3,31,61,0.3)" }}
+          style={{ color: "rgba(252,246,237,0.38)" }}
         >
           ← Swipe to compare →
         </p>
@@ -473,12 +467,12 @@ function CostReality() {
           {...fadeUp(0.14)}
           className="w-full overflow-x-auto rounded-2xl"
           style={{
-            border: "1px solid rgba(3,31,61,0.08)",
-            boxShadow: "0 2px 32px rgba(3,31,61,0.05)",
+            border: "1px solid rgba(252,246,237,0.1)",
+            boxShadow: "0 2px 32px rgba(0,0,0,0.3)",
           }}
         >
           <div style={{ minWidth: "620px" }}>
-            <div style={{ backgroundColor: "#FDFAF6" }}>
+            <div style={{ backgroundColor: "rgba(252,246,237,0.04)" }}>
 
               {/* Column headers */}
               <div className="grid grid-cols-[200px_1fr_1fr]">
@@ -486,19 +480,19 @@ function CostReality() {
                 <div
                   className="px-6 py-5 text-center"
                   style={{
-                    borderLeft: "1px solid rgba(3,31,61,0.07)",
-                    backgroundColor: "rgba(245,230,209,0.6)",
+                    borderLeft: "1px solid rgba(252,246,237,0.08)",
+                    backgroundColor: "rgba(252,246,237,0.06)",
                   }}
                 >
                   <p
                     className="font-mono text-xs uppercase tracking-widest"
-                    style={{ color: "rgba(3,31,61,0.45)" }}
+                    style={{ color: "rgba(252,246,237,0.58)" }}
                   >
                     Insurance CPAP
                   </p>
                   <p
                     className="font-body text-sm mt-1"
-                    style={{ color: "rgba(3,31,61,0.32)" }}
+                    style={{ color: "rgba(252,246,237,0.38)" }}
                   >
                     The usual path
                   </p>
@@ -530,12 +524,12 @@ function CostReality() {
                 <div
                   key={row.label}
                   className="grid grid-cols-[200px_1fr_1fr]"
-                  style={{ borderTop: "1px solid rgba(3,31,61,0.07)" }}
+                  style={{ borderTop: "1px solid rgba(252,246,237,0.07)" }}
                 >
                   <div className="px-6 py-5 flex items-center">
                     <p
                       className="font-body text-sm font-semibold"
-                      style={{ color: "rgba(3,31,61,0.72)" }}
+                      style={{ color: "rgba(252,246,237,0.82)" }}
                     >
                       {row.label}
                     </p>
@@ -543,17 +537,17 @@ function CostReality() {
                   <div
                     className="px-5 py-5 flex items-start gap-3"
                     style={{
-                      borderLeft: "1px solid rgba(3,31,61,0.06)",
-                      backgroundColor: "rgba(245,230,209,0.3)",
+                      borderLeft: "1px solid rgba(252,246,237,0.07)",
+                      backgroundColor: "rgba(252,246,237,0.03)",
                     }}
                   >
                     <X
                       className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "rgba(3,31,61,0.22)" }}
+                      style={{ color: "rgba(252,246,237,0.28)" }}
                     />
                     <p
                       className="font-body text-sm leading-snug"
-                      style={{ color: "rgba(3,31,61,0.62)" }}
+                      style={{ color: "rgba(252,246,237,0.62)" }}
                     >
                       {row.insurance}
                     </p>
@@ -572,7 +566,7 @@ function CostReality() {
                     <p
                       className="font-body text-sm font-medium leading-snug"
                       style={{
-                        color: row.dumboHighlight ? "#FF8361" : "#031F3D",
+                        color: row.dumboHighlight ? "#FFD6AD" : "#FCF6ED",
                       }}
                     >
                       {row.dumbo}
@@ -585,13 +579,13 @@ function CostReality() {
               <div
                 className="px-6 py-4"
                 style={{
-                  borderTop: "1px solid rgba(3,31,61,0.06)",
-                  backgroundColor: "rgba(245,230,209,0.2)",
+                  borderTop: "1px solid rgba(252,246,237,0.07)",
+                  backgroundColor: "rgba(252,246,237,0.03)",
                 }}
               >
                 <p
                   className="font-body text-xs"
-                  style={{ color: "rgba(3,31,61,0.42)" }}
+                  style={{ color: "rgba(252,246,237,0.45)" }}
                 >
                   * Dumbo Health premium plan. Insurance costs vary by plan,
                   deductible, and annual reset. Individual results will differ.
@@ -608,7 +602,7 @@ function CostReality() {
             className="rounded-2xl p-7"
             style={{
               backgroundColor: "rgba(120,191,188,0.1)",
-              border: "1px solid rgba(120,191,188,0.22)",
+              border: "1px solid rgba(120,191,188,0.32)",
             }}
           >
             <p
@@ -619,7 +613,7 @@ function CostReality() {
             </p>
             <p
               className="font-body leading-relaxed"
-              style={{ color: "rgba(3,31,61,0.7)", fontSize: "0.9375rem" }}
+              style={{ color: "rgba(252,246,237,0.72)", fontSize: "0.9375rem" }}
             >
               Insurance requires at least 4 hours per night on 70% of nights
               (21 of 30) to maintain coverage, typically verified in the first
@@ -639,13 +633,13 @@ function CostReality() {
               className="w-full h-full flex flex-col items-center justify-center gap-3"
               style={{
                 background:
-                  "linear-gradient(135deg, #FCF6ED 0%, #F5E6D1 100%)",
-                border: "1px solid rgba(3,31,61,0.06)",
+                  "linear-gradient(135deg, rgba(252,246,237,0.05) 0%, rgba(120,191,188,0.08) 100%)",
+                border: "1px solid rgba(252,246,237,0.1)",
               }}
             >
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "rgba(120,191,188,0.15)" }}
+                style={{ backgroundColor: "rgba(120,191,188,0.2)" }}
               >
                 <svg
                   width="22"
@@ -664,7 +658,7 @@ function CostReality() {
               </div>
               <p
                 className="font-mono text-[11px] uppercase tracking-widest"
-                style={{ color: "rgba(3,31,61,0.25)" }}
+                style={{ color: "rgba(252,246,237,0.32)" }}
               >
                 Image placeholder
               </p>
@@ -708,7 +702,10 @@ const BENEFITS = [
 
 function WhatYouGet() {
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: "#FCF6ED" }}>
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14">
           <SectionLabel>Cash pay with Dumbo Health</SectionLabel>
@@ -781,7 +778,10 @@ const STEPS = [
 
 function HowItWorks() {
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: "#F5E6D1" }}>
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "linear-gradient(to bottom, #F5E6D1 0%, #FFD6AD 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14">
           <SectionLabel>How it works</SectionLabel>
@@ -836,7 +836,10 @@ function HowItWorks() {
 // ── Section 6: What Makes Dumbo Health Different ──────────────────────────────
 function WhatMakesDifferent() {
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: "#FCF6ED" }}>
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] items-center">
 
@@ -923,7 +926,10 @@ const FAQS = [
 
 function FaqSection() {
   return (
-    <section className="py-24 md:py-32" style={{ backgroundColor: "#F5E6D1" }}>
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr] items-start">
           <div>
