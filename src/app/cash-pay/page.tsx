@@ -174,38 +174,61 @@ function HeroSection() {
       />
 
       <div className="mx-auto max-w-7xl px-[5%]">
-        <SectionLabel>Cash pay · Insurance · Your choice</SectionLabel>
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-        <motion.h1
-          {...fadeUp(0.08)}
-          className="font-heading font-medium leading-tight text-balance"
-          style={{
-            color: "#031F3D",
-            fontSize: "clamp(2.4rem, 5vw, 3.75rem)",
-            maxWidth: "18ch",
-            marginBottom: "1.5rem",
-          }}
-        >
-          CPAP from $2 a day. No insurance required.
-        </motion.h1>
+          {/* Left: copy */}
+          <div>
+            <SectionLabel>Cash pay · Insurance · Your choice</SectionLabel>
 
-        <motion.p
-          {...fadeUp(0.18)}
-          className="font-body leading-relaxed mb-10"
-          style={{
-            color: "rgba(3,31,61,0.6)",
-            fontSize: "1.125rem",
-            maxWidth: "52ch",
-          }}
-        >
-          Not yet diagnosed? Start with our $149 at-home sleep test and
-          have results within days. Already have a prescription? Pick a
-          plan and your CPAP ships this week.
-        </motion.p>
+            <motion.h1
+              {...fadeUp(0.08)}
+              className="font-heading font-medium leading-tight text-balance"
+              style={{
+                color: "#031F3D",
+                fontSize: "clamp(2.4rem, 5vw, 3.75rem)",
+                maxWidth: "18ch",
+                marginBottom: "1.5rem",
+              }}
+            >
+              CPAP from $2 a day. No insurance required.
+            </motion.h1>
 
-        <motion.div {...fadeUp(0.26)}>
-          <CtaPair />
-        </motion.div>
+            <motion.p
+              {...fadeUp(0.18)}
+              className="font-body leading-relaxed mb-10"
+              style={{
+                color: "rgba(3,31,61,0.6)",
+                fontSize: "1.125rem",
+                maxWidth: "52ch",
+              }}
+            >
+              Not yet diagnosed? Start with our $149 at-home sleep test and
+              have results within days. Already have a prescription? Pick a
+              plan and your CPAP ships this week.
+            </motion.p>
+
+            <motion.div {...fadeUp(0.26)}>
+              <CtaPair />
+            </motion.div>
+          </div>
+
+          {/* Right: lifestyle photo — hidden on mobile */}
+          <motion.div
+            {...fadeUp(0.12)}
+            className="relative hidden md:block rounded-2xl overflow-hidden"
+            style={{ aspectRatio: "3 / 4", maxHeight: "520px" }}
+          >
+            <Image
+              src="/go/couple-wakeup.png"
+              alt="Couple waking up rested after CPAP therapy"
+              fill
+              className="object-cover"
+              priority
+              sizes="50vw"
+            />
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
@@ -245,61 +268,74 @@ function WhyCashPay() {
           {/* Path A: Not yet diagnosed */}
           <motion.div
             {...fadeUp(0.08)}
-            className="flex flex-col rounded-2xl p-8"
+            className="flex flex-col rounded-2xl overflow-hidden"
             style={{
               backgroundColor: "#F5E6D1",
               border: "1px solid rgba(245,230,209,0.9)",
             }}
           >
-            <p
-              className="font-mono text-xs uppercase tracking-widest mb-5"
-              style={{ color: "#78BFBC" }}
-            >
-              Not yet diagnosed
-            </p>
-            <h3
-              className="font-heading font-medium mb-7"
-              style={{
-                color: "#031F3D",
-                fontSize: "clamp(1.3rem, 2vw, 1.6rem)",
-              }}
-            >
-              Start with the sleep test.
-            </h3>
-            <div className="space-y-4 mb-10 flex-1">
-              {PATH_A_STEPS.map((step, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span
-                    className="font-mono text-[11px] uppercase tracking-widest pt-0.5 shrink-0"
-                    style={{ color: "#FF8361" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p
-                    className="font-body leading-relaxed"
-                    style={{ color: "rgba(3,31,61,0.7)", fontSize: "0.9375rem" }}
-                  >
-                    {step}
-                  </p>
-                </div>
-              ))}
+            {/* Photo: person in bed, pre-diagnosis */}
+            <div className="relative" style={{ height: "200px" }}>
+              <Image
+                src="/images/people/girl-in-bed.png"
+                alt="Person struggling with poor sleep"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
-            <Link
-              href={APP_URL}
-              className="flex items-center justify-center gap-2 h-12 rounded-[12px] px-7 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5"
-              style={{
-                backgroundColor: "#FF8361",
-                boxShadow: "0 4px 20px rgba(255,131,97,0.28)",
-              }}
-            >
-              Start with the sleep test
-              <span
-                className="font-mono text-xs font-normal normal-case tracking-normal"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+
+            <div className="flex flex-col flex-1 p-8">
+              <p
+                className="font-mono text-xs uppercase tracking-widest mb-5"
+                style={{ color: "#78BFBC" }}
               >
-                · $149
-              </span>
-            </Link>
+                Not yet diagnosed
+              </p>
+              <h3
+                className="font-heading font-medium mb-7"
+                style={{
+                  color: "#031F3D",
+                  fontSize: "clamp(1.3rem, 2vw, 1.6rem)",
+                }}
+              >
+                Start with the sleep test.
+              </h3>
+              <div className="space-y-4 mb-10 flex-1">
+                {PATH_A_STEPS.map((step, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span
+                      className="font-mono text-[11px] uppercase tracking-widest pt-0.5 shrink-0"
+                      style={{ color: "#FF8361" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p
+                      className="font-body leading-relaxed"
+                      style={{ color: "rgba(3,31,61,0.7)", fontSize: "0.9375rem" }}
+                    >
+                      {step}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href={APP_URL}
+                className="flex items-center justify-center gap-2 h-12 rounded-[12px] px-7 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#FF8361",
+                  boxShadow: "0 4px 20px rgba(255,131,97,0.28)",
+                }}
+              >
+                Start with the sleep test
+                <span
+                  className="font-mono text-xs font-normal normal-case tracking-normal"
+                  style={{ color: "rgba(255,255,255,0.75)" }}
+                >
+                  · $149
+                </span>
+              </Link>
+            </div>
           </motion.div>
 
           {/* Path B: Already diagnosed */}
@@ -697,6 +733,21 @@ function HowItWorks() {
               start at step 03.
             </span>
           </p>
+        </motion.div>
+
+        {/* At-home sleep test — makes step 01 tangible before the list begins */}
+        <motion.div
+          {...fadeUp(0.15)}
+          className="relative rounded-2xl overflow-hidden mb-8"
+          style={{ height: "260px" }}
+        >
+          <Image
+            src="/go/at-home-sleep-test.avif"
+            alt="Dumbo Health at-home sleep test kit"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+          />
         </motion.div>
 
         {/* Stacked step list */}
