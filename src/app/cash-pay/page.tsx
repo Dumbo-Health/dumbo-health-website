@@ -587,8 +587,7 @@ function CostReality() {
                   className="font-body text-xs"
                   style={{ color: "rgba(3,31,61,0.42)" }}
                 >
-                  * Dumbo Health premium plan. Insurance costs vary by plan,
-                  deductible, and annual reset. Individual results will differ.
+                  * Dumbo Health Premium and Elite plans.
                 </p>
               </div>
             </div>
