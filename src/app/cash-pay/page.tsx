@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
@@ -636,19 +637,28 @@ function CostReality() {
 // ── Section 5: How It Works ───────────────────────────────────────────────────
 const STEPS = [
   {
-    n: "1",
-    title: "Order the at-home sleep test",
-    body: "Quick delivery, simple one-night setup. Most results returned within days.",
+    n: "01",
+    title: "Take the at-home sleep test",
+    body: "Quick delivery. One-night setup. Results returned within 48 hours and reviewed by one of our physicians.",
+    detail: "$149 · ships to your door",
   },
   {
-    n: "2",
-    title: "Start therapy",
-    body: "CPAP or oral appliance. Get fitted, coached, and set up for comfort from day one.",
+    n: "02",
+    title: "Get your prescription issued",
+    body: "A board-certified sleep physician reviews your test data and issues your CPAP prescription in the app. No office visit required.",
+    detail: "Usually same day",
   },
   {
-    n: "3",
-    title: "Track and replace",
-    body: "App-guided supply tracking, component lifetime monitoring, and a care team you can message anytime.",
+    n: "03",
+    title: "Choose your plan and ship your CPAP",
+    body: "Pick the plan that fits your life. Your CPAP machine, mask, and accessories ship within the week.",
+    detail: "From $59/month · equipment included",
+  },
+  {
+    n: "04",
+    title: "Ongoing care team support",
+    body: "App-guided resupply, pressure adjustments, and a care team you can message anytime. We track your data to coach you, not report to your insurer.",
+    detail: "No usage minimums",
   },
 ];
 
@@ -661,48 +671,84 @@ function HowItWorks() {
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14">
           <SectionLabel>How it works</SectionLabel>
-          <SectionHeading maxWidth="26ch">
+          <SectionHeading maxWidth="24ch">
             From test to therapy in days, not months.
           </SectionHeading>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        {/* Diagnosed audience entry point */}
+        <motion.div
+          {...fadeUp(0.1)}
+          className="mb-10 rounded-2xl px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5"
+          style={{
+            backgroundColor: "rgba(3,31,61,0.04)",
+            border: "1px solid rgba(3,31,61,0.08)",
+          }}
+        >
+          <span
+            className="font-mono text-[11px] uppercase tracking-widest shrink-0"
+            style={{ color: "#FF8361" }}
+          >
+            Already diagnosed?
+          </span>
+          <p className="font-body text-sm" style={{ color: "rgba(3,31,61,0.6)" }}>
+            Steps 01 and 02 are done. Upload your existing prescription and{" "}
+            <span className="font-medium" style={{ color: "#031F3D" }}>
+              start at step 03.
+            </span>
+          </p>
+        </motion.div>
+
+        {/* Stacked step list */}
+        <div>
           {STEPS.map((s, i) => (
             <motion.div
               key={s.n}
-              {...fadeUp(0.1 + i * 0.12)}
-              className="relative"
+              {...fadeUp(0.12 + i * 0.1)}
+              className="grid grid-cols-1 md:grid-cols-[5rem_1fr_auto] gap-x-8 gap-y-1.5 py-9 items-start"
+              style={{ borderTop: "1px solid rgba(3,31,61,0.1)" }}
             >
-              {/* Large ghost step number */}
-              <p
-                className="font-heading font-medium select-none mb-4"
+              <span
+                className="font-heading font-medium select-none leading-none"
                 style={{
-                  fontSize: "clamp(4rem, 8vw, 6rem)",
-                  color: "rgba(3,31,61,0.07)",
-                  lineHeight: 1,
-                  marginBottom: "0.5rem",
+                  fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+                  color: "rgba(3,31,61,0.09)",
                 }}
               >
                 {s.n}
-              </p>
-              <h3
-                className="font-heading font-medium"
-                style={{
-                  color: "#031F3D",
-                  fontSize: "clamp(1.15rem, 1.8vw, 1.35rem)",
-                  marginBottom: "0.5rem",
-                }}
+              </span>
+
+              <div>
+                <h3
+                  className="font-heading font-medium mb-2"
+                  style={{
+                    color: "#031F3D",
+                    fontSize: "clamp(1.15rem, 1.8vw, 1.35rem)",
+                  }}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  className="font-body leading-relaxed"
+                  style={{
+                    color: "rgba(3,31,61,0.6)",
+                    fontSize: "0.9375rem",
+                    maxWidth: "52ch",
+                  }}
+                >
+                  {s.body}
+                </p>
+              </div>
+
+              <span
+                className="font-mono text-[11px] uppercase tracking-widest whitespace-nowrap md:text-right md:mt-1.5"
+                style={{ color: "#FF8361" }}
               >
-                {s.title}
-              </h3>
-              <p
-                className="font-body leading-relaxed"
-                style={{ color: "rgba(3,31,61,0.6)", fontSize: "0.9375rem" }}
-              >
-                {s.body}
-              </p>
+                {s.detail}
+              </span>
             </motion.div>
           ))}
+          <div style={{ borderTop: "1px solid rgba(3,31,61,0.1)" }} />
         </div>
       </div>
     </section>
@@ -710,6 +756,39 @@ function HowItWorks() {
 }
 
 // ── Section 6: What Makes Dumbo Health Different ──────────────────────────────
+const PHYSICIANS = [
+  {
+    name: "Dr. Zachary Adams, MD, MBA",
+    title: "Sleep medicine physician",
+    note: "Fellow, American Academy of Sleep Medicine",
+    image: "/images/team/medical/zachary-adams.avif",
+  },
+  {
+    name: "Dr. Harrison Gimbel, MD, MS",
+    title: "Sleep medicine physician",
+    note: "Committed to expanding access via telemedicine",
+    image: "/images/team/medical/harrison-gimbel.avif",
+  },
+];
+
+const DIFFERENTIATORS = [
+  {
+    label: "FSA / HSA eligible",
+    detail:
+      "CPAP is a qualified medical expense. Pay with your FSA or HSA card at checkout.",
+  },
+  {
+    label: "No usage minimums",
+    detail:
+      "Cash pay means no compliance windows. Use your CPAP on your schedule, not the insurer's.",
+  },
+  {
+    label: "FDA-cleared devices",
+    detail:
+      "All equipment is prescription-grade and cleared for treating obstructive sleep apnea.",
+  },
+];
+
 function WhatMakesDifferent() {
   return (
     <section
@@ -717,63 +796,121 @@ function WhatMakesDifferent() {
       style={{ background: "linear-gradient(to bottom, #FFD6AD 0%, #FCF6ED 100%)" }}
     >
       <div className="mx-auto max-w-7xl px-[5%]">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] items-center">
+        <div className="grid gap-16 lg:grid-cols-2 items-start">
 
-          {/* Left: label + heading */}
+          {/* Left: differentiators */}
           <div>
             <SectionLabel>What makes us different</SectionLabel>
             <SectionHeading maxWidth="20ch">
-              Friendly design, clear language, real people.
+              Your physicians. Your data. Your schedule.
             </SectionHeading>
-          </div>
 
-          {/* Right: body + trust signals */}
-          <div>
             <motion.p
-              {...fadeUp(0.12)}
-              className="font-body leading-relaxed mb-10"
+              {...fadeUp(0.14)}
+              className="font-body leading-relaxed mt-6 mb-10"
               style={{
                 color: "rgba(3,31,61,0.6)",
                 fontSize: "1.0625rem",
-                maxWidth: "48ch",
+                maxWidth: "44ch",
               }}
             >
-              We remove the stigma and make treatment feel normal and doable.
-              Modern wellness design, approachable language, and coaches who
-              actually answer. Sleep apnea is common. Getting help should feel
-              that way too.
+              We built Dumbo Health for people who want results, not
+              bureaucracy. Board-certified sleep physicians, no compliance
+              requirements, and your data stays yours.
             </motion.p>
 
-            {/* Trust signals — no fabricated data */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              {[
-                "FDA-cleared devices",
-                "Licensed sleep physicians",
-                "Stigma-free approach",
-              ].map((signal, i) => (
+            <div className="space-y-3">
+              {DIFFERENTIATORS.map((d, i) => (
                 <motion.div
-                  key={signal}
+                  key={d.label}
                   {...fadeUp(0.18 + i * 0.08)}
-                  className="flex items-center gap-2.5 rounded-2xl px-5 py-3.5"
+                  className="flex gap-4 rounded-2xl px-5 py-4"
                   style={{
-                    backgroundColor: "#F5E6D1",
-                    border: "1px solid rgba(245,230,209,0.9)",
+                    backgroundColor: "rgba(3,31,61,0.04)",
+                    border: "1px solid rgba(3,31,61,0.07)",
                   }}
                 >
                   <Check
-                    className="h-4 w-4 shrink-0"
+                    className="h-4 w-4 shrink-0 mt-0.5"
                     style={{ color: "#78BFBC" }}
                   />
-                  <span
-                    className="font-body text-sm font-medium"
-                    style={{ color: "#031F3D" }}
-                  >
-                    {signal}
-                  </span>
+                  <div>
+                    <p
+                      className="font-body text-sm font-medium"
+                      style={{ color: "#031F3D" }}
+                    >
+                      {d.label}
+                    </p>
+                    <p
+                      className="font-body text-sm mt-0.5"
+                      style={{ color: "rgba(3,31,61,0.55)" }}
+                    >
+                      {d.detail}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
+
+          {/* Right: physician cards */}
+          <div>
+            <motion.p
+              {...fadeUp(0.08)}
+              className="font-mono text-xs uppercase tracking-widest mb-6"
+              style={{ color: "rgba(3,31,61,0.35)" }}
+            >
+              Your care team
+            </motion.p>
+
+            <div className="space-y-4">
+              {PHYSICIANS.map((p, i) => (
+                <motion.div
+                  key={p.name}
+                  {...fadeUp(0.12 + i * 0.1)}
+                  className="flex items-center gap-5 rounded-2xl p-5"
+                  style={{
+                    backgroundColor: "#FCF6ED",
+                    border: "1px solid rgba(3,31,61,0.07)",
+                  }}
+                >
+                  <div
+                    className="relative shrink-0 rounded-full overflow-hidden"
+                    style={{ width: "64px", height: "64px" }}
+                  >
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
+                    />
+                  </div>
+                  <div>
+                    <p
+                      className="font-heading font-medium"
+                      style={{ color: "#031F3D", fontSize: "0.9375rem" }}
+                    >
+                      {p.name}
+                    </p>
+                    <p
+                      className="font-body text-sm"
+                      style={{ color: "rgba(3,31,61,0.5)" }}
+                    >
+                      {p.title}
+                    </p>
+                    <p
+                      className="font-mono text-[11px] uppercase tracking-widest mt-1"
+                      style={{ color: "#78BFBC" }}
+                    >
+                      {p.note}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -784,19 +921,35 @@ function WhatMakesDifferent() {
 const FAQS = [
   {
     q: "Can I use insurance with Dumbo Health?",
-    a: "Dumbo Health is cash pay first with transparent monthly plans. We don't bill insurance, which means no authorizations, no compliance requirements, and no surprise bills.",
+    a: "Dumbo Health is cash pay only. We don't bill insurance, which means no prior authorizations, no compliance requirements, and no surprise bills. One transparent monthly price, period.",
   },
   {
     q: "Is cash pay really cheaper than using insurance?",
-    a: "For many people, yes. High deductibles and rental terms can make insurance more expensive over time. Cash pay gives you one clear price and you own the device, and because we replace supplies based on actual component wear, you pay for what you use, not what the schedule says.",
+    a: "For many people, yes. Under a typical insurance CPAP rental, you pay a monthly copay for 13 consecutive months before you own the device — and if you miss the compliance window, coverage can stop. Dumbo Health's Essentials plan starts at $59/month with no rental clock and no compliance requirements. You own the therapy, not the insurer's schedule.",
+  },
+  {
+    q: "Do I need a prescription to get a CPAP?",
+    a: "Yes — CPAP requires a prescription in the US. If you tested with Dumbo Health, your physician prescription is already on file. If you tested elsewhere, upload your existing sleep study and prescription and we'll take it from there.",
+  },
+  {
+    q: "Can I use my FSA or HSA?",
+    a: "Yes. CPAP equipment and supplies are qualified medical expenses under most FSA and HSA plans. You can pay for your Dumbo Health subscription directly with your FSA or HSA card at checkout.",
+  },
+  {
+    q: "What if I can't tolerate CPAP?",
+    a: "The most common reason people quit is a poor mask fit or incorrect pressure settings — both of which our care team actively monitors. If something feels wrong, message us before giving up. Most problems are solvable with the right adjustments.",
+  },
+  {
+    q: "If I cancel, what happens to my CPAP?",
+    a: "You keep it. All Dumbo Health plans are month-to-month. If you cancel, the machine is yours — you're not renting it back to anyone.",
   },
   {
     q: "Will I lose support if I don't go through insurance?",
-    a: "No. Our team provides coaching, mask fit help, and telehealth visits so you get results without the usual hassle. Support is included, not an insurance-dependent add-on.",
+    a: "No. Coaching, mask fit help, telehealth visits, and ongoing resupply are all part of your plan. Support is not an insurance-dependent add-on.",
   },
   {
     q: "How fast can I start treatment?",
-    a: "Most people complete testing and begin therapy within days once a diagnosis is confirmed. No waiting weeks for referral chains or prior authorizations.",
+    a: "Most people complete testing and begin therapy within days of a confirmed diagnosis. No waiting weeks for referral chains or prior authorizations.",
   },
 ];
 
@@ -879,7 +1032,7 @@ function ClosingCta() {
             maxWidth: "22ch",
           }}
         >
-          Better sleep starts with one step.
+          No authorizations. No compliance clocks. Just treatment that works.
         </motion.h2>
 
         <motion.p
@@ -891,8 +1044,9 @@ function ClosingCta() {
             maxWidth: "50ch",
           }}
         >
-          Begin with the at-home sleep test, or explore CPAP plans if you
-          already have a diagnosis. Either way, our team is here with you.
+          Start with the $149 at-home sleep test, or jump straight to a CPAP
+          plan if you already have a prescription. Either way, your care team
+          is with you from day one.
         </motion.p>
 
         <motion.div {...fadeUp(0.24)}>
