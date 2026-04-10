@@ -374,46 +374,45 @@ const TRUTHS = [
   {
     n: "01",
     truth: "You\u2019re renting it. For 13 months.",
-    answer: "Flat monthly access. No ownership clock.",
+    answer:
+      "Our plans start at $59/month. No 13-month rental clock. Cancel anytime.",
   },
   {
     n: "02",
     truth: "Miss the compliance window and coverage can stop.",
-    answer: "No compliance requirements. We coach you, not your insurer.",
+    answer:
+      "No usage minimums. We track your data to coach you, not report to your insurer.",
   },
   {
     n: "03",
     truth: "Your usage data goes to your DME and insurer.",
     answer:
-      "Your data stays yours. We use it to help you, not to gate your coverage.",
+      "Your data stays in your account. We use it to improve your sleep, full stop.",
   },
 ];
 
-const BENEFITS = [
+const PLANS_PREVIEW = [
   {
-    n: "01",
-    title: "Upfront, transparent pricing",
-    body: "Simple monthly plans. No deductibles, no surprise bills, no authorization paperwork.",
+    name: "Essentials",
+    price: 59,
+    perDay: "~$2/day",
+    summary: "Start therapy. Pay for extras only when you need them.",
+    features: ["Basic CPAP machine", "Mask fitted to your face", "24/7 care team"],
   },
   {
-    n: "02",
-    title: "CPAP or oral appliance",
-    body: "Choose the therapy that matches your life and your comfort preferences.",
+    name: "Premium",
+    price: 89,
+    perDay: "~$3/day",
+    summary: "The smart choice for most people.",
+    recommended: true,
+    features: ["Premium CPAP machine", "Smart resupply, auto-shipped", "2 doctor visits/year in the app", "24/7 care team"],
   },
   {
-    n: "03",
-    title: "Same-week telehealth",
-    body: "Fast shipping and telehealth within days, not weeks of waiting for referrals.",
-  },
-  {
-    n: "04",
-    title: "Real sleep coaches",
-    body: "Mask fit, comfort settings, pressure guidance. Real people in your corner.",
-  },
-  {
-    n: "05",
-    title: "Smart supply tracking",
-    body: "The app tracks component lifetime and replaces supplies when they\u2019re actually due, not on an arbitrary schedule.",
+    name: "Elite",
+    price: 129,
+    perDay: "~$4/day",
+    summary: "Everything, all the time, zero friction.",
+    features: ["Premium CPAP machine", "Unlimited doctor visits", "Full smart resupply", "Auto device upgrades", "Priority 24/7 care"],
   },
 ];
 
@@ -498,7 +497,7 @@ function CostReality() {
         </div>
       </div>
 
-      {/* ── Light half: what you get with Dumbo Health ───────────────────── */}
+      {/* ── Light half: what Dumbo Health actually costs ─────────────────── */}
       <div
         className="py-24 md:py-32"
         style={{
@@ -508,97 +507,125 @@ function CostReality() {
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="mb-14">
             <SectionLabel>Cash pay with Dumbo Health</SectionLabel>
-            <SectionHeading maxWidth="24ch">
-              Transparent prices. Real coaches. Your device, your data.
+            <SectionHeading maxWidth="26ch">
+              Here&apos;s what Dumbo Health actually costs.
             </SectionHeading>
+            <motion.p
+              {...fadeUp(0.14)}
+              className="font-body leading-relaxed mt-4"
+              style={{ color: "rgba(3,31,61,0.55)", fontSize: "1rem", maxWidth: "52ch" }}
+            >
+              All plans include your CPAP machine, free shipping, and 24/7 care.
+              No upfront costs. No hidden fees. Cancel anytime.
+            </motion.p>
           </div>
 
-          <div className="grid gap-14 lg:grid-cols-2 items-start">
-            {/* Photo */}
-            <motion.div
-              {...fadeUp(0.08)}
-              className="rounded-2xl overflow-hidden"
-              style={{ aspectRatio: "4/3" }}
-            >
-              <div
-                className="w-full h-full flex flex-col items-center justify-center gap-3"
+          {/* Plan cards */}
+          <div className="grid gap-5 md:grid-cols-3 mb-12">
+            {PLANS_PREVIEW.map((plan, i) => (
+              <motion.div
+                key={plan.name}
+                {...fadeUp(0.08 + i * 0.1)}
+                className="relative flex flex-col rounded-2xl p-7"
                 style={{
-                  background: "linear-gradient(135deg, #F5E6D1 0%, #FFD6AD 100%)",
-                  border: "1px solid rgba(245,230,209,0.8)",
+                  backgroundColor: plan.recommended ? "#031F3D" : "#F5E6D1",
+                  border: plan.recommended
+                    ? "none"
+                    : "1px solid rgba(245,230,209,0.9)",
                 }}
               >
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "rgba(255,131,97,0.15)" }}
-                >
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#FF8361"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
-                </div>
-                <p
-                  className="font-mono text-[11px] uppercase tracking-widest text-center"
-                  style={{ color: "rgba(3,31,61,0.35)" }}
-                >
-                  Morning light — rested, at ease
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Benefits: editorial rows */}
-            <div>
-              {BENEFITS.map((b, i) => (
-                <motion.div
-                  key={b.n}
-                  {...fadeUp(0.1 + i * 0.07)}
-                  className="grid grid-cols-[2.5rem_1fr] gap-5 py-6"
-                  style={{ borderTop: "1px solid rgba(3,31,61,0.08)" }}
-                >
+                {plan.recommended && (
                   <span
-                    className="font-mono text-xs uppercase tracking-widest pt-0.5"
+                    className="font-mono text-[10px] uppercase tracking-widest mb-5 inline-block"
                     style={{ color: "#FF8361" }}
                   >
-                    {b.n}
+                    Most popular
                   </span>
-                  <div>
-                    <p
-                      className="font-heading font-medium mb-1.5"
-                      style={{
-                        color: "#031F3D",
-                        fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
-                      }}
-                    >
-                      {b.title}
-                    </p>
-                    <p
-                      className="font-body leading-relaxed"
-                      style={{
-                        color: "rgba(3,31,61,0.6)",
-                        fontSize: "0.9375rem",
-                      }}
-                    >
-                      {b.body}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-              <div style={{ borderTop: "1px solid rgba(3,31,61,0.08)" }} />
+                )}
 
-              <motion.div {...fadeUp(0.5)} className="mt-10">
-                <CtaPair />
+                <p
+                  className="font-mono text-xs uppercase tracking-widest mb-3"
+                  style={{ color: plan.recommended ? "rgba(252,246,237,0.5)" : "rgba(3,31,61,0.4)" }}
+                >
+                  {plan.name}
+                </p>
+
+                <div className="flex items-baseline gap-1.5 mb-1">
+                  <span
+                    className="font-heading font-medium"
+                    style={{
+                      color: plan.recommended ? "#FCF6ED" : "#031F3D",
+                      fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+                    }}
+                  >
+                    ${plan.price}
+                  </span>
+                  <span
+                    className="font-body"
+                    style={{ color: plan.recommended ? "rgba(252,246,237,0.5)" : "rgba(3,31,61,0.4)", fontSize: "0.9375rem" }}
+                  >
+                    /mo
+                  </span>
+                </div>
+
+                <p
+                  className="font-mono text-[11px] uppercase tracking-widest mb-5"
+                  style={{ color: plan.recommended ? "#78BFBC" : "#FF8361" }}
+                >
+                  {plan.perDay}
+                </p>
+
+                <p
+                  className="font-body leading-relaxed mb-6 text-sm"
+                  style={{ color: plan.recommended ? "rgba(252,246,237,0.6)" : "rgba(3,31,61,0.55)" }}
+                >
+                  {plan.summary}
+                </p>
+
+                <div className="space-y-2.5 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <div key={f} className="flex items-start gap-2.5">
+                      <Check
+                        className="h-3.5 w-3.5 shrink-0 mt-0.5"
+                        style={{ color: plan.recommended ? "#78BFBC" : "#FF8361" }}
+                      />
+                      <span
+                        className="font-body text-sm leading-snug"
+                        style={{ color: plan.recommended ? "rgba(252,246,237,0.75)" : "rgba(3,31,61,0.65)" }}
+                      >
+                        {f}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/cpap"
+                  className="flex items-center justify-center gap-2 h-11 rounded-[12px] font-body text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
+                  style={{
+                    backgroundColor: plan.recommended ? "#FF8361" : "transparent",
+                    color: plan.recommended ? "#fff" : "#031F3D",
+                    border: plan.recommended ? "none" : "1.5px solid rgba(3,31,61,0.2)",
+                    boxShadow: plan.recommended ? "0 4px 16px rgba(255,131,97,0.3)" : "none",
+                  }}
+                >
+                  Get started
+                  <ArrowRight className="h-3.5 w-3.5 opacity-70" />
+                </Link>
               </motion.div>
-            </div>
+            ))}
           </div>
+
+          <motion.p
+            {...fadeUp(0.4)}
+            className="font-body text-sm text-center"
+            style={{ color: "rgba(3,31,61,0.4)" }}
+          >
+            Full plan details and feature comparison at{" "}
+            <Link href="/cpap" className="underline underline-offset-2 hover:opacity-70 transition-opacity">
+              dumbo.health/cpap
+            </Link>
+          </motion.p>
         </div>
       </div>
 
