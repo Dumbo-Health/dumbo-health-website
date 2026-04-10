@@ -332,32 +332,37 @@ function WhyCashPay() {
 const COST_ROWS = [
   {
     label: "Machine upfront",
-    insurance: "Often $0, but you're renting",
-    dumbo: "Included in monthly plan, you own it",
+    insurance:
+      "Rented for 13 months. You pay your deductible plus a 20-30% copay each month before you own it",
+    dumbo: "No upfront purchase cost. Flat monthly access, no ownership required",
     dumboHighlight: false,
   },
   {
     label: "Compliance tracking",
-    insurance: "Required: 4h/night, 21 of 30 days or machine is recalled",
-    dumbo: "No compliance rules. Your usage data stays with you",
+    insurance:
+      "Required: 4h/night on 70% of nights (21 of 30). Miss the threshold and coverage can be discontinued",
+    dumbo:
+      "No compliance requirements. Your care team coaches and checks in proactively so therapy actually works",
     dumboHighlight: false,
   },
   {
     label: "Supply replacement",
-    insurance: "Sent on a fixed schedule, billed whether needed or not",
+    insurance: "Shipped on a quarterly schedule, billed whether you need the parts or not",
     dumbo: "Replaced based on actual component wear. You pay for what you use",
     dumboHighlight: true,
   },
   {
     label: "Privacy",
-    insurance: "Usage data shared with insurer to validate coverage",
-    dumbo: "You choose what to share, only for coaching if you want",
+    insurance:
+      "Usage data transmitted automatically to your DME and insurer to verify compliance",
+    dumbo:
+      "Usage data stays with you. We use it to fuel your personalized coaching, not to gate your coverage",
     dumboHighlight: false,
   },
   {
     label: "Device choice",
-    insurance: "Limited to in-network machines and masks",
-    dumbo: "Full access to leading CPAP brands, masks, and accessories",
+    insurance: "Limited to in-network DME providers and contracted brands",
+    dumbo: "ResMed devices, the leading brand in CPAP therapy",
     dumboHighlight: false,
   },
   {
@@ -404,9 +409,11 @@ function CostReality() {
               maxWidth: "54ch",
             }}
           >
-            Insurance CPAP is typically a rental. You pay monthly, prove
-            compliance, and share usage data, or risk losing the machine
-            entirely. Dumbo Health&apos;s cash pay model works differently.
+            Insurance CPAP is a 13-month rental. You pay toward your
+            deductible and a monthly copay, prove compliance, and share usage
+            data with your DME and insurer. Miss the compliance threshold and
+            coverage can be discontinued. Dumbo Health&apos;s model works
+            differently.
           </motion.p>
         </div>
 
@@ -537,11 +544,8 @@ function CostReality() {
                   className="font-body text-xs"
                   style={{ color: "rgba(252,246,237,0.22)" }}
                 >
-                  * Based on typical insurance CPAP rental costs vs. Dumbo Health
-                  monthly plans. Individual savings vary.{" "}
-                  <span style={{ color: "rgba(120,191,188,0.6)", fontStyle: "italic" }}>
-                    [FACT-CHECK: validate 12-24 month savings comparison before publishing]
-                  </span>
+                  * Dumbo Health premium plan. Insurance costs vary by plan,
+                  deductible, and annual reset. Individual results will differ.
                 </p>
               </div>
             </div>
@@ -567,11 +571,12 @@ function CostReality() {
             className="font-body leading-relaxed"
             style={{ color: "rgba(252,246,237,0.7)", fontSize: "0.9375rem" }}
           >
-            Insurance rentals typically require proof of use: four hours per
-            night, for twenty-one nights within a thirty-night window, before
-            coverage is confirmed. With Dumbo Health cash pay, you control
-            access to your data. We still help you build healthy habits, without
-            the external pressure.
+            Insurance requires at least 4 hours per night on 70% of nights
+            (21 of 30) to maintain coverage, typically verified in the first
+            90 days. Miss the threshold and coverage can be discontinued. With
+            Dumbo Health, there are no compliance requirements. Our care team
+            coaches and supports you so therapy actually works for you, not for
+            your insurer.
           </p>
         </motion.div>
       </div>
