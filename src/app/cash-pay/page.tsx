@@ -129,7 +129,7 @@ function CtaPair({ invert = false }: { invert?: boolean }) {
             "transparent";
         }}
       >
-        Explore CPAP plans
+        See plans · from $59/mo
         <ArrowRight className="h-4 w-4 opacity-60 group-hover:translate-x-0.5 transition-transform duration-200" />
       </Link>
     </div>
@@ -185,7 +185,7 @@ function HeroSection() {
             marginBottom: "1.5rem",
           }}
         >
-          Getting treated shouldn&apos;t depend on your insurance.
+          CPAP from $2 a day. No insurance required.
         </motion.h1>
 
         <motion.p
@@ -197,9 +197,9 @@ function HeroSection() {
             maxWidth: "52ch",
           }}
         >
-          Whether you&apos;re just starting your journey or you already have a
-          diagnosis and need a CPAP, here&apos;s how to think about the payment
-          decision, and why many people choose to go directly.
+          Not yet diagnosed? Start with our $149 at-home sleep test and
+          have results within days. Already have a prescription? Pick a
+          plan and your CPAP ships this week.
         </motion.p>
 
         <motion.div {...fadeUp(0.26)}>
@@ -210,38 +210,19 @@ function HeroSection() {
   );
 }
 
-// ── Section 2: Why Cash Pay ───────────────────────────────────────────────────
-const REASONS = [
-  {
-    n: "01",
-    title: "No active insurance",
-    body: "Treatment is still needed. A gap in coverage shouldn't mean a gap in care.",
-  },
-  {
-    n: "02",
-    title: "High deductibles",
-    body: "Equipment and visits can be expensive once deductibles apply, even with coverage.",
-  },
-  {
-    n: "03",
-    title: "Insurance adds steps",
-    body: "Prior authorizations, co-insurance calculations, and long hold times slow everything down.",
-  },
-  {
-    n: "04",
-    title: "Rental compliance rules",
-    body: "Usage data is shared with insurers to prove compliance, reducing your privacy and adding stress.",
-  },
-  {
-    n: "05",
-    title: "Limited device choice",
-    body: "Insurance networks often restrict which masks and machines are available to you.",
-  },
-  {
-    n: "06",
-    title: "Required follow-up visits",
-    body: "Extra appointments add time away from work and out-of-pocket costs that aren't always covered.",
-  },
+// ── Section 2: Two-path split ─────────────────────────────────────────────────
+const PATH_A_STEPS = [
+  "Order the $149 at-home sleep test",
+  "One-night setup — results within days",
+  "Our physicians review and issue your prescription",
+  "Pick your CPAP plan and start therapy",
+];
+
+const PATH_B_STEPS = [
+  "Upload your existing prescription",
+  "Choose your plan — from $59/month",
+  "CPAP machine ships within the week",
+  "Care team supports you from day one",
 ];
 
 function WhyCashPay() {
@@ -252,71 +233,137 @@ function WhyCashPay() {
     >
       <div className="mx-auto max-w-7xl px-[5%]">
         <div className="mb-14">
-          <SectionLabel>Why people choose cash pay</SectionLabel>
-          <SectionHeading>
-            Insurance works for some. For many, cash pay is faster, cheaper,
-            and simpler.
+          <SectionLabel>Find your starting point</SectionLabel>
+          <SectionHeading maxWidth="28ch">
+            Two paths. Both lead to better sleep.
           </SectionHeading>
         </div>
 
-        {/* 2-col reason cards */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-          {REASONS.map((r, i) => (
-            <motion.div
-              key={r.n}
-              {...fadeUp(0.06 + i * 0.07)}
-              className="rounded-2xl p-6"
+        <div className="grid gap-6 lg:grid-cols-2">
+
+          {/* Path A: Not yet diagnosed */}
+          <motion.div
+            {...fadeUp(0.08)}
+            className="flex flex-col rounded-2xl p-8"
+            style={{
+              backgroundColor: "#F5E6D1",
+              border: "1px solid rgba(245,230,209,0.9)",
+            }}
+          >
+            <p
+              className="font-mono text-xs uppercase tracking-widest mb-5"
+              style={{ color: "#78BFBC" }}
+            >
+              Not yet diagnosed
+            </p>
+            <h3
+              className="font-heading font-medium mb-7"
               style={{
-                backgroundColor: "#F5E6D1",
-                border: "1px solid rgba(245,230,209,0.9)",
+                color: "#031F3D",
+                fontSize: "clamp(1.3rem, 2vw, 1.6rem)",
               }}
             >
+              Start with the sleep test.
+            </h3>
+            <div className="space-y-4 mb-10 flex-1">
+              {PATH_A_STEPS.map((step, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span
+                    className="font-mono text-[11px] uppercase tracking-widest pt-0.5 shrink-0"
+                    style={{ color: "#FF8361" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p
+                    className="font-body leading-relaxed"
+                    style={{ color: "rgba(3,31,61,0.7)", fontSize: "0.9375rem" }}
+                  >
+                    {step}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Link
+              href={APP_URL}
+              className="flex items-center justify-center gap-2 h-12 rounded-[12px] px-7 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "#FF8361",
+                boxShadow: "0 4px 20px rgba(255,131,97,0.28)",
+              }}
+            >
+              Start with the sleep test
               <span
-                className="font-mono text-xs uppercase tracking-widest"
-                style={{ color: "#FF8361" }}
+                className="font-mono text-xs font-normal normal-case tracking-normal"
+                style={{ color: "rgba(255,255,255,0.75)" }}
               >
-                {r.n}
+                · $149
               </span>
-              <h3
-                className="mt-3 font-heading font-medium"
-                style={{ color: "#031F3D", fontSize: "1.0625rem" }}
-              >
-                {r.title}
-              </h3>
-              <p
-                className="mt-1.5 font-body leading-relaxed"
-                style={{ color: "rgba(3,31,61,0.6)", fontSize: "0.9375rem" }}
-              >
-                {r.body}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+            </Link>
+          </motion.div>
 
-        {/* Dumbo Health take callout */}
-        <motion.div
-          {...fadeUp(0.5)}
-          className="rounded-2xl p-8 max-w-2xl"
-          style={{
-            backgroundColor: "rgba(120,191,188,0.1)",
-            border: "1px solid rgba(120,191,188,0.25)",
-          }}
-        >
-          <p
-            className="font-mono text-xs uppercase tracking-widest mb-3"
-            style={{ color: "#78BFBC" }}
+          {/* Path B: Already diagnosed */}
+          <motion.div
+            {...fadeUp(0.16)}
+            className="flex flex-col rounded-2xl p-8"
+            style={{
+              backgroundColor: "#FCF6ED",
+              border: "1px solid rgba(3,31,61,0.07)",
+            }}
           >
-            Dumbo Health take
-          </p>
-          <p
-            className="font-body leading-relaxed"
-            style={{ color: "#031F3D", fontSize: "1.0625rem" }}
-          >
-            Cash pay keeps control with you. You choose the CPAP device that
-            fits, and you decide what data to share. Our team is here with
-            coaching so you still get the results, without the paperwork.
-          </p>
-        </motion.div>
+            <p
+              className="font-mono text-xs uppercase tracking-widest mb-5"
+              style={{ color: "#FF8361" }}
+            >
+              Already have a diagnosis
+            </p>
+            <h3
+              className="font-heading font-medium mb-7"
+              style={{
+                color: "#031F3D",
+                fontSize: "clamp(1.3rem, 2vw, 1.6rem)",
+              }}
+            >
+              Pick a plan and start this week.
+            </h3>
+            <div className="space-y-4 mb-10 flex-1">
+              {PATH_B_STEPS.map((step, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span
+                    className="font-mono text-[11px] uppercase tracking-widest pt-0.5 shrink-0"
+                    style={{ color: "#FF8361" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p
+                    className="font-body leading-relaxed"
+                    style={{ color: "rgba(3,31,61,0.7)", fontSize: "0.9375rem" }}
+                  >
+                    {step}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/cpap"
+              className="flex items-center justify-center gap-2 h-12 rounded-[12px] px-7 font-body text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                border: "1.5px solid #031F3D",
+                color: "#031F3D",
+                backgroundColor: "transparent",
+              }}
+            >
+              See CPAP plans
+              <span
+                className="font-mono text-xs tracking-normal"
+                style={{ color: "rgba(3,31,61,0.5)" }}
+              >
+                · from $59/mo
+              </span>
+              <ArrowRight className="h-4 w-4 opacity-50 ml-1" />
+            </Link>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
