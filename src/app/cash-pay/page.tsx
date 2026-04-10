@@ -130,7 +130,7 @@ function CtaPair({ invert = false }: { invert?: boolean }) {
             "transparent";
         }}
       >
-        See plans · from $59/mo
+        See plans · from $2/day
         <ArrowRight className="h-4 w-4 opacity-60 group-hover:translate-x-0.5 transition-transform duration-200" />
       </Link>
     </div>
@@ -214,14 +214,14 @@ function HeroSection() {
 // ── Section 2: Two-path split ─────────────────────────────────────────────────
 const PATH_A_STEPS = [
   "Order the $149 at-home sleep test",
-  "One-night setup — results within days",
+  "One-night setup. Results within days.",
   "Our physicians review and issue your prescription",
   "Pick your CPAP plan and start therapy",
 ];
 
 const PATH_B_STEPS = [
   "Upload your existing prescription",
-  "Choose your plan — from $59/month",
+  "Choose your plan, starting at $59/month",
   "CPAP machine ships within the week",
   "Care team supports you from day one",
 ];
@@ -358,7 +358,7 @@ function WhyCashPay() {
                 className="font-mono text-xs tracking-normal"
                 style={{ color: "rgba(3,31,61,0.5)" }}
               >
-                · from $59/mo
+                · from $2/day
               </span>
               <ArrowRight className="h-4 w-4 opacity-50 ml-1" />
             </Link>
@@ -925,11 +925,11 @@ const FAQS = [
   },
   {
     q: "Is cash pay really cheaper than using insurance?",
-    a: "For many people, yes. Under a typical insurance CPAP rental, you pay a monthly copay for 13 consecutive months before you own the device — and if you miss the compliance window, coverage can stop. Dumbo Health's Essentials plan starts at $59/month with no rental clock and no compliance requirements. You own the therapy, not the insurer's schedule.",
+    a: "For many people, yes. Under a typical insurance CPAP rental, you pay a monthly copay for 13 consecutive months before you own the device. Miss the compliance window and coverage can stop entirely. Dumbo Health's Essentials plan starts at $59/month with no rental clock and no compliance requirements. You own the therapy, not the insurer's schedule.",
   },
   {
     q: "Do I need a prescription to get a CPAP?",
-    a: "Yes — CPAP requires a prescription in the US. If you tested with Dumbo Health, your physician prescription is already on file. If you tested elsewhere, upload your existing sleep study and prescription and we'll take it from there.",
+    a: "Yes. CPAP requires a prescription in the US. If you tested with Dumbo Health, your physician prescription is already on file. If you tested elsewhere, upload your existing sleep study and prescription and we'll take it from there.",
   },
   {
     q: "Can I use my FSA or HSA?",
@@ -937,11 +937,11 @@ const FAQS = [
   },
   {
     q: "What if I can't tolerate CPAP?",
-    a: "The most common reason people quit is a poor mask fit or incorrect pressure settings — both of which our care team actively monitors. If something feels wrong, message us before giving up. Most problems are solvable with the right adjustments.",
+    a: "The most common reason people quit is a poor mask fit or incorrect pressure settings. Our care team monitors both and will reach out when something looks off. If something feels wrong, message us before giving up. Most problems are solvable with the right adjustments.",
   },
   {
     q: "If I cancel, what happens to my CPAP?",
-    a: "You keep it. All Dumbo Health plans are month-to-month. If you cancel, the machine is yours — you're not renting it back to anyone.",
+    a: "You keep it. All Dumbo Health plans are month-to-month. If you cancel, the machine is yours. You're not renting it back to anyone.",
   },
   {
     q: "Will I lose support if I don't go through insurance?",
