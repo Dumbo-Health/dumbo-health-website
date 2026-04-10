@@ -451,14 +451,6 @@ function CostReality() {
         </div>
       </div>
 
-      {/* ── Gradient bridge: Midnight → Daylight ─────────────────────────── */}
-      <div
-        style={{
-          height: "140px",
-          background: "linear-gradient(to bottom, #031F3D 0%, #FCF6ED 100%)",
-        }}
-      />
-
       {/* ── Light half: what you get with Dumbo Health ───────────────────── */}
       <div
         className="pb-24 md:pb-32"
