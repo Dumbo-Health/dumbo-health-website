@@ -10,6 +10,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { APP_URL } from "@/lib/constants";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 // ── Design tokens ────────────────────────────────────────────────────────────
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -141,17 +143,40 @@ function HeroSection() {
       className="relative overflow-hidden py-24 md:py-32"
       style={{ backgroundColor: "#FCF6ED", isolation: "isolate" }}
     >
-      {/* Ambient lifeline */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/uploads/Vector-1.svg"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute left-0 w-full"
+      {/* Linear base gradient */}
+      <div
+        className="pointer-events-none absolute inset-0"
         style={{
-          top: "60%",
-          transform: "translateY(-50%)",
-          opacity: 0.07,
+          background:
+            "linear-gradient(to bottom, #FCF6ED 0%, #FCF6ED 70%, #F5E6D1 100%)",
+          zIndex: -1,
+        }}
+      />
+      {/* Peach radial upper-right */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 60% at 85% 20%, rgba(255,131,97,0.07) 0%, transparent 65%)",
+          zIndex: -1,
+        }}
+      />
+      {/* Teal radial lower */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 70%, rgba(120,191,188,0.07) 0%, transparent 65%)",
+          zIndex: -1,
+        }}
+      />
+      {/* Brand pattern overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "url(/images/brand-pattern.png)",
+          backgroundRepeat: "repeat",
+          opacity: 0.035,
           zIndex: -1,
         }}
       />
@@ -183,7 +208,7 @@ function HeroSection() {
         >
           Whether you&apos;re just starting your journey or you already have a
           diagnosis and need a CPAP, here&apos;s how to think about the payment
-          decision — and why many people choose to go directly.
+          decision, and why many people choose to go directly.
         </motion.p>
 
         <motion.div {...fadeUp(0.26)}>
@@ -199,7 +224,7 @@ const REASONS = [
   {
     n: "01",
     title: "No active insurance",
-    body: "Treatment is still needed — a gap in coverage shouldn't mean a gap in care.",
+    body: "Treatment is still needed. A gap in coverage shouldn't mean a gap in care.",
   },
   {
     n: "02",
@@ -274,7 +299,7 @@ function WhyCashPay() {
           ))}
         </div>
 
-        {/* Dumbo Take callout */}
+        {/* Dumbo Health take callout */}
         <motion.div
           {...fadeUp(0.5)}
           className="rounded-2xl p-8 max-w-2xl"
@@ -287,7 +312,7 @@ function WhyCashPay() {
             className="font-mono text-xs uppercase tracking-widest mb-3"
             style={{ color: "#78BFBC" }}
           >
-            Dumbo take
+            Dumbo Health take
           </p>
           <p
             className="font-body leading-relaxed"
@@ -295,7 +320,7 @@ function WhyCashPay() {
           >
             Cash pay keeps control with you. You choose the CPAP device that
             fits, and you decide what data to share. Our team is here with
-            coaching so you still get the results — without the paperwork.
+            coaching so you still get the results, without the paperwork.
           </p>
         </motion.div>
       </div>
@@ -307,20 +332,20 @@ function WhyCashPay() {
 const COST_ROWS = [
   {
     label: "Machine upfront",
-    insurance: "Often $0 — but you're renting",
+    insurance: "Often $0, but you're renting",
     dumbo: "Included in monthly plan, you own it",
     dumboHighlight: false,
   },
   {
     label: "Compliance tracking",
     insurance: "Required: 4h/night, 21 of 30 days or machine is recalled",
-    dumbo: "No compliance rules — your usage data stays with you",
+    dumbo: "No compliance rules. Your usage data stays with you",
     dumboHighlight: false,
   },
   {
     label: "Supply replacement",
     insurance: "Sent on a fixed schedule, billed whether needed or not",
-    dumbo: "Replaced based on actual component wear — you pay for what you use",
+    dumbo: "Replaced based on actual component wear. You pay for what you use",
     dumboHighlight: true,
   },
   {
@@ -338,7 +363,7 @@ const COST_ROWS = [
   {
     label: "Long-run cost",
     insurance: "Rental + deductible + co-insurance + surprise bills",
-    dumbo: "Flat monthly rate — no deductibles, no surprise bills*",
+    dumbo: "Flat monthly rate, no deductibles, no surprise bills*",
     dumboHighlight: true,
   },
 ];
@@ -380,8 +405,8 @@ function CostReality() {
             }}
           >
             Insurance CPAP is typically a rental. You pay monthly, prove
-            compliance, and share usage data — or risk losing the machine
-            entirely. Dumbo&apos;s cash pay model works differently.
+            compliance, and share usage data, or risk losing the machine
+            entirely. Dumbo Health&apos;s cash pay model works differently.
           </motion.p>
         </div>
 
@@ -512,10 +537,10 @@ function CostReality() {
                   className="font-body text-xs"
                   style={{ color: "rgba(252,246,237,0.22)" }}
                 >
-                  * Based on typical insurance CPAP rental costs vs. Dumbo
+                  * Based on typical insurance CPAP rental costs vs. Dumbo Health
                   monthly plans. Individual savings vary.{" "}
                   <span style={{ color: "rgba(120,191,188,0.6)", fontStyle: "italic" }}>
-                    [FACT-CHECK: validate 12–24 month savings comparison before publishing]
+                    [FACT-CHECK: validate 12-24 month savings comparison before publishing]
                   </span>
                 </p>
               </div>
@@ -542,11 +567,11 @@ function CostReality() {
             className="font-body leading-relaxed"
             style={{ color: "rgba(252,246,237,0.7)", fontSize: "0.9375rem" }}
           >
-            Insurance rentals typically require proof of use — four hours per
-            night, for twenty-one nights within a thirty-night window — before
-            coverage is confirmed. With Dumbo cash pay, you control access to
-            your data. We still help you build healthy habits, without the
-            external pressure.
+            Insurance rentals typically require proof of use: four hours per
+            night, for twenty-one nights within a thirty-night window, before
+            coverage is confirmed. With Dumbo Health cash pay, you control
+            access to your data. We still help you build healthy habits, without
+            the external pressure.
           </p>
         </motion.div>
       </div>
@@ -574,7 +599,7 @@ const BENEFITS = [
   {
     n: "04",
     title: "Real sleep coaches",
-    body: "Mask fit, comfort settings, pressure guidance — real people in your corner.",
+    body: "Mask fit, comfort settings, pressure guidance. Real people in your corner.",
   },
   {
     n: "05",
@@ -647,7 +672,7 @@ const STEPS = [
   {
     n: "2",
     title: "Start therapy",
-    body: "CPAP or oral appliance — get fitted, coached, and set up for comfort from day one.",
+    body: "CPAP or oral appliance. Get fitted, coached, and set up for comfort from day one.",
   },
   {
     n: "3",
@@ -710,7 +735,7 @@ function HowItWorks() {
   );
 }
 
-// ── Section 6: What Makes Dumbo Different ────────────────────────────────────
+// ── Section 6: What Makes Dumbo Health Different ──────────────────────────────
 function WhatMakesDifferent() {
   return (
     <section className="py-24 md:py-32" style={{ backgroundColor: "#FCF6ED" }}>
@@ -738,7 +763,7 @@ function WhatMakesDifferent() {
             >
               We remove the stigma and make treatment feel normal and doable.
               Modern wellness design, approachable language, and coaches who
-              actually answer. Sleep apnea is common — getting help should feel
+              actually answer. Sleep apnea is common. Getting help should feel
               that way too.
             </motion.p>
 
@@ -786,11 +811,11 @@ const FAQS = [
   },
   {
     q: "Is cash pay really cheaper than using insurance?",
-    a: "For many people, yes. High deductibles and rental terms can make insurance more expensive over time. Cash pay gives you one clear price and you own the device — and because we replace supplies based on actual component wear, you pay for what you use, not what the schedule says.",
+    a: "For many people, yes. High deductibles and rental terms can make insurance more expensive over time. Cash pay gives you one clear price and you own the device, and because we replace supplies based on actual component wear, you pay for what you use, not what the schedule says.",
   },
   {
     q: "Will I lose support if I don't go through insurance?",
-    a: "No. Our team provides coaching, mask fit help, and telehealth visits so you get results without the usual hassle. Support is included — not an insurance-dependent add-on.",
+    a: "No. Our team provides coaching, mask fit help, and telehealth visits so you get results without the usual hassle. Support is included, not an insurance-dependent add-on.",
   },
   {
     q: "How fast can I start treatment?",
@@ -852,22 +877,10 @@ function ClosingCta() {
   return (
     <section
       className="relative overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
+      style={{
+        background: "linear-gradient(to bottom, #F5E6D1 0%, #FFD6AD 100%)",
+      }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/uploads/Vector-1.svg"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute left-0 w-full"
-        style={{
-          top: "50%",
-          transform: "translateY(-50%)",
-          opacity: 0.1,
-          zIndex: -1,
-        }}
-      />
-
       <div className="mx-auto max-w-7xl px-[5%]">
         <motion.p
           {...fadeUp(0)}
@@ -881,7 +894,7 @@ function ClosingCta() {
           {...fadeUp(0.08)}
           className="font-heading font-medium leading-tight text-balance mb-5"
           style={{
-            color: "#FCF6ED",
+            color: "#031F3D",
             fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
             maxWidth: "22ch",
           }}
@@ -893,7 +906,7 @@ function ClosingCta() {
           {...fadeUp(0.16)}
           className="font-body leading-relaxed mb-10"
           style={{
-            color: "rgba(252,246,237,0.65)",
+            color: "rgba(3,31,61,0.6)",
             fontSize: "1.0625rem",
             maxWidth: "50ch",
           }}
@@ -903,7 +916,7 @@ function ClosingCta() {
         </motion.p>
 
         <motion.div {...fadeUp(0.24)}>
-          <CtaPair invert />
+          <CtaPair />
         </motion.div>
       </div>
     </section>
@@ -913,15 +926,19 @@ function ClosingCta() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function CashPayPage() {
   return (
-    <main>
-      <HeroSection />
-      <WhyCashPay />
-      <CostReality />
-      <WhatYouGet />
-      <HowItWorks />
-      <WhatMakesDifferent />
-      <FaqSection />
-      <ClosingCta />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <WhyCashPay />
+        <CostReality />
+        <WhatYouGet />
+        <HowItWorks />
+        <WhatMakesDifferent />
+        <FaqSection />
+        <ClosingCta />
+      </main>
+      <Footer />
+    </>
   );
 }
