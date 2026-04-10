@@ -342,143 +342,6 @@ const TRUTHS = [
   },
 ];
 
-function CostReality() {
-  return (
-    <section
-      className="relative overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
-    >
-      {/* Brand pattern overlay */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "url(/images/brand-pattern.png)",
-          backgroundRepeat: "repeat",
-          opacity: 0.04,
-          zIndex: -1,
-        }}
-      />
-
-      <div className="mx-auto max-w-7xl px-[5%]">
-
-        {/* Top row: heading + image */}
-        <div className="grid gap-10 lg:grid-cols-2 items-center mb-16">
-          <div>
-            <SectionLabel color="#FF8361">The real cost of insurance CPAP</SectionLabel>
-            <SectionHeading light maxWidth="22ch">
-              That &ldquo;covered by insurance&rdquo; CPAP might cost more than
-              you think.
-            </SectionHeading>
-          </div>
-
-          {/* Photo placeholder */}
-          <motion.div
-            {...fadeUp(0.16)}
-            className="rounded-2xl overflow-hidden"
-            style={{ aspectRatio: "4/3" }}
-          >
-            <div
-              className="w-full h-full flex flex-col items-center justify-center gap-3"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(252,246,237,0.06) 0%, rgba(255,131,97,0.1) 100%)",
-                border: "1px solid rgba(252,246,237,0.1)",
-              }}
-            >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "rgba(255,131,97,0.15)" }}
-              >
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#FF8361"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
-              </div>
-              <p
-                className="font-mono text-[11px] uppercase tracking-widest"
-                style={{ color: "rgba(252,246,237,0.35)" }}
-              >
-                Image placeholder
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* 3 Truths */}
-        <div>
-          {TRUTHS.map((t, i) => (
-            <motion.div
-              key={t.n}
-              {...fadeUp(0.1 + i * 0.12)}
-              className="grid grid-cols-[2.5rem_1fr] gap-6 py-9"
-              style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }}
-            >
-              <span
-                className="font-mono text-xs uppercase tracking-widest pt-1.5"
-                style={{ color: "#FF8361" }}
-              >
-                {t.n}
-              </span>
-
-              <div>
-                <p
-                  className="font-heading font-medium leading-tight mb-5"
-                  style={{
-                    color: "#FCF6ED",
-                    fontSize: "clamp(1.45rem, 2.5vw, 2.1rem)",
-                  }}
-                >
-                  {t.truth}
-                </p>
-
-                <div className="flex items-start gap-2.5">
-                  <Check
-                    className="h-4 w-4 shrink-0 mt-0.5"
-                    style={{ color: "#78BFBC" }}
-                  />
-                  <p
-                    className="font-body leading-relaxed"
-                    style={{
-                      color: "rgba(252,246,237,0.65)",
-                      fontSize: "0.9375rem",
-                    }}
-                  >
-                    <span
-                      className="font-mono text-[11px] uppercase tracking-widest mr-2.5 align-middle"
-                      style={{ color: "#78BFBC" }}
-                    >
-                      Dumbo Health
-                    </span>
-                    {t.answer}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          <div style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }} />
-        </div>
-
-        {/* CTA */}
-        <motion.div {...fadeUp(0.5)} className="mt-12">
-          <CtaPair invert />
-        </motion.div>
-
-      </div>
-    </section>
-  );
-}
-
-// ── Section 4: What you get ───────────────────────────────────────────────────
 const BENEFITS = [
   {
     n: "01",
@@ -503,63 +366,203 @@ const BENEFITS = [
   {
     n: "05",
     title: "Smart supply tracking",
-    body: "The app tracks component lifetime and replaces supplies when they're actually due, not on an arbitrary schedule.",
+    body: "The app tracks component lifetime and replaces supplies when they\u2019re actually due, not on an arbitrary schedule.",
   },
 ];
 
-function WhatYouGet() {
+function CostReality() {
   return (
-    <section
-      className="py-24 md:py-32"
-      style={{ background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 100%)" }}
-    >
-      <div className="mx-auto max-w-7xl px-[5%]">
-        <div className="mb-14">
-          <SectionLabel>Cash pay with Dumbo Health</SectionLabel>
-          <SectionHeading maxWidth="24ch">
-            Transparent prices. Real coaches. Your device, your data.
-          </SectionHeading>
-        </div>
+    <section className="relative overflow-hidden" style={{ isolation: "isolate" }}>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {BENEFITS.map((b, i) => (
-            <motion.div
-              key={b.n}
-              {...fadeUp(0.06 + i * 0.08)}
-              className="rounded-2xl p-7"
-              style={{
-                backgroundColor: "#F5E6D1",
-                border: "1px solid rgba(245,230,209,0.8)",
-              }}
-            >
-              <span
-                className="font-mono text-xs uppercase tracking-widest"
-                style={{ color: "#FF8361" }}
+      {/* ── Dark half: insurance truths ──────────────────────────────────── */}
+      <div
+        className="relative py-24 md:py-32"
+        style={{ backgroundColor: "#031F3D" }}
+      >
+        {/* Brand pattern overlay */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: "url(/images/brand-pattern.png)",
+            backgroundRepeat: "repeat",
+            opacity: 0.04,
+          }}
+        />
+
+        <div className="relative mx-auto max-w-7xl px-[5%]">
+          <SectionLabel color="#FF8361">The real cost of insurance CPAP</SectionLabel>
+          <SectionHeading light maxWidth="22ch">
+            That &ldquo;covered by insurance&rdquo; CPAP might cost more than
+            you think.
+          </SectionHeading>
+
+          <div className="mt-14">
+            {TRUTHS.map((t, i) => (
+              <motion.div
+                key={t.n}
+                {...fadeUp(0.1 + i * 0.12)}
+                className="grid grid-cols-[2.5rem_1fr] gap-6 py-9"
+                style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }}
               >
-                {b.n}
-              </span>
-              <h3
-                className="mt-3 font-heading font-medium"
-                style={{
-                  color: "#031F3D",
-                  fontSize: "clamp(1.05rem, 1.6vw, 1.2rem)",
-                }}
-              >
-                {b.title}
-              </h3>
-              <p
-                className="mt-2 font-body leading-relaxed"
-                style={{
-                  color: "rgba(3,31,61,0.6)",
-                  fontSize: "0.9375rem",
-                }}
-              >
-                {b.body}
-              </p>
-            </motion.div>
-          ))}
+                <span
+                  className="font-mono text-xs uppercase tracking-widest pt-1.5"
+                  style={{ color: "#FF8361" }}
+                >
+                  {t.n}
+                </span>
+
+                <div>
+                  <p
+                    className="font-heading font-medium leading-tight mb-5"
+                    style={{
+                      color: "#FCF6ED",
+                      fontSize: "clamp(1.45rem, 2.5vw, 2.1rem)",
+                    }}
+                  >
+                    {t.truth}
+                  </p>
+
+                  <div className="flex items-start gap-2.5">
+                    <Check
+                      className="h-4 w-4 shrink-0 mt-0.5"
+                      style={{ color: "#78BFBC" }}
+                    />
+                    <p
+                      className="font-body leading-relaxed"
+                      style={{
+                        color: "rgba(252,246,237,0.65)",
+                        fontSize: "0.9375rem",
+                      }}
+                    >
+                      <span
+                        className="font-mono text-[11px] uppercase tracking-widest mr-2.5 align-middle"
+                        style={{ color: "#78BFBC" }}
+                      >
+                        Dumbo Health
+                      </span>
+                      {t.answer}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            <div style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }} />
+          </div>
         </div>
       </div>
+
+      {/* ── Gradient bridge: Midnight → Daylight ─────────────────────────── */}
+      <div
+        style={{
+          height: "140px",
+          background: "linear-gradient(to bottom, #031F3D 0%, #FCF6ED 100%)",
+        }}
+      />
+
+      {/* ── Light half: what you get with Dumbo Health ───────────────────── */}
+      <div
+        className="pb-24 md:pb-32"
+        style={{
+          background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 100%)",
+        }}
+      >
+        <div className="mx-auto max-w-7xl px-[5%]">
+          <div className="mb-14">
+            <SectionLabel>Cash pay with Dumbo Health</SectionLabel>
+            <SectionHeading maxWidth="24ch">
+              Transparent prices. Real coaches. Your device, your data.
+            </SectionHeading>
+          </div>
+
+          <div className="grid gap-14 lg:grid-cols-2 items-start">
+            {/* Photo */}
+            <motion.div
+              {...fadeUp(0.08)}
+              className="rounded-2xl overflow-hidden"
+              style={{ aspectRatio: "4/3" }}
+            >
+              <div
+                className="w-full h-full flex flex-col items-center justify-center gap-3"
+                style={{
+                  background: "linear-gradient(135deg, #F5E6D1 0%, #FFD6AD 100%)",
+                  border: "1px solid rgba(245,230,209,0.8)",
+                }}
+              >
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "rgba(255,131,97,0.15)" }}
+                >
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#FF8361"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                  </svg>
+                </div>
+                <p
+                  className="font-mono text-[11px] uppercase tracking-widest text-center"
+                  style={{ color: "rgba(3,31,61,0.35)" }}
+                >
+                  Morning light — rested, at ease
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Benefits: editorial rows */}
+            <div>
+              {BENEFITS.map((b, i) => (
+                <motion.div
+                  key={b.n}
+                  {...fadeUp(0.1 + i * 0.07)}
+                  className="grid grid-cols-[2.5rem_1fr] gap-5 py-6"
+                  style={{ borderTop: "1px solid rgba(3,31,61,0.08)" }}
+                >
+                  <span
+                    className="font-mono text-xs uppercase tracking-widest pt-0.5"
+                    style={{ color: "#FF8361" }}
+                  >
+                    {b.n}
+                  </span>
+                  <div>
+                    <p
+                      className="font-heading font-medium mb-1.5"
+                      style={{
+                        color: "#031F3D",
+                        fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
+                      }}
+                    >
+                      {b.title}
+                    </p>
+                    <p
+                      className="font-body leading-relaxed"
+                      style={{
+                        color: "rgba(3,31,61,0.6)",
+                        fontSize: "0.9375rem",
+                      }}
+                    >
+                      {b.body}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+              <div style={{ borderTop: "1px solid rgba(3,31,61,0.08)" }} />
+
+              <motion.div {...fadeUp(0.5)} className="mt-10">
+                <CtaPair />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
@@ -843,7 +846,6 @@ export default function CashPayPage() {
         <HeroSection />
         <WhyCashPay />
         <CostReality />
-        <WhatYouGet />
         <HowItWorks />
         <WhatMakesDifferent />
         <FaqSection />
