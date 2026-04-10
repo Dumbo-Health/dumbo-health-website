@@ -739,13 +739,13 @@ function HowItWorks() {
         <motion.div
           {...fadeUp(0.15)}
           className="relative rounded-2xl overflow-hidden mb-8"
-          style={{ height: "260px" }}
+          style={{ height: "260px", backgroundColor: "#F5E6D1" }}
         >
           <Image
             src="/go/at-home-sleep-test.avif"
             alt="Dumbo Health at-home sleep test kit"
             fill
-            className="object-cover object-center"
+            className="object-contain"
             sizes="(max-width: 1280px) 100vw, 1280px"
           />
         </motion.div>
