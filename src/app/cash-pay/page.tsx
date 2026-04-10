@@ -391,8 +391,8 @@ function CostReality() {
           <div>
             <SectionLabel color="#FF8361">The real cost of insurance CPAP</SectionLabel>
             <SectionHeading light maxWidth="22ch">
-              That &ldquo;$0 upfront&rdquo; machine might cost more than you
-              think.
+              That &ldquo;covered by insurance&rdquo; CPAP might cost more
+              than you think.
             </SectionHeading>
             <motion.p
               {...fadeUp(0.18)}
@@ -467,12 +467,12 @@ function CostReality() {
           {...fadeUp(0.14)}
           className="w-full overflow-x-auto rounded-2xl"
           style={{
-            border: "1px solid rgba(252,246,237,0.1)",
-            boxShadow: "0 2px 32px rgba(0,0,0,0.3)",
+            backgroundColor: "#FDFAF6",
+            boxShadow: "0 16px 64px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2)",
           }}
         >
           <div style={{ minWidth: "620px" }}>
-            <div style={{ backgroundColor: "rgba(252,246,237,0.04)" }}>
+            <div style={{ backgroundColor: "#FDFAF6" }}>
 
               {/* Column headers */}
               <div className="grid grid-cols-[200px_1fr_1fr]">
@@ -480,19 +480,19 @@ function CostReality() {
                 <div
                   className="px-6 py-5 text-center"
                   style={{
-                    borderLeft: "1px solid rgba(252,246,237,0.08)",
-                    backgroundColor: "rgba(252,246,237,0.06)",
+                    borderLeft: "1px solid rgba(3,31,61,0.07)",
+                    backgroundColor: "rgba(245,230,209,0.6)",
                   }}
                 >
                   <p
                     className="font-mono text-xs uppercase tracking-widest"
-                    style={{ color: "rgba(252,246,237,0.58)" }}
+                    style={{ color: "rgba(3,31,61,0.45)" }}
                   >
                     Insurance CPAP
                   </p>
                   <p
                     className="font-body text-sm mt-1"
-                    style={{ color: "rgba(252,246,237,0.38)" }}
+                    style={{ color: "rgba(3,31,61,0.32)" }}
                   >
                     The usual path
                   </p>
@@ -524,12 +524,12 @@ function CostReality() {
                 <div
                   key={row.label}
                   className="grid grid-cols-[200px_1fr_1fr]"
-                  style={{ borderTop: "1px solid rgba(252,246,237,0.07)" }}
+                  style={{ borderTop: "1px solid rgba(3,31,61,0.07)" }}
                 >
                   <div className="px-6 py-5 flex items-center">
                     <p
                       className="font-body text-sm font-semibold"
-                      style={{ color: "rgba(252,246,237,0.82)" }}
+                      style={{ color: "rgba(3,31,61,0.72)" }}
                     >
                       {row.label}
                     </p>
@@ -537,17 +537,17 @@ function CostReality() {
                   <div
                     className="px-5 py-5 flex items-start gap-3"
                     style={{
-                      borderLeft: "1px solid rgba(252,246,237,0.07)",
-                      backgroundColor: "rgba(252,246,237,0.03)",
+                      borderLeft: "1px solid rgba(3,31,61,0.06)",
+                      backgroundColor: "rgba(245,230,209,0.3)",
                     }}
                   >
                     <X
                       className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "rgba(252,246,237,0.28)" }}
+                      style={{ color: "rgba(3,31,61,0.22)" }}
                     />
                     <p
                       className="font-body text-sm leading-snug"
-                      style={{ color: "rgba(252,246,237,0.62)" }}
+                      style={{ color: "rgba(3,31,61,0.62)" }}
                     >
                       {row.insurance}
                     </p>
@@ -566,7 +566,7 @@ function CostReality() {
                     <p
                       className="font-body text-sm font-medium leading-snug"
                       style={{
-                        color: row.dumboHighlight ? "#FFD6AD" : "#FCF6ED",
+                        color: row.dumboHighlight ? "#FF8361" : "#031F3D",
                       }}
                     >
                       {row.dumbo}
@@ -579,13 +579,13 @@ function CostReality() {
               <div
                 className="px-6 py-4"
                 style={{
-                  borderTop: "1px solid rgba(252,246,237,0.07)",
-                  backgroundColor: "rgba(252,246,237,0.03)",
+                  borderTop: "1px solid rgba(3,31,61,0.06)",
+                  backgroundColor: "rgba(245,230,209,0.2)",
                 }}
               >
                 <p
                   className="font-body text-xs"
-                  style={{ color: "rgba(252,246,237,0.45)" }}
+                  style={{ color: "rgba(3,31,61,0.42)" }}
                 >
                   * Dumbo Health premium plan. Insurance costs vary by plan,
                   deductible, and annual reset. Individual results will differ.
