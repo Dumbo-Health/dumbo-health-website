@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -323,47 +323,22 @@ function WhyCashPay() {
 }
 
 // ── Section 3: Cost Reality (hinge) ──────────────────────────────────────────
-const COST_ROWS = [
+const TRUTHS = [
   {
-    label: "Machine upfront",
-    insurance:
-      "Rented for 13 months. You pay your deductible plus a 20-30% copay each month before you own it",
-    dumbo: "No upfront purchase cost. Flat monthly access, no ownership required",
-    dumboHighlight: false,
+    n: "01",
+    truth: "You\u2019re renting it. For 13 months.",
+    answer: "Flat monthly access. No ownership clock.",
   },
   {
-    label: "Compliance tracking",
-    insurance:
-      "Required: 4h/night on 70% of nights (21 of 30). Miss the threshold and coverage can be discontinued",
-    dumbo:
-      "No compliance requirements. Your care team coaches and checks in proactively so therapy actually works",
-    dumboHighlight: false,
+    n: "02",
+    truth: "Miss the compliance window and coverage can stop.",
+    answer: "No compliance requirements. We coach you, not your insurer.",
   },
   {
-    label: "Supply replacement",
-    insurance: "Shipped on a quarterly schedule, billed whether you need the parts or not",
-    dumbo: "Replaced based on actual component wear. You pay for what you use",
-    dumboHighlight: true,
-  },
-  {
-    label: "Privacy",
-    insurance:
-      "Usage data transmitted automatically to your DME and insurer to verify compliance",
-    dumbo:
-      "Usage data stays with you. We use it to fuel your personalized coaching, not to gate your coverage",
-    dumboHighlight: false,
-  },
-  {
-    label: "Device choice",
-    insurance: "Limited to in-network DME providers and contracted brands",
-    dumbo: "ResMed devices, the leading brand in CPAP therapy",
-    dumboHighlight: false,
-  },
-  {
-    label: "Long-run cost",
-    insurance: "Rental + deductible + co-insurance + surprise bills",
-    dumbo: "Flat monthly rate, no deductibles, no surprise bills*",
-    dumboHighlight: true,
+    n: "03",
+    truth: "Your usage data goes to your DME and insurer.",
+    answer:
+      "Your data stays yours. We use it to help you, not to gate your coverage.",
   },
 ];
 
@@ -379,41 +354,26 @@ function CostReality() {
         style={{
           backgroundImage: "url(/images/brand-pattern.png)",
           backgroundRepeat: "repeat",
-          opacity: 0.03,
+          opacity: 0.04,
           zIndex: -1,
         }}
       />
 
       <div className="mx-auto max-w-7xl px-[5%]">
 
-        {/* Top row: heading + image placeholder */}
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center mb-16">
+        {/* Top row: heading + image */}
+        <div className="grid gap-10 lg:grid-cols-2 items-center mb-16">
           <div>
             <SectionLabel color="#FF8361">The real cost of insurance CPAP</SectionLabel>
             <SectionHeading light maxWidth="22ch">
-              That &ldquo;covered by insurance&rdquo; CPAP might cost more
-              than you think.
+              That &ldquo;covered by insurance&rdquo; CPAP might cost more than
+              you think.
             </SectionHeading>
-            <motion.p
-              {...fadeUp(0.18)}
-              className="font-body mt-5 leading-relaxed"
-              style={{
-                color: "rgba(252,246,237,0.68)",
-                fontSize: "1.0625rem",
-                maxWidth: "48ch",
-              }}
-            >
-              Insurance CPAP is a 13-month rental. You pay toward your
-              deductible and a monthly copay, prove compliance, and share usage
-              data with your DME and insurer. Miss the compliance threshold and
-              coverage can be discontinued. Dumbo Health&apos;s model works
-              differently.
-            </motion.p>
           </div>
 
-          {/* Placeholder image */}
+          {/* Photo placeholder */}
           <motion.div
-            {...fadeUp(0.22)}
+            {...fadeUp(0.16)}
             className="rounded-2xl overflow-hidden"
             style={{ aspectRatio: "4/3" }}
           >
@@ -421,7 +381,7 @@ function CostReality() {
               className="w-full h-full flex flex-col items-center justify-center gap-3"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(252,246,237,0.06) 0%, rgba(255,214,173,0.1) 100%)",
+                  "linear-gradient(135deg, rgba(252,246,237,0.06) 0%, rgba(255,131,97,0.1) 100%)",
                 border: "1px solid rgba(252,246,237,0.1)",
               }}
             >
@@ -454,216 +414,64 @@ function CostReality() {
           </motion.div>
         </div>
 
-        {/* Mobile swipe hint */}
-        <p
-          className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-center mb-3"
-          style={{ color: "rgba(252,246,237,0.38)" }}
-        >
-          ← Swipe to compare →
-        </p>
-
-        {/* Comparison table — light theme */}
-        <motion.div
-          {...fadeUp(0.14)}
-          className="w-full overflow-x-auto rounded-2xl"
-          style={{
-            backgroundColor: "#FDFAF6",
-            boxShadow: "0 16px 64px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2)",
-          }}
-        >
-          <div style={{ minWidth: "620px" }}>
-            <div style={{ backgroundColor: "#FDFAF6" }}>
-
-              {/* Column headers */}
-              <div className="grid grid-cols-[200px_1fr_1fr]">
-                <div className="px-6 py-5" />
-                <div
-                  className="px-6 py-5 text-center"
-                  style={{
-                    borderLeft: "1px solid rgba(3,31,61,0.07)",
-                    backgroundColor: "rgba(245,230,209,0.6)",
-                  }}
-                >
-                  <p
-                    className="font-mono text-xs uppercase tracking-widest"
-                    style={{ color: "rgba(3,31,61,0.45)" }}
-                  >
-                    Insurance CPAP
-                  </p>
-                  <p
-                    className="font-body text-sm mt-1"
-                    style={{ color: "rgba(3,31,61,0.32)" }}
-                  >
-                    The usual path
-                  </p>
-                </div>
-                <div
-                  className="px-6 py-5 text-center"
-                  style={{
-                    borderLeft: "1px solid rgba(255,131,97,0.18)",
-                    backgroundColor: "rgba(255,131,97,0.09)",
-                  }}
-                >
-                  <p
-                    className="font-mono text-xs uppercase tracking-widest font-bold"
-                    style={{ color: "#FF8361" }}
-                  >
-                    Dumbo Health
-                  </p>
-                  <p
-                    className="font-body text-sm mt-1"
-                    style={{ color: "rgba(255,131,97,0.75)" }}
-                  >
-                    Cash pay
-                  </p>
-                </div>
-              </div>
-
-              {/* Rows */}
-              {COST_ROWS.map((row) => (
-                <div
-                  key={row.label}
-                  className="grid grid-cols-[200px_1fr_1fr]"
-                  style={{ borderTop: "1px solid rgba(3,31,61,0.07)" }}
-                >
-                  <div className="px-6 py-5 flex items-center">
-                    <p
-                      className="font-body text-sm font-semibold"
-                      style={{ color: "rgba(3,31,61,0.72)" }}
-                    >
-                      {row.label}
-                    </p>
-                  </div>
-                  <div
-                    className="px-5 py-5 flex items-start gap-3"
-                    style={{
-                      borderLeft: "1px solid rgba(3,31,61,0.06)",
-                      backgroundColor: "rgba(245,230,209,0.3)",
-                    }}
-                  >
-                    <X
-                      className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "rgba(3,31,61,0.22)" }}
-                    />
-                    <p
-                      className="font-body text-sm leading-snug"
-                      style={{ color: "rgba(3,31,61,0.62)" }}
-                    >
-                      {row.insurance}
-                    </p>
-                  </div>
-                  <div
-                    className="px-5 py-5 flex items-start gap-3"
-                    style={{
-                      borderLeft: "1px solid rgba(255,131,97,0.14)",
-                      backgroundColor: "rgba(255,131,97,0.07)",
-                    }}
-                  >
-                    <Check
-                      className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "#78BFBC" }}
-                    />
-                    <p
-                      className="font-body text-sm font-medium leading-snug"
-                      style={{
-                        color: row.dumboHighlight ? "#FF8361" : "#031F3D",
-                      }}
-                    >
-                      {row.dumbo}
-                    </p>
-                  </div>
-                </div>
-              ))}
-
-              {/* Footer note */}
-              <div
-                className="px-6 py-4"
-                style={{
-                  borderTop: "1px solid rgba(3,31,61,0.06)",
-                  backgroundColor: "rgba(245,230,209,0.2)",
-                }}
+        {/* 3 Truths */}
+        <div>
+          {TRUTHS.map((t, i) => (
+            <motion.div
+              key={t.n}
+              {...fadeUp(0.1 + i * 0.12)}
+              className="grid grid-cols-[2.5rem_1fr] gap-6 py-9"
+              style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }}
+            >
+              <span
+                className="font-mono text-xs uppercase tracking-widest pt-1.5"
+                style={{ color: "#FF8361" }}
               >
+                {t.n}
+              </span>
+
+              <div>
                 <p
-                  className="font-body text-xs"
-                  style={{ color: "rgba(3,31,61,0.42)" }}
+                  className="font-heading font-medium leading-tight mb-5"
+                  style={{
+                    color: "#FCF6ED",
+                    fontSize: "clamp(1.45rem, 2.5vw, 2.1rem)",
+                  }}
                 >
-                  * Dumbo Health Premium and Elite plans.
+                  {t.truth}
                 </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Bottom: compliance callout + image placeholder */}
-        <div className="grid gap-6 mt-8 sm:grid-cols-2">
-          <motion.div
-            {...fadeUp(0.24)}
-            className="rounded-2xl p-7"
-            style={{
-              backgroundColor: "rgba(120,191,188,0.1)",
-              border: "1px solid rgba(120,191,188,0.32)",
-            }}
-          >
-            <p
-              className="font-mono text-xs uppercase tracking-widest mb-3"
-              style={{ color: "#78BFBC" }}
-            >
-              A note on compliance
-            </p>
-            <p
-              className="font-body leading-relaxed"
-              style={{ color: "rgba(252,246,237,0.72)", fontSize: "0.9375rem" }}
-            >
-              Insurance requires at least 4 hours per night on 70% of nights
-              (21 of 30) to maintain coverage, typically verified in the first
-              90 days. Miss the threshold and coverage can be discontinued. With
-              Dumbo Health, there are no compliance requirements. Our care team
-              coaches and supports you so therapy actually works for you, not
-              for your insurer.
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...fadeUp(0.30)}
-            className="rounded-2xl overflow-hidden"
-            style={{ minHeight: "200px" }}
-          >
-            <div
-              className="w-full h-full flex flex-col items-center justify-center gap-3"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(252,246,237,0.05) 0%, rgba(120,191,188,0.08) 100%)",
-                border: "1px solid rgba(252,246,237,0.1)",
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "rgba(120,191,188,0.2)" }}
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#78BFBC"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
+                <div className="flex items-start gap-2.5">
+                  <Check
+                    className="h-4 w-4 shrink-0 mt-0.5"
+                    style={{ color: "#78BFBC" }}
+                  />
+                  <p
+                    className="font-body leading-relaxed"
+                    style={{
+                      color: "rgba(252,246,237,0.65)",
+                      fontSize: "0.9375rem",
+                    }}
+                  >
+                    <span
+                      className="font-mono text-[11px] uppercase tracking-widest mr-2.5 align-middle"
+                      style={{ color: "#78BFBC" }}
+                    >
+                      Dumbo Health
+                    </span>
+                    {t.answer}
+                  </p>
+                </div>
               </div>
-              <p
-                className="font-mono text-[11px] uppercase tracking-widest"
-                style={{ color: "rgba(252,246,237,0.32)" }}
-              >
-                Image placeholder
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
+          <div style={{ borderTop: "1px solid rgba(252,246,237,0.1)" }} />
         </div>
+
+        {/* CTA */}
+        <motion.div {...fadeUp(0.5)} className="mt-12">
+          <CtaPair invert />
+        </motion.div>
 
       </div>
     </section>
