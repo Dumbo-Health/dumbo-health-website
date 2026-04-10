@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { TeamCard } from "@/components/about/team-card";
+import { medicalTeam } from "@/content/team";
 import {
   Accordion,
   AccordionContent,
@@ -60,7 +62,7 @@ const WHY_REFER = [
       </svg>
     ),
     title: "Fast",
-    body: "Results in under 48 hours. No lab waitlists, no scheduling delays.",
+    body: "Results within 48 hours of their test night. No lab waitlists, no scheduling delays.",
   },
   {
     color: "#FF8361",
@@ -96,7 +98,7 @@ const PARTNER_TIERS = [
     tag: "Practice Partner",
     color: "#FF8361",
     title: "Volume referrals for your clinic.",
-    body: "Your clinic refers multiple patients. You can dispense the device or we handle delivery. Dumbo Health interprets results and manages all follow-up care.",
+    body: "Your clinic refers multiple patients. We handle device delivery, testing, and all follow-up care. Dumbo Health interprets results and coordinates with your team.",
     ideal: "Ideal for: primary care, pulmonology, ENT",
   },
   {
@@ -119,7 +121,6 @@ const PROCESS_STEPS = [
 const WHAT_YOU_NEED = [
   { num: "01", title: "Your practice info", body: "Name, NPI, practice name, email, fax, and phone." },
   { num: "02", title: "Patient demographics", body: "Full name, date of birth, address, and contact information." },
-  { num: "03", title: "Insurance details", body: "Insurance provider and member ID if available. Optional — helps speed up intake." },
 ];
 
 const REFERRAL_REASONS = [
@@ -282,7 +283,7 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ease: EASE, duration: 0.45, delay: 0.05 }}
           >
-            Your patients deserve faster answers.
+            The sleep apnea specialist that follows through.
           </motion.h1>
           <motion.p
             className="mx-auto mt-5 max-w-xl font-body text-lg leading-relaxed md:text-xl"
@@ -291,7 +292,7 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ease: EASE, duration: 0.4, delay: 0.15 }}
           >
-            Refer to Dumbo Health and we handle the rest. Home sleep testing, physician review, and treatment. Results back to you within 48 hours.
+            Sleep apnea only — home sleep testing, physician review, and full treatment coordination in one place. Transparent pricing your patients can count on. Results within 48 hours of their test night.
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10"
@@ -321,7 +322,7 @@ function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ ease: EASE, duration: 0.4, delay: 0.35 }}
           >
-            Board-certified sleep physicians&nbsp;&middot;&nbsp;Licensed in FL and TX&nbsp;&middot;&nbsp;FDA-cleared testing
+            Sleep apnea only&nbsp;&middot;&nbsp;Licensed in FL and TX&nbsp;&middot;&nbsp;FDA-cleared testing&nbsp;&middot;&nbsp;Transparent pricing
           </motion.p>
         </div>
       </div>
@@ -539,7 +540,7 @@ function WhatYouNeedSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
           >
-            Three things and you are done.
+            Two things and you are done.
           </motion.h2>
         </div>
         <div className="flex flex-col gap-4">
@@ -576,6 +577,60 @@ function WhatYouNeedSection() {
         >
           Prior sleep study records are helpful but not required.
         </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// ── MedicalTeamSection ────────────────────────────────────────────────────────
+
+function MedicalTeamSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-8% 0px" });
+  return (
+    <section className="py-24 md:py-32" style={{ background: "#F5E6D1" }}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div ref={ref} className="mb-14">
+          <motion.p
+            className="font-mono text-xs uppercase tracking-widest mb-4"
+            style={{ color: "#78BFBC" }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            Your Clinical Partners
+          </motion.p>
+          <motion.h2
+            className="font-heading font-medium leading-tight"
+            style={{ color: "#031F3D", fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: "28ch" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
+          >
+            The physicians reading your patients&rsquo; studies.
+          </motion.h2>
+          <motion.p
+            className="font-body mt-4"
+            style={{ color: "rgba(3,31,61,0.6)", fontSize: 16, lineHeight: 1.65, maxWidth: "52ch" }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
+          >
+            Board-certified sleep physicians with deep telehealth experience. Backed by a scientific committee from UCLA, Yale, and AP-HP Paris.
+          </motion.p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {medicalTeam.map((member, i) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, ease: EASE, delay: 0.18 + i * 0.1 }}
+            >
+              <TeamCard member={member} variant="medical" />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1048,6 +1103,7 @@ export default function ReferralsPage() {
         <PartnershipTiersSection />
         <ProcessSection />
         <WhatYouNeedSection />
+        <MedicalTeamSection />
         <ReferralFormSection />
         <FAQSection />
       </main>
