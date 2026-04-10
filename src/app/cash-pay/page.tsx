@@ -453,7 +453,7 @@ function CostReality() {
 
       {/* ── Light half: what you get with Dumbo Health ───────────────────── */}
       <div
-        className="pb-24 md:pb-32"
+        className="py-24 md:py-32"
         style={{
           background: "linear-gradient(to bottom, #FCF6ED 0%, #F5E6D1 100%)",
         }}
