@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { APP_URL } from "@/lib/constants";
 
 const carouselImages = [
   "/images/people/man-on-beach.png",
@@ -76,7 +75,7 @@ export function BottomCTA() {
             from diagnosis to delivery.
           </p>
           <Link
-            href={APP_URL}
+            href="/get-started"
             className="mt-8 inline-flex h-14 items-center rounded-[12px] px-10 font-body text-base font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
             style={{
               backgroundColor: "#fff",

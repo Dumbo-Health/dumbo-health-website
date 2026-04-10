@@ -143,7 +143,8 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
 
   const starts = startSessions.size;
   const completions = completeSessions.size;
-  const conversion_pct = starts > 0 ? Math.round((completions / starts) * 100) : 0;
+  const completion_pct = starts > 0 ? Math.round((completions / starts) * 100) : 0;
+  const buy_clicks = flowEvents.filter((e) => e.event === "buy_click").length;
 
   // Per-step reach: distinct sessions per question_index
   const stepMap = new Map<
@@ -202,7 +203,8 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
     flow_slug: flowSlug,
     starts,
     completions,
-    conversion_pct,
+    completion_pct,
+    buy_clicks,
     steps,
     top_drop_question: topDropStep?.question_slug ?? null,
     top_drop_section: topDropStep?.section_slug ?? null,

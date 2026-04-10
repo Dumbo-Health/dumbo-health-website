@@ -7,6 +7,64 @@ import PrimaryCTASection from '@/components/go/legacy/sections/PrimaryCTASection
 import { EmailCaptureProvider, useEmailCapture } from '@/components/EmailCaptureProvider';
 import type { PlanEntry } from '../lib/planLoader';
 
+interface YoutubeEmbedProps {
+  videoId: string;
+  videoThumbnail?: string;
+  title: string;
+}
+
+function YoutubeEmbed({ videoId, videoThumbnail, title }: YoutubeEmbedProps) {
+  const [playing, setPlaying] = useState(false);
+
+  if (playing) {
+    return (
+      <div className="mt-6 rounded-xl overflow-hidden aspect-video bg-black">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setPlaying(true)}
+      className="mt-6 relative w-full rounded-xl overflow-hidden aspect-video bg-black group cursor-pointer"
+      aria-label={`Play video: ${title}`}
+    >
+      {videoThumbnail ? (
+        <Image
+          src={videoThumbnail}
+          alt=""
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(max-width: 768px) 100vw, 720px"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-midnight/80" />
+      )}
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center shadow-lg transition-colors">
+          <svg
+            className="w-6 h-6 text-midnight ml-1"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 interface SleepPlanDayClientProps {
   day: string;
   entry: PlanEntry;
@@ -94,7 +152,7 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
             <p className="text-white/90 text-base sm:text-lg leading-relaxed font-aeonik">{entry.description}</p>
           )}
           {entry.thumbnail && (
-            <div className="mt-6 rounded-lg overflow-hidden bg-white/10">
+            <div className="mt-6 rounded-xl overflow-hidden">
               <Image
                 src={entry.thumbnail}
                 alt=""
@@ -104,6 +162,9 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
                 sizes="(max-width: 768px) 100vw, 720px"
               />
             </div>
+          )}
+          {entry.videoId && (
+            <YoutubeEmbed videoId={entry.videoId} videoThumbnail={entry.videoThumbnail} title={entry.title} />
           )}
         </div>
       </section>
@@ -190,7 +251,7 @@ function SleepPlanDayContent({ day, entry, content, prevSlug, nextSlug }: SleepP
         title="Think you might have sleep apnea?"
         subtitle="Dumbo Health offers at-home sleep testing, diagnosis, and ongoing care for sleep apnea-at a fraction of traditional clinic costs."
         ctaText="Start your assessment"
-        ctaLink="https://app.dumbo.health/assessment"
+        ctaLink="/get-started"
       />
     </div>
   );

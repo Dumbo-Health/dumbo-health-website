@@ -15,6 +15,8 @@ export interface SleepPlanEntry {
   description: string;
   content: string;
   thumbnail?: string;
+  videoThumbnail?: string;
+  videoId?: string;
 }
 
 export type SleepPlanConfig = Record<string, SleepPlanEntry>;

@@ -321,7 +321,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </h3>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Link
-                      href="https://app.dumbo.health/"
+                      href="/get-started"
                       className="flex-1 text-center rounded-xl py-3 font-body font-bold text-sm uppercase tracking-wide transition-all duration-200"
                       style={{ background: "#FF8361", color: "#fff" }}
                     >

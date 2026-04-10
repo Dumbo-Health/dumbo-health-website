@@ -1,603 +1,405 @@
-# DumboHealth Website — Design System
-
-> Source of truth for all visual and interaction patterns used across `dumbo-health-website`.
-> Any new page or component must follow these conventions exactly.
-> Last updated: 2026-04-10 | Audited from: globals.css, cash-pay-argument.tsx, sleep-test-landing.tsx, get-started/page.tsx
+# DumboHealth Design System — Extracted from Codebase
+> Living reference for all new page builds. Source of truth extracted from globals.css, hero.tsx, testimonials.tsx, how-it-works.tsx, get-started/page.tsx, and button.tsx.
 
 ---
 
-## 1. Color Palette
+## 1. COLOR SYSTEM
 
-All colors are registered as CSS custom properties in `globals.css` and as Tailwind utilities.
+### Brand Tokens
+| Name | Hex | CSS Variable | Usage |
+|------|-----|-------------|-------|
+| **Daylight** | `#FCF6ED` | `--color-daylight` | Default page background (50%) |
+| **Sunlight** | `#F5E6D1` | `--color-sunlight` | Muted bg, borders, card fills |
+| **Light Peach** | `#FFD6AD` | `--color-light-peach` | Warm accent, gradient layer 3 |
+| **Peach** | `#FF8361` | `--color-peach` | Primary CTA, stars, links, icons |
+| **Teal** | `#78BFBC` | `--color-teal` | Section eyebrows, step icons, secondary accent |
+| **Midnight** | `#031F3D` | `--color-midnight` | All body text, headings, dark sections |
 
-| Token | Tailwind class | Hex | RGB | Role |
-|-------|---------------|-----|-----|------|
-| Daylight | `bg-daylight` / `text-daylight` | `#FCF6ED` | 252, 246, 237 | Primary background (25%) |
-| Sunlight | `bg-sunlight` | `#F5E6D1` | 245, 230, 209 | Secondary background, card fills (25%) |
-| Light Peach | `bg-light-peach` | `#FFD6AD` | 255, 214, 173 | Warm accent, badges (15%) |
-| Peach | `bg-peach` / `text-peach` | `#FF8361` | 255, 131, 97 | Primary CTA, labels, links (15%) |
-| Teal | `bg-teal` / `text-teal` | `#78BFBC` | 120, 191, 188 | Section labels, secondary accents (10%) |
-| Midnight | `bg-midnight` / `text-midnight` | `#031F3D` | 3, 31, 61 | Dark section bg, all headings, body text (10%) |
+### Dark Section Variants (used on Midnight bg)
+| Use | Value |
+|-----|-------|
+| Dark card bg | `rgba(252,246,237,0.05)` |
+| Dark card border | `rgba(252,246,237,0.08)` |
+| Dark card text | `#FCF6ED` |
+| Eyebrow on dark | `#78BFBC` (Teal) |
+| Muted text on dark | `#B0B8C4` |
+| Dark card bg deep | `#0A2D4F` |
+| Dark border | `#1A3D5C` |
 
-### Opacity Variants (inline rgba — NOT Tailwind `/` modifiers)
+### Semantic Roles
+- **Background**: Daylight (`#FCF6ED`)
+- **Foreground / text**: Midnight (`#031F3D`)
+- **Primary action**: Peach (`#FF8361`)
+- **Secondary action**: Teal (`#78BFBC`)
+- **Muted surface**: Sunlight (`#F5E6D1`)
+- **Warm accent**: Light Peach (`#FFD6AD`)
+- **Destructive**: `#E53E3E`
+- **Body text muted**: `midnight/55` → `rgba(3,31,61,0.55)`
+- **Muted foreground**: `#4A5568`
 
-> **Critical:** Tailwind v4 opacity modifiers (`bg-white/5`, `text-midnight/55`) do **not** reliably compile. Always use inline `rgba()` for any opacity-modified color.
+### ✅ DOS
+- Use Daylight as default page background always
+- Use Peach for one and only one primary CTA per screen
+- Use Teal for eyebrow labels and secondary icon accents
+- Use `rgba(...)` inline for opacity variants — NOT Tailwind `/50` modifiers (they don't compile in v4)
+- On dark (Midnight) sections: use glassmorphism cards with `rgba(252,246,237,0.05)` bg and `rgba(252,246,237,0.08)` border
+- Alternate Teal and Peach for step icon colors
 
-| Usage | Value |
-|-------|-------|
-| Muted body text on light bg | `rgba(3,31,61,0.55)` |
-| Very muted / captions on light bg | `rgba(3,31,61,0.45)` |
-| Placeholder / ghost text | `rgba(3,31,61,0.3)` |
-| Body text on dark bg | `rgba(252,246,237,0.75)` |
-| Muted text on dark bg | `rgba(252,246,237,0.45)` |
-| Ghost text on dark bg | `rgba(252,246,237,0.22)` |
-| Card bg on dark section | `rgba(255,255,255,0.05)` |
-| Card border on dark section | `rgba(255,255,255,0.09)` |
-| Peach CTA bg on dark section | `rgba(255,131,97,0.11)` |
-| Peach CTA border on dark section | `rgba(255,131,97,0.18)` |
-| Divider on dark section | `rgba(255,255,255,0.07)` |
-
-### Section Background Patterns
-
-| Section type | Background | Use |
-|-------------|-----------|-----|
-| Default / light | `#FCF6ED` (Daylight) | Homepage, most sections |
-| Warm card bg | `#F5E6D1` (Sunlight) | Product image areas, warm cards |
-| Dark hero section | `#031F3D` (Midnight) | CashPayArgument, pricing dark sections |
-| Frosted card on dark | `rgba(255,255,255,0.04)` | Table backgrounds on midnight sections |
+### ❌ DON'TS
+- Never use `bg-white/8` or `text-daylight/50` — Tailwind opacity modifiers break in v4
+- Never use raw black (`#000`) or raw white (`#FFF`) as primary surfaces
+- Never use more than one Peach primary CTA in the same visual row
+- Never use Teal as a CTA button background — it's for accents only
 
 ---
 
-## 2. Typography
+## 2. TYPOGRAPHY
 
 ### Font Families
+| Role | Font | Weights Available | CSS Class |
+|------|------|-----------------|-----------|
+| **Headings** | Nohemi | 400 (Regular), 500 (Medium) | `font-heading` |
+| **Body** | Aeonik | 400 (Regular), 700 (Bold) | `font-body` |
+| **Labels / Tags / Buttons / Eyebrows** | Aeonik Mono | 400 (Regular) | `font-mono` |
 
-| Tailwind class | CSS variable | Font | Use |
-|---------------|-------------|------|-----|
-| `font-heading` | `var(--font-heading)` | Nohemi | All H1–H6, display text |
-| `font-body` | `var(--font-body)` | Aeonik | Body copy, buttons, UI text |
-| `font-mono` | `var(--font-mono)` | Aeonik Mono | Section labels, tags, nav items |
+> **Rule**: h1–h6 are automatically `font-heading text-midnight` via globals.css base layer.
 
-> **Global rule (set in `@layer base`):** All `h1`–`h6` automatically get `font-heading text-midnight`. Override explicitly when on dark sections.
+### Type Scale (actual values in use)
+| Element | Size | Weight | Line Height | Class/Style |
+|---------|------|--------|-------------|-------------|
+| Hero H1 | 44px → 56px → 68px | 500 | 1.05–1.08 | `font-heading text-[44px] sm:text-[56px] lg:text-[68px] font-medium` |
+| Section H2 | clamp(2.4rem, 4vw, 4rem) | 500 | tight | `font-heading font-medium leading-tight` |
+| Article H2 | 1.75rem (28px) | 500 | 1.25 | `font-heading font-medium` |
+| Article H3 | 1.3125rem (21px) | 500 | 1.35 | `font-heading font-medium` |
+| Article H4 | 1.0625rem (17px) | 700 | 1.4 | `font-body font-bold` |
+| Body (default) | 1.125rem (18px) | 400 | 1.78 | `font-body` |
+| Body large | 1.25rem (20px) | 400 | relaxed | `font-body text-xl` |
+| Body muted subhead | 18–20px | 400 | relaxed | `font-body text-lg text-midnight/55` |
+| Eyebrow / label | 0.75rem (12px) | 400 | — | `font-mono text-xs uppercase tracking-widest` |
+| Button / CTA | inherit | 400 | — | `font-mono uppercase tracking-wide` |
+| Tag / Badge | 0.875rem (14px) | 400 | — | `font-mono text-sm` |
 
-### Type Scale (clamp-based, responsive)
+### ✅ DOS
+- Use `font-mono uppercase tracking-widest` for all section eyebrow labels
+- Use `font-heading font-medium` (500) for all headlines — not bold (700)
+- Use `clamp()` for responsive headline sizing on section h2s
+- Use `leading-[1.05]` to `leading-[1.08]` for hero-scale headlines
+- Always set max-width on headline and body text blocks (`max-w-lg`, `max-w-[18ch]`, etc.)
 
-| Role | Size | Usage |
-|------|------|-------|
-| Hero H1 | `clamp(2.4rem, 4vw, 3.5rem)` | Page heroes |
-| Section H2 | `clamp(2rem, 4.5vw, 3.25rem)` | Primary section headings |
-| Sub-section H2 | `clamp(1.75rem, 5vw, 2.5rem)` | Secondary section headings |
-| Card H2 | `clamp(1.625rem, 4vw, 2.25rem)` | Card/panel headings |
-| Sub-heading H3 | `clamp(1.15rem, 1.8vw, 1.4rem)` | Feature card titles |
-| Article H2 | `1.75rem` | Blog prose |
-| Article H3 | `1.3125rem` | Blog prose |
-| Body large | `1.0625rem` | Primary body copy |
-| Body | `1rem` | Secondary body copy |
-| Small / caption | `0.875rem` | Supporting text |
-| Label / tag | `0.75rem` (text-xs) | Section labels, mono tags |
-| Micro label | `0.68rem`–`0.7rem` | Inline labels, timestamps |
+### ❌ DON'TS
+- Never use `font-heading font-bold` (700) — Nohemi Medium (500) is the correct heading weight
+- Never use `font-body` for button labels — use `font-mono`
+- Never skip the eyebrow label above a section h2 — the label→headline pairing is the pattern
+- Never use raw `<em>` or italic in headlines — Nohemi doesn't have an italic variant
 
-### Font Weight Usage
+---
 
-| Weight | Class | Use |
-|--------|-------|-----|
-| 400 | `font-normal` | Body text, mono labels |
-| 500 | `font-medium` | Headings (Nohemi), semi-emphasis |
-| 700 | `font-bold` | Button text, strong emphasis |
+## 3. SPACING & LAYOUT
 
-### Label Pattern (used on every section)
+### Container Widths
+| Use | Class / Value |
+|-----|--------------|
+| Narrow content (hero, centered copy) | `max-w-4xl mx-auto px-4 sm:px-6 lg:px-8` |
+| Full bleed side padding | `padding: "0 5%"` (inline style) |
+| Card grid max | `max-w-6xl` or `max-w-7xl` |
 
-```tsx
-// Section label — always appears above the heading
-<p
-  className="font-mono text-xs uppercase tracking-widest mb-4"
-  style={{ color: "#78BFBC" }}        // Teal on light bg
-  // OR: style={{ color: "#FF8361" }} // Peach on light bg (alternate)
->
-  Section category
+### Section Vertical Rhythm
+| Breakpoint | Padding |
+|------------|---------|
+| Mobile | `py-16` to `py-20` |
+| Desktop | `py-24 md:py-32` |
+
+### Grid Patterns
+| Layout | Class |
+|--------|-------|
+| 1→2→3 testimonial cards | `grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3` |
+| 2-column split | `grid grid-cols-1 md:grid-cols-2 gap-8` |
+| Step list | Vertical stack with numbered items |
+
+### ✅ DOS
+- Use `0 5%` side padding on full-bleed dark sections
+- Use `max-w-4xl` for centered hero/copy blocks
+- Always apply `overflow-hidden` on the marquee wrapper
+- Add `gap-4` between marquee items, `gap-6` between cards
+
+### ❌ DON'TS
+- Never use fixed px widths for containers — always responsive max-w + padding
+- Never let text go full bleed on desktop (always constrain with max-w)
+
+---
+
+## 4. BACKGROUNDS & SURFACES
+
+### Background Types (in use)
+
+#### A — Gradient Hero (light, default)
+```
+background: linear-gradient(148deg, #FCF6ED 0%, #F5E6D1 52%, #FFD6AD 100%)
+```
+Used for the hero section. Warm diagonal wash from Daylight → Sunlight → Light Peach.
+
+#### B — Animated Gradient (quiz / form pages)
+Three layered `<motion.div>` elements:
+1. Solid Daylight base
+2. `linear-gradient(145deg, transparent 0%, rgba(245,230,209,0.7) 55%, transparent 100%)` — Sunlight wash
+3. `linear-gradient(145deg, transparent 0%, rgba(255,214,173,0.5) 65%, transparent 100%)` — Light Peach warmth
+- Progresses as user interacts (warmth increases with quiz progress)
+
+#### C — Animated Blobs (on top of gradients)
+- Two blobs: top-right and bottom-left
+- Shape: `borderRadius: "50%"`, large circles (55–65vw, max 680–820px)
+- Fill: `radial-gradient(circle, rgba(255,131,97,0.07..0.12) 0%, rgba(255,214,173,0.28..0.58) 40%, transparent 65..70%)`
+- Motion: `opacity` breathe + `scale` + `x/y` drift, `duration: 8–10s`, `repeat: Infinity`
+- Positioned with `position: absolute`, negative offsets (`top: "-20%", right: "-10%"`)
+
+#### D — Dark Section (Midnight)
+```
+backgroundColor: "#031F3D"
+```
+Used for testimonials, contrast sections. Cards on this bg use glassmorphism (see §1).
+
+#### E — Flat Light Surface
+```
+backgroundColor: "#F5E6D1"  // Sunlight
+```
+Used for card fills, blockquotes, muted backgrounds.
+
+### ✅ DOS
+- Always layer gradients with `position: absolute, inset: 0` behind a `position: relative, zIndex: 1` content wrapper
+- Use the blob system for any hero or full-screen background — never a flat solid on hero
+- Use Midnight (`#031F3D`) for contrast sections to break up the warm palette
+- On photo marquees: `rounded-2xl overflow-hidden` on each image wrapper
+
+### ❌ DON'TS
+- Never use a white `#FFFFFF` background for main page sections — use Daylight
+- Never use CSS `filter: blur()` for glassmorphism — use low-opacity rgba fills
+- Never use box-shadow on cards — use rgba border instead
+- Never place blobs inside the content flow — always `position: absolute, pointerEvents: "none"`
+
+---
+
+## 5. COMPONENTS
+
+### Buttons (hero-style, inline — the real pattern)
+The shadcn Button component is used in admin/forms. For marketing pages, buttons are styled inline:
+
+**Primary (Peach CTA)**
+```
+background: #FF8361
+color: white
+borderRadius: 50px (pill)
+padding: 16px 32px+ (py-4 px-8)
+font-mono uppercase tracking-wide
+fontSize: 15px
+```
+
+**Secondary (Ghost / outline)**
+```
+background: transparent
+color: #031F3D
+border: 1.5px solid rgba(3,31,61,0.2)
+borderRadius: 50px (pill)
+same padding as primary
+```
+
+**shadcn Button (forms/admin)**
+- Default: `bg-primary text-white` (Peach)
+- Outline: `border bg-background hover:bg-accent`
+- Secondary: `bg-secondary text-secondary-foreground` (Teal)
+- Border radius: `rounded-md` (0.75rem)
+
+### Cards
+| Type | Style |
+|------|-------|
+| Light card | `rounded-2xl p-8 md:p-10 bg-white` |
+| Muted card | `rounded-2xl p-8 bg-sunlight` (F5E6D1) |
+| Dark glassmorphism | `rounded-2xl p-8 md:p-10` + `bg: rgba(252,246,237,0.05)` + `border: 1px solid rgba(252,246,237,0.08)` |
+
+### Step / Icon Items
+```
+icon container: 40x40px, borderRadius: 10px
+iconBg: rgba(color, 0.15)  // very soft tint
+icon stroke: color (Teal or Peach, alternating)
+strokeWidth: 1.75
+```
+
+### Section Eyebrow Pattern
+```
+<p class="font-mono text-xs uppercase tracking-widest mb-4" style={{ color: "#78BFBC" }}>
+  Section Label
 </p>
+<h2 class="font-heading font-medium leading-tight" style={{ fontSize: "clamp(...)" }}>
+  Headline
+</h2>
 ```
 
-### Line Height & Spacing
-
-| Context | Line height |
-|---------|-------------|
-| Headings | `1.1`–`1.25` |
-| Body copy | `1.7`–`1.78` |
-| Small copy | `1.4`–`1.6` |
-| Labels / mono | `1.0` (tracking does the spacing work) |
-
-### Letter Spacing (mono labels)
-
-| Style | Value |
-|-------|-------|
-| Default label | `tracking-widest` = `0.1em`–`0.14em` |
-| Tight label | `0.08em` |
-| Wide label | `0.16em` |
+### Photo Marquee
+```
+overflow-hidden wrapper
+  flex w-max gap-4 (animation: marquee-hero Xs linear infinite)
+    image div: h-[260px] w-[380px] md:h-[320px] md:w-[460px]
+               rounded-2xl overflow-hidden relative
+      <Image fill object-cover>
+```
+- Duplicate array to create seamless loop: `[...images, ...images]`
+- Animation: `translateX(-50%)` over time
 
 ---
 
-## 3. Layout & Spacing
+## 6. MOTION & ANIMATION
 
-### Container
+### The Signature Easing
+```typescript
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+```
+This is used on **every** animated element. It's the brand motion signature — fast in, very soft out.
 
-```tsx
-// Standard section container — used consistently across all sections
-<div className="mx-auto max-w-7xl px-[5%]">
+### Standard Entrance Patterns
+| Element | Initial | Animate | Duration | Delay |
+|---------|---------|---------|----------|-------|
+| Hero H1 | `{ opacity: 0, y: 16 }` | `{ opacity: 1, y: 0 }` | 0.45s | 0.05s |
+| Hero subhead | `{ opacity: 0, y: 12 }` | `{ opacity: 1, y: 0 }` | 0.40s | 0.15s |
+| Hero photo strip | `{ opacity: 0 }` | `{ opacity: 1 }` | 0.45s | 0.25s |
+| Hero CTAs | `{ opacity: 0 }` | `{ opacity: 1 }` | 0.40s | 0.35s |
+| Section header (scroll) | `{ opacity: 0, y: 20 }` | `{ opacity: 1, y: 0 }` | 0.60s | 0.08s |
+| Cards (staggered) | `{ opacity: 0, y: 24 }` | `{ opacity: 1, y: 0 }` | 0.65s | 0.18 + i×0.10s |
+
+### Scroll Trigger
+```typescript
+const ref = useRef<HTMLDivElement>(null);
+const inView = useInView(ref, { once: true, margin: "-8% 0px" });
+// animate={inView ? { opacity: 1, y: 0 } : {}}
+```
+- `once: true` — triggers only once, no re-play
+- `margin: "-8% 0px"` — triggers slightly before element enters viewport
+
+### Ambient / Loop Animations
+| Name | Duration | Pattern |
+|------|----------|---------|
+| Blob breathe | 8–10s | opacity + scale + x/y drift, `easeInOut`, `repeat: Infinity` |
+| Float | 4s | translateY 0 → -18px → 0, `ease-in-out`, `Infinity` |
+| Marquee | 30–55s | `translateX(-50%)`, `linear`, `Infinity` |
+| Soundwave | 1.1s | scaleY 0.55 → 1 → 0.55, `ease-in-out`, `Infinity` |
+
+### Quiz / Multi-Step Transitions
+```typescript
+const screen = {
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0, transition: { ease: EASE, duration: 0.65 } },
+  exit: { opacity: 0, y: 0, transition: { ease: "easeIn", duration: 0.28 } },
+};
+// wrapped in <AnimatePresence mode="wait">
 ```
 
-> `px-[5%]` is the canonical horizontal padding. This scales naturally with viewport width. Never use fixed `px-4` or `px-6` for section containers.
+### ✅ DOS
+- Always use `EASE = [0.22, 1, 0.36, 1]` — never `ease-in-out` or linear for UI entrances
+- Stagger cards by `0.10s` per item, starting at `0.18s` base delay
+- Use `useInView` with `once: true` for all scroll-triggered animations
+- Exit animations should be shorter than entrances (0.28s vs 0.65s)
+- Wrap page/screen transitions in `<AnimatePresence mode="wait">`
 
-### Section Vertical Padding
-
-```tsx
-// Standard
-<section className="py-24 md:py-32">
-
-// Compact (tighter sections)
-<section className="py-16 md:py-24">
-
-// Hero (extra tall)
-<section className="py-32 md:py-40">
-```
-
-### Grid Gaps
-
-| Gap | Value | Use |
-|-----|-------|-----|
-| Card grids | `gap-6` / `gap-8` | Feature card grids |
-| Two-column | `gap-10 lg:gap-16` | Split layouts |
-| Stacked content | `gap-4` | Vertically stacked card items |
-
-### Max Widths
-
-| Context | Value |
-|---------|-------|
-| Section container | `max-w-7xl` |
-| Prose / narrow content | `max-w-2xl` or `max-w-3xl` |
-| Heading text balance | `maxWidth: "22ch"` (inline, for text-balance) |
+### ❌ DON'TS
+- Never use `networkidle` as a Playwright wait strategy — use `domcontentloaded` + 2000ms
+- Never skip the y-offset on entrances — opacity-only feels flat
+- Never animate more than 4–5 elements in a single stagger group
+- Never use `bounce` or `spring` physics on UI text — only on decorative elements
 
 ---
 
-## 4. Animation System
+## 7. SECTION ANATOMY — THE FULL PATTERN
 
-### The EASE Constant
-
-```tsx
-// Define at the top of every animated component file
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
-// Alternate eases
-const EASE_OUT = [0.4, 0, 0.6, 1] as [number, number, number, number];
-const EASE_SPRING = [0.34, 1.56, 0.64, 1] as [number, number, number, number]; // for bouncy/spring
-```
-
-### Standard Fade-Up (scroll-triggered)
-
-```tsx
-// Pattern used for all content revealed on scroll
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-80px" }}
-  transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
->
-```
-
-### FadeUp Wrapper Component (reusable)
-
-```tsx
-function FadeUp({ children, delay = 0, className }: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: EASE, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-```
-
-### Staggered Children
-
-```tsx
-// Each child gets an incrementing delay
-{items.map((item, i) => (
-  <motion.div
-    key={item.id}
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.55, ease: EASE, delay: 0.1 + i * 0.1 }}
-  >
-```
-
-### Slide-In (carousel / page transitions)
-
-```tsx
-// AnimatePresence + directional slide
-<AnimatePresence mode="wait" initial={false}>
-  <motion.div
-    key={activeIndex}
-    initial={{ opacity: 0, x: direction * 40 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: direction * -40 }}
-    transition={{ duration: 0.35, ease: EASE }}
-  />
-</AnimatePresence>
-```
-
-### Duration Reference
-
-| Animation type | Duration |
-|---------------|----------|
-| Fast micro (badge, tag) | `0.3`–`0.35s` |
-| Standard fade-up | `0.55`–`0.65s` |
-| Hero / large reveal | `1.0`–`1.8s` |
-| Ambient / ambient float | `4`–`12s` with `repeat: Infinity` |
-| Stagger increment | `0.08`–`0.1s` per item |
-
-### CSS Animations (globals.css)
-
-| Class | Effect | Duration |
-|-------|--------|----------|
-| `animate-fade-in` | opacity 0→1, y 4px→0 | 0.3s |
-| `animate-travel-dot` | horizontal dot travel | 4s infinite |
-| `animate-float` | vertical bob ±18px | 4s infinite |
-| `animate-soundwave` | scaleY pulse | 1.1s infinite |
-| `animate-bounce-slow` | vertical bob ±10px | 3s infinite |
-| `animate-marquee` | infinite horizontal scroll | 30s linear |
-| `animate-marquee-hero` | infinite horizontal scroll (slower) | 35s linear |
-
----
-
-## 5. Component Patterns
-
-### Primary Button
-
-```tsx
-// Tailwind variant (preferred for shadcn Button component)
-<Button
-  asChild
-  className="h-12 rounded-[12px] bg-peach px-7 font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
-  style={{ boxShadow: "0 4px 20px rgba(255,131,97,0.25)" }}
->
-  <Link href={APP_URL}>Get started today</Link>
-</Button>
-
-// Inline style variant (for non-shadcn contexts)
-<button
-  style={{
-    backgroundColor: "#FF8361",
-    color: "white",
-    border: "none",
-    borderRadius: 12,
-    padding: "14px 44px",
-    fontFamily: "var(--font-body)",
-    fontSize: "1rem",
-    fontWeight: 500,
-    cursor: "pointer",
-    boxShadow: "0 4px 18px rgba(255,131,97,0.3)",
-  }}
->
-```
-
-> **Border radius rule:** Buttons always use `rounded-[12px]` (12px). Never `rounded-full`.
-
-### Secondary / Ghost Button
-
-```tsx
-// Outline style for secondary actions
-<button
-  style={{
-    background: "transparent",
-    border: "1.5px solid #031F3D",
-    borderRadius: 12,
-    padding: "12px 32px",
-    fontFamily: "var(--font-body)",
-    fontSize: "1rem",
-    color: "#031F3D",
-    cursor: "pointer",
-  }}
->
-```
-
-### Section Label
-
-```tsx
-// Appears above every section heading — the canonical "eyebrow" label
-<p
-  className="font-mono text-xs uppercase tracking-widest mb-4"
-  style={{ color: "#78BFBC" }}
->
-  Cash pay vs. insurance
-</p>
-```
-
-### Feature Card (light section)
-
-```tsx
-<div
-  className="rounded-2xl p-7"
-  style={{
-    backgroundColor: "#F5E6D1",       // Sunlight fill
-    border: "1px solid rgba(245,230,209,0.8)",
-  }}
->
-  <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>
-    01
-  </span>
-  <h3 className="mt-3 font-heading font-medium" style={{ color: "#031F3D", fontSize: "clamp(1.15rem, 1.8vw, 1.4rem)" }}>
-    Card title
-  </h3>
-  <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(3,31,61,0.55)", fontSize: "1.0625rem" }}>
-    Card body copy.
-  </p>
-</div>
-```
-
-### Feature Card (dark section)
-
-```tsx
-<div
-  className="rounded-2xl p-7"
-  style={{
-    backgroundColor: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.09)",
-  }}
->
-  <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#FF8361" }}>
-    01
-  </span>
-  <h3 className="mt-3 font-heading font-medium" style={{ color: "#FCF6ED", fontSize: "clamp(1.15rem, 1.8vw, 1.4rem)" }}>
-    Card title
-  </h3>
-  <p className="mt-2 font-body leading-relaxed" style={{ color: "rgba(252,246,237,0.75)", fontSize: "1.0625rem" }}>
-    Card body copy.
-  </p>
-</div>
-```
-
-### Comparison Table Row
-
-```tsx
-// Standard 3-column grid: label | traditional | dumbo
-<div className="grid grid-cols-[160px_1fr_1fr]" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-  {/* Label col */}
-  <div className="px-5 py-4 flex items-center">
-    <p className="font-body text-sm font-medium" style={{ color: "rgba(252,246,237,0.75)" }}>{label}</p>
-  </div>
-  {/* Traditional col */}
-  <div className="px-4 py-4 flex items-center gap-2.5"
-    style={{ borderLeft: "1px solid rgba(255,255,255,0.07)", backgroundColor: "rgba(255,255,255,0.02)" }}>
-    <X className="h-4 w-4 shrink-0" style={{ color: "rgba(252,246,237,0.22)" }} />
-    <p className="font-body text-sm leading-snug" style={{ color: "rgba(252,246,237,0.38)" }}>{traditional}</p>
-  </div>
-  {/* Dumbo col */}
-  <div className="px-4 py-4 flex items-center gap-2.5"
-    style={{ borderLeft: "1px solid rgba(255,131,97,0.18)", backgroundColor: "rgba(255,131,97,0.11)" }}>
-    <Check className="h-4 w-4 shrink-0" style={{ color: "#78BFBC" }} />
-    <p className="font-body text-sm font-semibold leading-snug" style={{ color: "#FFFFFF" }}>{dumbo}</p>
-  </div>
-</div>
-```
-
-### Carousel Navigation Buttons
-
-```tsx
-<button
-  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full transition-opacity hover:opacity-80"
-  style={{ backgroundColor: "rgba(255,255,255,0.85)", boxShadow: "0 2px 8px rgba(3,31,61,0.12)" }}
->
-```
-
----
-
-## 6. Border Radius
-
-| Context | Value | Tailwind |
-|---------|-------|---------|
-| Buttons | 12px | `rounded-[12px]` |
-| Cards, panels, tables | 16px | `rounded-2xl` |
-| Image containers | 16px | `rounded-2xl` |
-| Avatar / icon circles | 50% | `rounded-full` |
-| Inline badges/tags | 6px | `rounded-md` |
-| Article images | `0.75rem` | `rounded-xl` |
-
-> **Rule:** Never use `rounded-full` on CTA buttons. Maximum is `rounded-[12px]`.
-
----
-
-## 7. Shadow Patterns
-
-| Context | Box shadow |
-|---------|-----------|
-| Primary button | `0 4px 20px rgba(255,131,97,0.25)` |
-| Primary button (alt) | `0 4px 18px rgba(255,131,97,0.3)` |
-| Carousel arrow / small button | `0 2px 8px rgba(3,31,61,0.12)` |
-| Card elevation (light) | `0 2px 12px rgba(3,31,61,0.08)` |
-| Dark section ambient | Avoid — use border opacity instead |
-
----
-
-## 8. Section Structure Pattern
-
-Every section follows this hierarchy:
+Every marketing section follows this structure:
 
 ```
-[Label]         ← font-mono, xs, uppercase, teal, mb-4
-[Heading]       ← font-heading, font-medium, clamp size, midnight (or daylight on dark)
-[Body copy]     ← font-body, 1.0625rem, muted color, max-w for readability
-[Content]       ← cards / table / grid
-[CTA]           ← primary button, always last
-```
-
-### Light Section Template
-
-```tsx
-<section className="py-24 md:py-32" style={{ backgroundColor: "#FCF6ED" }}>
-  <div className="mx-auto max-w-7xl px-[5%]">
-    <div className="mb-16">
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.4, ease: EASE }}
-        className="font-mono text-xs uppercase tracking-widest mb-4"
-        style={{ color: "#78BFBC" }}
-      >
-        Section label
-      </motion.p>
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
-        className="font-heading font-medium leading-tight text-balance"
-        style={{ color: "#031F3D", fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "22ch" }}
-      >
-        Section heading goes here.
-      </motion.h2>
+<section>                               ← position: relative, overflow: hidden
+  [background layer]                    ← position: absolute, inset: 0, zIndex: 0
+    gradient | blobs | solid color
+  
+  <div position: relative, zIndex: 1>  ← content above background
+    <div max-w + padding>
+      
+      [eyebrow]                         ← font-mono, text-xs, uppercase, Teal
+      [h2]                              ← font-heading, font-medium, clamp sizing
+      [subhead/body]                    ← font-body, text-lg/xl, midnight/55
+      
+      [content block]                   ← grid / stack / marquee
+        cards | steps | photos | list
+      
+      [CTA block]                       ← optional, always at bottom
+        primary button (Peach pill)
+        secondary ghost button (optional)
+    
     </div>
-    {/* content */}
   </div>
 </section>
 ```
 
-### Dark Section Template
+### Section Progression (homepage order, use as reference)
+1. **Hero** — gradient bg + blobs + headline + photo marquee + CTA
+2. **Trust Marquee** — flat Sunlight bg, logo strip, infinite scroll
+3. **Symptoms/Problem** — light bg, problem framing
+4. **How It Works** — numbered steps with alternating Teal/Peach icons
+5. **Solutions Grid** — card grid, light bg
+6. **Benefits Grid** — comparison / feature list
+7. **Testimonials** — **dark (Midnight) section**, glassmorphism cards
+8. **Service Area** — utility banner
+9. **FAQ** — accordion, light bg
 
-```tsx
-<section
-  className="relative overflow-hidden py-24 md:py-32"
-  style={{ backgroundColor: "#031F3D", isolation: "isolate" }}
->
-  <div className="mx-auto max-w-7xl px-[5%]">
-    <div className="mb-16">
-      <motion.p ... className="font-mono text-xs uppercase tracking-widest mb-4" style={{ color: "#78BFBC" }}>
-        Section label
-      </motion.p>
-      <motion.h2 ... style={{ color: "#FCF6ED", fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "22ch" }}>
-        Section heading.
-      </motion.h2>
-    </div>
-    {/* content */}
-  </div>
-</section>
+> **The dark Testimonials section is the only mandatory dark break.** All other sections use the warm light palette.
+
+---
+
+## 8. IMAGERY & PHOTOS
+
+- **Style**: lifestyle, real people, warm lighting — couples, individuals resting, morning scenes
+- **Sizes**: marquee items are 380×260px mobile / 460×320px desktop
+- **All images**: `rounded-2xl overflow-hidden`, `object-cover`, Next.js `<Image fill>`
+- **Priority**: first 3 images in any marquee get `priority` prop
+
+### ✅ DOS
+- Use aspirational lifestyle photography (not clinical/hospital imagery)
+- Warm color temperature photos that complement the brand palette
+- Always `overflow-hidden rounded-2xl` on image wrappers
+
+### ❌ DON'TS
+- No cold/clinical stock imagery
+- Never use `<img>` — always Next.js `<Image>`
+- Never show images without rounded corners
+
+---
+
+## 9. QUICK REFERENCE CHEATSHEET
+
 ```
+COLORS:
+  bg default:    #FCF6ED (Daylight)
+  text default:  #031F3D (Midnight)
+  cta primary:   #FF8361 (Peach)
+  cta secondary: #78BFBC (Teal)
+  card/border:   #F5E6D1 (Sunlight)
+  accent warm:   #FFD6AD (Light Peach)
 
-> **Dark section rule:** Always add `isolation: "isolate"` when using decorative background elements (SVG lifeline, blobs, gradients). This prevents z-index leakage.
+FONTS:
+  headings:  font-heading (Nohemi, weight 500)
+  body:      font-body (Aeonik, weight 400/700)
+  labels:    font-mono (Aeonik Mono, weight 400) + uppercase + tracking-widest
 
----
+EASING: [0.22, 1, 0.36, 1]
 
-## 9. Design Principles (Anti-AI Rules)
+RADIUS:
+  cards/images:  rounded-2xl (16px)
+  buttons:       rounded-full (pill) for marketing, rounded-md for forms
+  default:       rounded-lg (12px)
 
-From `/web-design-patterns` audit — patterns that make DumboHealth feel human-designed:
+SECTION PADDING:  py-24 md:py-32
+CONTAINER:        max-w-4xl mx-auto px-4 sm:px-6 lg:px-8
 
-### DO
-- **One element dominates per section** — the heading or the visual, not both at equal weight
-- **Asymmetric layouts** — prefer `lg:grid-cols-[1fr_2fr]` over perfect `lg:grid-cols-2` where content warrants
-- **Specific copy** — "Order your test · $149" not "Get started"
-- **Visual hierarchy** — section label → heading → body → CTA, always in that order
-- **Restrained animation** — one stagger pattern per section, consistent timing, not every element animated
-- **Context-sensitive trust** — lead with outcome, then back it up ($149 flat, FDA-cleared, doctor-reviewed)
-- **Text balance on headings** — `className="text-balance"` on all H2s with `maxWidth: "22ch"`
+STAGGER BASE:   delay: 0.18 + i * 0.1
 
-### DON'T
-- ❌ Tailwind opacity modifiers (`bg-white/5`, `text-midnight/55`) — use `rgba()` inline instead
-- ❌ `rounded-full` on buttons — always `rounded-[12px]`
-- ❌ `React.FC` — always plain function components
-- ❌ Equal-size grids for all cards — vary when content hierarchy calls for it
-- ❌ `console.log` in production code
-- ❌ Carousels for testimonials — show all or curate top 3
-- ❌ Generic CTAs like "Learn More" or "Click Here"
-- ❌ Every section on dark background — alternate light/dark for visual rhythm
-
----
-
-## 10. Responsive Patterns
-
-### Mobile-first grid collapses
-
-```tsx
-// Standard 2-col split: stacks on mobile, splits at lg
-<div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16 items-start">
-
-// 3-col card grid: single col → 3-col
-<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+DO NOT:
+  - Use Tailwind opacity modifiers (/50, /8) — use rgba() inline
+  - Use font-bold on headings — use font-medium (500)
+  - Use box-shadow on cards — use rgba border
+  - Use white backgrounds — use Daylight (#FCF6ED)
+  - Use font-body for button text — use font-mono
 ```
-
-### Horizontal scroll for dense tables
-
-```tsx
-// Always wrap comparison tables in an overflow container
-<div className="w-full overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-  <div style={{ minWidth: "520px" }}>
-    {/* table content */}
-  </div>
-</div>
-```
-
-### Swipe hint for mobile
-
-```tsx
-<p
-  className="lg:hidden font-mono text-[11px] uppercase tracking-widest text-center mb-3"
-  style={{ color: "rgba(252,246,237,0.3)" }}
->
-  ← Swipe to compare →
-</p>
-```
-
----
-
-## 11. Constants & URLs
-
-```tsx
-import { APP_URL, SHOPIFY, CONTACT } from "@/lib/constants";
-
-APP_URL     = "https://app.dumbo.health"      // main CTA destination
-SHOPIFY.buyUrl = "https://checkout.dumbo.health/cart/8933198397592:1"  // $149 sleep test
-CONTACT.phone  = "+1 (786) 348 2820"
-CONTACT.phoneTel = "tel:+17863482820"
-```
-
----
-
-## 12. Existing Reusable Components
-
-| Component | Path | Use |
-|-----------|------|-----|
-| `CashPayArgument` | `src/components/pricing/cash-pay-argument.tsx` | Cash pay vs insurance dark section with comparison table |
-| `SectionLabel` | Inline in `sleep-test-landing.tsx` / `get-started` | Reusable eyebrow label |
-| `FadeUp` | Inline in `sleep-test-landing.tsx` | Scroll-triggered fade-up wrapper |
-| `ProductCarousel` | Inline in `get-started/page.tsx` | Image carousel with prev/next arrows |
-| shadcn `Button` | `src/components/ui/button` | Primary action button |
-| shadcn `Accordion` | `src/components/ui/accordion` | FAQ sections |
-
----
-
-## 13. Article / Blog Prose
-
-All blog article bodies use the `.article-prose` class (defined in `globals.css`):
-
-- Body: Aeonik 1.125rem / line-height 1.78 / color Midnight
-- H2: Nohemi 500 / 1.75rem / margin-top 2.75rem
-- H3: Nohemi 500 / 1.3125rem
-- Blockquote: Sunlight bg, Peach left border (3px), radius 0 0.75rem 0.75rem 0
-- Links: Peach color, underline, hover → Midnight
-- Code: Aeonik Mono, Sunlight bg
-- Pre: Midnight bg, Daylight text
-
----
-
-*Auto-generated from codebase audit — update when adding new patterns.*

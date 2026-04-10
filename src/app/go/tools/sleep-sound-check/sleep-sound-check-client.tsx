@@ -335,6 +335,141 @@ export function SleepSoundCheckClient() {
           </Accordion>
         </div>
       </section>
+
+      {/* ── Educational Content ─────────────────────────────────────────── */}
+
+      {/* Section 1: How Noise Affects Sleep */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">How Noise Affects Sleep</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The brain continues to process sound even during sleep, as the auditory cortex remains active and can trigger arousals (partial or full awakenings). Noise above 35 dB can increase cortisol levels and prevent deep sleep stages.
+          </p>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            The WHO recommends nighttime noise levels below 40 dB outdoors (equivalent to a quiet library); peak levels above 55 dB frequently disrupt sleep. Traffic noise at 50–55 dB causes measurable cardiovascular stress responses during sleep, even without waking.
+          </p>
+          <div className="bg-daylight rounded-2xl px-5 py-4 border border-sunlight">
+            <p className="font-body text-base leading-7 text-midnight">
+              <strong>Key finding:</strong> Research in the journal <em>Sleep</em> found that every 10 dB increase in environmental noise raised the risk of sleep fragmentation by 14%.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Snoring vs Sleep Apnea */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Snoring vs. Sleep Apnea: What&apos;s the Difference?</h2>
+          <p className="font-body text-lg text-midnight leading-8 mb-4">
+            Snoring is the sound of vibrating tissues in the upper airway narrowing during sleep; it affects ~45% of adults occasionally and 25% regularly. Not all snorers have OSA, but ~70% of OSA patients snore loudly, and witnessed gasping or choking is a key differentiator.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full font-body text-sm text-midnight border-collapse">
+              <thead>
+                <tr className="border-b border-sunlight">
+                  <th className="text-left py-3 pr-4 font-heading text-base">Feature</th>
+                  <th className="text-left py-3 pr-4 font-heading text-base">Snoring</th>
+                  <th className="text-left py-3 font-heading text-base">Sleep Apnea</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Airway obstruction", "Partial", "Complete (10+ sec)"],
+                  ["Oxygen desaturation", "No", "Yes (SpO₂ <90%)"],
+                  ["Daytime fatigue", "Sometimes", "Usually (significant)"],
+                  ["Health risk", "Low", "High (cardiovascular, metabolic)"],
+                  ["Diagnosis", "None needed", "Sleep study required"],
+                ].map(([feature, snoring, apnea]) => (
+                  <tr key={feature} className="border-b border-sunlight bg-white/60">
+                    <td className="py-3 pr-4 font-body" style={{ color: "rgba(3,31,61,0.85)" }}>{feature}</td>
+                    <td className="py-3 pr-4" style={{ color: "rgba(3,31,61,0.7)" }}>{snoring}</td>
+                    <td className="py-3" style={{ color: "rgba(3,31,61,0.7)" }}>{apnea}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Sound Solutions for Better Sleep */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-8">Sound Solutions for Better Sleep</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { label: "White Noise", desc: "All frequencies at equal intensity. Effective at masking variable environmental sounds (traffic, voices). Best for: urban environments, inconsistent noise sources." },
+              { label: "Pink Noise", desc: "Higher power at lower frequencies, like rain or wind. More natural-sounding than white noise. Research: Pink noise during sleep may enhance slow-wave (deep) sleep and memory consolidation." },
+              { label: "Brown Noise", desc: "Even heavier low-frequency emphasis, like a waterfall or thunder. Preferred by people who find white noise too harsh. Promotes focused relaxation." },
+              { label: "Silence", desc: "Ideal for those in quiet environments. However, complete silence can make tinnitus or intrusive thoughts more noticeable." },
+            ].map((item) => (
+              <div key={item.label} className="bg-daylight rounded-2xl p-5 border border-sunlight">
+                <p className="font-heading text-base text-midnight mb-2">{item.label}</p>
+                <p className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.7)" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Optimizing Your Sleep Sound Environment */}
+      <section className="bg-daylight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-midnight mb-4">Optimizing Your Sleep Sound Environment</h2>
+          <ul className="space-y-3">
+            {[
+              "Target: Maintain consistent background ambient noise at 40–50 dB to mask intermittent louder sounds.",
+              "Sound masking options: Dedicated white noise machine, fan, air purifier, smartphone app.",
+              "Ear plugs: Can reduce noise by 25–33 dB; effective but may prevent hearing alarms, so not suitable for everyone.",
+              "Acoustic adjustments: Heavy curtains, rugs, and upholstered furniture all absorb sound and reduce echo.",
+              "Partners: If snoring is disrupting your partner, this may indicate a sleep disorder worth evaluating, not just a noise problem.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 text-midnight flex gap-3 list-none">
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 5: Key Takeaways */}
+      <section className="bg-midnight py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-3xl text-white mb-6">Key Takeaways</h2>
+          <ul className="space-y-3">
+            {[
+              "Environmental noise above 35 dB can disrupt sleep architecture even without full awakening.",
+              "Snoring is not always harmless. If you gasp, choke, or wake up unrested, it warrants a sleep study.",
+              "Pink noise has the best evidence for promoting deeper, more restorative sleep.",
+              "White noise machines are an effective, low-cost way to mask variable nighttime sounds.",
+              "A sleep environment sound check is a useful first step, not a substitute for clinical evaluation.",
+            ].map((point) => (
+              <li key={point} className="font-body text-lg leading-8 flex gap-3 list-none" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <span className="text-peach mt-1 shrink-0">→</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6: References */}
+      <section className="bg-white py-14 lg:py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+          <h2 className="font-heading text-2xl text-midnight mb-4">References</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            {[
+              `WHO. "Night Noise Guidelines for Europe." 2009.`,
+              `Basner M, et al. "Auditory and non-auditory effects of noise on health." The Lancet. 2014.`,
+              `Zhou J, et al. "Pink noise: Effect on complexity synchronization of brain activity and sleep consolidation." Journal of Theoretical Biology. 2012.`,
+            ].map((ref) => (
+              <li key={ref} className="font-body text-sm leading-6" style={{ color: "rgba(3,31,61,0.65)" }}>{ref}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
     </main>
   );
 }

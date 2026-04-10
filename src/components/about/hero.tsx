@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { APP_URL } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -95,7 +94,7 @@ export function AboutHero() {
               size="lg"
               className="h-12 rounded-lg bg-midnight px-8 font-body text-base font-bold uppercase tracking-wider text-white shadow-md shadow-midnight/15 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-midnight/85 hover:shadow-xl active:translate-y-0"
             >
-              <a href={APP_URL}>Take the sleep test</a>
+              <Link href="/at-home-sleep-test">Take the sleep test</Link>
             </Button>
             <Button
               asChild

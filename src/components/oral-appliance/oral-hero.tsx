@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { APP_URL, CONTACT } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -78,7 +78,7 @@ export function OralHero() {
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <a
-                href={APP_URL}
+                href="/get-started"
                 className="inline-flex items-center justify-center rounded-[12px] font-body text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   backgroundColor: "#FF8361",

@@ -42,7 +42,7 @@ export const cpapPlans: Plan[] = [
       "Smart Resupply: member pricing",
     ],
     cta: "Get started",
-    ctaUrl: "https://app.dumbo.health",
+    ctaUrl: "/get-started",
     perDay: "~$2",
   },
   {
@@ -64,7 +64,7 @@ export const cpapPlans: Plan[] = [
       "24/7 Care Team",
     ],
     cta: "Get started",
-    ctaUrl: "https://app.dumbo.health",
+    ctaUrl: "/get-started",
     perDay: "~$3",
   },
   {
@@ -86,7 +86,7 @@ export const cpapPlans: Plan[] = [
       "Priority 24/7 Care Team",
     ],
     cta: "Get started",
-    ctaUrl: "https://app.dumbo.health",
+    ctaUrl: "/get-started",
     perDay: "~$4",
   },
 ];

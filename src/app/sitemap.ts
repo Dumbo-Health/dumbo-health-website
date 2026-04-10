@@ -1,18 +1,108 @@
 import type { MetadataRoute } from "next";
-import {
-  getAllAtHomeSleepTestSlugs,
-} from "@/lib/go/at-home-sleep-test";
-import {
-  getAllSleepProtocols,
-} from "@/lib/go/sleep-protocol";
-import {
-  getSleepPlanOrderedKeys,
-} from "@/lib/go/sleep-plan";
+import fs from "fs";
+import path from "path";
+import { getAllAtHomeSleepTestSlugs } from "@/lib/go/at-home-sleep-test";
+import { getAllSleepProtocols } from "@/lib/go/sleep-protocol";
+import { getSleepPlanOrderedKeys } from "@/lib/go/sleep-plan";
 import { getBlogPosts } from "@/lib/supabase";
 
 const baseUrl = "https://www.dumbo.health";
 
+// Routes excluded from sitemap (redirects, notFound, private, or not indexable)
+const EXCLUDED_SEGMENTS = new Set([
+  "admin",
+  "coming-soon",
+  "internal",
+  "upload",
+  "cpap-care",          // redirects
+  "oral-appliance-therapy", // notFound
+  "resupply",           // redirects
+]);
+
+// Priority overrides for known high-value pages
+const PRIORITY_MAP: Record<string, number> = {
+  "/": 1.0,
+  "/solutions": 0.9,
+  "/at-home-sleep-test": 0.9,
+  "/cpap": 0.9,
+  "/get-your-at-home-sleep-apnea-test": 0.8,
+  "/get-started": 0.8,
+  "/pricing": 0.8,
+  "/blog": 0.8,
+  "/dot-sleep-apnea-testing": 0.8,
+  "/sleep-test": 0.8,
+  "/resources/facts": 0.8,
+  "/go/tools": 0.8,
+  "/go/sleep-protocol": 0.8,
+  "/go/tools/ai-sleep-consultant": 0.8,
+  "/go/tools/cpap-mask-selector-quiz": 0.8,
+  "/go/tools/sleep-diary": 0.8,
+};
+
+// Change frequency overrides
+const FREQ_MAP: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {
+  "/": "weekly",
+  "/blog": "weekly",
+  "/learn": "weekly",
+  "/go": "weekly",
+  "/go/tools": "weekly",
+  "/go/sleep-hub": "weekly",
+  "/privacy-policy": "yearly",
+  "/terms-of-use": "yearly",
+  "/medical-review-policy": "yearly",
+};
+
+function getPriority(route: string): number {
+  if (PRIORITY_MAP[route] !== undefined) return PRIORITY_MAP[route];
+  const depth = route.split("/").filter(Boolean).length;
+  if (depth <= 1) return 0.8;
+  if (depth === 2) return 0.7;
+  return 0.6;
+}
+
+function getFrequency(route: string): MetadataRoute.Sitemap[number]["changeFrequency"] {
+  return FREQ_MAP[route] ?? "monthly";
+}
+
+function discoverStaticRoutes(): string[] {
+  const appDir = path.join(process.cwd(), "src", "app");
+  const routes: string[] = [];
+
+  function walk(dir: string, urlPath: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const hasPage = entries.some(
+      (e) => e.isFile() && (e.name === "page.tsx" || e.name === "page.ts" || e.name === "page.js")
+    );
+
+    if (hasPage) {
+      routes.push(urlPath || "/");
+    }
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const segment = entry.name;
+      // Skip: route groups (parentheses), dynamic segments (brackets), excluded paths
+      if (
+        segment.startsWith("(") ||
+        segment.startsWith("[") ||
+        EXCLUDED_SEGMENTS.has(segment)
+      ) continue;
+      walk(path.join(dir, segment), `${urlPath}/${segment}`);
+    }
+  }
+
+  walk(appDir, "");
+  return routes;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticPages: MetadataRoute.Sitemap = discoverStaticRoutes().map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: getFrequency(route),
+    priority: getPriority(route),
+  }));
+
   const sleepProtocolPages = (await getAllSleepProtocols()).map((protocol) => ({
     url: `${baseUrl}/go/sleep-protocol/${protocol.slug}`,
     lastModified: protocol.date ? new Date(protocol.date) : new Date(),
@@ -33,51 +123,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
-
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${baseUrl}/solutions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/at-home-sleep-test`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/dot-sleep-apnea-testing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/sleep-test`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/watchpat-one-set-up`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/cpap`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/pricing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/learn`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/about-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/medical-review-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.5 },
-    { url: `${baseUrl}/faqs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/resources/facts`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/terms-of-use`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/go`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/go/tools/cpap-mask-selector-quiz`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/go/tools/sleep-diary`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/go/tools/dream-interpreter`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools/sleep-mate`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools/sleep-sound-check`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools/sleep-schedule-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools/ahi-index-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/tools/ai-sleep-consultant`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/go/tools/ess-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/30-day-sleep-plan`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/sleep-protocol`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/go/sleep-hub`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/go/ebook/free-cpap-guide`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/get-your-at-home-sleep-apnea-test`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    // Symptom landing pages
-    { url: `${baseUrl}/always-tired`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/cant-focus`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/loud-snoring`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/anxiety-and-stress`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/low-sex-drive`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/hard-to-lose-weight`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/high-blood-pressure`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/constantly-getting-sick`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-  ];
 
   let blogPostPages: MetadataRoute.Sitemap = [];
   try {
@@ -107,5 +152,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...blogPostPages, ...sleepProtocolPages, ...atHomeSleepTestPages, ...sleepPlanPages, ...authors, ...categories];
+  return [
+    ...staticPages,
+    ...blogPostPages,
+    ...sleepProtocolPages,
+    ...atHomeSleepTestPages,
+    ...sleepPlanPages,
+    ...authors,
+    ...categories,
+  ];
 }
