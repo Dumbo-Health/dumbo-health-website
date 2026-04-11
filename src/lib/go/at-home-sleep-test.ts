@@ -153,6 +153,20 @@ export async function getAllAtHomeSleepTestSlugs(): Promise<string[]> {
   return data.map((row) => row.slug as string);
 }
 
+export async function getAtHomeSleepTestStates(): Promise<
+  Array<{ slug: string; state: string; formatted_location: string; city_count?: number }>
+> {
+  const { data, error } = await getClient()
+    .from("go_at_home_sleep_test_pages")
+    .select("slug,state,formatted_location")
+    .eq("is_published", true)
+    .eq("location_type", "state")
+    .order("state", { ascending: true });
+
+  if (error || !data) return [];
+  return data as Array<{ slug: string; state: string; formatted_location: string }>;
+}
+
 export async function getAtHomeSleepTestPage(slug: string): Promise<AtHomeSleepTestPageData | null> {
   const { data, error } = await getClient()
     .from("go_at_home_sleep_test_pages")
