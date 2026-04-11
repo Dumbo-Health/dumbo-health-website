@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { SleepTestLanding } from "@/components/sleep-test/sleep-test-landing";
 import { faqSchema } from "@/lib/schemas";
 import { medicalTeam } from "@/content/team";
+import { getStatesWithCities, type StateWithCities } from "@/lib/go/at-home-sleep-test";
 
 export const metadata: Metadata = {
   title: "At-Home Sleep Apnea Test — FDA Cleared, $149",
@@ -97,7 +98,74 @@ function ProductJsonLd() {
   );
 }
 
-export default function AtHomeSleepTestPage() {
+function LocationsSection({ states }: { states: StateWithCities[] }) {
+  if (!states.length) return null;
+  return (
+    <section className="bg-sunlight py-16 sm:py-20 border-t border-light-peach">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <p
+            className="font-mono uppercase tracking-widest mb-3"
+            style={{ fontSize: "0.75rem", color: "rgba(3,31,61,0.45)" }}
+          >
+            Service Areas
+          </p>
+          <h2
+            className="font-heading font-medium text-midnight mb-4"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", lineHeight: 1.15 }}
+          >
+            At-Home Sleep Testing Near You
+          </h2>
+          <p
+            className="font-body mx-auto max-w-xl"
+            style={{ fontSize: "1.0625rem", color: "rgba(3,31,61,0.6)", lineHeight: 1.65 }}
+          >
+            We ship directly to your door in every city below. Order today, test tonight.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {states.map((s) => (
+            <div key={s.state} className="bg-daylight rounded-2xl p-6 sm:p-8">
+              {/* State header */}
+              <div className="flex items-center justify-between mb-5">
+                <Link
+                  href={`/go/at-home-sleep-test/${s.stateSlug}`}
+                  className="font-heading font-medium text-midnight hover:text-peach transition-colors"
+                  style={{ fontSize: "1.25rem" }}
+                >
+                  {s.state} →
+                </Link>
+                <span
+                  className="font-mono uppercase tracking-widest"
+                  style={{ fontSize: "0.6875rem", color: "rgba(3,31,61,0.4)" }}
+                >
+                  {s.cities.length} cities
+                </span>
+              </div>
+              {/* City grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2">
+                {s.cities.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={`/go/at-home-sleep-test/${c.slug}`}
+                    className="font-body text-sm hover:text-peach transition-colors truncate"
+                    style={{ color: "rgba(3,31,61,0.7)" }}
+                  >
+                    {c.city}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default async function AtHomeSleepTestPage() {
+  const states = await getStatesWithCities();
   return (
     <>
       <FaqJsonLd />
@@ -143,6 +211,8 @@ export default function AtHomeSleepTestPage() {
             </div>
           </div>
         </section>
+
+        <LocationsSection states={states} />
 
         <section className="bg-daylight py-8 border-t border-sunlight">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
