@@ -164,3 +164,45 @@ export async function getAtHomeSleepTestPage(slug: string): Promise<AtHomeSleepT
   if (error || !data) return null;
   return data as AtHomeSleepTestPageData;
 }
+
+export interface StateWithCities {
+  state: string;
+  stateSlug: string;
+  cities: Array<{ city: string; slug: string }>;
+}
+
+export async function getStatesWithCities(): Promise<StateWithCities[]> {
+  const { data, error } = await getClient()
+    .from("go_at_home_sleep_test_pages")
+    .select("slug, city, state, location_type, state_slug")
+    .eq("is_published", true)
+    .order("state", { ascending: true })
+    .order("city", { ascending: true });
+
+  if (error || !data) return [];
+
+  const stateMap = new Map<string, StateWithCities>();
+
+  for (const row of data) {
+    const state = row.state as string;
+    if (!state) continue;
+
+    if (!stateMap.has(state)) {
+      // Find the state slug from a state-level row or derive it
+      const stateSlug = (row.location_type === "state" ? row.slug : row.state_slug) as string ?? state.toLowerCase().replace(/\s+/g, "-");
+      stateMap.set(state, { state, stateSlug, cities: [] });
+    }
+
+    if (row.location_type === "state") {
+      // Update stateSlug from the actual state row
+      const entry = stateMap.get(state)!;
+      stateMap.set(state, { ...entry, stateSlug: row.slug as string });
+    }
+
+    if (row.location_type === "city" && row.city) {
+      stateMap.get(state)!.cities.push({ city: row.city as string, slug: row.slug as string });
+    }
+  }
+
+  return Array.from(stateMap.values());
+}
