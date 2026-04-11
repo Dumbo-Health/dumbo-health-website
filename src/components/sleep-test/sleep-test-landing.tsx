@@ -1004,7 +1004,7 @@ export function SleepTestLanding() {
             className="relative overflow-hidden rounded-2xl"
             style={{ width: "186px", height: "234px", boxShadow: "0 12px 40px rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.15)" }}
           >
-            <Image src="/images/people/man-smiling-in-bed-2.png" alt="" fill className="object-cover object-center" sizes="186px" />
+            <Image src="/images/people/man-smiling-in-bed-2.png" alt="Man smiling after a restful night of sleep" fill className="object-cover object-center" sizes="186px" />
           </div>
         </div>
 
@@ -1017,7 +1017,7 @@ export function SleepTestLanding() {
             className="relative overflow-hidden rounded-2xl"
             style={{ width: "200px", height: "250px", boxShadow: "0 12px 40px rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.15)" }}
           >
-            <Image src="/images/people/girl-in-bed.png" alt="" fill className="object-cover object-center" sizes="200px" />
+            <Image src="/images/people/girl-in-bed.png" alt="Woman sleeping peacefully in bed" fill className="object-cover object-center" sizes="200px" />
           </div>
         </div>
 
@@ -1030,7 +1030,7 @@ export function SleepTestLanding() {
             className="relative overflow-hidden rounded-2xl"
             style={{ width: "160px", height: "200px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
           >
-            <Image src="/images/people/woman-blue-pajamas.png" alt="" fill className="object-cover object-top" sizes="160px" />
+            <Image src="/images/people/woman-blue-pajamas.png" alt="Woman in blue pajamas ready for a good night's rest" fill className="object-cover object-top" sizes="160px" />
           </div>
         </div>
 
@@ -1043,7 +1043,7 @@ export function SleepTestLanding() {
             className="relative overflow-hidden rounded-2xl"
             style={{ width: "160px", height: "200px", boxShadow: "0 10px 32px rgba(0,0,0,0.18)", border: "2px solid rgba(255,255,255,0.12)" }}
           >
-            <Image src="/images/people/man-with-pillows.png" alt="" fill className="object-cover object-top" sizes="160px" />
+            <Image src="/images/people/man-with-pillows.png" alt="Man relaxed and comfortable in bed" fill className="object-cover object-top" sizes="160px" />
           </div>
         </div>
 
