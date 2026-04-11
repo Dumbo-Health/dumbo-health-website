@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: `${post.seo_title || post.title} | Dumbo Health Blog`,
       description: post.seo_description || post.short_description || "",
       path: `/blog/${slug}`,
+      ogImage: post.main_image ?? undefined,
       type: "article",
     });
   } catch {

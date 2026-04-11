@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!entry) {
     return {
-      title: "30-Day Sleep Plan | Dumbo Health",
+      title: { absolute: "30-Day Sleep Plan | Dumbo Health" },
     };
   }
 
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalPath = `/go/30-day-sleep-plan/${resolved.day}`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: `${SITE_URL}${canonicalPath}`,

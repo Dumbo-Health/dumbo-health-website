@@ -40,6 +40,21 @@ const nextConfig: NextConfig = {
       { source: "/scientific-committee/:path*", destination: "/about-us", permanent: true },
       // Jacksonville geo-landing page → solutions
       { source: "/find-sleep-apnea-doctor-near-jacksonville", destination: "/solutions", permanent: true },
+      // /go/sleep-hub/* → sleep hub landing
+      { source: "/go/sleep-hub/what-is-cpap", destination: "/go", permanent: true },
+      { source: "/go/sleep-hub/cpap-insurance-coverage", destination: "/go", permanent: true },
+      { source: "/go/sleep-hub/cpap-mask-types", destination: "/go", permanent: true },
+      // /buy-a-cpap-landing-page → CPAP page
+      { source: "/buy-a-cpap-landing-page", destination: "/cpap", permanent: true },
+      // /hero-section/* → homepage (old Webflow dynamic pages, now 404)
+      { source: "/hero-section/high-blood-pressure", destination: "/", permanent: true },
+      { source: "/hero-section/loud-snoring", destination: "/", permanent: true },
+      { source: "/hero-section/anxiety-stress", destination: "/", permanent: true },
+      { source: "/hero-section/always-tired", destination: "/", permanent: true },
+      { source: "/hero-section/low-sex-drive", destination: "/", permanent: true },
+      { source: "/hero-section/hard-to-lose-weight", destination: "/", permanent: true },
+      { source: "/hero-section/cant-focus", destination: "/", permanent: true },
+      { source: "/hero-section/constantly-sick", destination: "/", permanent: true },
     ];
   },
 };
