@@ -65,6 +65,14 @@
             {
                 "title": "Try digital CBT-I if you have insomnia and pre-diabetes",
                 "description": "<p>A February 2026 feasibility trial in the <em>Journal of Sleep Research</em> tested a <strong>digital cognitive behavioral therapy for insomnia (dCBT-I)</strong> program in 24 people with both insomnia and pre-diabetes. Results were promising: <strong>83.3% completed four or more sessions</strong>, and participants showed significant improvements in sleep and depression — plus encouraging trends toward better metabolic markers including reductions in triglycerides and blood sugar-related indicators.</p><p>If you're managing pre-diabetes and also struggling with poor sleep, don't treat these as unrelated problems. Ask your healthcare provider about evidence-based digital sleep programs — the benefits may extend well beyond the bedroom. dCBT-I is accessible, affordable, and now showing early signs of metabolic benefit alongside its established sleep improvements.</p>"
+            },
+            {
+                "title": "Help teenagers maintain consistent sleep schedules — irregular rhythms predict heart risk",
+                "description": "<p>A 2026 scoping review in <em>Frontiers in Sleep</em> analyzed 19 studies covering <strong>16,717 participants</strong> and found that extreme night-owl patterns in adolescence and young adulthood are linked to elevated cardiometabolic risk — including higher blood pressure, blood sugar issues, and obesity markers.</p><p>This isn't about the occasional late night. Chronically delayed sleep-wake rhythms set cardiovascular risk trajectories that carry into adulthood. Help teenagers keep consistent bedtimes <strong>even on weekends</strong>: the regularity matters as much as the timing.</p>"
+            },
+            {
+                "title": "College students: campus food resources are a sleep intervention",
+                "description": "<p>A 2026 study in <em>Frontiers in Sleep</em> surveyed 710 minority undergraduates in New York and found that <strong>52.1% experienced food insecurity</strong> — and those students slept significantly less and weighed more. Food-secure students were <strong>2.3 times more likely</strong> to achieve the recommended 7-9 hours of sleep.</p><p>Food insecurity drives short sleep through multiple pathways: working extra jobs to cover food costs, stress and anxiety disrupting sleep onset, and inadequate nutrition affecting sleep quality. Campus food pantries, emergency financial aid, and meal assistance programs are, indirectly, sleep interventions. Use them without hesitation.</p>"
             }
         ],
         "sleep_apnea": [
@@ -199,6 +207,22 @@
             {
                 "title": "Start CPAP early to cut your stroke recurrence risk",
                 "description": "<p>A March 2026 review in <em>Nature and Science of Sleep</em> found that <strong>67.5% of ischemic stroke patients have obstructive sleep apnea</strong> — and that early CPAP treatment was directly associated with reduced stroke recurrence rates. The earlier treatment begins, the better the protection.</p><p>If you've had a stroke or TIA, or if you have cardiovascular risk factors, ask your doctor about sleep apnea screening as part of your recovery and prevention plan. Treating OSA with CPAP is not just about sleeping better — it may be one of the most important steps you can take for your long-term brain health.</p>"
+            },
+            {
+                "title": "Ask if AI-powered CPAP monitoring is available to you",
+                "description": "<p>A 2026 study in <em>Sleep</em> (Oxford Academic) showed that machine learning can identify CPAP non-adherence patterns <strong>weeks before a patient stops using therapy</strong> — giving clinicians a window to intervene early.</p><p>Ask your sleep clinic whether they use AI-powered usage monitoring. If so, opt in: it means a therapist can proactively contact you before you hit the point of frustration, rather than waiting for your next appointment months away.</p>"
+            },
+            {
+                "title": "Get your nasal airway evaluated if CPAP feels suffocating",
+                "description": "<p>A 2026 expert consensus in <em>Frontiers in Sleep</em> confirmed that <strong>nasal valve obstruction</strong> — the narrowest part of your nasal passage — is a major but routinely overlooked reason CPAP therapy fails. When nasal resistance is high, upper-airway collapse is more likely, and mouth breathing bypasses the pressure entirely.</p><p>If you struggle with CPAP despite adjustments, ask your ENT or sleep specialist to evaluate your nasal patency. Minimally invasive treatments like temperature-controlled radiofrequency (TCRF) remodeling can improve nasal airflow and, in turn, CPAP adherence — without surgery.</p>"
+            },
+            {
+                "title": "If you have OSA and feel off-balance, tell your doctor",
+                "description": "<p>A 2026 study in <em>Frontiers in Sleep</em> found that patients with obstructive sleep apnea show measurable <strong>vestibular dysfunction</strong> — impaired inner-ear balance caused by repeated nighttime oxygen drops during apnea events.</p><p>Dizziness and unsteadiness are rarely attributed to sleep apnea in routine care, but the connection is real. If you experience balance problems, mention them to your sleep specialist. Effective OSA treatment may improve balance and <strong>reduce fall risk</strong> — particularly important for older adults.</p>"
+            },
+            {
+                "title": "Ask your doctor about checking your SIRI score if you have trouble sleeping",
+                "description": "<p>A 2026 study in <em>Nature and Science of Sleep</em> found that the <strong>Systemic Inflammation Response Index (SIRI)</strong> — calculated from a routine complete blood count — is an independent predictor of self-reported sleep trouble across 39,156 adults.</p><p>The same study found that sleep deprivation raises <strong>IL-6</strong> (an inflammation marker linked to cardiovascular disease and depression) — and that this marker didn't fully return to baseline after recovery sleep. This means one night of catch-up doesn't undo the inflammatory damage from sleep loss. Ask your doctor whether your next blood panel includes a SIRI calculation.</p>"
             }
         ],
         "children": [
