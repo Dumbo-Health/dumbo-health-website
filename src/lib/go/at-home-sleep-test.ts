@@ -142,6 +142,25 @@ function getClient(): SupabaseClient {
   return _client;
 }
 
+export async function getPublishedCitiesByState(
+  stateSlug: string
+): Promise<Array<{ name: string; slug: string; city_slug: string }>> {
+  const { data, error } = await getClient()
+    .from("go_at_home_sleep_test_pages")
+    .select("city, city_slug")
+    .eq("is_published", true)
+    .eq("location_type", "city")
+    .eq("state_slug", stateSlug)
+    .order("city", { ascending: true });
+
+  if (error || !data) return [];
+  return data.map((row) => ({
+    name: row.city as string,
+    slug: row.city_slug as string,
+    city_slug: row.city_slug as string,
+  }));
+}
+
 export async function getAllAtHomeSleepTestSlugs(): Promise<string[]> {
   const { data, error } = await getClient()
     .from("go_at_home_sleep_test_pages")

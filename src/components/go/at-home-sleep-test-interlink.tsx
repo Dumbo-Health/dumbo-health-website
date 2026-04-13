@@ -1,6 +1,5 @@
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+import { getPublishedCitiesByState } from "@/lib/go/at-home-sleep-test";
 
 interface InterlinkSectionProps {
   pageData: {
@@ -16,32 +15,16 @@ interface InterlinkSectionProps {
   pageType: "at-home-sleep-test";
 }
 
-function loadCities() {
-  const citiesPath = path.join(
-    process.cwd(),
-    "src",
-    "content",
-    "go",
-    "at-home-sleep-test",
-    "data",
-    "cities.json"
-  );
-  return JSON.parse(fs.readFileSync(citiesPath, "utf8")) as Array<{
-    name: string;
-    slug: string;
-    state_slug: string;
-  }>;
-}
-
-export default function AtHomeSleepTestInterlinkSection({
+export default async function AtHomeSleepTestInterlinkSection({
   pageData,
   pageType,
 }: InterlinkSectionProps) {
-  const cities = loadCities();
   const city_slug = pageData.city_slug ?? "";
   const state_slug = pageData.state_slug;
   const solution_slug = pageData.solution_slug ?? "";
   const state = pageData.state ?? "";
+
+  const cities = await getPublishedCitiesByState(state_slug);
 
   const isCityPage = city_slug.length > 0;
   let cityLinks: Array<{ href: string; title: string }> = [];
@@ -49,9 +32,7 @@ export default function AtHomeSleepTestInterlinkSection({
 
   if (isCityPage) {
     heading = pageData.interlink_heading?.city_level || "At-home sleep studies in nearby cities";
-    const citiesInState = cities.filter(
-      (city) => city.state_slug === state_slug && city.slug !== city_slug
-    );
+    const citiesInState = cities.filter((city) => city.slug !== city_slug);
     cityLinks = citiesInState.map((city) => ({
       href: `/go/${pageType}/${solution_slug ? `${solution_slug}-` : ""}${city.slug}-${state_slug}`,
       title: `At-Home Sleep Test in ${city.name}, ${state}`,
@@ -60,8 +41,7 @@ export default function AtHomeSleepTestInterlinkSection({
     heading = pageData.interlink_heading?.city_level
       ? `${pageData.interlink_heading.city_level} ${state}`
       : `At-home sleep studies in other cities in ${state}`;
-    const citiesInState = cities.filter((city) => city.state_slug === state_slug);
-    cityLinks = citiesInState.map((city) => ({
+    cityLinks = cities.map((city) => ({
       href: `/go/${pageType}/${solution_slug ? `${solution_slug}-` : ""}${city.slug}-${state_slug}`,
       title: `At-Home Sleep Test in ${city.name}, ${state}`,
     }));
