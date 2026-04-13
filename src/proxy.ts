@@ -15,7 +15,6 @@ const PAGE_FLAGS: { path: string; envVar: string }[] = [
   { path: '/learn',                   envVar: 'NEXT_PUBLIC_PAGE_LEARN' },
   { path: '/resupply',                envVar: 'NEXT_PUBLIC_PAGE_RESUPPLY' },
   { path: '/cpap-care',               envVar: 'NEXT_PUBLIC_PAGE_CPAP_CARE' },
-  { path: '/cash-pay',                envVar: 'NEXT_PUBLIC_PAGE_CASH_PAY' },
 ]
 
 function isEnabled(envVar: string): boolean {
@@ -33,6 +32,11 @@ export function proxy(request: NextRequest) {
     if (!session || session.value !== '1') {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
+  }
+
+  // Hide flags (hide when env var === "true")
+  if (pathname === '/cash-pay' && process.env.NEXT_PUBLIC_HIDE_CASH_PAY === 'true') {
+    return NextResponse.rewrite(new URL('/not-found', request.url), { status: 404 })
   }
 
   // Page feature flags
@@ -58,6 +62,6 @@ export const config = {
     '/learn/:path*',
     '/resupply/:path*',
     '/cpap-care/:path*',
-    '/cash-pay/:path*',
+    '/cash-pay',
   ],
 }
