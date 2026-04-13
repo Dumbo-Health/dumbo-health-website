@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!protocol) {
     return {
-      title: "Sleep Protocol Not Found | Dumbo Health",
+      title: { absolute: "Sleep Protocol Not Found | Dumbo Health" },
     };
   }
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = protocol.meta_description || protocol.intro;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: `${SITE_URL}${canonicalPath}`,

@@ -426,6 +426,18 @@ export default function SleepPlaylistClient() {
       }
       setCommunityEmailError(null);
       setCommunityEmail(communityEmailInput);
+
+      // Notify n8n — fire-and-forget
+      fetch("/go/api/funnel/email-capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: communityEmailInput,
+          sourceUrl: window.location.href,
+          metadata: { source: "sleep_playlist_community" },
+        }),
+      }).catch(() => {});
+
       if (pendingCommunityTrack) {
         doPlayCommunityTrack(pendingCommunityTrack);
         setPendingCommunityTrack(null);

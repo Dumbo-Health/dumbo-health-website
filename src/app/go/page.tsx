@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Download, MoonStar, Wrench } from "lucide-react";
+import { ArrowRight, BookOpen, Download, MapPin, MoonStar, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createMetadata } from "@/lib/metadata";
 
@@ -31,6 +31,13 @@ const featuredRoutes = [
       "Read a practical CPAP guide covering comfort, setup, and long-term treatment success.",
     href: "/go/ebook/free-cpap-guide",
     icon: Download,
+  },
+  {
+    title: "At-Home Sleep Test",
+    description:
+      "Find FDA-approved at-home sleep apnea testing available in your city across Florida and Texas.",
+    href: "/go/at-home-sleep-test",
+    icon: MapPin,
   },
 ] as const;
 

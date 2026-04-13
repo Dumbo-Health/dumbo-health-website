@@ -37,6 +37,7 @@ const PRIORITY_MAP: Record<string, number> = {
   "/go/tools/ai-sleep-consultant": 0.8,
   "/go/tools/cpap-mask-selector-quiz": 0.8,
   "/go/tools/sleep-diary": 0.8,
+  "/go/at-home-sleep-test": 0.8,
 };
 
 // Change frequency overrides

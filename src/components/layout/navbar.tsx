@@ -99,6 +99,17 @@ function IconFacts() {
   );
 }
 
+function IconReferral() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <line x1="19" y1="8" x2="23" y2="8" />
+      <line x1="21" y1="6" x2="21" y2="10" />
+    </svg>
+  );
+}
+
 function IconCalendar() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -235,6 +246,24 @@ function SolutionsMegaMenuPanel({ open }: { open: boolean }) {
                 {SOLUTIONS_FEATURED.label}
               </p>
               <p className="font-body text-xs text-midnight/50">{SOLUTIONS_FEATURED.description}</p>
+            </div>
+          </Link>
+        </div>
+
+        {/* Refer a Patient — provider entry point */}
+        <div className="px-2 pb-1">
+          <Link
+            href="/referrals"
+            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal/10 text-teal transition-all duration-200 ease-out group-hover:bg-teal group-hover:text-white">
+              <IconReferral />
+            </div>
+            <div className="min-w-0">
+              <p className="font-body text-sm font-semibold text-midnight transition-colors duration-200 group-hover:text-teal">
+                Refer a Patient
+              </p>
+              <p className="font-body text-xs text-midnight/50">Send a patient our way in minutes</p>
             </div>
           </Link>
         </div>
@@ -497,6 +526,25 @@ function SolutionsMobileAccordion({ onClose }: { onClose: () => void }) {
               </p>
               <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.45)" }}>
                 {SOLUTIONS_FEATURED.description}
+              </p>
+            </div>
+          </Link>
+
+          {/* Refer a Patient — provider entry point */}
+          <Link
+            href="/referrals"
+            onClick={onClose}
+            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ease-out hover:bg-daylight mt-1"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal/10 text-teal transition-all duration-200 group-hover:bg-teal group-hover:text-white">
+              <IconReferral />
+            </div>
+            <div>
+              <p className="font-body text-sm font-semibold text-midnight group-hover:text-teal transition-colors duration-200">
+                Refer a Patient
+              </p>
+              <p className="font-body text-xs" style={{ color: "rgba(3,31,61,0.45)" }}>
+                Send a patient our way in minutes
               </p>
             </div>
           </Link>

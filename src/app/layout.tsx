@@ -17,6 +17,16 @@ export const metadata: Metadata = {
     siteName: "Dumbo Health",
     locale: "en_US",
     type: "website",
+    title: "Sleep Apnea Treatment Online | At-Home Sleep Test | Dumbo Health",
+    description:
+      "Get diagnosed and treated for sleep apnea from home. FDA-cleared at-home sleep test for $149. Expert telehealth care in FL & TX. Start sleeping better today.",
+    url: "https://www.dumbo.health",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sleep Apnea Treatment Online | At-Home Sleep Test | Dumbo Health",
+    description:
+      "Get diagnosed and treated for sleep apnea from home. FDA-cleared at-home sleep test for $149. Expert telehealth care in FL & TX. Start sleeping better today.",
   },
 };
 

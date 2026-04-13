@@ -4,7 +4,7 @@ import { createAdminClient } from "@/lib/supabase-admin";
 
 const TrackSchema = z.object({
   session_id: z.string().uuid(),
-  event: z.enum(["started", "step_completed", "completed", "abandoned"]),
+  event: z.enum(["started", "step_completed", "completed", "abandoned", "buy_click"]),
   flow_slug: z.string().optional().nullable(),
   section_slug: z.string().optional().nullable(),
   question_slug: z.string().optional().nullable(),
