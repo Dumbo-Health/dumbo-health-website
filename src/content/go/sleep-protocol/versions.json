@@ -1,4 +1,15 @@
 {
+    "2026-04-11": {
+        "title": "Sleep Science This Week: April 5-11, 2026",
+        "changes": [
+            "Added 'Ask if AI-powered CPAP monitoring is available to you' tip in sleep_apnea section - Oxford Academic Sleep Journal (April 6, 2026) showed AI identifies CPAP non-adherence patterns weeks before dropout, enabling proactive intervention",
+            "Added 'Get your nasal airway evaluated if CPAP feels suffocating' tip in sleep_apnea section - Frontiers in Sleep expert consensus (April 8, 2026) confirmed nasal valve obstruction is a major underappreciated cause of CPAP failure; minimally invasive TCRF remodeling can improve patency",
+            "Added 'If you have OSA and feel off-balance, tell your doctor' tip in sleep_apnea section - Frontiers in Sleep (April 1, 2026) found measurable vestibular dysfunction in OSA patients from intermittent hypoxia; treating OSA may improve balance and reduce fall risk",
+            "Added 'Ask your doctor about checking your SIRI score if you have trouble sleeping' tip in sleep_apnea section - Nature and Science of Sleep (April 9, 2026) found SIRI (from routine CBC) predicts sleep trouble across 39,156 adults; IL-6 elevation persists after recovery sleep",
+            "Added 'Help teenagers maintain consistent sleep schedules — irregular rhythms predict heart risk' tip in schedule section - Frontiers in Sleep review (April 7, 2026) of 19 studies, 16,717 participants linked extreme night-owl patterns in adolescence to elevated cardiometabolic risk",
+            "Added 'College students: campus food resources are a sleep intervention' tip in schedule section - Frontiers in Sleep (April 6, 2026) found 52.1% food insecurity rate among minority undergraduates; food-secure students 2.3x more likely to achieve recommended sleep duration"
+        ]
+    },
     "2026-04-04": {
         "title": "Sleep Science This Week: March 29 - April 4, 2026",
         "changes": [

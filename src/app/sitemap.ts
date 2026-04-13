@@ -14,9 +14,11 @@ const EXCLUDED_SEGMENTS = new Set([
   "coming-soon",
   "internal",
   "upload",
-  "cpap-care",          // redirects
+  "cpap-care",              // redirects to /cpap
   "oral-appliance-therapy", // notFound
-  "resupply",           // redirects
+  "resupply",               // redirects
+  "learn",                  // redirects to /resources/facts
+  "pricing",                // redirects to /cpap
 ]);
 
 // Priority overrides for known high-value pages
