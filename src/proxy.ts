@@ -34,6 +34,11 @@ export function proxy(request: NextRequest) {
     }
   }
 
+  // Hide flags (hide when env var === "true")
+  if (pathname === '/cash-pay' && process.env.NEXT_PUBLIC_HIDE_CASH_PAY === 'true') {
+    return NextResponse.rewrite(new URL('/not-found', request.url), { status: 404 })
+  }
+
   // Page feature flags
   for (const { path, envVar } of PAGE_FLAGS) {
     if (pathname === path || pathname.startsWith(path + '/')) {
@@ -57,5 +62,6 @@ export const config = {
     '/learn/:path*',
     '/resupply/:path*',
     '/cpap-care/:path*',
+    '/cash-pay',
   ],
 }
