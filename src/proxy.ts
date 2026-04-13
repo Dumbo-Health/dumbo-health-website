@@ -15,6 +15,7 @@ const PAGE_FLAGS: { path: string; envVar: string }[] = [
   { path: '/learn',                   envVar: 'NEXT_PUBLIC_PAGE_LEARN' },
   { path: '/resupply',                envVar: 'NEXT_PUBLIC_PAGE_RESUPPLY' },
   { path: '/cpap-care',               envVar: 'NEXT_PUBLIC_PAGE_CPAP_CARE' },
+  { path: '/cash-pay',                envVar: 'NEXT_PUBLIC_PAGE_CASH_PAY' },
 ]
 
 function isEnabled(envVar: string): boolean {
@@ -57,5 +58,6 @@ export const config = {
     '/learn/:path*',
     '/resupply/:path*',
     '/cpap-care/:path*',
+    '/cash-pay/:path*',
   ],
 }
