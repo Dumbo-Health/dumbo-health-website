@@ -6,6 +6,10 @@ import { getAllSleepProtocols } from "@/lib/go/sleep-protocol";
 import { getSleepPlanOrderedKeys } from "@/lib/go/sleep-plan";
 import { getBlogPosts } from "@/lib/supabase";
 
+// Regenerate the sitemap via ISR every 12 hours so new blog posts and
+// programmatic pages are picked up without a full redeploy.
+export const revalidate = 43200;
+
 const baseUrl = "https://www.dumbo.health";
 
 // Routes excluded from sitemap (redirects, notFound, private, or not indexable)
@@ -136,8 +140,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));
-  } catch {
-    // Supabase unavailable at build time — skip blog posts
+  } catch (err) {
+    console.error("[sitemap] Failed to fetch blog posts — they will be absent from this sitemap response:", err);
   }
 
   // Blog author pages — match Webflow site authors
