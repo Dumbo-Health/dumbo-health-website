@@ -135,7 +135,9 @@ export default function CpapPage() {
         <BlockerSection />
 
         {/* 3. Reframe — CPAP works when you're supported */}
-        <ReframeSection />
+        <div id="how-it-works">
+          <ReframeSection />
+        </div>
 
         {/* 4. What Dumbo actually is — subscription includes + DME contrast */}
         <SubscriptionArgument />
