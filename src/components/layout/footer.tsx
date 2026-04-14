@@ -59,6 +59,7 @@ const FOOTER_COLUMNS = [
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faqs" },
       { label: "Facts", href: "/resources/facts" },
+      { label: "DOT Physical", href: "https://www.dumbo.health/blog-category/dot-physical", external: true },
     ],
   },
   {
