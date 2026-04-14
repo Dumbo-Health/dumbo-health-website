@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TeamCard } from "@/components/about/team-card";
 import { medicalTeam } from "@/content/team";
+import { testimonials } from "@/content/testimonials";
 import {
   Accordion,
   AccordionContent,
@@ -159,7 +160,7 @@ const PRICING_TIERS = [
     recommended: true,
     features: [
       "Everything in Essentials",
-      "Dedicated sleep coach",
+      "Dedicated sleep coach (licensed care team)",
       "Advanced adherence monitoring",
       "Priority results turnaround",
     ],
@@ -171,7 +172,7 @@ const PRICING_TIERS = [
     recommended: false,
     features: [
       "Everything in Premium",
-      "Concierge clinical support",
+      "Concierge clinical support (priority care team access)",
       "Direct physician messaging",
       "Custom reporting for your practice",
     ],
@@ -358,9 +359,10 @@ function HeroSection() {
             <a
               href="#referral-form"
               className="font-mono text-sm uppercase tracking-wider"
-              style={{ background: "#FF8361", color: "#FFFFFF", borderRadius: 12, padding: "15px 36px", textDecoration: "none", display: "inline-block", letterSpacing: "0.08em" }}
+              style={{ background: "#FF8361", color: "#FFFFFF", borderRadius: 12, padding: "15px 36px", textDecoration: "none", display: "inline-flex", flexDirection: "column", alignItems: "center", letterSpacing: "0.08em" }}
             >
               Refer a Patient
+              <span style={{ fontSize: "0.62em", opacity: 0.8, marginTop: 2, letterSpacing: "0.05em" }}>FL &amp; TX only</span>
             </a>
             <a
               href="#how-it-works"
@@ -372,7 +374,7 @@ function HeroSection() {
           </motion.div>
           <motion.p
             className="font-mono text-xs uppercase tracking-wider mt-8"
-            style={{ color: "rgba(3,31,61,0.35)" }}
+            style={{ color: "rgba(3,31,61,0.55)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ ease: EASE, duration: 0.4, delay: 0.35 }}
@@ -414,12 +416,12 @@ function WhoWeAreSection() {
           </motion.h2>
           <motion.p
             className="font-body mt-4"
-            style={{ color: "rgba(252,246,237,0.45)", fontSize: 16, lineHeight: 1.65, maxWidth: "52ch" }}
+            style={{ color: "rgba(252,246,237,0.65)", fontSize: 16, lineHeight: 1.65, maxWidth: "52ch" }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
           >
-            No other sleep service does all three. Most stop at the diagnosis.
+            No other sleep service does all three. Most stop at the diagnosis. We serve as your specialist partner — your patients remain yours.
           </motion.p>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -449,12 +451,29 @@ function WhoWeAreSection() {
               <h3 className="font-heading font-medium mb-3" style={{ color: "#FCF6ED", fontSize: 20, lineHeight: 1.3 }}>
                 {item.title}
               </h3>
-              <p className="font-body flex-1" style={{ color: "rgba(252,246,237,0.5)", fontSize: 15, lineHeight: 1.7 }}>
+              <p className="font-body flex-1" style={{ color: "rgba(252,246,237,0.65)", fontSize: 15, lineHeight: 1.7 }}>
                 {item.body}
               </p>
             </motion.div>
           ))}
         </div>
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: EASE, delay: 0.55 }}
+        >
+          <a
+            href="#referral-form"
+            className="font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2"
+            style={{ color: "#78BFBC", textDecoration: "none" }}
+          >
+            Refer a Patient &middot; FL &amp; TX
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
@@ -535,6 +554,23 @@ function FullPathwaySection() {
             ))}
           </div>
         </div>
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: EASE, delay: 0.7 }}
+        >
+          <a
+            href="#referral-form"
+            className="font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2"
+            style={{ color: "#78BFBC", textDecoration: "none" }}
+          >
+            Refer a Patient &middot; FL &amp; TX
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
@@ -569,7 +605,7 @@ function ReportSection() {
           </motion.h2>
           <motion.p
             className="font-body mt-4"
-            style={{ color: "rgba(252,246,237,0.45)", fontSize: 16, lineHeight: 1.65, maxWidth: "52ch" }}
+            style={{ color: "rgba(252,246,237,0.65)", fontSize: 16, lineHeight: 1.65, maxWidth: "52ch" }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
@@ -639,10 +675,27 @@ function ReportSection() {
 
           {/* Footer */}
           <div style={{ padding: "16px 32px", borderTop: "1px solid rgba(252,246,237,0.08)" }}>
-            <p className="font-body text-sm" style={{ color: "rgba(252,246,237,0.28)" }}>
+            <p className="font-body text-sm" style={{ color: "rgba(252,246,237,0.45)" }}>
               Reports are encrypted and delivered via secure email to the referring provider. Fax delivery available on request.
             </p>
           </div>
+        </motion.div>
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, ease: EASE, delay: 0.65 }}
+        >
+          <a
+            href="#referral-form"
+            className="font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2"
+            style={{ color: "#78BFBC", textDecoration: "none" }}
+          >
+            Refer a Patient &middot; FL &amp; TX
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>
@@ -767,10 +820,16 @@ function PricingSection() {
                 </span>
               </div>
               <p
-                className="font-mono text-xs mb-7"
+                className="font-mono text-xs mb-1"
                 style={{ color: tier.recommended ? "rgba(252,246,237,0.35)" : "rgba(3,31,61,0.32)" }}
               >
                 {tier.perDay}
+              </p>
+              <p
+                className="font-mono text-xs mb-7"
+                style={{ color: tier.recommended ? "rgba(252,246,237,0.50)" : "rgba(3,31,61,0.55)" }}
+              >
+                No contracts &middot; Cancel anytime
               </p>
               <div className="flex flex-col gap-3 flex-1 mb-8">
                 {tier.features.map((feature, j) => (
@@ -798,22 +857,12 @@ function PricingSection() {
                   </div>
                 ))}
               </div>
-              <a
-                href="#referral-form"
-                className="font-mono text-sm uppercase tracking-wider text-center"
-                style={{
-                  display: "block",
-                  background: tier.recommended ? "#FF8361" : "transparent",
-                  color: tier.recommended ? "#FFFFFF" : "#031F3D",
-                  border: tier.recommended ? "none" : "1.5px solid rgba(3,31,61,0.18)",
-                  borderRadius: 12,
-                  padding: "13px 24px",
-                  textDecoration: "none",
-                  letterSpacing: "0.08em",
-                }}
+              <p
+                className="font-mono text-xs text-center"
+                style={{ color: tier.recommended ? "rgba(252,246,237,0.55)" : "rgba(3,31,61,0.45)" }}
               >
-                Refer a Patient
-              </a>
+                Use the form below to refer a patient.
+              </p>
             </motion.div>
           ))}
         </div>
@@ -866,7 +915,7 @@ function MedicalTeamSection() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
           >
-            Board-certified sleep physicians with deep telehealth experience. Backed by a scientific committee from UCLA, Yale, and AP-HP Paris.
+            Board-certified sleep physicians with deep telehealth experience. Supported by a scientific advisory board with faculty from UCLA, Yale, and AP-HP Paris.
           </motion.p>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -878,6 +927,76 @@ function MedicalTeamSection() {
               transition={{ duration: 0.65, ease: EASE, delay: 0.18 + i * 0.1 }}
             >
               <TeamCard member={member} variant="medical" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── ProviderTestimonialsSection — peer-validation from referring physicians ────
+
+function ProviderTestimonialsSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-8% 0px" });
+  return (
+    <section className="py-24 md:py-32" style={{ background: "#FCF6ED" }}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div ref={ref} className="mb-14">
+          <motion.p
+            className="font-mono text-xs uppercase tracking-widest mb-4"
+            style={{ color: "#78BFBC" }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            What Referring Providers Say
+          </motion.p>
+          <motion.h2
+            className="font-heading font-medium leading-tight"
+            style={{ color: "#031F3D", fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: "28ch" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
+          >
+            Physicians who&rsquo;ve worked with us.
+          </motion.h2>
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, ease: EASE, delay: 0.18 + i * 0.1 }}
+              className="rounded-2xl p-8 flex flex-col"
+              style={{
+                background: "#FFFFFF",
+                boxShadow: "0 2px 12px rgba(3,31,61,0.06)",
+              }}
+            >
+              <svg
+                width="28" height="28" viewBox="0 0 24 24"
+                fill="rgba(255,131,97,0.2)"
+                className="mb-5"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <p className="font-body flex-1" style={{ color: "rgba(3,31,61,0.72)", fontSize: 15, lineHeight: 1.75 }}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div
+                className="mt-6 pt-5 flex flex-col"
+                style={{ borderTop: "1px solid rgba(3,31,61,0.07)" }}
+              >
+                <p className="font-heading font-medium" style={{ color: "#031F3D", fontSize: 15 }}>
+                  {t.name}
+                </p>
+                <p className="font-mono text-xs mt-1 uppercase tracking-wider" style={{ color: "#78BFBC" }}>
+                  {t.title}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -1016,16 +1135,16 @@ function ReferralFormSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
           >
-            Ready to refer?
+            Send your first referral in 3 minutes.
           </motion.h2>
           <motion.p
             className="font-body mt-3"
-            style={{ color: "rgba(252,246,237,0.5)", fontSize: 16 }}
+            style={{ color: "rgba(252,246,237,0.65)", fontSize: 16 }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
           >
-            Takes about 3 minutes. We handle everything from here.
+            We handle everything from here.
           </motion.p>
           <motion.div
             className="flex items-center justify-center gap-2 mt-4"
@@ -1050,6 +1169,29 @@ function ReferralFormSection() {
             </div>
           </motion.div>
         </div>
+
+        {/* Geographic restriction callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, ease: EASE, delay: 0.3 }}
+          className="flex items-start gap-3 rounded-2xl p-4 mb-8"
+          style={{
+            background: "rgba(120,191,188,0.08)",
+            border: "1px solid rgba(120,191,188,0.3)",
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#78BFBC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}>
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+          </svg>
+          <p className="font-body text-sm" style={{ color: "rgba(252,246,237,0.72)", lineHeight: 1.6 }}>
+            <span className="font-mono" style={{ color: "#78BFBC" }}>Currently accepting referrals for patients in Florida and Texas.</span>
+            {" "}Expanding to more states soon. Outside FL or TX?{" "}
+            <a href="mailto:contact@dumbo.health" style={{ color: "#78BFBC", textDecoration: "underline" }}>
+              Contact us
+            </a>{" "}to get on the list.
+          </p>
+        </motion.div>
 
         {/* Card */}
         <motion.div
@@ -1264,7 +1406,7 @@ function ReferralFormSection() {
                   className="font-mono text-sm uppercase tracking-wider"
                   style={{ background: "#FF8361", color: "#FFFFFF", border: "none", borderRadius: 12, padding: "13px 32px", cursor: "pointer", letterSpacing: "0.08em" }}
                 >
-                  Continue
+                  {step === 1 ? "Next: Patient Info" : "Next: Referral Reason"}
                 </button>
               ) : (
                 <button
@@ -1289,10 +1431,10 @@ function ReferralFormSection() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4, ease: EASE, delay: 0.5 }}
           className="font-body text-sm text-center mt-6"
-          style={{ color: "rgba(252,246,237,0.28)" }}
+          style={{ color: "rgba(252,246,237,0.55)" }}
         >
           Questions?{" "}
-          <a href="mailto:contact@dumbo.health" style={{ color: "rgba(252,246,237,0.45)", textDecoration: "none" }}>
+          <a href="mailto:contact@dumbo.health" style={{ color: "rgba(252,246,237,0.72)", textDecoration: "none" }}>
             contact@dumbo.health
           </a>
         </motion.p>
@@ -1374,8 +1516,9 @@ export default function ReferralsPage() {
         <WhoWeAreSection />
         <FullPathwaySection />
         <ReportSection />
-        <PricingSection />
         <MedicalTeamSection />
+        <ProviderTestimonialsSection />
+        <PricingSection />
         <ReferralFormSection />
         <FAQSection />
       </main>
