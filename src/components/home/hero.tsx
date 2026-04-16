@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const HEADLINE = "Find out if sleep apnea is stealing your sleep.";
+const HEADLINE = "A better way to diagnose and treat sleep apnea.";
 const SUBHEAD  = "Treat it from home. FDA-cleared test for $149. No referral, no waiting room, no surprise bills.";
 
 const marqueeImages = [
