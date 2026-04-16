@@ -11,6 +11,7 @@ const CATEGORIES = [
   { label: "Sleep Apnea", slug: "sleep-apnea" },
   { label: "Sleep Disorders", slug: "sleep-disorders" },
   { label: "CPAP", slug: "cpap" },
+  { label: "DOT Physical", slug: "dot-physical" },
 ];
 
 const PAGE_SIZE = 9;
@@ -45,7 +46,7 @@ export function BlogIndexClient({ posts, initialCategory = "all" }: BlogIndexCli
   }
 
   const filtered = activeCategory === "all"
-    ? posts
+    ? posts.filter((p) => p.category_slug !== "dot-physical")
     : posts.filter((p) => p.category_slug === activeCategory);
 
   const featuredPost = filtered.find((p) => p.featured) ?? null;

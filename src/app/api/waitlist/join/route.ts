@@ -106,6 +106,7 @@ async function notifyCustomerIO({
     body: JSON.stringify({
       name: "waitlist_joined",
       data: {
+        state,
         waitlist_state: state,
         waitlist_interest: interest,
         waitlist_source: source,

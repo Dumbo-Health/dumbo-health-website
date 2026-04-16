@@ -7,6 +7,7 @@ import { SleepTestLanding } from "@/components/sleep-test/sleep-test-landing";
 import { faqSchema } from "@/lib/schemas";
 import { medicalTeam } from "@/content/team";
 import { getStatesWithCities, type StateWithCities } from "@/lib/go/at-home-sleep-test";
+import { SHOPIFY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "At-Home Sleep Apnea Test — FDA Cleared, $149",
@@ -218,13 +219,14 @@ export default async function AtHomeSleepTestPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <p className="font-body text-sm" style={{ color: "rgba(3,31,61,0.55)" }}>
               Prefer a streamlined checkout?{" "}
-              <Link
-                href="/get-your-at-home-sleep-apnea-test"
+              <a
+                href={SHOPIFY.buyUrl}
+                data-shopify-checkout="sleep-test"
                 className="font-medium hover:underline"
                 style={{ color: "#FF8361" }}
               >
                 Order your at-home sleep apnea test →
-              </Link>
+              </a>
             </p>
           </div>
         </section>
