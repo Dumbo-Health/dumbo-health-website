@@ -1015,6 +1015,7 @@ function ReferralFormSection() {
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [submitGuard, setSubmitGuard] = useState(false);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue, trigger } =
     useForm<ReferralFormData>({ resolver: zodResolver(ReferralSchema), defaultValues: { referral_reasons: [] } });
@@ -1055,6 +1056,18 @@ function ReferralFormSection() {
         const body = await res.json().catch(() => ({}));
         setServerError((body as { error?: string }).error ?? "Something went wrong. Please try again.");
         return;
+      }
+      // Upload optional document attachment — fire-and-forget, do not block success
+      if (attachedFile) {
+        const fd = new FormData();
+        fd.append("file", attachedFile);
+        fd.append("provider_name", data.provider_name);
+        fd.append("provider_email", data.provider_email);
+        if (data.provider_npi) fd.append("npi", data.provider_npi);
+        fd.append("practice_name", data.practice_name);
+        fd.append("patient_name", `${data.patient_first_name} ${data.patient_last_name}`);
+        fd.append("source", "full_form");
+        fetch("/api/referrals/upload", { method: "POST", body: fd }).catch(() => {});
       }
       setSubmitted(true);
     } catch {
@@ -1366,6 +1379,64 @@ function ReferralFormSection() {
                           {(watch("special_requests") ?? "").length}/300
                         </p>
                       </Field>
+
+                      {/* Optional document attachment */}
+                      <div style={{ marginTop: 8 }}>
+                        <label style={LABEL_STYLE}>Supporting documents (optional)</label>
+                        <p style={{ fontFamily: "'Aeonik', sans-serif", fontSize: 13, color: "rgba(3,31,61,0.45)", marginBottom: 10, marginTop: -2 }}>
+                          Referral letter, prior sleep study, or other clinical records.
+                        </p>
+                        {!attachedFile ? (
+                          <label
+                            htmlFor="doc-upload"
+                            style={{
+                              display: "flex", flexDirection: "column", alignItems: "center",
+                              justifyContent: "center", gap: 7, width: "100%", padding: "20px 16px",
+                              background: "#FCF6ED", border: "1.5px dashed rgba(3,31,61,0.18)",
+                              borderRadius: 10, cursor: "pointer", textAlign: "center",
+                            }}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(3,31,61,0.32)" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <span style={{ fontFamily: "'Aeonik', sans-serif", fontSize: 13, color: "rgba(3,31,61,0.52)" }}>
+                              Click to attach a file
+                            </span>
+                            <span style={{ fontFamily: "'Aeonik Mono', monospace", fontSize: 10, color: "rgba(3,31,61,0.32)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                              PDF · JPEG · PNG · Max 20 MB
+                            </span>
+                            <input
+                              id="doc-upload"
+                              type="file"
+                              accept=".pdf,.jpg,.jpeg,.png,.tiff,.docx"
+                              style={{ display: "none" }}
+                              onChange={(e) => { const f = e.target.files?.[0]; if (f) setAttachedFile(f); }}
+                            />
+                          </label>
+                        ) : (
+                          <div style={{
+                            display: "flex", alignItems: "center", gap: 10,
+                            background: "#FCF6ED", border: "1.5px solid rgba(3,31,61,0.12)",
+                            borderRadius: 10, padding: "12px 14px",
+                          }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#78BFBC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span style={{ fontFamily: "'Aeonik', sans-serif", fontSize: 13, color: "#031F3D", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                              {attachedFile.name}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setAttachedFile(null)}
+                              style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: "rgba(3,31,61,0.40)", display: "flex" }}
+                            >
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                              </svg>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
 
@@ -1505,6 +1576,248 @@ function FAQSection() {
   );
 }
 
+// ── QuickUploadSection — document-only alternative path ──────────────────────
+
+function QuickUploadSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-8% 0px" });
+  const [file, setFile] = useState<File | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fields, setFields] = useState({
+    provider_name: "",
+    provider_email: "",
+    npi: "",
+    patient_name: "",
+  });
+
+  function handleField(e: React.ChangeEvent<HTMLInputElement>) {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    if (!fields.provider_name.trim()) { setError("Provider name is required."); return; }
+    if (!fields.provider_email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.provider_email)) {
+      setError("A valid email is required."); return;
+    }
+    if (!file) { setError("Please attach a document."); return; }
+    if (file.size > 20 * 1024 * 1024) { setError("File must be under 20 MB."); return; }
+
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("provider_name", fields.provider_name);
+      fd.append("provider_email", fields.provider_email);
+      if (fields.npi) fd.append("npi", fields.npi);
+      if (fields.patient_name) fd.append("patient_name", fields.patient_name);
+      fd.append("source", "quick_upload");
+
+      const res = await fetch("/api/referrals/upload", { method: "POST", body: fd });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error((body as { error?: string }).error ?? "Upload failed");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  if (submitted) {
+    return (
+      <section style={{ background: "#F5E6D1" }} className="py-16">
+        <div className="mx-auto max-w-lg px-4 text-center">
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            background: "rgba(255,131,97,0.12)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            margin: "0 auto 20px",
+          }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF8361" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h3 className="font-heading font-medium text-midnight mb-3" style={{ fontSize: 22 }}>
+            Documents received.
+          </h3>
+          <p className="font-body" style={{ color: "rgba(3,31,61,0.65)", fontSize: 15, lineHeight: 1.7 }}>
+            Our team will review your documents and follow up within 1 business day.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section style={{ background: "#F5E6D1" }} className="py-20 md:py-24">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <div ref={ref} className="mb-10">
+          <motion.p
+            className="font-mono text-xs uppercase tracking-widest mb-3"
+            style={{ color: "#78BFBC" }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            Already have a referral packet?
+          </motion.p>
+          <motion.h2
+            className="font-heading font-medium text-midnight"
+            style={{ fontSize: "clamp(1.6rem, 2.5vw, 2rem)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.06 }}
+          >
+            Upload your documents directly.
+          </motion.h2>
+          <motion.p
+            className="font-body mt-2"
+            style={{ color: "rgba(3,31,61,0.60)", fontSize: 15, lineHeight: 1.65 }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: EASE, delay: 0.14 }}
+          >
+            Skip the form. Upload your referral letter or prior sleep study and our team will extract the details and follow up.
+          </motion.p>
+        </div>
+
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
+          className="rounded-2xl p-8"
+          style={{ background: "#FCF6ED", boxShadow: "0 8px 40px rgba(3,31,61,0.08)" }}
+        >
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mb-6">
+            <Field label="Your name *">
+              <input
+                name="provider_name"
+                value={fields.provider_name}
+                onChange={handleField}
+                style={INPUT_STYLE}
+                placeholder="Dr. Jane Smith"
+              />
+            </Field>
+            <Field label="Your email *">
+              <input
+                name="provider_email"
+                type="email"
+                value={fields.provider_email}
+                onChange={handleField}
+                style={INPUT_STYLE}
+                placeholder="dr.smith@practice.com"
+              />
+            </Field>
+            <Field label="NPI (optional)">
+              <input
+                name="npi"
+                value={fields.npi}
+                onChange={handleField}
+                onInput={filterDigits}
+                maxLength={10}
+                style={INPUT_STYLE}
+                placeholder="10-digit NPI"
+              />
+            </Field>
+            <Field label="Patient name (optional)">
+              <input
+                name="patient_name"
+                value={fields.patient_name}
+                onChange={handleField}
+                style={INPUT_STYLE}
+                placeholder="John Doe"
+              />
+            </Field>
+          </div>
+
+          <div>
+            <label style={LABEL_STYLE}>Referral documents *</label>
+            {!file ? (
+              <label
+                htmlFor="quick-doc-upload"
+                style={{
+                  display: "flex", flexDirection: "column", alignItems: "center",
+                  justifyContent: "center", gap: 8, width: "100%", padding: "32px 16px",
+                  border: "1.5px dashed rgba(3,31,61,0.22)", borderRadius: 10,
+                  cursor: "pointer", textAlign: "center",
+                }}
+              >
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(3,31,61,0.35)" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <span style={{ fontFamily: "'Aeonik', sans-serif", fontSize: 15, color: "rgba(3,31,61,0.60)" }}>
+                  Click to browse or drag and drop
+                </span>
+                <span style={{ fontFamily: "'Aeonik Mono', monospace", fontSize: 11, color: "rgba(3,31,61,0.38)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  PDF · JPEG · PNG · Max 20 MB
+                </span>
+                <input
+                  id="quick-doc-upload"
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,.tiff,.docx"
+                  style={{ display: "none" }}
+                  onChange={(e) => { const f = e.target.files?.[0]; if (f) setFile(f); }}
+                />
+              </label>
+            ) : (
+              <div style={{
+                display: "flex", alignItems: "center", gap: 10,
+                border: "1.5px solid rgba(3,31,61,0.12)", borderRadius: 10, padding: "14px 16px",
+              }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#78BFBC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+                </svg>
+                <span style={{ fontFamily: "'Aeonik', sans-serif", fontSize: 14, color: "#031F3D", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {file.name}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setFile(null)}
+                  style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: "rgba(3,31,61,0.45)", display: "flex" }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+
+          {error && <p style={{ ...ERROR_STYLE, marginTop: 12 }}>{error}</p>}
+
+          <button
+            type="submit"
+            disabled={uploading}
+            className="font-mono text-sm uppercase tracking-wider mt-7 w-full"
+            style={{
+              background: uploading ? "rgba(255,131,97,0.55)" : "#FF8361",
+              color: "#FFFFFF", border: "none", borderRadius: 12,
+              padding: "14px 32px", cursor: uploading ? "not-allowed" : "pointer",
+              letterSpacing: "0.08em",
+            }}
+          >
+            {uploading ? "Uploading..." : "Send Documents"}
+          </button>
+
+          <p className="font-body text-xs text-center mt-4" style={{ color: "rgba(3,31,61,0.40)" }}>
+            Prefer the structured form?{" "}
+            <a href="#referral-form" style={{ color: "rgba(3,31,61,0.60)", textDecoration: "underline" }}>
+              Fill it out above.
+            </a>
+          </p>
+        </motion.form>
+      </div>
+    </section>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ReferralsPage() {
@@ -1520,6 +1833,7 @@ export default function ReferralsPage() {
         <ProviderTestimonialsSection />
         <PricingSection />
         <ReferralFormSection />
+        <QuickUploadSection />
         <FAQSection />
       </main>
       <Footer />

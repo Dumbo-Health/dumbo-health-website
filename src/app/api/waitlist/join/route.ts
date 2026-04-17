@@ -86,6 +86,7 @@ async function notifyCustomerIO({
   const baseUrl = "https://track.customer.io/api/v1";
   const attrs = {
     email,
+    state,
     waitlist_state: state,
     waitlist_interest: interest,
     waitlist_source: source,

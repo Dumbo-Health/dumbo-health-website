@@ -100,14 +100,59 @@ function AttrRow({ attr }: { attr: Attr }) {
   );
 }
 
+type EventTab = "all" | "quiz" | "waitlist";
+
+function getEvents(source: string): ("quiz" | "waitlist")[] {
+  const s = source.toLowerCase();
+  const events: ("quiz" | "waitlist")[] = [];
+  if (s.includes("waitlist")) events.push("waitlist");
+  if (!s.startsWith("waitlist") || s.includes("quiz")) events.push("quiz");
+  return events.length > 0 ? events : ["quiz"];
+}
+
+const TAB_LABELS: Record<EventTab, string> = {
+  all: "All",
+  quiz: "Quiz",
+  waitlist: "Waitlist",
+};
+
 export default function CioEditor({ attrs }: { attrs: Attr[] }) {
-  const enabled = attrs.filter((a) => a.enabled).length;
+  const [activeTab, setActiveTab] = useState<EventTab>("all");
+
+  const filtered = activeTab === "all" ? attrs : attrs.filter((a) => getEvents(a.source).includes(activeTab));
+  const enabled = filtered.filter((a) => a.enabled).length;
+
+  const counts: Record<EventTab, number> = {
+    all: attrs.length,
+    quiz: attrs.filter((a) => getEvents(a.source).includes("quiz")).length,
+    waitlist: attrs.filter((a) => getEvents(a.source).includes("waitlist")).length,
+  };
 
   return (
     <div>
+      {/* Event tabs */}
+      <div className="flex items-center gap-1 mb-4 border-b border-gray-200">
+        {(["all", "quiz", "waitlist"] as EventTab[]).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 py-2 text-sm font-medium rounded-t transition-colors ${
+              activeTab === tab
+                ? "text-[#031F3D] border-b-2 border-[#FF8361] -mb-px bg-white"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            {TAB_LABELS[tab]}
+            <span className={`ml-1.5 text-xs px-1.5 py-0.5 rounded-full ${activeTab === tab ? "bg-[#FF8361]/10 text-[#FF8361]" : "bg-gray-100 text-gray-400"}`}>
+              {counts[tab]}
+            </span>
+          </button>
+        ))}
+      </div>
+
       <div className="flex items-center gap-4 mb-4">
         <span className="text-sm text-gray-500">
-          <span className="font-semibold text-gray-900">{enabled}</span> of {attrs.length} attributes enabled
+          <span className="font-semibold text-gray-900">{enabled}</span> of {filtered.length} attributes enabled
         </span>
         <span className="text-xs text-gray-400">Toggling a field immediately stops or starts sending it to Customer.io.</span>
       </div>
@@ -126,7 +171,7 @@ export default function CioEditor({ attrs }: { attrs: Attr[] }) {
             </tr>
           </thead>
           <tbody>
-            {attrs.map((attr) => (
+            {filtered.map((attr) => (
               <AttrRow key={attr.key} attr={attr} />
             ))}
           </tbody>
