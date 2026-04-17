@@ -779,6 +779,7 @@ function QuestionCard({
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const answerInFlight = useRef(false);
 
   // Delay options until question text has mostly animated in
   const wordCount = question.question_text.split(" ").length;
@@ -787,11 +788,14 @@ function QuestionCard({
   useEffect(() => {
     setSelected(currentAnswer ?? (question.answer_type === "multi_select" ? [] : ""));
     setWhyOpen(false);
+    answerInFlight.current = false;
   }, [question.id, currentAnswer]);
 
   const options = question.options as QuizOption[];
 
   function handleSingle(value: string) {
+    if (answerInFlight.current) return;
+    answerInFlight.current = true;
     setSelected(value);
     setTimeout(() => onAnswer(value), 420);
   }
@@ -1184,6 +1188,7 @@ function ResultsPage({
   flowSlug,
   answers,
   onSubmit,
+  submissionId,
 }: {
   results: Record<string, ResultsTemplate>;
   riskScore: number;
@@ -1191,6 +1196,7 @@ function ResultsPage({
   flowSlug: string;
   answers: Record<string, string | string[]>;
   onSubmit: () => void;
+  submissionId: string | null;
 }) {
   const [openSignal, setOpenSignal] = useState<string | null>(null);
   const [dbSteps, setDbSteps] = useState<DbStep[] | null>(null);
@@ -1377,7 +1383,7 @@ function ResultsPage({
                             fetch("/api/quiz/track", {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({ session_id: crypto.randomUUID(), event: "buy_click", flow_slug: flowSlug }),
+                              body: JSON.stringify({ submission_id: submissionId, event: "buy_click", flow_slug: flowSlug }),
                             }).catch(() => {});
                           }}
                         >
@@ -1404,7 +1410,7 @@ function ResultsPage({
                             fetch("/api/quiz/track", {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({ session_id: crypto.randomUUID(), event: "buy_click", flow_slug: flowSlug }),
+                              body: JSON.stringify({ submission_id: submissionId, event: "buy_click", flow_slug: flowSlug }),
                             }).catch(() => {});
                           }}
                         >
@@ -1760,6 +1766,7 @@ export default function QuizPage() {
                 flowSlug={quiz.state.flowSlug}
                 answers={quiz.state.answers}
                 onSubmit={handleSubmit}
+                submissionId={quiz.submissionId}
               />
             </motion.div>
           )}

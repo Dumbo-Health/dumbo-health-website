@@ -45,10 +45,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   }
 
-  const { error } = await supabase.from("quiz_submissions").insert({
-    ...submission,
-    environment: process.env.NODE_ENV,
-  });
+  const { data: inserted, error } = await supabase
+    .from("quiz_submissions")
+    .insert({ ...submission, environment: process.env.NODE_ENV })
+    .select("id")
+    .single();
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -72,7 +73,7 @@ export async function POST(req: NextRequest) {
     // CIO errors should not block the submission response
   });
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, id: inserted?.id ?? null });
 }
 
 // ── CIO helpers ────────────────────────────────────────────────────────────────
@@ -128,6 +129,7 @@ function buildProfile(submission: Submission) {
     quiz_cpap_satisfaction: str(a["cpap-satisfaction"]),
     quiz_dx_needs: arr(a["dx-needs"]),
     // ── Attribution ──────────────────────────────────────────────
+    quiz_heard_about_us: str(a["heard-about-us"]),
     quiz_utm_source: submission.utm_source,
     quiz_utm_medium: submission.utm_medium,
     quiz_utm_campaign: submission.utm_campaign,

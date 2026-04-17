@@ -65,7 +65,8 @@ export async function submitQuiz(submission: QuizSubmission): Promise<{ id: stri
     body: JSON.stringify(submission),
   }).catch(() => null);
   if (!res || !res.ok) return null;
-  return { id: "submitted" };
+  const data = await res.json().catch(() => null);
+  return { id: data?.id ?? "submitted" };
 }
 
 export async function fetchABTest(flowId: string): Promise<{

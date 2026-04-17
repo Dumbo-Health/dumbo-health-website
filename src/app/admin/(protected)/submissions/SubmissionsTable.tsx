@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const MIDNIGHT = "#031F3D";
 const SUNLIGHT = "#F5E6D1";
@@ -10,6 +11,8 @@ const RISK_COLORS: Record<string, string> = {
   moderate: "bg-amber-100 text-amber-700",
   low: "bg-green-100 text-green-700",
 };
+
+const RISK_LEGEND = "Score: 0–2 low · 3–5 moderate · 6+ high";
 
 function getRiskLevel(score: number) {
   if (score >= 6) return "high";
@@ -29,6 +32,7 @@ export type SubmissionRow = {
   utm_campaign: string | null;
   answers: Record<string, unknown>;
   tags: string[] | null;
+  checkout_cta_clicked_at: string | null;
 };
 
 export type QuestionMeta = {
@@ -54,12 +58,27 @@ function formatAnswer(
 export default function SubmissionsTable({
   rows,
   questions,
+  page,
+  totalPages,
+  totalCount,
 }: {
   rows: SubmissionRow[];
   questions: QuestionMeta[];
+  page: number;
+  totalPages: number;
+  totalCount: number;
 }) {
   const [selected, setSelected] = useState<SubmissionRow | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const questionMap = new Map(questions.map((q) => [q.slug, q]));
+
+  function goToPage(p: number) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", String(p));
+    router.push(`${pathname}?${params.toString()}`);
+  }
 
   return (
     <>
@@ -69,12 +88,14 @@ export default function SubmissionsTable({
             <tr className="border-b border-gray-200 bg-gray-50">
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Date</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Email</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Flow</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Checkout</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Risk</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">State</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Flow</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">Device</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">UTM Source</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">UTM Campaign</th>
+              <th className="px-4 py-3 w-8" />
             </tr>
           </thead>
           <tbody>
@@ -94,12 +115,21 @@ export default function SubmissionsTable({
                     </span>
                   </td>
                   <td className="px-4 py-3 text-xs text-gray-900">
-                    {row.email ?? <span className="text-gray-400 italic">anonymous</span>}
+                    <span className="underline decoration-dotted underline-offset-2 text-gray-700">
+                      {row.email ?? <span className="text-gray-400 italic no-underline">anonymous</span>}
+                    </span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded">
-                      {row.flow_slug}
-                    </span>
+                    {row.checkout_cta_clicked_at ? (
+                      <span
+                        title="Clicked the checkout CTA — does not confirm purchase"
+                        className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 cursor-help"
+                      >
+                        ✓ CTA clicked
+                      </span>
+                    ) : (
+                      <span className="text-xs text-gray-400">—</span>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${RISK_COLORS[riskLevel]}`}>
@@ -107,15 +137,21 @@ export default function SubmissionsTable({
                     </span>
                   </td>
                   <td className="px-4 py-3 text-xs text-gray-600">{row.state ?? "—"}</td>
+                  <td className="px-4 py-3">
+                    <span className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded">
+                      {row.flow_slug}
+                    </span>
+                  </td>
                   <td className="px-4 py-3 text-xs text-gray-600">{row.device_type}</td>
                   <td className="px-4 py-3 text-xs text-gray-500">{row.utm_source ?? "—"}</td>
                   <td className="px-4 py-3 text-xs text-gray-500">{row.utm_campaign ?? "—"}</td>
+                  <td className="px-4 py-3 text-gray-300 text-sm">›</td>
                 </tr>
               );
             })}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-10 text-center text-sm text-gray-400">
+                <td colSpan={10} className="px-4 py-10 text-center text-sm text-gray-400">
                   No submissions yet.
                 </td>
               </tr>
@@ -123,6 +159,31 @@ export default function SubmissionsTable({
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-between mt-4">
+          <p className="text-xs text-gray-400">
+            Page {page} of {totalPages} · {totalCount} total
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => goToPage(page - 1)}
+              disabled={page <= 1}
+              className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              ← Prev
+            </button>
+            <button
+              onClick={() => goToPage(page + 1)}
+              disabled={page >= totalPages}
+              className="text-xs px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Backdrop */}
       {selected && (
@@ -168,14 +229,26 @@ export default function SubmissionsTable({
                     {selected.flow_slug}
                   </span>
                   <span
-                    className={`text-xs font-medium px-2 py-0.5 rounded-full ${RISK_COLORS[getRiskLevel(selected.risk_score)]}`}
+                    title={RISK_LEGEND}
+                    className={`text-xs font-medium px-2 py-0.5 rounded-full cursor-help ${RISK_COLORS[getRiskLevel(selected.risk_score)]}`}
                   >
                     {getRiskLevel(selected.risk_score)} risk ({selected.risk_score})
                   </span>
                   {selected.state && (
                     <span className="text-xs text-gray-500">{selected.state}</span>
                   )}
+                  {selected.checkout_cta_clicked_at && (
+                    <span
+                      title="Clicked the checkout CTA — does not confirm purchase"
+                      className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 cursor-help"
+                    >
+                      ✓ CTA clicked
+                    </span>
+                  )}
                 </div>
+                <p className="text-xs text-gray-400 mt-2" title={RISK_LEGEND}>
+                  {RISK_LEGEND}
+                </p>
               </div>
               <button
                 onClick={() => setSelected(null)}

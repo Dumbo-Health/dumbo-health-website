@@ -10,7 +10,8 @@ const NAV_ITEMS = [
   { href: "/admin/steps",       label: "Next Steps" },
   { href: "/admin/signals",     label: "Signals" },
   { href: "/admin/cio",         label: "CIO Attributes" },
-  { href: "/admin/submissions", label: "Submissions" },
+  { href: "/admin/submissions",    label: "Submissions" },
+  { href: "/admin/launch-states", label: "Launch States" },
   { href: "/admin/waitlist",   label: "Waitlist" },
   { href: "/admin/analytics",  label: "Analytics" },
 ];
