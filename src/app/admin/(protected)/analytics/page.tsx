@@ -1,12 +1,11 @@
 import { createAdminClient } from "@/lib/supabase-admin";
-import AnalyticsDashboard from "./AnalyticsDashboard";
-import FunnelDashboard from "./FunnelDashboard";
+import AnalyticsShell from "./AnalyticsShell";
 import type { AnalyticsData, FlowStats } from "./AnalyticsDashboard";
 import type { FunnelData, FunnelFlowStats, FunnelStep } from "./FunnelDashboard";
 
 export const dynamic = "force-dynamic";
 
-// ── Submission analytics types ───────────────────────────────────────────────
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 type RawSubmission = {
   flow_slug: string;
@@ -27,8 +26,6 @@ type RawQuestion = {
 };
 
 type RawFlow = { id: string; slug: string };
-
-// ── Funnel analytics types ────────────────────────────────────────────────────
 
 type RawFunnelEvent = {
   session_id: string;
@@ -112,6 +109,15 @@ function aggregateFlow(
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([date, count]) => ({ date, count }));
 
+  const stateCounts: Record<string, number> = {};
+  for (const sub of flowSubs) {
+    const s = sub.state;
+    if (s && s.trim().length > 0) {
+      const key = s.trim().toUpperCase();
+      stateCounts[key] = (stateCounts[key] || 0) + 1;
+    }
+  }
+
   return {
     total: flowSubs.length,
     questions: questionStats,
@@ -126,12 +132,20 @@ function aggregateFlow(
     ],
     devices: Object.entries(deviceCounts).map(([device, count]) => ({ device, count })),
     trend,
-  } as ReturnType<typeof aggregateFlow>;
+    states: Object.entries(stateCounts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 15)
+      .map(([state, count]) => ({ state, count })),
+  } as FlowStats;
 }
 
 // ── Aggregation: funnel analytics ─────────────────────────────────────────────
 
-function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlowStats {
+function aggregateFunnel(
+  events: RawFunnelEvent[],
+  flowSlug: string,
+  questionTextMap: Map<string, string>
+): FunnelFlowStats {
   const flowEvents = events.filter((e) => e.flow_slug === flowSlug);
 
   const startSessions = new Set(
@@ -146,7 +160,6 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
   const completion_pct = starts > 0 ? Math.round((completions / starts) * 100) : 0;
   const buy_clicks = flowEvents.filter((e) => e.event === "buy_click").length;
 
-  // Per-step reach: distinct sessions per question_index
   const stepMap = new Map<
     number,
     { question_slug: string; section_slug: string | null; sessions: Set<string> }
@@ -175,6 +188,7 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
     const drop_pct = reached > 0 ? Math.round((dropped_after / reached) * 100) : 0;
     return {
       question_slug: step.question_slug,
+      question_text: questionTextMap.get(step.question_slug) ?? step.question_slug,
       section_slug: step.section_slug,
       question_index: step.question_index,
       reached,
@@ -183,11 +197,9 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
     };
   });
 
-  // Highest drop-off step (require at least 5 sessions to avoid noise)
   const topDropStep =
     steps.filter((s) => s.reached >= 5).sort((a, b) => b.drop_pct - a.drop_pct)[0] ?? null;
 
-  // Common abandonment paths from abandoned events
   const pathCounts = new Map<string, number>();
   for (const e of flowEvents) {
     if (e.event !== "abandoned" || !e.route_path?.length) continue;
@@ -207,7 +219,9 @@ function aggregateFunnel(events: RawFunnelEvent[], flowSlug: string): FunnelFlow
     buy_clicks,
     steps,
     top_drop_question: topDropStep?.question_slug ?? null,
+    top_drop_question_text: topDropStep?.question_text ?? null,
     top_drop_section: topDropStep?.section_slug ?? null,
+    top_drop_pct: topDropStep?.drop_pct ?? null,
     common_paths,
   };
 }
@@ -224,6 +238,7 @@ export default async function AnalyticsPage() {
     { data: allSubmissions },
     { data: allQuestions },
     { data: rawFunnelEvents },
+    { count: totalSubmissionsCount },
   ] = await Promise.all([
     sb.from("quiz_flows").select("id, slug").eq("is_active", true),
     sb
@@ -238,17 +253,31 @@ export default async function AnalyticsPage() {
       .order("position", { ascending: true }),
     sb
       .from("quiz_funnel_events")
-      .select("session_id, event, flow_slug, section_slug, question_slug, question_index, route_path")
+      .select(
+        "session_id, event, flow_slug, section_slug, question_slug, question_index, route_path"
+      )
       .eq("environment", "production")
       .gte("created_at", thirtyDaysAgo),
+    sb
+      .from("quiz_submissions")
+      .select("id", { count: "exact", head: true })
+      .eq("environment", "production"),
   ]);
+
+  const questionTextMap = new Map(
+    (allQuestions ?? []).map((q: RawQuestion) => [q.slug, q.question_text])
+  );
 
   const flowMap = new Map((flows ?? []).map((f: RawFlow) => [f.slug, f.id]));
   const diagnosedId = flowMap.get("diagnosed") ?? "";
   const undiagnosedId = flowMap.get("undiagnosed") ?? "";
 
-  const diagnosedQs = (allQuestions ?? []).filter((q: RawQuestion) => q.flow_id === diagnosedId);
-  const undiagnosedQs = (allQuestions ?? []).filter((q: RawQuestion) => q.flow_id === undiagnosedId);
+  const diagnosedQs = (allQuestions ?? []).filter(
+    (q: RawQuestion) => q.flow_id === diagnosedId
+  );
+  const undiagnosedQs = (allQuestions ?? []).filter(
+    (q: RawQuestion) => q.flow_id === undiagnosedId
+  );
 
   const subs = (allSubmissions ?? []) as RawSubmission[];
   const funnelEvents = (rawFunnelEvents ?? []) as RawFunnelEvent[];
@@ -258,39 +287,16 @@ export default async function AnalyticsPage() {
   const data: AnalyticsData = { diagnosed, undiagnosed };
 
   const funnelData: FunnelData = {
-    diagnosed: aggregateFunnel(funnelEvents, "diagnosed"),
-    undiagnosed: aggregateFunnel(funnelEvents, "undiagnosed"),
+    diagnosed: aggregateFunnel(funnelEvents, "diagnosed", questionTextMap),
+    undiagnosed: aggregateFunnel(funnelEvents, "undiagnosed", questionTextMap),
   };
 
-  const totalFunnelStarts = funnelData.diagnosed.starts + funnelData.undiagnosed.starts;
-
   return (
-    <div className="p-8 space-y-12">
-      {/* Funnel section */}
-      <div>
-        <div className="mb-6">
-          <h1 className="text-2xl font-semibold text-gray-900">Quiz Drop-off Funnel</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Start rate, per-step drop-off, and abandonment routes — last 30 days.
-            {totalFunnelStarts > 0 && ` Based on ${totalFunnelStarts} quiz starts.`}
-          </p>
-        </div>
-        <FunnelDashboard data={funnelData} />
-      </div>
-
-      {/* Divider */}
-      <hr className="border-gray-100" />
-
-      {/* Answer analytics section */}
-      <div>
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900">Answer Analytics</h2>
-          <p className="text-sm text-gray-500 mt-1">
-            Answer distributions across all quiz submissions. Based on {subs.length} total responses.
-          </p>
-        </div>
-        <AnalyticsDashboard data={data} />
-      </div>
-    </div>
+    <AnalyticsShell
+      data={data}
+      funnelData={funnelData}
+      totalCount={totalSubmissionsCount ?? undefined}
+      subsCount={subs.length}
+    />
   );
 }
